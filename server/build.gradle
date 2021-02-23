@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+// mainClassName = ""
+
+dependencies {
+    compile project(':utils')
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+
+application {
+    // mainClass = ''
+}
+run {
+    standardInput = System.in
+}
+
+jar {
+// https://stackoverflow.com/questions/28421409/gradle-command-from-configurations-compile-collect
+    //from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }) {}
+}
+/*
+shadowJar {
+    manifest {
+        attributes(
+                // 'Main-Class': ''
+        )
+    }
+
+//    include('javafx-base-15.0.1.jar')
+
+    configurations = [project.configurations.compile, project.configurations.runtime]
+}
+ */
