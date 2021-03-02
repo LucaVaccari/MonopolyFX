@@ -1,5 +1,12 @@
 package it.castelli.gameLogic.squares;
 
-public class CommunityChestSquare
+import it.castelli.gameLogic.Player;
+
+public class CommunityChestSquare implements Square
 {
+	@Override
+	public void interact(Player player)
+	{
+		// TODO: pick a CommunityChest card
+	}
 }

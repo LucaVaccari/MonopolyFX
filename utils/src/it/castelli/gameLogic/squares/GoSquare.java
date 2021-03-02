@@ -1,5 +1,12 @@
 package it.castelli.gameLogic.squares;
 
-public class GoSquare
+import it.castelli.gameLogic.Player;
+
+public class GoSquare implements Square
 {
+	@Override
+	public void interact(Player player)
+	{
+		// TODO: add 200M to the player
+	}
 }

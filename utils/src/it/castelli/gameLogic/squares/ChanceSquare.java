@@ -1,5 +1,12 @@
 package it.castelli.gameLogic.squares;
 
-public class ChanceSquare
+import it.castelli.gameLogic.Player;
+
+public class ChanceSquare implements Square
 {
+	@Override
+	public void interact(Player player)
+	{
+		// TODO: pick a Chance card
+	}
 }

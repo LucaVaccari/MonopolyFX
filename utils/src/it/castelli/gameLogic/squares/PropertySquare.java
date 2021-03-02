@@ -1,5 +1,12 @@
 package it.castelli.gameLogic.squares;
 
-public class PropertySquare
+import it.castelli.gameLogic.Player;
+
+public class PropertySquare implements Square
 {
+	@Override
+	public void interact(Player player)
+	{
+		// TODO: invoke property method
+	}
 }

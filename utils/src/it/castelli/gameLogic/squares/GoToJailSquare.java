@@ -1,5 +1,12 @@
 package it.castelli.gameLogic.squares;
 
-public class GoToJailSquare
+import it.castelli.gameLogic.Player;
+
+public class GoToJailSquare implements Square
 {
+	@Override
+	public void interact(Player player)
+	{
+		// TODO: send player to prison
+	}
 }
