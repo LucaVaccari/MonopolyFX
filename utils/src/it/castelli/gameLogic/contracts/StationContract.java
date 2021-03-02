@@ -1,5 +1,7 @@
 package it.castelli.gameLogic.contracts;
 
+import it.castelli.gameLogic.Player;
+
 public class StationContract extends Contract
 {
 	public StationContract(String name, int value, int revenueBase, int mortgageValue)
@@ -10,7 +12,7 @@ public class StationContract extends Contract
 		this.mortgageValue = mortgageValue;
 	}
 
-	public int getRevenue()
+	public int getRevenue(Player player)
 	{
 		// TODO: check the number of stations
 		// return 2^(numberOfStations - 1) * revenue
