@@ -8,46 +8,61 @@ import java.util.HashSet;
 
 public class Player
 {
-	private HashSet<Contract> contracts = new HashSet<>();
-	private int money;
-	private ArrayList<RandomEvent> keptRandomEventCards = new ArrayList<>();
+    private HashSet<Contract> contracts = new HashSet<>();
+    private int money;
+    private ArrayList<RandomEvent> keptRandomEventCards = new ArrayList<>();
+    private int position = 0;
 
-	public Player(int money)
-	{
-		this.money = money;
-	}
+    public Player(int money)
+    {
+        this.money = money;
+    }
 
-	public HashSet<Contract> getContracts()
-	{
-		return contracts;
-	}
+    public HashSet<Contract> getContracts()
+    {
+        return contracts;
+    }
 
-	public int getMoney()
-	{
-		return money;
-	}
+    public int getMoney()
+    {
+        return money;
+    }
 
-	public ArrayList<RandomEvent> getKeptRandomEventCards()
-	{
-		return keptRandomEventCards;
-	}
+    public ArrayList<RandomEvent> getKeptRandomEventCards()
+    {
+        return keptRandomEventCards;
+    }
 
-	// TODO: change x name
-	public void addMoney(int x)
-	{
-		money += x;
-	}
+    public void setPosition(int position, boolean passThroughGoSquare)
+    {
+        this.position = position;
+        if (position >= 40)
+            ;// TODO: give money to player
+        this.position %= 40;
+        // TODO: GameManager.getSquare(position).interact();
+    }
 
-	// TODO: change x name
-	public void removeMoney(int x)
-	{
-		if (money >= x)
-			money -= x;
-	}
+    public void move(int units)
+    {
+        setPosition(position + units, true);
+    }
 
-	// TODO: change x name
-	public boolean hasMoney(int x)
-	{
-		return money >= x;
-	}
+    // TODO: change x name
+    public void addMoney(int x)
+    {
+        money += x;
+    }
+
+    // TODO: change x name
+    public void removeMoney(int x)
+    {
+        if (money >= x)
+            money -= x;
+    }
+
+    // TODO: change x name
+    public boolean hasMoney(int x)
+    {
+        return money >= x;
+    }
 }

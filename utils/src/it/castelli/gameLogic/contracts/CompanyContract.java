@@ -9,6 +9,7 @@ public class CompanyContract extends Contract
 		this.mortgageValue = mortgageValue;
 	}
 
+	@Override
 	public int getRevenue()
 	{
 		// TODO: check if owner owns both companies
@@ -16,4 +17,6 @@ public class CompanyContract extends Contract
 		// return diceResult * (has both ? 10 : 4)
 		return 0;
 	}
+
+
 }

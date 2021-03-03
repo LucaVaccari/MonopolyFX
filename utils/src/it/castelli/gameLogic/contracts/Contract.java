@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Represents the properties of a Monopoly property
  */
-public class Contract
+public abstract class Contract
 {
 	/**
 	 * Name of the Monopoly property
@@ -29,6 +29,10 @@ public class Contract
 	 * The player who owns the property
 	 */
 	protected Player owner;
+	/**
+	 * Is the property mortgaged?
+	 */
+	protected boolean mortgaged;
 
 	/**
 	 * Getter for the name of the property
@@ -64,6 +68,30 @@ public class Contract
 	public Player getOwner()
 	{
 		return owner;
+	}
+
+	/**
+	 * Getter fot mortgaged
+	 * @return Is the property mortgaged?
+	 */
+	public boolean isMortgaged()
+	{
+		return mortgaged;
+	}
+
+	/**
+	 * Abstract getter for revenue
+	 * @return The revenue of the property when a player lands on it
+	 */
+	public abstract int getRevenue();
+
+	/**
+	 * Setter for mortgaged
+	 * @param mortgaged The new mortgaged value
+	 */
+	public void setMortgaged(boolean mortgaged)
+	{
+		this.mortgaged = mortgaged;
 	}
 
 	/**
