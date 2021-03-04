@@ -1,5 +1,6 @@
 package it.castelli.gameLogic;
 
+import it.castelli.gameLogic.squares.GoSquare;
 import it.castelli.gameLogic.squares.Square;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gameLogic.transactions.Exchange;
@@ -22,7 +23,12 @@ public class GameManager
         return instance;
     }
 
-    private GameManager(){}
+    private GameManager()
+    {
+        board = new Square[]{
+                new GoSquare()
+        };
+    }
 
     public void addPlayer(Player player)
     {

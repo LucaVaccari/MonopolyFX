@@ -12,10 +12,22 @@ public class Player
     private int money;
     private ArrayList<RandomEvent> keptRandomEventCards = new ArrayList<>();
     private int position = 0;
+    private String name;
 
-    public Player(int money)
+    public Player(int money, String name)
     {
         this.money = money;
+        this.name = name;
+    }
+
+    public int getPosition()
+    {
+        return position;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 
     public HashSet<Contract> getContracts()
@@ -36,7 +48,7 @@ public class Player
     public void setPosition(int position, boolean passThroughGoSquare)
     {
         this.position = position;
-        if (position >= 40)
+        if ( position >= 40 )
             ;// TODO: give money to player
         this.position %= 40;
         // TODO: GameManager.getSquare(position).interact();
@@ -44,7 +56,7 @@ public class Player
 
     public void move(int units)
     {
-        setPosition(position + units, true);
+        setPosition( position + units, true );
     }
 
     // TODO: change x name
@@ -56,7 +68,7 @@ public class Player
     // TODO: change x name
     public void removeMoney(int x)
     {
-        if (money >= x)
+        if ( money >= x )
             money -= x;
     }
 
