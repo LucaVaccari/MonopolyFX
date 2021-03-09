@@ -8,12 +8,12 @@ import it.castelli.gameLogic.Player;
 public class GoSquare implements Square
 {
 	/**
-	 * Give money to the player
+	 * Do nothing
 	 * @param player The player who landed on the square
 	 */
 	@Override
 	public void interact(Player player)
 	{
-		// TODO: add 200M to the player (not sure)
+		// do nothing
 	}
 }
