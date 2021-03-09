@@ -16,6 +16,7 @@ public abstract class RandomEvent
 
 	/**
 	 * Generic constructor for the RandomEvent
+	 *
 	 * @param message The message shown to the player when drawing the card
 	 */
 	public RandomEvent(String message)
@@ -25,12 +26,14 @@ public abstract class RandomEvent
 
 	/**
 	 * Apply the effect of the card (must be overridden by the subclasses)
+	 *
 	 * @param player The player who drew the card
 	 */
 	public abstract void applyEffect(Player player);
 
 	/**
 	 * Getter for the message
+	 *
 	 * @return The message shown to the player when drawing the card
 	 */
 	public String getMessage()

@@ -34,8 +34,9 @@ public class Player
 
 	/**
 	 * Constructor for the Player
+	 *
 	 * @param money The amount of money the player has
-	 * @param name The name of the player
+	 * @param name  The name of the player
 	 */
 	public Player(int money, String name)
 	{
@@ -45,6 +46,7 @@ public class Player
 
 	/**
 	 * Getter for the position
+	 *
 	 * @return The position of the player on the board
 	 */
 	public int getPosition()
@@ -54,6 +56,7 @@ public class Player
 
 	/**
 	 * Getter for the name
+	 *
 	 * @return The name of the player
 	 */
 	public String getName()
@@ -63,6 +66,7 @@ public class Player
 
 	/**
 	 * Getter for the list of contracts
+	 *
 	 * @return The list of contracts owned by the player
 	 */
 	public HashSet<Contract> getContracts()
@@ -72,6 +76,7 @@ public class Player
 
 	/**
 	 * Getter for the money
+	 *
 	 * @return The amount of money the player has
 	 */
 	public int getMoney()
@@ -81,6 +86,7 @@ public class Player
 
 	/**
 	 * Getter for the list of kept random event cards
+	 *
 	 * @return The list of kept random event cards
 	 */
 	public ArrayList<RandomEvent> getKeptRandomEventCards()
@@ -90,7 +96,8 @@ public class Player
 
 	/**
 	 * Set the position of the player by specifying it precisely
-	 * @param position The new position for the player
+	 *
+	 * @param position            The new position for the player
 	 * @param passThroughGoSquare If it passes through the GoSquare, should it get paid?
 	 */
 	public void setPosition(int position, boolean passThroughGoSquare)
@@ -104,6 +111,7 @@ public class Player
 
 	/**
 	 * Move the player towards by a certain amount (after throwing the dice or a random event)
+	 *
 	 * @param units The number of squares to move
 	 */
 	public void move(int units)
@@ -113,6 +121,7 @@ public class Player
 
 	/**
 	 * Add money to the player
+	 *
 	 * @param x The amount of money to add
 	 */
 	// TODO: change x name
@@ -123,6 +132,7 @@ public class Player
 
 	/**
 	 * Take money from the player
+	 *
 	 * @param x The amount of money to take
 	 */
 	// TODO: change x name
@@ -134,6 +144,7 @@ public class Player
 
 	/**
 	 * Check if he has more money than those passed
+	 *
 	 * @param x The amount of money to compare
 	 * @return If the player has enough money
 	 */

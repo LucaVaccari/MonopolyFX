@@ -13,6 +13,7 @@ public class PayHousesRandomEvent extends RandomEvent
 
 	/**
 	 * Constructor for the PayHousesRandomEvent
+	 *
 	 * @param message The message shown to the player when he draws the card
 	 */
 	public PayHousesRandomEvent(String message, int houseCost, int hotelCost)
@@ -24,6 +25,7 @@ public class PayHousesRandomEvent extends RandomEvent
 
 	/**
 	 * Make the player pay a certain amount based on the number of houses he has
+	 *
 	 * @param player The player who must pay
 	 */
 	@Override

@@ -13,6 +13,7 @@ public class PayRandomEvent extends RandomEvent
 
 	/**
 	 * Constructor for the PayRandomEvent
+	 *
 	 * @param message The message shown to the player when he draws the card
 	 */
 	public PayRandomEvent(String message, int cost)
@@ -23,6 +24,7 @@ public class PayRandomEvent extends RandomEvent
 
 	/**
 	 * Take money from the player
+	 *
 	 * @param player The player who drew the card
 	 */
 	@Override

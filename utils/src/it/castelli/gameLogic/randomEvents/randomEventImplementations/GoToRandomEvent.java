@@ -13,6 +13,7 @@ public class GoToRandomEvent extends RandomEvent
 
 	/**
 	 * Constructor for the GoToRandomEvent
+	 *
 	 * @param message The message shown to the player when drawing this card
 	 */
 	public GoToRandomEvent(String message, int square, boolean passThroughGo)
@@ -24,6 +25,7 @@ public class GoToRandomEvent extends RandomEvent
 
 	/**
 	 * Move the player to a specific cell, checking if it passes through the Go square
+	 *
 	 * @param player The player who drew the card and must be moved
 	 */
 	@Override

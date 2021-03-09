@@ -12,6 +12,7 @@ public class BirthdayRandomEvent extends RandomEvent
 
 	/**
 	 * Constructor for the BirthdayRandomEvent
+	 *
 	 * @param message The message shown to the player when drawing this card
 	 */
 	public BirthdayRandomEvent(String message, int present)
@@ -22,6 +23,7 @@ public class BirthdayRandomEvent extends RandomEvent
 
 	/**
 	 * Take money from each player and give them to one of them (the one who drew the card)
+	 *
 	 * @param player The player who drew the card, which will take money from all others
 	 */
 	@Override

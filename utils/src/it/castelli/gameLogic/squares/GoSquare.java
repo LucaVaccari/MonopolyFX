@@ -9,6 +9,7 @@ public class GoSquare implements Square
 {
 	/**
 	 * Do nothing
+	 *
 	 * @param player The player who landed on the square
 	 */
 	@Override

@@ -9,6 +9,7 @@ public class Dice
 {
 	/**
 	 * Get a roll of dice
+	 *
 	 * @return The result of the roll
 	 */
 	public static DiceResult rollDice()

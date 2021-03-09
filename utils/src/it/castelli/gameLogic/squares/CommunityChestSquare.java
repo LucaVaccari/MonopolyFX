@@ -9,6 +9,7 @@ public class CommunityChestSquare implements Square
 {
 	/**
 	 * Pick a community chest card
+	 *
 	 * @param player The player who landed on the square
 	 */
 	@Override

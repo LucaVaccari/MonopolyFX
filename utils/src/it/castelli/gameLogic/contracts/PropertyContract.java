@@ -14,29 +14,31 @@ public class PropertyContract extends Contract
 	 */
 	private final PropertyColor color;
 	/**
-	 * The number of houses bought by the player (5 houses = hotel)
-	 */
-	private int numberOfHouses = 0;
-	/**
 	 * The cost of each house
 	 */
 	private final int houseCost;
+	/**
+	 * The number of houses bought by the player (5 houses = hotel)
+	 */
+	private int numberOfHouses = 0;
 
 	/**
 	 * Constructor of the PropertyContract
-	 * @param name The name of the contract
-	 * @param value The cost of the property when buying from the bank
-	 * @param revenueBase The revenue of the property when a player lands on it when the property has no houses
-	 * @param revenue1House The revenue with 1 house
+	 *
+	 * @param name           The name of the contract
+	 * @param value          The cost of the property when buying from the bank
+	 * @param revenueBase    The revenue of the property when a player lands on it when the property has no houses
+	 * @param revenue1House  The revenue with 1 house
 	 * @param revenue2Houses The revenue with 2 houses
 	 * @param revenue3Houses The revenue with 3 houses
 	 * @param revenue4Houses The revenue with 4 houses
-	 * @param revenueHotel The revenue with the hotel (5 houses)
-	 * @param houseCost The cost of each house
-	 * @param color The color of the property
+	 * @param revenueHotel   The revenue with the hotel (5 houses)
+	 * @param houseCost      The cost of each house
+	 * @param color          The color of the property
 	 */
 	public PropertyContract(String name, int value, int revenueBase, int revenue1House, int revenue2Houses,
-	                        int revenue3Houses, int revenue4Houses, int revenueHotel, int houseCost, PropertyColor color)
+	                        int revenue3Houses, int revenue4Houses, int revenueHotel, int houseCost,
+	                        PropertyColor color)
 	{
 		this.name = name;
 		this.value = value;
@@ -49,6 +51,7 @@ public class PropertyContract extends Contract
 
 	/**
 	 * Add houses to the property (this function DOES NOT take money from player)
+	 *
 	 * @param numberOfHouses The number of houses to add
 	 */
 	public void addHouses(int numberOfHouses)
@@ -61,6 +64,7 @@ public class PropertyContract extends Contract
 
 	/**
 	 * Revome houses from the property (this function DOES NOT give money to the player)
+	 *
 	 * @param numberOfHouses The number of houses to remove
 	 */
 	public void removeHouses(int numberOfHouses)
@@ -73,6 +77,7 @@ public class PropertyContract extends Contract
 
 	/**
 	 * Getter for the number of houses
+	 *
 	 * @return The number of houses on the property
 	 */
 	public int getNumberOfHouses()
@@ -82,6 +87,7 @@ public class PropertyContract extends Contract
 
 	/**
 	 * Getter for the house cost
+	 *
 	 * @return The cost of each house
 	 */
 	public int getHouseCost()
@@ -91,6 +97,7 @@ public class PropertyContract extends Contract
 
 	/**
 	 * Getter for the revenue
+	 *
 	 * @return The revenue of the property when a player lands on it (taking care of the other properties)
 	 */
 	@Override

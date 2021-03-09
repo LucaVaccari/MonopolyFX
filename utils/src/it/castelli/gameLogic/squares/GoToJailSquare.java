@@ -9,6 +9,7 @@ public class GoToJailSquare implements Square
 {
 	/**
 	 * Send the player to prison
+	 *
 	 * @param player The player to be arrested
 	 */
 	@Override

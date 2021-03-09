@@ -7,7 +7,8 @@ public class CompanyContract extends Contract
 {
 	/**
 	 * Constructor for the CompanyContract
-	 * @param name The name of the contract
+	 *
+	 * @param name  The name of the contract
 	 * @param value The cost of the contract when buying from the bank
 	 */
 	public CompanyContract(String name, int value)
@@ -19,6 +20,7 @@ public class CompanyContract extends Contract
 
 	/**
 	 * Get the revenue of the contract
+	 *
 	 * @return The revenue of the property when a player lands on it (taking care of the other company)
 	 */
 	@Override

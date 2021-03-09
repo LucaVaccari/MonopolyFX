@@ -9,6 +9,7 @@ public class ChanceSquare implements Square
 {
 	/**
 	 * Pick a chance card
+	 *
 	 * @param player The player who landed on the square
 	 */
 	@Override

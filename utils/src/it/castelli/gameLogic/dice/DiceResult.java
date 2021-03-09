@@ -16,6 +16,7 @@ public class DiceResult
 
 	/**
 	 * Constructor of the dice result
+	 *
 	 * @param result1 The result of the first die
 	 * @param result2 The result of the second die
 	 */
@@ -27,6 +28,7 @@ public class DiceResult
 
 	/**
 	 * Getter for the first result
+	 *
 	 * @return The result of the first die
 	 */
 	public int getResult1()
@@ -36,6 +38,7 @@ public class DiceResult
 
 	/**
 	 * Getter for the second result
+	 *
 	 * @return The result of the second die
 	 */
 	public int getSecondResult()

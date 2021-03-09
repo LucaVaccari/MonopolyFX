@@ -18,7 +18,8 @@ public class TaxSquare implements Square
 
 	/**
 	 * The constructor of the TaxSquare
-	 * @param value The amount to be payed
+	 *
+	 * @param value   The amount to be payed
 	 * @param message The message shown to the player when landing on the square
 	 */
 	public TaxSquare(int value, String message)
@@ -29,6 +30,7 @@ public class TaxSquare implements Square
 
 	/**
 	 * Getter for the value
+	 *
 	 * @return The amount to be payed
 	 */
 	public int getValue()
@@ -38,6 +40,7 @@ public class TaxSquare implements Square
 
 	/**
 	 * Getter for the message
+	 *
 	 * @return The message shown to the player when landing on the square
 	 */
 	public String getMessage()
@@ -47,6 +50,7 @@ public class TaxSquare implements Square
 
 	/**
 	 * Make the player pay the tax
+	 *
 	 * @param player The player who landed on the square
 	 */
 	@Override

@@ -10,6 +10,7 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 {
 	/**
 	 * Constructor for the PrisonEscapeRandomEvent
+	 *
 	 * @param message The message shown from the player when drawing this card
 	 */
 	public PrisonEscapeRandomEvent(String message)
@@ -19,6 +20,7 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 
 	/**
 	 * Give this card to the player
+	 *
 	 * @param player The player who drew the card
 	 */
 	@Override

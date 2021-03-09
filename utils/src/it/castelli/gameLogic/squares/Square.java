@@ -9,6 +9,7 @@ public interface Square
 {
 	/**
 	 * Method invoked when a player lands on the square
+	 *
 	 * @param player The player who landed on the square
 	 */
 	void interact(Player player);
