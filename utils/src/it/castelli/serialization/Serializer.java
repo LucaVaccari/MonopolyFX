@@ -23,7 +23,8 @@ public class Serializer
 		}
 		catch (IOException e)
 		{
-			System.out.println("Error serializing object: " + obj.getClass().getName());
+			System.out.println(
+					"Error serializing object: " + obj.getClass().getName());
 			e.printStackTrace();
 		}
 		return null;

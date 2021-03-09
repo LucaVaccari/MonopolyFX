@@ -4,7 +4,8 @@ import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
 
 /**
- * Random event to make a player move to a specific square (checking if it passes through the go square)
+ * Random event to make a player move to a specific square (checking if it
+ * passes through the go square)
  */
 public class GoToRandomEvent extends RandomEvent
 {
@@ -24,7 +25,8 @@ public class GoToRandomEvent extends RandomEvent
 	}
 
 	/**
-	 * Move the player to a specific cell, checking if it passes through the Go square
+	 * Move the player to a specific cell, checking if it passes through the
+	 * Go square
 	 *
 	 * @param player The player who drew the card and must be moved
 	 */

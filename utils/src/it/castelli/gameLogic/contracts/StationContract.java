@@ -23,7 +23,8 @@ public class StationContract extends Contract
 	/**
 	 * Getter for the revenue
 	 *
-	 * @return The revenue of the station when a player lands on it (taking care of the other stations)
+	 * @return The revenue of the station when a player lands on it (taking
+	 * care of the other stations)
 	 */
 	@Override
 	public int getRevenue()
