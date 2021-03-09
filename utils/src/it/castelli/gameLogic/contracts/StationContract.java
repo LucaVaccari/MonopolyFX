@@ -10,14 +10,13 @@ public class StationContract extends Contract
 	 * @param name The name of the station
 	 * @param value The cost of the property when buying it from the bank
 	 * @param revenueBase The revenue when a player lands on it
-	 * @param mortgageValue The mortgage value of the contract
 	 */
-	public StationContract(String name, int value, int revenueBase, int mortgageValue)
+	public StationContract(String name, int value, int revenueBase)
 	{
 		this.name = name;
 		this.value = value;
 		this.revenue = revenueBase;
-		this.mortgageValue = mortgageValue;
+		this.mortgageValue = value / 2;
 	}
 
 	/**

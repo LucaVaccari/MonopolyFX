@@ -9,13 +9,12 @@ public class CompanyContract extends Contract
 	 * Constructor for the CompanyContract
 	 * @param name The name of the contract
 	 * @param value The cost of the contract when buying from the bank
-	 * @param mortgageValue The mortgage value of the contract
 	 */
-	public CompanyContract(String name, int value, int mortgageValue)
+	public CompanyContract(String name, int value)
 	{
 		this.name = name;
 		this.value = value;
-		this.mortgageValue = mortgageValue;
+		this.mortgageValue = value / 2;
 	}
 
 	/**
