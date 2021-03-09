@@ -4,7 +4,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
- mainClassName = "it.castelli.ServerMain"
+mainClassName = "it.castelli.ServerMain"
 
 dependencies {
     compile project(':utils')
@@ -19,7 +19,7 @@ sourceSets {
 }
 
 application {
-     mainClass = 'it.castelli.ServerMain'
+    mainClass = 'it.castelli.ServerMain'
 }
 run {
     standardInput = System.in
@@ -33,7 +33,7 @@ jar {
 shadowJar {
     manifest {
         attributes(
-                 'Main-Class': 'it.castelli.ServerMain'
+                'Main-Class': 'it.castelli.ServerMain'
         )
     }
 
