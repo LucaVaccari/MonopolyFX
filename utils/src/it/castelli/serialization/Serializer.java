@@ -1,5 +1,10 @@
 package it.castelli.serialization;
 
+import java.io.*;
+
+/**
+ * Class for serializing objects
+ */
 public class Serializer
 {
     /**
