@@ -8,13 +8,18 @@ import it.castelli.gameLogic.randomEvents.RandomEvent;
  */
 public class PayHousesRandomEvent extends RandomEvent
 {
+	private final int houseCost;
+	private final int hotelCost;
+
 	/**
 	 * Constructor for the PayHousesRandomEvent
 	 * @param message The message shown to the player when he draws the card
 	 */
-	public PayHousesRandomEvent(String message)
+	public PayHousesRandomEvent(String message, int houseCost, int hotelCost)
 	{
 		super(message);
+		this.houseCost = houseCost;
+		this.hotelCost = hotelCost;
 	}
 
 	/**

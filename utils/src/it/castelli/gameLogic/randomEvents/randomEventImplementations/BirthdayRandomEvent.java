@@ -8,13 +8,16 @@ import it.castelli.gameLogic.randomEvents.RandomEvent;
  */
 public class BirthdayRandomEvent extends RandomEvent
 {
+	private final int present;
+
 	/**
 	 * Constructor for the BirthdayRandomEvent
 	 * @param message The message shown to the player when drawing this card
 	 */
-	public BirthdayRandomEvent(String message)
+	public BirthdayRandomEvent(String message, int present)
 	{
 		super(message);
+		this.present = present;
 	}
 
 	/**

@@ -8,13 +8,16 @@ import it.castelli.gameLogic.randomEvents.RandomEvent;
  */
 public class YouWonRandomEvent extends RandomEvent
 {
+	private final int reward;
+
 	/**
 	 * Constructor for the YouWonRandomEvent
 	 * @param message The message shown to the player when drawing this card
 	 */
-	public YouWonRandomEvent(String message)
+	public YouWonRandomEvent(String message, int reward)
 	{
 		super(message);
+		this.reward = reward;
 	}
 
 	/**

@@ -8,14 +8,18 @@ import it.castelli.gameLogic.randomEvents.RandomEvent;
  */
 public class GoToRandomEvent extends RandomEvent
 {
-	// TODO: add parameters (passThroughGo: boolean, squareToGoIndex: int or Square)
+	private final int square;
+	private final boolean passThroughGo;
+
 	/**
 	 * Constructor for the GoToRandomEvent
 	 * @param message The message shown to the player when drawing this card
 	 */
-	public GoToRandomEvent(String message)
+	public GoToRandomEvent(String message, int square, boolean passThroughGo)
 	{
 		super(message);
+		this.square = square;
+		this.passThroughGo = passThroughGo;
 	}
 
 	/**

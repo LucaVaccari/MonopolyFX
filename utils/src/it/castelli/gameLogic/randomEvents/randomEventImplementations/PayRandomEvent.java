@@ -8,15 +8,17 @@ import it.castelli.gameLogic.randomEvents.RandomEvent;
  */
 public class PayRandomEvent extends RandomEvent
 {
+	private final int cost;
 	// TODO: add parameters (cost: int)
 
 	/**
 	 * Constructor for the PayRandomEvent
 	 * @param message The message shown to the player when he draws the card
 	 */
-	public PayRandomEvent(String message)
+	public PayRandomEvent(String message, int cost)
 	{
 		super(message);
+		this.cost = cost;
 	}
 
 	/**
