@@ -7,12 +7,11 @@ public class Connection
 	private User user;
 	private Socket connectionSocket;
 	private boolean isConnected;
-	private final int keepAliveValue = 20;
+	private boolean keepAliveFlag = true;
 	private Sender sender;
 
-	public Connection(User user, Socket connectionSocket)
+	public Connection(Socket connectionSocket)
 	{
-		this.user = user;
 		this.connectionSocket = connectionSocket;
 		sender = new Sender(connectionSocket);
 	}
@@ -22,14 +21,19 @@ public class Connection
 		return isConnected;
 	}
 
-	private void sendKeepAlive()
+	public void interrupt()
 	{
 
 	}
 
-	public void interrupt()
+	public boolean getKeepAliveFlag()
 	{
+		return keepAliveFlag;
+	}
 
+	public void setKeepAliveFlag(boolean flag)
+	{
+		keepAliveFlag = flag;
 	}
 
 	public void send(byte[] message)
