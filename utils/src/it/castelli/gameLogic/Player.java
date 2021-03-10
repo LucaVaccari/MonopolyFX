@@ -100,7 +100,7 @@ public class Player
 	 *
 	 * @param position            The new position for the player
 	 * @param passThroughGoSquare If it passes through the GoSquare, should it
-	 *                              get paid?
+	 *                            get paid?
 	 */
 	public void setPosition(int position, boolean passThroughGoSquare)
 	{

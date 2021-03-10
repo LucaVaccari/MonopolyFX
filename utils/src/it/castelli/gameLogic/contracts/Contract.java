@@ -201,8 +201,8 @@ public abstract class Contract
 			return false;
 
 		return name.equals(((Contract) obj).name) &&
-		       value == ((Contract) obj).value &&
-		       revenue == ((Contract) obj).revenue &&
-		       mortgageValue == ((Contract) obj).mortgageValue;
+				value == ((Contract) obj).value &&
+				revenue == ((Contract) obj).revenue &&
+				mortgageValue == ((Contract) obj).mortgageValue;
 	}
 }

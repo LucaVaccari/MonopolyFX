@@ -29,7 +29,7 @@ public class PropertyContract extends Contract
 	 * @param name           The name of the contract
 	 * @param value          The cost of the property when buying from the bank
 	 * @param revenueBase    The revenue of the property when a player lands
-	 *                          on it when the property has no houses
+	 *                       on it when the property has no houses
 	 * @param revenue1House  The revenue with 1 house
 	 * @param revenue2Houses The revenue with 2 houses
 	 * @param revenue3Houses The revenue with 3 houses

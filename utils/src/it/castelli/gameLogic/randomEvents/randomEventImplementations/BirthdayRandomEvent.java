@@ -26,7 +26,7 @@ public class BirthdayRandomEvent extends RandomEvent
 	 * drew the card)
 	 *
 	 * @param player The player who drew the card, which will take money from
-	 *                  all others
+	 *               all others
 	 */
 	@Override
 	public void applyEffect(Player player)

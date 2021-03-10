@@ -6,13 +6,13 @@ public class SceneFXWrapper
 {
 	private Scene scene;
 	private boolean showInPrimaryStage;
-	private String name;
+	private String windowTitle;
 
 	public SceneFXWrapper(Scene scene, boolean showInPrimaryStage, String name)
 	{
 		this.scene = scene;
 		this.showInPrimaryStage = showInPrimaryStage;
-		this.name = name;
+		this.windowTitle = name;
 	}
 
 	public Scene getScene()
@@ -35,13 +35,13 @@ public class SceneFXWrapper
 		this.showInPrimaryStage = showInPrimaryStage;
 	}
 
-	public String getName()
+	public String getWindowTitle()
 	{
-		return name;
+		return windowTitle;
 	}
 
-	public void setName(String name)
+	public void setWindowTitle(String windowTitle)
 	{
-		this.name = name;
+		this.windowTitle = windowTitle;
 	}
 }

@@ -4,13 +4,13 @@ import java.net.Socket;
 
 public class Connection implements Runnable
 {
-    private User user;
-    private Socket connection;
+	private User user;
+	private Socket connection;
 
 
-    @Override
-    public void run()
-    {
+	@Override
+	public void run()
+	{
 
-    }
+	}
 }
