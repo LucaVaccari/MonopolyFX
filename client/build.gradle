@@ -9,7 +9,7 @@ repositories {
     jcenter()
 }
 
- mainClassName = "it.castelli.ClientMain"
+mainClassName = "it.castelli.ClientMain"
 
 javafx {
     version '15.0.1'

@@ -1,18 +1,33 @@
 package it.castelli.gameLogic.contracts;
 
-import it.castelli.gameLogic.Player;
-
+/**
+ * Contract for a station
+ */
 public class StationContract extends Contract
 {
-	public StationContract(String name, int value, int revenueBase, int mortgageValue)
+	/**
+	 * Constructor for the Station Contract
+	 *
+	 * @param name        The name of the station
+	 * @param value       The cost of the property when buying it from the bank
+	 * @param revenueBase The revenue when a player lands on it
+	 */
+	public StationContract(String name, int value, int revenueBase)
 	{
 		this.name = name;
 		this.value = value;
 		this.revenue = revenueBase;
-		this.mortgageValue = mortgageValue;
+		this.mortgageValue = value / 2;
 	}
 
-	public int getRevenue(Player player)
+	/**
+	 * Getter for the revenue
+	 *
+	 * @return The revenue of the station when a player lands on it (taking
+	 * care of the other stations)
+	 */
+	@Override
+	public int getRevenue()
 	{
 		// TODO: check the number of stations
 		// return 2^(numberOfStations - 1) * revenue

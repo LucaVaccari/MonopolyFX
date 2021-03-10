@@ -36,6 +36,7 @@ public abstract class Contract
 
 	/**
 	 * Getter for the name of the property
+	 *
 	 * @return Name of the Monopoly property
 	 */
 	public String getName()
@@ -45,6 +46,7 @@ public abstract class Contract
 
 	/**
 	 * Getter for the value
+	 *
 	 * @return The cost of the property when buying it from the bank
 	 */
 	public int getValue()
@@ -54,6 +56,7 @@ public abstract class Contract
 
 	/**
 	 * Getter for the mortgage value
+	 *
 	 * @return The profit of mortgaging the property
 	 */
 	public int getMortgageValue()
@@ -63,6 +66,7 @@ public abstract class Contract
 
 	/**
 	 * Getter for the owner
+	 *
 	 * @return The player who owns the property
 	 */
 	public Player getOwner()
@@ -71,7 +75,18 @@ public abstract class Contract
 	}
 
 	/**
+	 * Setter for the player
+	 *
+	 * @param owner The new player who owns the property
+	 */
+	public void setOwner(Player owner)
+	{
+		this.owner = owner;
+	}
+
+	/**
 	 * Getter fot mortgaged
+	 *
 	 * @return Is the property mortgaged?
 	 */
 	public boolean isMortgaged()
@@ -80,13 +95,8 @@ public abstract class Contract
 	}
 
 	/**
-	 * Abstract getter for revenue
-	 * @return The revenue of the property when a player lands on it
-	 */
-	public abstract int getRevenue();
-
-	/**
 	 * Setter for mortgaged
+	 *
 	 * @param mortgaged The new mortgaged value
 	 */
 	public void setMortgaged(boolean mortgaged)
@@ -95,13 +105,11 @@ public abstract class Contract
 	}
 
 	/**
-	 * Setter for the player
-	 * @param owner The new player who owns the property
+	 * Abstract getter for revenue
+	 *
+	 * @return The revenue of the property when a player lands on it
 	 */
-	public void setOwner(Player owner)
-	{
-		this.owner = owner;
-	}
+	public abstract int getRevenue();
 
 	/**
 	 * Returns a hash code value for the object. This method is
@@ -128,7 +136,8 @@ public abstract class Contract
 	 * </ul>
 	 *
 	 * @return a hash code value for this object.
-	 * @implSpec As far as is reasonably practical, the {@code hashCode} method defined
+	 * @implSpec As far as is reasonably practical, the {@code hashCode}
+	 * method defined
 	 * by class {@code Object} returns distinct integers for distinct objects.
 	 * @see Object#equals(Object)
 	 * @see System#identityHashCode
