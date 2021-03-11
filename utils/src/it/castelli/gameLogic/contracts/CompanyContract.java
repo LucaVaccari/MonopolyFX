@@ -21,8 +21,8 @@ public class CompanyContract extends Contract
 	/**
 	 * Get the revenue of the contract
 	 *
-	 * @return The revenue of the property when a player lands on it (taking
-	 * care of the other company)
+	 * @return The revenue of the property when a player lands on it (taking care of the other
+	 * 		company)
 	 */
 	@Override
 	public int getRevenue()

@@ -9,6 +9,7 @@ public class Sender
 {
 	private InputStream inputStream;
 	private OutputStream outputStream;
+
 	public Sender(Socket connectionSocket)
 	{
 		try

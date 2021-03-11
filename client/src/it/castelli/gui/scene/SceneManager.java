@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Class for loading and switching JavaFX scenes or opening new windows.
+ */
 public class SceneManager
 {
 	public static final String MAIN_MENU_FXML_PATH = "mainMenu.fxml";
@@ -20,20 +23,36 @@ public class SceneManager
 	public static final String PLAYER_INFO_FXML_PATH = "playerInfo.fxml";
 	private static SceneManager instance;
 
+	/**
+	 * List of all scenes that can appear in the game
+	 */
 	private final HashMap<SceneType, SceneFXWrapper> allScenes = new HashMap<>();
+	/**
+	 * List of all opened windows
+	 */
 	private final ArrayList<Stage> openStages = new ArrayList<>();
+	/**
+	 * The main stage created by JavaFX
+	 */
 	private Stage primaryStage;
 
+	/**
+	 * Constructor of SceneManager, which initializes allScenes
+	 */
 	private SceneManager()
 	{
 		Parent mainMenuRoot = FXMLFileLoader.loadFXML("/" + MAIN_MENU_FXML_PATH, this);
 		if (mainMenuRoot != null)
 		{
 			Scene mainMenuScene = new Scene(mainMenuRoot);
-			allScenes.put(SceneType.MAIN_MENU, new SceneFXWrapper(mainMenuScene, true, "MonopolyFX"));
-		} else
+			allScenes
+					.put(SceneType.MAIN_MENU, new SceneFXWrapper(mainMenuScene, true, "MonopolyFX"
+					));
+		}
+		else
 		{
-			AlertUtil.showErrorAlert("Missing resources", "Cannot find file", "The file " + MAIN_MENU_FXML_PATH + " is missing");
+			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
+					"The file " + MAIN_MENU_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
@@ -41,10 +60,14 @@ public class SceneManager
 		if (lobbyRoot != null)
 		{
 			Scene lobbyScene = new Scene(lobbyRoot);
-			allScenes.put(SceneType.LOBBY, new SceneFXWrapper(lobbyScene, true, "MonopolyFX - Lobby"));
-		} else
+			allScenes
+					.put(SceneType.LOBBY, new SceneFXWrapper(lobbyScene, true, "MonopolyFX - " +
+							"Lobby"));
+		}
+		else
 		{
-			AlertUtil.showErrorAlert("Missing resources", "Cannot find file", "The file " + LOBBY_FXML_PATH + " is missing");
+			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
+					"The file " + LOBBY_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
@@ -52,10 +75,14 @@ public class SceneManager
 		if (boardRoot != null)
 		{
 			Scene boardScene = new Scene(boardRoot);
-			allScenes.put(SceneType.BOARD, new SceneFXWrapper(boardScene, true, "MonopolyFX - In gioco"));
-		} else
+			allScenes
+					.put(SceneType.BOARD, new SceneFXWrapper(boardScene, true, "MonopolyFX - In " +
+							"gioco"));
+		}
+		else
 		{
-			AlertUtil.showErrorAlert("Missing resources", "Cannot find file", "The file " + BOARD_FXML_PATH + " is missing");
+			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
+					"The file " + BOARD_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
@@ -64,9 +91,11 @@ public class SceneManager
 		{
 			Scene exchangeScene = new Scene(exchangeRoot);
 			allScenes.put(SceneType.EXCHANGE, new SceneFXWrapper(exchangeScene, false, "Scambio"));
-		} else
+		}
+		else
 		{
-			AlertUtil.showErrorAlert("Missing resources", "Cannot find file", "The file " + EXCHANGE_FXML_PATH + " is missing");
+			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
+					"The file " + EXCHANGE_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
@@ -75,9 +104,11 @@ public class SceneManager
 		{
 			Scene auctionScene = new Scene(auctionRoot);
 			allScenes.put(SceneType.AUCTION, new SceneFXWrapper(auctionScene, false, "Asta"));
-		} else
+		}
+		else
 		{
-			AlertUtil.showErrorAlert("Missing resources", "Cannot find file", "The file " + AUCTION_FXML_PATH + " is missing");
+			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
+					"The file " + AUCTION_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
@@ -85,10 +116,14 @@ public class SceneManager
 		if (propertyViewRoot != null)
 		{
 			Scene propertyViewScene = new Scene(propertyViewRoot);
-			allScenes.put(SceneType.PROPERTY_VIEW, new SceneFXWrapper(propertyViewScene, false, "Proprietà"));
-		} else
+			allScenes
+					.put(SceneType.PROPERTY_VIEW, new SceneFXWrapper(propertyViewScene, false,
+							"Proprietà"));
+		}
+		else
 		{
-			AlertUtil.showErrorAlert("Missing resources", "Cannot find file", "The file " + PROPERTY_VIEW_FXML_PATH + " is missing");
+			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
+					"The file " + PROPERTY_VIEW_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
@@ -96,14 +131,23 @@ public class SceneManager
 		if (playerInfoRoot != null)
 		{
 			Scene playerInfoScene = new Scene(playerInfoRoot);
-			allScenes.put(SceneType.PLAYER_INFO, new SceneFXWrapper(playerInfoScene, false, "Giocatore"));
-		} else
+			allScenes
+					.put(SceneType.PLAYER_INFO, new SceneFXWrapper(playerInfoScene, false,
+							"Giocatore"));
+		}
+		else
 		{
-			AlertUtil.showErrorAlert("Missing resources", "Cannot find file", "The file " + PLAYER_INFO_FXML_PATH + " is missing");
+			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
+					"The file " + PLAYER_INFO_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 	}
 
+	/**
+	 * Getter for the singleton instance
+	 *
+	 * @return The only instance of this class
+	 */
 	public static SceneManager getInstance()
 	{
 		if (instance == null)
@@ -111,20 +155,31 @@ public class SceneManager
 		return instance;
 	}
 
+	/**
+	 * Setter for the primary stage (should not be used except in the start() method)
+	 *
+	 * @param primaryStage The primary stage generated by JavaFX
+	 */
 	public void setPrimaryStage(Stage primaryStage)
 	{
 		this.primaryStage = primaryStage;
 	}
 
+	/**
+	 * Show a specified scene, or open a new window (if necessary)
+	 *
+	 * @param sceneType The scene to open
+	 */
 	public void showScene(SceneType sceneType)
 	{
 		SceneFXWrapper scene = allScenes.get(sceneType);
-		if (scene.isShowInPrimaryStage())
+		if (scene.isShownInPrimaryStage())
 		{
 			primaryStage.setScene(scene.getScene());
 			primaryStage.setTitle(scene.getWindowTitle());
 			primaryStage.show();
-		} else
+		}
+		else
 		{
 			Stage stage = new Stage();
 			stage.setScene(scene.getScene());

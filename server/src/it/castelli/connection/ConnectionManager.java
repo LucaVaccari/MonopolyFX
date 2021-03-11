@@ -5,24 +5,28 @@ import java.util.HashMap;
 
 public class ConnectionManager
 {
+	public static final int SERVER_PORT = 1111;
 	private ArrayList<Connection> waitingRoom;
 	private HashMap<Integer, GameConnectionManager> games;
-    public static final int SERVER_PORT = 1111;
 
-    public ConnectionManager()
-    {
-        waitingRoom = new ArrayList<>();
-        games = new HashMap<>();
+	public ConnectionManager()
+	{
+		waitingRoom = new ArrayList<>();
+		games = new HashMap<>();
 
-        ConnectionReceiver connectionReceiver = new ConnectionReceiver();
-        Thread connectionReceiverThread = new Thread(connectionReceiver);
-        connectionReceiverThread.start();
-    }
+		ConnectionReceiver connectionReceiver = new ConnectionReceiver();
+		Thread connectionReceiverThread = new Thread(connectionReceiver);
+		connectionReceiverThread.start();
+	}
 
 
-    public void moveToGame(int code, Connection connection){}
+	public void moveToGame(int code, Connection connection)
+	{
+	}
 
-    public void moveToWaitingRoom(Connection connection){}
+	public void moveToWaitingRoom(Connection connection)
+	{
+	}
 
 	public void addGame(GameConnectionManager game)
 	{

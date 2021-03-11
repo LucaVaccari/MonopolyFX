@@ -11,8 +11,7 @@ import it.castelli.gameLogic.transactions.Exchange;
 import java.util.HashSet;
 
 /**
- * The main class holding information about the game (like the board, the
- * players)
+ * The main class holding information about the game (like the board, the players)
  */
 public class GameManager
 {
