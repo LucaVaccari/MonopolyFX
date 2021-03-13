@@ -6,8 +6,8 @@ package it.castelli.gameLogic.contracts;
 public class PropertyContract extends Contract
 {
 	/**
-	 * The list of revenues (revenues of the property when a player lands on
-	 * it) for each house quantity
+	 * The list of revenues (revenues of the property when a player lands on it) for each house
+	 * quantity
 	 */
 	private final int[] revenues;
 	/**
@@ -28,8 +28,9 @@ public class PropertyContract extends Contract
 	 *
 	 * @param name           The name of the contract
 	 * @param value          The cost of the property when buying from the bank
-	 * @param revenueBase    The revenue of the property when a player lands
-	 *                       on it when the property has no houses
+	 * @param revenueBase    The revenue of the property when a player lands on it when the
+	 *                          property
+	 *                       has no houses
 	 * @param revenue1House  The revenue with 1 house
 	 * @param revenue2Houses The revenue with 2 houses
 	 * @param revenue3Houses The revenue with 3 houses
@@ -57,8 +58,7 @@ public class PropertyContract extends Contract
 	}
 
 	/**
-	 * Add houses to the property (this function DOES NOT take money from
-	 * player)
+	 * Add houses to the property (this function DOES NOT take money from player)
 	 *
 	 * @param numberOfHouses The number of houses to add
 	 */
@@ -71,8 +71,7 @@ public class PropertyContract extends Contract
 	}
 
 	/**
-	 * Revome houses from the property (this function DOES NOT give money to
-	 * the player)
+	 * Revome houses from the property (this function DOES NOT give money to the player)
 	 *
 	 * @param numberOfHouses The number of houses to remove
 	 */
@@ -107,8 +106,8 @@ public class PropertyContract extends Contract
 	/**
 	 * Getter for the revenue
 	 *
-	 * @return The revenue of the property when a player lands on it (taking
-	 * care of the other properties)
+	 * @return The revenue of the property when a player lands on it (taking care of the other
+	 * 		properties)
 	 */
 	@Override
 	public int getRevenue()

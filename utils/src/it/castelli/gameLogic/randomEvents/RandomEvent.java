@@ -3,10 +3,8 @@ package it.castelli.gameLogic.randomEvents;
 import it.castelli.gameLogic.Player;
 
 /**
- * Abstract class from which each RandomEvent derives.
- * Represent a RandomEvent, a card (either a Chance or a CommunityChest)
- * which can be drawn and will make the player
- * do something random
+ * Abstract class from which each RandomEvent derives. Represent a RandomEvent, a card (either a
+ * Chance or a CommunityChest) which can be drawn and will make the player do something random
  */
 public abstract class RandomEvent
 {

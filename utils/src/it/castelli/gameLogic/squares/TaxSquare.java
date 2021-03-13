@@ -20,8 +20,7 @@ public class TaxSquare implements Square
 	 * The constructor of the TaxSquare
 	 *
 	 * @param value   The amount to be payed
-	 * @param message The message shown to the player when landing on the
-	 *                square
+	 * @param message The message shown to the player when landing on the square
 	 */
 	public TaxSquare(int value, String message)
 	{
