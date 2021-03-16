@@ -8,11 +8,14 @@ public class Connection
 	private boolean isConnected;
 	private boolean keepAliveFlag = true;
 	private Sender sender;
+	private Thread receiverThread;
 
 	public Connection(Socket connectionSocket)
 	{
 		this.connectionSocket = connectionSocket;
 		sender = new Sender(connectionSocket);
+
+		receiverThread = new Thread(new Receiver(this));
 	}
 
 	private boolean isConnected()
@@ -38,6 +41,13 @@ public class Connection
 	public void send(byte[] message)
 	{
 		//TODO: sender.send(byte[] message);
+
+
+	}
+
+	public Socket getSocket()
+	{
+		return connectionSocket;
 	}
 
 	@Override

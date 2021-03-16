@@ -2,7 +2,7 @@ package it.castelli.connection;
 
 import java.util.ArrayList;
 
-public class GameConnectionManager implements Runnable
+public class GameConnectionManager
 {
 	private ArrayList<Connection> players;
 	private ArrayList<Connection> joiningPlayers;
@@ -27,9 +27,4 @@ public class GameConnectionManager implements Runnable
 		return joiningPlayers;
 	}
 
-	@Override
-	public void run()
-	{
-
-	}
 }

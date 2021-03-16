@@ -23,13 +23,38 @@ public class KeepAliveReceiver implements Runnable
         {
             try
             {
-                Thread.sleep(checkTime * 1000);
+                Thread.sleep(checkTime * 1000L);
             }
             catch (InterruptedException e)
             {
                 e.printStackTrace();
             }
             removeInactiveConnections();
+            resetFlags();
+        }
+    }
+
+    /**
+     * Resets all connection flags to false
+     */
+    private void resetFlags()
+    {
+        for (Connection connection : connectionManager.getWaitingRoom())
+        {
+            connection.setKeepAliveFlag(false);
+        }
+
+        for (GameConnectionManager gameConnectionManager : connectionManager.getGames().values())
+        {
+            for (Connection connection :gameConnectionManager.getJoiningPlayers())
+            {
+                connection.setKeepAliveFlag(false);
+            }
+
+            for (Connection connection :gameConnectionManager.getPlayers())
+            {
+                connection.setKeepAliveFlag(false);
+            }
         }
     }
 

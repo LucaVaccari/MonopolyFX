@@ -6,13 +6,15 @@ import java.net.Socket;
 
 public class Receiver implements Runnable
 {
-	private Socket connectionSocket;
+	private final Socket connectionSocket;
+	private final Connection connection;
 	private byte[] receivedMessage = new byte[2048];
 	private boolean isRunning = true;
 
-	public Receiver(Socket connectionSocket)
+	public Receiver(Connection connection)
 	{
-		this.connectionSocket = connectionSocket;
+		this.connection = connection;
+		this.connectionSocket = connection.getSocket();
 	}
 
 	public void interrupt()
@@ -35,7 +37,7 @@ public class Receiver implements Runnable
 		{
 			while (isRunning)
 			{
-
+				// TODO: read messages
 			}
 		}
 		catch (IOException e)
