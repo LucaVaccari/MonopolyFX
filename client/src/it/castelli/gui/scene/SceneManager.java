@@ -14,19 +14,21 @@ import java.util.HashMap;
  */
 public class SceneManager
 {
-	public static final String MAIN_MENU_FXML_PATH = "mainMenu.fxml";
-	public static final String LOBBY_FXML_PATH = "lobby.fxml";
-	public static final String BOARD_FXML_PATH = "board.fxml";
-	public static final String EXCHANGE_FXML_PATH = "exchange.fxml";
-	public static final String AUCTION_FXML_PATH = "auction.fxml";
-	public static final String PROPERTY_VIEW_FXML_PATH = "propertyView.fxml";
-	public static final String PLAYER_INFO_FXML_PATH = "playerInfo.fxml";
+	public static final String MAIN_MENU_FXML_PATH = "FXMLs/mainMenu.fxml";
+	public static final String LOBBY_FXML_PATH = "FXMLs/lobby.fxml";
+	public static final String BOARD_FXML_PATH = "FXMLs/board.fxml";
+	public static final String EXCHANGE_FXML_PATH = "FXMLs/exchange.fxml";
+	public static final String AUCTION_FXML_PATH = "FXMLs/auction.fxml";
+	public static final String PROPERTY_VIEW_FXML_PATH =
+			"FXMLs/propertyView.fxml";
+	public static final String PLAYER_INFO_FXML_PATH = "FXMLs/playerInfo.fxml";
 	private static SceneManager instance;
 
 	/**
 	 * List of all scenes that can appear in the game
 	 */
-	private final HashMap<SceneType, SceneFXWrapper> allScenes = new HashMap<>();
+	private final HashMap<SceneType, SceneFXWrapper> allScenes =
+			new HashMap<>();
 	/**
 	 * List of all opened windows
 	 */
@@ -41,104 +43,129 @@ public class SceneManager
 	 */
 	private SceneManager()
 	{
-		Parent mainMenuRoot = FXMLFileLoader.loadFXML("/" + MAIN_MENU_FXML_PATH, this);
+		Parent mainMenuRoot =
+				FXMLFileLoader.loadFXML("/" + MAIN_MENU_FXML_PATH, this);
 		if (mainMenuRoot != null)
 		{
 			Scene mainMenuScene = new Scene(mainMenuRoot);
+			mainMenuScene.getStylesheets().add(getClass().getResource(
+					"/FXMLs/Style/style.css").toExternalForm());
 			allScenes
-					.put(SceneType.MAIN_MENU, new SceneFXWrapper(mainMenuScene, true, "MonopolyFX"
-					));
+					.put(SceneType.MAIN_MENU,
+					     new SceneFXWrapper(mainMenuScene, true, "MonopolyFX"
+					     ));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + MAIN_MENU_FXML_PATH + " is missing");
+			                         "The file " + MAIN_MENU_FXML_PATH +
+			                         " is missing");
 			System.exit(-1);
 		}
 
-		Parent lobbyRoot = FXMLFileLoader.loadFXML("/" + LOBBY_FXML_PATH, this);
+		Parent lobbyRoot = FXMLFileLoader.loadFXML("/" + LOBBY_FXML_PATH,
+		                                           this);
 		if (lobbyRoot != null)
 		{
 			Scene lobbyScene = new Scene(lobbyRoot);
 			allScenes
-					.put(SceneType.LOBBY, new SceneFXWrapper(lobbyScene, true, "MonopolyFX - " +
-							"Lobby"));
+					.put(SceneType.LOBBY,
+					     new SceneFXWrapper(lobbyScene, true, "MonopolyFX - " +
+					                                          "Lobby"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + LOBBY_FXML_PATH + " is missing");
+			                         "The file " + LOBBY_FXML_PATH +
+			                         " is missing");
 			System.exit(-1);
 		}
 
-		Parent boardRoot = FXMLFileLoader.loadFXML("/" + BOARD_FXML_PATH, this);
+		Parent boardRoot = FXMLFileLoader.loadFXML("/" + BOARD_FXML_PATH,
+		                                           this);
 		if (boardRoot != null)
 		{
 			Scene boardScene = new Scene(boardRoot);
 			allScenes
-					.put(SceneType.BOARD, new SceneFXWrapper(boardScene, true, "MonopolyFX - In " +
-							"gioco"));
+					.put(SceneType.BOARD, new SceneFXWrapper(boardScene, true,
+					                                         "MonopolyFX - " +
+					                                         "In" +
+					                                         " " +
+					                                         "gioco"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + BOARD_FXML_PATH + " is missing");
+			                         "The file " + BOARD_FXML_PATH +
+			                         " is missing");
 			System.exit(-1);
 		}
 
-		Parent exchangeRoot = FXMLFileLoader.loadFXML("/" + EXCHANGE_FXML_PATH, this);
+		Parent exchangeRoot =
+				FXMLFileLoader.loadFXML("/" + EXCHANGE_FXML_PATH, this);
 		if (exchangeRoot != null)
 		{
 			Scene exchangeScene = new Scene(exchangeRoot);
-			allScenes.put(SceneType.EXCHANGE, new SceneFXWrapper(exchangeScene, false, "Scambio"));
+			allScenes.put(SceneType.EXCHANGE,
+			              new SceneFXWrapper(exchangeScene, false, "Scambio"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + EXCHANGE_FXML_PATH + " is missing");
+			                         "The file " + EXCHANGE_FXML_PATH +
+			                         " is missing");
 			System.exit(-1);
 		}
 
-		Parent auctionRoot = FXMLFileLoader.loadFXML("/" + AUCTION_FXML_PATH, this);
+		Parent auctionRoot =
+				FXMLFileLoader.loadFXML("/" + AUCTION_FXML_PATH, this);
 		if (auctionRoot != null)
 		{
 			Scene auctionScene = new Scene(auctionRoot);
-			allScenes.put(SceneType.AUCTION, new SceneFXWrapper(auctionScene, false, "Asta"));
+			allScenes.put(SceneType.AUCTION,
+			              new SceneFXWrapper(auctionScene, false, "Asta"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + AUCTION_FXML_PATH + " is missing");
+			                         "The file " + AUCTION_FXML_PATH +
+			                         " is missing");
 			System.exit(-1);
 		}
 
-		Parent propertyViewRoot = FXMLFileLoader.loadFXML("/" + PROPERTY_VIEW_FXML_PATH, this);
+		Parent propertyViewRoot =
+				FXMLFileLoader.loadFXML("/" + PROPERTY_VIEW_FXML_PATH, this);
 		if (propertyViewRoot != null)
 		{
 			Scene propertyViewScene = new Scene(propertyViewRoot);
 			allScenes
-					.put(SceneType.PROPERTY_VIEW, new SceneFXWrapper(propertyViewScene, false,
-							"Proprietà"));
+					.put(SceneType.PROPERTY_VIEW,
+					     new SceneFXWrapper(propertyViewScene, false,
+					                        "Proprietà"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + PROPERTY_VIEW_FXML_PATH + " is missing");
+			                         "The file " + PROPERTY_VIEW_FXML_PATH +
+			                         " is missing");
 			System.exit(-1);
 		}
 
-		Parent playerInfoRoot = FXMLFileLoader.loadFXML("/" + PLAYER_INFO_FXML_PATH, this);
+		Parent playerInfoRoot =
+				FXMLFileLoader.loadFXML("/" + PLAYER_INFO_FXML_PATH, this);
 		if (playerInfoRoot != null)
 		{
 			Scene playerInfoScene = new Scene(playerInfoRoot);
 			allScenes
-					.put(SceneType.PLAYER_INFO, new SceneFXWrapper(playerInfoScene, false,
-							"Giocatore"));
+					.put(SceneType.PLAYER_INFO,
+					     new SceneFXWrapper(playerInfoScene, false,
+					                        "Giocatore"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + PLAYER_INFO_FXML_PATH + " is missing");
+			                         "The file " + PLAYER_INFO_FXML_PATH +
+			                         " is missing");
 			System.exit(-1);
 		}
 	}
@@ -155,13 +182,22 @@ public class SceneManager
 		return instance;
 	}
 
+	public Stage getPrimaryStage()
+	{
+		return primaryStage;
+	}
+
 	/**
-	 * Setter for the primary stage (should not be used except in the start() method)
+	 * Setter for the primary stage (should not be used except in the start()
+	 * method)
 	 *
 	 * @param primaryStage The primary stage generated by JavaFX
 	 */
 	public void setPrimaryStage(Stage primaryStage)
 	{
+		primaryStage.setOnCloseRequest(event ->{
+			System.exit(0);
+		});
 		this.primaryStage = primaryStage;
 	}
 

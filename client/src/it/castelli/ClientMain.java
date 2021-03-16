@@ -16,6 +16,6 @@ public class ClientMain extends Application
 	public void start(Stage primaryStage) throws Exception
 	{
 		SceneManager.getInstance().setPrimaryStage(primaryStage);
-		SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
+		SceneManager.getInstance().showScene(SceneType.LOBBY);
 	}
 }
