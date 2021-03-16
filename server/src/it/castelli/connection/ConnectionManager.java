@@ -5,10 +5,11 @@ import java.util.HashMap;
 
 public class ConnectionManager
 {
-	public static final int SERVER_PORT = 1111;
-	private ArrayList<Connection> waitingRoom;
-	private HashMap<Integer, GameConnectionManager> games;
 	private static ConnectionManager instance;
+	public static final int SERVER_PORT = 1111;
+	private final ArrayList<Connection> waitingRoom;
+	private final HashMap<Integer, GameConnectionManager> games;
+	private int lastGameCode = 0;
 	private Thread connectionReceiverThread;
 
 	private ConnectionManager()
@@ -19,8 +20,7 @@ public class ConnectionManager
 
 	public void start()
 	{
-		ConnectionReceiver connectionReceiver = new ConnectionReceiver();
-		connectionReceiverThread = new Thread(connectionReceiver);
+		connectionReceiverThread = new Thread(new ConnectionReceiver());
 		connectionReceiverThread.start();
 	}
 
@@ -36,37 +36,42 @@ public class ConnectionManager
 		return instance;
 	}
 
-	// TODO: implement other methods
-
-	public void addToGame(int code, Connection connection)
-	{
-
-	}
-
 	public void addToWaitingRoom(Connection connection)
 	{
 		waitingRoom.add(connection);
 	}
 
-	public void addGame(GameConnectionManager game)
+	public void addGame(int code, GameConnectionManager game)
 	{
+		games.put(code, game);
 	}
 
 	public void removeGame(int code)
 	{
+		games.remove(code);
 	}
 
 	public int createGame()
 	{
-		return 0;
+		int code = lastGameCode++;
+		addGame(code, new GameConnectionManager());
+
+		return code;
 	}
 
 	public void joinGame(int code, Connection connection)
 	{
+		if (games.containsKey(code))
+			games.get(code).addJoiningPlayer(connection);
 	}
 
 	public void leaveGame(int code, Connection connection)
 	{
+		if (games.containsKey(code))
+		{
+			games.get(code).getJoiningPlayers().remove(connection);
+			games.get(code).getPlayers().remove(connection);
+		}
 	}
 
 	public ArrayList<Connection> getWaitingRoom()

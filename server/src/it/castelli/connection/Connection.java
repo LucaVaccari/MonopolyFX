@@ -40,4 +40,18 @@ public class Connection
 		//TODO: sender.send(byte[] message);
 	}
 
+	@Override
+	public int hashCode()
+	{
+		return connectionSocket.getInetAddress().getHostAddress().length();
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		//compares connections' remote IP addresses
+		if (obj instanceof Connection)
+			return connectionSocket.getInetAddress().getHostAddress().equals(((Connection) obj).connectionSocket.getInetAddress().getHostAddress());
+		return false;
+	}
 }
