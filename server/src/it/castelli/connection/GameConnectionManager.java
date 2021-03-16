@@ -15,6 +15,15 @@ public class GameConnectionManager implements Runnable
 	{
 	}
 
+	public ArrayList<Connection> getPlayers()
+	{
+		return players;
+	}
+
+	public ArrayList<Connection> getJoiningPlayers()
+	{
+		return joiningPlayers;
+	}
 
 	@Override
 	public void run()

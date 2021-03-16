@@ -7,10 +7,18 @@ import java.net.Socket;
 public class ConnectionReceiver implements Runnable
 {
 	private boolean isRunning = true;
+	private int sendTime = 10;
+	private Thread keepAliveReceiver;
+	private Thread keepAliveSender;
 
 	@Override
 	public void run()
 	{
+		keepAliveReceiver = new Thread(new KeepAliveReceiver(sendTime * 2));
+		keepAliveSender = new Thread(new KeepAliveSender(sendTime));
+		keepAliveReceiver.start();
+		keepAliveSender.start();
+
 		while (isRunning)
 		{
 			try
@@ -20,9 +28,9 @@ public class ConnectionReceiver implements Runnable
 				System.out.println(
 						"New connection established with " +
 								connectionSocket.getInetAddress().getHostAddress());
-				//generate thread for the receiver connection
+				//generate new connection
 				Connection newConnection = new Connection(connectionSocket);
-				// TODO: add connection to the waitingRoom
+				ConnectionManager.getInstance().addToWaitingRoom(newConnection);
 
 			}
 			catch (IOException e)
@@ -34,6 +42,8 @@ public class ConnectionReceiver implements Runnable
 
 	public void interrupt()
 	{
+		keepAliveSender.interrupt();
+		keepAliveReceiver.interrupt();
 		isRunning = false;
 	}
 }

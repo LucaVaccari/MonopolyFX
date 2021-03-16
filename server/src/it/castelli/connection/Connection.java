@@ -4,7 +4,6 @@ import java.net.Socket;
 
 public class Connection
 {
-	private User user;
 	private Socket connectionSocket;
 	private boolean isConnected;
 	private boolean keepAliveFlag = true;

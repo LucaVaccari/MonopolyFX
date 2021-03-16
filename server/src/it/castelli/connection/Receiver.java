@@ -7,14 +7,12 @@ import java.net.Socket;
 public class Receiver implements Runnable
 {
 	private Socket connectionSocket;
-	private User user;
 	private byte[] receivedMessage = new byte[2048];
 	private boolean isRunning = true;
 
-	public Receiver(Socket connectionSocket, User user)
+	public Receiver(Socket connectionSocket)
 	{
 		this.connectionSocket = connectionSocket;
-		this.user = user;
 	}
 
 	public void interrupt()

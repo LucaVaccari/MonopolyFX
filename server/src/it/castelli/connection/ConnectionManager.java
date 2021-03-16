@@ -8,24 +8,44 @@ public class ConnectionManager
 	public static final int SERVER_PORT = 1111;
 	private ArrayList<Connection> waitingRoom;
 	private HashMap<Integer, GameConnectionManager> games;
+	private static ConnectionManager instance;
+	private Thread connectionReceiverThread;
 
-	public ConnectionManager()
+	private ConnectionManager()
 	{
 		waitingRoom = new ArrayList<>();
 		games = new HashMap<>();
+	}
 
+	public void start()
+	{
 		ConnectionReceiver connectionReceiver = new ConnectionReceiver();
-		Thread connectionReceiverThread = new Thread(connectionReceiver);
+		connectionReceiverThread = new Thread(connectionReceiver);
 		connectionReceiverThread.start();
 	}
 
-
-	public void moveToGame(int code, Connection connection)
+	public void interrupt()
 	{
+		connectionReceiverThread.interrupt();
 	}
 
-	public void moveToWaitingRoom(Connection connection)
+	public static ConnectionManager getInstance()
 	{
+		if (instance == null)
+			instance = new ConnectionManager();
+		return instance;
+	}
+
+	// TODO: implement other methods
+
+	public void addToGame(int code, Connection connection)
+	{
+
+	}
+
+	public void addToWaitingRoom(Connection connection)
+	{
+		waitingRoom.add(connection);
 	}
 
 	public void addGame(GameConnectionManager game)
@@ -48,4 +68,15 @@ public class ConnectionManager
 	public void leaveGame(int code, Connection connection)
 	{
 	}
+
+	public ArrayList<Connection> getWaitingRoom()
+	{
+		return waitingRoom;
+	}
+
+	public HashMap<Integer, GameConnectionManager> getGames()
+	{
+		return games;
+	}
+
 }
