@@ -5,47 +5,83 @@ import java.util.HashMap;
 
 public class ConnectionManager
 {
+	private static ConnectionManager instance;
 	public static final int SERVER_PORT = 1111;
-	private ArrayList<Connection> waitingRoom;
-	private HashMap<Integer, GameConnectionManager> games;
+	private final ArrayList<Connection> waitingRoom;
+	private final HashMap<Integer, GameConnectionManager> games;
+	private int lastGameCode = 0;
+	private Thread connectionReceiverThread;
 
-	public ConnectionManager()
+	private ConnectionManager()
 	{
 		waitingRoom = new ArrayList<>();
 		games = new HashMap<>();
+	}
 
-		ConnectionReceiver connectionReceiver = new ConnectionReceiver();
-		Thread connectionReceiverThread = new Thread(connectionReceiver);
+	public void start()
+	{
+		connectionReceiverThread = new Thread(new ConnectionReceiver());
 		connectionReceiverThread.start();
 	}
 
-
-	public void moveToGame(int code, Connection connection)
+	public void interrupt()
 	{
+		connectionReceiverThread.interrupt();
 	}
 
-	public void moveToWaitingRoom(Connection connection)
+	public static ConnectionManager getInstance()
 	{
+		if (instance == null)
+			instance = new ConnectionManager();
+		return instance;
 	}
 
-	public void addGame(GameConnectionManager game)
+	public void addToWaitingRoom(Connection connection)
 	{
+		waitingRoom.add(connection);
+	}
+
+	public void addGame(int code, GameConnectionManager game)
+	{
+		games.put(code, game);
 	}
 
 	public void removeGame(int code)
 	{
+		games.remove(code);
 	}
 
 	public int createGame()
 	{
-		return 0;
+		int code = lastGameCode++;
+		addGame(code, new GameConnectionManager());
+
+		return code;
 	}
 
 	public void joinGame(int code, Connection connection)
 	{
+		if (games.containsKey(code))
+			games.get(code).addJoiningPlayer(connection);
 	}
 
 	public void leaveGame(int code, Connection connection)
 	{
+		if (games.containsKey(code))
+		{
+			games.get(code).getJoiningPlayers().remove(connection);
+			games.get(code).getPlayers().remove(connection);
+		}
 	}
+
+	public ArrayList<Connection> getWaitingRoom()
+	{
+		return waitingRoom;
+	}
+
+	public HashMap<Integer, GameConnectionManager> getGames()
+	{
+		return games;
+	}
+
 }

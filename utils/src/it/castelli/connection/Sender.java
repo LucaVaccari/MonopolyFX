@@ -22,4 +22,16 @@ public class Sender
 			e.printStackTrace();
 		}
 	}
+
+	public void send(byte[] message)
+	{
+		try
+		{
+			outputStream.write(message);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
 }
