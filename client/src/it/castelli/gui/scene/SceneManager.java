@@ -213,6 +213,7 @@ public class SceneManager
 		{
 			primaryStage.setScene(scene.getScene());
 			primaryStage.setTitle(scene.getWindowTitle());
+			primaryStage.setResizable(false);
 			primaryStage.show();
 		}
 		else
@@ -220,6 +221,7 @@ public class SceneManager
 			Stage stage = new Stage();
 			stage.setScene(scene.getScene());
 			stage.setTitle(scene.getWindowTitle());
+			stage.setResizable(false);
 			stage.show();
 			openStages.add(stage);
 			stage.setOnCloseRequest(event -> openStages.remove(stage));
