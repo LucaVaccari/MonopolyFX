@@ -1,21 +1,21 @@
 package it.castelli.connection;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ConnectionManager
 {
 	private static ConnectionManager instance;
 	public static final int SERVER_PORT = 1111;
-	private final ArrayList<Connection> waitingRoom;
-	private final HashMap<Integer, GameConnectionManager> games;
+	private final CopyOnWriteArrayList<Connection> waitingRoom;
+	private final Hashtable<Integer, GameConnectionManager> games;
 	private int lastGameCode = 0;
 	private Thread connectionReceiverThread;
 
 	private ConnectionManager()
 	{
-		waitingRoom = new ArrayList<>();
-		games = new HashMap<>();
+		waitingRoom = new CopyOnWriteArrayList<>();
+		games = new Hashtable<>();
 	}
 
 	public void start()
@@ -76,12 +76,12 @@ public class ConnectionManager
 		}
 	}
 
-	public ArrayList<Connection> getWaitingRoom()
+	public CopyOnWriteArrayList<Connection> getWaitingRoom()
 	{
 		return waitingRoom;
 	}
 
-	public HashMap<Integer, GameConnectionManager> getGames()
+	public Hashtable<Integer, GameConnectionManager> getGames()
 	{
 		return games;
 	}

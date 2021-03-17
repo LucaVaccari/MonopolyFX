@@ -70,6 +70,7 @@ public class KeepAliveReceiver implements Runnable
             {
                 connection.interrupt();
                 connectionManager.getWaitingRoom().remove(connection);
+                System.out.println("Connection removed");
             }
         }
 
@@ -83,6 +84,7 @@ public class KeepAliveReceiver implements Runnable
                 {
                     connection.interrupt();
                     gameConnectionManager.getJoiningPlayers().remove(connection);
+                    System.out.println("Connection removed");
                 }
             }
 
@@ -93,6 +95,7 @@ public class KeepAliveReceiver implements Runnable
                 {
                     connection.interrupt();
                     gameConnectionManager.getPlayers().remove(connection);
+                    System.out.println("Connection removed");
                 }
             }
 

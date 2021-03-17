@@ -8,6 +8,7 @@ public class KeepAliveClientMessage implements Message
     @Override
     public void onReceive(Connection connection)
     {
+        System.out.println("Client keepAlive");
         String message = Serializer.toJson(new KeepAliveClientMessage());
         String classToBuild = "it.castelli.connection.messages.KeepAliveServerMessage";
         connection.send(classToBuild);

@@ -16,6 +16,7 @@ public class Connection
 		sender = new Sender(connectionSocket);
 
 		receiverThread = new Thread(new Receiver(this));
+		receiverThread.start();
 	}
 
 	private boolean isConnected()

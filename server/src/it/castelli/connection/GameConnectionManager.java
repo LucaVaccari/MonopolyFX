@@ -1,11 +1,11 @@
 package it.castelli.connection;
 
-import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameConnectionManager
 {
-	private ArrayList<Connection> players;
-	private ArrayList<Connection> joiningPlayers;
+	private CopyOnWriteArrayList<Connection> players;
+	private CopyOnWriteArrayList<Connection> joiningPlayers;
 
 	private void movePlayer(Connection connection)
 	{
@@ -17,12 +17,12 @@ public class GameConnectionManager
 		// TODO: send NewPlayerMessage
 	}
 
-	public ArrayList<Connection> getPlayers()
+	public CopyOnWriteArrayList<Connection> getPlayers()
 	{
 		return players;
 	}
 
-	public ArrayList<Connection> getJoiningPlayers()
+	public CopyOnWriteArrayList<Connection> getJoiningPlayers()
 	{
 		return joiningPlayers;
 	}

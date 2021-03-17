@@ -37,11 +37,13 @@ public class Receiver implements Runnable
 	@Override
 	public void run()
 	{
+		System.out.println("KeepAlive Receiver is working");
 		try
 		{
 			BufferedReader in  = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
 			while (isRunning)
 			{
+				System.out.println("Receiver is still working");
 				String classType = in.readLine().trim();
 				String jsonObject = in.readLine().trim();
 				// TODO: remove the output

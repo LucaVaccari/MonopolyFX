@@ -7,7 +7,7 @@ import java.net.Socket;
 public class ConnectionReceiver implements Runnable
 {
     private boolean isRunning = true;
-    private int sendTime = 10;
+    private int sendTime = 1;
     private Thread keepAliveReceiver;
     private Thread keepAliveSender;
 
