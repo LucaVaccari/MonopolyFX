@@ -1,6 +1,9 @@
 package it.castelli.serialization;
 
+import com.google.gson.Gson;
+
 import java.io.*;
+import java.lang.reflect.Type;
 
 /**
  * Class for serializing objects
@@ -50,6 +53,42 @@ public class Serializer
 			e.printStackTrace();
 		}
 		return object;
+	}
+
+	/**
+	 * Convert a given object to Json string
+	 * @param obj The object to convert
+	 * @return The json string representing the given object
+	 */
+	public static String toJson(Serializable obj)
+	{
+		Gson json = new Gson();
+		return json.toJson(obj);
+	}
+
+
+	/**
+	 * Convert a Json string to an object of type defined by a string
+	 * @param data The Json string representing the object
+	 * @param className The class name
+	 * @return The object of the specified type contained in the Json string
+	 */
+	public static Serializable fromJson(String data, String className)
+	{
+		Gson json = new Gson();
+		Serializable obj = null;
+		try
+		{
+			Module module = Class.forName(className).getModule();
+			Class.forName(module,"ExampleClassClient");
+			obj = json.fromJson(data, (Type) Class.forName(className));
+		}
+		catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+
+		return obj;
 	}
 
 }

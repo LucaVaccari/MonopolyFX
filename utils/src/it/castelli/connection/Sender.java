@@ -1,21 +1,17 @@
 package it.castelli.connection;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 
 public class Sender
 {
-	private InputStream inputStream;
-	private OutputStream outputStream;
+	BufferedWriter out;
 
 	public Sender(Socket connectionSocket)
 	{
 		try
 		{
-			inputStream = connectionSocket.getInputStream();
-			outputStream = connectionSocket.getOutputStream();
+			out = new BufferedWriter(new OutputStreamWriter(connectionSocket.getOutputStream()));
 		}
 		catch (IOException e)
 		{
@@ -23,11 +19,11 @@ public class Sender
 		}
 	}
 
-	public void send(byte[] message)
+	public void send(String message)
 	{
 		try
 		{
-			outputStream.write(message);
+			out.write(message + '\n');
 		}
 		catch (IOException e)
 		{
