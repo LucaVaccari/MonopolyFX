@@ -38,11 +38,9 @@ public class Connection
 		keepAliveFlag = flag;
 	}
 
-	public void send(byte[] message)
+	public void send(String message)
 	{
-		//TODO: sender.send(byte[] message);
-
-
+		sender.send(message);
 	}
 
 	public Socket getSocket()

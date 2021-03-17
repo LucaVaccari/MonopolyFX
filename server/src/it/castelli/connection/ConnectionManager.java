@@ -20,6 +20,7 @@ public class ConnectionManager
 
 	public void start()
 	{
+		System.out.println("ConnectionManager is working on port: " + SERVER_PORT);
 		connectionReceiverThread = new Thread(new ConnectionReceiver());
 		connectionReceiverThread.start();
 	}
@@ -38,6 +39,7 @@ public class ConnectionManager
 
 	public void addToWaitingRoom(Connection connection)
 	{
+		System.out.println("Connection added to the waiting room");
 		waitingRoom.add(connection);
 	}
 

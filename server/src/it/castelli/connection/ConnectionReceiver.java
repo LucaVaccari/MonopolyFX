@@ -14,6 +14,7 @@ public class ConnectionReceiver implements Runnable
 	@Override
 	public void run()
 	{
+		System.out.println("ConnectionReceiver is working (sas)");
 		keepAliveReceiver = new Thread(new KeepAliveReceiver(sendTime * 2));
 		keepAliveSender = new Thread(new KeepAliveSender(sendTime));
 		keepAliveReceiver.start();

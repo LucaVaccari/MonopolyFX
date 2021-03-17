@@ -1,6 +1,6 @@
 package it.castelli.connection;
 
-import it.castelli.connection.messages.Message;
+import it.castelli.connection.message.Message;
 import it.castelli.serialization.Serializer;
 
 import java.io.BufferedReader;
@@ -44,6 +44,8 @@ public class Receiver implements Runnable
 			{
 				String classType = in.readLine().trim();
 				String jsonObject = in.readLine().trim();
+				// TODO: remove the output
+				System.out.println(classType + " " + jsonObject);
 
 				Message message = (Message) Serializer.fromJson(jsonObject, classType);
 				message.onReceive(this.connection);
