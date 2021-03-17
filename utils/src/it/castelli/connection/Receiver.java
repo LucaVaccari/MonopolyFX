@@ -49,7 +49,6 @@ public class Receiver implements Runnable
 					Message message = (Message) Serializer.fromJson(jsonObject, classType);
 					message.onReceive(this.connection);
 				}
-
 			}
 		}
 		catch (IOException e)

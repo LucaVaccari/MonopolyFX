@@ -10,7 +10,7 @@ public class KeepAliveClientMessage implements Message
     {
         String message = Serializer.toJson(new KeepAliveClientMessage());
         String classToBuild = "it.castelli.connection.messages.KeepAliveServerMessage";
-        System.out.println("Sending KeepAlive to server");
+        System.out.println("KeepAlive reply sent to server");
         connection.send(classToBuild);
         connection.send(message);
     }
