@@ -1,4 +1,4 @@
-package it.castelli.connection.message;
+package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
 import it.castelli.serialization.Serializer;
@@ -8,9 +8,9 @@ public class KeepAliveClientMessage implements Message
     @Override
     public void onReceive(Connection connection)
     {
-        System.out.println("Client keepAlive");
         String message = Serializer.toJson(new KeepAliveClientMessage());
         String classToBuild = "it.castelli.connection.messages.KeepAliveServerMessage";
+        System.out.println("Sending KeepAlive to server");
         connection.send(classToBuild);
         connection.send(message);
     }

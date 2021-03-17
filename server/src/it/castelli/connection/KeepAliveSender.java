@@ -1,6 +1,6 @@
 package it.castelli.connection;
 
-import it.castelli.connection.message.KeepAliveServerMessage;
+import it.castelli.connection.messages.KeepAliveServerMessage;
 import it.castelli.serialization.Serializer;
 
 public class KeepAliveSender implements Runnable

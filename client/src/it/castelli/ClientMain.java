@@ -1,25 +1,28 @@
 package it.castelli;
 
-import it.castelli.gui.scene.SceneManager;
-import it.castelli.gui.scene.SceneType;
-import javafx.application.Application;
-import javafx.stage.Stage;
+import it.castelli.connection.Connection;
+import it.castelli.connection.messages.KeepAliveClientMessage;
 
-public class ClientMain extends Application
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+
+public class ClientMain //extends Application
 {
 	public static void main(String[] args)
 	{
-//		Socket clientSocket = null;
-//		try
-//		{
-//			clientSocket = new Socket(InetAddress.getLocalHost(), 1111);
-//		}
-//		catch (IOException e)
-//		{
-//			e.printStackTrace();
-//		}
-//		Connection connection = new Connection(clientSocket);
-		launch(args);
+		System.out.println(new KeepAliveClientMessage().getClass().getName());
+		Socket clientSocket = null;
+		try
+		{
+			clientSocket = new Socket(InetAddress.getLocalHost(), 1111);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		Connection connection = new Connection(clientSocket);
+		//launch(args);
 	}
 
 	/**
@@ -38,10 +41,10 @@ public class ClientMain extends Application
 	 *                     primary stages.
 	 * @throws Exception if something goes wrong
 	 */
-	@Override
+	/*@Override
 	public void start(Stage primaryStage) throws Exception
 	{
 		SceneManager.getInstance().setPrimaryStage(primaryStage);
 		SceneManager.getInstance().showScene(SceneType.BOARD);
-	}
+	}*/
 }

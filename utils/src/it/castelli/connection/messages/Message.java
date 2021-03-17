@@ -1,4 +1,4 @@
-package it.castelli.connection.message;
+package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
 

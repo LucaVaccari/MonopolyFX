@@ -1,17 +1,21 @@
 package it.castelli.connection;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 
 public class Sender
 {
 	BufferedWriter out;
+	String address;
 
 	public Sender(Socket connectionSocket)
 	{
 		try
 		{
 			out = new BufferedWriter(new OutputStreamWriter(connectionSocket.getOutputStream()));
+			address = connectionSocket.getInetAddress().getHostAddress();
 		}
 		catch (IOException e)
 		{
@@ -24,10 +28,11 @@ public class Sender
 		try
 		{
 			out.write(message + '\n');
+			out.flush();
 		}
 		catch (IOException e)
 		{
-			e.printStackTrace();
+			System.out.println("Connection interrupted");
 		}
 	}
 }

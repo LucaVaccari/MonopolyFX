@@ -7,14 +7,14 @@ import java.net.Socket;
 public class ConnectionReceiver implements Runnable
 {
     private boolean isRunning = true;
-    private int sendTime = 1;
+    private int sendTime = 5;
     private Thread keepAliveReceiver;
     private Thread keepAliveSender;
 
     @Override
     public void run()
     {
-        System.out.println("ConnectionReceiver is working (sas)");
+        System.out.println("ConnectionReceiver is working");
         keepAliveReceiver = new Thread(new KeepAliveReceiver(sendTime * 2));
         keepAliveSender = new Thread(new KeepAliveSender(sendTime));
         keepAliveReceiver.start();
