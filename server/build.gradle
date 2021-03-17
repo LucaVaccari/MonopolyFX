@@ -8,7 +8,13 @@ mainClassName = "it.castelli.ServerMain"
 
 dependencies {
     compile project(':utils')
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
+
+repositories {
+    mavenCentral()
+}
+
 
 sourceSets {
     main {
