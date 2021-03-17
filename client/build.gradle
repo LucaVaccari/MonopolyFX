@@ -9,6 +9,7 @@ repositories {
     jcenter()
 }
 
+
 mainClassName = "it.castelli.ClientMain"
 
 javafx {
@@ -18,6 +19,7 @@ javafx {
 dependencies {
     compile project(':utils')
     shadow project(':utils')
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
 
 sourceSets {
