@@ -9,8 +9,7 @@ repositories {
     jcenter()
 }
 
-
-mainClassName = "it.castelli.ClientMain"
+mainClassName = "it.castelli.MainWrapper"
 
 javafx {
     version '15.0.1'
@@ -33,14 +32,14 @@ sourceSets {
     }
 }
 application {
-    mainClass = 'it.castelli.ClientMain'
+    mainClass = 'it.castelli.MainWrapper'
 }
 jar {
 // https://stackoverflow.com/questions/28421409/gradle-command-from-configurations-compile-collect
     from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }) {}
     manifest {
         attributes(
-                'Main-Class': 'it.castelli.ClientMain'
+                'Main-Class': 'it.castelli.MainWrapper'
         )
     }
 }
