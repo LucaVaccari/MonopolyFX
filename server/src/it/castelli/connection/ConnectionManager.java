@@ -1,5 +1,7 @@
 package it.castelli.connection;
 
+import it.castelli.gameLogic.Player;
+
 import java.util.Hashtable;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -55,23 +57,21 @@ public class ConnectionManager
 
 	public int createGame()
 	{
-		int code = lastGameCode++;
-		addGame(code, new GameConnectionManager());
-
-		return code;
+		addGame(lastGameCode++, new GameConnectionManager());
+		return lastGameCode - 1;
 	}
 
-	public void joinGame(int code, Connection connection)
+	public void joinGame(int code, Connection connection, Player player)
 	{
 		if (games.containsKey(code))
-			games.get(code).addJoiningPlayer(connection);
+			games.get(code).addPlayer(connection, player);
+		waitingRoom.remove(connection);
 	}
 
 	public void leaveGame(int code, Connection connection)
 	{
 		if (games.containsKey(code))
 		{
-			games.get(code).getJoiningPlayers().remove(connection);
 			games.get(code).getPlayers().remove(connection);
 		}
 	}
