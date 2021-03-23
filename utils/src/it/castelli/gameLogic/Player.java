@@ -34,6 +34,11 @@ public class Player
 	private int position = 0;
 
 	/**
+	 * Is the player in prison?
+	 */
+	private boolean inPrison = false;
+
+	/**
 	 * Constructor for the Player
 	 *
 	 * @param money The amount of money the player has
@@ -83,6 +88,15 @@ public class Player
 	public int getMoney()
 	{
 		return money;
+	}
+
+	/**
+	 * Getter for inPrison
+	 * @return Is the player in prison?
+	 */
+	public boolean isInPrison()
+	{
+		return inPrison;
 	}
 
 	/**
