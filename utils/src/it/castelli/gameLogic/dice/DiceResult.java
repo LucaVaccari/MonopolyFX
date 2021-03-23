@@ -45,4 +45,22 @@ public class DiceResult
 	{
 		return secondResult;
 	}
+
+	/**
+	 * Get the sum of the dice results
+	 *
+	 * @return the sum of the dice results
+	 */
+	public int resultsSum()
+	{
+		return firstResult + secondResult;
+	}
+
+	/**
+	 * Are the dice results the same?
+	 */
+	public boolean areResultsEquals()
+	{
+		return firstResult == secondResult;
+	}
 }

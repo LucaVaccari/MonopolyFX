@@ -8,7 +8,7 @@ import it.castelli.gameLogic.squares.*;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gameLogic.transactions.Exchange;
 
-import java.util.HashSet;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * The main class holding information about the game (like the board, the players)
@@ -26,9 +26,10 @@ public class GameManager
 	/**
 	 * The list of players
 	 */
-	private final HashSet<Player> players = new HashSet<>();
+	private final CopyOnWriteArrayList<Player> players = new CopyOnWriteArrayList<>();
 	private Auction auction;
 	private Exchange exchange;
+	private Round currentRound;
 
 	/**
 	 * Constructor for the GameManager
@@ -178,7 +179,10 @@ public class GameManager
 	 */
 	public void addPlayer(Player player)
 	{
-		players.add(player);
+		if (!players.contains(player))
+			players.add(player);
+		else
+			throw new IllegalArgumentException("The player already exist in this game");
 	}
 
 	/**
@@ -200,5 +204,19 @@ public class GameManager
 	public Square getSquare(int index)
 	{
 		return board[index];
+	}
+
+	public void startGame()
+	{
+		Player newPlayer = players.get(0);
+		currentRound = new Round(newPlayer, 0);
+		//TODO: inGame variable?
+	}
+
+	public void nextTurn()
+	{
+		int newIndex = (currentRound.getPlayerIndex() + 1) % players.size();
+		Player newPlayer = players.get(newIndex);
+		currentRound = new Round(newPlayer, newIndex);
 	}
 }
