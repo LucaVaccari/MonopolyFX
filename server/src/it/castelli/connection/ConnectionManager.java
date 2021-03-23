@@ -45,7 +45,7 @@ public class ConnectionManager
 		waitingRoom.add(connection);
 	}
 
-	public void addGame(int code, GameConnectionManager game)
+	private void addGame(int code, GameConnectionManager game)
 	{
 		games.put(code, game);
 	}
@@ -57,8 +57,9 @@ public class ConnectionManager
 
 	public int createGame()
 	{
-		addGame(lastGameCode++, new GameConnectionManager());
-		return lastGameCode - 1;
+		int code = lastGameCode++;
+		addGame(code, new GameConnectionManager(code));
+		return code;
 	}
 
 	public void joinGame(int code, Connection connection, Player player)
@@ -72,7 +73,7 @@ public class ConnectionManager
 	{
 		if (games.containsKey(code))
 		{
-			games.get(code).getPlayers().remove(connection);
+			games.get(code).removePlayer(connection);
 		}
 	}
 

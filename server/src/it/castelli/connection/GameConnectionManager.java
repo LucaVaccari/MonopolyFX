@@ -10,10 +10,16 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameConnectionManager
 {
-	private final CopyOnWriteArrayList<Connection> players = new CopyOnWriteArrayList<>();
-	private final GameManager gameManager = new GameManager();
+	private final CopyOnWriteArrayList<Connection> players;
+	private final GameManager gameManager;
+	private final int gameCode;
 
-
+	public GameConnectionManager(int gameCode)
+	{
+		this.gameCode = gameCode;
+		this.gameManager = new GameManager();
+		this.players = new CopyOnWriteArrayList<>();
+	}
 
 	public void addPlayer(Connection connection, Player player)
 	{
@@ -24,6 +30,10 @@ public class GameConnectionManager
 		connection.send(Serializer.toJson(new GameManagerPlayersServerMessage(gameManager.getPlayers())));
 
 	}
+
+	//TODO: remove player and check if players is null
+
+	public void removePlayer(Connection connection){}
 
 	public CopyOnWriteArrayList<Connection> getPlayers()
 	{
