@@ -16,10 +16,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class GameManager
 {
 	/**
-	 * Singleton instance
-	 */
-	private static GameManager instance;
-	/**
 	 * The array of all the squares
 	 */
 	private final Square[] board;
@@ -34,7 +30,7 @@ public class GameManager
 	/**
 	 * Constructor for the GameManager
 	 */
-	private GameManager()
+	public GameManager()
 	{
 		board = new Square[]{
 				new GoSquare(),
@@ -161,18 +157,6 @@ public class GameManager
 	}
 
 	/**
-	 * Singleton instance getter
-	 *
-	 * @return The instance of the GameManager
-	 */
-	public static GameManager getInstance()
-	{
-		if (instance == null)
-			instance = new GameManager();
-		return instance;
-	}
-
-	/**
 	 * Adds a player to the list of players
 	 *
 	 * @param player The new player
@@ -205,6 +189,13 @@ public class GameManager
 	{
 		return board[index];
 	}
+
+	public CopyOnWriteArrayList<Player> getPlayers()
+	{
+		return players;
+	}
+
+
 
 	public void startGame()
 	{

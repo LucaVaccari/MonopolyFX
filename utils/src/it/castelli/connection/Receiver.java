@@ -1,6 +1,7 @@
 package it.castelli.connection;
 
 import it.castelli.connection.messages.Message;
+import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
 
 import java.io.BufferedReader;
@@ -13,6 +14,7 @@ public class Receiver implements Runnable
 	private final Socket connectionSocket;
 	private final Connection connection;
 	private boolean isRunning = true;
+	private Player player;
 
 	public Receiver(Connection connection)
 	{
@@ -33,6 +35,11 @@ public class Receiver implements Runnable
 		}
 	}
 
+	public void setPlayer(Player player)
+	{
+		this.player = player;
+	}
+
 	@Override
 	public void run()
 	{
@@ -47,7 +54,7 @@ public class Receiver implements Runnable
 					String classType = firstMessage.trim();
 					String jsonObject = in.readLine().trim();
 					Message message = (Message) Serializer.fromJson(jsonObject, classType);
-					message.onReceive(this.connection);
+					message.onReceive(this.connection, this.player);
 				}
 			}
 		}

@@ -1,6 +1,7 @@
 package it.castelli.connection;
 
 import it.castelli.connection.messages.KeepAliveServerMessage;
+import it.castelli.connection.messages.ServerMessages;
 import it.castelli.serialization.Serializer;
 
 public class KeepAliveSender implements Runnable
@@ -9,7 +10,6 @@ public class KeepAliveSender implements Runnable
     private boolean isRunning;
     private int sendTime;
     String message = Serializer.toJson(new KeepAliveServerMessage());
-    String classToBuild = "it.castelli.connection.messages.KeepAliveClientMessage";
 
     /**
      * KeepAliveReceiver Constructor
@@ -47,7 +47,7 @@ public class KeepAliveSender implements Runnable
         //remove inactive players from the waiting room
         for (Connection connection : connectionManager.getWaitingRoom())
         {
-            connection.send(classToBuild);
+            connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME);
             connection.send(message);
         }
 
@@ -56,16 +56,16 @@ public class KeepAliveSender implements Runnable
         {
 
             //remove inactive connections from joiningPlayers list
-            for (Connection connection :gameConnectionManager.getJoiningPlayers())
+            for (Connection connection :gameConnectionManager.getPlayers())
             {
-                connection.send(classToBuild);
+                connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME);
                 connection.send(message);
             }
 
             //remove inactive connections from players list
             for (Connection connection :gameConnectionManager.getPlayers())
             {
-                connection.send(classToBuild);
+                connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME);
                 connection.send(message);
             }
 

@@ -1,5 +1,7 @@
 package it.castelli.connection;
 
+import it.castelli.gameLogic.Player;
+
 import java.net.Socket;
 
 public class Connection
@@ -8,15 +10,14 @@ public class Connection
 	private boolean isConnected;
 	private boolean keepAliveFlag = true;
 	private Sender sender;
-	private Thread receiverThread;
+	private Receiver receiver;
 
 	public Connection(Socket connectionSocket)
 	{
 		this.connectionSocket = connectionSocket;
 		sender = new Sender(connectionSocket);
-
-		receiverThread = new Thread(new Receiver(this));
-		receiverThread.start();
+		receiver = new Receiver(this);
+		new Thread(receiver).start();
 	}
 
 	private boolean isConnected()
@@ -27,6 +28,11 @@ public class Connection
 	public void interrupt()
 	{
 
+	}
+
+	public void addPlayer(Player player)
+	{
+		this.receiver.setPlayer(player);
 	}
 
 	public boolean getKeepAliveFlag()

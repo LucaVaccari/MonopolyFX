@@ -1,20 +1,28 @@
 package it.castelli.connection;
 
+import it.castelli.connection.messages.GameManagerPlayersServerMessage;
+import it.castelli.connection.messages.ServerMessages;
+import it.castelli.gameLogic.GameManager;
+import it.castelli.gameLogic.Player;
+import it.castelli.serialization.Serializer;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameConnectionManager
 {
-	private CopyOnWriteArrayList<Connection> players;
-	private CopyOnWriteArrayList<Connection> joiningPlayers;
+	private final CopyOnWriteArrayList<Connection> players = new CopyOnWriteArrayList<>();
+	private final GameManager gameManager = new GameManager();
 
-	private void movePlayer(Connection connection)
-	{
-	}
 
-	public void addJoiningPlayer(Connection connection)
+
+	public void addPlayer(Connection connection, Player player)
 	{
-		joiningPlayers.add(connection);
-		// TODO: send NewPlayerMessage
+		players.add(connection);
+		connection.addPlayer(player);
+		gameManager.addPlayer(player);
+		connection.send(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME);
+		connection.send(Serializer.toJson(new GameManagerPlayersServerMessage(gameManager.getPlayers())));
+
 	}
 
 	public CopyOnWriteArrayList<Connection> getPlayers()
@@ -22,9 +30,10 @@ public class GameConnectionManager
 		return players;
 	}
 
-	public CopyOnWriteArrayList<Connection> getJoiningPlayers()
-	{
-		return joiningPlayers;
+	public void startGame(){
+		//TODO: start game
 	}
+
+
 
 }
