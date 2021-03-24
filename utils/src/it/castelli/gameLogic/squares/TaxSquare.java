@@ -1,6 +1,7 @@
 package it.castelli.gameLogic.squares;
 
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.Contract;
 
 /**
  * Square which makes the player pay a tax
@@ -57,5 +58,11 @@ public class TaxSquare implements Square
 	public void interact(Player player)
 	{
 		// TODO: take money from the player
+	}
+
+	@Override
+	public Contract getContract()
+	{
+		return null;
 	}
 }

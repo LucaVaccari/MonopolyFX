@@ -1,6 +1,7 @@
 package it.castelli.gameLogic.squares;
 
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.Contract;
 
 /**
  * Square which makes the player go to jail without passing through go)
@@ -16,5 +17,11 @@ public class GoToJailSquare implements Square
 	public void interact(Player player)
 	{
 		// TODO: send player to prison
+	}
+
+	@Override
+	public Contract getContract()
+	{
+		return null;
 	}
 }
