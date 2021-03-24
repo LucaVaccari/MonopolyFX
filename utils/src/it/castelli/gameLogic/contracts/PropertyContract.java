@@ -116,4 +116,14 @@ public class PropertyContract extends Contract
 			return revenues[0] * 2;
 		return revenues[numberOfHouses];
 	}
+
+	public PropertyColor getColor()
+	{
+		return color;
+	}
+
+	public int[] getRevenues()
+	{
+		return revenues;
+	}
 }
