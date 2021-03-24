@@ -26,14 +26,16 @@ public class GameConnectionManager
 		players.add(connection);
 		connection.addPlayer(player);
 		gameManager.addPlayer(player);
-		connection.send(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME);
-		connection.send(Serializer.toJson(new GameManagerPlayersServerMessage(gameManager.getPlayers())));
-
+		connection.send(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME, Serializer.toJson(new GameManagerPlayersServerMessage(gameManager.getPlayers())));
 	}
 
-	//TODO: remove player and check if players is null
+	public void removePlayer(Connection connection)
+	{
+		players.remove(connection);
 
-	public void removePlayer(Connection connection){}
+		if (players.isEmpty())
+			ConnectionManager.getInstance().removeGame(gameCode);
+	}
 
 	public CopyOnWriteArrayList<Connection> getPlayers()
 	{

@@ -45,8 +45,9 @@ public class Connection
 		keepAliveFlag = flag;
 	}
 
-	public void send(String message)
+	public void send(String messageName, String message)
 	{
+		sender.send(messageName);
 		sender.send(message);
 	}
 

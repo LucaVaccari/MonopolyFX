@@ -47,8 +47,7 @@ public class KeepAliveSender implements Runnable
         //remove inactive players from the waiting room
         for (Connection connection : connectionManager.getWaitingRoom())
         {
-            connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME);
-            connection.send(message);
+            connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME, message);
         }
 
         //remove inactive connections in every game
@@ -58,15 +57,13 @@ public class KeepAliveSender implements Runnable
             //remove inactive connections from joiningPlayers list
             for (Connection connection :gameConnectionManager.getPlayers())
             {
-                connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME);
-                connection.send(message);
+                connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME, message);
             }
 
             //remove inactive connections from players list
             for (Connection connection :gameConnectionManager.getPlayers())
             {
-                connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME);
-                connection.send(message);
+                connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME, message);
             }
 
         }
