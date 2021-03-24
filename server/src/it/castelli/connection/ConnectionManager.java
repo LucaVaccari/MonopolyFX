@@ -65,8 +65,14 @@ public class ConnectionManager
 	public void joinGame(int code, Connection connection, Player player)
 	{
 		if (games.containsKey(code))
+		{
 			games.get(code).addPlayer(connection, player);
-		waitingRoom.remove(connection);
+			waitingRoom.remove(connection);
+		}
+		else
+		{
+			//TODO: Send error message
+		}
 	}
 
 	public void leaveGame(int code, Connection connection)

@@ -7,6 +7,7 @@ public class Game
 {
     private static GameManager gameManager = new GameManager();
     private static Player player;
+
     private static int gameCode;
 
     private Game(){}
@@ -29,5 +30,10 @@ public class Game
     public static void setPlayer(Player player)
     {
         Game.player = player;
+    }
+
+    public static void setGameCode(int gameCode)
+    {
+        Game.gameCode = gameCode;
     }
 }
