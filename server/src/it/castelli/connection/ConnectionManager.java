@@ -1,6 +1,9 @@
 package it.castelli.connection;
 
+import it.castelli.connection.messages.ErrorServerMessage;
+import it.castelli.connection.messages.ServerMessages;
 import it.castelli.gameLogic.Player;
+import it.castelli.serialization.Serializer;
 
 import java.util.Hashtable;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -71,7 +74,7 @@ public class ConnectionManager
 		}
 		else
 		{
-			//TODO: Send error message
+			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("La partita con codice: " + code + " non è stata trovata!")));
 		}
 	}
 
