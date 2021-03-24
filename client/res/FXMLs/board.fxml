@@ -107,7 +107,7 @@
 								 GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
 					<Image url="@../images/squares/passaggio.png"/>
 				</SquareComponent>
-				<SquareComponent fx:id="viaAccatemiaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
+				<SquareComponent fx:id="viaAccademiaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
 								 preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
 								 GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
 					<Image url="@../images/squares/magenta.png"/>

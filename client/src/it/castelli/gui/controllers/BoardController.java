@@ -1,5 +1,6 @@
 package it.castelli.gui.controllers;
 
+import it.castelli.Game;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.customComponents.SquareComponent;
@@ -39,7 +40,7 @@ public class BoardController
 	@FXML
 	private SquareComponent justVisitingSquare;
 	@FXML
-	private SquareComponent viaAccatemiaSquare;
+	private SquareComponent viaAccademiaSquare;
 	@FXML
 	private SquareComponent electricSocietySquare;
 	@FXML
@@ -100,7 +101,24 @@ public class BoardController
 	@FXML
 	private void initialize()
 	{
+		// TODO: show station view
+		// TODO: show society view
 
+		// PROPERTIES
+		vicoloCortoSquare.setContract(Game.getGameManager().getSquare(1).getContract());
+		vicoloCortoSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) vicoloCortoSquare.getContract()));
+
+		vicoloStrettoSquare.setContract(Game.getGameManager().getSquare(3).getContract());
+		vicoloStrettoSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) vicoloStrettoSquare.getContract()));
+
+		bastioniGranSassoSquare.setContract(Game.getGameManager().getSquare(6).getContract());
+		bastioniGranSassoSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) bastioniGranSassoSquare.getContract()));
+
+		vialeMonterosaSquare.setContract(Game.getGameManager().getSquare(8).getContract());
+		vialeMonterosaSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) vialeMonterosaSquare.getContract()));
+
+		vialeVesuvioSquare.setContract(Game.getGameManager().getSquare(9).getContract());
+		vialeVesuvioSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) vialeVesuvioSquare.getContract()));
 	}
 
 	/**
