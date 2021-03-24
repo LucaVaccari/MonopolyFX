@@ -46,7 +46,7 @@ public class BoardController
 	@FXML
 	private SquareComponent corsoAteneoSquare;
 	@FXML
-	private SquareComponent piazzaUnivertisaSquare;
+	private SquareComponent piazzaUniversitaSquare;
 	@FXML
 	private SquareComponent westStationSquare;
 	@FXML
@@ -119,6 +119,58 @@ public class BoardController
 
 		vialeVesuvioSquare.setContract(Game.getGameManager().getSquare(9).getContract());
 		vialeVesuvioSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) vialeVesuvioSquare.getContract()));
+
+		viaAccademiaSquare.setContract(Game.getGameManager().getSquare(11).getContract());
+		viaAccademiaSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) viaAccademiaSquare.getContract()));
+
+		corsoAteneoSquare.setContract(Game.getGameManager().getSquare(13).getContract());
+		corsoAteneoSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) corsoAteneoSquare.getContract()));
+
+		piazzaUniversitaSquare.setContract(Game.getGameManager().getSquare(14).getContract());
+		piazzaUniversitaSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) piazzaUniversitaSquare.getContract()));
+
+		viaVerdiSquare.setContract(Game.getGameManager().getSquare(16).getContract());
+		viaVerdiSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) viaVerdiSquare.getContract()));
+
+		corsoRaffaelloSquare.setContract(Game.getGameManager().getSquare(18).getContract());
+		corsoRaffaelloSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) corsoRaffaelloSquare.getContract()));
+
+		piazzaDanteSquare.setContract(Game.getGameManager().getSquare(19).getContract());
+		piazzaDanteSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) piazzaDanteSquare.getContract()));
+
+		viaMarcoPoloSquare.setContract(Game.getGameManager().getSquare(21).getContract());
+		viaMarcoPoloSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) viaMarcoPoloSquare.getContract()));
+
+		corsoMagellanoSquare.setContract(Game.getGameManager().getSquare(23).getContract());
+		corsoMagellanoSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) corsoMagellanoSquare.getContract()));
+
+		largoColomboSquare.setContract(Game.getGameManager().getSquare(24).getContract());
+		largoColomboSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) largoColomboSquare.getContract()));
+
+		vialeCostantinoSquare.setContract(Game.getGameManager().getSquare(26).getContract());
+		vialeCostantinoSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) vialeCostantinoSquare.getContract()));
+
+		vialeTraianoSquare.setContract(Game.getGameManager().getSquare(27).getContract());
+		vialeTraianoSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) vialeTraianoSquare.getContract()));
+
+		piazzaGiulioCesareSquare.setContract(Game.getGameManager().getSquare(29).getContract());
+		piazzaGiulioCesareSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) piazzaGiulioCesareSquare.getContract()));
+
+		viaRomaSquare.setContract(Game.getGameManager().getSquare(31).getContract());
+		viaRomaSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) viaRomaSquare.getContract()));
+
+		corsoImperoSquare.setContract(Game.getGameManager().getSquare(32).getContract());
+		corsoImperoSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) corsoImperoSquare.getContract()));
+
+		largoAugustoSquare.setContract(Game.getGameManager().getSquare(34).getContract());
+		largoAugustoSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) largoAugustoSquare.getContract()));
+
+		vialeDeiGiardiniSquare.setContract(Game.getGameManager().getSquare(37).getContract());
+		vialeDeiGiardiniSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) vialeDeiGiardiniSquare.getContract()));
+
+		parcoDellaVittoriaSquare.setContract(Game.getGameManager().getSquare(39).getContract());
+		parcoDellaVittoriaSquare.setOnMouseClicked(event -> showPropertyView((PropertyContract) parcoDellaVittoriaSquare.getContract()));
+
 	}
 
 	/**
