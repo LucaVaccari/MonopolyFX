@@ -29,10 +29,7 @@ public class PropertyViewController
 	private void initialize()
 	{
 		if (contract == null)
-		{
-			System.err.println("ERROR: CONTRACT IS NULL FOR PROPERTY VIEW");
-			System.exit(-1);
-		}
+			return;
 
 		titleLabel.setText(contract.getName());
 		revenueLabel.setText(String.valueOf(contract.getRevenues()[0]));
