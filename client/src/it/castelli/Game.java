@@ -5,7 +5,7 @@ import it.castelli.gameLogic.Player;
 
 public class Game
 {
-    private static GameManager gameManager = new GameManager();
+    private static final GameManager gameManager = new GameManager();
     private static Player player;
 
     private static int gameCode;
