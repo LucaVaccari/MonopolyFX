@@ -34,4 +34,15 @@ public class StationContract extends Contract
 		// return 2^(numberOfStations - 1) * revenue
 		return 0;
 	}
+
+	/**
+	 * Get the revenue based on the number of station taken as int
+	 * @param numberOfStation The number of station from which to calculate
+	 *                           the revenue
+	 * @return The revenue calculated
+	 */
+	public int getRevenueFromNumberOfStations(int numberOfStation)
+	{
+		return (int) (Math.pow(2, numberOfStation - 1) * revenue);
+	}
 }
