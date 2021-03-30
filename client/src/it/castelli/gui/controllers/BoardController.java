@@ -1,7 +1,9 @@
 package it.castelli.gui.controllers;
 
 import it.castelli.Game;
+import it.castelli.gameLogic.contracts.CompanyContract;
 import it.castelli.gameLogic.contracts.PropertyContract;
+import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.customComponents.SquareComponent;
 import javafx.fxml.FXML;
@@ -13,11 +15,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * FXML controller for the board scene, the main one of the game
+ */
 public class BoardController
 {
 
-	public static final String PROPERTY_VIEW_FXML_PATH =
-			"/FXMLs/propertyView.fxml";
+	public static final String PROPERTY_VIEW_FXML_PATH = "/FXMLs/propertyView.fxml";
+	public static final String STATION_VIEW_FXML_PATH = "/FXMLs/stationView.fxml";
+	public static final String COMPANY_VIEW_FXML_PATH = "/FXMLs/companyView.fxml";
 
 	@FXML
 	private SquareComponent goSquare;
@@ -103,9 +109,6 @@ public class BoardController
 	@FXML
 	private void initialize()
 	{
-		// TODO: show station view
-		// TODO: show society view
-
 		// PROPERTIES
 		vicoloCortoSquare
 				.setContract(Game.getGameManager().getSquare(1).getContract());
@@ -217,6 +220,37 @@ public class BoardController
 		parcoDellaVittoriaSquare.setOnMouseClicked(event -> showPropertyView(
 				(PropertyContract) parcoDellaVittoriaSquare.getContract()));
 
+		// STATIONS
+		southStationSquare.setContract(Game.getGameManager().getSquare(5).getContract());
+		southStationSquare
+				.setOnMouseClicked(event ->
+						showStationView((StationContract) southStationSquare.getContract()));
+
+		westStationSquare.setContract(Game.getGameManager().getSquare(15).getContract());
+		westStationSquare
+				.setOnMouseClicked(event ->
+						showStationView((StationContract) westStationSquare.getContract()));
+
+		northStationSquare.setContract(Game.getGameManager().getSquare(25).getContract());
+		northStationSquare
+				.setOnMouseClicked(event ->
+						showStationView((StationContract) northStationSquare.getContract()));
+
+		eastStationSquare.setContract(Game.getGameManager().getSquare(35).getContract());
+		eastStationSquare
+				.setOnMouseClicked(event ->
+						showStationView((StationContract) eastStationSquare.getContract()));
+
+		// COMPANIES
+		electricSocietySquare.setContract(Game.getGameManager().getSquare(12).getContract());
+		electricSocietySquare
+				.setOnMouseClicked(event -> showCompanyView(CompanyViewController.Company.ELECTRIC,
+						(CompanyContract) electricSocietySquare.getContract()));
+
+		waterWorksSquare.setContract(Game.getGameManager().getSquare(28).getContract());
+		waterWorksSquare
+				.setOnMouseClicked(event -> showCompanyView(CompanyViewController.Company.WATER,
+						(CompanyContract) waterWorksSquare.getContract()));
 	}
 
 	/**
@@ -236,6 +270,61 @@ public class BoardController
 			Parent root = loader.load();
 			PropertyViewController controller = loader.getController();
 			controller.setContract(contract);
+			Stage propertyViewStage = new Stage();
+			Scene scene = new Scene(root);
+			propertyViewStage.setScene(scene);
+			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
+			propertyViewStage.setAlwaysOnTop(true);
+			propertyViewStage.setResizable(false);
+			propertyViewStage.show();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Show a new not resizable stage containing information about a station
+	 *
+	 * @param contract The contract of the station to show
+	 */
+	private void showStationView(StationContract contract)
+	{
+		if (contract == null)
+			return;
+
+		try
+		{
+			FXMLLoader loader = FXMLFileLoader.getLoader(STATION_VIEW_FXML_PATH);
+			Parent root = loader.load();
+			StationViewController controller = loader.getController();
+			controller.setContract(contract);
+			Stage propertyViewStage = new Stage();
+			Scene scene = new Scene(root);
+			propertyViewStage.setScene(scene);
+			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
+			propertyViewStage.setAlwaysOnTop(true);
+			propertyViewStage.setResizable(false);
+			propertyViewStage.show();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	private void showCompanyView(CompanyViewController.Company company, CompanyContract contract)
+	{
+		if (contract == null)
+			return;
+
+		try
+		{
+			FXMLLoader loader = FXMLFileLoader.getLoader(COMPANY_VIEW_FXML_PATH);
+			Parent root = loader.load();
+			CompanyViewController controller = loader.getController();
+			controller.setContract(company, contract);
 			Stage propertyViewStage = new Stage();
 			Scene scene = new Scene(root);
 			propertyViewStage.setScene(scene);
