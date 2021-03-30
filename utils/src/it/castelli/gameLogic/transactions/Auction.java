@@ -3,39 +3,69 @@ package it.castelli.gameLogic.transactions;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.*;
+
 public class Auction
 {
 	private Contract contract;
 	private int bestOfferProposed;
 	private Player player;
+	private Timer timer;
 
-	public Auction(Contract contract)
+	public Auction(Contract contract, int bestOfferProposed, Player player)
 	{
 		this.contract = contract;
-		bestOfferProposed = 10;
-		player = null;
+		this.bestOfferProposed = bestOfferProposed;
+		this.player = player;
 	}
 
 	public void offer(Player player, int offer)
 	{
 		if (bestOfferProposed < offer)
 		{
+			timer.cancel();
 			bestOfferProposed = offer;
 			this.player = player;
+			startAuction();
 		}
 	}
 
 	public void startAuction()
 	{
-		//TODO: start timer
+		timer = new Timer();
+		TimerTask task = new TimerTask() {
+			public void run() {
+				endAuction();
+				timer.cancel();
+			}
+		};
+
+		long delay = 10000L;
+		timer.schedule(task, delay);
 	}
 
 	private void endAuction()
 	{
 		if (player != null)
 		{
-			player.getContracts().add(contract);
-			//TODO: Print the winner of the auction
+			player.addContract(contract);
 		}
+	}
+
+	public Contract getContract()
+	{
+		return contract;
+	}
+
+	public int getBestOfferProposed()
+	{
+		return bestOfferProposed;
+	}
+
+	public Player getPlayer()
+	{
+		return player;
 	}
 }

@@ -10,5 +10,7 @@ public class ServerMessages
 			"it.castelli.connection.messages.GameCodeClientMessage";
 	public static final String ERROR_MESSAGE_NAME =
 			"it.castelli.connection.messages.ErrorClientMessage";
+	public static final String AUCTION_MESSAGE_NAME =
+			"it.castelli.connection.messages.AuctionClientMessage";
 
 }

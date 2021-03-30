@@ -1,9 +1,6 @@
 package it.castelli.gameLogic;
 
-import it.castelli.gameLogic.contracts.CompanyContract;
-import it.castelli.gameLogic.contracts.PropertyColor;
-import it.castelli.gameLogic.contracts.PropertyContract;
-import it.castelli.gameLogic.contracts.StationContract;
+import it.castelli.gameLogic.contracts.*;
 import it.castelli.gameLogic.squares.*;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gameLogic.transactions.Exchange;
@@ -211,5 +208,26 @@ public class GameManager
 		int newIndex = (currentRound.getPlayerIndex() + 1) % players.size();
 		Player newPlayer = players.get(newIndex);
 		currentRound = new Round(newPlayer, newIndex);
+	}
+
+	public void startAuction(Contract contract)
+	{
+		this.auction = new Auction(contract, 10, null);
+		this.auction.startAuction();
+	}
+
+	public void auctionOffer(Player player, int offer)
+	{
+		this.auction.offer(player, offer);
+	}
+
+	public void setAuction(Auction auction)
+	{
+		this.auction = auction;
+	}
+
+	public Auction getAuction()
+	{
+		return auction;
 	}
 }

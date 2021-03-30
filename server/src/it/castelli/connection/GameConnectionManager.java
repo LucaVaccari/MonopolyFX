@@ -1,9 +1,13 @@
 package it.castelli.connection;
 
+import it.castelli.connection.messages.AuctionServerMessage;
+import it.castelli.connection.messages.ErrorServerMessage;
 import it.castelli.connection.messages.GameManagerPlayersServerMessage;
 import it.castelli.connection.messages.ServerMessages;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.serialization.Serializer;
 
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -23,12 +27,17 @@ public class GameConnectionManager
 
 	public void addPlayer(Connection connection, Player player)
 	{
-		players.add(connection);
-		connection.addPlayer(player);
-		gameManager.addPlayer(player);
-		connection.send(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME,
-		                Serializer.toJson(new GameManagerPlayersServerMessage(
-				                gameManager.getPlayers())));
+		if (players.size() < 6)  //TODO: check gameManager inGame too
+		{
+			players.add(connection);
+			connection.addPlayer(player);
+			gameManager.addPlayer(player);
+			connection.send(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME, Serializer.toJson(new GameManagerPlayersServerMessage(gameManager.getPlayers())));
+		}
+		else
+		{
+			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("You can't enter this game, lobby is full or the game has already started")));
+		}
 	}
 
 	public void removePlayer(Connection connection)
@@ -48,6 +57,29 @@ public class GameConnectionManager
 	{
 		//TODO: start game
 	}
+
+	public void startAuction(Contract contract)
+	{
+		gameManager.startAuction(contract);
+		sendAuction();
+	}
+
+	public void offer(Player player, int offer)
+	{
+		gameManager.auctionOffer(player, offer);
+		sendAuction();
+	}
+
+	private void sendAuction()
+	{
+		for (Connection connection : players)
+		{
+			Auction auction = gameManager.getAuction();
+			AuctionServerMessage message = new AuctionServerMessage(auction.getContract(), auction.getPlayer(), auction.getBestOfferProposed());
+			connection.send(ServerMessages.AUCTION_MESSAGE_NAME, Serializer.toJson(message));
+		}
+	}
+
 
 
 }
