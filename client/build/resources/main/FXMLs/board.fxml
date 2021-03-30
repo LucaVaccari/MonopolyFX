@@ -3,189 +3,189 @@
 <?import it.castelli.gui.customComponents.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.BoardController">
-   <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <image>
-         <Image url="@../images/poker.jpg.png" />
-      </image>
-   </ImageView>
-	<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-		<padding>
-			<Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-		</padding>
-		<VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="454.0" HBox.hgrow="ALWAYS">
-			<GridPane alignment="CENTER" maxHeight="550.0" maxWidth="550.0" minHeight="550.0" minWidth="550.0" prefHeight="550.0" prefWidth="550.0" style="-fx-border-color: 000000; -fx-border-image-width: 5;" VBox.vgrow="ALWAYS">
-				<columnConstraints>
-					<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-					<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-					<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-					<ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
-					<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-					<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-					<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-					<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-					<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-					<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-					<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-				</columnConstraints>
-				<rowConstraints>
-					<RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-					<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-					<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-					<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-					<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-					<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-					<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-					<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-					<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-					<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-					<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				</rowConstraints>
-				<SquareComponent fx:id="goSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/go_square.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="vicoloCortoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/brown.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="communityChestSquare1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/communityChest.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="vicoloStrettoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/brown.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="patrimonialTaxSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/patrimonial_tax.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="southStationSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/station.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="bastioniGranSassoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/light_blue.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="chanceSquare1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="10">
-					<Image url="@../images/squares/chance.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="vialeMonterosaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/light_blue.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="vialeVesuvioSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/viale_vesuvio.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="justVisitingSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/passaggio.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="viaAccademiaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/magenta.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="electricSocietySquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/electric_society.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="corsoAteneoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/magenta.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="piazzaUniversitaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/piazza_università.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="westStationSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/station.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="viaVerdiSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/orange.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="communityChestSquare2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/communityChest.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="corsoRaffaelloSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/orange.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="piazzaDanteSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/piazza-dante.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="freeParkingSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-					<Image url="@../images/squares/free_parking.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="viaMarcoPoloSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-					<Image url="@../images/squares/red.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="chanceSquare2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
-					<Image url="@../images/squares/chance.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="corsoMagellanoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
-					<Image url="@../images/squares/red.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="largoColomboSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
-					<Image url="@../images/squares/largo_colombo.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="northStationSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
-					<Image url="@../images/squares/station.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="vialeCostantinoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
-					<Image url="@../images/squares/yellow.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="vialeTraianoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
-					<Image url="@../images/squares/yellow.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="waterWorksSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8">
-					<Image url="@../images/squares/water_works.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="piazzaGiulioCesareSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9">
-					<Image url="@../images/squares/piazza_cesare.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="goToJailSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10">
-					<Image url="@../images/squares/go_to_prison.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="viaRomaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="1">
-					<Image url="@../images/squares/green.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="corsoImperoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/green.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="communityChestSquare3" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/communityChest.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="largoAugustoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/largo_augusto.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="eastStationSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/station.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="chanceSquare3" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/chance.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="vialeDeiGiardiniSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/viale_giardini.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="luxuryTaxSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/luxury_tax.png" />
-				</SquareComponent>
-				<SquareComponent fx:id="parcoDellaVittoriaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-					<Image url="@../images/squares/parco_vittoria.png" />
-				</SquareComponent>
-				<ImageView fitHeight="450.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
-					<Image url="@../images/squares/board_center.png" />
-				</ImageView>
-			</GridPane>
-		</VBox>
-		<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-			<AnchorPane prefHeight="200.0" prefWidth="200.0">
-				<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="44.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="21.0">
-					<Image url="@../images/face_0.png" />
-				</ImageView>
-				<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="186.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-					<Image url="@../images/face_0.png" />
-				</ImageView>
-				<Button alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="143.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="136.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000; -fx-border-width: 2;" stylesheets="@Style/style.css" text="tira " textOverrun="CLIP" />
-			</AnchorPane>
-		</VBox>
-		<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
-	</HBox>
+    <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <image>
+            <Image url="@../images/poker.jpg" />
+        </image>
+    </ImageView>
+    <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+        </padding>
+        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="454.0" HBox.hgrow="ALWAYS">
+            <GridPane alignment="CENTER" maxHeight="550.0" maxWidth="550.0" minHeight="550.0" minWidth="550.0" prefHeight="550.0" prefWidth="550.0" style="-fx-border-color: 000000; -fx-border-image-width: 5;" VBox.vgrow="ALWAYS">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <SquareComponent fx:id="goSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/go_square.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="vicoloCortoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/brown.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="communityChestSquare1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/communityChest.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="vicoloStrettoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/brown.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="patrimonialTaxSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/patrimonial_tax.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="southStationSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/station.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="bastioniGranSassoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/light_blue.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="chanceSquare1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                    <Image url="@../images/squares/chance.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="vialeMonterosaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/light_blue.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="vialeVesuvioSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/viale_vesuvio.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="justVisitingSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/passaggio.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="viaAccademiaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/magenta.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="electricSocietySquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/electric_society.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="corsoAteneoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/magenta.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="piazzaUniversitaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/piazza_università.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="westStationSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/station.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="viaVerdiSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/orange.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="communityChestSquare2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/communityChest.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="corsoRaffaelloSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/orange.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="piazzaDanteSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/piazza-dante.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="freeParkingSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/squares/free_parking.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="viaMarcoPoloSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                    <Image url="@../images/squares/red.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="chanceSquare2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                    <Image url="@../images/squares/chance.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="corsoMagellanoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                    <Image url="@../images/squares/red.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="largoColomboSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                    <Image url="@../images/squares/largo_colombo.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="northStationSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+                    <Image url="@../images/squares/station.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="vialeCostantinoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
+                    <Image url="@../images/squares/yellow.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="vialeTraianoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
+                    <Image url="@../images/squares/yellow.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="waterWorksSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8">
+                    <Image url="@../images/squares/water_works.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="piazzaGiulioCesareSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9">
+                    <Image url="@../images/squares/piazza_cesare.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="goToJailSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10">
+                    <Image url="@../images/squares/go_to_prison.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="viaRomaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="1">
+                    <Image url="@../images/squares/green.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="corsoImperoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/green.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="communityChestSquare3" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/communityChest.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="largoAugustoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/largo_augusto.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="eastStationSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/station.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="chanceSquare3" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/chance.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="vialeDeiGiardiniSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/viale_giardini.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="luxuryTaxSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/luxury_tax.png" />
+                </SquareComponent>
+                <SquareComponent fx:id="parcoDellaVittoriaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <Image url="@../images/squares/parco_vittoria.png" />
+                </SquareComponent>
+                <ImageView fitHeight="450.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <Image url="@../images/squares/board_center.png" />
+                </ImageView>
+            </GridPane>
+        </VBox>
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="44.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="21.0">
+                    <Image url="@../images/face_0.png" />
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" spread="1.0" width="10.0" />
+               </effect>
+                </ImageView>
+                <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="186.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/face_0.png" />
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" spread="1.0" width="10.0" />
+               </effect>
+                </ImageView>
+                <Button alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="143.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="136.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000; -fx-border-width: 2;" stylesheets="@Style/style.css" text="tira " textOverrun="CLIP" />
+            </AnchorPane>
+        </VBox>
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+    </HBox>
 </AnchorPane>

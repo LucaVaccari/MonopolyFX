@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.image.ImageView?>
-
-<fx:root xmlns="http://javafx.com/javafx"
-		 xmlns:fx="http://javafx.com/fxml"
-		 type="ImageView">
+<fx:root xmlns:fx="http://javafx.com/fxml"
+         xmlns="http://javafx.com/javafx"
+         type="ImageView">
 </fx:root>
