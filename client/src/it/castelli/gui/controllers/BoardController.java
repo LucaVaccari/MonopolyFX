@@ -6,6 +6,7 @@ import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.customComponents.SquareComponent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -179,13 +180,17 @@ public class BoardController
 	 */
 	private void showPropertyView(PropertyContract contract)
 	{
-		FXMLLoader loader = FXMLFileLoader.getLoader(PROPERTY_VIEW_FXML_PATH);
-		PropertyViewController controller = loader.getController();
-		controller.setContract(contract);
+		if (contract == null)
+			return;
+
 		try
 		{
+			FXMLLoader loader = FXMLFileLoader.getLoader(PROPERTY_VIEW_FXML_PATH);
+			Parent root = loader.load();
+			PropertyViewController controller = loader.getController();
+			controller.setContract(contract);
 			Stage propertyViewStage = new Stage();
-			Scene scene = new Scene(loader.load());
+			Scene scene = new Scene(root);
 			propertyViewStage.setScene(scene);
 			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
 			propertyViewStage.setAlwaysOnTop(true);

@@ -63,17 +63,17 @@ public class GameManager
 				new PropertySquare(
 						new PropertyContract("Via Accademia", 140, 10, 50, 150,
 								450, 620, 750, 100,
-								PropertyColor.PINK)),
+								PropertyColor.MAGENTA)),
 				new CompanySquare(
 						new CompanyContract("Società Elettrica", 150)),
 				new PropertySquare(
 						new PropertyContract("Corsa Ateneo", 140, 10, 50, 150,
 								450, 620, 750, 100,
-								PropertyColor.PINK)),
+								PropertyColor.MAGENTA)),
 				new PropertySquare(
 						new PropertyContract("Piazza Università", 160, 12, 60,
 								180, 500, 700, 900, 100,
-								PropertyColor.PINK)),
+								PropertyColor.MAGENTA)),
 				new StationSquare(
 						new StationContract("Stazione Ovest", 200, 25)),
 				new PropertySquare(
