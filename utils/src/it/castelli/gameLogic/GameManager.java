@@ -16,7 +16,7 @@ public class GameManager
 	/**
 	 * The array of all the squares
 	 */
-	private final Square[] board;
+	private Square[] board;
 	/**
 	 * The list of players
 	 */
@@ -229,5 +229,10 @@ public class GameManager
 	public Auction getAuction()
 	{
 		return auction;
+	}
+
+	public void setBoard(Square[] board)
+	{
+		this.board = board;
 	}
 }
