@@ -10,4 +10,6 @@ public class ClientMessages
 			"it.castelli.connection.messages.CreateGameServerMessage";
 	public static final String LEAVE_GAME_MESSAGE_NAME =
 			"it.castelli.connection.messages.LeaveGameServerMessage";
+	public static final String AUCTION_OFFER_MESSAGE_NAME =
+			"it.castelli.connection.messages.AuctionOfferServerMessage";
 }

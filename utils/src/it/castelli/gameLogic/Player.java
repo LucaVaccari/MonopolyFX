@@ -71,7 +71,7 @@ public class Player
 	}
 
 	/**
-	 * Getter for the list of contracts
+	 * Getter for the list of contracts (do NOT use to modify the player contracts)
 	 *
 	 * @return The list of contracts owned by the player
 	 */
@@ -88,6 +88,16 @@ public class Player
 	public int getMoney()
 	{
 		return money;
+	}
+
+	/**
+	 * Add the given contract to the player contracts
+	 * @param contract the contract to add
+	 */
+	public void addContract(Contract contract)
+	{
+		contract.setOwner(this);
+		contracts.add(contract);
 	}
 
 	/**

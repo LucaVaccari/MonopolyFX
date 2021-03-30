@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 public class PropertyViewController
 {
 	@FXML
+	private Label valueLabel;
+	@FXML
 	private Label titleLabel;
 	@FXML
 	private Label revenueLabel;
@@ -22,6 +24,8 @@ public class PropertyViewController
 	private Label revenueHotelLabel;
 	@FXML
 	private Label houseCostLabel;
+	@FXML
+	private Label mortgageValueLabel;
 
 	public void setContract(PropertyContract contract)
 	{
@@ -43,7 +47,7 @@ public class PropertyViewController
 			case BLUE -> titleLabel.setStyle("-fx-background-color: #0072bd;");
 		}
 
-
+		valueLabel.setText(String.valueOf(contract.getValue()));
 		titleLabel.setText(contract.getName());
 		revenueLabel.setText(String.valueOf(contract.getRevenues()[0]));
 		revenue1houseLabel.setText(String.valueOf(contract.getRevenues()[1]));
@@ -52,5 +56,6 @@ public class PropertyViewController
 		revenue4housesLabel.setText(String.valueOf(contract.getRevenues()[4]));
 		revenueHotelLabel.setText(String.valueOf(contract.getRevenues()[5]));
 		houseCostLabel.setText(String.valueOf(contract.getHouseCost()));
+		mortgageValueLabel.setText(String.valueOf(contract.getValue() / 2));
 	}
 }
