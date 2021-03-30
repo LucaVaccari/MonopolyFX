@@ -1,11 +1,13 @@
 package it.castelli.connection;
 
+import it.castelli.connection.messages.AuctionServerMessage;
 import it.castelli.connection.messages.ErrorServerMessage;
 import it.castelli.connection.messages.GameManagerPlayersServerMessage;
 import it.castelli.connection.messages.ServerMessages;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.serialization.Serializer;
 
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -15,7 +17,6 @@ public class GameConnectionManager
 	private final CopyOnWriteArrayList<Connection> players;
 	private final GameManager gameManager;
 	private final int gameCode;
-	private boolean inGame = false;
 
 	public GameConnectionManager(int gameCode)
 	{
@@ -26,7 +27,7 @@ public class GameConnectionManager
 
 	public void addPlayer(Connection connection, Player player)
 	{
-		if (players.size() < 6 || !inGame)
+		if (players.size() < 6)  //TODO: check gameManager inGame too
 		{
 			players.add(connection);
 			connection.addPlayer(player);
@@ -55,20 +56,30 @@ public class GameConnectionManager
 	public void startGame()
 	{
 		//TODO: start game
-		inGame = true;
 	}
 
 	public void startAuction(Contract contract)
 	{
 		gameManager.startAuction(contract);
-		//TODO: send auction to players
+		sendAuction();
 	}
 
 	public void offer(Player player, int offer)
 	{
 		gameManager.auctionOffer(player, offer);
-		//TODO: send auction to players
+		sendAuction();
 	}
+
+	private void sendAuction()
+	{
+		for (Connection connection : players)
+		{
+			Auction auction = gameManager.getAuction();
+			AuctionServerMessage message = new AuctionServerMessage(auction.getContract(), auction.getPlayer(), auction.getBestOfferProposed());
+			connection.send(ServerMessages.AUCTION_MESSAGE_NAME, Serializer.toJson(message));
+		}
+	}
+
 
 
 }

@@ -14,11 +14,11 @@ public class Auction
 	private Player player;
 	private Timer timer;
 
-	public Auction(Contract contract)
+	public Auction(Contract contract, int bestOfferProposed, Player player)
 	{
 		this.contract = contract;
-		bestOfferProposed = 10;
-		player = null;
+		this.bestOfferProposed = bestOfferProposed;
+		this.player = player;
 	}
 
 	public void offer(Player player, int offer)
@@ -50,7 +50,22 @@ public class Auction
 	{
 		if (player != null)
 		{
-			//TODO: player.addContract(contract);
+			player.addContract(contract);
 		}
+	}
+
+	public Contract getContract()
+	{
+		return contract;
+	}
+
+	public int getBestOfferProposed()
+	{
+		return bestOfferProposed;
+	}
+
+	public Player getPlayer()
+	{
+		return player;
 	}
 }

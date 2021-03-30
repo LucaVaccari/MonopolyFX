@@ -212,12 +212,22 @@ public class GameManager
 
 	public void startAuction(Contract contract)
 	{
-		this.auction = new Auction(contract);
+		this.auction = new Auction(contract, 10, null);
 		this.auction.startAuction();
 	}
 
 	public void auctionOffer(Player player, int offer)
 	{
 		this.auction.offer(player, offer);
+	}
+
+	public void setAuction(Auction auction)
+	{
+		this.auction = auction;
+	}
+
+	public Auction getAuction()
+	{
+		return auction;
 	}
 }
