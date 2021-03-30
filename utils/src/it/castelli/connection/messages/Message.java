@@ -7,5 +7,5 @@ import java.io.Serializable;
 
 public interface Message extends Serializable
 {
-    public void onReceive(Connection connection, Player player);
+	public void onReceive(Connection connection, Player player);
 }

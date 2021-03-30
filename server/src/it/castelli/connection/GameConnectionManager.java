@@ -26,7 +26,9 @@ public class GameConnectionManager
 		players.add(connection);
 		connection.addPlayer(player);
 		gameManager.addPlayer(player);
-		connection.send(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME, Serializer.toJson(new GameManagerPlayersServerMessage(gameManager.getPlayers())));
+		connection.send(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME,
+		                Serializer.toJson(new GameManagerPlayersServerMessage(
+				                gameManager.getPlayers())));
 	}
 
 	public void removePlayer(Connection connection)
@@ -42,10 +44,10 @@ public class GameConnectionManager
 		return players;
 	}
 
-	public void startGame(){
+	public void startGame()
+	{
 		//TODO: start game
 	}
-
 
 
 }

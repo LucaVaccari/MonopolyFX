@@ -112,7 +112,8 @@ public abstract class Contract
 	public abstract int getRevenue();
 
 	/**
-	 * Returns a hash code value for the object. This method is supported for the benefit of hash
+	 * Returns a hash code value for the object. This method is supported for
+	 * the benefit of hash
 	 * tables such as those provided by {@link HashMap}.
 	 * <p>
 	 * The general contract of {@code hashCode} is:
@@ -135,8 +136,9 @@ public abstract class Contract
 	 * </ul>
 	 *
 	 * @return a hash code value for this object.
-	 * @implSpec As far as is reasonably practical, the {@code hashCode} method defined by class
-	 *        {@code Object} returns distinct integers for distinct objects.
+	 * @implSpec As far as is reasonably practical, the {@code hashCode}
+	 * method defined by class
+	 * {@code Object} returns distinct integers for distinct objects.
 	 * @see Object#equals(Object)
 	 * @see System#identityHashCode
 	 */
@@ -149,7 +151,8 @@ public abstract class Contract
 	/**
 	 * Indicates whether some other object is "equal to" this one.
 	 * <p>
-	 * The {@code equals} method implements an equivalence relation on non-null object references:
+	 * The {@code equals} method implements an equivalence relation on
+	 * non-null object references:
 	 * <ul>
 	 * <li>It is <i>reflexive</i>: for any non-null reference value
 	 *     {@code x}, {@code x.equals(x)} should return
@@ -186,7 +189,8 @@ public abstract class Contract
 	 * that equal objects must have equal hash codes.
 	 *
 	 * @param obj the reference object with which to compare.
-	 * @return {@code true} if this object is the same as the obj argument; {@code false}
+	 * @return {@code true} if this object is the same as the obj argument;
+	 * {@code false}
 	 * otherwise.
 	 * @see #hashCode()
 	 * @see HashMap
@@ -198,8 +202,8 @@ public abstract class Contract
 			return false;
 
 		return name.equals(((Contract) obj).name) &&
-				value == ((Contract) obj).value &&
-				revenue == ((Contract) obj).revenue &&
-				mortgageValue == ((Contract) obj).mortgageValue;
+		       value == ((Contract) obj).value &&
+		       revenue == ((Contract) obj).revenue &&
+		       mortgageValue == ((Contract) obj).mortgageValue;
 	}
 }

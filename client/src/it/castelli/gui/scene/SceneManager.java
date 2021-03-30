@@ -195,7 +195,7 @@ public class SceneManager
 	 */
 	public void setPrimaryStage(Stage primaryStage)
 	{
-		primaryStage.setOnCloseRequest(event ->{
+		primaryStage.setOnCloseRequest(event -> {
 			System.exit(0);
 		});
 		this.primaryStage = primaryStage;

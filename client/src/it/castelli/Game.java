@@ -5,35 +5,35 @@ import it.castelli.gameLogic.Player;
 
 public class Game
 {
-    private static final GameManager gameManager = new GameManager();
-    private static Player player;
+	private static final GameManager gameManager = new GameManager();
+	private static Player player;
 
-    private static int gameCode;
+	private static int gameCode;
 
-    private Game(){}
+	private Game() {}
 
-    public static GameManager getGameManager()
-    {
-        return gameManager;
-    }
+	public static GameManager getGameManager()
+	{
+		return gameManager;
+	}
 
-    public static Player getPlayer()
-    {
-        return player;
-    }
+	public static Player getPlayer()
+	{
+		return player;
+	}
 
-    public static int getGameCode()
-    {
-        return gameCode;
-    }
+	public static void setPlayer(Player player)
+	{
+		Game.player = player;
+	}
 
-    public static void setPlayer(Player player)
-    {
-        Game.player = player;
-    }
+	public static int getGameCode()
+	{
+		return gameCode;
+	}
 
-    public static void setGameCode(int gameCode)
-    {
-        Game.gameCode = gameCode;
-    }
+	public static void setGameCode(int gameCode)
+	{
+		Game.gameCode = gameCode;
+	}
 }

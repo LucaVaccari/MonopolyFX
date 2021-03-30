@@ -92,6 +92,7 @@ public class Player
 
 	/**
 	 * Getter for inPrison
+	 *
 	 * @return Is the player in prison?
 	 */
 	public boolean isInPrison()
@@ -113,7 +114,8 @@ public class Player
 	 * Set the position of the player by specifying it precisely
 	 *
 	 * @param position            The new position for the player
-	 * @param passThroughGoSquare If it passes through the GoSquare, should it get paid?
+	 * @param passThroughGoSquare If it passes through the GoSquare, should it
+	 *                              get paid?
 	 */
 	public void setPosition(int position, boolean passThroughGoSquare)
 	{
@@ -125,7 +127,8 @@ public class Player
 	}
 
 	/**
-	 * Move the player towards by a certain amount (after throwing the dice or a random event)
+	 * Move the player towards by a certain amount (after throwing the dice or
+	 * a random event)
 	 *
 	 * @param units The number of squares to move
 	 */

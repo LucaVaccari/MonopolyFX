@@ -16,7 +16,8 @@ public class PropertySquare implements Square
 	/**
 	 * Constructor for the PropertySquare
 	 *
-	 * @param contract The PropertyContract containing information about the property
+	 * @param contract The PropertyContract containing information about the
+	 *                    property
 	 */
 	public PropertySquare(PropertyContract contract)
 	{
@@ -34,7 +35,8 @@ public class PropertySquare implements Square
 	}
 
 	/**
-	 * If it's not bought yet, give the player the possibility to buy it, otherwise make the player
+	 * If it's not bought yet, give the player the possibility to buy it,
+	 * otherwise make the player
 	 * pay the owner
 	 *
 	 * @param player The player who landed on the square

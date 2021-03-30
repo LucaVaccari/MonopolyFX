@@ -34,7 +34,8 @@ public class CompanySquare implements Square
 	}
 
 	/**
-	 * If it's not bought yet, give the player the possibility to buy, otherwise make the player
+	 * If it's not bought yet, give the player the possibility to buy,
+	 * otherwise make the player
 	 * pay
 	 * the owner
 	 *

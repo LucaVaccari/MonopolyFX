@@ -22,9 +22,11 @@ public class BirthdayRandomEvent extends RandomEvent
 	}
 
 	/**
-	 * Take money from each player and give them to one of them (the one who drew the card)
+	 * Take money from each player and give them to one of them (the one who
+	 * drew the card)
 	 *
-	 * @param player The player who drew the card, which will take money from all others
+	 * @param player The player who drew the card, which will take money from
+	 *                  all others
 	 */
 	@Override
 	public void applyEffect(Player player)

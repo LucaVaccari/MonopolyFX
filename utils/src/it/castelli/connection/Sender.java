@@ -14,7 +14,8 @@ public class Sender
 	{
 		try
 		{
-			out = new BufferedWriter(new OutputStreamWriter(connectionSocket.getOutputStream()));
+			out = new BufferedWriter(
+					new OutputStreamWriter(connectionSocket.getOutputStream()));
 			address = connectionSocket.getInetAddress().getHostAddress();
 		}
 		catch (IOException e)

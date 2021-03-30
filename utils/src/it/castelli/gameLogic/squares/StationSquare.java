@@ -16,7 +16,8 @@ public class StationSquare implements Square
 	/**
 	 * Constructor for the StationSquare
 	 *
-	 * @param contract The StationContract containing information about the station
+	 * @param contract The StationContract containing information about the
+	 *                    station
 	 */
 	public StationSquare(StationContract contract)
 	{
@@ -34,7 +35,8 @@ public class StationSquare implements Square
 	}
 
 	/**
-	 * If it's not bought yet, give the player the possibility to buy it, otherwise make the player
+	 * If it's not bought yet, give the player the possibility to buy it,
+	 * otherwise make the player
 	 * pay the owner
 	 *
 	 * @param player The player who landed on the square

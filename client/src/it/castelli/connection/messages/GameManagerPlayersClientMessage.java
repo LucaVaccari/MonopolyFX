@@ -8,19 +8,19 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameManagerPlayersClientMessage implements Message
 {
-    private CopyOnWriteArrayList<Player> players;
+	private CopyOnWriteArrayList<Player> players;
 
-    public GameManagerPlayersClientMessage(CopyOnWriteArrayList<Player> players)
-    {
-        this.players = players;
-    }
+	public GameManagerPlayersClientMessage(CopyOnWriteArrayList<Player> players)
+	{
+		this.players = players;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        for (Player element : players)
-        {
-            Game.getGameManager().addPlayer(element);
-        }
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		for (Player element : players)
+		{
+			Game.getGameManager().addPlayer(element);
+		}
+	}
 }

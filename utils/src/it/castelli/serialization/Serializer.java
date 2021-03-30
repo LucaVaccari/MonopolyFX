@@ -57,6 +57,7 @@ public class Serializer
 
 	/**
 	 * Convert a given object to Json string
+	 *
 	 * @param obj The object to convert
 	 * @return The json string representing the given object
 	 */
@@ -69,7 +70,8 @@ public class Serializer
 
 	/**
 	 * Convert a Json string to an object of type defined by a string
-	 * @param data The Json string representing the object
+	 *
+	 * @param data      The Json string representing the object
 	 * @param className The class name
 	 * @return The object of the specified type contained in the Json string
 	 */
@@ -80,7 +82,7 @@ public class Serializer
 		try
 		{
 			Module module = Class.forName(className).getModule();
-			Class.forName(module,"ExampleClassClient");
+			Class.forName(module, "ExampleClassClient");
 			obj = json.fromJson(data, (Type) Class.forName(className));
 		}
 		catch (ClassNotFoundException e)

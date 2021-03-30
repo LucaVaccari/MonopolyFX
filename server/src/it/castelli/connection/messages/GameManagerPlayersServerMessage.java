@@ -7,16 +7,16 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameManagerPlayersServerMessage implements Message
 {
-    private CopyOnWriteArrayList<Player> players;
+	private CopyOnWriteArrayList<Player> players;
 
-    public GameManagerPlayersServerMessage(CopyOnWriteArrayList<Player> players)
-    {
-        this.players = players;
-    }
+	public GameManagerPlayersServerMessage(CopyOnWriteArrayList<Player> players)
+	{
+		this.players = players;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        //do nothing
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		//do nothing
+	}
 }

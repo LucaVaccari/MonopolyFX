@@ -11,7 +11,8 @@ import java.util.Optional;
  */
 public class AlertUtil
 {
-	private static void showGenericAlert(Alert.AlertType alertType, String title, String header,
+	private static void showGenericAlert(Alert.AlertType alertType,
+	                                     String title, String header,
 	                                     String content)
 	{
 		Alert alert = new Alert(alertType);
@@ -24,13 +25,17 @@ public class AlertUtil
 	/**
 	 * Shows a dialog with a text input
 	 *
-	 * @param defaultValue The value which is already written when the dialogue opens
-	 * @param title        The title of the dialogue (in the top-center of the window)
+	 * @param defaultValue The value which is already written when the
+	 *                        dialogue opens
+	 * @param title        The title of the dialogue (in the top-center of the
+	 *                       window)
 	 * @param headerText   The header, the bigger message
 	 * @param contentText  The text near the input field (at his left)
-	 * @return An optional string possibly containing the content of the input field
+	 * @return An optional string possibly containing the content of the input
+	 * field
 	 */
-	public static Optional<String> showTextInputDialogue(String defaultValue, String title,
+	public static Optional<String> showTextInputDialogue(String defaultValue,
+	                                                     String title,
 	                                                     String headerText,
 	                                                     String contentText)
 	{
@@ -44,12 +49,14 @@ public class AlertUtil
 	/**
 	 * Shows a dialog with "Cancel" and "Ok" options
 	 *
-	 * @param title       The title of the dialogue (in the top-center of the window)
+	 * @param title       The title of the dialogue (in the top-center of the
+	 *                       window)
 	 * @param headerText  The header, the bigger message
 	 * @param contentText The content of the message
 	 * @return The result of the operation
 	 */
-	public static Optional<ButtonType> showConfirmationAlert(String title, String headerText,
+	public static Optional<ButtonType> showConfirmationAlert(String title,
+	                                                         String headerText,
 	                                                         String contentText)
 	{
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -60,25 +67,31 @@ public class AlertUtil
 	}
 
 	/**
-	 * Shows a simple dialog message not interactive (with an ok button to close)
+	 * Shows a simple dialog message not interactive (with an ok button to
+	 * close)
 	 *
-	 * @param title   The title of the dialogue (in the top-center of the window)
+	 * @param title   The title of the dialogue (in the top-center of the
+	 *                   window)
 	 * @param header  The header, the bigger message
 	 * @param content The content of the message
 	 */
-	public static void showInformationAlert(String title, String header, String content)
+	public static void showInformationAlert(String title, String header,
+	                                        String content)
 	{
 		showGenericAlert(Alert.AlertType.INFORMATION, title, header, content);
 	}
 
 	/**
-	 * Shows an error dialog, similar to the information, but with an error sign
+	 * Shows an error dialog, similar to the information, but with an error
+	 * sign
 	 *
-	 * @param title   The title of the dialogue (in the top-center of the window)
+	 * @param title   The title of the dialogue (in the top-center of the
+	 *                   window)
 	 * @param header  The header, the bigger message
 	 * @param content The content of the message
 	 */
-	public static void showErrorAlert(String title, String header, String content)
+	public static void showErrorAlert(String title, String header,
+	                                  String content)
 	{
 		showGenericAlert(Alert.AlertType.ERROR, title, header, content);
 	}
