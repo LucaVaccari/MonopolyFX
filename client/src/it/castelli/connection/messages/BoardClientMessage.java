@@ -7,16 +7,16 @@ import it.castelli.gameLogic.squares.Square;
 
 public class BoardClientMessage implements Message
 {
-    private Square[] board;
+	private Square[] board;
 
-    public BoardClientMessage(Square[] board)
-    {
-        this.board = board;
-    }
+	public BoardClientMessage(Square[] board)
+	{
+		this.board = board;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        Game.getGameManager().setBoard(board);
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		Game.getGameManager().setBoard(board);
+	}
 }

@@ -6,16 +6,16 @@ import it.castelli.gameLogic.squares.Square;
 
 public class BoardServerMessage implements Message
 {
-    private Square[] board;
+	private Square[] board;
 
-    public BoardServerMessage(Square[] board)
-    {
-        this.board = board;
-    }
+	public BoardServerMessage(Square[] board)
+	{
+		this.board = board;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        // do nothing
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		// do nothing
+	}
 }

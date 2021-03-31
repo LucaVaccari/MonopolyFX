@@ -26,9 +26,9 @@ public class AlertUtil
 	 * Shows a dialog with a text input
 	 *
 	 * @param defaultValue The value which is already written when the
-	 *                        dialogue opens
+	 *                     dialogue opens
 	 * @param title        The title of the dialogue (in the top-center of the
-	 *                       window)
+	 *                     window)
 	 * @param headerText   The header, the bigger message
 	 * @param contentText  The text near the input field (at his left)
 	 * @return An optional string possibly containing the content of the input
@@ -50,7 +50,7 @@ public class AlertUtil
 	 * Shows a dialog with "Cancel" and "Ok" options
 	 *
 	 * @param title       The title of the dialogue (in the top-center of the
-	 *                       window)
+	 *                    window)
 	 * @param headerText  The header, the bigger message
 	 * @param contentText The content of the message
 	 * @return The result of the operation
@@ -71,7 +71,7 @@ public class AlertUtil
 	 * close)
 	 *
 	 * @param title   The title of the dialogue (in the top-center of the
-	 *                   window)
+	 *                window)
 	 * @param header  The header, the bigger message
 	 * @param content The content of the message
 	 */
@@ -86,7 +86,7 @@ public class AlertUtil
 	 * sign
 	 *
 	 * @param title   The title of the dialogue (in the top-center of the
-	 *                   window)
+	 *                window)
 	 * @param header  The header, the bigger message
 	 * @param content The content of the message
 	 */
