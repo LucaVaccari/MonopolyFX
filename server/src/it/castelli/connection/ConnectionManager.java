@@ -1,6 +1,7 @@
 package it.castelli.connection;
 
 import it.castelli.connection.messages.ErrorServerMessage;
+import it.castelli.connection.messages.GameCodeServerMessage;
 import it.castelli.connection.messages.ServerMessages;
 import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
@@ -47,6 +48,7 @@ public class ConnectionManager
 	{
 		System.out.println("Connection added to the waiting room");
 		waitingRoom.add(connection);
+		System.out.println("The total number of connection in the waiting is: " + waitingRoom.size());
 	}
 
 	private void addGame(int code, GameConnectionManager game)
@@ -72,6 +74,10 @@ public class ConnectionManager
 		{
 			games.get(code).addPlayer(connection, player);
 			waitingRoom.remove(connection);
+
+			// Sending game code to the client
+			connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME,
+					Serializer.toJson(new GameCodeServerMessage(code)));
 		}
 		else
 		{

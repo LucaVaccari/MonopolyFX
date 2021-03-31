@@ -7,12 +7,21 @@ import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.transactions.Auction;
 
+/**
+ * The auction info message (receive only)
+ */
 public class AuctionClientMessage implements Message
 {
     private Contract contract;
     private Player player;
     private int bestOfferProposed;
 
+    /**
+     * Constructor for AuctionClientMessage
+     * @param contract the contract to sell
+     * @param player player with the best offer
+     * @param bestOfferProposed the best offer value
+     */
     public AuctionClientMessage(Contract contract, Player player, int bestOfferProposed)
     {
         this.contract = contract;

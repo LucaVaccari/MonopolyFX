@@ -5,8 +5,17 @@ import it.castelli.connection.ConnectionManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
 
+/**
+ * The create game request message (receive only)
+ */
 public class CreateGameServerMessage implements Message
 {
+
+	/**
+	 * Create game
+	 * @param connection connection of the player
+	 * @param player player
+	 */
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{

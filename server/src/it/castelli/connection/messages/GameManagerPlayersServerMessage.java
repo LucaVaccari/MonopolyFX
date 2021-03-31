@@ -5,10 +5,17 @@ import it.castelli.gameLogic.Player;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * Players in the game info message (send only)
+ */
 public class GameManagerPlayersServerMessage implements Message
 {
 	private CopyOnWriteArrayList<Player> players;
 
+	/**
+	 * Constructor for GameManagerPlayersServerMessage
+	 * @param players players of the game
+	 */
 	public GameManagerPlayersServerMessage(CopyOnWriteArrayList<Player> players)
 	{
 		this.players = players;

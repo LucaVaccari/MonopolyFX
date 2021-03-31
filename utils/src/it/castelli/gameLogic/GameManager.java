@@ -234,4 +234,9 @@ public class GameManager
 	{
 		this.board = board;
 	}
+
+	public void clearPlayers()
+	{
+		players.clear();
+	}
 }
