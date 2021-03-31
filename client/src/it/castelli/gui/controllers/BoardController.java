@@ -266,36 +266,36 @@ public class BoardController
 							Game.getGameManager().getSquare(5).getContract());
 			southStationSquare
 					.setOnMouseClicked(event ->
-							                   showStationView(
-									                   (StationContract) southStationSquare
-											                   .getContract()));
+							showStationView(
+									(StationContract) southStationSquare
+											.getContract()));
 
 			westStationSquare
 					.setContract(
 							Game.getGameManager().getSquare(15).getContract());
 			westStationSquare
 					.setOnMouseClicked(event ->
-							                   showStationView(
-									                   (StationContract) westStationSquare
-											                   .getContract()));
+							showStationView(
+									(StationContract) westStationSquare
+											.getContract()));
 
 			northStationSquare
 					.setContract(
 							Game.getGameManager().getSquare(25).getContract());
 			northStationSquare
 					.setOnMouseClicked(event ->
-							                   showStationView(
-									                   (StationContract) northStationSquare
-											                   .getContract()));
+							showStationView(
+									(StationContract) northStationSquare
+											.getContract()));
 
 			eastStationSquare
 					.setContract(
 							Game.getGameManager().getSquare(35).getContract());
 			eastStationSquare
 					.setOnMouseClicked(event ->
-							                   showStationView(
-									                   (StationContract) eastStationSquare
-											                   .getContract()));
+							showStationView(
+									(StationContract) eastStationSquare
+											.getContract()));
 
 			// COMPANIES
 			electricSocietySquare
@@ -438,7 +438,7 @@ public class BoardController
 			for (Contract contract : Game.getPlayer().getContracts())
 			{
 				if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-				    !mostProductiveContracts.contains(mostProductiveContract))
+						!mostProductiveContracts.contains(mostProductiveContract))
 					mostProductiveContract = contract;
 			}
 			mostProductiveContracts.add(mostProductiveContract);

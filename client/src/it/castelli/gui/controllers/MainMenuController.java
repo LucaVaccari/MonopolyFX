@@ -22,9 +22,9 @@ public class MainMenuController
 
 		joinButton.setOnAction(event -> {
 			AlertUtil.showTextInputDialogue("", "Codice di gioco",
-			                                "Inserisci il codice di gioco",
-			                                "Inserisci il codice che l'host " +
-			                                "della partita ti ha fornito:");
+					"Inserisci il codice di gioco",
+					"Inserisci il codice che l'host " +
+							"della partita ti ha fornito:");
 			// TODO: process input code
 			// TODO: go to lobby
 		});

@@ -25,7 +25,9 @@ public class Game
 	/**
 	 * Private constructor, to prevent instantiating this class
 	 */
-	private Game() {}
+	private Game()
+	{
+	}
 
 	/**
 	 * Getter for the gameManager

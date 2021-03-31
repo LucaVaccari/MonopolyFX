@@ -11,6 +11,6 @@ public class KeepAliveClientMessage implements Message
 	{
 		System.out.println("KeepAlive reply sent to server");
 		connection.send(ClientMessages.KEEP_ALIVE_MESSAGE_NAME,
-		                Serializer.toJson(new KeepAliveClientMessage()));
+				Serializer.toJson(new KeepAliveClientMessage()));
 	}
 }

@@ -3,7 +3,7 @@
 <?import it.castelli.gui.customComponents.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.Cursor?>
+<?import javafx.scene.*?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -63,6 +63,9 @@
                                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
                                  GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/brown.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="communityChestSquare1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="8" GridPane.halignment="CENTER"
@@ -75,6 +78,9 @@
                                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
                                  GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/brown.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="patrimonialTaxSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="6" GridPane.halignment="CENTER"
@@ -87,12 +93,18 @@
                                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
                                  GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/station.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="bastioniGranSassoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER"
                                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
                                  GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/light_blue.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="chanceSquare1" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="10">
@@ -103,12 +115,18 @@
                                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
                                  GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/light_blue.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="vialeVesuvioSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER"
                                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
                                  GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/viale_vesuvio.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="justVisitingSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
@@ -119,31 +137,49 @@
                                  preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
                                  GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/magenta.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="electricSocietySquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
                                  GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/electric_society.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="corsoAteneoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
                                  GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/magenta.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="piazzaUniversitaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
                                  GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/piazza_università.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="westStationSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
                                  GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/station.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="viaVerdiSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
                                  GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/orange.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="communityChestSquare2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
@@ -154,11 +190,17 @@
                                  preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
                                  GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/orange.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="piazzaDanteSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
                                  GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/piazza-dante.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="freeParkingSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true">
@@ -167,6 +209,9 @@
                 <SquareComponent fx:id="viaMarcoPoloSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="1">
                     <Image url="@../images/squares/red.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="chanceSquare2" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="2">
@@ -175,30 +220,51 @@
                 <SquareComponent fx:id="corsoMagellanoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="3">
                     <Image url="@../images/squares/red.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="largoColomboSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="4">
                     <Image url="@../images/squares/largo_colombo.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="northStationSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="5">
                     <Image url="@../images/squares/station.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="vialeCostantinoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="6">
                     <Image url="@../images/squares/yellow.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="vialeTraianoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="7">
                     <Image url="@../images/squares/yellow.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="waterWorksSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="8">
                     <Image url="@../images/squares/water_works.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="piazzaGiulioCesareSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="9">
                     <Image url="@../images/squares/piazza_cesare.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="goToJailSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="10">
@@ -207,12 +273,18 @@
                 <SquareComponent fx:id="viaRomaSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="1">
                     <Image url="@../images/squares/green.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="corsoImperoSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER"
                                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER"
                                  GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/green.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="communityChestSquare3" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER"
@@ -225,12 +297,18 @@
                                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER"
                                  GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/largo_augusto.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="eastStationSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER"
                                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER"
                                  GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/station.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="chanceSquare3" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER"
@@ -243,6 +321,9 @@
                                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER"
                                  GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/viale_giardini.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <SquareComponent fx:id="luxuryTaxSquare" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                  preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER"
@@ -255,6 +336,9 @@
                                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER"
                                  GridPane.vgrow="ALWAYS">
                     <Image url="@../images/squares/parco_vittoria.png"/>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </SquareComponent>
                 <ImageView fitHeight="450.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true"
                            GridPane.columnIndex="1" GridPane.rowIndex="5">

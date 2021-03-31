@@ -29,7 +29,9 @@ public class GUIUtils
 	/**
 	 * Private constructor to prevent instantiating the class
 	 */
-	private GUIUtils() {}
+	private GUIUtils()
+	{
+	}
 
 	/**
 	 * Getter for the propertyColorsCodes HashMap

@@ -69,7 +69,7 @@ public class Connection
 		if (obj instanceof Connection)
 			return connectionSocket.getInetAddress().getHostAddress()
 					.equals(((Connection) obj).connectionSocket.getInetAddress()
-							        .getHostAddress());
+							.getHostAddress());
 		return false;
 	}
 }
