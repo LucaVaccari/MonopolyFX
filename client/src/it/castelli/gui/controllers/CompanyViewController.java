@@ -8,6 +8,9 @@ import javafx.scene.image.ImageView;
 
 public class CompanyViewController
 {
+	/**
+	 * Enumeration of companies: Electric company and Water works
+	 */
 	public enum Company { ELECTRIC, WATER }
 
 	@FXML
@@ -15,6 +18,11 @@ public class CompanyViewController
 	@FXML
 	private Label companyNameLabel;
 
+	/**
+	 * Update the visuals of the CompanyView.
+	 * @param company The company bound to the contract
+	 * @param contract The contract of the company
+	 */
 	public void setContract(Company company, CompanyContract contract)
 	{
 		switch (company)
