@@ -21,6 +21,11 @@ public class StationViewController
 	@FXML
 	private Label mortgageValue;
 
+	/**
+	 * Update the visuals of the StationView.
+	 *
+	 * @param contract The contract of the station
+	 */
 	public void setContract(StationContract contract)
 	{
 		titleLabel.setText(contract.getName());

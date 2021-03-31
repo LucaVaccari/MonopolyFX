@@ -27,6 +27,11 @@ public class PropertyViewController
 	@FXML
 	private Label mortgageValueLabel;
 
+	/**
+	 * Update the visuals of the PropertyView.
+	 *
+	 * @param contract The contract of the property
+	 */
 	public void setContract(PropertyContract contract)
 	{
 		switch (contract.getColor())

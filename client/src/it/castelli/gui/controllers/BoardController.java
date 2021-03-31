@@ -314,6 +314,11 @@ public class BoardController
 		}
 	}
 
+	/**
+	 * Show a new not resizable stage containing information about a company
+	 *
+	 * @param contract The contract of the company to show
+	 */
 	private void showCompanyView(CompanyViewController.Company company, CompanyContract contract)
 	{
 		if (contract == null)
