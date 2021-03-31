@@ -1,6 +1,7 @@
 package it.castelli.gui.controllers;
 
 import it.castelli.gameLogic.contracts.PropertyContract;
+import it.castelli.gui.GUIUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -34,23 +35,7 @@ public class PropertyViewController
 	 */
 	public void setContract(PropertyContract contract)
 	{
-		switch (contract.getColor())
-		{
-			case BROWN -> titleLabel.setStyle("-fx-background-color: " +
-			                                  "#965336;");
-			case LIGHT_BLUE -> titleLabel
-					.setStyle("-fx-background-color: #ace2fc;");
-			case MAGENTA -> titleLabel
-					.setStyle("-fx-background-color: #dd3997;");
-			case ORANGE -> titleLabel
-					.setStyle("-fx-background-color: #f9951c;");
-			case RED -> titleLabel.setStyle("-fx-background-color: #ee1b23;");
-			case YELLOW -> titleLabel
-					.setStyle("-fx-background-color: #ffef06;");
-			case GREEN -> titleLabel.setStyle("-fx-background-color: " +
-			                                  "#1fb25a;");
-			case BLUE -> titleLabel.setStyle("-fx-background-color: #0072bd;");
-		}
+		titleLabel.setStyle("-fx-background-color: " + GUIUtils.getPropertyColorsCodes().get(contract.getColor()));
 
 		valueLabel.setText(String.valueOf(contract.getValue()));
 		titleLabel.setText(contract.getName());

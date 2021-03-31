@@ -17,7 +17,7 @@ public class PropertySquare implements Square
 	 * Constructor for the PropertySquare
 	 *
 	 * @param contract The PropertyContract containing information about the
-	 *                    property
+	 *                 property
 	 */
 	public PropertySquare(PropertyContract contract)
 	{

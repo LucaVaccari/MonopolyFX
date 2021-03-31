@@ -32,11 +32,13 @@ public class GameConnectionManager
 			players.add(connection);
 			connection.addPlayer(player);
 			gameManager.addPlayer(player);
-			connection.send(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME, Serializer.toJson(new GameManagerPlayersServerMessage(gameManager.getPlayers())));
+			connection.send(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME,
+			                Serializer.toJson(new GameManagerPlayersServerMessage(gameManager.getPlayers())));
 		}
 		else
 		{
-			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("You can't enter this game, lobby is full or the game has already started")));
+			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage(
+					"You can't enter this game, lobby is full or the game has already started")));
 		}
 	}
 
@@ -75,11 +77,11 @@ public class GameConnectionManager
 		for (Connection connection : players)
 		{
 			Auction auction = gameManager.getAuction();
-			AuctionServerMessage message = new AuctionServerMessage(auction.getContract(), auction.getPlayer(), auction.getBestOfferProposed());
+			AuctionServerMessage message = new AuctionServerMessage(auction.getContract(), auction.getPlayer(),
+			                                                        auction.getBestOfferProposed());
 			connection.send(ServerMessages.AUCTION_MESSAGE_NAME, Serializer.toJson(message));
 		}
 	}
-
 
 
 }

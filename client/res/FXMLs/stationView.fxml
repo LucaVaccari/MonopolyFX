@@ -1,99 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="300.0" prefWidth="256.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.StationViewController">
-	<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="300.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-		<Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="79.0" prefWidth="236.0" text="station name" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
-			<font>
-				<Font name="System Bold" size="20.0" />
-			</font>
-		</Label>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="256.0" xmlns="http://javafx.com/javafx/16"
+            fx:controller="it.castelli.gui.controllers.StationViewController">
+    <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="300.0" AnchorPane.bottomAnchor="10.0"
+          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308"
+               prefHeight="79.0" prefWidth="236.0" text="station name" textAlignment="CENTER" wrapText="true"
+               VBox.vgrow="ALWAYS">
+            <font>
+                <Font name="System Bold" size="20.0"/>
+            </font>
+        </Label>
         <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../images/squares/station.png"/>
         </ImageView>
-		<GridPane VBox.vgrow="ALWAYS">
-			<columnConstraints>
-				<ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="138.0" />
-				<ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="98.0" />
-			</columnConstraints>
-			<rowConstraints>
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-			</rowConstraints>
-			<Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Valore" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets right="10.0" />
-				</padding>
-			</Label>
-			<Label fx:id="valueLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets left="10.0" />
-				</padding>
-			</Label>
-			<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="61.0" text="Rendita" textAlignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets right="10.0" />
-				</padding>
-			</Label>
-			<Label fx:id="revenue1StationLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets left="10.0" />
-				</padding>
-			</Label>
-			<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Con 2 stazioni" textAlignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets right="10.0" />
-				</padding>
-			</Label>
-			<Label fx:id="revenue2StationsLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets left="10.0" />
-				</padding>
-			</Label>
-			<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Con 3 stazioni" textAlignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets right="10.0" />
-				</padding>
-			</Label>
-			<Label fx:id="revenue3StationsLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets left="10.0" />
-				</padding>
-			</Label>
-			<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Con 4 stazioni" textAlignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets right="10.0" />
-				</padding>
-			</Label>
-			<Label fx:id="revenue4StationsLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets left="10.0" />
-				</padding>
-			</Label>
-			<Label alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Valore ipotecario" textAlignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets right="10.0" />
-				</padding>
-			</Label>
-			<Label fx:id="mortgageValue" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
-				<padding>
-					<Insets left="10.0" />
-				</padding>
-			</Label>
-		</GridPane>
-	</VBox>
+        <GridPane VBox.vgrow="ALWAYS">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="138.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="98.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                   text="Valore" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets right="10.0"/>
+                </padding>
+            </Label>
+            <Label fx:id="valueLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label"
+                   GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets left="10.0"/>
+                </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="61.0" text="Rendita"
+                   textAlignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets right="10.0"/>
+                </padding>
+            </Label>
+            <Label fx:id="revenue1StationLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
+                   GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets left="10.0"/>
+                </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" text="Con 2 stazioni" textAlignment="RIGHT" GridPane.hgrow="ALWAYS"
+                   GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets right="10.0"/>
+                </padding>
+            </Label>
+            <Label fx:id="revenue2StationsLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
+                   GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets left="10.0"/>
+                </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" text="Con 3 stazioni" textAlignment="RIGHT" GridPane.hgrow="ALWAYS"
+                   GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets right="10.0"/>
+                </padding>
+            </Label>
+            <Label fx:id="revenue3StationsLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
+                   GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets left="10.0"/>
+                </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" text="Con 4 stazioni" textAlignment="RIGHT" GridPane.hgrow="ALWAYS"
+                   GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets right="10.0"/>
+                </padding>
+            </Label>
+            <Label fx:id="revenue4StationsLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
+                   GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets left="10.0"/>
+                </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" text="Valore ipotecario" textAlignment="RIGHT"
+                   GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets right="10.0"/>
+                </padding>
+            </Label>
+            <Label fx:id="mortgageValue" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" text="Label" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
+                   GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+                <padding>
+                    <Insets left="10.0"/>
+                </padding>
+            </Label>
+        </GridPane>
+    </VBox>
 </AnchorPane>

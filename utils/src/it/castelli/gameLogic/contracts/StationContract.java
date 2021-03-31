@@ -37,8 +37,9 @@ public class StationContract extends Contract
 
 	/**
 	 * Get the revenue based on the number of station taken as int
+	 *
 	 * @param numberOfStation The number of station from which to calculate
-	 *                           the revenue
+	 *                        the revenue
 	 * @return The revenue calculated
 	 */
 	public int getRevenueFromNumberOfStations(int numberOfStation)
