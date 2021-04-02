@@ -5,6 +5,8 @@ import it.castelli.gui.FXMLFileLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
+
 /**
  * GUI component containing a Square of the board
  */
@@ -26,6 +28,14 @@ public class SquareComponent extends ImageView
 		FXMLLoader loader = FXMLFileLoader.getLoader(SQUARE_FXML_PATH);
 		loader.setController(this);
 		loader.setRoot(this);
+		try
+		{
+			loader.load();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**

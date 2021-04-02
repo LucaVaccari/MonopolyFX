@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<fx:root prefHeight="100.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-			fx:controller="it.castelli.gui.customComponents.SmallTerrainViewComponent" type="AnchorPane">
-	<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0"
-		  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-		  AnchorPane.topAnchor="0.0">
-		<Label alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-			   text="Name" VBox.vgrow="ALWAYS">
+
+<fx:root prefHeight="80.0" prefWidth="80.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+	<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+		<Label fx:id="terrainNameLabel" alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #ffffff;" text="Name" VBox.vgrow="ALWAYS">
 			<padding>
-				<Insets bottom="10.0"/>
+				<Insets bottom="10.0" />
 			</padding>
 		</Label>
-		<Label alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-			   text="Value" VBox.vgrow="ALWAYS">
+		<Label fx:id="terrainValueLabel" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #ffffff;" text="Value" VBox.vgrow="ALWAYS">
 			<padding>
-				<Insets top="10.0"/>
+				<Insets top="10.0" />
 			</padding>
 		</Label>
 	</VBox>

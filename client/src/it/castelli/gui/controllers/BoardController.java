@@ -5,7 +5,7 @@ import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.FXMLFileLoader;
-import it.castelli.gui.GUIUtils;
+import it.castelli.gui.customComponents.SmallTerrainViewComponent;
 import it.castelli.gui.customComponents.SquareComponent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -35,6 +35,10 @@ public class BoardController
 			"/FXMLs/stationView.fxml";
 	public static final String COMPANY_VIEW_FXML_PATH =
 			"/FXMLs/companyView.fxml";
+
+	private static final int SHOWN_OWNED_PROPERTIES = 9;
+
+	private static BoardController instance;
 
 	@FXML
 	private SquareComponent goSquare;
@@ -118,7 +122,7 @@ public class BoardController
 	private SquareComponent parcoDellaVittoriaSquare;
 
 	@FXML
-	private GridPane ownedPropertiesPane;
+	private FlowPane ownedPropertiesPane;
 	@FXML
 	private Label moneyLabel;
 
@@ -278,7 +282,15 @@ public class BoardController
 					.setOnMouseClicked(event -> showTerrainView((CompanyContract) waterWorksSquare.getContract()));
 		}
 
-		calculateOwnedProperties();
+		// add SmallTerrainViewComponents to the owned properties
+		for (int i = 0; i < SHOWN_OWNED_PROPERTIES; i++)
+		{
+			SmallTerrainViewComponent terrainView = new SmallTerrainViewComponent();
+			terrainView.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+			ownedPropertiesPane.getChildren().add(terrainView);
+		}
+
+		//calculateOwnedProperties();
 	}
 
 	/**
@@ -286,15 +298,14 @@ public class BoardController
 	 *
 	 * @param contract The contract of the property to show
 	 */
-	private void showTerrainView(PropertyContract contract)
+	public void showTerrainView(PropertyContract contract)
 	{
 		if (contract == null)
 			return;
 
 		try
 		{
-			FXMLLoader loader =
-					FXMLFileLoader.getLoader(PROPERTY_VIEW_FXML_PATH);
+			FXMLLoader loader = FXMLFileLoader.getLoader(PROPERTY_VIEW_FXML_PATH);
 			Parent root = loader.load();
 			PropertyViewController controller = loader.getController();
 			controller.setContract(contract);
@@ -317,15 +328,14 @@ public class BoardController
 	 *
 	 * @param contract The contract of the station to show
 	 */
-	private void showTerrainView(StationContract contract)
+	public void showTerrainView(StationContract contract)
 	{
 		if (contract == null)
 			return;
 
 		try
 		{
-			FXMLLoader loader =
-					FXMLFileLoader.getLoader(STATION_VIEW_FXML_PATH);
+			FXMLLoader loader = FXMLFileLoader.getLoader(STATION_VIEW_FXML_PATH);
 			Parent root = loader.load();
 			StationViewController controller = loader.getController();
 			controller.setContract(contract);
@@ -348,15 +358,14 @@ public class BoardController
 	 *
 	 * @param contract The contract of the company to show
 	 */
-	private void showTerrainView(CompanyContract contract)
+	public void showTerrainView(CompanyContract contract)
 	{
 		if (contract == null)
 			return;
 
 		try
 		{
-			FXMLLoader loader =
-					FXMLFileLoader.getLoader(COMPANY_VIEW_FXML_PATH);
+			FXMLLoader loader = FXMLFileLoader.getLoader(COMPANY_VIEW_FXML_PATH);
 			Parent root = loader.load();
 			CompanyViewController controller = loader.getController();
 			controller.setContract(contract);
@@ -377,25 +386,14 @@ public class BoardController
 
 	private void calculateOwnedProperties()
 	{
-		final int SHOWN_PROPERTIES = 9;
+		SmallTerrainViewComponent[] ownedTerrains = new SmallTerrainViewComponent[SHOWN_OWNED_PROPERTIES];
+		ArrayList<Contract> mostProductiveContracts = new ArrayList<>(SHOWN_OWNED_PROPERTIES);
 
-		Label[] propertyLabels = new Label[SHOWN_PROPERTIES];
-		Label[] valueLabels = new Label[SHOWN_PROPERTIES];
-		ArrayList<Contract> mostProductiveContracts = new ArrayList<>(9);
-
-		for (int i = 0; i < SHOWN_PROPERTIES; i++)
+		for (int i = 0; i < SHOWN_OWNED_PROPERTIES; i++)
 		{
-			Node propertyNode = ownedPropertiesPane.getChildren().get(i * 2);
-			if (propertyNode instanceof Label)
-				propertyLabels[i] = (Label) propertyNode;
-			else
-				continue;
-
-			Node revenueNode = ownedPropertiesPane.getChildren().get(i * 2 + 1);
-			if (revenueNode instanceof Label)
-				valueLabels[i] = (Label) revenueNode;
-			else
-				continue;
+			Node terrainView = ownedPropertiesPane.getChildren().get(i);
+			if (terrainView instanceof SmallTerrainViewComponent)
+				ownedTerrains[i] = (SmallTerrainViewComponent) terrainView;
 
 			if (getPlayer() == null)
 				return;
@@ -409,26 +407,7 @@ public class BoardController
 			}
 			mostProductiveContracts.add(mostProductiveContract);
 
-			propertyLabels[i].setText(mostProductiveContracts.get(i).getName());
-			valueLabels[i].setText(String.valueOf(mostProductiveContracts.get(i).getRevenue()));
-
-			if (mostProductiveContract instanceof PropertyContract)
-				propertyLabels[i].setStyle("-fx-background-color: " + GUIUtils.getPropertyColorsCodes()
-						.get(((PropertyContract) mostProductiveContract).getColor()));
-			else
-				propertyLabels[i].setStyle("-fx-background-color: #ffffff"); // set to white if station or company
-
-
-			Contract finalMostProductiveContract = mostProductiveContract;
-			if (mostProductiveContract instanceof PropertyContract)
-				propertyLabels[i]
-						.setOnMouseClicked(event -> showTerrainView((PropertyContract) finalMostProductiveContract));
-			else if (mostProductiveContract instanceof StationContract)
-				propertyLabels[i]
-						.setOnMouseClicked(event -> showTerrainView((StationContract) finalMostProductiveContract));
-			else if (mostProductiveContract instanceof CompanyContract)
-				propertyLabels[i]
-						.setOnMouseClicked(event -> showTerrainView((CompanyContract) finalMostProductiveContract));
+			ownedTerrains[i].setContract(mostProductiveContract);
 
 			// TODO: hide some labels
 		}
@@ -443,5 +422,10 @@ public class BoardController
 	{
 		if (getPlayer() != null)
 			moneyLabel.setText(getPlayer().getMoney() + "M");
+	}
+
+	public static BoardController getInstance()
+	{
+		return instance;
 	}
 }
