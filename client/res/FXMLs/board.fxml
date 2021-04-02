@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import it.castelli.gui.customComponents.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
+<?import it.castelli.gui.customComponents.SquareComponent?>
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.BoardController">
 	<ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 		<Image url="@../images/poker.jpg" />
 	</ImageView>
-	<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+	<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" stylesheets="@Style/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 		<padding>
 			<Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
 		</padding>
-		<VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="454.0" HBox.hgrow="ALWAYS">
+		<VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="521.0" HBox.hgrow="ALWAYS">
 			<GridPane alignment="CENTER" maxHeight="550.0" maxWidth="550.0" minHeight="550.0" minWidth="550.0" prefHeight="550.0" prefWidth="550.0" style="-fx-border-color: 000000; -fx-border-image-width: 5;" VBox.vgrow="ALWAYS">
 				<columnConstraints>
 					<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -369,24 +379,25 @@
 			</HBox>
 		</VBox>
 		<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-			<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-				<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="44.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="21.0">
+			<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="510.0" prefWidth="335.0" VBox.vgrow="ALWAYS">
+				<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="26.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="449.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="21.0">
 					<Image url="@../images/face_0.png" />
 					<effect>
 						<DropShadow height="5.0" radius="2.0" spread="1.0" width="5.0" />
 					</effect>
 				</ImageView>
-				<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="186.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+				<ImageView fitHeight="100.0" fitWidth="100.0" layoutX="168.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
 					<Image url="@../images/face_0.png" />
 					<effect>
 						<DropShadow height="5.0" radius="2.0" spread="1.0" width="5.0" />
 					</effect>
 				</ImageView>
-				<Button alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="143.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="136.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000; -fx-border-width: 2;" stylesheets="@Style/style.css" text="Lancia i dadi" textOverrun="CLIP">
+				<Button alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="144.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="136.0" stylesheets="@Style/style.css" text="Lancia i dadi" textOverrun="CLIP">
 					<cursor>
 						<Cursor fx:constant="HAND" />
 					</cursor>
 				</Button>
+            <ListView fixedCellSize="5.0" layoutX="32.0" layoutY="210.0" prefHeight="246.0" prefWidth="273.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="210.0" />
 			</AnchorPane>
          <Label fx:id="moneyLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #ffffff;" text="0M" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" VBox.vgrow="ALWAYS">
             <font>
@@ -394,6 +405,22 @@
             </font>
          </Label>
 		</VBox>
-		<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+		<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="215.0" HBox.hgrow="ALWAYS">
+         <children>
+            <VBox prefHeight="230.0" prefWidth="231.0">
+               <children>
+                  <Button alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="finisci turno" VBox.vgrow="ALWAYS" />
+                  <Button alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="scambio" VBox.vgrow="ALWAYS" />
+                  <Button alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="231.0" text="asta" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <ListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="107.0" prefWidth="250.0" stylesheets="@Style/style.css" VBox.vgrow="ALWAYS" />
+            <HBox prefHeight="30.0" prefWidth="221.0">
+               <children>
+                  <TextField maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="25.0" prefWidth="160.0" promptText="inserisci testo..." HBox.hgrow="ALWAYS" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="79.0" prefWidth="63.0" text="invio" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children></VBox>
 	</HBox>
 </AnchorPane>
