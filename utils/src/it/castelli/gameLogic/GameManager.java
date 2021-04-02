@@ -63,7 +63,7 @@ public class GameManager
 								450, 620, 750, 100,
 								PropertyColor.MAGENTA)),
 				new CompanySquare(
-						new CompanyContract("Società Elettrica", 150)),
+						new CompanyContract("Società Elettrica", CompanyContract.Company.ELECTRIC, 150)),
 				new PropertySquare(
 						new PropertyContract("Corsa Ateneo", 140, 10, 50, 150,
 								450, 620, 750, 100,
@@ -116,7 +116,7 @@ public class GameManager
 								800, 1000, 1200, 150,
 								PropertyColor.YELLOW)),
 				new CompanySquare(
-						new CompanyContract("Società Acqua Potabile", 150)),
+						new CompanyContract("Società Acqua Potabile", CompanyContract.Company.WATER, 150)),
 				new PropertySquare(
 						new PropertyContract("Piazza Giulio Cesare", 280, 24,
 								120, 360, 850, 1050, 1250,

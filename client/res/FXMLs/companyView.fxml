@@ -6,25 +6,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="283.0" prefWidth="213.0"
-            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="it.castelli.gui.controllers.CompanyViewController">
-    <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-          prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="10.0"
-          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-        <ImageView fx:id="companyImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true"
-                   preserveRatio="true" VBox.vgrow="ALWAYS"/>
-        <Label fx:id="companyNameLabel" alignment="CENTER" contentDisplay="CENTER"
-               maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="company name"
-               textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
-            <font>
-                <Font name="System Bold" size="12.0"/>
-            </font>
-        </Label>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-               text="Se possiedi una sola compagnia, la rendita è quattro volte l'ammontare uscito dai dadi"
-               textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS"/>
-        <Label layoutX="10.0" layoutY="177.0" maxHeight="1.7976931348623157E308"
-               maxWidth="1.7976931348623157E308"
-               text="Se possiedi entrambe le compagnie, la rendita è dieci volte l'ammontare uscito dai dadi"
-               textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS"/>
-    </VBox>
+			xmlns="http://javafx.com/javafx/11.0.1" fx:controller="it.castelli.gui.controllers.CompanyViewController">
+	<VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+		  prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="10.0"
+		  AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+		<ImageView fx:id="companyImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true"
+				   preserveRatio="true" VBox.vgrow="ALWAYS"/>
+		<Label fx:id="companyNameLabel" alignment="CENTER" contentDisplay="CENTER"
+			   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="company name"
+			   textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
+			<font>
+				<Font name="System Bold" size="12.0"/>
+			</font>
+		</Label>
+		<Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+			   text="Se possiedi una sola compagnia, la rendita è quattro volte l'ammontare uscito dai dadi"
+			   textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS"/>
+		<Label layoutX="10.0" layoutY="177.0" maxHeight="1.7976931348623157E308"
+			   maxWidth="1.7976931348623157E308"
+			   text="Se possiedi entrambe le compagnie, la rendita è dieci volte l'ammontare uscito dai dadi"
+			   textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS"/>
+	</VBox>
 </AnchorPane>

@@ -127,136 +127,136 @@ public class BoardController
 			vicoloCortoSquare
 					.setContract(
 							Game.getGameManager().getSquare(1).getContract());
-			vicoloCortoSquare.setOnMouseClicked(event -> showPropertyView(
+			vicoloCortoSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) vicoloCortoSquare.getContract()));
 
 			vicoloStrettoSquare
 					.setContract(
 							Game.getGameManager().getSquare(3).getContract());
-			vicoloStrettoSquare.setOnMouseClicked(event -> showPropertyView(
+			vicoloStrettoSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) vicoloStrettoSquare.getContract()));
 
 			bastioniGranSassoSquare
 					.setContract(
 							Game.getGameManager().getSquare(6).getContract());
-			bastioniGranSassoSquare.setOnMouseClicked(event -> showPropertyView(
+			bastioniGranSassoSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) bastioniGranSassoSquare.getContract()));
 
 			vialeMonterosaSquare
 					.setContract(
 							Game.getGameManager().getSquare(8).getContract());
-			vialeMonterosaSquare.setOnMouseClicked(event -> showPropertyView(
+			vialeMonterosaSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) vialeMonterosaSquare.getContract()));
 
 			vialeVesuvioSquare
 					.setContract(
 							Game.getGameManager().getSquare(9).getContract());
-			vialeVesuvioSquare.setOnMouseClicked(event -> showPropertyView(
+			vialeVesuvioSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) vialeVesuvioSquare.getContract()));
 
 			viaAccademiaSquare
 					.setContract(
 							Game.getGameManager().getSquare(11).getContract());
-			viaAccademiaSquare.setOnMouseClicked(event -> showPropertyView(
+			viaAccademiaSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) viaAccademiaSquare.getContract()));
 
 			corsoAteneoSquare
 					.setContract(
 							Game.getGameManager().getSquare(13).getContract());
-			corsoAteneoSquare.setOnMouseClicked(event -> showPropertyView(
+			corsoAteneoSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) corsoAteneoSquare.getContract()));
 
 			piazzaUniversitaSquare
 					.setContract(
 							Game.getGameManager().getSquare(14).getContract());
-			piazzaUniversitaSquare.setOnMouseClicked(event -> showPropertyView(
+			piazzaUniversitaSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) piazzaUniversitaSquare.getContract()));
 
 			viaVerdiSquare
 					.setContract(
 							Game.getGameManager().getSquare(16).getContract());
-			viaVerdiSquare.setOnMouseClicked(event -> showPropertyView(
+			viaVerdiSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) viaVerdiSquare.getContract()));
 
 			corsoRaffaelloSquare
 					.setContract(
 							Game.getGameManager().getSquare(18).getContract());
-			corsoRaffaelloSquare.setOnMouseClicked(event -> showPropertyView(
+			corsoRaffaelloSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) corsoRaffaelloSquare.getContract()));
 
 			piazzaDanteSquare
 					.setContract(
 							Game.getGameManager().getSquare(19).getContract());
-			piazzaDanteSquare.setOnMouseClicked(event -> showPropertyView(
+			piazzaDanteSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) piazzaDanteSquare.getContract()));
 
 			viaMarcoPoloSquare
 					.setContract(
 							Game.getGameManager().getSquare(21).getContract());
-			viaMarcoPoloSquare.setOnMouseClicked(event -> showPropertyView(
+			viaMarcoPoloSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) viaMarcoPoloSquare.getContract()));
 
 			corsoMagellanoSquare
 					.setContract(
 							Game.getGameManager().getSquare(23).getContract());
-			corsoMagellanoSquare.setOnMouseClicked(event -> showPropertyView(
+			corsoMagellanoSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) corsoMagellanoSquare.getContract()));
 
 			largoColomboSquare
 					.setContract(
 							Game.getGameManager().getSquare(24).getContract());
-			largoColomboSquare.setOnMouseClicked(event -> showPropertyView(
+			largoColomboSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) largoColomboSquare.getContract()));
 
 			vialeCostantinoSquare
 					.setContract(
 							Game.getGameManager().getSquare(26).getContract());
-			vialeCostantinoSquare.setOnMouseClicked(event -> showPropertyView(
+			vialeCostantinoSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) vialeCostantinoSquare.getContract()));
 
 			vialeTraianoSquare
 					.setContract(
 							Game.getGameManager().getSquare(27).getContract());
-			vialeTraianoSquare.setOnMouseClicked(event -> showPropertyView(
+			vialeTraianoSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) vialeTraianoSquare.getContract()));
 
 			piazzaGiulioCesareSquare
 					.setContract(
 							Game.getGameManager().getSquare(29).getContract());
 			piazzaGiulioCesareSquare
-					.setOnMouseClicked(event -> showPropertyView(
+					.setOnMouseClicked(event -> showTerrainView(
 							(PropertyContract) piazzaGiulioCesareSquare
 									.getContract()));
 
 			viaRomaSquare
 					.setContract(
 							Game.getGameManager().getSquare(31).getContract());
-			viaRomaSquare.setOnMouseClicked(event -> showPropertyView(
+			viaRomaSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) viaRomaSquare.getContract()));
 
 			corsoImperoSquare
 					.setContract(
 							Game.getGameManager().getSquare(32).getContract());
-			corsoImperoSquare.setOnMouseClicked(event -> showPropertyView(
+			corsoImperoSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) corsoImperoSquare.getContract()));
 
 			largoAugustoSquare
 					.setContract(
 							Game.getGameManager().getSquare(34).getContract());
-			largoAugustoSquare.setOnMouseClicked(event -> showPropertyView(
+			largoAugustoSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) largoAugustoSquare.getContract()));
 
 			vialeDeiGiardiniSquare
 					.setContract(
 							Game.getGameManager().getSquare(37).getContract());
-			vialeDeiGiardiniSquare.setOnMouseClicked(event -> showPropertyView(
+			vialeDeiGiardiniSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) vialeDeiGiardiniSquare.getContract()));
 
 			parcoDellaVittoriaSquare
 					.setContract(
 							Game.getGameManager().getSquare(39).getContract());
 			parcoDellaVittoriaSquare
-					.setOnMouseClicked(event -> showPropertyView(
+					.setOnMouseClicked(event -> showTerrainView(
 							(PropertyContract) parcoDellaVittoriaSquare
 									.getContract()));
 
@@ -266,7 +266,7 @@ public class BoardController
 							Game.getGameManager().getSquare(5).getContract());
 			southStationSquare
 					.setOnMouseClicked(event ->
-							showStationView(
+							showTerrainView(
 									(StationContract) southStationSquare
 											.getContract()));
 
@@ -275,7 +275,7 @@ public class BoardController
 							Game.getGameManager().getSquare(15).getContract());
 			westStationSquare
 					.setOnMouseClicked(event ->
-							showStationView(
+							showTerrainView(
 									(StationContract) westStationSquare
 											.getContract()));
 
@@ -284,7 +284,7 @@ public class BoardController
 							Game.getGameManager().getSquare(25).getContract());
 			northStationSquare
 					.setOnMouseClicked(event ->
-							showStationView(
+							showTerrainView(
 									(StationContract) northStationSquare
 											.getContract()));
 
@@ -293,27 +293,18 @@ public class BoardController
 							Game.getGameManager().getSquare(35).getContract());
 			eastStationSquare
 					.setOnMouseClicked(event ->
-							showStationView(
+							showTerrainView(
 									(StationContract) eastStationSquare
 											.getContract()));
 
 			// COMPANIES
+			electricSocietySquare.setContract(Game.getGameManager().getSquare(12).getContract());
 			electricSocietySquare
-					.setContract(
-							Game.getGameManager().getSquare(12).getContract());
-			electricSocietySquare
-					.setOnMouseClicked(event -> showCompanyView(
-							CompanyViewController.Company.ELECTRIC,
-							(CompanyContract) electricSocietySquare
-									.getContract()));
+					.setOnMouseClicked(event -> showTerrainView((CompanyContract) electricSocietySquare.getContract()));
 
+			waterWorksSquare.setContract(Game.getGameManager().getSquare(28).getContract());
 			waterWorksSquare
-					.setContract(
-							Game.getGameManager().getSquare(28).getContract());
-			waterWorksSquare
-					.setOnMouseClicked(event -> showCompanyView(
-							CompanyViewController.Company.WATER,
-							(CompanyContract) waterWorksSquare.getContract()));
+					.setOnMouseClicked(event -> showTerrainView((CompanyContract) waterWorksSquare.getContract()));
 		}
 
 		calculateOwnedProperties();
@@ -324,7 +315,7 @@ public class BoardController
 	 *
 	 * @param contract The contract of the property to show
 	 */
-	private void showPropertyView(PropertyContract contract)
+	private void showTerrainView(PropertyContract contract)
 	{
 		if (contract == null)
 			return;
@@ -355,7 +346,7 @@ public class BoardController
 	 *
 	 * @param contract The contract of the station to show
 	 */
-	private void showStationView(StationContract contract)
+	private void showTerrainView(StationContract contract)
 	{
 		if (contract == null)
 			return;
@@ -386,8 +377,7 @@ public class BoardController
 	 *
 	 * @param contract The contract of the company to show
 	 */
-	private void showCompanyView(CompanyViewController.Company company,
-	                             CompanyContract contract)
+	private void showTerrainView(CompanyContract contract)
 	{
 		if (contract == null)
 			return;
@@ -398,7 +388,7 @@ public class BoardController
 					FXMLFileLoader.getLoader(COMPANY_VIEW_FXML_PATH);
 			Parent root = loader.load();
 			CompanyViewController controller = loader.getController();
-			controller.setContract(company, contract);
+			controller.setContract(contract);
 			Stage propertyViewStage = new Stage();
 			Scene scene = new Scene(root);
 			propertyViewStage.setScene(scene);
@@ -426,10 +416,14 @@ public class BoardController
 			Node propertyNode = ownedPropertiesPane.getChildren().get(i * 2);
 			if (propertyNode instanceof Label)
 				propertyLabels[i] = (Label) propertyNode;
+			else
+				continue;
 
 			Node revenueNode = ownedPropertiesPane.getChildren().get(i * 2 + 1);
 			if (revenueNode instanceof Label)
 				valueLabels[i] = (Label) revenueNode;
+			else
+				continue;
 
 			if (Game.getPlayer() == null)
 				return;
@@ -449,10 +443,20 @@ public class BoardController
 			if (mostProductiveContract instanceof PropertyContract)
 				propertyLabels[i].setStyle("-fx-background-color: " + GUIUtils.getPropertyColorsCodes()
 						.get(((PropertyContract) mostProductiveContract).getColor()));
+			else
+				propertyLabels[i].setStyle("-fx-background-color: #ffffff"); // set to white if station or company
 
-			// TODO: put white background if not instance of property contract
+
+			Contract finalMostProductiveContract = mostProductiveContract;
+			if (mostProductiveContract instanceof PropertyContract)
+				propertyLabels[i]
+						.setOnMouseClicked(event -> showTerrainView((PropertyContract) finalMostProductiveContract));
+			else if (mostProductiveContract instanceof StationContract)
+				propertyLabels[i].setOnMouseClicked(event -> showTerrainView((StationContract) finalMostProductiveContract));
+			else if (mostProductiveContract instanceof CompanyContract)
+				propertyLabels[i].setOnMouseClicked(event -> showTerrainView((CompanyContract) finalMostProductiveContract));
+
 			// TODO: hide some labels
-			// TODO: add callbacks when clicking
 		}
 	}
 }
