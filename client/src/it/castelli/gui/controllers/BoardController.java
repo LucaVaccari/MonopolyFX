@@ -126,6 +126,11 @@ public class BoardController
 	@FXML
 	private Label moneyLabel;
 
+	public static BoardController getInstance()
+	{
+		return instance;
+	}
+
 	@FXML
 	private void initialize()
 	{
@@ -355,6 +360,7 @@ public class BoardController
 			e.printStackTrace();
 		}
 	}
+	// Calculate the properties owned by the player to show under the board
 
 	/**
 	 * Show a new not resizable stage containing information about a company
@@ -385,7 +391,6 @@ public class BoardController
 			e.printStackTrace();
 		}
 	}
-	// Calculate the properties owned by the player to show under the board
 
 	private void calculateOwnedProperties()
 	{
@@ -420,8 +425,7 @@ public class BoardController
 				ownedTerrains[i].setDisable(false);
 				ownedTerrains[i].setVisible(true);
 				ownedTerrains[i].setContract(mostProductiveContract);
-			}
-			else
+			} else
 			{
 				ownedTerrains[i].setVisible(false);
 				ownedTerrains[i].setDisable(true);
@@ -439,10 +443,5 @@ public class BoardController
 	{
 		if (getPlayer() != null)
 			moneyLabel.setText(getPlayer().getMoney() + "M");
-	}
-
-	public static BoardController getInstance()
-	{
-		return instance;
 	}
 }

@@ -7,10 +7,10 @@ import java.net.Socket;
 public class Connection
 {
 	private final Socket connectionSocket;
-	private boolean isConnected;
-	private boolean keepAliveFlag = true;
 	private final Sender sender;
 	private final Receiver receiver;
+	private boolean isConnected;
+	private boolean keepAliveFlag = true;
 
 	public Connection(Socket connectionSocket)
 	{

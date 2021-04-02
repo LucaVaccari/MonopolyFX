@@ -5,21 +5,14 @@ package it.castelli.gameLogic.contracts;
  */
 public class CompanyContract extends Contract
 {
-	/**
-	 * Enumeration of companies: Electric company and Water works
-	 */
-	public enum Company
-	{
-		ELECTRIC, WATER;
-	}
-
 	private final Company company;
 
 	/**
 	 * Constructor for the CompanyContract
-	 *  @param name  The name of the contract
+	 *
+	 * @param name    The name of the contract
 	 * @param company
-	 * @param value The cost of the contract when buying from the bank
+	 * @param value   The cost of the contract when buying from the bank
 	 */
 	public CompanyContract(String name, Company company, int value)
 	{
@@ -46,5 +39,13 @@ public class CompanyContract extends Contract
 	public Company getCompany()
 	{
 		return company;
+	}
+
+	/**
+	 * Enumeration of companies: Electric company and Water works
+	 */
+	public enum Company
+	{
+		ELECTRIC, WATER;
 	}
 }

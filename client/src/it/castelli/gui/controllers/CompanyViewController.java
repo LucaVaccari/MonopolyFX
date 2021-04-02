@@ -16,7 +16,6 @@ public class CompanyViewController
 	/**
 	 * Update the visuals of the CompanyView.
 	 *
-	 * @param company  The company bound to the contract
 	 * @param contract The contract of the company
 	 */
 	public void setContract(CompanyContract contract)
