@@ -11,11 +11,15 @@
   -fx-text-fill: "white";
 }
 .button {
-  -fx-background-color: #ff0000;
+  -fx-background-color: #ff0F00;
   -fx-border-color: #000000;
   -fx-border-width: 2;
 }
 
 .anchor-pane {
   -fx-background-color: #9dc483;
+}
+#offer-button{
+ -fx-background-color: #060aff;
+ -fx-text-fill:"white"
 }
