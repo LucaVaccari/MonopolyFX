@@ -283,14 +283,17 @@ public class BoardController
 		}
 
 		// add SmallTerrainViewComponents to the owned properties
+		Label showOtherProperties = (Label) ownedPropertiesPane.getChildren().get(0);
+		ownedPropertiesPane.getChildren().clear();
 		for (int i = 0; i < SHOWN_OWNED_PROPERTIES; i++)
 		{
 			SmallTerrainViewComponent terrainView = new SmallTerrainViewComponent();
 			terrainView.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 			ownedPropertiesPane.getChildren().add(terrainView);
 		}
+		ownedPropertiesPane.getChildren().add(showOtherProperties);
 
-		//calculateOwnedProperties();
+		calculateOwnedProperties();
 	}
 
 	/**
@@ -394,9 +397,15 @@ public class BoardController
 			Node terrainView = ownedPropertiesPane.getChildren().get(i);
 			if (terrainView instanceof SmallTerrainViewComponent)
 				ownedTerrains[i] = (SmallTerrainViewComponent) terrainView;
+			else
+				continue;
 
 			if (getPlayer() == null)
-				return;
+			{
+				ownedTerrains[i].setVisible(false);
+				ownedTerrains[i].setDisable(true);
+				continue;
+			}
 
 			Contract mostProductiveContract = getPlayer().getContracts().get(0);
 			for (Contract contract : getPlayer().getContracts())
@@ -405,11 +414,19 @@ public class BoardController
 						!mostProductiveContracts.contains(mostProductiveContract))
 					mostProductiveContract = contract;
 			}
+
+			if (mostProductiveContract != null)
+			{
+				ownedTerrains[i].setDisable(false);
+				ownedTerrains[i].setVisible(true);
+				ownedTerrains[i].setContract(mostProductiveContract);
+			}
+			else
+			{
+				ownedTerrains[i].setVisible(false);
+				ownedTerrains[i].setDisable(true);
+			}
 			mostProductiveContracts.add(mostProductiveContract);
-
-			ownedTerrains[i].setContract(mostProductiveContract);
-
-			// TODO: hide some labels
 		}
 
 		// TODO: when clicking "...", show a new window with all the properties
