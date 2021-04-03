@@ -5,6 +5,9 @@ import it.castelli.gui.GUIUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+/**
+ * Controller for propertyView FXML
+ */
 public class PropertyViewController
 {
 	@FXML

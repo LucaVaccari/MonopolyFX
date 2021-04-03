@@ -34,16 +34,15 @@ import static it.castelli.Game.getPlayer;
  */
 public class BoardController
 {
-
-	public static final String PROPERTY_VIEW_FXML_PATH =
-			"/FXMLs/propertyView.fxml";
-	public static final String STATION_VIEW_FXML_PATH =
-			"/FXMLs/stationView.fxml";
-	public static final String COMPANY_VIEW_FXML_PATH =
-			"/FXMLs/companyView.fxml";
+	public static final String PROPERTY_VIEW_FXML_PATH = "/FXMLs/propertyView.fxml";
+	public static final String STATION_VIEW_FXML_PATH = "/FXMLs/stationView.fxml";
+	public static final String COMPANY_VIEW_FXML_PATH = "/FXMLs/companyView.fxml";
 
 	private static final int SHOWN_OWNED_PROPERTIES = 9;
 
+	/**
+	 * Singleton instance
+	 */
 	private static BoardController instance;
 
 	@FXML
@@ -316,7 +315,7 @@ public class BoardController
 		}
 		ownedPropertiesPane.getChildren().add(showOtherProperties);
 
-		calculateOwnedProperties();
+		calculateOwnedTerrains();
 
 		ownedPropertiesPane.getChildren().get(SHOWN_OWNED_PROPERTIES)
 				.setOnMouseClicked(event -> SceneManager.getInstance().showScene(
@@ -427,7 +426,10 @@ public class BoardController
 		}
 	}
 
-	private void calculateOwnedProperties()
+	/**
+	 * Calculate and show the owned terrains in the pane under the board
+	 */
+	private void calculateOwnedTerrains()
 	{
 		SmallTerrainViewComponent[] ownedTerrains = new SmallTerrainViewComponent[SHOWN_OWNED_PROPERTIES];
 		ArrayList<Contract> mostProductiveContracts = new ArrayList<>(SHOWN_OWNED_PROPERTIES);

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import it.castelli.gui.customComponents.ChatComponent?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.*?>
-<?import it.castelli.gui.customComponents.ChatComponent?>
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0"
-            style="-fx-background-color: #9dc483;" stylesheets="@Style/style.css"
-            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0"
+            prefWidth="600.0" style="-fx-background-color: #1f802c;"
+            stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="it.castelli.gui.controllers.LobbyController">
     <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="267.0"
           prefWidth="600.0" stylesheets="@Style/style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
@@ -34,7 +34,8 @@
             </Button>
         </VBox>
         <ChatComponent fx:id="chat" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308"
-                       maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="417.0" stylesheets="@Style/style.css"
+                       maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="417.0"
+                       stylesheets="@Style/style.css"
                        HBox.hgrow="ALWAYS"/>
     </HBox>
 </AnchorPane>

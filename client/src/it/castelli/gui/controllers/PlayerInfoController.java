@@ -4,6 +4,9 @@ import it.castelli.gameLogic.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+/**
+ * Controller for playerInfo FXML
+ */
 public class PlayerInfoController
 {
 	@FXML

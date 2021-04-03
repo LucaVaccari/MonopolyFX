@@ -6,6 +6,9 @@ import it.castelli.gui.scene.SceneType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+/**
+ * Controller for lobby FXML
+ */
 public class LobbyController
 {
 	@FXML

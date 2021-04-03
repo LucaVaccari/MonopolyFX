@@ -5,6 +5,9 @@ import it.castelli.gui.scene.SceneManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+/**
+ * Controller for mainMenu FXML
+ */
 public class MainMenuController
 {
 	@FXML
@@ -22,9 +25,8 @@ public class MainMenuController
 
 		joinButton.setOnAction(event -> {
 			AlertUtil.showTextInputDialogue("", "Codice di gioco",
-					"Inserisci il codice di gioco",
-					"Inserisci il codice che l'host " +
-							"della partita ti ha fornito:");
+			                                "Inserisci il codice di gioco", "Inserisci il codice che l'host " +
+			                                                                "della partita ti ha fornito:");
 			// TODO: process input code
 			// TODO: go to lobby
 		});
