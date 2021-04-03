@@ -5,12 +5,11 @@ import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.FXMLFileLoader;
+import it.castelli.gui.customComponents.ChatComponent;
 import it.castelli.gui.customComponents.SmallTerrainViewComponent;
 import it.castelli.gui.customComponents.SquareComponent;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -19,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
@@ -63,11 +61,7 @@ public class BoardController
 
 	// CHAT
 	@FXML
-	private ListView<Label> chatListView;
-	@FXML
-	private TextField chatTextInput;
-	@FXML
-	private Button chatSendButton;
+	private ChatComponent chat;
 
 	// BOARD
 	@FXML
@@ -155,7 +149,6 @@ public class BoardController
 	private FlowPane ownedPropertiesPane;
 	@FXML
 	private Label moneyLabel;
-	private EventHandler<ActionEvent> onMessageSend;
 
 	public static BoardController getInstance()
 	{
@@ -341,13 +334,6 @@ public class BoardController
 		exchangeButton.setOnAction(event -> {
 			// TODO: send exchange to server
 		});
-
-		// CHAT
-		onMessageSend = event -> {
-			// TODO: send message
-		};
-		chatTextInput.setOnAction(onMessageSend);
-		chatSendButton.setOnAction(onMessageSend);
 	}
 
 	/**

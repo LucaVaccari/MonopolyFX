@@ -1,6 +1,7 @@
 package it.castelli.gui.controllers;
 
 import it.castelli.Game;
+import it.castelli.gui.customComponents.ChatComponent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,6 +10,8 @@ public class AuctionController
 {
 	private int yourOffer = 0;
 
+	@FXML
+	private ChatComponent chat;
 	@FXML
 	private Label totalMoneyLabel;
 	@FXML

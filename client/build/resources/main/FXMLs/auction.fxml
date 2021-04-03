@@ -1,80 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import it.castelli.gui.customComponents.ChatComponent?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="512.0" prefWidth="942.0" stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.AuctionController">
-    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0"
-          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0"
-              prefWidth="100.0" HBox.hgrow="ALWAYS">
-            <ListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="517.0"
-                      prefWidth="261.0" VBox.vgrow="ALWAYS"/>
-            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                  prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                <TextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="38.0"
-                           prefWidth="200.0" text="Messaggio..." HBox.hgrow="ALWAYS"/>
-                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                        text="Invia" HBox.hgrow="ALWAYS"/>
-            </HBox>
-        </VBox>
-        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="492.0"
-              prefWidth="410.0" HBox.hgrow="ALWAYS">
-            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                  prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
-                <Label fx:id="totalMoneyLabel" alignment="CENTER" maxHeight="1.7976931348623157E308"
-                       maxWidth="1.7976931348623157E308" text="Total money" HBox.hgrow="ALWAYS">
+
+<AnchorPane prefHeight="512.0" prefWidth="1069.0" stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.AuctionController">
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <ChatComponent maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0"
+                       prefWidth="100.0" HBox.hgrow="ALWAYS">
+        </ChatComponent>
+        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="492.0" prefWidth="410.0" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                <Label fx:id="totalMoneyLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Total money" HBox.hgrow="ALWAYS">
                     <font>
-                        <Font name="System Italic" size="14.0"/>
+                        <Font name="System Italic" size="14.0" />
                     </font>
                 </Label>
-                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                       text="ASTA" HBox.hgrow="ALWAYS">
+                <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ASTA" HBox.hgrow="ALWAYS">
                     <font>
-                        <Font name="System Bold" size="24.0"/>
+                        <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="auctionBaseLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0"
-                       maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Auction base"
-                       HBox.hgrow="ALWAYS">
+                <Label fx:id="auctionBaseLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Auction base" HBox.hgrow="ALWAYS">
                     <font>
-                        <Font name="System Italic" size="14.0"/>
+                        <Font name="System Italic" size="14.0" />
                     </font>
                 </Label>
             </HBox>
-            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                  prefHeight="433.0" prefWidth="400.0" spacing="10.0" VBox.vgrow="ALWAYS">
-                <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                      prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
-                    <Button fx:id="minusOneButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                            mnemonicParsing="false" text="-1" VBox.vgrow="ALWAYS"/>
-                    <Button fx:id="minusTenButton" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308"
-                            maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="-10" VBox.vgrow="ALWAYS"/>
-                    <Button fx:id="minusHundredButton" layoutX="10.0" layoutY="35.0" maxHeight="1.7976931348623157E308"
-                            maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="-100" VBox.vgrow="ALWAYS"/>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="433.0" prefWidth="400.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Button fx:id="minusOneButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="-1" VBox.vgrow="ALWAYS" />
+                    <Button fx:id="minusTenButton" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="-10" VBox.vgrow="ALWAYS" />
+                    <Button fx:id="minusHundredButton" layoutX="10.0" layoutY="35.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="-100" VBox.vgrow="ALWAYS" />
                 </VBox>
-                <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                      prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
-                    <Label fx:id="yourOfferLabel" alignment="CENTER" maxHeight="1.7976931348623157E308"
-                           maxWidth="1.7976931348623157E308" text="yourOffer" VBox.vgrow="ALWAYS"/>
-                    <Button id="offer-button" fx:id="offerButton" maxHeight="1.7976931348623157E308"
-                            maxWidth="1.7976931348623157E308" mnemonicParsing="false" stylesheets="@Style/style.css"
-                            text="Offer" VBox.vgrow="ALWAYS"/>
+                <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Label fx:id="yourOfferLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="yourOffer" VBox.vgrow="ALWAYS" />
+                    <Button id="offer-button" fx:id="offerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" stylesheets="@Style/style.css" text="Offer" VBox.vgrow="ALWAYS" />
                 </VBox>
-                <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308"
-                      maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="10.0"
-                      HBox.hgrow="ALWAYS">
-                    <Button fx:id="plusOneButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                            mnemonicParsing="false" text="+1" VBox.vgrow="ALWAYS"/>
-                    <Button fx:id="plusTenButton" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308"
-                            maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+10" VBox.vgrow="ALWAYS"/>
-                    <Button fx:id="plusHundredButton" layoutX="10.0" layoutY="35.0" maxHeight="1.7976931348623157E308"
-                            maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+100" VBox.vgrow="ALWAYS"/>
+                <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Button fx:id="plusOneButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+1" VBox.vgrow="ALWAYS" />
+                    <Button fx:id="plusTenButton" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+10" VBox.vgrow="ALWAYS" />
+                    <Button fx:id="plusHundredButton" layoutX="10.0" layoutY="35.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="+100" VBox.vgrow="ALWAYS" />
                 </VBox>
             </HBox>
         </VBox>
-        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0"
-              prefWidth="100.0" HBox.hgrow="ALWAYS"/>
+        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
     </HBox>
 </AnchorPane>
