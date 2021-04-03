@@ -7,12 +7,20 @@ import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.customComponents.SmallTerrainViewComponent;
 import it.castelli.gui.customComponents.SquareComponent;
+import it.castelli.gui.scene.SceneManager;
+import it.castelli.gui.scene.SceneType;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -40,6 +48,28 @@ public class BoardController
 
 	private static BoardController instance;
 
+	@FXML
+	private ImageView die1Image;
+	@FXML
+	private ImageView die2Image;
+	@FXML
+	private Button throwDiceButton;
+	@FXML
+	private ListView<Label> playerListView;
+	@FXML
+	private Button endTurnButton;
+	@FXML
+	private Button exchangeButton;
+
+	// CHAT
+	@FXML
+	private ListView<Label> chatListView;
+	@FXML
+	private TextField chatTextInput;
+	@FXML
+	private Button chatSendButton;
+
+	// BOARD
 	@FXML
 	private SquareComponent goSquare;
 	@FXML
@@ -125,6 +155,7 @@ public class BoardController
 	private FlowPane ownedPropertiesPane;
 	@FXML
 	private Label moneyLabel;
+	private EventHandler<ActionEvent> onMessageSend;
 
 	public static BoardController getInstance()
 	{
@@ -166,21 +197,15 @@ public class BoardController
 			corsoAteneoSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) corsoAteneoSquare.getContract()));
 
-			piazzaUniversitaSquare
-					.setContract(
-							getGameManager().getSquare(14).getContract());
+			piazzaUniversitaSquare.setContract(getGameManager().getSquare(14).getContract());
 			piazzaUniversitaSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) piazzaUniversitaSquare.getContract()));
 
-			viaVerdiSquare
-					.setContract(
-							getGameManager().getSquare(16).getContract());
+			viaVerdiSquare.setContract(getGameManager().getSquare(16).getContract());
 			viaVerdiSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) viaVerdiSquare.getContract()));
 
-			corsoRaffaelloSquare
-					.setContract(
-							getGameManager().getSquare(18).getContract());
+			corsoRaffaelloSquare.setContract(getGameManager().getSquare(18).getContract());
 			corsoRaffaelloSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) corsoRaffaelloSquare.getContract()));
 
@@ -299,6 +324,30 @@ public class BoardController
 		ownedPropertiesPane.getChildren().add(showOtherProperties);
 
 		calculateOwnedProperties();
+
+		ownedPropertiesPane.getChildren().get(SHOWN_OWNED_PROPERTIES)
+				.setOnMouseClicked(event -> SceneManager.getInstance().showScene(
+						SceneType.OWNED_TERRAIN));
+
+		// button callback
+		throwDiceButton.setOnAction(event -> {
+			// TODO: send throw dice to server
+		});
+
+		endTurnButton.setOnAction(event -> {
+			// TODO: send end turn to server
+		});
+
+		exchangeButton.setOnAction(event -> {
+			// TODO: send exchange to server
+		});
+
+		// CHAT
+		onMessageSend = event -> {
+			// TODO: send message
+		};
+		chatTextInput.setOnAction(onMessageSend);
+		chatSendButton.setOnAction(onMessageSend);
 	}
 
 	/**
@@ -416,7 +465,7 @@ public class BoardController
 			for (Contract contract : getPlayer().getContracts())
 			{
 				if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-						!mostProductiveContracts.contains(mostProductiveContract))
+				    !mostProductiveContracts.contains(mostProductiveContract))
 					mostProductiveContract = contract;
 			}
 
@@ -425,15 +474,14 @@ public class BoardController
 				ownedTerrains[i].setDisable(false);
 				ownedTerrains[i].setVisible(true);
 				ownedTerrains[i].setContract(mostProductiveContract);
-			} else
+			}
+			else
 			{
 				ownedTerrains[i].setVisible(false);
 				ownedTerrains[i].setDisable(true);
 			}
 			mostProductiveContracts.add(mostProductiveContract);
 		}
-
-		// TODO: when clicking "...", show a new window with all the properties
 	}
 
 	/**

@@ -1,5 +1,65 @@
 package it.castelli.gui.controllers;
 
+import it.castelli.Game;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+
 public class AuctionController
 {
+	private int yourOffer = 0;
+
+	@FXML
+	private Label totalMoneyLabel;
+	@FXML
+	private Label auctionBaseLabel;
+	@FXML
+	private Button minusOneButton;
+	@FXML
+	private Button minusTenButton;
+	@FXML
+	private Button minusHundredButton;
+	@FXML
+	private Label yourOfferLabel;
+	@FXML
+	private Button offerButton;
+	@FXML
+	private Button plusOneButton;
+	@FXML
+	private Button plusTenButton;
+	@FXML
+	private Button plusHundredButton;
+
+	@FXML
+	public void initialize()
+	{
+		if (Game.getPlayer() != null)
+		{
+			totalMoneyLabel.setText(Game.getPlayer().getMoney() + "M");
+		}
+		minusOneButton.setOnAction(event -> changeOffer(-1));
+		minusTenButton.setOnAction(event -> changeOffer(-10));
+		minusHundredButton.setOnAction(event -> changeOffer(-100));
+		plusOneButton.setOnAction(event -> changeOffer(1));
+		plusTenButton.setOnAction(event -> changeOffer(10));
+		plusHundredButton.setOnAction(event -> changeOffer(100));
+
+		offerButton.setOnAction(event -> {
+			// TODO: send offer to server
+		});
+	}
+
+	public void update()
+	{
+		// TODO: set auction base label
+	}
+
+	private void changeOffer(int value)
+	{
+		if (yourOffer + value > 0) // TODO: cannot go under auction base or over your money
+		{
+			yourOffer += value;
+			yourOfferLabel.setText(yourOffer + "M");
+		}
+	}
 }
