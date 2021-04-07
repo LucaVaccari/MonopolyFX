@@ -1,9 +1,6 @@
 package it.castelli.connection;
 
-import it.castelli.connection.messages.AuctionServerMessage;
-import it.castelli.connection.messages.ErrorServerMessage;
-import it.castelli.connection.messages.GameManagerPlayersServerMessage;
-import it.castelli.connection.messages.ServerMessages;
+import it.castelli.connection.messages.*;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Auction;
@@ -74,5 +71,13 @@ public class GameConnectionManager
 	public GameManager getGameManager()
 	{
 		return gameManager;
+	}
+
+	public void sendAll(String messageName, String message)
+	{
+		for (Connection element : players)
+		{
+			element.send(messageName, message);
+		}
 	}
 }
