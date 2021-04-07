@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameConnectionManager
 {
-	private final CopyOnWriteArrayList<Connection> players;
+	private final CopyOnWriteArrayList<Connection> playerConnections;
 	private final GameManager gameManager;
 	private final int gameCode;
 
@@ -18,14 +18,14 @@ public class GameConnectionManager
 	{
 		this.gameCode = gameCode;
 		this.gameManager = new GameManager();
-		this.players = new CopyOnWriteArrayList<>();
+		this.playerConnections = new CopyOnWriteArrayList<>();
 	}
 
 	public void addPlayer(Connection connection, Player player)
 	{
-		if (players.size() < 6)  //TODO: check gameManager inGame too
+		if (playerConnections.size() < 6)  //TODO: check gameManager inGame too
 		{
-			players.add(connection);
+			playerConnections.add(connection);
 			connection.addPlayer(player);
 			gameManager.addPlayer(player);
 			connection.send(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME,
@@ -40,15 +40,15 @@ public class GameConnectionManager
 
 	public void removePlayer(Connection connection)
 	{
-		players.remove(connection);
+		playerConnections.remove(connection);
 
-		if (players.isEmpty())
+		if (playerConnections.isEmpty())
 			ConnectionManager.getInstance().removeGame(gameCode);
 	}
 
-	public CopyOnWriteArrayList<Connection> getPlayers()
+	public CopyOnWriteArrayList<Connection> getPlayerConnections()
 	{
-		return players;
+		return playerConnections;
 	}
 
 	public void startGame()
@@ -59,7 +59,7 @@ public class GameConnectionManager
 
 	private void sendAuction()
 	{
-		for (Connection connection : players)
+		for (Connection connection : playerConnections)
 		{
 			Auction auction = gameManager.getAuction();
 			AuctionServerMessage message = new AuctionServerMessage(auction.getContract(), auction.getPlayer(),
@@ -75,7 +75,7 @@ public class GameConnectionManager
 
 	public void sendAll(String messageName, String message)
 	{
-		for (Connection element : players)
+		for (Connection element : playerConnections)
 		{
 			element.send(messageName, message);
 		}

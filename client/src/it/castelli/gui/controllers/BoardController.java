@@ -334,12 +334,11 @@ public class BoardController
 						SceneType.OWNED_TERRAIN));
 
 		// button callback
-		// TODO: getGameCode()
 		throwDiceButton.setOnAction(event ->
 				                            ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
 				                                                            Serializer.toJson(
 						                                                            new ThrowDiceClientMessage(
-								                                                            0))));
+								                                                            Game.getGameCode()))));
 
 		endTurnButton.setOnAction(event -> {
 			if (Game.getGameManager().getCurrentRound().isDiceThrown())
@@ -362,6 +361,8 @@ public class BoardController
 		                                                                     Serializer
 				                                                                     .toJson(new LeaveGameClientMessage(
 						                                                                     Game.getGameCode()))));
+
+		// TODO: player list view
 	}
 
 	/**
