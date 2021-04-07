@@ -49,7 +49,7 @@ public class ClientMain extends Application
 	public void start(Stage primaryStage) throws Exception
 	{
 		SceneManager.getInstance().setPrimaryStage(primaryStage);
-		SceneManager.getInstance().showScene(SceneType.BOARD);
+		SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 	}
 
 	public static Connection getConnection()

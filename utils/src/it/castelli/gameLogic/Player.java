@@ -110,6 +110,11 @@ public class Player
 		return inPrison;
 	}
 
+	public void setInPrison(boolean inPrison)
+	{
+		this.inPrison = inPrison;
+	}
+
 	/**
 	 * Getter for the list of kept random event cards
 	 *

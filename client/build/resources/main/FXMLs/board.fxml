@@ -18,8 +18,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import it.castelli.gui.customComponents.ChatComponent?>
 <?import it.castelli.gui.customComponents.SquareComponent?>
+<?import it.castelli.gui.customComponents.ChatComponent?>
 <AnchorPane prefHeight="800.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.BoardController">
     <ImageView fitHeight="800.0" fitWidth="1250.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Image url="@../images/poker.jpg" />
