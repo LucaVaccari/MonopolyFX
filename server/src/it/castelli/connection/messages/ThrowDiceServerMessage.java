@@ -2,7 +2,6 @@ package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
 import it.castelli.connection.ConnectionManager;
-import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.Round;
 import it.castelli.gameLogic.dice.DiceResult;

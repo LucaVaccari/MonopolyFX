@@ -14,4 +14,6 @@ public class ClientMessages
 			"it.castelli.connection.messages.AuctionOfferServerMessage";
 	public static final String THROW_DICE_MESSAGE_NAME =
 			"it.castelli.connection.messages.ThrowDiceServerMessage";
+	public static final String START_GAME_MESSAGE_NAME =
+			"it.castelli.connection.messages.StartGameServerMessage";
 }
