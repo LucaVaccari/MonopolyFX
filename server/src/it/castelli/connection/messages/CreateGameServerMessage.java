@@ -7,11 +7,18 @@ import it.castelli.serialization.Serializer;
 
 public class CreateGameServerMessage implements Message
 {
+	private final Player player;
+
+	public CreateGameServerMessage(String playerName)
+	{
+		this.player = new Player(1500, playerName);
+	}
+
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
 		int gameCode = ConnectionManager.getInstance().createGame();
-		ConnectionManager.getInstance().joinGame(gameCode, connection, player);
+		ConnectionManager.getInstance().joinGame(gameCode, connection, this.player);
 		// Sending game code to the client
 		connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME,
 		                Serializer.toJson(new GameCodeServerMessage(gameCode)));

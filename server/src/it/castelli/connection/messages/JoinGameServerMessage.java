@@ -13,7 +13,7 @@ public class JoinGameServerMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		ConnectionManager.getInstance().joinGame(code, connection, player);
+		ConnectionManager.getInstance().joinGame(code, connection, this.player);
 
 		// Sending game code to the client
 		connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME,

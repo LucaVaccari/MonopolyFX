@@ -43,8 +43,9 @@ public class MainMenuController
 		createButton.setOnAction(event -> {
 			// TODO: create game and open lobby
 			// TODO: input player name
+			String playerName = "Pippo";
 			ClientMain.getConnection()
-					.send(ClientMessages.CREATE_GAME_MESSAGE_NAME, Serializer.toJson(new CreateGameClientMessage()));
+					.send(ClientMessages.CREATE_GAME_MESSAGE_NAME, Serializer.toJson(new CreateGameClientMessage(playerName)));
 		});
 	}
 }
