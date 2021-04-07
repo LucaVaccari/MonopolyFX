@@ -16,7 +16,6 @@ public class JoinGameServerMessage implements Message
 		ConnectionManager.getInstance().joinGame(code, connection, this.player);
 
 		// Sending game code to the client
-		connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME,
-		                Serializer.toJson(new GameCodeServerMessage(code)));
+		connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME, Serializer.toJson(new GameCodeServerMessage(code)));
 	}
 }

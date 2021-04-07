@@ -37,7 +37,6 @@ public class MainMenuController
 			String playerName = "Pippo";
 			ClientMain.getConnection().send(ClientMessages.JOIN_GAME_MESSAGE_NAME,
 			                                Serializer.toJson(new JoinGameClientMessage(matchCode, playerName)));
-			// TODO: go to lobby
 		});
 
 		createButton.setOnAction(event -> {
@@ -45,7 +44,8 @@ public class MainMenuController
 			// TODO: input player name
 			String playerName = "Pippo";
 			ClientMain.getConnection()
-					.send(ClientMessages.CREATE_GAME_MESSAGE_NAME, Serializer.toJson(new CreateGameClientMessage(playerName)));
+					.send(ClientMessages.CREATE_GAME_MESSAGE_NAME,
+					      Serializer.toJson(new CreateGameClientMessage(playerName)));
 		});
 	}
 }

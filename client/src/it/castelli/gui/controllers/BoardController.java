@@ -4,6 +4,7 @@ import it.castelli.ClientMain;
 import it.castelli.Game;
 import it.castelli.connection.messages.ClientMessages;
 import it.castelli.connection.messages.LeaveGameClientMessage;
+import it.castelli.connection.messages.ThrowDiceClientMessage;
 import it.castelli.gameLogic.contracts.CompanyContract;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
@@ -165,6 +166,8 @@ public class BoardController
 	@FXML
 	private void initialize()
 	{
+		instance = this;
+
 		// squares callbacks and contracts
 		{
 			// PROPERTIES
@@ -330,9 +333,12 @@ public class BoardController
 						SceneType.OWNED_TERRAIN));
 
 		// button callback
-		throwDiceButton.setOnAction(event -> {
-			// TODO: send throw dice to server
-		});
+		// TODO: getGameCode()
+		throwDiceButton.setOnAction(event ->
+				                            ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
+				                                                            Serializer.toJson(
+						                                                            new ThrowDiceClientMessage(
+								                                                            0))));
 
 		endTurnButton.setOnAction(event -> {
 			// TODO: send end turn to server
@@ -492,5 +498,15 @@ public class BoardController
 	{
 		if (getPlayer() != null)
 			moneyLabel.setText(getPlayer().getMoney() + "M");
+	}
+
+	public ImageView getDie1Image()
+	{
+		return die1Image;
+	}
+
+	public ImageView getDie2Image()
+	{
+		return die2Image;
 	}
 }

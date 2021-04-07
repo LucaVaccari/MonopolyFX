@@ -16,7 +16,7 @@ public class GoToJailSquare implements Square
 	@Override
 	public void interact(Player player)
 	{
-		// TODO: send player to prison
+		// TODO: send player to prison (set on just visiting square)
 	}
 
 	@Override

@@ -104,4 +104,20 @@ public class Game
 	{
 		Game.lastDiceResult = lastDiceResult;
 	}
+
+	/**
+	 * Use the results of a dice throw, checking whether the player has to move or not
+	 */
+	public static void useDiceResult()
+	{
+		if (player.isInPrison())
+		{
+			if (lastDiceResult.areResultsEquals())
+				player.setInPrison(false);
+		}
+		else
+		{
+			// TODO: send move request to the server
+		}
+	}
 }

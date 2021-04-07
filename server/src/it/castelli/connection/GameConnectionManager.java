@@ -6,7 +6,6 @@ import it.castelli.connection.messages.GameManagerPlayersServerMessage;
 import it.castelli.connection.messages.ServerMessages;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
-import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.serialization.Serializer;
 
@@ -58,6 +57,7 @@ public class GameConnectionManager
 	public void startGame()
 	{
 		//TODO: start game
+		gameManager.startGame();
 	}
 
 	private void sendAuction()

@@ -31,7 +31,7 @@ public class DiceResult
 	 *
 	 * @return The result of the first die
 	 */
-	public int getResult1()
+	public int getFirstResult()
 	{
 		return firstResult;
 	}
