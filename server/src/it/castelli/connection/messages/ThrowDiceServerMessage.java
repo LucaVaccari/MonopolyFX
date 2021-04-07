@@ -2,8 +2,11 @@ package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
 import it.castelli.connection.ConnectionManager;
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.Round;
 import it.castelli.gameLogic.dice.DiceResult;
+import it.castelli.serialization.Serializer;
 
 public class ThrowDiceServerMessage implements Message
 {
@@ -17,8 +20,9 @@ public class ThrowDiceServerMessage implements Message
     @Override
     public void onReceive(Connection connection, Player player)
     {
-        ConnectionManager.getInstance().getGames().get(gameCode).getGameManager().getCurrentRound().throwDice();
-        DiceResult diceResult = ConnectionManager.getInstance().getGames().get(gameCode).getGameManager().getCurrentRound().getDiceResult();
-        //TODO: send dice result to client
+        Round currentRound = ConnectionManager.getInstance().getGames().get(gameCode).getGameManager().getCurrentRound();
+        currentRound.throwDice();
+        DiceResult diceResult = currentRound.getDiceResult();
+        connection.send(ServerMessages.DICE_RESULT_MESSAGE_NAME, Serializer.toJson(new DiceResultServerMessage(diceResult)));
     }
 }

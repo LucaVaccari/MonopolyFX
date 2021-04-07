@@ -2,6 +2,7 @@ package it.castelli;
 
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.dice.DiceResult;
 
 /**
  * Static class for storing information about the game
@@ -21,6 +22,11 @@ public class Game
 	 * The code of the game
 	 */
 	private static int gameCode;
+
+	/**
+	 * The result from the last dice throw
+	 */
+	private static DiceResult lastDiceResult;
 
 	/**
 	 * Private constructor, to prevent instantiating this class
@@ -77,5 +83,25 @@ public class Game
 	public static void setGameCode(int gameCode)
 	{
 		Game.gameCode = gameCode;
+	}
+
+	/**
+	 * Getter for lastDiceResult
+	 *
+	 * @return The result from the last dice throw
+	 */
+	public static DiceResult getLastDiceResult()
+	{
+		return lastDiceResult;
+	}
+
+	/**
+	 * Setter for lastDiceResult
+	 *
+	 * @param lastDiceResult the new dice result
+	 */
+	public static void setLastDiceResult(DiceResult lastDiceResult)
+	{
+		Game.lastDiceResult = lastDiceResult;
 	}
 }
