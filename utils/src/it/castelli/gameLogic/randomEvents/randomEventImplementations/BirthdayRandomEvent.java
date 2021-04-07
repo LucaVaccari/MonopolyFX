@@ -31,6 +31,6 @@ public class BirthdayRandomEvent extends RandomEvent
 	@Override
 	public void applyEffect(Player player)
 	{
-
+		// TODO: implement
 	}
 }

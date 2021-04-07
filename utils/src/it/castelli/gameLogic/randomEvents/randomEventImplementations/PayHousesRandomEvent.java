@@ -33,6 +33,6 @@ public class PayHousesRandomEvent extends RandomEvent
 	@Override
 	public void applyEffect(Player player)
 	{
-
+		// TODO: implement
 	}
 }

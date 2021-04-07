@@ -16,6 +16,6 @@ public class GoBackRandomEvent extends RandomEvent
 	@Override
 	public void applyEffect(Player player)
 	{
-
+		// TODO: implement
 	}
 }

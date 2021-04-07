@@ -29,6 +29,6 @@ public class YouWonRandomEvent extends RandomEvent
 	@Override
 	public void applyEffect(Player player)
 	{
-
+		// TODO: implement
 	}
 }
