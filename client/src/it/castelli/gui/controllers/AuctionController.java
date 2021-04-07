@@ -1,7 +1,11 @@
 package it.castelli.gui.controllers;
 
+import it.castelli.ClientMain;
 import it.castelli.Game;
+import it.castelli.connection.messages.AuctionOfferClientMessage;
+import it.castelli.connection.messages.ClientMessages;
 import it.castelli.gui.customComponents.ChatComponent;
+import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -54,7 +58,9 @@ public class AuctionController
 		plusHundredButton.setOnAction(event -> changeOffer(100));
 
 		offerButton.setOnAction(event -> {
-			// TODO: send offer to server
+			// Send offer to the server
+			ClientMain.getConnection().send(ClientMessages.AUCTION_OFFER_MESSAGE_NAME, Serializer
+					.toJson(new AuctionOfferClientMessage(yourOffer, Game.getGameCode())));
 		});
 	}
 

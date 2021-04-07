@@ -2,6 +2,7 @@ package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
+import it.castelli.gui.AlertUtil;
 
 public class ErrorClientMessage implements Message
 {
@@ -15,6 +16,6 @@ public class ErrorClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		//TODO: Pop-up error message
+		AlertUtil.showInformationAlert("Error", "Error from the server", errorMessage);
 	}
 }

@@ -5,7 +5,6 @@ import it.castelli.gameLogic.Player;
 
 public class CreateGameClientMessage implements Message
 {
-
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{

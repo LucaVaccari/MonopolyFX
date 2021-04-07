@@ -5,12 +5,14 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.transactions.Auction;
+import it.castelli.gui.scene.SceneManager;
+import it.castelli.gui.scene.SceneType;
 
 public class AuctionClientMessage implements Message
 {
-	private Contract contract;
-	private Player player;
-	private int bestOfferProposed;
+	private final Contract contract;
+	private final Player player;
+	private final int bestOfferProposed;
 
 	public AuctionClientMessage(Contract contract, Player player, int bestOfferProposed)
 	{
@@ -23,6 +25,6 @@ public class AuctionClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		Game.getGameManager().setAuction(new Auction(contract, bestOfferProposed, this.player));
-		//TODO: show auction window
+		SceneManager.getInstance().showScene(SceneType.AUCTION);
 	}
 }

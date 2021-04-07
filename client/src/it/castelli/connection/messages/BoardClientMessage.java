@@ -7,7 +7,7 @@ import it.castelli.gameLogic.squares.Square;
 
 public class BoardClientMessage implements Message
 {
-	private Square[] board;
+	private final Square[] board;
 
 	public BoardClientMessage(Square[] board)
 	{

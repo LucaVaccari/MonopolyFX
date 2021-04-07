@@ -1,5 +1,9 @@
 package it.castelli.gui.controllers;
 
+import it.castelli.ClientMain;
+import it.castelli.Game;
+import it.castelli.connection.messages.ClientMessages;
+import it.castelli.connection.messages.LeaveGameClientMessage;
 import it.castelli.gameLogic.contracts.CompanyContract;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
@@ -10,6 +14,7 @@ import it.castelli.gui.customComponents.SmallTerrainViewComponent;
 import it.castelli.gui.customComponents.SquareComponent;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
+import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -45,6 +50,7 @@ public class BoardController
 	 */
 	private static BoardController instance;
 
+
 	@FXML
 	private ImageView die1Image;
 	@FXML
@@ -57,6 +63,8 @@ public class BoardController
 	private Button endTurnButton;
 	@FXML
 	private Button exchangeButton;
+	@FXML
+	private Button leaveGameButton;
 
 	// CHAT
 	@FXML
@@ -333,6 +341,11 @@ public class BoardController
 		exchangeButton.setOnAction(event -> {
 			// TODO: send exchange to server
 		});
+
+		leaveGameButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
+		                                                                     Serializer
+				                                                                     .toJson(new LeaveGameClientMessage(
+						                                                                     Game.getGameCode()))));
 	}
 
 	/**

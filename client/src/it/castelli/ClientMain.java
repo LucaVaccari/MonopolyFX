@@ -12,6 +12,8 @@ import java.net.Socket;
 
 public class ClientMain extends Application
 {
+	private static Connection connection;
+
 	public static void main(String[] args)
 	{
 		Socket clientSocket = null;
@@ -23,7 +25,7 @@ public class ClientMain extends Application
 		{
 			e.printStackTrace();
 		}
-		Connection connection = new Connection(clientSocket);
+		connection = new Connection(clientSocket);
 		launch(args);
 	}
 
@@ -48,5 +50,10 @@ public class ClientMain extends Application
 	{
 		SceneManager.getInstance().setPrimaryStage(primaryStage);
 		SceneManager.getInstance().showScene(SceneType.BOARD);
+	}
+
+	public static Connection getConnection()
+	{
+		return connection;
 	}
 }

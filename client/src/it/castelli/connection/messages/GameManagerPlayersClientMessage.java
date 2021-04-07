@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameManagerPlayersClientMessage implements Message
 {
-	private CopyOnWriteArrayList<Player> players;
+	private final CopyOnWriteArrayList<Player> players;
 
 	public GameManagerPlayersClientMessage(CopyOnWriteArrayList<Player> players)
 	{
@@ -19,8 +19,6 @@ public class GameManagerPlayersClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		for (Player element : players)
-		{
 			Game.getGameManager().addPlayer(element);
-		}
 	}
 }

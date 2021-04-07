@@ -5,8 +5,8 @@ import it.castelli.gameLogic.Player;
 
 public class JoinGameClientMessage implements Message
 {
-	private int code;
-	private Player player;
+	private final int code;
+	private final Player player;
 
 	public JoinGameClientMessage(int code, String name)
 	{

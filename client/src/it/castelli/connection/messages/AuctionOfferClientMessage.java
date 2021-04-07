@@ -5,8 +5,8 @@ import it.castelli.gameLogic.Player;
 
 public class AuctionOfferClientMessage implements Message
 {
-	private int offer;
-	private int gameCode;
+	private final int offer;
+	private final int gameCode;
 
 	public AuctionOfferClientMessage(int offer, int gameCode)
 	{
