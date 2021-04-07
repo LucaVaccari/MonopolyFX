@@ -4,7 +4,6 @@ import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 /**
  * A player of the game
@@ -14,7 +13,7 @@ public class Player
 	/**
 	 * The list of his contracts
 	 */
-	private final HashSet<Contract> contracts = new HashSet<>();
+	private final ArrayList<Contract> contracts = new ArrayList<>();
 	/**
 	 * All kept RandomEvent cards (like PrisonEscape)
 	 */
@@ -75,7 +74,7 @@ public class Player
 	 *
 	 * @return The list of contracts owned by the player
 	 */
-	public HashSet<Contract> getContracts()
+	public ArrayList<Contract> getContracts()
 	{
 		return contracts;
 	}
@@ -92,6 +91,7 @@ public class Player
 
 	/**
 	 * Add the given contract to the player contracts
+	 *
 	 * @param contract the contract to add
 	 */
 	public void addContract(Contract contract)
@@ -125,7 +125,7 @@ public class Player
 	 *
 	 * @param position            The new position for the player
 	 * @param passThroughGoSquare If it passes through the GoSquare, should it
-	 *                              get paid?
+	 *                            get paid?
 	 */
 	public void setPosition(int position, boolean passThroughGoSquare)
 	{

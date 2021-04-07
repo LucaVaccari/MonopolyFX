@@ -17,7 +17,7 @@ public class StationSquare implements Square
 	 * Constructor for the StationSquare
 	 *
 	 * @param contract The StationContract containing information about the
-	 *                    station
+	 *                 station
 	 */
 	public StationSquare(StationContract contract)
 	{

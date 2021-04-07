@@ -6,11 +6,11 @@ import java.net.Socket;
 
 public class Connection
 {
-	private Socket connectionSocket;
+	private final Socket connectionSocket;
+	private final Sender sender;
+	private final Receiver receiver;
 	private boolean isConnected;
 	private boolean keepAliveFlag = true;
-	private Sender sender;
-	private Receiver receiver;
 
 	public Connection(Socket connectionSocket)
 	{

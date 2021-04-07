@@ -8,7 +8,7 @@ import it.castelli.gameLogic.Player;
  */
 public class LeaveGameClientMessage implements Message
 {
-	private int code;
+	private final int code;
 
 	/**
 	 * Constructor for LeaveGameClientMessage

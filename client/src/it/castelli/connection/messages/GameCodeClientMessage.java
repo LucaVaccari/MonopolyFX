@@ -9,7 +9,7 @@ import it.castelli.gameLogic.Player;
  */
 public class GameCodeClientMessage implements Message
 {
-	private int code;
+	private final int code;
 
 	/**
 	 * Constructor for GameCodeClientMessage

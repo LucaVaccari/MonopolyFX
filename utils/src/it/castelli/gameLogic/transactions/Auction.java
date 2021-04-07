@@ -5,7 +5,6 @@ import it.castelli.gameLogic.contracts.Contract;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.*;
 
 public class Auction
 {
@@ -35,8 +34,10 @@ public class Auction
 	public void startAuction()
 	{
 		timer = new Timer();
-		TimerTask task = new TimerTask() {
-			public void run() {
+		TimerTask task = new TimerTask()
+		{
+			public void run()
+			{
 				endAuction();
 				timer.cancel();
 			}

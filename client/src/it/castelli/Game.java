@@ -25,10 +25,13 @@ public class Game
 	/**
 	 * Private constructor, to prevent instantiating this class
 	 */
-	private Game() {}
+	private Game()
+	{
+	}
 
 	/**
 	 * Getter for the gameManager
+	 *
 	 * @return The GameManager, the main class handling every aspect of the game logic
 	 */
 	public static GameManager getGameManager()
@@ -38,6 +41,7 @@ public class Game
 
 	/**
 	 * Getter for the player
+	 *
 	 * @return The Player instance of this client
 	 */
 	public static Player getPlayer()
@@ -47,6 +51,7 @@ public class Game
 
 	/**
 	 * Setter for the player
+	 *
 	 * @param player The new Player instance of this client
 	 */
 	public static void setPlayer(Player player)
@@ -56,6 +61,7 @@ public class Game
 
 	/**
 	 * Getter for the game code
+	 *
 	 * @return The code of the game
 	 */
 	public static int getGameCode()
@@ -65,6 +71,7 @@ public class Game
 
 	/**
 	 * Setter for the game code
+	 *
 	 * @param gameCode The new code of the game
 	 */
 	public static void setGameCode(int gameCode)

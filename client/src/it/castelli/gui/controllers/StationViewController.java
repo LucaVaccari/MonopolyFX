@@ -4,6 +4,9 @@ import it.castelli.gameLogic.contracts.StationContract;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+/**
+ * Controller for stationView FXML
+ */
 public class StationViewController
 {
 	@FXML

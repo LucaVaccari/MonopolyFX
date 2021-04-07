@@ -26,6 +26,6 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 	@Override
 	public void applyEffect(Player player)
 	{
-
+		// TODO: implement
 	}
 }

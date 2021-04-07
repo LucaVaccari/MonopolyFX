@@ -11,7 +11,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class GameManagerPlayersClientMessage implements Message
 {
-	private CopyOnWriteArrayList<Player> players;
+	private final CopyOnWriteArrayList<Player> players;
 
 	/**
 	 * Constructor for GameManagerPlayersClientMessage
@@ -32,8 +32,6 @@ public class GameManagerPlayersClientMessage implements Message
 	{
 		Game.getGameManager().clearPlayers();
 		for (Player element : players)
-		{
 			Game.getGameManager().addPlayer(element);
-		}
 	}
 }
