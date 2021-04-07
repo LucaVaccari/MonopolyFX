@@ -51,28 +51,29 @@ public class ConnectionManager
 		System.out.println("The total number of connection in the waiting is: " + waitingRoom.size());
 	}
 
-	private void addGame(int code, GameConnectionManager game)
+	private void addGame(int gameCode, GameConnectionManager game)
 	{
-		games.put(code, game);
+		games.put(gameCode, game);
 	}
 
-	public void removeGame(int code)
+	public void removeGame(int gameCode)
 	{
-		games.remove(code);
+		games.remove(gameCode);
+		System.out.println("Game with code " + gameCode + " removed.");
 	}
 
 	public int createGame()
 	{
-		int code = lastGameCode++;
-		addGame(code, new GameConnectionManager(code));
-		return code;
+		int gameCode = lastGameCode++;
+		addGame(gameCode, new GameConnectionManager(gameCode));
+		return gameCode;
 	}
 
-	public void joinGame(int code, Connection connection, Player player)
+	public void joinGame(int gameCode, Connection connection, Player player)
 	{
-		if (games.containsKey(code))
+		if (games.containsKey(gameCode))
 		{
-			games.get(code).addPlayer(connection, player);
+			games.get(gameCode).addPlayer(connection, player);
 			waitingRoom.remove(connection);
 
 			// Sending game code to the client
@@ -83,16 +84,16 @@ public class ConnectionManager
 		{
 			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer
 					.toJson(new ErrorServerMessage(
-							"La partita con codice: " + code +
+							"La partita con codice: " + gameCode +
 							" non è stata trovata!")));
 		}
 	}
 
-	public void leaveGame(int code, Connection connection)
+	public void leaveGame(int gameCode, Connection connection)
 	{
-		if (games.containsKey(code))
+		if (games.containsKey(gameCode))
 		{
-			games.get(code).removePlayer(connection);
+			games.get(gameCode).removePlayer(connection);
 		}
 	}
 

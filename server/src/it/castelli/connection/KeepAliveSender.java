@@ -57,14 +57,14 @@ public class KeepAliveSender implements Runnable
 		{
 
 			//remove inactive connections from joiningPlayers list
-			for (Connection connection : gameConnectionManager.getPlayers())
+			for (Connection connection : gameConnectionManager.getPlayerConnections())
 			{
 				connection
 						.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME, message);
 			}
 
 			//remove inactive connections from players list
-			for (Connection connection : gameConnectionManager.getPlayers())
+			for (Connection connection : gameConnectionManager.getPlayerConnections())
 			{
 				connection
 						.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME, message);

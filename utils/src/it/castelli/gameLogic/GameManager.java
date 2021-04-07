@@ -179,6 +179,14 @@ public class GameManager
 	}
 
 	/**
+	 * Remove all the players from the player list
+	 */
+	public void clearPlayers()
+	{
+		players.clear();
+	}
+
+	/**
 	 * Get a square by its index position
 	 *
 	 * @param index The index position of the square

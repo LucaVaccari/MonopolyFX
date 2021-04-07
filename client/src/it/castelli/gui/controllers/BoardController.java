@@ -9,6 +9,7 @@ import it.castelli.gameLogic.contracts.CompanyContract;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.contracts.StationContract;
+import it.castelli.gui.AlertUtil;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.customComponents.ChatComponent;
 import it.castelli.gui.customComponents.SmallTerrainViewComponent;
@@ -333,15 +334,23 @@ public class BoardController
 						SceneType.OWNED_TERRAIN));
 
 		// button callback
-		// TODO: getGameCode()
 		throwDiceButton.setOnAction(event ->
 				                            ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
 				                                                            Serializer.toJson(
 						                                                            new ThrowDiceClientMessage(
-								                                                            0))));
+								                                                            Game.getGameCode()))));
 
 		endTurnButton.setOnAction(event -> {
-			// TODO: send end turn to server
+			if (Game.getGameManager().getCurrentRound().isDiceThrown())
+				if (Game.getPlayer().hasMoney(0))
+					; // TODO: send end turn to server
+				else
+					AlertUtil.showInformationAlert("Debito", "Sei in debito",
+					                               "Salda il debito prima di finire il turno. Se finisci le " +
+					                               "risorse perderai la partita.");
+			else
+				AlertUtil.showInformationAlert("Tira!", "Devi tirare i dadi",
+				                               "Non puoi finire il turno senza tirare prima i dadi.");
 		});
 
 		exchangeButton.setOnAction(event -> {
@@ -352,6 +361,8 @@ public class BoardController
 		                                                                     Serializer
 				                                                                     .toJson(new LeaveGameClientMessage(
 						                                                                     Game.getGameCode()))));
+
+		// TODO: player list view
 	}
 
 	/**

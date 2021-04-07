@@ -25,11 +25,9 @@ public class ThrowDiceServerMessage implements Message
 		currentRound.throwDice();
 		DiceResult diceResult = currentRound.getDiceResult();
 
-		for (Connection element : ConnectionManager.getInstance().getGames().get(gameCode).getPlayers())
-		{
-			element.send(ServerMessages.DICE_RESULT_MESSAGE_NAME,
-					Serializer.toJson(new DiceResultServerMessage(diceResult)));
-		}
+		ConnectionManager.getInstance().getGames().get(gameCode).sendAll(ServerMessages.DICE_RESULT_MESSAGE_NAME,
+				Serializer.toJson(new DiceResultServerMessage(diceResult)));
+
 
 	}
 }

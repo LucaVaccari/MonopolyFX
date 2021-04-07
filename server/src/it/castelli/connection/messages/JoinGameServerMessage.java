@@ -2,20 +2,25 @@ package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
 import it.castelli.connection.ConnectionManager;
+import it.castelli.connection.GameConnectionManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
 
 public class JoinGameServerMessage implements Message
 {
-	private int code;
+	private int gameCode;
 	private Player player;
 
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		ConnectionManager.getInstance().joinGame(code, connection, this.player);
+		ConnectionManager.getInstance().joinGame(gameCode, connection, this.player);
 
 		// Sending game code to the client
-		connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME, Serializer.toJson(new GameCodeServerMessage(code)));
+		connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME, Serializer.toJson(new GameCodeServerMessage(gameCode)));
+
+		GameConnectionManager match = ConnectionManager.getInstance().getGames().get(gameCode);
+		match.sendAll(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME, Serializer
+				.toJson(new GameManagerPlayersServerMessage(match.getGameManager().getPlayers())));
 	}
 }
