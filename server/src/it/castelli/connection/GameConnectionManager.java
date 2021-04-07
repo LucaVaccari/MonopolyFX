@@ -60,18 +60,6 @@ public class GameConnectionManager
 		//TODO: start game
 	}
 
-	public void startAuction(Contract contract)
-	{
-		gameManager.startAuction(contract);
-		sendAuction();
-	}
-
-	public void offer(Player player, int offer)
-	{
-		gameManager.auctionOffer(player, offer);
-		sendAuction();
-	}
-
 	private void sendAuction()
 	{
 		for (Connection connection : players)
@@ -83,5 +71,8 @@ public class GameConnectionManager
 		}
 	}
 
-
+	public GameManager getGameManager()
+	{
+		return gameManager;
+	}
 }

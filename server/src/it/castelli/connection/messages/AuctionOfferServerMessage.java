@@ -18,6 +18,6 @@ public class AuctionOfferServerMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		ConnectionManager.getInstance().getGames().get(gameCode).offer(player, offer);
+		ConnectionManager.getInstance().getGames().get(gameCode).getGameManager().auctionOffer(player, offer);
 	}
 }

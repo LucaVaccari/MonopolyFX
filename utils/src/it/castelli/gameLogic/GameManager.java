@@ -234,4 +234,10 @@ public class GameManager
 	{
 		this.board = board;
 	}
+
+	public Round getCurrentRound()
+	{
+		return currentRound;
+	}
+
 }
