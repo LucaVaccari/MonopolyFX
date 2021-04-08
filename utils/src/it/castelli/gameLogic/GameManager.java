@@ -248,4 +248,8 @@ public class GameManager
 		return currentRound;
 	}
 
+	public void setCurrentRound(Round currentRound)
+	{
+		this.currentRound = currentRound;
+	}
 }

@@ -16,5 +16,7 @@ public class ServerMessages
 			"it.castelli.connection.messages.BoardClientMessage";
 	public static final String DICE_RESULT_MESSAGE_NAME =
 			"it.castelli.connection.messages.DiceResultClientMessage";
+	public static final String ROUND_MESSAGE_NAME =
+			"it.castelli.connection.messages.RoundClientMessage";
 
 }
