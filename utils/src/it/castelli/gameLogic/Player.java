@@ -99,6 +99,15 @@ public class Player
 		contract.setOwner(this);
 		contracts.add(contract);
 	}
+	/**
+	 * Remove the given contract of the player contracts
+	 *
+	 * @param contract the contract to remove
+	 */
+	public void removeContract(Contract contract)
+	{
+		contracts.remove(contract);
+	}
 
 	/**
 	 * Getter for inPrison
