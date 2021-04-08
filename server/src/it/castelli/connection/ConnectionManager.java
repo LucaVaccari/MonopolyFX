@@ -78,7 +78,7 @@ public class ConnectionManager
 
 			// Sending game code to the client
 			connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME,
-					Serializer.toJson(new GameCodeServerMessage(code)));
+					Serializer.toJson(new GameCodeServerMessage(lastGameCode)));
 		}
 		else
 		{
