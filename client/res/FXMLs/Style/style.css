@@ -27,3 +27,8 @@
  -fx-background-color: #FFFFFF;
  -fx-text-fill:"black"
 }
+.MainMenuButton{
+-fx-background-color: #cc000f;
+-fx-text-fill: #ffffff;
+-fx-font-size:21
+}

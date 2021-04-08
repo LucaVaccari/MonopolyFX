@@ -22,6 +22,8 @@ import it.castelli.serialization.Serializer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,10 +31,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -63,7 +67,7 @@ public class BoardController
 	@FXML
 	private Button throwDiceButton;
 	@FXML
-	private ListView<Label> playerListView;
+	private VBox playerListView;
 	@FXML
 	private Button endTurnButton;
 	@FXML
@@ -358,9 +362,7 @@ public class BoardController
 
 		exchangeButton.setOnAction(event -> {
 			// TODO: send exchange to server
-			Label l1 = new Label("ciao " + "5" + "M");
-			l1.setMinSize(playerListView.getPrefWidth(),playerListView.getPrefHeight()/6);
-			playerListView.getItems().add(l1);
+
 		});
 
 		leaveGameButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
@@ -369,10 +371,15 @@ public class BoardController
 								Game.getGameCode()))));
 
 		// TODO: player list view
-//		Platform.runLater(() -> {
 //			for (int i = 0; i < GameManager.getPlayers().size(); i++)
-//				playerListView.getItems().add(new Label(GameManager.getPlayers().get(i).getName() + " " + GameManager.getPlayers().get(i).getMoney() + "M"));
-//		});
+//			{
+//				Label player=new Label(GameManager.getPlayers().get(i).getName() + " " + GameManager.getPlayers().get(i).getMoney() + "M");
+//				player.setAlignment(Pos.CENTER);
+//				player.setPrefSize(playerListView.getPrefWidth(),playerListView.getPrefHeight()/7);
+//				player.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+//				playerListView.getChildren().add(player);
+//			}
+
 
 	}
 
