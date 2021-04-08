@@ -18,4 +18,6 @@ public class ClientMessages
 			"it.castelli.connection.messages.StartGameServerMessage";
 	public static final String END_TURN_MESSAGE_NAME =
 			"it.castelli.connection.messages.EndTurnServerMessage";
+	public static final String CHAT_MESSAGE_NAME =
+			"it.castelli.connection.messages.ChatServerMessage";
 }

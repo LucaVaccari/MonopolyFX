@@ -18,5 +18,7 @@ public class ServerMessages
 			"it.castelli.connection.messages.DiceResultClientMessage";
 	public static final String ROUND_MESSAGE_NAME =
 			"it.castelli.connection.messages.RoundClientMessage";
+	public static final String CHAT_MESSAGE_NAME =
+			"it.castelli.connection.messages.ChatClientMessage";
 
 }
