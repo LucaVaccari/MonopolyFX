@@ -13,7 +13,7 @@ public class ChatServerMessage implements Message
     public ChatServerMessage(int gameCode, Player senderPlayer, String messageBody)
     {
         this.gameCode = gameCode;
-        message = senderPlayer.getName() + ": " + messageBody;
+        message = messageBody;
     }
 
     @Override

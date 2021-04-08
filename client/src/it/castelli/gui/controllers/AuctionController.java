@@ -59,6 +59,7 @@ public class AuctionController
 
 		offerButton.setOnAction(event -> {
 			// Send offer to the server
+			// TODO: check if your offer > lastoffer
 			ClientMain.getConnection().send(ClientMessages.AUCTION_OFFER_MESSAGE_NAME, Serializer
 					.toJson(new AuctionOfferClientMessage(yourOffer, Game.getGameCode())));
 		});
@@ -80,7 +81,7 @@ public class AuctionController
 	 */
 	private void changeOffer(int value)
 	{
-		if (yourOffer + value > 0) // TODO: cannot go under auction base or over your money
+		if (yourOffer + value > Game.getPlayer().getMoney())
 		{
 			yourOffer += value;
 			yourOfferLabel.setText(yourOffer + "M");

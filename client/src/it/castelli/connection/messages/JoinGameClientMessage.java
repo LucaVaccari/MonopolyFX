@@ -1,5 +1,6 @@
 package it.castelli.connection.messages;
 
+import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 
@@ -20,6 +21,7 @@ public class JoinGameClientMessage implements Message
 	{
 		this.code = code;
 		player = new Player(1500, name);
+		Game.setPlayer(player);
 	}
 
 	@Override

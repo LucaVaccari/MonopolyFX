@@ -15,7 +15,7 @@ public class GameManager
 	/**
 	 * The list of players
 	 */
-	private final CopyOnWriteArrayList<Player> players =
+	private static final CopyOnWriteArrayList<Player> players =
 			new CopyOnWriteArrayList<>();
 	/**
 	 * The array of all the squares
@@ -197,7 +197,7 @@ public class GameManager
 		return board[index];
 	}
 
-	public CopyOnWriteArrayList<Player> getPlayers()
+	public static CopyOnWriteArrayList<Player> getPlayers()
 	{
 		return players;
 	}

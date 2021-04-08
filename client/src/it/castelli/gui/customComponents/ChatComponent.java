@@ -1,6 +1,11 @@
 package it.castelli.gui.customComponents;
 
+import it.castelli.ClientMain;
+import it.castelli.Game;
+import it.castelli.connection.messages.ChatClientMessage;
+import it.castelli.connection.messages.ClientMessages;
 import it.castelli.gui.FXMLFileLoader;
+import it.castelli.serialization.Serializer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -45,9 +50,14 @@ public class ChatComponent extends AnchorPane
 	{
 		// CHAT
 		EventHandler<ActionEvent> onMessageSend = event -> {
-			// TODO: send message
+			ClientMain.getConnection().send(ClientMessages.CHAT_MESSAGE_NAME, Serializer.toJson(new ChatClientMessage(Game.getGameCode(),Game.getPlayer(),messageTextField.getText())));
 		};
 		messageTextField.setOnAction(onMessageSend);
 		sendButton.setOnAction(onMessageSend);
+	}
+
+	public ListView<Label> getMessageListView()
+	{
+		return messageListView;
 	}
 }

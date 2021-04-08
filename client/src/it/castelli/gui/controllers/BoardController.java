@@ -3,8 +3,10 @@ package it.castelli.gui.controllers;
 import it.castelli.ClientMain;
 import it.castelli.Game;
 import it.castelli.connection.messages.ClientMessages;
+import it.castelli.connection.messages.EndTurnClientMessage;
 import it.castelli.connection.messages.LeaveGameClientMessage;
 import it.castelli.connection.messages.ThrowDiceClientMessage;
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.contracts.CompanyContract;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
@@ -17,6 +19,7 @@ import it.castelli.gui.customComponents.SquareComponent;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -335,34 +338,42 @@ public class BoardController
 
 		// button callback
 		throwDiceButton.setOnAction(event ->
-				                            ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
-				                                                            Serializer.toJson(
-						                                                            new ThrowDiceClientMessage(
-								                                                            Game.getGameCode()))));
+				ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
+						Serializer.toJson(
+								new ThrowDiceClientMessage(
+										Game.getGameCode()))));
 
 		endTurnButton.setOnAction(event -> {
 			if (Game.getGameManager().getCurrentRound().isDiceThrown())
 				if (Game.getPlayer().hasMoney(0))
-					; // TODO: send end turn to server
+					ClientMain.getConnection().send(ClientMessages.END_TURN_MESSAGE_NAME, Serializer.toJson(new EndTurnClientMessage(Game.getGameCode())));
 				else
 					AlertUtil.showInformationAlert("Debito", "Sei in debito",
-					                               "Salda il debito prima di finire il turno. Se finisci le " +
-					                               "risorse perderai la partita.");
+							"Salda il debito prima di finire il turno. Se finisci le " +
+									"risorse perderai la partita.");
 			else
 				AlertUtil.showInformationAlert("Tira!", "Devi tirare i dadi",
-				                               "Non puoi finire il turno senza tirare prima i dadi.");
+						"Non puoi finire il turno senza tirare prima i dadi.");
 		});
 
 		exchangeButton.setOnAction(event -> {
 			// TODO: send exchange to server
+			Label l1 = new Label("ciao " + "5" + "M");
+			l1.setMinSize(playerListView.getPrefWidth(),playerListView.getPrefHeight()/6);
+			playerListView.getItems().add(l1);
 		});
 
 		leaveGameButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-		                                                                     Serializer
-				                                                                     .toJson(new LeaveGameClientMessage(
-						                                                                     Game.getGameCode()))));
+				Serializer
+						.toJson(new LeaveGameClientMessage(
+								Game.getGameCode()))));
 
 		// TODO: player list view
+//		Platform.runLater(() -> {
+//			for (int i = 0; i < GameManager.getPlayers().size(); i++)
+//				playerListView.getItems().add(new Label(GameManager.getPlayers().get(i).getName() + " " + GameManager.getPlayers().get(i).getMoney() + "M"));
+//		});
+
 	}
 
 	/**
@@ -424,8 +435,8 @@ public class BoardController
 			e.printStackTrace();
 		}
 	}
-	// Calculate the properties owned by the player to show under the board
 
+	// Calculate the properties owned by the player to show under the board
 	/**
 	 * Show a new not resizable stage containing information about a company
 	 *
@@ -483,7 +494,7 @@ public class BoardController
 			for (Contract contract : getPlayer().getContracts())
 			{
 				if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-				    !mostProductiveContracts.contains(mostProductiveContract))
+						!mostProductiveContracts.contains(mostProductiveContract))
 					mostProductiveContract = contract;
 			}
 
@@ -492,8 +503,7 @@ public class BoardController
 				ownedTerrains[i].setDisable(false);
 				ownedTerrains[i].setVisible(true);
 				ownedTerrains[i].setContract(mostProductiveContract);
-			}
-			else
+			} else
 			{
 				ownedTerrains[i].setVisible(false);
 				ownedTerrains[i].setDisable(true);
@@ -519,5 +529,10 @@ public class BoardController
 	public ImageView getDie2Image()
 	{
 		return die2Image;
+	}
+
+	public ChatComponent getChat()
+	{
+		return chat;
 	}
 }
