@@ -1,6 +1,8 @@
 package it.castelli.gameLogic;
 
 import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.gameLogic.contracts.PropertyColor;
+import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
 
 import java.util.ArrayList;

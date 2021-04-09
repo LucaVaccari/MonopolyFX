@@ -7,10 +7,8 @@ import it.castelli.connection.messages.EndTurnClientMessage;
 import it.castelli.connection.messages.LeaveGameClientMessage;
 import it.castelli.connection.messages.ThrowDiceClientMessage;
 import it.castelli.gameLogic.GameManager;
-import it.castelli.gameLogic.contracts.CompanyContract;
-import it.castelli.gameLogic.contracts.Contract;
-import it.castelli.gameLogic.contracts.PropertyContract;
-import it.castelli.gameLogic.contracts.StationContract;
+import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.*;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.customComponents.ChatComponent;
@@ -371,6 +369,7 @@ public class BoardController
 								Game.getGameCode()))));
 
 		// TODO: player list view
+		//list of all players
 //			for (int i = 0; i < GameManager.getPlayers().size(); i++)
 //			{
 //				Label player=new Label(GameManager.getPlayers().get(i).getName() + " " + GameManager.getPlayers().get(i).getMoney() + "M");
@@ -379,9 +378,25 @@ public class BoardController
 //				player.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 //				playerListView.getChildren().add(player);
 //			}
+		//list of my properties
+//		Player p1 = new Player(500,"ferro");
+//		p1.addContract(new PropertyContract("Vicolo Stretto", 60, 4, 20, 60,
+//				180, 320, 450, 50,
+//				PropertyColor.BROWN));
+//		p1.addContract(new PropertyContract("Piazza Dante", 200, 16, 80, 220,
+//				600, 800, 1000, 100,
+//				PropertyColor.ORANGE));
+//		for (int i = 0; i < p1.getContracts().size() ; i++)
+//		{
+//			SquareComponent property =new SquareComponent();
+//			property.setContract(p1.getContracts().get(i));
+//			property.setOnMouseClicked(event1 -> showTerrainView(
+//					(PropertyContract) property.getContract()));
+//			ownedPropertiesPane.getChildren().add(property);
+//		}
+		}
 
 
-	}
 
 	/**
 	 * Show a new not resizable stage containing information about a property
