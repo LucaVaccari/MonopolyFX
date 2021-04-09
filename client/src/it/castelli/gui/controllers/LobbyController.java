@@ -20,7 +20,8 @@ import javafx.scene.image.ImageView;
 public class LobbyController
 {
 	private String pawn;
-	public static Button playButton;
+	@FXML
+	public static Button playButton = new Button();
 	@FXML
 	private ChatComponent chat;
 	@FXML

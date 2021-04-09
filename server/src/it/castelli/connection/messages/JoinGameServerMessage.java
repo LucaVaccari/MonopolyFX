@@ -20,7 +20,7 @@ public class JoinGameServerMessage implements Message
 		connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME, Serializer.toJson(new GameCodeServerMessage(gameCode)));
 
 		GameConnectionManager match = ConnectionManager.getInstance().getGames().get(gameCode);
-		match.sendAll(ServerMessages.GAME_MANAGER_PLAYERS_MESSAGE_NAME, Serializer
-				.toJson(new GameManagerPlayersServerMessage(match.getGameManager().getPlayers())));
+		match.sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME, Serializer
+				.toJson(new PlayersListServerMessage(match.getGameManager().getPlayers())));
 	}
 }
