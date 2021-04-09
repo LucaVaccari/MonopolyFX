@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1f802c;" styleClass="kabelFont" stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.MainMenuController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.MainMenuController">
     <ImageView fitHeight="151.0" fitWidth="467.0" layoutX="101.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="173.0" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="101.61126708984375" AnchorPane.topAnchor="76.0">
         <Image url="@../images/Monopoly_logo.png" />
     </ImageView>
@@ -21,4 +22,8 @@
          <Button fx:id="createButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="MainMenuButton" stylesheets="@Style/style.css" text="Create" HBox.hgrow="ALWAYS" />
       </children>
    </HBox>
+   <styleClass>
+      <String fx:value="kabelFont" />
+      <String fx:value="anchor-pane" />
+   </styleClass>
 </AnchorPane>

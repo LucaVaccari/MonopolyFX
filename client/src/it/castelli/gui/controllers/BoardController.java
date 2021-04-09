@@ -370,9 +370,9 @@ public class BoardController
 
 		// TODO: player list view
 		//list of all players
-//			for (int i = 0; i < GameManager.getPlayers().size(); i++)
+//			for (int i = 0; i < Game.getGameManager().getPlayers().size(); i++)
 //			{
-//				Label player=new Label(GameManager.getPlayers().get(i).getName() + " " + GameManager.getPlayers().get(i).getMoney() + "M");
+//				Label player=new Label(Game.getGameManager().getPlayers().get(i).getName() + " " + Game.getGameManager().getPlayers().get(i).getMoney() + "M");
 //				player.setAlignment(Pos.CENTER);
 //				player.setPrefSize(playerListView.getPrefWidth(),playerListView.getPrefHeight()/7);
 //				player.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));

@@ -32,6 +32,7 @@ public class MainMenuController
 	{
 		exitButton.setOnAction(
 				event -> SceneManager.getInstance().getPrimaryStage().close());
+		//TODO: actually close the program
 
 		joinButton.setOnAction(this::onJoinButtonPressed);
 

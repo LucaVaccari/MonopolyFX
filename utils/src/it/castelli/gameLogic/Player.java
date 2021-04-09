@@ -38,6 +38,10 @@ public class Player
 	 * Is the player in prison?
 	 */
 	private boolean inPrison = false;
+/**
+	 * the player's pawn in a string
+	 */
+	private String pawn = "";
 
 	/**
 	 * Constructor for the Player
@@ -45,7 +49,7 @@ public class Player
 	 * @param money The amount of money the player has
 	 * @param name  The name of the player
 	 */
-	public Player(int money, String name)
+	public Player(int money, String name )
 	{
 		this.money = money;
 		this.name = name;
@@ -101,6 +105,7 @@ public class Player
 		contract.setOwner(this);
 		contracts.add(contract);
 	}
+
 	/**
 	 * Remove the given contract of the player contracts
 	 *
@@ -110,7 +115,6 @@ public class Player
 	{
 		contracts.remove(contract);
 	}
-
 	/**
 	 * Getter for inPrison
 	 *
@@ -196,5 +200,15 @@ public class Player
 	public boolean hasMoney(int x)
 	{
 		return money >= x;
+	}
+
+	public String getPawn()
+	{
+		return pawn;
+	}
+
+	public void setPawn(String pawn)
+	{
+		this.pawn = pawn;
 	}
 }
