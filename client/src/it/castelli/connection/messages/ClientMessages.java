@@ -23,4 +23,6 @@ public class ClientMessages
 			"it.castelli.connection.messages.EndTurnServerMessage";
 	public static final String CHAT_MESSAGE_NAME =
 			"it.castelli.connection.messages.ChatServerMessage";
+	public static final String PAWN_MESSAGE_NAME =
+			"it.castelli.connection.messages.PawnServerMessage";
 }

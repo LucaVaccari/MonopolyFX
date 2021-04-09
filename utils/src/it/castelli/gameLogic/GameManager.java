@@ -197,11 +197,10 @@ public class GameManager
 		return board[index];
 	}
 
-	public static CopyOnWriteArrayList<Player> getPlayers()
+	public CopyOnWriteArrayList<Player> getPlayers()
 	{
 		return players;
 	}
-
 
 	public void startGame()
 	{
@@ -252,4 +251,5 @@ public class GameManager
 	{
 		this.currentRound = currentRound;
 	}
+
 }

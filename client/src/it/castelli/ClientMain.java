@@ -19,8 +19,7 @@ public class ClientMain extends Application
 		Socket clientSocket = null;
 		try
 		{
-			clientSocket = new Socket(InetAddress.getByName("localhost"), 1111);
-			//clientSocket = new Socket(InetAddress.getLocalHost(), 1111);
+			clientSocket = new Socket(InetAddress.getByName("79.16.96.227"), 1111);
 		}
 		catch (IOException e)
 		{
