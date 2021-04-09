@@ -25,6 +25,7 @@ public class GameConnectionManager
 	{
 		if (playerConnections.size() < 6)  //TODO: check gameManager inGame too
 		{
+			//TODO: host system
 			playerConnections.add(connection);
 			connection.addPlayer(player);
 			gameManager.addPlayer(player);
@@ -42,6 +43,7 @@ public class GameConnectionManager
 	{
 		playerConnections.remove(connection);
 
+		//TODO: check for host leaving problem
 		if (playerConnections.isEmpty())
 			ConnectionManager.getInstance().removeGame(gameCode);
 	}
