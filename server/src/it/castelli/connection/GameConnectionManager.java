@@ -13,6 +13,7 @@ public class GameConnectionManager
 	private final CopyOnWriteArrayList<Connection> playerConnections;
 	private final GameManager gameManager;
 	private final int gameCode;
+	private Connection host = null;
 
 	public GameConnectionManager(int gameCode)
 	{
@@ -25,7 +26,8 @@ public class GameConnectionManager
 	{
 		if (playerConnections.size() < 6)  //TODO: check gameManager inGame too
 		{
-			//TODO: host system
+			if(this.host == null)
+				this.host = connection;
 			playerConnections.add(connection);
 			connection.addPlayer(player);
 			gameManager.addPlayer(player);
@@ -43,9 +45,15 @@ public class GameConnectionManager
 	{
 		playerConnections.remove(connection);
 
-		//TODO: check for host leaving problem
 		if (playerConnections.isEmpty())
 			ConnectionManager.getInstance().removeGame(gameCode);
+		else
+		{
+			if(connection == host)
+				host = playerConnections.get(0);
+		}
+
+
 	}
 
 	public CopyOnWriteArrayList<Connection> getPlayerConnections()
