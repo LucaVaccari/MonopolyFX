@@ -60,5 +60,11 @@ public class LobbyController
 					if(pawnAvailable)
 						ClientMain.getConnection().send(ClientMessages.PAWN_MESSAGE_NAME, Serializer.toJson(new PawnClientMessage(pawn, Game.getGameCode())));
 				});
+		thimblePawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("thimble.png"));
+		dogPawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("dog.png"));
+		wagonPawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("wagon.png"));
+		carPawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("car.png"));
+		shoePawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("shoe.png"));
+		boatPawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("boat.png"));
 	}
 }
