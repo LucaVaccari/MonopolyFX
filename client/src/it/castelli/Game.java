@@ -31,7 +31,7 @@ public class Game
 	/**
 	 * is the player the host?
 	 */
-	private static boolean isHost;
+	private static boolean host;
 
 	/**
 	 * Private constructor, to prevent instantiating this class
@@ -126,13 +126,13 @@ public class Game
 		}
 	}
 
-	public static boolean isIsHost()
+	public static boolean isHost()
 	{
-		return isHost;
+		return host;
 	}
 
-	public static void setIsHost(boolean isHost)
+	public static void setHost(boolean isHost)
 	{
-		Game.isHost = isHost;
+		Game.host = isHost;
 	}
 }

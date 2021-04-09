@@ -27,7 +27,10 @@ public class GameConnectionManager
 		if (playerConnections.size() < 6)  //TODO: check gameManager inGame too
 		{
 			if(this.host == null)
+			{
 				this.host = connection;
+				host.send(ServerMessages.HOST_MESSAGE_NAME, Serializer.toJson(new HostServerMessage()));
+			}
 			playerConnections.add(connection);
 			connection.addPlayer(player);
 			gameManager.addPlayer(player);
@@ -50,10 +53,12 @@ public class GameConnectionManager
 		else
 		{
 			if(connection == host)
+			{
 				host = playerConnections.get(0);
+				host.send(ServerMessages.HOST_MESSAGE_NAME, Serializer.toJson(new HostServerMessage()));
+			}
+
 		}
-
-
 	}
 
 	public CopyOnWriteArrayList<Connection> getPlayerConnections()
