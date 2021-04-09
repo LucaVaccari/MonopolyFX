@@ -42,6 +42,9 @@ public class LobbyController
 	private void initialize()
 	{
 		// TODO: hide playButton if not host
+		if (!Game.isHost())
+			playButton.setDisable(true);
+
 		playButton.setOnAction(
 				event -> {
 					SceneManager.getInstance().showScene(SceneType.BOARD);
