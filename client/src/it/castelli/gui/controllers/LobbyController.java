@@ -20,8 +20,7 @@ import javafx.scene.image.ImageView;
 public class LobbyController
 {
 	private String pawn;
-	@FXML
-	private Button playButton;
+	public static Button playButton;
 	@FXML
 	private ChatComponent chat;
 	@FXML
@@ -38,12 +37,14 @@ public class LobbyController
 	private ImageView shoePawn;
 	@FXML
 	private ImageView boatPawn;
+
+
 	@FXML
 	private void initialize()
 	{
 		// TODO: hide playButton if not host
-		if (!Game.isHost())
-			playButton.setDisable(true);
+		playButton.setDisable(true);
+		playButton.setVisible(false);
 
 		playButton.setOnAction(
 				event -> {
