@@ -29,6 +29,11 @@ public class Game
 	private static DiceResult lastDiceResult;
 
 	/**
+	 * is the player the host?
+	 */
+	private static boolean isHost;
+
+	/**
 	 * Private constructor, to prevent instantiating this class
 	 */
 	private Game()
@@ -119,5 +124,15 @@ public class Game
 		{
 			// TODO: send move request to the server
 		}
+	}
+
+	public static boolean isIsHost()
+	{
+		return isHost;
+	}
+
+	public static void setIsHost(boolean isHost)
+	{
+		Game.isHost = isHost;
 	}
 }
