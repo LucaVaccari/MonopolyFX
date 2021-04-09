@@ -28,6 +28,6 @@ public class DiceResultClientMessage implements Message
 				String.valueOf(getClass().getResource("/images/face_" + diceResult.getSecondResult() + ".png")));
 		BoardController.getInstance().getDie2Image().setImage(secondDieImage);
 
-//		Game.useDiceResult();
+		Game.useDiceResult();
 	}
 }
