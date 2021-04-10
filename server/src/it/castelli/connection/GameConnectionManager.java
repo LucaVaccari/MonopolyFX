@@ -44,7 +44,7 @@ public class GameConnectionManager
 		}
 	}
 
-	public void removePlayer(Connection connection)
+	public void removePlayerConnection(Connection connection)
 	{
 		playerConnections.remove(connection);
 

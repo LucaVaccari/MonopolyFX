@@ -93,7 +93,7 @@ public class ConnectionManager
 	{
 		if (games.containsKey(gameCode))
 		{
-			games.get(gameCode).removePlayer(connection);
+			games.get(gameCode).removePlayerConnection(connection);
 		}
 	}
 

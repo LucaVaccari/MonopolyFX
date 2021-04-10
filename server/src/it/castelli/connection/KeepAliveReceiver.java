@@ -87,7 +87,7 @@ public class KeepAliveReceiver implements Runnable
 				if (!connection.getKeepAliveFlag())
 				{
 					connection.interrupt();
-					gameConnectionManager.getPlayerConnections().remove(connection);
+					gameConnectionManager.removePlayerConnection(connection);
 					System.out.println("Connection removed");
 				}
 			}
@@ -98,7 +98,7 @@ public class KeepAliveReceiver implements Runnable
 				if (!connection.getKeepAliveFlag())
 				{
 					connection.interrupt();
-					gameConnectionManager.getPlayerConnections().remove(connection);
+					gameConnectionManager.removePlayerConnection(connection);
 					System.out.println("Connection removed");
 				}
 			}
