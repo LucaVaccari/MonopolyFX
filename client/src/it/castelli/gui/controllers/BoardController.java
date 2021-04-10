@@ -567,4 +567,9 @@ public class BoardController
 	{
 		return chat;
 	}
+
+	public VBox getPlayerListView()
+	{
+		return playerListView;
+	}
 }

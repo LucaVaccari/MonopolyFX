@@ -59,6 +59,7 @@ public class LobbyController
 		return instance;
 	}
 
+
 	@FXML
 	private void initialize()
 	{
@@ -114,5 +115,10 @@ public class LobbyController
 	{
 		playButton.setDisable(false);
 		playButton.setVisible(true);
+	}
+
+	public VBox getPlayerListView()
+	{
+		return playerListView;
 	}
 }
