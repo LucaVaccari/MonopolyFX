@@ -81,7 +81,7 @@ public class ConnectionManager
 			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer
 					.toJson(new ErrorServerMessage(
 							"La partita con codice: " + gameCode +
-							" non è stata trovata!")));
+							" non e' stata trovata!")));
 		}
 	}
 
