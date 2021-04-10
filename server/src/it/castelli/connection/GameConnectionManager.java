@@ -85,7 +85,7 @@ public class GameConnectionManager
 		gameManager.startGame();
 	}
 
-	private void sendAuction()
+	private void startAuction()
 	{
 		for (Connection connection : playerConnections)
 		{
@@ -112,5 +112,18 @@ public class GameConnectionManager
 		sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME, Serializer.toJson(new PlayersListServerMessage(gameManager.getPlayers())));
 		sendAll(ServerMessages.BOARD_MESSAGE_NAME, Serializer.toJson(new BoardServerMessage(gameManager.getBoard())));
 	}
+
+	public Connection getConnectionFromPlayer(Player player)
+	{
+		for (Connection connection : playerConnections)
+		{
+			if (connection.getReceiver().getPlayer().equals(player))
+			{
+				return connection;
+			}
+		}
+		return null;
+	}
+
 
 }

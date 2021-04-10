@@ -25,4 +25,6 @@ public class ClientMessages
 			"it.castelli.connection.messages.ChatServerMessage";
 	public static final String PAWN_MESSAGE_NAME =
 			"it.castelli.connection.messages.PawnServerMessage";
+	public static final String CREATE_EXCHANGE_MESSAGE_NAME =
+			"it.castelli.connection.messages.CreateExchangeServerMessage";
 }

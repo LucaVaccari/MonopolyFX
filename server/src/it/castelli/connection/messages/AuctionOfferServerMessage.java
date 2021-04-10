@@ -2,7 +2,9 @@ package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
 import it.castelli.connection.ConnectionManager;
+import it.castelli.connection.GameConnectionManager;
 import it.castelli.gameLogic.Player;
+import it.castelli.serialization.Serializer;
 
 public class AuctionOfferServerMessage implements Message
 {
@@ -18,6 +20,8 @@ public class AuctionOfferServerMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		ConnectionManager.getInstance().getGames().get(gameCode).getGameManager().auctionOffer(player, offer);
+		GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
+		gameConnectionManager.getGameManager().auctionOffer(player, offer);
+		gameConnectionManager.sendAll(ServerMessages.UPDATE_AUCTION_MESSAGE_NAME, Serializer.toJson(new UpdateAuctionServerMessage(gameConnectionManager.getGameManager().getAuction())));
 	}
 }

@@ -16,6 +16,8 @@ public class Exchange
 	{
 		this.player1 = player1;
 		this.player2 = player2;
+		asset1 = new Asset();
+		asset2 = new Asset();
 	}
 
 	public Player getPlayer1()

@@ -15,6 +15,8 @@ public class ServerMessages
 			"it.castelli.connection.messages.ErrorClientMessage";
 	public static final String AUCTION_MESSAGE_NAME =
 			"it.castelli.connection.messages.AuctionClientMessage";
+	public static final String UPDATE_AUCTION_MESSAGE_NAME =
+			"it.castelli.connection.messages.UpdateAuctionClientMessage";
 	public static final String BOARD_MESSAGE_NAME =
 			"it.castelli.connection.messages.BoardClientMessage";
 	public static final String DICE_RESULT_MESSAGE_NAME =
