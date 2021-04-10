@@ -1,7 +1,6 @@
 package it.castelli.connection;
 
 import it.castelli.connection.messages.ErrorServerMessage;
-import it.castelli.connection.messages.GameCodeServerMessage;
 import it.castelli.connection.messages.ServerMessages;
 import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
@@ -73,6 +72,7 @@ public class ConnectionManager
 	{
 		if (games.containsKey(gameCode))
 		{
+			System.out.println("game with gameCode: " + gameCode + " found!");
 			games.get(gameCode).addPlayer(connection, player);
 			waitingRoom.remove(connection);
 
