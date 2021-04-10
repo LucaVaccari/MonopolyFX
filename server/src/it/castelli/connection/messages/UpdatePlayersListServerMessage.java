@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * Players in the game info message (send only)
  */
-public class PlayersListServerMessage implements Message
+public class UpdatePlayersListServerMessage implements Message
 {
 	private CopyOnWriteArrayList<Player> players;
 
@@ -17,7 +17,7 @@ public class PlayersListServerMessage implements Message
 	 *
 	 * @param players players of the game
 	 */
-	public PlayersListServerMessage(CopyOnWriteArrayList<Player> players)
+	public UpdatePlayersListServerMessage(CopyOnWriteArrayList<Player> players)
 	{
 		this.players = players;
 	}

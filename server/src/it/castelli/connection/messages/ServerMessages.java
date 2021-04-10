@@ -7,7 +7,9 @@ public class ServerMessages
 {
 	public static final String KEEP_ALIVE_MESSAGE_NAME =
 			"it.castelli.connection.messages.KeepAliveClientMessage";
-	public static final String PLAYERS_LIST_MESSAGE_NAME =
+	public static final String CHAT_MESSAGE_NAME =
+			"it.castelli.connection.messages.ChatClientMessage";
+	public static final String UPDATE_PLAYERS_LIST_MESSAGE_NAME =
 			"it.castelli.connection.messages.PlayersListClientMessage";
 	public static final String GAME_CODE_MESSAGE_NAME =
 			"it.castelli.connection.messages.GameCodeClientMessage";
@@ -23,8 +25,6 @@ public class ServerMessages
 			"it.castelli.connection.messages.DiceResultClientMessage";
 	public static final String ROUND_MESSAGE_NAME =
 			"it.castelli.connection.messages.RoundClientMessage";
-	public static final String CHAT_MESSAGE_NAME =
-			"it.castelli.connection.messages.ChatClientMessage";
 	public static final String HOST_MESSAGE_NAME =
 			"it.castelli.connection.messages.HostClientMessage";
 	public static final String START_GAME_MESSAGE_NAME =

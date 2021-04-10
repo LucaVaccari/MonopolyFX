@@ -42,8 +42,8 @@ public class GameConnectionManager
 
 			//Updating other players player list
 			gameManager.addPlayer(player);
-			sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME,
-					Serializer.toJson(new PlayersListServerMessage(gameManager.getPlayers())));
+			sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME,
+					Serializer.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
 		}
 		else
 		{
@@ -108,8 +108,8 @@ public class GameConnectionManager
 
 	public void updatePlayers()
 	{
-		sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME, Serializer
-				.toJson(new PlayersListServerMessage(gameManager.getPlayers())));
+		sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer
+				.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
 		sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
 	}
 

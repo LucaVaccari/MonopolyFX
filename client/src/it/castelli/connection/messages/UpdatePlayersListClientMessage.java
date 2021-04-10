@@ -12,11 +12,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * Override the list of players
  */
-public class PlayersListClientMessage implements Message
+public class UpdatePlayersListClientMessage implements Message
 {
 	private final CopyOnWriteArrayList<Player> players;
 
-	public PlayersListClientMessage(CopyOnWriteArrayList<Player> players)
+	public UpdatePlayersListClientMessage(CopyOnWriteArrayList<Player> players)
 	{
 		this.players = players;
 	}
