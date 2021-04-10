@@ -285,4 +285,20 @@ public class GameManager
 	{
 		return board;
 	}
+
+	public void updateExchange(Exchange exchange)
+	{
+		for (Exchange element : exchanges)
+		{
+			if (element.arePlayersEquals(exchange))
+			{
+				element = exchange;
+			}
+		}
+	}
+
+	public void addExchange(Exchange exchange)
+	{
+		exchanges.add(exchange);
+	}
 }

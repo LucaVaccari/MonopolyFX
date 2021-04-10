@@ -29,5 +29,12 @@ public class ServerMessages
 			"it.castelli.connection.messages.StartGameClientMessage";
 	public static final String CANCEL_EXCHANGE_MESSAGE_NAME =
 			"it.castelli.connection.messages.CancelExchangeClientMessage";
+	public static final String EXCHANGE_MESSAGE_NAME =
+			"it.castelli.connection.messages.ExchangeClientMessage";
+	public static final String EXCHANGE_SUCCESSFUL_MESSAGE_NAME =
+			"it.castelli.connection.messages.ExchangeSuccessfulClientMessage";
+	public static final String NEW_EXCHANGE_MESSAGE_NAME =
+			"it.castelli.connection.messages.NewExchangeClientMessage";
+
 
 }
