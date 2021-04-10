@@ -6,6 +6,7 @@ import it.castelli.connection.GameConnectionManager;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
+import it.castelli.serialization.Serializer;
 
 public class AcceptExchangeServerMessage implements Message
 {
@@ -29,7 +30,11 @@ public class AcceptExchangeServerMessage implements Message
 		if (exchange.getAccepted1() && exchange.getAccepted2())
 		{
 			exchange.endExchange();
-			//TODO: send ExchangeSuccessfulMessage
+			gameConnectionManager.sendAll(ServerMessages.EXCHANGE_SUCCESSFUL_MESSAGE_NAME, Serializer.toJson(new ExchangeSuccessfulServerMessage(exchange)));
+		}
+		else
+		{
+			gameConnectionManager.sendAll(ServerMessages.EXCHANGE_MESSAGE_NAME, Serializer.toJson(new ExchangeServerMessage(exchange)));
 		}
 
 		gameConnectionManager.updatePlayers();

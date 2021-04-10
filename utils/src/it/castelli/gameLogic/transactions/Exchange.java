@@ -65,8 +65,14 @@ public class Exchange
 	@Override
 	public boolean equals(Object obj)
 	{
-		obj = (Exchange) obj;
-		return (((Exchange) obj).player1 == this.player1 || ((Exchange) obj).player2 == this.player2) &&
-				(((Exchange) obj).player2 == this.player1 || ((Exchange) obj).player2 == this.player2);
+		return arePlayersEquals((Exchange) obj);
+
 	}
+
+	public boolean arePlayersEquals(Exchange exchange)
+	{
+		return (((Exchange) exchange).player1 == this.player1 || ((Exchange) exchange).player2 == this.player2) &&
+				(((Exchange) exchange).player2 == this.player1 || ((Exchange) exchange).player2 == this.player2);
+	}
+
 }
