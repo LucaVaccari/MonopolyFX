@@ -28,7 +28,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Priority;
@@ -36,8 +35,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -81,89 +78,86 @@ public class BoardController
 	private ChatComponent chat;
 
 	// BOARD
-	//GROUP ID
 	@FXML
-	private Group Group0;
+	private Group goSquare;
 	@FXML
-	private SquareComponent goSquare;
+	private Group vicoloCortoSquare;
 	@FXML
-	private SquareComponent vicoloCortoSquare;
+	private Group communityChestSquare1;
 	@FXML
-	private SquareComponent communityChestSquare1;
+	private Group vicoloStrettoSquare;
 	@FXML
-	private SquareComponent vicoloStrettoSquare;
+	private Group patrimonialTaxSquare;
 	@FXML
-	private SquareComponent patrimonialTaxSquare;
+	private Group southStationSquare;
 	@FXML
-	private SquareComponent southStationSquare;
+	private Group bastioniGranSassoSquare;
 	@FXML
-	private SquareComponent bastioniGranSassoSquare;
+	private Group chanceSquare1;
 	@FXML
-	private SquareComponent chanceSquare1;
+	private Group vialeMonterosaSquare;
 	@FXML
-	private SquareComponent vialeMonterosaSquare;
+	private Group vialeVesuvioSquare;
 	@FXML
-	private SquareComponent vialeVesuvioSquare;
+	private Group justVisitingSquare;
 	@FXML
-	private SquareComponent justVisitingSquare;
+	private Group viaAccademiaSquare;
 	@FXML
-	private SquareComponent viaAccademiaSquare;
+	private Group electricSocietySquare;
 	@FXML
-	private SquareComponent electricSocietySquare;
+	private Group corsoAteneoSquare;
 	@FXML
-	private SquareComponent corsoAteneoSquare;
+	private Group piazzaUniversitaSquare;
 	@FXML
-	private SquareComponent piazzaUniversitaSquare;
+	private Group westStationSquare;
 	@FXML
-	private SquareComponent westStationSquare;
+	private Group viaVerdiSquare;
 	@FXML
-	private SquareComponent viaVerdiSquare;
+	private Group communityChestSquare2;
 	@FXML
-	private SquareComponent communityChestSquare2;
+	private Group corsoRaffaelloSquare;
 	@FXML
-	private SquareComponent corsoRaffaelloSquare;
+	private Group piazzaDanteSquare;
 	@FXML
-	private SquareComponent piazzaDanteSquare;
+	private Group freeParkingSquare;
 	@FXML
-	private SquareComponent freeParkingSquare;
+	private Group viaMarcoPoloSquare;
 	@FXML
-	private SquareComponent viaMarcoPoloSquare;
+	private Group chanceSquare2;
 	@FXML
-	private SquareComponent chanceSquare2;
+	private Group corsoMagellanoSquare;
 	@FXML
-	private SquareComponent corsoMagellanoSquare;
+	private Group largoColomboSquare;
 	@FXML
-	private SquareComponent largoColomboSquare;
+	private Group northStationSquare;
 	@FXML
-	private SquareComponent northStationSquare;
+	private Group vialeCostantinoSquare;
 	@FXML
-	private SquareComponent vialeCostantinoSquare;
+	private Group vialeTraianoSquare;
 	@FXML
-	private SquareComponent vialeTraianoSquare;
+	private Group waterWorksSquare;
 	@FXML
-	private SquareComponent waterWorksSquare;
+	private Group piazzaGiulioCesareSquare;
 	@FXML
-	private SquareComponent piazzaGiulioCesareSquare;
+	private Group goToJailSquare;
 	@FXML
-	private SquareComponent goToJailSquare;
+	private Group viaRomaSquare;
 	@FXML
-	private SquareComponent viaRomaSquare;
+	private Group corsoImperoSquare;
 	@FXML
-	private SquareComponent corsoImperoSquare;
+	private Group communityChestSquare3;
 	@FXML
-	private SquareComponent communityChestSquare3;
+	private Group largoAugustoSquare;
 	@FXML
-	private SquareComponent largoAugustoSquare;
+	private Group eastStationSquare;
 	@FXML
-	private SquareComponent eastStationSquare;
+	private Group chanceSquare3;
 	@FXML
-	private SquareComponent chanceSquare3;
+	private Group vialeDeiGiardiniSquare;
 	@FXML
-	private SquareComponent vialeDeiGiardiniSquare;
+	private Group luxuryTaxSquare;
 	@FXML
-	private SquareComponent luxuryTaxSquare;
-	@FXML
-	private SquareComponent parcoDellaVittoriaSquare;
+	private Group parcoDellaVittoriaSquare;
 
 	@FXML
 	private FlowPane ownedPropertiesPane;
@@ -275,148 +269,158 @@ public class BoardController
 		// squares callbacks and contracts
 		{
 			// PROPERTIES
-			vicoloCortoSquare.setContract(getGameManager().getSquare(1).getContract());
-			vicoloCortoSquare
-					.setOnMouseClicked(event -> showTerrainView((PropertyContract) vicoloCortoSquare.getContract()));
+			SquareComponent vicoloCortoSquareComponent = (SquareComponent) vicoloCortoSquare.getChildren().get(0);
+			vicoloCortoSquareComponent.setContract(getGameManager().getSquare(1).getContract());
+			vicoloCortoSquare.setOnMouseClicked(
+					event -> showTerrainView((PropertyContract) vicoloCortoSquareComponent.getContract()));
 
-			vicoloStrettoSquare.setContract(getGameManager().getSquare(3).getContract());
+			SquareComponent vicoloStrettoSquareComponent = (SquareComponent) vicoloStrettoSquare.getChildren().get(0);
+			vicoloStrettoSquareComponent.setContract(getGameManager().getSquare(3).getContract());
 			vicoloStrettoSquare
-					.setOnMouseClicked(event -> showTerrainView((PropertyContract) vicoloStrettoSquare.getContract()));
+					.setOnMouseClicked(
+							event -> showTerrainView((PropertyContract) vicoloStrettoSquareComponent.getContract()));
 
-			bastioniGranSassoSquare.setContract(getGameManager().getSquare(6).getContract());
-			bastioniGranSassoSquare
-					.setOnMouseClicked(event -> showTerrainView((PropertyContract) bastioniGranSassoSquare
-							.getContract()));
+			SquareComponent bastioniGranSassoSquareComponent =
+					(SquareComponent) bastioniGranSassoSquare.getChildren().get(0);
+			bastioniGranSassoSquareComponent.setContract(getGameManager().getSquare(6).getContract());
+			bastioniGranSassoSquare.setOnMouseClicked(event -> showTerrainView(
+					(PropertyContract) bastioniGranSassoSquareComponent.getContract()));
 
-			vialeMonterosaSquare.setContract(getGameManager().getSquare(8).getContract());
+			SquareComponent vialeMonterosaSquareComponent =
+					(SquareComponent) vialeMonterosaSquare.getChildren().get(0);
+			vialeMonterosaSquareComponent.setContract(getGameManager().getSquare(8).getContract());
 			vialeMonterosaSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) vialeMonterosaSquare.getContract()));
+					(PropertyContract) vialeMonterosaSquareComponent.getContract()));
 
-			vialeVesuvioSquare.setContract(getGameManager().getSquare(9).getContract());
+			SquareComponent vialeVesuvioSquareComponent = (SquareComponent) vialeVesuvioSquare.getChildren().get(0);
+			vialeVesuvioSquareComponent.setContract(getGameManager().getSquare(9).getContract());
 			vialeVesuvioSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) vialeVesuvioSquare.getContract()));
+					(PropertyContract) vialeVesuvioSquareComponent.getContract()));
 
-			viaAccademiaSquare.setContract(getGameManager().getSquare(11).getContract());
+			SquareComponent viaAccademiaSquareComponent = (SquareComponent) viaAccademiaSquare.getChildren().get(0);
+			viaAccademiaSquareComponent.setContract(getGameManager().getSquare(11).getContract());
 			viaAccademiaSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) viaAccademiaSquare.getContract()));
+					(PropertyContract) viaAccademiaSquareComponent.getContract()));
 
-			corsoAteneoSquare.setContract(getGameManager().getSquare(13).getContract());
+			SquareComponent corsoAteneoSquareComponent = (SquareComponent) corsoAteneoSquare.getChildren().get(0);
+			corsoAteneoSquareComponent.setContract(getGameManager().getSquare(13).getContract());
 			corsoAteneoSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) corsoAteneoSquare.getContract()));
+					(PropertyContract) corsoAteneoSquareComponent.getContract()));
 
-			piazzaUniversitaSquare.setContract(getGameManager().getSquare(14).getContract());
+			SquareComponent piazzaUniversitaSquareComponent =
+					(SquareComponent) piazzaUniversitaSquare.getChildren().get(0);
+			piazzaUniversitaSquareComponent.setContract(getGameManager().getSquare(14).getContract());
 			piazzaUniversitaSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) piazzaUniversitaSquare.getContract()));
+					(PropertyContract) piazzaUniversitaSquareComponent.getContract()));
 
-			viaVerdiSquare.setContract(getGameManager().getSquare(16).getContract());
+			SquareComponent viaVerdiSquareComponent = (SquareComponent) viaVerdiSquare.getChildren().get(0);
+			viaVerdiSquareComponent.setContract(getGameManager().getSquare(16).getContract());
 			viaVerdiSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) viaVerdiSquare.getContract()));
+					(PropertyContract) viaVerdiSquareComponent.getContract()));
 
-			corsoRaffaelloSquare.setContract(getGameManager().getSquare(18).getContract());
+			SquareComponent corsoRaffaelloSquareComponent =
+					(SquareComponent) corsoRaffaelloSquare.getChildren().get(0);
+			corsoRaffaelloSquareComponent.setContract(getGameManager().getSquare(18).getContract());
 			corsoRaffaelloSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) corsoRaffaelloSquare.getContract()));
+					(PropertyContract) corsoRaffaelloSquareComponent.getContract()));
 
-			piazzaDanteSquare
-					.setContract(
-							getGameManager().getSquare(19).getContract());
+			SquareComponent piazzaDanteSquareComponent = (SquareComponent) piazzaDanteSquare.getChildren().get(0);
+			piazzaDanteSquareComponent.setContract(getGameManager().getSquare(19).getContract());
 			piazzaDanteSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) piazzaDanteSquare.getContract()));
+					(PropertyContract) piazzaDanteSquareComponent.getContract()));
 
-			viaMarcoPoloSquare
-					.setContract(
-							getGameManager().getSquare(21).getContract());
+			SquareComponent viaMarcoPoloSquareComponent = (SquareComponent) viaMarcoPoloSquare.getChildren().get(0);
+			viaMarcoPoloSquareComponent.setContract(getGameManager().getSquare(21).getContract());
 			viaMarcoPoloSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) viaMarcoPoloSquare.getContract()));
+					(PropertyContract) viaMarcoPoloSquareComponent.getContract()));
 
-			corsoMagellanoSquare
-					.setContract(
-							getGameManager().getSquare(23).getContract());
+			SquareComponent corsoMagellanoSquareComponent =
+					(SquareComponent) corsoMagellanoSquare.getChildren().get(0);
+			corsoMagellanoSquareComponent.setContract(getGameManager().getSquare(23).getContract());
 			corsoMagellanoSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) corsoMagellanoSquare.getContract()));
+					(PropertyContract) corsoMagellanoSquareComponent.getContract()));
 
-			largoColomboSquare
-					.setContract(
-							getGameManager().getSquare(24).getContract());
+			SquareComponent largoColomboSquareComponent = (SquareComponent) largoColomboSquare.getChildren().get(0);
+			largoColomboSquareComponent.setContract(getGameManager().getSquare(24).getContract());
 			largoColomboSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) largoColomboSquare.getContract()));
+					(PropertyContract) largoColomboSquareComponent.getContract()));
 
-			vialeCostantinoSquare
-					.setContract(
-							getGameManager().getSquare(26).getContract());
+			SquareComponent vialeCostantinoSquareComponent =
+					(SquareComponent) vialeCostantinoSquare.getChildren().get(0);
+			vialeCostantinoSquareComponent.setContract(getGameManager().getSquare(26).getContract());
 			vialeCostantinoSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) vialeCostantinoSquare.getContract()));
+					(PropertyContract) vialeCostantinoSquareComponent.getContract()));
 
-			vialeTraianoSquare
-					.setContract(
-							getGameManager().getSquare(27).getContract());
+			SquareComponent vialeTraianoSquareComponent = (SquareComponent) vialeTraianoSquare.getChildren().get(0);
+			vialeTraianoSquareComponent.setContract(getGameManager().getSquare(27).getContract());
 			vialeTraianoSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) vialeTraianoSquare.getContract()));
+					(PropertyContract) vialeTraianoSquareComponent.getContract()));
 
-			piazzaGiulioCesareSquare
-					.setContract(
-							getGameManager().getSquare(29).getContract());
-			piazzaGiulioCesareSquare
-					.setOnMouseClicked(event -> showTerrainView(
-							(PropertyContract) piazzaGiulioCesareSquare
-									.getContract()));
+			SquareComponent piazzaGiulioCesareSquareComponent =
+					(SquareComponent) piazzaGiulioCesareSquare.getChildren().get(0);
+			piazzaGiulioCesareSquareComponent.setContract(getGameManager().getSquare(29).getContract());
+			piazzaGiulioCesareSquare.setOnMouseClicked(event -> showTerrainView(
+					(PropertyContract) piazzaGiulioCesareSquareComponent.getContract()));
 
-			viaRomaSquare
-					.setContract(
-							getGameManager().getSquare(31).getContract());
+			SquareComponent viaRomaSquareComponent = (SquareComponent) viaRomaSquare.getChildren().get(0);
+			viaRomaSquareComponent.setContract(getGameManager().getSquare(31).getContract());
 			viaRomaSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) viaRomaSquare.getContract()));
+					(PropertyContract) viaRomaSquareComponent.getContract()));
 
-			corsoImperoSquare
-					.setContract(
-							getGameManager().getSquare(32).getContract());
+			SquareComponent corsoImperoSquareComponent = (SquareComponent) corsoImperoSquare.getChildren().get(0);
+			corsoImperoSquareComponent.setContract(getGameManager().getSquare(32).getContract());
 			corsoImperoSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) corsoImperoSquare.getContract()));
+					(PropertyContract) corsoImperoSquareComponent.getContract()));
 
-			largoAugustoSquare
-					.setContract(
-							getGameManager().getSquare(34).getContract());
+			SquareComponent largoAugustoSquareComponent = (SquareComponent) largoAugustoSquare.getChildren().get(0);
+			largoAugustoSquareComponent.setContract(getGameManager().getSquare(34).getContract());
 			largoAugustoSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) largoAugustoSquare.getContract()));
+					(PropertyContract) largoAugustoSquareComponent.getContract()));
 
-			vialeDeiGiardiniSquare
-					.setContract(
-							getGameManager().getSquare(37).getContract());
+			SquareComponent vialeDeiGiardiniSquareComponent =
+					(SquareComponent) vialeDeiGiardiniSquare.getChildren().get(0);
+			vialeDeiGiardiniSquareComponent.setContract(getGameManager().getSquare(37).getContract());
 			vialeDeiGiardiniSquare.setOnMouseClicked(event -> showTerrainView(
-					(PropertyContract) vialeDeiGiardiniSquare.getContract()));
+					(PropertyContract) vialeDeiGiardiniSquareComponent.getContract()));
 
-			parcoDellaVittoriaSquare
-					.setContract(
-							getGameManager().getSquare(39).getContract());
-			parcoDellaVittoriaSquare
-					.setOnMouseClicked(event -> showTerrainView(
-							(PropertyContract) parcoDellaVittoriaSquare
-									.getContract()));
+			SquareComponent parcoDellaVittoriaSquareComponent =
+					(SquareComponent) parcoDellaVittoriaSquare.getChildren().get(0);
+			parcoDellaVittoriaSquareComponent.setContract(getGameManager().getSquare(39).getContract());
+			parcoDellaVittoriaSquare.setOnMouseClicked(
+					event -> showTerrainView((PropertyContract) parcoDellaVittoriaSquareComponent.getContract()));
 
 			// STATIONS
-			southStationSquare.setContract(getGameManager().getSquare(5).getContract());
-			southStationSquare
-					.setOnMouseClicked(event -> showTerrainView((StationContract) southStationSquare.getContract()));
+			SquareComponent southStationSquareComponent = (SquareComponent) southStationSquare.getChildren().get(0);
+			southStationSquareComponent.setContract(getGameManager().getSquare(5).getContract());
+			southStationSquare.setOnMouseClicked(
+					event -> showTerrainView((StationContract) southStationSquareComponent.getContract()));
 
-			westStationSquare.setContract(getGameManager().getSquare(15).getContract());
-			westStationSquare
-					.setOnMouseClicked(event -> showTerrainView((StationContract) westStationSquare.getContract()));
+			SquareComponent westStationSquareComponent = (SquareComponent) westStationSquare.getChildren().get(0);
+			westStationSquareComponent.setContract(getGameManager().getSquare(15).getContract());
+			westStationSquare.setOnMouseClicked(
+					event -> showTerrainView((StationContract) westStationSquareComponent.getContract()));
 
-			northStationSquare.setContract(getGameManager().getSquare(25).getContract());
-			northStationSquare
-					.setOnMouseClicked(event -> showTerrainView((StationContract) northStationSquare.getContract()));
+			SquareComponent northStationSquareComponent = (SquareComponent) northStationSquare.getChildren().get(0);
+			northStationSquareComponent.setContract(getGameManager().getSquare(25).getContract());
+			northStationSquare.setOnMouseClicked(
+					event -> showTerrainView((StationContract) northStationSquareComponent.getContract()));
 
-			eastStationSquare.setContract(getGameManager().getSquare(35).getContract());
-			eastStationSquare
-					.setOnMouseClicked(event -> showTerrainView((StationContract) eastStationSquare.getContract()));
+			SquareComponent eastStationSquareComponent = (SquareComponent) eastStationSquare.getChildren().get(0);
+			eastStationSquareComponent.setContract(getGameManager().getSquare(35).getContract());
+			eastStationSquare.setOnMouseClicked(
+					event -> showTerrainView((StationContract) eastStationSquareComponent.getContract()));
 
 			// COMPANIES
-			electricSocietySquare.setContract(getGameManager().getSquare(12).getContract());
-			electricSocietySquare
-					.setOnMouseClicked(event -> showTerrainView((CompanyContract) electricSocietySquare.getContract()));
+			SquareComponent electricSocietySquareComponent =
+					(SquareComponent) electricSocietySquare.getChildren().get(0);
+			electricSocietySquareComponent.setContract(getGameManager().getSquare(12).getContract());
+			electricSocietySquare.setOnMouseClicked(
+					event -> showTerrainView((CompanyContract) electricSocietySquareComponent.getContract()));
 
-			waterWorksSquare.setContract(getGameManager().getSquare(28).getContract());
-			waterWorksSquare
-					.setOnMouseClicked(event -> showTerrainView((CompanyContract) waterWorksSquare.getContract()));
+			SquareComponent waterWorksSquareComponent = (SquareComponent) waterWorksSquare.getChildren().get(0);
+			waterWorksSquareComponent.setContract(getGameManager().getSquare(28).getContract());
+			waterWorksSquare.setOnMouseClicked(
+					event -> showTerrainView((CompanyContract) waterWorksSquareComponent.getContract()));
 		}
 
 		// add SmallTerrainViewComponents to the owned properties
@@ -438,23 +442,23 @@ public class BoardController
 
 		// button callback
 		throwDiceButton.setOnAction(event ->
-				ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
-						Serializer.toJson(
-								new ThrowDiceClientMessage(
-										Game.getGameCode()))));
+				                            ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
+				                                                            Serializer.toJson(
+						                                                            new ThrowDiceClientMessage(
+								                                                            Game.getGameCode()))));
 
 		endTurnButton.setOnAction(event -> {
 			if (Game.getGameManager().getCurrentRound().isDiceThrown())
 				if (Game.getPlayer().hasMoney(0))
 					ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME,
-							Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
+					                                Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
 				else
 					AlertUtil.showInformationAlert("Debito", "Sei in debito",
-							"Salda il debito prima di finire il turno. Se finisci le " +
-									"risorse perderai la partita.");
+					                               "Salda il debito prima di finire il turno. Se finisci le " +
+					                               "risorse perderai la partita.");
 			else
 				AlertUtil.showInformationAlert("Tira!", "Devi tirare i dadi",
-						"Non puoi finire il turno senza tirare prima i dadi.");
+				                               "Non puoi finire il turno senza tirare prima i dadi.");
 		});
 
 		exchangeButton.setOnAction(event -> {
@@ -463,43 +467,12 @@ public class BoardController
 
 		leaveGameButton.setOnAction(event -> {
 			ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-					Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+			                                Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 			SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 		});
 
 		updatePlayerListView();
 		updateMoneyLabel();
-
-		//list of my properties
-//		Player p1 = new Player(500,"ferro");
-//		p1.addContract(new PropertyContract("Vicolo Stretto", 60, 4, 20, 60,
-//				180, 320, 450, 50,
-//				PropertyColor.BROWN));
-//		p1.addContract(new PropertyContract("Piazza Dante", 200, 16, 80, 220,
-//				600, 800, 1000, 100,
-//				PropertyColor.ORANGE));
-//		for (int i = 0; i < p1.getContracts().size() ; i++)
-//		{
-//			SquareComponent property =new SquareComponent();
-//			property.setContract(p1.getContracts().get(i));
-//			property.setOnMouseClicked(event1 -> showTerrainView(
-//					(PropertyContract) property.getContract()));
-//			ownedPropertiesPane.getChildren().add(property);
-//		}
-		//add image to the first square
-		FileInputStream input = null;
-		try
-		{
-			input = new FileInputStream(String.valueOf(PawnChoiceController.getPawnPaths().get(Game.getPlayer().getPawn())));
-		}
-		catch (FileNotFoundException e)
-		{
-			e.printStackTrace();
-		}
-		Image image = new Image(input);
-		ImageView imageView = new ImageView(image);
-		Group0.getChildren().add(imageView);
-
 	}
 
 	/**
@@ -529,7 +502,7 @@ public class BoardController
 			for (Contract contract : getPlayer().getContracts())
 			{
 				if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-						!mostProductiveContracts.contains(mostProductiveContract))
+				    !mostProductiveContracts.contains(mostProductiveContract))
 					mostProductiveContract = contract;
 			}
 
@@ -538,7 +511,8 @@ public class BoardController
 				ownedTerrains[i].setDisable(false);
 				ownedTerrains[i].setVisible(true);
 				ownedTerrains[i].setContract(mostProductiveContract);
-			} else
+			}
+			else
 			{
 				ownedTerrains[i].setVisible(false);
 				ownedTerrains[i].setDisable(true);

@@ -11,19 +11,25 @@ import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.transactions.Asset;
 import it.castelli.gameLogic.transactions.Exchange;
 import it.castelli.gui.customComponents.SmallTerrainViewComponent;
+import it.castelli.gui.customComponents.TerrainChoiceDialog;
 import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+
+import java.util.Optional;
 
 /**
  * Controller for exchange FXML
  */
 public class ExchangeController
 {
+	private static final String TICK_IMAGE_PATH = "/images/tick.png";
+	private static final String CROSS_IMAGE_PATH = "/images/cross.png";
 	private static ExchangeController instance;
 	private Exchange exchange;
 	private Player you, him;
@@ -83,19 +89,26 @@ public class ExchangeController
 		});
 
 		addPropertyButton.setOnAction(event -> {
-			// TODO: show property selection dialog
+			Optional<Contract> optionalContract = new TerrainChoiceDialog(you).showAndWait();
+			if (optionalContract.isPresent())
+			{
+				yourAsset.getContracts().add(optionalContract.get());
+				ClientMain.getConnection().send(ClientMessages.CHANGE_EXCHANGE_ASSET_MESSAGE_NAME, Serializer
+						.toJson(new ChangeExchangeAssetClientMessage(
+								yourAsset, Game.getGameCode(), exchange, Game.getPlayer())));
+			}
 		});
 
 		acceptButton.setOnAction(event -> {
 			ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
 					.toJson(new AcceptExchangeClientMessage(Game.getPlayer(), Game.getGameCode())));
-			// TODO: show image of accept
+			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(TICK_IMAGE_PATH))));
 		});
 
 		cancelButton.setOnAction(event -> {
 			ClientMain.getConnection().send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
 					.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode())));
-			// TODO: show image of refuse
+			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(CROSS_IMAGE_PATH))));
 		});
 	}
 
@@ -126,7 +139,8 @@ public class ExchangeController
 			him = exchange.getPlayer2();
 			yourAsset = exchange.getAsset1();
 			hisAsset = exchange.getAsset2();
-		} else
+		}
+		else
 		{
 			you = exchange.getPlayer2();
 			him = exchange.getPlayer1();

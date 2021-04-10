@@ -10,9 +10,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
-public class PropertyChoiceDialog extends Dialog<Contract>
+public class TerrainChoiceDialog extends Dialog<Contract>
 {
-	public PropertyChoiceDialog(Player player)
+	public TerrainChoiceDialog(Player player)
 	{
 		super();
 		initOwner(SceneManager.getInstance().getPrimaryStage());
