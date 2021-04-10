@@ -10,6 +10,7 @@ import it.castelli.gui.customComponents.PlayerInfoComponent;
 import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 /**
@@ -86,10 +87,14 @@ public class LobbyController
 
 	public void updatePlayerListView()
 	{
+		playerListView.getChildren().clear();
 		for (Player player : Game.getGameManager().getPlayers())
 		{
 			//player.setPawnPath(pawnPath);
 			PlayerInfoComponent playerInfoComponent = new PlayerInfoComponent(player);
+			playerInfoComponent.setMaxHeight(Double.MAX_VALUE);
+			playerInfoComponent.setMaxWidth(Double.MAX_VALUE);
+			VBox.setVgrow(playerInfoComponent, Priority.ALWAYS);
 			playerListView.getChildren().add(playerInfoComponent);
 		}
 	}
