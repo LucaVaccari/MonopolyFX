@@ -39,7 +39,7 @@ public class Player
 	/**
 	 * the player's pawn in a string
 	 */
-	private String pawn = "";
+	private String pawnPath = "";
 
 	/**
 	 * Constructor for the Player
@@ -201,13 +201,13 @@ public class Player
 		return money >= x;
 	}
 
-	public String getPawn()
+	public String getPawnPath()
 	{
-		return pawn;
+		return pawnPath;
 	}
 
-	public void setPawn(String pawn)
+	public void setPawnPath(String pawnPath)
 	{
-		this.pawn = pawn;
+		this.pawnPath = pawnPath;
 	}
 }
