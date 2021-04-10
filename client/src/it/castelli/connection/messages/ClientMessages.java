@@ -35,4 +35,6 @@ public class ClientMessages
 			"it.castelli.connection.messages.RefuseExchangeServerMessage";
 	public static final String MOVE_PLAYER_MESSAGE_NAME =
 			"it.castelli.connection.messages.MovePlayerServerMessage";
+	public static final String BUY_CONTRACT_MESSAGE_NAME =
+			"it.castelli.connection.messages.BuyContractServerMessage";
 }
