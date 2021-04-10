@@ -19,7 +19,7 @@ public class ServerMessages
 			"it.castelli.connection.messages.UpdateAuctionClientMessage";
 	public static final String UPDATE_BOARD_MESSAGE_NAME =
 			"it.castelli.connection.messages.UpdateBoardClientMessage";
-	public static final String DICE_RESULT_MESSAGE_NAME =
+	public static final String UPDATE_DICE_RESULT_MESSAGE_NAME =
 			"it.castelli.connection.messages.DiceResultClientMessage";
 	public static final String ROUND_MESSAGE_NAME =
 			"it.castelli.connection.messages.RoundClientMessage";

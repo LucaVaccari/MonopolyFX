@@ -5,6 +5,9 @@ import it.castelli.connection.ConnectionManager;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 
+/**
+ *
+ */
 public class EndRoundServerMessage implements Message
 {
 	private final int gameCode;

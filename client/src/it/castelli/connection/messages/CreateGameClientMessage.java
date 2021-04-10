@@ -5,12 +5,19 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 
 /**
- * The create game request message (send only)
+ * Request to create a new game (send only)
  */
 public class CreateGameClientMessage implements Message
 {
+	/**
+	 * The new player created
+	 */
 	private final Player player;
 
+	/**
+	 * Constructor for CreateGameClientMessage
+	 * @param playerName the new player name
+	 */
 	public CreateGameClientMessage(String playerName)
 	{
 		this.player = new Player(1500, playerName);
@@ -21,6 +28,5 @@ public class CreateGameClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		//do nothing
-
 	}
 }

@@ -7,11 +7,21 @@ import it.castelli.gameLogic.dice.DiceResult;
 import it.castelli.gui.controllers.BoardController;
 import javafx.scene.image.Image;
 
-public class DiceResultClientMessage implements Message
+/**
+ * Message received from the server that updates the dice result with the last dice throw result (receive only)
+ */
+public class UpdateDiceResultClientMessage implements Message
 {
+	/**
+	 * The last dice result
+	 */
 	private final DiceResult diceResult;
 
-	public DiceResultClientMessage(DiceResult diceResult)
+	/**
+	 * Constructor for UpdateDiceResultClientMessage
+	 * @param diceResult The last dice result
+	 */
+	public UpdateDiceResultClientMessage(DiceResult diceResult)
 	{
 		this.diceResult = diceResult;
 	}

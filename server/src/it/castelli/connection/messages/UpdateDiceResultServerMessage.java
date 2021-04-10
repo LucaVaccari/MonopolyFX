@@ -4,11 +4,11 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.dice.DiceResult;
 
-public class DiceResultServerMessage implements Message
+public class UpdateDiceResultServerMessage implements Message
 {
 	private final DiceResult diceResult;
 
-	public DiceResultServerMessage(DiceResult diceResult)
+	public UpdateDiceResultServerMessage(DiceResult diceResult)
 	{
 		this.diceResult = diceResult;
 	}

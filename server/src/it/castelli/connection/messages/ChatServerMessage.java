@@ -6,14 +6,26 @@ import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
 
 /**
- * The message containing a simple text message (send and receive)
+ * Message containing a simple text message (send and receive)
  */
 public class ChatServerMessage implements Message
 {
-
+	/**
+	 * The game code
+	 */
 	private final int gameCode;
+
+	/**
+	 * The text message body
+	 */
 	private String message;
 
+	/**
+	 * Constructor for ChatServerMessage
+	 * @param gameCode The game code
+	 * @param senderPlayer The player that sends the message
+	 * @param messageBody The text message body
+	 */
 	public ChatServerMessage(int gameCode, Player senderPlayer, String messageBody)
 	{
 		this.gameCode = gameCode;
