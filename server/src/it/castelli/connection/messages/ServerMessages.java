@@ -22,7 +22,7 @@ public class ServerMessages
 	public static final String UPDATE_BOARD_MESSAGE_NAME =
 			"it.castelli.connection.messages.UpdateBoardClientMessage";
 	public static final String UPDATE_DICE_RESULT_MESSAGE_NAME =
-			"it.castelli.connection.messages.DiceResultClientMessage";
+			"it.castelli.connection.messages.UpdateDiceResultClientMessage";
 	public static final String ROUND_MESSAGE_NAME =
 			"it.castelli.connection.messages.RoundClientMessage";
 	public static final String HOST_MESSAGE_NAME =
