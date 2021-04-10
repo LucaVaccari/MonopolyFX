@@ -10,6 +10,7 @@ import it.castelli.gui.controllers.BoardController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -44,6 +45,8 @@ public class SmallTerrainViewComponent extends AnchorPane
 	{
 		if (contract == null)
 			return;
+
+		Tooltip.install(this, new Tooltip(contract.getName()));
 
 		terrainNameLabel.setText(contract.getName());
 		terrainValueLabel.setText(String.valueOf(contract.getRevenue()));
