@@ -26,10 +26,7 @@ public class UpdatePlayersListClientMessage implements Message
 	{
 		Game.getGameManager().clearPlayers();
 		for (Player element : players)
-		{
-			System.out.println(element.getName());
 			Game.getGameManager().addPlayer(element);
-		}
 
 		Platform.runLater(() -> LobbyController.getInstance().updatePlayerListView());
 		Platform.runLater(() -> BoardController.getInstance().updatePlayerListView());
