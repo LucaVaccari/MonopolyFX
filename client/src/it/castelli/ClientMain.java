@@ -1,7 +1,6 @@
 package it.castelli;
 
 import it.castelli.connection.Connection;
-import it.castelli.gui.customComponents.PropertyChoiceDialog;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import javafx.application.Application;
@@ -55,8 +54,5 @@ public class ClientMain extends Application
 	{
 		SceneManager.getInstance().setPrimaryStage(primaryStage);
 		SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
-
-		PropertyChoiceDialog dialog = new PropertyChoiceDialog();
-		dialog.show();
 	}
 }
