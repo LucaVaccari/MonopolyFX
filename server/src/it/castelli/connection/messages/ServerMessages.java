@@ -37,6 +37,8 @@ public class ServerMessages
 			"it.castelli.connection.messages.ExchangeSuccessfulClientMessage";
 	public static final String NEW_EXCHANGE_MESSAGE_NAME =
 			"it.castelli.connection.messages.NewExchangeClientMessage";
+	public static final String CONTRACT_ON_SALE_MESSAGE_NAME =
+			"it.castelli.connection.messages.ContractOnSaleClientMessage";
 
 
 }

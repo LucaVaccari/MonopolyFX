@@ -16,7 +16,6 @@ public class ClientMain extends Application
 
 	public static void main(String[] args)
 	{
-
 		Socket clientSocket = null;
 		try
 		{

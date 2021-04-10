@@ -33,4 +33,6 @@ public class ClientMessages
 			"it.castelli.connection.messages.ChangeExchangeAssetServerMessage";
 	public static final String REFUSE_EXCHANGE_MESSAGE_NAME =
 			"it.castelli.connection.messages.RefuseExchangeServerMessage";
+	public static final String MOVE_PLAYER_MESSAGE_NAME =
+			"it.castelli.connection.messages.MovePlayerServerMessage";
 }
