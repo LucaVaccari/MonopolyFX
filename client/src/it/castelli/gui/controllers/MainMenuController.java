@@ -47,7 +47,6 @@ public class MainMenuController
 	private void onJoinButtonPressed(ActionEvent event)
 	{
 		int matchCode = askGameCode();
-		System.out.println("matchcode: " + matchCode);
 		if (matchCode == -1) return;
 		playerName = askPlayerName();
 		if (playerName == null) return;
