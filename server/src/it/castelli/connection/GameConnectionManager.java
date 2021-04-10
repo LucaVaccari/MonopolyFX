@@ -33,8 +33,9 @@ public class GameConnectionManager
 			}
 			playerConnections.add(connection);
 			connection.addPlayer(player);
+
 			gameManager.addPlayer(player);
-			connection.send(ServerMessages.PLAYERS_LIST_MESSAGE_NAME,
+			sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME,
 			                Serializer.toJson(new PlayersListServerMessage(gameManager.getPlayers())));
 		}
 		else
