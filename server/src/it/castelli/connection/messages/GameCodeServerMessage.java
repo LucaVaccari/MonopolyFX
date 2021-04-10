@@ -8,16 +8,16 @@ import it.castelli.gameLogic.Player;
  */
 public class GameCodeServerMessage implements Message
 {
-	private int code;
+	private int gameCode;
 
 	/**
 	 * Constructor for GameCodeServerMessage
 	 *
-	 * @param code game code
+	 * @param gameCode game code
 	 */
-	public GameCodeServerMessage(int code)
+	public GameCodeServerMessage(int gameCode)
 	{
-		this.code = code;
+		this.gameCode = gameCode;
 	}
 
 	@Override
