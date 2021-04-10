@@ -328,7 +328,7 @@ public class BoardController
 		ownedPropertiesPane.getChildren().clear();
 		for (int i = 0; i < SHOWN_OWNED_PROPERTIES; i++)
 		{
-			SmallTerrainViewComponent terrainView = new SmallTerrainViewComponent();
+			SmallTerrainViewComponent terrainView = new SmallTerrainViewComponent(null);
 			terrainView.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 			ownedPropertiesPane.getChildren().add(terrainView);
 		}

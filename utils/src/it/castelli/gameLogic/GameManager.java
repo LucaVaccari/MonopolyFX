@@ -26,6 +26,7 @@ public class GameManager
 	private CopyOnWriteArrayList<Exchange> exchanges;
 	private Round currentRound;
 	private RandomEventManager randomEventManager;
+	private boolean inGame = false;
 
 	/**
 	 * Constructor for the GameManager
@@ -208,7 +209,7 @@ public class GameManager
 	{
 		Player newPlayer = players.get(0);
 		currentRound = new Round(newPlayer, 0);
-		//TODO: inGame variable?
+		inGame = true;
 	}
 
 	public void nextRound()
@@ -300,5 +301,10 @@ public class GameManager
 	public void addExchange(Exchange exchange)
 	{
 		exchanges.add(exchange);
+	}
+
+	public boolean isInGame()
+	{
+		return inGame;
 	}
 }

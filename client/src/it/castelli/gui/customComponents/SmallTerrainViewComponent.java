@@ -23,7 +23,7 @@ public class SmallTerrainViewComponent extends AnchorPane
 	@FXML
 	private Label terrainValueLabel;
 
-	public SmallTerrainViewComponent()
+	public SmallTerrainViewComponent(Contract contract)
 	{
 		super();
 		FXMLLoader loader = FXMLFileLoader.getLoader(SMALL_TERRAIN_VIEW_FXML_PATH);
@@ -37,10 +37,14 @@ public class SmallTerrainViewComponent extends AnchorPane
 		{
 			e.printStackTrace();
 		}
+		setContract(contract);
 	}
 
 	public void setContract(Contract contract)
 	{
+		if (contract == null)
+			return;
+
 		terrainNameLabel.setText(contract.getName());
 		terrainValueLabel.setText(String.valueOf(contract.getRevenue()));
 

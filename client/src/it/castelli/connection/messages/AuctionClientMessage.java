@@ -5,6 +5,7 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.transactions.Auction;
+import it.castelli.gui.controllers.AuctionController;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 
@@ -26,5 +27,6 @@ public class AuctionClientMessage implements Message
 	{
 		Game.getGameManager().setAuction(new Auction(contract, bestOfferProposed, this.player));
 		SceneManager.getInstance().showScene(SceneType.AUCTION);
+		AuctionController.getInstance().update();
 	}
 }

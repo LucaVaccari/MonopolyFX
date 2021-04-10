@@ -24,7 +24,7 @@ public class GameConnectionManager
 
 	public void addPlayer(Connection connection, Player player)
 	{
-		if (playerConnections.size() < 6)  //TODO: check gameManager inGame too
+		if (playerConnections.size() < 6 && gameManager.isInGame())
 		{
 			if (this.host == null)
 			{
@@ -43,7 +43,7 @@ public class GameConnectionManager
 			//Updating other players player list
 			gameManager.addPlayer(player);
 			sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME,
-			                Serializer.toJson(new PlayersListServerMessage(gameManager.getPlayers())));
+					Serializer.toJson(new PlayersListServerMessage(gameManager.getPlayers())));
 		}
 		else
 		{
@@ -81,7 +81,6 @@ public class GameConnectionManager
 
 	public void startGame()
 	{
-		//TODO: start game
 		gameManager.startGame();
 	}
 
@@ -91,7 +90,7 @@ public class GameConnectionManager
 		{
 			Auction auction = gameManager.getAuction();
 			AuctionServerMessage message = new AuctionServerMessage(auction.getContract(), auction.getPlayer(),
-			                                                        auction.getBestOfferProposed());
+					auction.getBestOfferProposed());
 			connection.send(ServerMessages.AUCTION_MESSAGE_NAME, Serializer.toJson(message));
 		}
 	}
@@ -109,7 +108,8 @@ public class GameConnectionManager
 
 	public void updatePlayers()
 	{
-		sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME, Serializer.toJson(new PlayersListServerMessage(gameManager.getPlayers())));
+		sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME, Serializer
+				.toJson(new PlayersListServerMessage(gameManager.getPlayers())));
 		sendAll(ServerMessages.BOARD_MESSAGE_NAME, Serializer.toJson(new BoardServerMessage(gameManager.getBoard())));
 	}
 

@@ -4,6 +4,8 @@ import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
+import it.castelli.gui.scene.SceneManager;
+import it.castelli.gui.scene.SceneType;
 
 public class NewExchangeClientMessage implements Message
 {
@@ -20,7 +22,7 @@ public class NewExchangeClientMessage implements Message
         Game.getGameManager().addExchange(exchange);
         if (exchange.getPlayer1().equals(Game.getPlayer()) || exchange.getPlayer2().equals(Game.getPlayer()))
         {
-            //TODO: show the new Exchange
+            SceneManager.getInstance().showScene(SceneType.EXCHANGE);
         }
     }
 }

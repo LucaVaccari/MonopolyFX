@@ -1,8 +1,10 @@
 package it.castelli.connection.messages;
 
+import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
+import it.castelli.gui.AlertUtil;
 
 public class CancelExchangeClientMessage implements Message
 {
@@ -18,6 +20,12 @@ public class CancelExchangeClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		//TODO: delete the Exchange and show an error if the player was one of the players in the Exchange
+		if (exchange.getPlayer1().equals(Game.getPlayer()) || exchange.getPlayer2().equals(Game.getPlayer()))
+		{
+			Game.getGameManager().removeExchange(exchange);
+			AlertUtil.showInformationAlert("Fallimento", "Scambio rifiutato",
+					"Lo scambio è stato rifiutato.");
+			// TODO: close the exchange window
+		}
 	}
 }

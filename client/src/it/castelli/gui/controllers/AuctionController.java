@@ -4,6 +4,7 @@ import it.castelli.ClientMain;
 import it.castelli.Game;
 import it.castelli.connection.messages.AuctionOfferClientMessage;
 import it.castelli.connection.messages.ClientMessages;
+import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gui.customComponents.ChatComponent;
 import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
@@ -15,10 +16,13 @@ import javafx.scene.control.Label;
  */
 public class AuctionController
 {
+	private static AuctionController instance;
+
 	/**
 	 * Temp variable for storing the money to offer
 	 */
 	private int yourOffer = 0;
+	private Auction auction;
 
 	@FXML
 	private ChatComponent chat;
@@ -46,10 +50,10 @@ public class AuctionController
 	@FXML
 	public void initialize()
 	{
-		if (Game.getPlayer() != null)
-		{
-			totalMoneyLabel.setText(Game.getPlayer().getMoney() + "M");
-		}
+		instance = this;
+
+		auction = Game.getGameManager().getAuction();
+
 		minusOneButton.setOnAction(event -> changeOffer(-1));
 		minusTenButton.setOnAction(event -> changeOffer(-10));
 		minusHundredButton.setOnAction(event -> changeOffer(-100));
@@ -59,9 +63,9 @@ public class AuctionController
 
 		offerButton.setOnAction(event -> {
 			// Send offer to the server
-			// TODO: check if your offer > lastoffer
-			ClientMain.getConnection().send(ClientMessages.AUCTION_OFFER_MESSAGE_NAME, Serializer
-					.toJson(new AuctionOfferClientMessage(yourOffer, Game.getGameCode())));
+			if (yourOffer > auction.getBestOfferProposed())
+				ClientMain.getConnection().send(ClientMessages.AUCTION_OFFER_MESSAGE_NAME, Serializer
+						.toJson(new AuctionOfferClientMessage(yourOffer, Game.getGameCode())));
 		});
 	}
 
@@ -70,12 +74,13 @@ public class AuctionController
 	 */
 	public void update()
 	{
-		// TODO: set auction base label
+		auctionBaseLabel.setText(auction.getBestOfferProposed() + "M");
+		totalMoneyLabel.setText(Game.getPlayer().getMoney() + "M");
 	}
 
 	/**
-	 * Change the offer by a positive or a negative value. The sum of the current offer and the value should be
-	 * greater than the base offer
+	 * Change the offer by a positive or a negative value. The sum of the current offer and the value should be greater
+	 * than the base offer
 	 *
 	 * @param value The value to be added to the current offer
 	 */
@@ -86,5 +91,10 @@ public class AuctionController
 			yourOffer += value;
 			yourOfferLabel.setText(yourOffer + "M");
 		}
+	}
+
+	public static AuctionController getInstance()
+	{
+		return instance;
 	}
 }
