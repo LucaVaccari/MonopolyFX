@@ -31,9 +31,16 @@ public class GameConnectionManager
 				this.host = connection;
 				host.send(ServerMessages.HOST_MESSAGE_NAME, Serializer.toJson(new HostServerMessage()));
 			}
+
+			//adding the player
 			playerConnections.add(connection);
 			connection.addPlayer(player);
 
+			// Sending game code to the client
+			connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME,
+					Serializer.toJson(new GameCodeServerMessage(gameCode)));
+
+			//Updating other players player list
 			gameManager.addPlayer(player);
 			sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME,
 			                Serializer.toJson(new PlayersListServerMessage(gameManager.getPlayers())));

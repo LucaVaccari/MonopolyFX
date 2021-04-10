@@ -27,7 +27,6 @@ public class GameManager
 	private Round currentRound;
 	private RandomEventManager randomEventManager;
 
-
 	/**
 	 * Constructor for the GameManager
 	 */

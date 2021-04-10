@@ -76,9 +76,6 @@ public class ConnectionManager
 			games.get(gameCode).addPlayer(connection, player);
 			waitingRoom.remove(connection);
 
-			// Sending game code to the client
-			connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME,
-			                Serializer.toJson(new GameCodeServerMessage(lastGameCode)));
 		}
 		else
 		{
