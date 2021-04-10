@@ -25,8 +25,8 @@ public class ServerMessages
 			"it.castelli.connection.messages.UpdateDiceResultClientMessage";
 	public static final String UPDATE_ROUND_MESSAGE_NAME =
 			"it.castelli.connection.messages.UpdateRoundClientMessage";
-	public static final String HOST_MESSAGE_NAME =
-			"it.castelli.connection.messages.HostClientMessage";
+	public static final String SET_HOST_MESSAGE_NAME =
+			"it.castelli.connection.messages.SetHostClientMessage";
 	public static final String GAME_STARTED_MESSAGE_NAME =
 			"it.castelli.connection.messages.GameStartedClientMessage";
 	public static final String EXCHANGE_CANCELED_MESSAGE_NAME =

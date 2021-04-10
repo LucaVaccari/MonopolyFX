@@ -29,7 +29,7 @@ public class GameConnectionManager
 			if (this.host == null)
 			{
 				this.host = connection;
-				host.send(ServerMessages.HOST_MESSAGE_NAME, Serializer.toJson(new HostServerMessage()));
+				host.send(ServerMessages.SET_HOST_MESSAGE_NAME, Serializer.toJson(new SetHostServerMessage()));
 			}
 
 			//adding the player
@@ -68,7 +68,7 @@ public class GameConnectionManager
 			if (connection == host)
 			{
 				host = playerConnections.get(0);
-				host.send(ServerMessages.HOST_MESSAGE_NAME, Serializer.toJson(new HostServerMessage()));
+				host.send(ServerMessages.SET_HOST_MESSAGE_NAME, Serializer.toJson(new SetHostServerMessage()));
 			}
 
 			sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer

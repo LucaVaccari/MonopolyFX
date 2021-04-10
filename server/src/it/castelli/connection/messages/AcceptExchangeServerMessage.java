@@ -8,11 +8,27 @@ import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
 import it.castelli.serialization.Serializer;
 
+/**
+ * Message from the client that accepts the exchange (receive only)
+ */
 public class AcceptExchangeServerMessage implements Message
 {
+	/**
+	 * The player
+	 */
 	private final Player player;
+
+	/**
+	 * The game code
+	 */
 	private final int gameCode;
 
+	/**
+	 * Constructor for AcceptExchangeServerMessage
+	 *
+	 * @param player The player accepting the exchange
+	 * @param gameCode The game code
+	 */
 	public AcceptExchangeServerMessage(Player player, int gameCode)
 	{
 		this.player = player;

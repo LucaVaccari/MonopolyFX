@@ -20,8 +20,8 @@ public class ChoosePawnServerMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		//TODO: remove comment
-		//player.setPawn(pawnUrl);
+
+		player.setPawnPath(pawnURL);
 		GameConnectionManager manager = ConnectionManager.getInstance().getGames().get(gameCode);
 		manager.sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME,
 		                Serializer.toJson(new UpdatePlayersListServerMessage(manager.getGameManager().getPlayers())));

@@ -8,7 +8,7 @@ import it.castelli.gui.controllers.LobbyController;
 /**
  * Message from the server that sets the player as the game host (receive only)
  */
-public class HostClientMessage implements Message
+public class SetHostClientMessage implements Message
 {
 	@Override
 	public void onReceive(Connection connection, Player player)
