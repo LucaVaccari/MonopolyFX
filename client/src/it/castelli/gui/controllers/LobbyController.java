@@ -70,7 +70,7 @@ public class LobbyController
 				event -> {
 					System.out.println("Choosing pawn");
 					// TODO: choose pawn
-					ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME,Serializer.toJson(pawnPath));
+					ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME, Serializer.toJson(pawnPath));
 				});
 		thimblePawn.setOnMouseClicked(event -> pawnPath = "/images/pawns/thimble.png");
 		dogPawn.setOnMouseClicked(event -> pawnPath = "/images/pawns/dog.png");

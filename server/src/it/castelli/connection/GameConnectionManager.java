@@ -44,8 +44,7 @@ public class GameConnectionManager
 			gameManager.addPlayer(player);
 			sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME,
 					Serializer.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
-		}
-		else
+		} else
 		{
 			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage(
 					"You can't enter this game, lobby is full or the game has already started")));
@@ -61,8 +60,7 @@ public class GameConnectionManager
 		{
 			ConnectionManager.getInstance().removeGame(gameCode);
 			System.out.println("Removed game with code " + gameCode);
-		}
-		else
+		} else
 		{
 			System.out.println("Still " + playerConnections.size() + " players in the game with code " + gameCode);
 			if (connection == host)

@@ -23,7 +23,7 @@ public class JoinGameClientMessage implements Message
 	 * Constructor for JoinGameClientMessage
 	 *
 	 * @param gameCode The game code of the game to join
-	 * @param name player's name inside the game he's joining
+	 * @param name     player's name inside the game he's joining
 	 */
 	public JoinGameClientMessage(int gameCode, String name)
 	{

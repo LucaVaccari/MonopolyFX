@@ -47,6 +47,11 @@ public class AuctionController
 	@FXML
 	private Button plusHundredButton;
 
+	public static AuctionController getInstance()
+	{
+		return instance;
+	}
+
 	@FXML
 	public void initialize()
 	{
@@ -95,10 +100,5 @@ public class AuctionController
 	{
 		this.auction = auction;
 		update();
-	}
-
-	public static AuctionController getInstance()
-	{
-		return instance;
 	}
 }

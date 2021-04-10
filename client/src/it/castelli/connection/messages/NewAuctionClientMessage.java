@@ -33,8 +33,8 @@ public class NewAuctionClientMessage implements Message
 	/**
 	 * Constructor for AuctionClientMessage (do not use)
 	 *
-	 * @param contract The contract at auction
-	 * @param player The player
+	 * @param contract          The contract at auction
+	 * @param player            The player
 	 * @param bestOfferProposed The highest amount of money offered
 	 */
 	public NewAuctionClientMessage(Contract contract, Player player, int bestOfferProposed)

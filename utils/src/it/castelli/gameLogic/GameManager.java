@@ -240,11 +240,6 @@ public class GameManager
 		this.auction = auction;
 	}
 
-	public void setBoard(Square[] board)
-	{
-		this.board = board;
-	}
-
 	public Round getCurrentRound()
 	{
 		return currentRound;
@@ -285,6 +280,11 @@ public class GameManager
 	public Square[] getBoard()
 	{
 		return board;
+	}
+
+	public void setBoard(Square[] board)
+	{
+		this.board = board;
 	}
 
 	public void updateExchange(Exchange exchange)

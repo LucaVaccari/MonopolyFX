@@ -21,7 +21,7 @@ public class ChoosePawnClientMessage implements Message
 	/**
 	 * Constructor for ChoosePawnClientMessage
 	 *
-	 * @param pawnURL The pawn URL that represent the image of the pawn
+	 * @param pawnURL  The pawn URL that represent the image of the pawn
 	 * @param gameCode The game code
 	 */
 	public ChoosePawnClientMessage(String pawnURL, int gameCode)

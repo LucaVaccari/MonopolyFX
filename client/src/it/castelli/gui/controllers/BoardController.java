@@ -28,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Priority;
@@ -35,6 +36,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -171,6 +174,98 @@ public class BoardController
 	{
 		return instance;
 	}
+
+	/**
+	 * Show a new not resizable stage containing information about a property
+	 *
+	 * @param contract The contract of the property to show
+	 */
+	public static void showTerrainView(PropertyContract contract)
+	{
+		if (contract == null)
+			return;
+
+		try
+		{
+			FXMLLoader loader = FXMLFileLoader.getLoader(PROPERTY_VIEW_FXML_PATH);
+			Parent root = loader.load();
+			PropertyViewController controller = loader.getController();
+			controller.setContract(contract);
+			Stage propertyViewStage = new Stage();
+			Scene scene = new Scene(root);
+			propertyViewStage.setScene(scene);
+			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
+			propertyViewStage.setAlwaysOnTop(true);
+			propertyViewStage.setResizable(false);
+			propertyViewStage.show();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Show a new not resizable stage containing information about a station
+	 *
+	 * @param contract The contract of the station to show
+	 */
+	public static void showTerrainView(StationContract contract)
+	{
+		if (contract == null)
+			return;
+
+		try
+		{
+			FXMLLoader loader = FXMLFileLoader.getLoader(STATION_VIEW_FXML_PATH);
+			Parent root = loader.load();
+			StationViewController controller = loader.getController();
+			controller.setContract(contract);
+			Stage propertyViewStage = new Stage();
+			Scene scene = new Scene(root);
+			propertyViewStage.setScene(scene);
+			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
+			propertyViewStage.setAlwaysOnTop(true);
+			propertyViewStage.setResizable(false);
+			propertyViewStage.show();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Show a new not resizable stage containing information about a company
+	 *
+	 * @param contract The contract of the company to show
+	 */
+	public static void showTerrainView(CompanyContract contract)
+	{
+		if (contract == null)
+			return;
+
+		try
+		{
+			FXMLLoader loader = FXMLFileLoader.getLoader(COMPANY_VIEW_FXML_PATH);
+			Parent root = loader.load();
+			CompanyViewController controller = loader.getController();
+			controller.setContract(contract);
+			Stage propertyViewStage = new Stage();
+			Scene scene = new Scene(root);
+			propertyViewStage.setScene(scene);
+			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
+			propertyViewStage.setAlwaysOnTop(true);
+			propertyViewStage.setResizable(false);
+			propertyViewStage.show();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	// Calculate the properties owned by the player to show under the board
 
 	@FXML
 	private void initialize()
@@ -375,16 +470,6 @@ public class BoardController
 		updatePlayerListView();
 		updateMoneyLabel();
 
-		//list of all players
-//			for (int i = 0; i < Game.getGameManager().getPlayers().size(); i++)
-//			{
-//				Label player=new Label(Game.getGameManager().getPlayers().get(i).getName() + " " + Game.getGameManager
-//				().getPlayers().get(i).getMoney() + "M");
-//				player.setAlignment(Pos.CENTER);
-//				player.setPrefSize(playerListView.getPrefWidth(),playerListView.getPrefHeight()/7);
-//				player.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-//				playerListView.getChildren().add(player);
-//			}
 		//list of my properties
 //		Player p1 = new Player(500,"ferro");
 //		p1.addContract(new PropertyContract("Vicolo Stretto", 60, 4, 20, 60,
@@ -402,101 +487,19 @@ public class BoardController
 //			ownedPropertiesPane.getChildren().add(property);
 //		}
 		//add image to the first square
-
-
-	}
-
-
-	/**
-	 * Show a new not resizable stage containing information about a property
-	 *
-	 * @param contract The contract of the property to show
-	 */
-	public static void showTerrainView(PropertyContract contract)
-	{
-		if (contract == null)
-			return;
-
+		FileInputStream input = null;
 		try
 		{
-			FXMLLoader loader = FXMLFileLoader.getLoader(PROPERTY_VIEW_FXML_PATH);
-			Parent root = loader.load();
-			PropertyViewController controller = loader.getController();
-			controller.setContract(contract);
-			Stage propertyViewStage = new Stage();
-			Scene scene = new Scene(root);
-			propertyViewStage.setScene(scene);
-			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
-			propertyViewStage.setAlwaysOnTop(true);
-			propertyViewStage.setResizable(false);
-			propertyViewStage.show();
+			input = new FileInputStream(String.valueOf(PawnChoiceController.getPawnPaths().get(Game.getPlayer().getPawn())));
 		}
-		catch (IOException e)
+		catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
 		}
-	}
+		Image image = new Image(input);
+		ImageView imageView = new ImageView(image);
+		Group0.getChildren().add(imageView);
 
-	/**
-	 * Show a new not resizable stage containing information about a station
-	 *
-	 * @param contract The contract of the station to show
-	 */
-	public static void showTerrainView(StationContract contract)
-	{
-		if (contract == null)
-			return;
-
-		try
-		{
-			FXMLLoader loader = FXMLFileLoader.getLoader(STATION_VIEW_FXML_PATH);
-			Parent root = loader.load();
-			StationViewController controller = loader.getController();
-			controller.setContract(contract);
-			Stage propertyViewStage = new Stage();
-			Scene scene = new Scene(root);
-			propertyViewStage.setScene(scene);
-			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
-			propertyViewStage.setAlwaysOnTop(true);
-			propertyViewStage.setResizable(false);
-			propertyViewStage.show();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	// Calculate the properties owned by the player to show under the board
-
-	/**
-	 * Show a new not resizable stage containing information about a company
-	 *
-	 * @param contract The contract of the company to show
-	 */
-	public static void showTerrainView(CompanyContract contract)
-	{
-		if (contract == null)
-			return;
-
-		try
-		{
-			FXMLLoader loader = FXMLFileLoader.getLoader(COMPANY_VIEW_FXML_PATH);
-			Parent root = loader.load();
-			CompanyViewController controller = loader.getController();
-			controller.setContract(contract);
-			Stage propertyViewStage = new Stage();
-			Scene scene = new Scene(root);
-			propertyViewStage.setScene(scene);
-			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
-			propertyViewStage.setAlwaysOnTop(true);
-			propertyViewStage.setResizable(false);
-			propertyViewStage.show();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -535,8 +538,7 @@ public class BoardController
 				ownedTerrains[i].setDisable(false);
 				ownedTerrains[i].setVisible(true);
 				ownedTerrains[i].setContract(mostProductiveContract);
-			}
-			else
+			} else
 			{
 				ownedTerrains[i].setVisible(false);
 				ownedTerrains[i].setDisable(true);

@@ -47,8 +47,7 @@ public class PropertySquare implements Square
 		if (contract.getOwner() == null)
 		{
 			//TODO: give the player the possibility to buy the property
-		}
-		else
+		} else
 		{
 			int revenue = contract.getRevenue();
 			player.removeMoney(revenue);
