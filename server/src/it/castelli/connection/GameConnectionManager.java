@@ -71,6 +71,8 @@ public class GameConnectionManager
 				host.send(ServerMessages.HOST_MESSAGE_NAME, Serializer.toJson(new HostServerMessage()));
 			}
 
+			sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer
+					.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
 		}
 	}
 
