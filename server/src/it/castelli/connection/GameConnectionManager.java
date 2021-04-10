@@ -44,9 +44,10 @@ public class GameConnectionManager
 		}
 	}
 
-	public void removePlayerConnection(Connection connection)
+	public void removePlayer(Connection connection)
 	{
 		playerConnections.remove(connection);
+		gameManager.removePlayer(connection.getReceiver().getPlayer());
 
 		if (playerConnections.isEmpty())
 		{

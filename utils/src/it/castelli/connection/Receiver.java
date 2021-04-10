@@ -40,6 +40,11 @@ public class Receiver implements Runnable
 		this.player = player;
 	}
 
+	public Player getPlayer()
+	{
+		return player;
+	}
+
 	@Override
 	public void run()
 	{

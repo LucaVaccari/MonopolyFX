@@ -56,6 +56,11 @@ public class Connection
 		return connectionSocket;
 	}
 
+	public Receiver getReceiver()
+	{
+		return receiver;
+	}
+
 	@Override
 	public int hashCode()
 	{
