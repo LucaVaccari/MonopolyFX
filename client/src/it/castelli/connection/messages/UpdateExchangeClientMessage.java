@@ -10,24 +10,24 @@ import it.castelli.gameLogic.transactions.Exchange;
  */
 public class UpdateExchangeClientMessage implements Message
 {
-    /**
-     * The updated exchange
-     */
-    private final Exchange exchange;
+	/**
+	 * The updated exchange
+	 */
+	private final Exchange exchange;
 
-    /**
-     * Constructor for UpdateExchangeClientMessage
-     *
-     * @param exchange The updated exchange
-     */
-    public UpdateExchangeClientMessage(Exchange exchange)
-    {
-        this.exchange = exchange;
-    }
+	/**
+	 * Constructor for UpdateExchangeClientMessage
+	 *
+	 * @param exchange The updated exchange
+	 */
+	public UpdateExchangeClientMessage(Exchange exchange)
+	{
+		this.exchange = exchange;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        Game.getGameManager().updateExchange(exchange);
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		Game.getGameManager().updateExchange(exchange);
+	}
 }

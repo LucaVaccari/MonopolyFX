@@ -47,8 +47,7 @@ public class CompanySquare implements Square
 		if (contract.getOwner() == null)
 		{
 			// TODO: give the player the possibility to buy the company
-		}
-		else
+		} else
 		{
 			int revenue = contract.getRevenue();
 			player.removeMoney(revenue);

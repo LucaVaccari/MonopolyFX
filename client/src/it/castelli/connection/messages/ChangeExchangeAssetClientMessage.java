@@ -10,38 +10,38 @@ import it.castelli.gameLogic.transactions.Exchange;
  */
 public class ChangeExchangeAssetClientMessage implements Message
 {
-    /**
-     * The asset containing the money and the contract list to offer
-     */
-    private final Asset asset;
+	/**
+	 * The asset containing the money and the contract list to offer
+	 */
+	private final Asset asset;
 
-    /**
-     * The game code
-     */
-    private final int gameCode;
+	/**
+	 * The game code
+	 */
+	private final int gameCode;
 
-    /**
-     * The player
-     */
-    private final Player player;
+	/**
+	 * The player
+	 */
+	private final Player player;
 
-    /**
-     * Constructor for ChangeExchangeAssetClientMessage
-     *
-     * @param asset The asset containing the money and the contract list to offer
-     * @param gameCode The game code
-     * @param player The player
-     */
-    public ChangeExchangeAssetClientMessage(Asset asset, int gameCode, Exchange exchange, Player player)
-    {
-        this.asset = asset;
-        this.gameCode = gameCode;
-        this.player = player;
-    }
+	/**
+	 * Constructor for ChangeExchangeAssetClientMessage
+	 *
+	 * @param asset    The asset containing the money and the contract list to offer
+	 * @param gameCode The game code
+	 * @param player   The player
+	 */
+	public ChangeExchangeAssetClientMessage(Asset asset, int gameCode, Exchange exchange, Player player)
+	{
+		this.asset = asset;
+		this.gameCode = gameCode;
+		this.player = player;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        // do nothing
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		// do nothing
+	}
 }

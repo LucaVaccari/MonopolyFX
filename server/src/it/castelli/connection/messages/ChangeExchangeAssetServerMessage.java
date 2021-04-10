@@ -40,8 +40,7 @@ public class ChangeExchangeAssetServerMessage implements Message
 			player1Connection.send(ServerMessages.UPDATE_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new UpdateExchangeServerMessage(exchange)));
 			player2Connection.send(ServerMessages.UPDATE_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new UpdateExchangeServerMessage(exchange)));
 
-		}
-		else
+		} else
 		{
 			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer
 					.toJson(new ErrorServerMessage("L'altro giocatore ha già accettato, puoi solo accettare o " +

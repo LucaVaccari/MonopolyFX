@@ -22,9 +22,10 @@ public class ChatServerMessage implements Message
 
 	/**
 	 * Constructor for ChatServerMessage
-	 * @param gameCode The game code
+	 *
+	 * @param gameCode     The game code
 	 * @param senderPlayer The player that sends the message
-	 * @param messageBody The text message body
+	 * @param messageBody  The text message body
 	 */
 	public ChatServerMessage(int gameCode, Player senderPlayer, String messageBody)
 	{

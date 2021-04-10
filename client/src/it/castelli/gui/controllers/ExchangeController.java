@@ -58,6 +58,11 @@ public class ExchangeController
 	@FXML
 	private Button cancelButton;
 
+	public static ExchangeController getInstance()
+	{
+		return instance;
+	}
+
 	@FXML
 	public void initialize()
 	{
@@ -73,7 +78,8 @@ public class ExchangeController
 								yourAsset, Game.getGameCode(), exchange, Game.getPlayer())));
 			}
 			catch (NumberFormatException ignored)
-			{}
+			{
+			}
 		});
 
 		addPropertyButton.setOnAction(event -> {
@@ -120,8 +126,7 @@ public class ExchangeController
 			him = exchange.getPlayer2();
 			yourAsset = exchange.getAsset1();
 			hisAsset = exchange.getAsset2();
-		}
-		else
+		} else
 		{
 			you = exchange.getPlayer2();
 			him = exchange.getPlayer1();
@@ -129,10 +134,5 @@ public class ExchangeController
 			hisAsset = exchange.getAsset1();
 		}
 		update();
-	}
-
-	public static ExchangeController getInstance()
-	{
-		return instance;
 	}
 }

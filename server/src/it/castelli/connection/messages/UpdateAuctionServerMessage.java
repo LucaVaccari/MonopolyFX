@@ -6,16 +6,16 @@ import it.castelli.gameLogic.transactions.Auction;
 
 public class UpdateAuctionServerMessage implements Message
 {
-    private final Auction auction;
+	private final Auction auction;
 
-    public UpdateAuctionServerMessage(Auction auction)
-    {
-        this.auction = auction;
-    }
+	public UpdateAuctionServerMessage(Auction auction)
+	{
+		this.auction = auction;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        //do nothing
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		//do nothing
+	}
 }

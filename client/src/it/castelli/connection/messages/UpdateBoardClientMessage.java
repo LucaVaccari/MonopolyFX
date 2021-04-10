@@ -17,6 +17,7 @@ public class UpdateBoardClientMessage implements Message
 
 	/**
 	 * Constructor for UpdateBoardClientMessage
+	 *
 	 * @param board The board
 	 */
 	public UpdateBoardClientMessage(Square[] board)

@@ -19,6 +19,7 @@ public class UpdateDiceResultClientMessage implements Message
 
 	/**
 	 * Constructor for UpdateDiceResultClientMessage
+	 *
 	 * @param diceResult The last dice result
 	 */
 	public UpdateDiceResultClientMessage(DiceResult diceResult)

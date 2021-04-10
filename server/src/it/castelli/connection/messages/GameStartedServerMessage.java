@@ -6,9 +6,9 @@ import it.castelli.gameLogic.Player;
 public class GameStartedServerMessage implements Message
 {
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        // do nothing
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		// do nothing
+	}
 }

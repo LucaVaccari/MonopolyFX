@@ -75,13 +75,12 @@ public class ConnectionManager
 			games.get(gameCode).addPlayer(connection, player);
 			waitingRoom.remove(connection);
 
-		}
-		else
+		} else
 		{
 			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer
 					.toJson(new ErrorServerMessage(
 							"La partita con codice: " + gameCode +
-							" non e' stata trovata!")));
+									" non e' stata trovata!")));
 		}
 	}
 

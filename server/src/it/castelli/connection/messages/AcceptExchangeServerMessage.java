@@ -26,7 +26,7 @@ public class AcceptExchangeServerMessage implements Message
 	/**
 	 * Constructor for AcceptExchangeServerMessage
 	 *
-	 * @param player The player accepting the exchange
+	 * @param player   The player accepting the exchange
 	 * @param gameCode The game code
 	 */
 	public AcceptExchangeServerMessage(Player player, int gameCode)
@@ -47,8 +47,7 @@ public class AcceptExchangeServerMessage implements Message
 		{
 			exchange.endExchange();
 			gameConnectionManager.sendAll(ServerMessages.EXCHANGE_SUCCESSFUL_MESSAGE_NAME, Serializer.toJson(new ExchangeSuccessfulServerMessage(exchange)));
-		}
-		else
+		} else
 		{
 			gameConnectionManager.sendAll(ServerMessages.UPDATE_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new UpdateExchangeServerMessage(exchange)));
 		}

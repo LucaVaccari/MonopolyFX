@@ -14,6 +14,6 @@ public class KeepAliveClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		connection.send(ClientMessages.KEEP_ALIVE_MESSAGE_NAME,
-		                Serializer.toJson(new KeepAliveClientMessage()));
+				Serializer.toJson(new KeepAliveClientMessage()));
 	}
 }

@@ -6,16 +6,16 @@ import it.castelli.gameLogic.transactions.Exchange;
 
 public class ExchangeSuccessfulServerMessage implements Message
 {
-    private final Exchange exchange;
+	private final Exchange exchange;
 
-    public ExchangeSuccessfulServerMessage(Exchange exchange)
-    {
-        this.exchange = exchange;
-    }
+	public ExchangeSuccessfulServerMessage(Exchange exchange)
+	{
+		this.exchange = exchange;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        //do nothing
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		//do nothing
+	}
 }

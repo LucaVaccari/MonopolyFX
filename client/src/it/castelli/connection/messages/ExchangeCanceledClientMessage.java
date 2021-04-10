@@ -11,30 +11,30 @@ import it.castelli.gui.AlertUtil;
  */
 public class ExchangeCanceledClientMessage implements Message
 {
-    /**
-     * The exchange that got canceled
-     */
-    private final Exchange exchange;
+	/**
+	 * The exchange that got canceled
+	 */
+	private final Exchange exchange;
 
-    /**
-     * Constructor for ExchangeCanceledClientMessage
-     *
-     * @param exchange The exchange that got canceled
-     */
-    public ExchangeCanceledClientMessage(Exchange exchange)
-    {
-        this.exchange = exchange;
-    }
+	/**
+	 * Constructor for ExchangeCanceledClientMessage
+	 *
+	 * @param exchange The exchange that got canceled
+	 */
+	public ExchangeCanceledClientMessage(Exchange exchange)
+	{
+		this.exchange = exchange;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        if (exchange.getPlayer1().equals(Game.getPlayer()) || exchange.getPlayer2().equals(Game.getPlayer()))
-        {
-            Game.getGameManager().removeExchange(exchange);
-            AlertUtil.showInformationAlert("Fallimento", "Scambio rifiutato",
-                    "Lo scambio è stato rifiutato.");
-            // TODO: close the exchange window
-        }
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		if (exchange.getPlayer1().equals(Game.getPlayer()) || exchange.getPlayer2().equals(Game.getPlayer()))
+		{
+			Game.getGameManager().removeExchange(exchange);
+			AlertUtil.showInformationAlert("Fallimento", "Scambio rifiutato",
+					"Lo scambio è stato rifiutato.");
+			// TODO: close the exchange window
+		}
+	}
 }

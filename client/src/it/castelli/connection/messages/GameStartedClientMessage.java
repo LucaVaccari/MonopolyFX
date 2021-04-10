@@ -11,10 +11,10 @@ import javafx.application.Platform;
  */
 public class GameStartedClientMessage implements Message
 {
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        System.out.println("Starting the game");
-        Platform.runLater(() -> SceneManager.getInstance().showScene(SceneType.BOARD));
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		System.out.println("Starting the game");
+		Platform.runLater(() -> SceneManager.getInstance().showScene(SceneType.BOARD));
+	}
 }
