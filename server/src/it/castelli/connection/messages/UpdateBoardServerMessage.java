@@ -4,11 +4,11 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.squares.Square;
 
-public class BoardServerMessage implements Message
+public class UpdateBoardServerMessage implements Message
 {
 	private Square[] board;
 
-	public BoardServerMessage(Square[] board)
+	public UpdateBoardServerMessage(Square[] board)
 	{
 		this.board = board;
 	}

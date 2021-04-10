@@ -17,8 +17,8 @@ public class ServerMessages
 			"it.castelli.connection.messages.AuctionClientMessage";
 	public static final String UPDATE_AUCTION_MESSAGE_NAME =
 			"it.castelli.connection.messages.UpdateAuctionClientMessage";
-	public static final String BOARD_MESSAGE_NAME =
-			"it.castelli.connection.messages.BoardClientMessage";
+	public static final String UPDATE_BOARD_MESSAGE_NAME =
+			"it.castelli.connection.messages.UpdateBoardClientMessage";
 	public static final String DICE_RESULT_MESSAGE_NAME =
 			"it.castelli.connection.messages.DiceResultClientMessage";
 	public static final String ROUND_MESSAGE_NAME =
@@ -29,8 +29,8 @@ public class ServerMessages
 			"it.castelli.connection.messages.HostClientMessage";
 	public static final String START_GAME_MESSAGE_NAME =
 			"it.castelli.connection.messages.StartGameClientMessage";
-	public static final String CANCEL_EXCHANGE_MESSAGE_NAME =
-			"it.castelli.connection.messages.CancelExchangeClientMessage";
+	public static final String EXCHANGE_CANCELED_MESSAGE_NAME =
+			"it.castelli.connection.messages.ExchangeCanceledClientMessage";
 	public static final String EXCHANGE_MESSAGE_NAME =
 			"it.castelli.connection.messages.ExchangeClientMessage";
 	public static final String EXCHANGE_SUCCESSFUL_MESSAGE_NAME =

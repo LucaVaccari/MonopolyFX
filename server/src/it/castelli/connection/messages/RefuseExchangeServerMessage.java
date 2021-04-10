@@ -8,12 +8,12 @@ import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
 import it.castelli.serialization.Serializer;
 
-public class CancelExchangeServerMessage implements Message
+public class RefuseExchangeServerMessage implements Message
 {
 	private final Exchange exchange;
 	private final int gameCode;
 
-	public CancelExchangeServerMessage(Exchange exchange, int gameCode)
+	public RefuseExchangeServerMessage(Exchange exchange, int gameCode)
 	{
 		this.exchange = exchange;
 		this.gameCode = gameCode;
@@ -25,7 +25,7 @@ public class CancelExchangeServerMessage implements Message
 		GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
 		GameManager gameManager = gameConnectionManager.getGameManager();
 
-		gameConnectionManager.sendAll(ServerMessages.CANCEL_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new CancelExchangeServerMessage(exchange, gameCode)));
+		gameConnectionManager.sendAll(ServerMessages.EXCHANGE_CANCELED_MESSAGE_NAME, Serializer.toJson(new ExchangeCanceledServerMessage(exchange)));
 
 		gameManager.removeExchange(exchange);
 	}

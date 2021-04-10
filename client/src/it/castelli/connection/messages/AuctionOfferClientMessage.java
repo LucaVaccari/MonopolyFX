@@ -8,9 +8,21 @@ import it.castelli.gameLogic.Player;
  */
 public class AuctionOfferClientMessage implements Message
 {
+	/**
+	 * The money amount to offer
+	 */
 	private final int offer;
+
+	/**
+	 * The game code
+	 */
 	private final int gameCode;
 
+	/**
+	 * Constructor for AuctionOfferClientMessage
+	 * @param offer The money amount to offer
+	 * @param gameCode The game code
+	 */
 	public AuctionOfferClientMessage(int offer, int gameCode)
 	{
 		this.offer = offer;

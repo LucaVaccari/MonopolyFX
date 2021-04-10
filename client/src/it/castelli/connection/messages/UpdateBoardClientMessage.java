@@ -5,11 +5,21 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.squares.Square;
 
-public class BoardClientMessage implements Message
+/**
+ * Message received from the server that updates the board (receive only)
+ */
+public class UpdateBoardClientMessage implements Message
 {
+	/**
+	 * The board
+	 */
 	private final Square[] board;
 
-	public BoardClientMessage(Square[] board)
+	/**
+	 * Constructor for UpdateBoardClientMessage
+	 * @param board The board
+	 */
+	public UpdateBoardClientMessage(Square[] board)
 	{
 		this.board = board;
 	}

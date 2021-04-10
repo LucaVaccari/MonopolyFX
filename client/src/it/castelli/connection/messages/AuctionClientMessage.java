@@ -11,7 +11,7 @@ import it.castelli.gui.scene.SceneType;
 import javafx.application.Platform;
 
 /**
- * Message received from the server when a new Auction starts
+ * Message received from the server when a new Auction starts (receive only)
  */
 public class AuctionClientMessage implements Message
 {

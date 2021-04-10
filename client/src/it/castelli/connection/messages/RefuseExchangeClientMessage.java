@@ -6,12 +6,15 @@ import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
 import it.castelli.gui.AlertUtil;
 
-public class CancelExchangeClientMessage implements Message
+/**
+ * Message
+ */
+public class RefuseExchangeClientMessage implements Message
 {
 	private final Exchange exchange;
 	private final int gameCode;
 
-	public CancelExchangeClientMessage(Exchange exchange, int gameCode)
+	public RefuseExchangeClientMessage(Exchange exchange, int gameCode)
 	{
 		this.exchange = exchange;
 		this.gameCode = gameCode;

@@ -110,7 +110,7 @@ public class GameConnectionManager
 	{
 		sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME, Serializer
 				.toJson(new PlayersListServerMessage(gameManager.getPlayers())));
-		sendAll(ServerMessages.BOARD_MESSAGE_NAME, Serializer.toJson(new BoardServerMessage(gameManager.getBoard())));
+		sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
 	}
 
 	public Connection getConnectionFromPlayer(Player player)
