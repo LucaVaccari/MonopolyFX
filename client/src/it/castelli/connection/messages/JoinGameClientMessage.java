@@ -9,18 +9,18 @@ import it.castelli.gameLogic.Player;
  */
 public class JoinGameClientMessage implements Message
 {
-	private final int code;
+	private final int gameCode;
 	private final Player player;
 
 	/**
 	 * Constructor of JoinGameClientMessage
 	 *
-	 * @param code game code
+	 * @param gameCode game code
 	 * @param name player's name inside the game
 	 */
-	public JoinGameClientMessage(int code, String name)
+	public JoinGameClientMessage(int gameCode, String name)
 	{
-		this.code = code;
+		this.gameCode = gameCode;
 		player = new Player(1500, name);
 		Game.setPlayer(player);
 	}
