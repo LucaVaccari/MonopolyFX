@@ -49,9 +49,13 @@ public class GameConnectionManager
 		playerConnections.remove(connection);
 
 		if (playerConnections.isEmpty())
+		{
 			ConnectionManager.getInstance().removeGame(gameCode);
+			System.out.println("Removed game with code " + gameCode);
+		}
 		else
 		{
+			System.out.println("Still " + playerConnections.size() + " players in the game with code " + gameCode);
 			if (connection == host)
 			{
 				host = playerConnections.get(0);

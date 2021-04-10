@@ -8,6 +8,6 @@ public class ExchangeCancelClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-
+		// do nothing
 	}
 }

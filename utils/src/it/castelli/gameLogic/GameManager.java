@@ -260,4 +260,8 @@ public class GameManager
 		return randomEventManager;
 	}
 
+	public void createExchange(Player player1, Player player2)
+	{
+
+	}
 }
