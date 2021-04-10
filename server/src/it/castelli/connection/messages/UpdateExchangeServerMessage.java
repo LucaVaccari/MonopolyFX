@@ -4,11 +4,11 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
 
-public class ExchangeServerMessage implements Message
+public class UpdateExchangeServerMessage implements Message
 {
     private final Exchange exchange;
 
-    public ExchangeServerMessage(Exchange exchange)
+    public UpdateExchangeServerMessage(Exchange exchange)
     {
         this.exchange = exchange;
     }

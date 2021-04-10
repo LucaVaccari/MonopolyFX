@@ -13,7 +13,7 @@ public class ServerMessages
 			"it.castelli.connection.messages.GameCodeClientMessage";
 	public static final String ERROR_MESSAGE_NAME =
 			"it.castelli.connection.messages.ErrorClientMessage";
-	public static final String AUCTION_MESSAGE_NAME =
+	public static final String NEW_AUCTION_MESSAGE_NAME =
 			"it.castelli.connection.messages.AuctionClientMessage";
 	public static final String UPDATE_AUCTION_MESSAGE_NAME =
 			"it.castelli.connection.messages.UpdateAuctionClientMessage";
@@ -31,7 +31,7 @@ public class ServerMessages
 			"it.castelli.connection.messages.StartGameClientMessage";
 	public static final String EXCHANGE_CANCELED_MESSAGE_NAME =
 			"it.castelli.connection.messages.ExchangeCanceledClientMessage";
-	public static final String EXCHANGE_MESSAGE_NAME =
+	public static final String UPDATE_EXCHANGE_MESSAGE_NAME =
 			"it.castelli.connection.messages.ExchangeClientMessage";
 	public static final String EXCHANGE_SUCCESSFUL_MESSAGE_NAME =
 			"it.castelli.connection.messages.ExchangeSuccessfulClientMessage";

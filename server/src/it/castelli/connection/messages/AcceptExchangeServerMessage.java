@@ -34,7 +34,7 @@ public class AcceptExchangeServerMessage implements Message
 		}
 		else
 		{
-			gameConnectionManager.sendAll(ServerMessages.EXCHANGE_MESSAGE_NAME, Serializer.toJson(new ExchangeServerMessage(exchange)));
+			gameConnectionManager.sendAll(ServerMessages.UPDATE_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new UpdateExchangeServerMessage(exchange)));
 		}
 
 		gameConnectionManager.updatePlayers();

@@ -13,7 +13,7 @@ import javafx.application.Platform;
 /**
  * Message received from the server when a new Auction starts (receive only)
  */
-public class AuctionClientMessage implements Message
+public class NewAuctionClientMessage implements Message
 {
 	/**
 	 * The contract at auction
@@ -36,7 +36,7 @@ public class AuctionClientMessage implements Message
 	 * @param player The player
 	 * @param bestOfferProposed The highest amount of money offered
 	 */
-	public AuctionClientMessage(Contract contract, Player player, int bestOfferProposed)
+	public NewAuctionClientMessage(Contract contract, Player player, int bestOfferProposed)
 	{
 		this.contract = contract;
 		this.player = player;

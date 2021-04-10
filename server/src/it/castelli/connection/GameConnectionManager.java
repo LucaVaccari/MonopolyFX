@@ -89,9 +89,9 @@ public class GameConnectionManager
 		for (Connection connection : playerConnections)
 		{
 			Auction auction = gameManager.getAuction();
-			AuctionServerMessage message = new AuctionServerMessage(auction.getContract(), auction.getPlayer(),
+			NewAuctionServerMessage message = new NewAuctionServerMessage(auction.getContract(), auction.getPlayer(),
 					auction.getBestOfferProposed());
-			connection.send(ServerMessages.AUCTION_MESSAGE_NAME, Serializer.toJson(message));
+			connection.send(ServerMessages.NEW_AUCTION_MESSAGE_NAME, Serializer.toJson(message));
 		}
 	}
 

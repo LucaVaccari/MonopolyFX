@@ -4,13 +4,13 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 
-public class AuctionServerMessage implements Message
+public class NewAuctionServerMessage implements Message
 {
 	private Contract contract;
 	private Player player;
 	private int bestOfferProposed;
 
-	public AuctionServerMessage(Contract contract, Player player, int bestOfferProposed)
+	public NewAuctionServerMessage(Contract contract, Player player, int bestOfferProposed)
 	{
 		this.contract = contract;
 		this.player = player;

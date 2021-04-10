@@ -13,14 +13,13 @@ public class ChangeExchangeAssetServerMessage implements Message
 {
 	private final Asset asset;
 	private final int gameCode;
-	private final Exchange exchange;
+
 	private final Player player;
 
-	public ChangeExchangeAssetServerMessage(Asset asset, int gameCode, Exchange exchange, Player player)
+	public ChangeExchangeAssetServerMessage(Asset asset, int gameCode, Player player)
 	{
 		this.asset = asset;
 		this.gameCode = gameCode;
-		this.exchange = exchange;
 		this.player = player;
 	}
 
@@ -30,11 +29,12 @@ public class ChangeExchangeAssetServerMessage implements Message
 		GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
 		GameManager gameManager = gameConnectionManager.getGameManager();
 
+		Exchange exchange = gameManager.getExchangeFromPlayer(this.player);
 		if (!exchange.getAccepted1() && !exchange.getAccepted2())
 		{
 			exchange.changeAsset(this.player, asset);
-			gameConnectionManager.sendAll(ServerMessages.EXCHANGE_MESSAGE_NAME, Serializer
-					.toJson(new ExchangeServerMessage(exchange)));
+			gameConnectionManager.sendAll(ServerMessages.UPDATE_EXCHANGE_MESSAGE_NAME, Serializer
+					.toJson(new UpdateExchangeServerMessage(exchange)));
 		}
 		else
 		{

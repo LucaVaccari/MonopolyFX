@@ -5,8 +5,12 @@ import it.castelli.connection.ConnectionManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
 
+/**
+ * The message containing a simple text message (send and receive)
+ */
 public class ChatServerMessage implements Message
 {
+
 	private final int gameCode;
 	private String message;
 
