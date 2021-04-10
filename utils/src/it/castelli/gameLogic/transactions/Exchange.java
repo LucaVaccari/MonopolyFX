@@ -5,8 +5,8 @@ import it.castelli.gameLogic.Player;
 
 public class Exchange
 {
-	private Player player1;
-	private Player player2;
+	private final Player player1;
+	private final Player player2;
 	private Asset asset1;
 	private Asset asset2;
 	private Boolean accepted1 = false;
@@ -62,6 +62,16 @@ public class Exchange
 	public Boolean getAccepted2()
 	{
 		return accepted2;
+	}
+
+	public Asset getAsset1()
+	{
+		return asset1;
+	}
+
+	public Asset getAsset2()
+	{
+		return asset2;
 	}
 
 	@Override

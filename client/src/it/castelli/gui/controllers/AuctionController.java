@@ -52,8 +52,6 @@ public class AuctionController
 	{
 		instance = this;
 
-		auction = Game.getGameManager().getAuction();
-
 		minusOneButton.setOnAction(event -> changeOffer(-1));
 		minusTenButton.setOnAction(event -> changeOffer(-10));
 		minusHundredButton.setOnAction(event -> changeOffer(-100));
@@ -91,6 +89,12 @@ public class AuctionController
 			yourOffer += value;
 			yourOfferLabel.setText(yourOffer + "M");
 		}
+	}
+
+	public void setAuction(Auction auction)
+	{
+		this.auction = auction;
+		update();
 	}
 
 	public static AuctionController getInstance()
