@@ -55,10 +55,10 @@ public class SmallTerrainViewComponent extends AnchorPane
 			terrainNameLabel.setStyle("-fx-background-color: #ffffff"); // set to white if station or company
 
 		if (contract instanceof PropertyContract)
-			setOnMouseClicked(event -> BoardController.getInstance().showTerrainView((PropertyContract) contract));
+			setOnMouseClicked(event -> BoardController.showTerrainView((PropertyContract) contract));
 		else if (contract instanceof StationContract)
-			setOnMouseClicked(event -> BoardController.getInstance().showTerrainView((StationContract) contract));
+			setOnMouseClicked(event -> BoardController.showTerrainView((StationContract) contract));
 		else if (contract instanceof CompanyContract)
-			setOnMouseClicked(event -> BoardController.getInstance().showTerrainView((CompanyContract) contract));
+			setOnMouseClicked(event -> BoardController.showTerrainView((CompanyContract) contract));
 	}
 }

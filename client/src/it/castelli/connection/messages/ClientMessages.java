@@ -27,6 +27,10 @@ public class ClientMessages
 			"it.castelli.connection.messages.PawnServerMessage";
 	public static final String CREATE_EXCHANGE_MESSAGE_NAME =
 			"it.castelli.connection.messages.CreateExchangeServerMessage";
+	public static final String ACCEPT_EXCHANGE_MESSAGE_NAME =
+			"it.castelli.connection.messages.AcceptExchangeServerMessage";
+	public static final String CHANGE_EXCHANGE_ASSET_MESSAGE_NAME =
+			"it.castelli.connection.messages.ChangeExchangeAssetServerMessage";
 	public static final String REFUSE_EXCHANGE_MESSAGE_NAME =
 			"it.castelli.connection.messages.RefuseExchangeServerMessage";
 }

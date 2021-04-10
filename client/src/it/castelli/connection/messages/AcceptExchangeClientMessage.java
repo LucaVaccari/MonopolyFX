@@ -20,7 +20,7 @@ public class AcceptExchangeClientMessage implements Message
 
 	/**
 	 * Constructor for AcceptExchangeClientMessage
-	 * @param player The player
+	 * @param player The player accepting the exchange
 	 * @param gameCode The game code
 	 */
 	public AcceptExchangeClientMessage(Player player, int gameCode)

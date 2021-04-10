@@ -411,7 +411,7 @@ public class BoardController
 	 *
 	 * @param contract The contract of the property to show
 	 */
-	public void showTerrainView(PropertyContract contract)
+	public static void showTerrainView(PropertyContract contract)
 	{
 		if (contract == null)
 			return;
@@ -441,7 +441,7 @@ public class BoardController
 	 *
 	 * @param contract The contract of the station to show
 	 */
-	public void showTerrainView(StationContract contract)
+	public static void showTerrainView(StationContract contract)
 	{
 		if (contract == null)
 			return;
@@ -473,7 +473,7 @@ public class BoardController
 	 *
 	 * @param contract The contract of the company to show
 	 */
-	public void showTerrainView(CompanyContract contract)
+	public static void showTerrainView(CompanyContract contract)
 	{
 		if (contract == null)
 			return;
