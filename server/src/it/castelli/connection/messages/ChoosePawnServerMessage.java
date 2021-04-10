@@ -6,14 +6,14 @@ import it.castelli.connection.GameConnectionManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
 
-public class PawnServerMessage implements Message
+public class ChoosePawnServerMessage implements Message
 {
-	private final String pawnUrl;
+	private final String pawnURL;
 	private final int gameCode;
 
-	public PawnServerMessage(String pawnUrl, int gameCode)
+	public ChoosePawnServerMessage(String pawnURL, int gameCode)
 	{
-		this.pawnUrl = pawnUrl;
+		this.pawnURL = pawnURL;
 		this.gameCode = gameCode;
 	}
 

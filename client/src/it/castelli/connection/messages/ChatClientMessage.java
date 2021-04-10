@@ -23,6 +23,7 @@ public class ChatClientMessage implements Message
 
 	/**
 	 * Constructor for ChatClientMessage
+	 *
 	 * @param gameCode The game code
 	 * @param senderPlayer The player that sends the message
 	 * @param messageBody The text message body

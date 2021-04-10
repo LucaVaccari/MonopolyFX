@@ -8,10 +8,20 @@ import it.castelli.gui.controllers.ExchangeController;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 
+/**
+ * Message received from the server that starts a new exchange if the player is involved
+ */
 public class NewExchangeClientMessage implements Message
 {
+    /**
+     * The new exchange
+     */
     private final Exchange exchange;
 
+    /**
+     * Constructor for NewExchangeClientMessage
+     * @param exchange The new exchange
+     */
     public NewExchangeClientMessage(Exchange exchange)
     {
         this.exchange = exchange;

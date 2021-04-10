@@ -27,6 +27,7 @@ public class ChangeExchangeAssetClientMessage implements Message
 
     /**
      * Constructor for ChangeExchangeAssetClientMessage
+     *
      * @param asset The asset containing the money and the contract list to offer
      * @param gameCode The game code
      * @param player The player

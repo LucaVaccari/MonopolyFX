@@ -5,31 +5,28 @@ import it.castelli.connection.ConnectionManager;
 import it.castelli.gameLogic.Player;
 
 /**
- * Leave game request message (receive only)
+ *
  */
 public class LeaveGameServerMessage implements Message
 {
-	private int code;
+	/**
+	 * The game code
+	 */
+	private int gameCode;
 
 	/**
-	 * Constructor of LeaveGameServerMessage
+	 * Constructor for LeaveGameServerMessage
 	 *
-	 * @param code game code
+	 * @param gameCode The game code
 	 */
-	public LeaveGameServerMessage(int code)
+	public LeaveGameServerMessage(int gameCode)
 	{
-		this.code = code;
+		this.gameCode = gameCode;
 	}
 
-	/**
-	 * Remove the player from the game
-	 *
-	 * @param connection connection of the player
-	 * @param player     player
-	 */
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		ConnectionManager.getInstance().leaveGame(code, connection);
+		ConnectionManager.getInstance().leaveGame(gameCode, connection);
 	}
 }

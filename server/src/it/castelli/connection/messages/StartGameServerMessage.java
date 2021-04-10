@@ -20,7 +20,7 @@ public class StartGameServerMessage implements Message
 	{
 		GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
 		gameConnectionManager.startGame();
-		gameConnectionManager.sendAll(ServerMessages.START_GAME_MESSAGE_NAME,
-		                              Serializer.toJson(new StartGameServerMessage(gameCode)));
+		gameConnectionManager.sendAll(ServerMessages.GAME_STARTED_MESSAGE_NAME,
+		                              Serializer.toJson(new GameStartedServerMessage()));
 	}
 }

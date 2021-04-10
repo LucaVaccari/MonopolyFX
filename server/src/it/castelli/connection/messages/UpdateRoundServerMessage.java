@@ -4,11 +4,11 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.Round;
 
-public class RoundServerMessage implements Message
+public class UpdateRoundServerMessage implements Message
 {
 	private final Round round;
 
-	public RoundServerMessage(Round round)
+	public UpdateRoundServerMessage(Round round)
 	{
 		this.round = round;
 	}

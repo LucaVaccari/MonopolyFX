@@ -20,6 +20,7 @@ public class AuctionOfferClientMessage implements Message
 
 	/**
 	 * Constructor for AuctionOfferClientMessage
+	 *
 	 * @param offer The money amount to offer
 	 * @param gameCode The game code
 	 */

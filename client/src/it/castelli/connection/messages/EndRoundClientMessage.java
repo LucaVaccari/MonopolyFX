@@ -3,10 +3,21 @@ package it.castelli.connection.messages;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 
+/**
+ * Request to end the current round and trigger the next one
+ */
 public class EndRoundClientMessage implements Message
 {
+	/**
+	 * The game code
+	 */
 	private final int gameCode;
 
+	/**
+	 * Constructor for EndRoundClientMessage
+	 *
+	 * @param gameCode The game code
+	 */
 	public EndRoundClientMessage(int gameCode)
 	{
 		this.gameCode = gameCode;

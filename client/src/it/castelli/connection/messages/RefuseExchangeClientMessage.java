@@ -7,13 +7,26 @@ import it.castelli.gameLogic.transactions.Exchange;
 import it.castelli.gui.AlertUtil;
 
 /**
- * Message
+ * Request to refuse the exchange offer (send only)
  */
 public class RefuseExchangeClientMessage implements Message
 {
+	/**
+	 * The exchange to refuse
+	 */
 	private final Exchange exchange;
+
+	/**
+	 * The game code
+	 */
 	private final int gameCode;
 
+	/**
+	 * Constructor for RefuseExchangeClientMessage
+	 *
+	 * @param exchange The exchange to refuse
+	 * @param gameCode The game code
+	 */
 	public RefuseExchangeClientMessage(Exchange exchange, int gameCode)
 	{
 		this.exchange = exchange;

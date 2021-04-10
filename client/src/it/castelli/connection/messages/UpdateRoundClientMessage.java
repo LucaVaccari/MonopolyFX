@@ -5,11 +5,22 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.Round;
 
-public class RoundClientMessage implements Message
+/**
+ * Message received from server that updates the current round
+ */
+public class UpdateRoundClientMessage implements Message
 {
+	/**
+	 * The new round
+	 */
 	private final Round round;
 
-	public RoundClientMessage(Round round)
+	/**
+	 * Constructor for UpdateRoundClientMessage
+	 *
+	 * @param round The new round
+	 */
+	public UpdateRoundClientMessage(Round round)
 	{
 		this.round = round;
 	}

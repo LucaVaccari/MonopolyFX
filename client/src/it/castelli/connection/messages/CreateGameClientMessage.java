@@ -16,6 +16,7 @@ public class CreateGameClientMessage implements Message
 
 	/**
 	 * Constructor for CreateGameClientMessage
+	 *
 	 * @param playerName the new player name
 	 */
 	public CreateGameClientMessage(String playerName)

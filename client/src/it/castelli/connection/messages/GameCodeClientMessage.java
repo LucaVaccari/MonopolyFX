@@ -8,28 +8,25 @@ import it.castelli.gui.scene.SceneType;
 import javafx.application.Platform;
 
 /**
- * Game code info message (receive only)
+ * Message containing the game Code (receive only)
  */
 public class GameCodeClientMessage implements Message
 {
+	/**
+	 * The game Code
+	 */
 	private final int gameCode;
 
 	/**
 	 * Constructor for GameCodeClientMessage
 	 *
-	 * @param gameCode game code
+	 * @param gameCode The game Code
 	 */
 	public GameCodeClientMessage(int gameCode)
 	{
 		this.gameCode = gameCode;
 	}
 
-	/**
-	 * Inform the Client about the game code
-	 *
-	 * @param connection connection of the player
-	 * @param player     player
-	 */
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{

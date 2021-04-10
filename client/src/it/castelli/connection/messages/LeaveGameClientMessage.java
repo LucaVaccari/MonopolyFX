@@ -4,20 +4,23 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 
 /**
- * Leave game request message (send only)
+ * Request to leave the game with the given game code (send only)
  */
 public class LeaveGameClientMessage implements Message
 {
-	private final int code;
+	/**
+	 * The game code
+	 */
+	private final int gameCode;
 
 	/**
 	 * Constructor for LeaveGameClientMessage
 	 *
-	 * @param code game code
+	 * @param gameCode The game code
 	 */
-	public LeaveGameClientMessage(int code)
+	public LeaveGameClientMessage(int gameCode)
 	{
-		this.code = code;
+		this.gameCode = gameCode;
 	}
 
 	@Override

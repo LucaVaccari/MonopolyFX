@@ -2,12 +2,15 @@ package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
-import it.castelli.gui.scene.SceneManager;
-import it.castelli.gui.scene.SceneType;
-import javafx.application.Platform;
 
+/**
+ * Request to start the game (made by the host) (send only)
+ */
 public class StartGameClientMessage implements Message
 {
+	/**
+	 * The game code
+	 */
 	private final int gameCode;
 
 	public StartGameClientMessage(int gameCode)
@@ -18,7 +21,6 @@ public class StartGameClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		System.out.println("Starting the game");
-		Platform.runLater(() -> SceneManager.getInstance().showScene(SceneType.BOARD));
+		// do nothing
 	}
 }

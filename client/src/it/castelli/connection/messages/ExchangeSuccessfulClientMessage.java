@@ -6,10 +6,21 @@ import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
 import it.castelli.gui.AlertUtil;
 
+/**
+ * Message received from the server that closes the window of the successfully closed exchange (receive only)
+ */
 public class ExchangeSuccessfulClientMessage implements Message
 {
+	/**
+	 * The exchange that closed
+	 */
 	private final Exchange exchange;
 
+	/**
+	 * Constructor for ExchangeSuccessfulClientMessage
+	 *
+	 * @param exchange The exchange that closed
+	 */
 	public ExchangeSuccessfulClientMessage(Exchange exchange)
 	{
 		this.exchange = exchange;

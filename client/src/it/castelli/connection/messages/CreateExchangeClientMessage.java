@@ -25,6 +25,7 @@ public class CreateExchangeClientMessage implements Message
 
     /**
      * Constructor for CreateExchangeClientMessage
+     *
      * @param player1 The first player
      * @param player2 The second player
      * @param gameCode The game code

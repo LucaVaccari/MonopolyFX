@@ -23,12 +23,12 @@ public class ServerMessages
 			"it.castelli.connection.messages.UpdateBoardClientMessage";
 	public static final String UPDATE_DICE_RESULT_MESSAGE_NAME =
 			"it.castelli.connection.messages.UpdateDiceResultClientMessage";
-	public static final String ROUND_MESSAGE_NAME =
-			"it.castelli.connection.messages.RoundClientMessage";
+	public static final String UPDATE_ROUND_MESSAGE_NAME =
+			"it.castelli.connection.messages.UpdateRoundClientMessage";
 	public static final String HOST_MESSAGE_NAME =
 			"it.castelli.connection.messages.HostClientMessage";
-	public static final String START_GAME_MESSAGE_NAME =
-			"it.castelli.connection.messages.StartGameClientMessage";
+	public static final String GAME_STARTED_MESSAGE_NAME =
+			"it.castelli.connection.messages.GameStartedClientMessage";
 	public static final String EXCHANGE_CANCELED_MESSAGE_NAME =
 			"it.castelli.connection.messages.ExchangeCanceledClientMessage";
 	public static final String UPDATE_EXCHANGE_MESSAGE_NAME =
