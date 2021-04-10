@@ -8,12 +8,33 @@ import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
 import it.castelli.serialization.Serializer;
 
+/**
+ * Message from the client that creates a new exchange between two players (receive only)
+ */
 public class CreateExchangeServerMessage implements Message
 {
+    /**
+     * The first player
+     */
     private final Player player1;
+
+    /**
+     * The second player
+     */
     private final Player player2;
+
+    /**
+     * The game code
+     */
     private final int gameCode;
 
+    /**
+     * Constructor for CreateExchangeServerMessage (do not use)
+     *
+     * @param player1 The first player
+     * @param player2 The second player
+     * @param gameCode The game code
+     */
     public CreateExchangeServerMessage(Player player1, Player player2, int gameCode)
     {
         this.player1 = player1;

@@ -18,10 +18,11 @@ public class ChatServerMessage implements Message
 	/**
 	 * The text message body
 	 */
-	private String message;
+	private final String message;
 
 	/**
 	 * Constructor for ChatServerMessage
+	 *
 	 * @param gameCode The game code
 	 * @param senderPlayer The player that sends the message
 	 * @param messageBody The text message body

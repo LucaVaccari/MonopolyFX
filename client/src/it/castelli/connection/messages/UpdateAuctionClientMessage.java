@@ -18,7 +18,7 @@ public class UpdateAuctionClientMessage implements Message
     private final Auction auction;
 
     /**
-     * Constructor for UpdateAuctionClientMessage
+     * Constructor for UpdateAuctionClientMessage (do not use)
      *
      * @param auction The updated auction
      */

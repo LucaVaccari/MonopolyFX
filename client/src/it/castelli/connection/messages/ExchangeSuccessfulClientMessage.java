@@ -17,7 +17,7 @@ public class ExchangeSuccessfulClientMessage implements Message
 	private final Exchange exchange;
 
 	/**
-	 * Constructor for ExchangeSuccessfulClientMessage
+	 * Constructor for ExchangeSuccessfulClientMessage (do not use)
 	 *
 	 * @param exchange The exchange that closed
 	 */

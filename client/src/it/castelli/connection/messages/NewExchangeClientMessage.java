@@ -9,7 +9,7 @@ import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 
 /**
- * Message received from the server that starts a new exchange if the player is involved
+ * Message received from the server that starts a new exchange if the player is involved (receive only)
  */
 public class NewExchangeClientMessage implements Message
 {
@@ -19,7 +19,8 @@ public class NewExchangeClientMessage implements Message
     private final Exchange exchange;
 
     /**
-     * Constructor for NewExchangeClientMessage
+     * Constructor for NewExchangeClientMessage (do not use)
+     *
      * @param exchange The new exchange
      */
     public NewExchangeClientMessage(Exchange exchange)

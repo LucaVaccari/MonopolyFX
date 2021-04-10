@@ -6,10 +6,21 @@ import it.castelli.connection.GameConnectionManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
 
+/**
+ * Message from the client that starts the game (receive only)
+ */
 public class StartGameServerMessage implements Message
 {
+	/**
+	 * The game code
+	 */
 	private final int gameCode;
 
+	/**
+	 * Constructor for StartGameServerMessage (do not use)
+	 *
+	 * @param gameCode The game code
+	 */
 	public StartGameServerMessage(int gameCode)
 	{
 		this.gameCode = gameCode;

@@ -24,7 +24,7 @@ public class AcceptExchangeServerMessage implements Message
 	private final int gameCode;
 
 	/**
-	 * Constructor for AcceptExchangeServerMessage
+	 * Constructor for AcceptExchangeServerMessage (do not use)
 	 *
 	 * @param player The player accepting the exchange
 	 * @param gameCode The game code

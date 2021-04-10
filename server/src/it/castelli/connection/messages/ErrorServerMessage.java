@@ -4,11 +4,14 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 
 /**
- * Error info message (send only)
+ * Message used to send an error to the client (send only)
  */
 public class ErrorServerMessage implements Message
 {
-	String errorMessage;
+	/**
+	 * The error message text body
+	 */
+	private final String errorMessage;
 
 	/**
 	 * Constructor for ErrorServerMessage

@@ -16,7 +16,7 @@ public class UpdateExchangeClientMessage implements Message
     private final Exchange exchange;
 
     /**
-     * Constructor for UpdateExchangeClientMessage
+     * Constructor for UpdateExchangeClientMessage (do not use)
      *
      * @param exchange The updated exchange
      */

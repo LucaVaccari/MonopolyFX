@@ -9,13 +9,33 @@ import it.castelli.gameLogic.transactions.Asset;
 import it.castelli.gameLogic.transactions.Exchange;
 import it.castelli.serialization.Serializer;
 
+/**
+ * Message from the client that modifies the money or the proprieties offered during an exchange (receive only)
+ */
 public class ChangeExchangeAssetServerMessage implements Message
 {
+	/**
+	 * The asset containing the money and the contract list to offer
+	 */
 	private final Asset asset;
+
+	/**
+	 * The game code
+	 */
 	private final int gameCode;
 
+	/**
+	 * The player
+	 */
 	private final Player player;
 
+	/**
+	 * Constructor for ChangeExchangeAssetServerMessage (do not use)
+	 *
+	 * @param asset The asset containing the money and the contract list to offer
+	 * @param gameCode The game code
+	 * @param player The player
+	 */
 	public ChangeExchangeAssetServerMessage(Asset asset, int gameCode, Player player)
 	{
 		this.asset = asset;

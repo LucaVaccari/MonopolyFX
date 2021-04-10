@@ -8,11 +8,27 @@ import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
 import it.castelli.serialization.Serializer;
 
+/**
+ * Message from the client that refuses the exchange offer (receive only)
+ */
 public class RefuseExchangeServerMessage implements Message
 {
+	/**
+	 * The exchange to refuse
+	 */
 	private final Exchange exchange;
+
+	/**
+	 * The game code
+	 */
 	private final int gameCode;
 
+	/**
+	 * Constructor for RefuseExchangeServerMessage (do not use)
+	 *
+	 * @param exchange The exchange to refuse
+	 * @param gameCode The game code
+	 */
 	public RefuseExchangeServerMessage(Exchange exchange, int gameCode)
 	{
 		this.exchange = exchange;

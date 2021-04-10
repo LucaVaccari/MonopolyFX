@@ -7,7 +7,7 @@ import it.castelli.gui.scene.SceneType;
 import javafx.application.Platform;
 
 /**
- * Message received from the server that starts the game
+ * Message received from the server that starts the game (receive only)
  */
 public class GameStartedClientMessage implements Message
 {

@@ -20,7 +20,7 @@ public class UpdatePlayersListClientMessage implements Message
 	private final CopyOnWriteArrayList<Player> players;
 
 	/**
-	 * Constructor for UpdatePlayersListClientMessage
+	 * Constructor for UpdatePlayersListClientMessage (do not use)
 	 *
 	 * @param players The updated player list
 	 */

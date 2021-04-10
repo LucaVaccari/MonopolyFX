@@ -17,7 +17,7 @@ public class ExchangeCanceledClientMessage implements Message
     private final Exchange exchange;
 
     /**
-     * Constructor for ExchangeCanceledClientMessage
+     * Constructor for ExchangeCanceledClientMessage (do not use)
      *
      * @param exchange The exchange that got canceled
      */
