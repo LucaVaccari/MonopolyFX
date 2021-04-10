@@ -4,16 +4,19 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 
 /**
- * Game code info message (send only)
+ * Message containing the game Code (send only)
  */
 public class GameCodeServerMessage implements Message
 {
-	private int gameCode;
+	/**
+	 * The game Code
+	 */
+	private final int gameCode;
 
 	/**
 	 * Constructor for GameCodeServerMessage
 	 *
-	 * @param gameCode game code
+	 * @param gameCode The game Code
 	 */
 	public GameCodeServerMessage(int gameCode)
 	{

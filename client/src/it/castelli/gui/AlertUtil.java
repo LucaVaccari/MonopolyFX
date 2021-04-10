@@ -11,9 +11,7 @@ import java.util.Optional;
  */
 public class AlertUtil
 {
-	private static void showGenericAlert(Alert.AlertType alertType,
-	                                     String title, String header,
-	                                     String content)
+	private static void showGenericAlert(Alert.AlertType alertType, String title, String header, String content)
 	{
 		Alert alert = new Alert(alertType);
 		alert.setTitle(title);
@@ -34,9 +32,7 @@ public class AlertUtil
 	 * @return An optional string possibly containing the content of the input
 	 * field
 	 */
-	public static Optional<String> showTextInputDialogue(String defaultValue,
-	                                                     String title,
-	                                                     String headerText,
+	public static Optional<String> showTextInputDialogue(String defaultValue, String title, String headerText,
 	                                                     String contentText)
 	{
 		TextInputDialog dialog = new TextInputDialog(defaultValue);
@@ -55,9 +51,7 @@ public class AlertUtil
 	 * @param contentText The content of the message
 	 * @return The result of the operation
 	 */
-	public static Optional<ButtonType> showConfirmationAlert(String title,
-	                                                         String headerText,
-	                                                         String contentText)
+	public static Optional<ButtonType> showConfirmationAlert(String title, String headerText, String contentText)
 	{
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle(title);
@@ -75,8 +69,7 @@ public class AlertUtil
 	 * @param header  The header, the bigger message
 	 * @param content The content of the message
 	 */
-	public static void showInformationAlert(String title, String header,
-	                                        String content)
+	public static void showInformationAlert(String title, String header, String content)
 	{
 		showGenericAlert(Alert.AlertType.INFORMATION, title, header, content);
 	}
@@ -90,8 +83,7 @@ public class AlertUtil
 	 * @param header  The header, the bigger message
 	 * @param content The content of the message
 	 */
-	public static void showErrorAlert(String title, String header,
-	                                  String content)
+	public static void showErrorAlert(String title, String header, String content)
 	{
 		showGenericAlert(Alert.AlertType.ERROR, title, header, content);
 	}

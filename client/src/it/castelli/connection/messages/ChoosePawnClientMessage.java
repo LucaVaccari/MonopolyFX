@@ -4,7 +4,7 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 
 /**
- * Request to set the players pawn with the chosen one (send only)
+ * Request to set the player's pawn with the chosen one (send only)
  */
 public class ChoosePawnClientMessage implements Message
 {

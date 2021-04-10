@@ -4,7 +4,7 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 
 /**
- * Request to end the current round and trigger the next one
+ * Request to end the current round and trigger the next one (send only)
  */
 public class EndRoundClientMessage implements Message
 {

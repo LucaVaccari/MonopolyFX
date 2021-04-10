@@ -4,18 +4,29 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Auction;
 
+/**
+ * Message to update the auction (send only)
+ */
 public class UpdateAuctionServerMessage implements Message
 {
-	private final Auction auction;
+    /**
+     * The updated auction
+     */
+    private final Auction auction;
 
-	public UpdateAuctionServerMessage(Auction auction)
-	{
-		this.auction = auction;
-	}
+    /**
+     * Constructor for UpdateAuctionServerMessage
+     *
+     * @param auction The updated auction
+     */
+    public UpdateAuctionServerMessage(Auction auction)
+    {
+        this.auction = auction;
+    }
 
-	@Override
-	public void onReceive(Connection connection, Player player)
-	{
-		//do nothing
-	}
+    @Override
+    public void onReceive(Connection connection, Player player)
+    {
+        //do nothing
+    }
 }

@@ -13,6 +13,11 @@ public class StartGameClientMessage implements Message
 	 */
 	private final int gameCode;
 
+	/**
+	 * Constructor for StartGameClientMessage
+	 *
+	 * @param gameCode The game code
+	 */
 	public StartGameClientMessage(int gameCode)
 	{
 		this.gameCode = gameCode;

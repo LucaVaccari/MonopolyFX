@@ -61,7 +61,7 @@
                            textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
                     <ImageView fx:id="yourChoiceImage" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                preserveRatio="true" VBox.vgrow="ALWAYS">
-                        <Image url="@../images/face_0.png"/>
+                        <Image url="@../images/dice/face_0.png"/>
                     </ImageView>
                 </VBox>
                 <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
@@ -70,7 +70,7 @@
                            textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
                     <ImageView fx:id="hisChoiceImage" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                preserveRatio="true" VBox.vgrow="ALWAYS">
-                        <Image url="@../images/face_0.png"/>
+                        <Image url="@../images/dice/face_0.png"/>
                     </ImageView>
                 </VBox>
             </HBox>

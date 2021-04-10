@@ -6,11 +6,27 @@ import it.castelli.connection.GameConnectionManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
 
+/**
+ * Message from the client that offers money in the auction (receive only)
+ */
 public class AuctionOfferServerMessage implements Message
 {
-	private int offer;
-	private int gameCode;
+	/**
+	 * The money amount to offer
+	 */
+	private final int offer;
 
+	/**
+	 * The game code
+	 */
+	private final int gameCode;
+
+	/**
+	 * Constructor for AuctionOfferServerMessage (do not use)
+	 *
+	 * @param offer The money amount to offer
+	 * @param gameCode The game code
+	 */
 	public AuctionOfferServerMessage(int offer, int gameCode)
 	{
 		this.offer = offer;

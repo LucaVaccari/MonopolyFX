@@ -6,7 +6,7 @@ import it.castelli.gui.AlertUtil;
 import javafx.application.Platform;
 
 /**
- * Message containing an error from the server (receive only)
+ * Message from the server containing an error (receive only)
  */
 public class ErrorClientMessage implements Message
 {
@@ -16,7 +16,7 @@ public class ErrorClientMessage implements Message
 	private final String errorMessage;
 
 	/**
-	 * Constructor for ErrorClientMessage
+	 * Constructor for ErrorClientMessage (do not use)
 	 *
 	 * @param errorMessage The error message text body
 	 */

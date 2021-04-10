@@ -1,6 +1,7 @@
 package it.castelli;
 
 import it.castelli.connection.Connection;
+import it.castelli.gui.customComponents.PropertyChoiceDialog;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import javafx.application.Application;
@@ -15,10 +16,11 @@ public class ClientMain extends Application
 
 	public static void main(String[] args)
 	{
+
 		Socket clientSocket = null;
 		try
 		{
-			clientSocket = new Socket("79.12.11.178", 1111);
+			clientSocket = new Socket("localhost", 1111);
 		}
 		catch (IOException e)
 		{
@@ -54,5 +56,8 @@ public class ClientMain extends Application
 	{
 		SceneManager.getInstance().setPrimaryStage(primaryStage);
 		SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
+
+		PropertyChoiceDialog dialog = new PropertyChoiceDialog();
+		dialog.show();
 	}
 }

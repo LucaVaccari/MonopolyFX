@@ -18,7 +18,7 @@ public class UpdateDiceResultClientMessage implements Message
 	private final DiceResult diceResult;
 
 	/**
-	 * Constructor for UpdateDiceResultClientMessage
+	 * Constructor for UpdateDiceResultClientMessage (do not use)
 	 *
 	 * @param diceResult The last dice result
 	 */

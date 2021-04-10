@@ -5,17 +5,17 @@ import it.castelli.connection.ConnectionManager;
 import it.castelli.gameLogic.Player;
 
 /**
- *
+ * Message from the client that leaves the game with the given game code (receive only)
  */
 public class LeaveGameServerMessage implements Message
 {
 	/**
 	 * The game code
 	 */
-	private int gameCode;
+	private final int gameCode;
 
 	/**
-	 * Constructor for LeaveGameServerMessage
+	 * Constructor for LeaveGameServerMessage (do not use)
 	 *
 	 * @param gameCode The game code
 	 */

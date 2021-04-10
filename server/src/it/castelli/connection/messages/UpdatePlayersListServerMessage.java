@@ -6,16 +6,19 @@ import it.castelli.gameLogic.Player;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Players in the game info message (send only)
+ * Message to update the players list in the game (send only)
  */
 public class UpdatePlayersListServerMessage implements Message
 {
-	private CopyOnWriteArrayList<Player> players;
+	/**
+	 * The updated player list
+	 */
+	private final CopyOnWriteArrayList<Player> players;
 
 	/**
-	 * Constructor for GameManagerPlayersServerMessage
+	 * Constructor for UpdatePlayersListServerMessage
 	 *
-	 * @param players players of the game
+	 * @param players The updated player list
 	 */
 	public UpdatePlayersListServerMessage(CopyOnWriteArrayList<Player> players)
 	{

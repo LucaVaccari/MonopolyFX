@@ -18,7 +18,7 @@ public class GameCodeClientMessage implements Message
 	private final int gameCode;
 
 	/**
-	 * Constructor for GameCodeClientMessage
+	 * Constructor for GameCodeClientMessage (do not use)
 	 *
 	 * @param gameCode The game Code
 	 */

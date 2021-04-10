@@ -31,7 +31,7 @@ public class NewAuctionClientMessage implements Message
 	private final int bestOfferProposed;
 
 	/**
-	 * Constructor for AuctionClientMessage
+	 * Constructor for AuctionClientMessage (do not use)
 	 *
 	 * @param contract          The contract at auction
 	 * @param player            The player
