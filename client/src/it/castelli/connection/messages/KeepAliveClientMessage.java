@@ -11,14 +11,15 @@ public class KeepAliveClientMessage implements Message
 {
 	/**
 	 * Send the response to the server
+	 *
 	 * @param connection connection of the player
-	 * @param player player
+	 * @param player     player
 	 */
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
 		System.out.println("KeepAlive reply sent to server");
 		connection.send(ClientMessages.KEEP_ALIVE_MESSAGE_NAME,
-		                Serializer.toJson(new KeepAliveClientMessage()));
+				Serializer.toJson(new KeepAliveClientMessage()));
 	}
 }

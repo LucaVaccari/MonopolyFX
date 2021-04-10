@@ -6,24 +6,42 @@ import it.castelli.connection.messages.ClientMessages;
 import it.castelli.connection.messages.PawnClientMessage;
 import it.castelli.connection.messages.StartGameClientMessage;
 import it.castelli.gameLogic.Player;
+import it.castelli.gui.AlertUtil;
 import it.castelli.gui.customComponents.ChatComponent;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+
 
 /**
  * Controller for lobby FXML
  */
 public class LobbyController
 {
+	/**
+	 * Singleton instance
+	 */
+	private static LobbyController instance;
+
 	private String pawn;
+
 	@FXML
-	public static Button playButton = new Button();
+	private Button playButton;
 	@FXML
 	private ChatComponent chat;
+	@FXML
+	private VBox playerListView;
 	@FXML
 	private Button chooseButton;
 	@FXML
@@ -39,37 +57,58 @@ public class LobbyController
 	@FXML
 	private ImageView boatPawn;
 
+	public static LobbyController getInstance()
+	{
+		return instance;
+	}
+
+	public Button getPlayButton()
+	{
+		return playButton;
+	}
 
 	@FXML
 	private void initialize()
 	{
+		instance = this;
+		//see the player list view
+		for (int i = 0; i < Game.getGameManager().getPlayers().size(); i++)
+		{
+			Label player = new Label(Game.getGameManager().getPlayers().get(i).getName() + " " + Game.getGameManager().getPlayers().get(i).getMoney() + "M");
+			player.setAlignment(Pos.CENTER);
+			player.setPrefSize(playerListView.getPrefWidth(), playerListView.getPrefHeight() / 7);
+			player.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+			playerListView.getChildren().add(player);
+		}
 		// TODO: hide playButton if not host
-		playButton.setDisable(true);
-		playButton.setVisible(false);
+//		playButton.setVisible(false);
+//		playButton.setDisable(true);
 
 		playButton.setOnAction(
 				event -> {
 					SceneManager.getInstance().showScene(SceneType.BOARD);
 					ClientMain.getConnection().send(ClientMessages.START_GAME_MESSAGE_NAME,
-					                                Serializer.toJson(new StartGameClientMessage(Game.getGameCode())));
+							Serializer.toJson(new StartGameClientMessage(Game.getGameCode())));
 				});
 
 		chooseButton.setOnAction(
-				event-> {
+				event -> {
 					boolean pawnAvailable = true;
 					for (Player player : Game.getGameManager().getPlayers())
 					{
-						if(player.getPawn().equals(pawn))
+						if (player.getPawn().equals(pawn))
 							pawnAvailable = false;
 					}
-					if(pawnAvailable)
+					if (pawnAvailable)
 						ClientMain.getConnection().send(ClientMessages.PAWN_MESSAGE_NAME, Serializer.toJson(new PawnClientMessage(pawn, Game.getGameCode())));
+					else
+						AlertUtil.showInformationAlert("pedina", "pedina già selezionata", "non è possibile selezionare la pedina scelta in quanto è già stata selezionata da un altro giocatore.");
 				});
-		thimblePawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("thimble.png"));
-		dogPawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("dog.png"));
-		wagonPawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("wagon.png"));
-		carPawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("car.png"));
-		shoePawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("shoe.png"));
-		boatPawn.setOnMouseClicked(event -> Game.getPlayer().setPawn("boat.png"));
+		thimblePawn.setOnMouseClicked(event -> pawn = "thimble.png");
+		dogPawn.setOnMouseClicked(event -> pawn = "dog.png");
+		wagonPawn.setOnMouseClicked(event -> pawn = "wagon.png");
+		carPawn.setOnMouseClicked(event -> pawn = "car.png");
+		shoePawn.setOnMouseClicked(event -> pawn = "shoe.png");
+		boatPawn.setOnMouseClicked(event -> pawn = "boat.png");
 	}
 }

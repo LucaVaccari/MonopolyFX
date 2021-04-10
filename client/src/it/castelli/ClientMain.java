@@ -19,7 +19,7 @@ public class ClientMain extends Application
 		Socket clientSocket = null;
 		try
 		{
-			clientSocket = new Socket(InetAddress.getByName("213.45.62.215"), 1111);
+			clientSocket = new Socket(InetAddress.getLocalHost(), 1111);
 		}
 		catch (IOException e)
 		{
@@ -27,6 +27,11 @@ public class ClientMain extends Application
 		}
 		connection = new Connection(clientSocket);
 		launch(args);
+	}
+
+	public static Connection getConnection()
+	{
+		return connection;
 	}
 
 	/**
@@ -50,10 +55,5 @@ public class ClientMain extends Application
 	{
 		SceneManager.getInstance().setPrimaryStage(primaryStage);
 		SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
-	}
-
-	public static Connection getConnection()
-	{
-		return connection;
 	}
 }

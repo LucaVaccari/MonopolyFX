@@ -79,13 +79,12 @@ public class ConnectionManager
 			// Sending game code to the client
 			connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME,
 					Serializer.toJson(new GameCodeServerMessage(lastGameCode)));
-		}
-		else
+		} else
 		{
 			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer
 					.toJson(new ErrorServerMessage(
 							"La partita con codice: " + gameCode +
-							" non è stata trovata!")));
+									" non è stata trovata!")));
 		}
 	}
 

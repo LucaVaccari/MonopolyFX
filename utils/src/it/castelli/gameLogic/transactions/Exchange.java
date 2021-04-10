@@ -3,7 +3,6 @@ package it.castelli.gameLogic.transactions;
 import it.castelli.gameLogic.Player;
 
 
-
 public class Exchange
 {
 	private Player offerer;
@@ -13,15 +12,15 @@ public class Exchange
 	private Boolean accepted = false;
 	private Boolean accepted1 = false;
 
-	public Player getOfferer()
-	{
-		return offerer;
-	}
-
 	public Exchange(Player offerer, Player offerer1)
 	{
 		this.offerer = offerer;
 		this.offerer1 = offerer1;
+	}
+
+	public Player getOfferer()
+	{
+		return offerer;
 	}
 
 	public void changeAsset(Player player, Asset newOffer)

@@ -6,16 +6,16 @@ import it.castelli.gameLogic.Round;
 
 public class RoundServerMessage implements Message
 {
-    private final Round round;
+	private final Round round;
 
-    public RoundServerMessage(Round round)
-    {
-        this.round = round;
-    }
+	public RoundServerMessage(Round round)
+	{
+		this.round = round;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        // do nothing
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		// do nothing
+	}
 }

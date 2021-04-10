@@ -6,9 +6,10 @@ import it.castelli.connection.messages.ClientMessages;
 import it.castelli.connection.messages.EndTurnClientMessage;
 import it.castelli.connection.messages.LeaveGameClientMessage;
 import it.castelli.connection.messages.ThrowDiceClientMessage;
-import it.castelli.gameLogic.GameManager;
-import it.castelli.gameLogic.Player;
-import it.castelli.gameLogic.contracts.*;
+import it.castelli.gameLogic.contracts.CompanyContract;
+import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.gameLogic.contracts.PropertyContract;
+import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.customComponents.ChatComponent;
@@ -17,24 +18,21 @@ import it.castelli.gui.customComponents.SquareComponent;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -78,6 +76,9 @@ public class BoardController
 	private ChatComponent chat;
 
 	// BOARD
+	//GROUP ID
+	@FXML
+	private Group Group0;
 	@FXML
 	private SquareComponent goSquare;
 	@FXML
@@ -360,7 +361,10 @@ public class BoardController
 
 		exchangeButton.setOnAction(event -> {
 			// TODO: send exchange to server
-
+			//add pawn to square 0
+//			Image image = new Image(String.valueOf(getClass().getResource("/images/pawns/" + Game.getPlayer().getPawn())));
+//			ImageView imageView = new ImageView(image);
+//			Group0.getChildren().add(imageView);
 		});
 
 		leaveGameButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
@@ -394,8 +398,10 @@ public class BoardController
 //					(PropertyContract) property.getContract()));
 //			ownedPropertiesPane.getChildren().add(property);
 //		}
-		}
+		//add image to the first square
 
+
+	}
 
 
 	/**
@@ -459,6 +465,7 @@ public class BoardController
 	}
 
 	// Calculate the properties owned by the player to show under the board
+
 	/**
 	 * Show a new not resizable stage containing information about a company
 	 *

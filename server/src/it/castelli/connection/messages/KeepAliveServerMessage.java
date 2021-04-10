@@ -11,8 +11,9 @@ public class KeepAliveServerMessage implements Message
 
 	/**
 	 * Confirm that the connection is still active
+	 *
 	 * @param connection connection of the player
-	 * @param player playe
+	 * @param player     playe
 	 */
 	@Override
 	public void onReceive(Connection connection, Player player)

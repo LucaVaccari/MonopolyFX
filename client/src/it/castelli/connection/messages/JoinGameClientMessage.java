@@ -14,6 +14,7 @@ public class JoinGameClientMessage implements Message
 
 	/**
 	 * Constructor of JoinGameClientMessage
+	 *
 	 * @param code game code
 	 * @param name player's name inside the game
 	 */

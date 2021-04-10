@@ -7,17 +7,17 @@ import it.castelli.gameLogic.Player;
 
 public class EndTurnServerMessage implements Message
 {
-    private final int gameCode;
+	private final int gameCode;
 
-    public EndTurnServerMessage(int gameCode)
-    {
-        this.gameCode = gameCode;
-    }
+	public EndTurnServerMessage(int gameCode)
+	{
+		this.gameCode = gameCode;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        GameManager gameManager = ConnectionManager.getInstance().getGames().get(gameCode).getGameManager();
-        gameManager.nextTurn();
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		GameManager gameManager = ConnectionManager.getInstance().getGames().get(gameCode).getGameManager();
+		gameManager.nextTurn();
+	}
 }

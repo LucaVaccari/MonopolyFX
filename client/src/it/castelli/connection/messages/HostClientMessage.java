@@ -7,12 +7,12 @@ import it.castelli.gui.controllers.LobbyController;
 
 public class HostClientMessage implements Message
 {
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        Game.setHost(true);
-        System.out.println("Host");
-        LobbyController.playButton.setDisable(false);
-        LobbyController.playButton.setVisible(true);
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		Game.setHost(true);
+		System.out.println("Host");
+//		LobbyController.getInstance().getPlayButton().setDisable(true);
+//		LobbyController.getInstance().getPlayButton().setVisible(true);
+	}
 }

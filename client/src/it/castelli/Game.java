@@ -119,8 +119,7 @@ public class Game
 		{
 			if (lastDiceResult.areResultsEquals())
 				player.setInPrison(false);
-		}
-		else
+		} else
 		{
 			// TODO: send move request to the server
 		}

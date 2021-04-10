@@ -12,6 +12,7 @@ public class ErrorServerMessage implements Message
 
 	/**
 	 * Constructor for ErrorServerMessage
+	 *
 	 * @param errorMessage error message text
 	 */
 	public ErrorServerMessage(String errorMessage)

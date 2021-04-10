@@ -13,6 +13,7 @@ public class LeaveGameServerMessage implements Message
 
 	/**
 	 * Constructor of LeaveGameServerMessage
+	 *
 	 * @param code game code
 	 */
 	public LeaveGameServerMessage(int code)
@@ -22,8 +23,9 @@ public class LeaveGameServerMessage implements Message
 
 	/**
 	 * Remove the player from the game
+	 *
 	 * @param connection connection of the player
-	 * @param player player
+	 * @param player     player
 	 */
 	@Override
 	public void onReceive(Connection connection, Player player)

@@ -14,6 +14,7 @@ public class ErrorClientMessage implements Message
 
 	/**
 	 * Constructor for ErrorClientMessage
+	 *
 	 * @param errorMessage error message text
 	 */
 	public ErrorClientMessage(String errorMessage)

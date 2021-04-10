@@ -16,6 +16,7 @@ public class GameCodeClientMessage implements Message
 
 	/**
 	 * Constructor for GameCodeClientMessage
+	 *
 	 * @param code game code
 	 */
 	public GameCodeClientMessage(int code)
@@ -25,8 +26,9 @@ public class GameCodeClientMessage implements Message
 
 	/**
 	 * Inform the Client about the game code
+	 *
 	 * @param connection connection of the player
-	 * @param player player
+	 * @param player     player
 	 */
 	@Override
 	public void onReceive(Connection connection, Player player)

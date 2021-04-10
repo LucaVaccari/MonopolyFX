@@ -14,6 +14,7 @@ public class PlayersListServerMessage implements Message
 
 	/**
 	 * Constructor for GameManagerPlayersServerMessage
+	 *
 	 * @param players players of the game
 	 */
 	public PlayersListServerMessage(CopyOnWriteArrayList<Player> players)

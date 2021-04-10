@@ -1,8 +1,6 @@
 package it.castelli.gameLogic;
 
 import it.castelli.gameLogic.contracts.Contract;
-import it.castelli.gameLogic.contracts.PropertyColor;
-import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
 
 import java.util.ArrayList;
@@ -38,7 +36,7 @@ public class Player
 	 * Is the player in prison?
 	 */
 	private boolean inPrison = false;
-/**
+	/**
 	 * the player's pawn in a string
 	 */
 	private String pawn = "";
@@ -49,7 +47,7 @@ public class Player
 	 * @param money The amount of money the player has
 	 * @param name  The name of the player
 	 */
-	public Player(int money, String name )
+	public Player(int money, String name)
 	{
 		this.money = money;
 		this.name = name;
@@ -115,6 +113,7 @@ public class Player
 	{
 		contracts.remove(contract);
 	}
+
 	/**
 	 * Getter for inPrison
 	 *

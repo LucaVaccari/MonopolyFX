@@ -12,6 +12,7 @@ public class LeaveGameClientMessage implements Message
 
 	/**
 	 * Constructor for LeaveGameClientMessage
+	 *
 	 * @param code game code
 	 */
 	public LeaveGameClientMessage(int code)
