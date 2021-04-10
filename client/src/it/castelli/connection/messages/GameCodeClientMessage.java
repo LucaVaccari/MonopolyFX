@@ -12,16 +12,16 @@ import javafx.application.Platform;
  */
 public class GameCodeClientMessage implements Message
 {
-	private final int code;
+	private final int gameCode;
 
 	/**
 	 * Constructor for GameCodeClientMessage
 	 *
-	 * @param code game code
+	 * @param gameCode game code
 	 */
-	public GameCodeClientMessage(int code)
+	public GameCodeClientMessage(int gameCode)
 	{
-		this.code = code;
+		this.gameCode = gameCode;
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class GameCodeClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		Game.setGameCode(code);
+		Game.setGameCode(gameCode);
 		Platform.runLater(() -> SceneManager.getInstance().showScene(SceneType.LOBBY));
 	}
 }
