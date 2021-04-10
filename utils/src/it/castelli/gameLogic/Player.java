@@ -17,8 +17,7 @@ public class Player
 	/**
 	 * All kept RandomEvent cards (like PrisonEscape)
 	 */
-	private final ArrayList<RandomEvent> keptRandomEventCards =
-			new ArrayList<>();
+	private final ArrayList<RandomEvent> keptRandomEventCards = new ArrayList<>();
 	/**
 	 * The name of the player
 	 */
@@ -37,9 +36,9 @@ public class Player
 	 */
 	private boolean inPrison = false;
 	/**
-	 * the player's pawn in a string
+	 * the player's pawn
 	 */
-	private String pawnPath = "";
+	private Pawn pawn;
 
 	/**
 	 * Constructor for the Player
@@ -201,13 +200,23 @@ public class Player
 		return money >= x;
 	}
 
-	public String getPawnPath()
+	/**
+	 * Getter for the pawn
+	 *
+	 * @return The player pawn
+	 */
+	public Pawn getPawn()
 	{
-		return pawnPath;
+		return pawn;
 	}
 
-	public void setPawnPath(String pawnPath)
+	/**
+	 * Setter for the pawn
+	 *
+	 * @param pawn The new player pawn
+	 */
+	public void setPawn(Pawn pawn)
 	{
-		this.pawnPath = pawnPath;
+		this.pawn = pawn;
 	}
 }

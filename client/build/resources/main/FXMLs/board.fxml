@@ -495,14 +495,14 @@
 							<children>
 								<ImageView fx:id="die1Image" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true"
 										   preserveRatio="true" HBox.hgrow="ALWAYS">
-									<Image url="@../images/face_0.png"/>
+									<Image url="@../images/dice/face_0.png"/>
 									<effect>
 										<DropShadow height="5.0" radius="2.0" spread="1.0" width="5.0"/>
 									</effect>
 								</ImageView>
 								<ImageView fx:id="die2Image" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true"
 										   preserveRatio="true">
-									<Image url="@../images/face_0.png"/>
+									<Image url="@../images/dice/face_0.png"/>
 									<effect>
 										<DropShadow height="5.0" radius="2.0" spread="1.0" width="5.0"/>
 									</effect>
