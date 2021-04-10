@@ -72,7 +72,6 @@ public class ConnectionManager
 	{
 		if (games.containsKey(gameCode))
 		{
-			System.out.println("game with gameCode: " + gameCode + " found!");
 			games.get(gameCode).addPlayer(connection, player);
 			waitingRoom.remove(connection);
 
