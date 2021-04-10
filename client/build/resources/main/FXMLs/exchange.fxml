@@ -7,111 +7,111 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane prefHeight="500.0" prefWidth="736.0" stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/16"
-			xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.ExchangeController">
-	<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="10.0"
-		  AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-		<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0"
-			  HBox.hgrow="ALWAYS">
-			<Label fx:id="yourNameLabel" alignment="CENTER" maxHeight="1.7976931348623157E308"
-				   maxWidth="1.7976931348623157E308" text="yourName" VBox.vgrow="ALWAYS"/>
-			<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="62.0"
-				  prefWidth="215.0" VBox.vgrow="ALWAYS">
-				<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-					<padding>
-						<Insets bottom="10.0" top="10.0"/>
-					</padding>
-					<Label alignment="CENTER" contentDisplay="CENTER"
-						   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="I tuoi soldi"
-						   VBox.vgrow="ALWAYS"/>
-					<Label fx:id="yourTotalMoneyLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0"
-						   layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-						   text="Total Money" VBox.vgrow="ALWAYS"/>
-				</VBox>
-				<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-					<padding>
-						<Insets bottom="10.0" top="10.0"/>
-					</padding>
-					<Label alignment="CENTER" contentDisplay="CENTER"
-						   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-						   text="La tua offerta" VBox.vgrow="ALWAYS"/>
-					<TextField fx:id="yourOfferTextField" alignment="CENTER" maxHeight="1.7976931348623157E308"
-							   maxWidth="1.7976931348623157E308" prefWidth="55.0" promptText="offerta..."
-							   VBox.vgrow="ALWAYS"/>
-				</VBox>
-			</HBox>
-			<Button fx:id="addPropertyButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-					mnemonicParsing="false" text="Aggiungi proprietà" VBox.vgrow="ALWAYS"/>
-			<FlowPane fx:id="yourPropertiesPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-					  prefHeight="343.0" prefWidth="215.0" VBox.vgrow="ALWAYS"/>
-		</VBox>
-		<VBox layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-			  prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
-			<Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
-				   maxWidth="1.7976931348623157E308" prefHeight="121.0" prefWidth="265.0" text="SCAMBIO"
-				   VBox.vgrow="ALWAYS">
-				<font>
-					<Font size="64.0"/>
-				</font>
-			</Label>
-			<HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-				  prefHeight="100.0" prefWidth="200.0" spacing="50.0" VBox.vgrow="ALWAYS">
-				<VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-					  HBox.hgrow="ALWAYS">
-					<Label alignment="CENTER" maxHeight="50.0" maxWidth="1.7976931348623157E308" text="La tua scelta"
-						   textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
-					<ImageView fx:id="yourChoiceImage" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
-							   preserveRatio="true" VBox.vgrow="ALWAYS">
-						<Image url="@../images/face_0.png"/>
-					</ImageView>
-				</VBox>
-				<VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-					  HBox.hgrow="ALWAYS">
-					<Label alignment="CENTER" maxHeight="50.0" maxWidth="1.7976931348623157E308" text="La sua scelta"
-						   textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
-					<ImageView fx:id="hisChoiceImage" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
-							   preserveRatio="true" VBox.vgrow="ALWAYS">
-						<Image url="@../images/face_0.png"/>
-					</ImageView>
-				</VBox>
-			</HBox>
-			<Button fx:id="acceptButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
-					maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="20.0" prefWidth="272.0"
-					text="Accetta" textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
-			<Button fx:id="cancelButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
-					maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="20.0" text="Annulla"
-					textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
-		</VBox>
-		<VBox layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-			  prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-			<Label fx:id="hisNameLabel" alignment="CENTER" maxHeight="1.7976931348623157E308"
-				   maxWidth="1.7976931348623157E308" text="hisName" VBox.vgrow="ALWAYS"/>
-			<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0"
-				  prefWidth="200.0" VBox.vgrow="ALWAYS">
-				<VBox HBox.hgrow="ALWAYS">
-					<padding>
-						<Insets bottom="10.0" top="10.0"/>
-					</padding>
-					<Label alignment="CENTER" contentDisplay="CENTER"
-						   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="I suoi soldi"
-						   VBox.vgrow="ALWAYS"/>
-					<Label fx:id="hisTotalMoneyLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0"
-						   layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-						   text="Total Money" VBox.vgrow="ALWAYS"/>
-				</VBox>
-				<VBox HBox.hgrow="ALWAYS">
-					<padding>
-						<Insets bottom="10.0" top="10.0"/>
-					</padding>
-					<Label alignment="CENTER" contentDisplay="CENTER"
-						   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-						   text="La sua offerta" VBox.vgrow="ALWAYS"/>
-					<Label fx:id="hisOfferLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0"
-						   layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-						   text="Offer" VBox.vgrow="ALWAYS"/>
-				</VBox>
-			</HBox>
-			<FlowPane fx:id="hisPropertiesPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-					  prefHeight="387.0" prefWidth="215.0" VBox.vgrow="ALWAYS"/>
-		</VBox>
-	</HBox>
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.ExchangeController">
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="10.0"
+          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0"
+              HBox.hgrow="ALWAYS">
+            <Label fx:id="yourNameLabel" alignment="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" text="yourName" VBox.vgrow="ALWAYS"/>
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="62.0"
+                  prefWidth="215.0" VBox.vgrow="ALWAYS">
+                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="10.0" top="10.0"/>
+                    </padding>
+                    <Label alignment="CENTER" contentDisplay="CENTER"
+                           maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="I tuoi soldi"
+                           VBox.vgrow="ALWAYS"/>
+                    <Label fx:id="yourTotalMoneyLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0"
+                           layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                           text="Total Money" VBox.vgrow="ALWAYS"/>
+                </VBox>
+                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="10.0" top="10.0"/>
+                    </padding>
+                    <Label alignment="CENTER" contentDisplay="CENTER"
+                           maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                           text="La tua offerta" VBox.vgrow="ALWAYS"/>
+                    <TextField fx:id="yourOfferTextField" alignment="CENTER" maxHeight="1.7976931348623157E308"
+                               maxWidth="1.7976931348623157E308" prefWidth="55.0" promptText="offerta..."
+                               VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </HBox>
+            <Button fx:id="addPropertyButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                    mnemonicParsing="false" text="Aggiungi proprietà" VBox.vgrow="ALWAYS"/>
+            <FlowPane fx:id="yourPropertiesPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                      prefHeight="343.0" prefWidth="215.0" VBox.vgrow="ALWAYS"/>
+        </VBox>
+        <VBox layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+              prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" prefHeight="121.0" prefWidth="265.0" text="SCAMBIO"
+                   VBox.vgrow="ALWAYS">
+                <font>
+                    <Font size="64.0"/>
+                </font>
+            </Label>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                  prefHeight="100.0" prefWidth="200.0" spacing="50.0" VBox.vgrow="ALWAYS">
+                <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                      HBox.hgrow="ALWAYS">
+                    <Label alignment="CENTER" maxHeight="50.0" maxWidth="1.7976931348623157E308" text="La tua scelta"
+                           textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
+                    <ImageView fx:id="yourChoiceImage" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
+                               preserveRatio="true" VBox.vgrow="ALWAYS">
+                        <Image url="@../images/dice/face_0.png"/>
+                    </ImageView>
+                </VBox>
+                <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                      HBox.hgrow="ALWAYS">
+                    <Label alignment="CENTER" maxHeight="50.0" maxWidth="1.7976931348623157E308" text="La sua scelta"
+                           textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
+                    <ImageView fx:id="hisChoiceImage" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
+                               preserveRatio="true" VBox.vgrow="ALWAYS">
+                        <Image url="@../images/dice/face_0.png"/>
+                    </ImageView>
+                </VBox>
+            </HBox>
+            <Button fx:id="acceptButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                    maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="20.0" prefWidth="272.0"
+                    text="Accetta" textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
+            <Button fx:id="cancelButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
+                    maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="20.0" text="Annulla"
+                    textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
+        </VBox>
+        <VBox layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+              prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <Label fx:id="hisNameLabel" alignment="CENTER" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308" text="hisName" VBox.vgrow="ALWAYS"/>
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0"
+                  prefWidth="200.0" VBox.vgrow="ALWAYS">
+                <VBox HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="10.0" top="10.0"/>
+                    </padding>
+                    <Label alignment="CENTER" contentDisplay="CENTER"
+                           maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="I suoi soldi"
+                           VBox.vgrow="ALWAYS"/>
+                    <Label fx:id="hisTotalMoneyLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0"
+                           layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                           text="Total Money" VBox.vgrow="ALWAYS"/>
+                </VBox>
+                <VBox HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="10.0" top="10.0"/>
+                    </padding>
+                    <Label alignment="CENTER" contentDisplay="CENTER"
+                           maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                           text="La sua offerta" VBox.vgrow="ALWAYS"/>
+                    <Label fx:id="hisOfferLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0"
+                           layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                           text="Offer" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </HBox>
+            <FlowPane fx:id="hisPropertiesPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                      prefHeight="387.0" prefWidth="215.0" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </HBox>
 </AnchorPane>
