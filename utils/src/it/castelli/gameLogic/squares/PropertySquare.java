@@ -44,6 +44,16 @@ public class PropertySquare implements Square
 	@Override
 	public void interact(Player player)
 	{
-		// TODO: invoke property method
+		if (contract.getOwner() == null)
+		{
+			//TODO: give the player the possibility to buy the property
+		}
+		else
+		{
+			int revenue = contract.getRevenue();
+			player.removeMoney(revenue);
+			contract.getOwner().addMoney(revenue);
+			// TODO: Send the message to all Clients
+		}
 	}
 }

@@ -44,6 +44,17 @@ public class CompanySquare implements Square
 	@Override
 	public void interact(Player player)
 	{
-		// TODO: invoke company method
+		if (contract.getOwner() == null)
+		{
+			// TODO: give the player the possibility to buy the company
+		}
+		else
+		{
+			int revenue = contract.getRevenue();
+			player.removeMoney(revenue);
+			contract.getOwner().addMoney(revenue);
+			// TODO: Send the message to all Clients
+		}
 	}
+
 }
