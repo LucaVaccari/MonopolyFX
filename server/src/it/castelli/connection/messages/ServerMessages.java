@@ -10,7 +10,7 @@ public class ServerMessages
 	public static final String CHAT_MESSAGE_NAME =
 			"it.castelli.connection.messages.ChatClientMessage";
 	public static final String UPDATE_PLAYERS_LIST_MESSAGE_NAME =
-			"it.castelli.connection.messages.PlayersListClientMessage";
+			"it.castelli.connection.messages.UpdatePlayersListClientMessage";
 	public static final String GAME_CODE_MESSAGE_NAME =
 			"it.castelli.connection.messages.GameCodeClientMessage";
 	public static final String ERROR_MESSAGE_NAME =

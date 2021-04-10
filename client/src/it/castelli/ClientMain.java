@@ -18,7 +18,7 @@ public class ClientMain extends Application
 		Socket clientSocket = null;
 		try
 		{
-			clientSocket = new Socket("localhost", 1111);
+			clientSocket = new Socket("79.12.11.178", 1111);
 		}
 		catch (IOException e)
 		{
