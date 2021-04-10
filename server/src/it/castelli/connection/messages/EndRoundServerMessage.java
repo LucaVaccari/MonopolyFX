@@ -5,11 +5,11 @@ import it.castelli.connection.ConnectionManager;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 
-public class EndTurnServerMessage implements Message
+public class EndRoundServerMessage implements Message
 {
 	private final int gameCode;
 
-	public EndTurnServerMessage(int gameCode)
+	public EndRoundServerMessage(int gameCode)
 	{
 		this.gameCode = gameCode;
 	}
@@ -18,6 +18,6 @@ public class EndTurnServerMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		GameManager gameManager = ConnectionManager.getInstance().getGames().get(gameCode).getGameManager();
-		gameManager.nextTurn();
+		gameManager.nextRound();
 	}
 }

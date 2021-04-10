@@ -3,7 +3,7 @@ package it.castelli.gui.controllers;
 import it.castelli.ClientMain;
 import it.castelli.Game;
 import it.castelli.connection.messages.ClientMessages;
-import it.castelli.connection.messages.EndTurnClientMessage;
+import it.castelli.connection.messages.EndRoundClientMessage;
 import it.castelli.connection.messages.LeaveGameClientMessage;
 import it.castelli.connection.messages.ThrowDiceClientMessage;
 import it.castelli.gameLogic.contracts.CompanyContract;
@@ -348,8 +348,8 @@ public class BoardController
 		endTurnButton.setOnAction(event -> {
 			if (Game.getGameManager().getCurrentRound().isDiceThrown())
 				if (Game.getPlayer().hasMoney(0))
-					ClientMain.getConnection().send(ClientMessages.END_TURN_MESSAGE_NAME,
-					                                Serializer.toJson(new EndTurnClientMessage(Game.getGameCode())));
+					ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME,
+					                                Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
 				else
 					AlertUtil.showInformationAlert("Debito", "Sei in debito",
 					                               "Salda il debito prima di finire il turno. Se finisci le " +

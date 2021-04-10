@@ -209,7 +209,7 @@ public class GameManager
 		//TODO: inGame variable?
 	}
 
-	public void nextTurn()
+	public void nextRound()
 	{
 		int newIndex = (currentRound.getPlayerIndex() + 1) % players.size();
 		Player newPlayer = players.get(newIndex);

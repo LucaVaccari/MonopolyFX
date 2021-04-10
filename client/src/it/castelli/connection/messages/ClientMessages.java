@@ -19,8 +19,8 @@ public class ClientMessages
 			"it.castelli.connection.messages.ThrowDiceServerMessage";
 	public static final String START_GAME_MESSAGE_NAME =
 			"it.castelli.connection.messages.StartGameServerMessage";
-	public static final String END_TURN_MESSAGE_NAME =
-			"it.castelli.connection.messages.EndTurnServerMessage";
+	public static final String END_ROUND_MESSAGE_NAME =
+			"it.castelli.connection.messages.EndRoundServerMessage";
 	public static final String CHAT_MESSAGE_NAME =
 			"it.castelli.connection.messages.ChatServerMessage";
 	public static final String PAWN_MESSAGE_NAME =

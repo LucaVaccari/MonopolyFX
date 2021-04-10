@@ -21,7 +21,6 @@ public class PlayersListClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-
 		Game.getGameManager().clearPlayers();
 		for (Player element : players)
 			Game.getGameManager().addPlayer(element);
