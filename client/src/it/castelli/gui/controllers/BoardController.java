@@ -6,6 +6,7 @@ import it.castelli.connection.messages.ClientMessages;
 import it.castelli.connection.messages.EndRoundClientMessage;
 import it.castelli.connection.messages.LeaveGameClientMessage;
 import it.castelli.connection.messages.ThrowDiceClientMessage;
+import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.CompanyContract;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
@@ -20,6 +21,8 @@ import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -27,8 +30,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -361,6 +364,17 @@ public class BoardController
 
 		exchangeButton.setOnAction(event -> {
 			// TODO: send exchange to server
+//			System.out.println("refresh list");
+//			for (Player element : Game.getGameManager().getPlayers())
+//				System.out.println(element.getName());
+//			for (Player element : Game.getGameManager().getPlayers())
+//			{
+//				Label playerLabel = new Label(element.getName() + " " + element.getMoney() + "M");
+//				playerLabel.setAlignment(Pos.CENTER);
+//				playerLabel.setPrefSize(BoardController.getInstance().getPlayerListView().getPrefWidth(), BoardController.getInstance().getPlayerListView().getPrefHeight() / 7);
+//				playerLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+//				playerListView.getChildren().add(playerLabel);
+//			}
 			//add pawn to square 0
 //			Image image = new Image(String.valueOf(getClass().getResource("/images/pawns/" + Game.getPlayer().getPawn
 //			())));

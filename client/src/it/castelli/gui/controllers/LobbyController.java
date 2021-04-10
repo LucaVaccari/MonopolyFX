@@ -104,7 +104,7 @@ public class LobbyController
 						                               " stata selezionata da un altro giocatore.");
 				});
 		thimblePawn.setOnMouseClicked(event -> pawn = "thimble.png");
-		dogPawn.setOnMouseClicked(event -> pawn = "dog.png");
+		dogPawn.setOnMouseClicked(event -> {pawn = "dog.png";});
 		wagonPawn.setOnMouseClicked(event -> pawn = "wagon.png");
 		carPawn.setOnMouseClicked(event -> pawn = "car.png");
 		shoePawn.setOnMouseClicked(event -> pawn = "shoe.png");
