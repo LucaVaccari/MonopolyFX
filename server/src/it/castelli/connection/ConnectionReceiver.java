@@ -48,7 +48,7 @@ public class ConnectionReceiver implements Runnable
 				Socket connectionSocket = welcomeSocket.accept();
 				System.out.println(
 						"New connection established with " +
-								connectionSocket.getInetAddress().getHostAddress());
+						connectionSocket.getInetAddress().getHostAddress());
 				//generate new connection
 				Connection newConnection = new Connection(connectionSocket);
 				ConnectionManager.getInstance().addToWaitingRoom(newConnection);

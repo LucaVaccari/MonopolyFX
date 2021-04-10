@@ -50,7 +50,8 @@ public class ChatComponent extends AnchorPane
 	{
 		// CHAT
 		EventHandler<ActionEvent> onMessageSend = event -> {
-			ClientMain.getConnection().send(ClientMessages.CHAT_MESSAGE_NAME, Serializer.toJson(new ChatClientMessage(Game.getGameCode(), Game.getPlayer(), messageTextField.getText())));
+			ClientMain.getConnection().send(ClientMessages.CHAT_MESSAGE_NAME, Serializer
+					.toJson(new ChatClientMessage(Game.getGameCode(), Game.getPlayer(), messageTextField.getText())));
 		};
 		messageTextField.setOnAction(onMessageSend);
 		sendButton.setOnAction(onMessageSend);

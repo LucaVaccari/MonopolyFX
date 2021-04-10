@@ -12,7 +12,6 @@ public class HostClientMessage implements Message
 	{
 		Game.setHost(true);
 		System.out.println("Host");
-//		LobbyController.getInstance().getPlayButton().setDisable(true);
-//		LobbyController.getInstance().getPlayButton().setVisible(true);
+		LobbyController.getInstance().showPlayButton();
 	}
 }

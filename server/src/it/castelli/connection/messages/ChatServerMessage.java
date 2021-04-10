@@ -21,6 +21,7 @@ public class ChatServerMessage implements Message
 	{
 		//send the message to all the users
 		Message messageObj = new ChatServerMessage(gameCode, player, message);
-		ConnectionManager.getInstance().getGames().get(gameCode).sendAll(ServerMessages.CHAT_MESSAGE_NAME, Serializer.toJson(messageObj));
+		ConnectionManager.getInstance().getGames().get(gameCode)
+				.sendAll(ServerMessages.CHAT_MESSAGE_NAME, Serializer.toJson(messageObj));
 	}
 }

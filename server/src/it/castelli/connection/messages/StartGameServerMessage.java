@@ -2,7 +2,9 @@ package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
 import it.castelli.connection.ConnectionManager;
+import it.castelli.connection.GameConnectionManager;
 import it.castelli.gameLogic.Player;
+import it.castelli.serialization.Serializer;
 
 public class StartGameServerMessage implements Message
 {
@@ -16,6 +18,9 @@ public class StartGameServerMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		ConnectionManager.getInstance().getGames().get(gameCode).startGame();
+		GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
+		gameConnectionManager.startGame();
+		gameConnectionManager.sendAll(ServerMessages.START_GAME_MESSAGE_NAME,
+		                              Serializer.toJson(new StartGameServerMessage(gameCode)));
 	}
 }

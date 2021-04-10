@@ -38,31 +38,32 @@ public class MainMenuController
 
 		createButton.setOnAction(event -> {
 			playerName = askPlayerName();
+			if (playerName == null) return;
 			ClientMain.getConnection().send(ClientMessages.CREATE_GAME_MESSAGE_NAME,
-					Serializer.toJson(new CreateGameClientMessage(playerName)));
+			                                Serializer.toJson(new CreateGameClientMessage(playerName)));
 		});
 	}
 
 	private void onJoinButtonPressed(ActionEvent event)
 	{
-		playerName = askPlayerName();
-		if (playerName == null) return;
 		int matchCode = askGameCode();
 		if (matchCode == -1) return;
+		playerName = askPlayerName();
+		if (playerName == null) return;
 		ClientMain.getConnection().send(ClientMessages.JOIN_GAME_MESSAGE_NAME,
-				Serializer.toJson(new JoinGameClientMessage(matchCode, playerName)));
+		                                Serializer.toJson(new JoinGameClientMessage(matchCode, playerName)));
 	}
 
 	private String askPlayerName()
 	{
 		Optional<String> nameResult = AlertUtil.showTextInputDialogue(playerName, "Nome",
-				"Inserisci il nome da usare in gioco", "Nome:");
+		                                                              "Inserisci il nome da usare in gioco", "Nome:");
 		if (nameResult.isPresent())
 		{
 			String name = nameResult.get().strip();
 			if (name.length() == 0)
 			{
-				AlertUtil.showErrorAlert("Invalid name", "Empty name", "The name cannot be empty");
+				AlertUtil.showErrorAlert("Nome invalido", "Nome vuoto", "Il nome non può essere vuoto");
 				askPlayerName();
 			}
 
@@ -74,7 +75,9 @@ public class MainMenuController
 	private int askGameCode()
 	{
 		Optional<String> gameCodeResult = AlertUtil.showTextInputDialogue("", "Codice di gioco",
-				"Inserisci il codice che l'host della partita ti ha fornito", "Codice:");
+		                                                                  "Inserisci il codice che l'host della " +
+		                                                                  "partita ti ha fornito",
+		                                                                  "Codice:");
 		if (gameCodeResult.isPresent())
 		{
 			try
@@ -83,7 +86,7 @@ public class MainMenuController
 				if (matchCode < 0)
 				{
 					AlertUtil.showErrorAlert("Errore", "Inserire un codice valido",
-							"Il codice inserito deve essere un intero maggiore di 0");
+					                         "Il codice inserito deve essere un intero maggiore di 0");
 					askGameCode();
 				}
 				return matchCode;
@@ -91,7 +94,7 @@ public class MainMenuController
 			catch (NumberFormatException e)
 			{
 				AlertUtil.showErrorAlert("Errore", "Inserire un codice valido",
-						"Il codice inserito non è un numero.");
+				                         "Il codice inserito non è un numero.");
 				askGameCode();
 			}
 		}

@@ -26,7 +26,8 @@ public class ThrowDiceServerMessage implements Message
 		DiceResult diceResult = currentRound.getDiceResult();
 
 		ConnectionManager.getInstance().getGames().get(gameCode).sendAll(ServerMessages.DICE_RESULT_MESSAGE_NAME,
-				Serializer.toJson(new DiceResultServerMessage(diceResult)));
+		                                                                 Serializer.toJson(new DiceResultServerMessage(
+				                                                                 diceResult)));
 
 
 	}

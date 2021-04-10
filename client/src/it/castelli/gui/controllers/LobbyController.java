@@ -8,8 +8,6 @@ import it.castelli.connection.messages.StartGameClientMessage;
 import it.castelli.gameLogic.Player;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.customComponents.ChatComponent;
-import it.castelli.gui.scene.SceneManager;
-import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -22,7 +20,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
 
 /**
  * Controller for lobby FXML
@@ -62,11 +59,6 @@ public class LobbyController
 		return instance;
 	}
 
-	public Button getPlayButton()
-	{
-		return playButton;
-	}
-
 	@FXML
 	private void initialize()
 	{
@@ -74,21 +66,21 @@ public class LobbyController
 		//see the player list view
 		for (int i = 0; i < Game.getGameManager().getPlayers().size(); i++)
 		{
-			Label player = new Label(Game.getGameManager().getPlayers().get(i).getName() + " " + Game.getGameManager().getPlayers().get(i).getMoney() + "M");
+			Label player = new Label(Game.getGameManager().getPlayers().get(i).getName() + " " +
+			                         Game.getGameManager().getPlayers().get(i).getMoney() + "M");
 			player.setAlignment(Pos.CENTER);
 			player.setPrefSize(playerListView.getPrefWidth(), playerListView.getPrefHeight() / 7);
 			player.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 			playerListView.getChildren().add(player);
 		}
-		// TODO: hide playButton if not host
-//		playButton.setVisible(false);
-//		playButton.setDisable(true);
+
+		playButton.setVisible(false);
+		playButton.setDisable(true);
 
 		playButton.setOnAction(
 				event -> {
-					SceneManager.getInstance().showScene(SceneType.BOARD);
 					ClientMain.getConnection().send(ClientMessages.START_GAME_MESSAGE_NAME,
-							Serializer.toJson(new StartGameClientMessage(Game.getGameCode())));
+					                                Serializer.toJson(new StartGameClientMessage(Game.getGameCode())));
 				});
 
 		chooseButton.setOnAction(
@@ -97,12 +89,18 @@ public class LobbyController
 					for (Player player : Game.getGameManager().getPlayers())
 					{
 						if (player.getPawn().equals(pawn))
+						{
 							pawnAvailable = false;
+							break;
+						}
 					}
 					if (pawnAvailable)
-						ClientMain.getConnection().send(ClientMessages.PAWN_MESSAGE_NAME, Serializer.toJson(new PawnClientMessage(pawn, Game.getGameCode())));
+						ClientMain.getConnection().send(ClientMessages.PAWN_MESSAGE_NAME, Serializer
+								.toJson(new PawnClientMessage(pawn, Game.getGameCode())));
 					else
-						AlertUtil.showInformationAlert("pedina", "pedina già selezionata", "non è possibile selezionare la pedina scelta in quanto è già stata selezionata da un altro giocatore.");
+						AlertUtil.showInformationAlert("Pedina", "Pedina già selezionata",
+						                               "Non è possibile selezionare la pedina scelta in quanto è già" +
+						                               " stata selezionata da un altro giocatore.");
 				});
 		thimblePawn.setOnMouseClicked(event -> pawn = "thimble.png");
 		dogPawn.setOnMouseClicked(event -> pawn = "dog.png");
@@ -110,5 +108,11 @@ public class LobbyController
 		carPawn.setOnMouseClicked(event -> pawn = "car.png");
 		shoePawn.setOnMouseClicked(event -> pawn = "shoe.png");
 		boatPawn.setOnMouseClicked(event -> pawn = "boat.png");
+	}
+
+	public void showPlayButton()
+	{
+		playButton.setDisable(false);
+		playButton.setVisible(true);
 	}
 }

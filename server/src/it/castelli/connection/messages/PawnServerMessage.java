@@ -23,6 +23,7 @@ public class PawnServerMessage implements Message
 		//TODO: remove comment
 		//player.setPawn(pawnUrl);
 		GameConnectionManager manager = ConnectionManager.getInstance().getGames().get(gameCode);
-		manager.sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME, Serializer.toJson(new PlayersListServerMessage(manager.getGameManager().getPlayers())));
+		manager.sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME,
+		                Serializer.toJson(new PlayersListServerMessage(manager.getGameManager().getPlayers())));
 	}
 }

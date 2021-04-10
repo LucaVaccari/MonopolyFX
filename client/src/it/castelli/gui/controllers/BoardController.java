@@ -26,7 +26,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -341,42 +340,45 @@ public class BoardController
 
 		// button callback
 		throwDiceButton.setOnAction(event ->
-				ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
-						Serializer.toJson(
-								new ThrowDiceClientMessage(
-										Game.getGameCode()))));
+				                            ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
+				                                                            Serializer.toJson(
+						                                                            new ThrowDiceClientMessage(
+								                                                            Game.getGameCode()))));
 
 		endTurnButton.setOnAction(event -> {
 			if (Game.getGameManager().getCurrentRound().isDiceThrown())
 				if (Game.getPlayer().hasMoney(0))
-					ClientMain.getConnection().send(ClientMessages.END_TURN_MESSAGE_NAME, Serializer.toJson(new EndTurnClientMessage(Game.getGameCode())));
+					ClientMain.getConnection().send(ClientMessages.END_TURN_MESSAGE_NAME,
+					                                Serializer.toJson(new EndTurnClientMessage(Game.getGameCode())));
 				else
 					AlertUtil.showInformationAlert("Debito", "Sei in debito",
-							"Salda il debito prima di finire il turno. Se finisci le " +
-									"risorse perderai la partita.");
+					                               "Salda il debito prima di finire il turno. Se finisci le " +
+					                               "risorse perderai la partita.");
 			else
 				AlertUtil.showInformationAlert("Tira!", "Devi tirare i dadi",
-						"Non puoi finire il turno senza tirare prima i dadi.");
+				                               "Non puoi finire il turno senza tirare prima i dadi.");
 		});
 
 		exchangeButton.setOnAction(event -> {
 			// TODO: send exchange to server
 			//add pawn to square 0
-//			Image image = new Image(String.valueOf(getClass().getResource("/images/pawns/" + Game.getPlayer().getPawn())));
+//			Image image = new Image(String.valueOf(getClass().getResource("/images/pawns/" + Game.getPlayer().getPawn
+//			())));
 //			ImageView imageView = new ImageView(image);
 //			Group0.getChildren().add(imageView);
 		});
 
 		leaveGameButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-				Serializer
-						.toJson(new LeaveGameClientMessage(
-								Game.getGameCode()))));
+		                                                                     Serializer
+				                                                                     .toJson(new LeaveGameClientMessage(
+						                                                                     Game.getGameCode()))));
 
 		// TODO: player list view
 		//list of all players
 //			for (int i = 0; i < Game.getGameManager().getPlayers().size(); i++)
 //			{
-//				Label player=new Label(Game.getGameManager().getPlayers().get(i).getName() + " " + Game.getGameManager().getPlayers().get(i).getMoney() + "M");
+//				Label player=new Label(Game.getGameManager().getPlayers().get(i).getName() + " " + Game.getGameManager
+//				().getPlayers().get(i).getMoney() + "M");
 //				player.setAlignment(Pos.CENTER);
 //				player.setPrefSize(playerListView.getPrefWidth(),playerListView.getPrefHeight()/7);
 //				player.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -523,7 +525,7 @@ public class BoardController
 			for (Contract contract : getPlayer().getContracts())
 			{
 				if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-						!mostProductiveContracts.contains(mostProductiveContract))
+				    !mostProductiveContracts.contains(mostProductiveContract))
 					mostProductiveContract = contract;
 			}
 
@@ -532,7 +534,8 @@ public class BoardController
 				ownedTerrains[i].setDisable(false);
 				ownedTerrains[i].setVisible(true);
 				ownedTerrains[i].setContract(mostProductiveContract);
-			} else
+			}
+			else
 			{
 				ownedTerrains[i].setVisible(false);
 				ownedTerrains[i].setDisable(true);

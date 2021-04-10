@@ -25,6 +25,7 @@ public class ServerMessages
 			"it.castelli.connection.messages.ChatClientMessage";
 	public static final String HOST_MESSAGE_NAME =
 			"it.castelli.connection.messages.HostClientMessage";
-
+	public static final String START_GAME_MESSAGE_NAME =
+			"it.castelli.connection.messages.StartGameClientMessage";
 
 }
