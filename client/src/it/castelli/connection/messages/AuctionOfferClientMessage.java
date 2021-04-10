@@ -2,8 +2,10 @@ package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
-import it.castelli.gui.controllers.AuctionController;
 
+/**
+ * Request to offer money in the auction (send only)
+ */
 public class AuctionOfferClientMessage implements Message
 {
 	private final int offer;
@@ -18,6 +20,6 @@ public class AuctionOfferClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		AuctionController.getInstance().update();
+		// do nothing
 	}
 }

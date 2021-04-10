@@ -9,12 +9,32 @@ import it.castelli.gui.controllers.AuctionController;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 
+/**
+ * Message received from the server when a new Auction starts
+ */
 public class AuctionClientMessage implements Message
 {
+	/**
+	 * The contract at auction
+	 */
 	private final Contract contract;
+
+	/**
+	 * The player
+	 */
 	private final Player player;
+
+	/**
+	 * The highest amount of money offered
+	 */
 	private final int bestOfferProposed;
 
+	/**
+	 * Constructor for AuctionClientMessage
+	 * @param contract The contract at auction
+	 * @param player The player
+	 * @param bestOfferProposed The highest amount of money offered
+	 */
 	public AuctionClientMessage(Contract contract, Player player, int bestOfferProposed)
 	{
 		this.contract = contract;
