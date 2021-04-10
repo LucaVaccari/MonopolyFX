@@ -31,21 +31,6 @@ public class LobbyController
 	private ChatComponent chat;
 	@FXML
 	private VBox playerListView;
-	@FXML
-	private Button chooseButton;
-
-	@FXML
-	private ImageView thimblePawn;
-	@FXML
-	private ImageView dogPawn;
-	@FXML
-	private ImageView wagonPawn;
-	@FXML
-	private ImageView carPawn;
-	@FXML
-	private ImageView shoePawn;
-	@FXML
-	private ImageView boatPawn;
 
 	public static LobbyController getInstance()
 	{
@@ -66,18 +51,6 @@ public class LobbyController
 							Serializer.toJson(new StartGameClientMessage(Game.getGameCode())));
 				});
 
-		chooseButton.setOnAction(
-				event -> {
-					System.out.println("Choosing pawn");
-					// TODO: choose pawn
-					ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME, Serializer.toJson(pawnPath));
-				});
-		thimblePawn.setOnMouseClicked(event -> pawnPath = "/images/pawns/thimble.png");
-		dogPawn.setOnMouseClicked(event -> pawnPath = "/images/pawns/dog.png");
-		wagonPawn.setOnMouseClicked(event -> pawnPath = "/images/pawns/wagon.png");
-		carPawn.setOnMouseClicked(event -> pawnPath = "/images/pawns/car.png");
-		shoePawn.setOnMouseClicked(event -> pawnPath = "/images/pawns/shoe.png");
-		boatPawn.setOnMouseClicked(event -> pawnPath = "/images/pawns/boat.png");
 	}
 
 	public void showPlayButton()

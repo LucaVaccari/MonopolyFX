@@ -3,7 +3,10 @@ package it.castelli.gui.controllers;
 import it.castelli.ClientMain;
 import it.castelli.connection.messages.ClientMessages;
 import it.castelli.gameLogic.Pawn;
+import it.castelli.gui.scene.SceneManager;
+import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 
@@ -40,8 +43,11 @@ public class PawnChoiceController
 		PawnPaths.put("images/pawns/wagon.png", Pawn.WAGON);
 		PawnPaths.put("images/pawns/thimble.png", Pawn.THIMBLE);
 
-		thimblePawnImageView.setOnMouseClicked(event ->
-				ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME, Serializer.toJson(Pawn.THIMBLE)));
+		thimblePawnImageView.setOnMouseClicked(event -> {
+					ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME, Serializer.toJson(Pawn.THIMBLE));
+					Platform.runLater(() -> SceneManager.getInstance().showScene(SceneType.LOBBY));
+				}
+		);
 		wagonPawnImageView.setOnMouseClicked(event ->
 				ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME, Serializer.toJson(Pawn.WAGON))
 		);
