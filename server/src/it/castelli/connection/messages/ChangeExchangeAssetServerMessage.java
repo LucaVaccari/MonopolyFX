@@ -33,8 +33,13 @@ public class ChangeExchangeAssetServerMessage implements Message
 		if (!exchange.getAccepted1() && !exchange.getAccepted2())
 		{
 			exchange.changeAsset(this.player, asset);
-			gameConnectionManager.sendAll(ServerMessages.UPDATE_EXCHANGE_MESSAGE_NAME, Serializer
-					.toJson(new UpdateExchangeServerMessage(exchange)));
+
+			Connection player1Connection = gameConnectionManager.getConnectionFromPlayer(exchange.getPlayer1());
+			Connection player2Connection = gameConnectionManager.getConnectionFromPlayer(exchange.getPlayer2());
+
+			player1Connection.send(ServerMessages.UPDATE_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new UpdateExchangeServerMessage(exchange)));
+			player2Connection.send(ServerMessages.UPDATE_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new UpdateExchangeServerMessage(exchange)));
+
 		}
 		else
 		{

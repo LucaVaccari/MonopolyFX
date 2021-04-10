@@ -7,10 +7,21 @@ import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gui.controllers.AuctionController;
 import javafx.application.Platform;
 
+/**
+ * Message received from the server that updates the auction (receive only)
+ */
 public class UpdateAuctionClientMessage implements Message
 {
+    /**
+     * The updated auction
+     */
     private final Auction auction;
 
+    /**
+     * Constructor for UpdateAuctionClientMessage
+     *
+     * @param auction The updated auction
+     */
     public UpdateAuctionClientMessage(Auction auction)
     {
         this.auction = auction;

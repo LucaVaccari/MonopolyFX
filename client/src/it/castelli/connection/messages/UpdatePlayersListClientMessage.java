@@ -10,12 +10,20 @@ import javafx.application.Platform;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Override the list of players
+ * Message received from the server that updates the player list on the client
  */
 public class UpdatePlayersListClientMessage implements Message
 {
+	/**
+	 * The updated player list
+	 */
 	private final CopyOnWriteArrayList<Player> players;
 
+	/**
+	 * Constructor for UpdatePlayersListClientMessage
+	 *
+	 * @param players The updated player list
+	 */
 	public UpdatePlayersListClientMessage(CopyOnWriteArrayList<Player> players)
 	{
 		this.players = players;
