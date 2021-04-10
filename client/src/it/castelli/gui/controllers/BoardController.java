@@ -30,6 +30,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -563,6 +564,9 @@ public class BoardController
 			System.out.println("Updating player view for " + player.getName());
 			//player.setPawnPath(pawnPath);
 			PlayerInfoComponent playerInfoComponent = new PlayerInfoComponent(player);
+			playerInfoComponent.setMaxHeight(Double.MAX_VALUE);
+			playerInfoComponent.setMaxWidth(Double.MAX_VALUE);
+			VBox.setVgrow(playerInfoComponent, Priority.ALWAYS);
 			playerListView.getChildren().add(playerInfoComponent);
 		}
 	}
