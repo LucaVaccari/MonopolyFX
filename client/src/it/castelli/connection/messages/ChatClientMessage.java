@@ -3,12 +3,13 @@ package it.castelli.connection.messages;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gui.controllers.BoardController;
-import javafx.scene.control.Label;
+import it.castelli.gui.controllers.LobbyController;
+import javafx.application.Platform;
 
 public class ChatClientMessage implements Message
 {
 	private final int gameCode;
-	private String message;
+	private final String message;
 
 	public ChatClientMessage(int gameCode, Player senderPlayer, String messageBody)
 	{
@@ -19,7 +20,8 @@ public class ChatClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
+		Platform.runLater(() -> LobbyController.getInstance().getChat().addMessage(message));
+		Platform.runLater(() -> BoardController.getInstance().getChat().addMessage(message));
 		//TODO: print the content of the message
-		BoardController.getInstance().getChat().getMessageListView().getItems().add(new Label(message));
 	}
 }

@@ -14,6 +14,7 @@ import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.customComponents.ChatComponent;
+import it.castelli.gui.customComponents.PlayerInfoComponent;
 import it.castelli.gui.customComponents.SmallTerrainViewComponent;
 import it.castelli.gui.customComponents.SquareComponent;
 import it.castelli.gui.scene.SceneManager;
@@ -21,8 +22,6 @@ import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -30,8 +29,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -343,51 +342,38 @@ public class BoardController
 
 		// button callback
 		throwDiceButton.setOnAction(event ->
-				                            ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
-				                                                            Serializer.toJson(
-						                                                            new ThrowDiceClientMessage(
-								                                                            Game.getGameCode()))));
+				ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
+						Serializer.toJson(
+								new ThrowDiceClientMessage(
+										Game.getGameCode()))));
 
 		endTurnButton.setOnAction(event -> {
 			if (Game.getGameManager().getCurrentRound().isDiceThrown())
 				if (Game.getPlayer().hasMoney(0))
 					ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME,
-					                                Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
+							Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
 				else
 					AlertUtil.showInformationAlert("Debito", "Sei in debito",
-					                               "Salda il debito prima di finire il turno. Se finisci le " +
-					                               "risorse perderai la partita.");
+							"Salda il debito prima di finire il turno. Se finisci le " +
+									"risorse perderai la partita.");
 			else
 				AlertUtil.showInformationAlert("Tira!", "Devi tirare i dadi",
-				                               "Non puoi finire il turno senza tirare prima i dadi.");
+						"Non puoi finire il turno senza tirare prima i dadi.");
 		});
 
 		exchangeButton.setOnAction(event -> {
 			// TODO: send exchange to server
-//			System.out.println("refresh list");
-//			for (Player element : Game.getGameManager().getPlayers())
-//				System.out.println(element.getName());
-//			for (Player element : Game.getGameManager().getPlayers())
-//			{
-//				Label playerLabel = new Label(element.getName() + " " + element.getMoney() + "M");
-//				playerLabel.setAlignment(Pos.CENTER);
-//				playerLabel.setPrefSize(BoardController.getInstance().getPlayerListView().getPrefWidth(), BoardController.getInstance().getPlayerListView().getPrefHeight() / 7);
-//				playerLabel.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-//				playerListView.getChildren().add(playerLabel);
-//			}
-			//add pawn to square 0
-//			Image image = new Image(String.valueOf(getClass().getResource("/images/pawns/" + Game.getPlayer().getPawn
-//			())));
-//			ImageView imageView = new ImageView(image);
-//			Group0.getChildren().add(imageView);
 		});
 
-		leaveGameButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-		                                                                     Serializer
-				                                                                     .toJson(new LeaveGameClientMessage(
-						                                                                     Game.getGameCode()))));
+		leaveGameButton.setOnAction(event -> {
+			ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
+					Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+			SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
+		});
 
-		// TODO: player list view
+		updatePlayerListView();
+		updateMoneyLabel();
+
 		//list of all players
 //			for (int i = 0; i < Game.getGameManager().getPlayers().size(); i++)
 //			{
@@ -539,7 +525,7 @@ public class BoardController
 			for (Contract contract : getPlayer().getContracts())
 			{
 				if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-				    !mostProductiveContracts.contains(mostProductiveContract))
+						!mostProductiveContracts.contains(mostProductiveContract))
 					mostProductiveContract = contract;
 			}
 
@@ -567,6 +553,20 @@ public class BoardController
 			moneyLabel.setText(getPlayer().getMoney() + "M");
 	}
 
+	/**
+	 * Update the list view of all players
+	 */
+	public void updatePlayerListView()
+	{
+		for (Player player : Game.getGameManager().getPlayers())
+		{
+			System.out.println("Updating player view for " + player.getName());
+			//player.setPawnPath(pawnPath);
+			PlayerInfoComponent playerInfoComponent = new PlayerInfoComponent(player);
+			playerListView.getChildren().add(playerInfoComponent);
+		}
+	}
+
 	public ImageView getDie1Image()
 	{
 		return die1Image;
@@ -580,10 +580,5 @@ public class BoardController
 	public ChatComponent getChat()
 	{
 		return chat;
-	}
-
-	public VBox getPlayerListView()
-	{
-		return playerListView;
 	}
 }

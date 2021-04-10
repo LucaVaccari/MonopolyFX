@@ -7,7 +7,6 @@ import it.castelli.connection.messages.ClientMessages;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.serialization.Serializer;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -48,17 +47,20 @@ public class ChatComponent extends AnchorPane
 	@FXML
 	public void initialize()
 	{
-		// CHAT
-		EventHandler<ActionEvent> onMessageSend = event -> {
-			ClientMain.getConnection().send(ClientMessages.CHAT_MESSAGE_NAME, Serializer
-					.toJson(new ChatClientMessage(Game.getGameCode(), Game.getPlayer(), messageTextField.getText())));
-		};
-		messageTextField.setOnAction(onMessageSend);
-		sendButton.setOnAction(onMessageSend);
+		messageTextField.setOnAction(this::onMessageSend);
+		sendButton.setOnAction(this::onMessageSend);
 	}
 
-	public ListView<Label> getMessageListView()
+	private void onMessageSend(ActionEvent event)
 	{
-		return messageListView;
+		ClientMain.getConnection().send(ClientMessages.CHAT_MESSAGE_NAME, Serializer
+				.toJson(new ChatClientMessage(Game.getGameCode(), Game.getPlayer(), messageTextField.getText())));
+		messageTextField.setText("");
+		messageListView.scrollTo(messageListView.getItems().size() - 1);
+	}
+
+	public void addMessage(String message)
+	{
+		messageListView.getItems().add(new Label(message));
 	}
 }

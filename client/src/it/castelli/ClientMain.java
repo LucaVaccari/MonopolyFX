@@ -7,7 +7,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.Socket;
 
 public class ClientMain extends Application
@@ -19,7 +18,7 @@ public class ClientMain extends Application
 		Socket clientSocket = null;
 		try
 		{
-			clientSocket = new Socket("79.12.11.178", 1111);
+			clientSocket = new Socket("localhost", 1111);
 		}
 		catch (IOException e)
 		{
