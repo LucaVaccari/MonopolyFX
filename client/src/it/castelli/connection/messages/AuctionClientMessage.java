@@ -8,6 +8,7 @@ import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gui.controllers.AuctionController;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
+import javafx.application.Platform;
 
 public class AuctionClientMessage implements Message
 {
@@ -27,6 +28,6 @@ public class AuctionClientMessage implements Message
 	{
 		Game.getGameManager().setAuction(new Auction(contract, bestOfferProposed, this.player));
 		SceneManager.getInstance().showScene(SceneType.AUCTION);
-		AuctionController.getInstance().update();
+		Platform.runLater(() -> AuctionController.getInstance().update());
 	}
 }

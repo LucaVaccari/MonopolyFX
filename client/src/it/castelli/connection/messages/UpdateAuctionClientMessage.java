@@ -4,6 +4,8 @@ import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Auction;
+import it.castelli.gui.controllers.AuctionController;
+import javafx.application.Platform;
 
 public class UpdateAuctionClientMessage implements Message
 {
@@ -18,6 +20,6 @@ public class UpdateAuctionClientMessage implements Message
     public void onReceive(Connection connection, Player player)
     {
         Game.getGameManager().setAuction(auction);
-        //TODO: refresh Auction window
+        Platform.runLater(() -> AuctionController.getInstance().update());
     }
 }

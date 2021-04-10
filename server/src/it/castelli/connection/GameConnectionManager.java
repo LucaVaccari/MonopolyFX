@@ -24,7 +24,7 @@ public class GameConnectionManager
 
 	public void addPlayer(Connection connection, Player player)
 	{
-		if (playerConnections.size() < 6 && gameManager.isInGame())
+		if (playerConnections.size() < 6 && !gameManager.isInGame())
 		{
 			if (this.host == null)
 			{

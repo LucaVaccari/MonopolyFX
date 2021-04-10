@@ -33,13 +33,14 @@ public class ChangeExchangeAssetServerMessage implements Message
 		if (!exchange.getAccepted1() && !exchange.getAccepted2())
 		{
 			exchange.changeAsset(this.player, asset);
-			//TODO: send exchange
+			gameConnectionManager.sendAll(ServerMessages.EXCHANGE_MESSAGE_NAME, Serializer
+					.toJson(new ExchangeServerMessage(exchange)));
 		}
 		else
 		{
 			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer
 					.toJson(new ErrorServerMessage("L'altro giocatore ha già accettato, puoi solo accettare o " +
-                            "rifiutare lo scambio!")));
+							"rifiutare lo scambio!")));
 		}
 
 

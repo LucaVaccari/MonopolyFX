@@ -11,7 +11,7 @@ public class CompanyContract extends Contract
 	 * Constructor for the CompanyContract
 	 *
 	 * @param name    The name of the contract
-	 * @param company
+	 * @param company The Company enum
 	 * @param value   The cost of the contract when buying from the bank
 	 */
 	public CompanyContract(String name, Company company, int value)
