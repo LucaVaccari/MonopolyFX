@@ -23,7 +23,7 @@ public class GameManager
 	 */
 	private Square[] board;
 	private Auction auction;
-	private Exchange exchange;
+	private CopyOnWriteArrayList<Exchange> exchanges;
 	private Round currentRound;
 	private RandomEventManager randomEventManager;
 
@@ -262,5 +262,27 @@ public class GameManager
 	public void createExchange(Player player1, Player player2)
 	{
 
+	}
+
+	public void removeExchange(Exchange exchange)
+	{
+		exchanges.remove(exchange);
+	}
+
+	public Exchange getExchangeFromPlayer(Player player)
+	{
+		for (Exchange exchange : exchanges)
+		{
+			if (exchange.getPlayer1() == player || exchange.getPlayer2() == player)
+			{
+				return exchange;
+			}
+		}
+		return null;
+	}
+
+	public Square[] getBoard()
+	{
+		return board;
 	}
 }

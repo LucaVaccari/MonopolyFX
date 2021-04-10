@@ -5,48 +5,68 @@ import it.castelli.gameLogic.Player;
 
 public class Exchange
 {
-	private Player offerer;
-	private Player offerer1;
-	private Asset asset;
+	private Player player1;
+	private Player player2;
 	private Asset asset1;
-	private Boolean accepted = false;
+	private Asset asset2;
 	private Boolean accepted1 = false;
+	private Boolean accepted2 = false;
 
-	public Exchange(Player offerer, Player offerer1)
+	public Exchange(Player player1, Player player2)
 	{
-		this.offerer = offerer;
-		this.offerer1 = offerer1;
+		this.player1 = player1;
+		this.player2 = player2;
 	}
 
-	public Player getOfferer()
+	public Player getPlayer1()
 	{
-		return offerer;
+		return player1;
+	}
+
+	public Player getPlayer2()
+	{
+		return player2;
 	}
 
 	public void changeAsset(Player player, Asset newOffer)
 	{
-		if (player == offerer)
-			asset = newOffer;
-		else
+		if (player == this.player1)
 			asset1 = newOffer;
+		else
+			asset2 = newOffer;
 	}
 
 	public void acceptExchange(Player player)
 	{
-		if (player == offerer)
-			accepted = true;
-		else
+		if (player == this.player1)
 			accepted1 = true;
-
-		if (accepted && accepted1)
-			endExchange();
+		else
+			accepted2 = true;
 	}
 
 	public void endExchange()
 	{
-		asset.removeFromPlayer(offerer);
-		asset.addToPlayer(offerer1);
-		asset1.removeFromPlayer(offerer1);
-		asset1.addToPlayer(offerer);
+		asset1.removeFromPlayer(player1);
+		asset1.addToPlayer(player2);
+		asset2.removeFromPlayer(player2);
+		asset2.addToPlayer(player1);
+	}
+
+	public Boolean getAccepted1()
+	{
+		return accepted1;
+	}
+
+	public Boolean getAccepted2()
+	{
+		return accepted2;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		obj = (Exchange) obj;
+		return (((Exchange) obj).player1 == this.player1 || ((Exchange) obj).player2 == this.player2) &&
+				(((Exchange) obj).player2 == this.player1 || ((Exchange) obj).player2 == this.player2);
 	}
 }

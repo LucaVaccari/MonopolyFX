@@ -106,4 +106,11 @@ public class GameConnectionManager
 		for (Connection element : playerConnections)
 			element.send(messageName, message);
 	}
+
+	public void updatePlayers()
+	{
+		sendAll(ServerMessages.PLAYERS_LIST_MESSAGE_NAME, Serializer.toJson(new PlayersListServerMessage(gameManager.getPlayers())));
+		sendAll(ServerMessages.BOARD_MESSAGE_NAME, Serializer.toJson(new BoardServerMessage(gameManager.getBoard())));
+	}
+
 }
