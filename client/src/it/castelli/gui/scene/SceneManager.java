@@ -15,6 +15,7 @@ import java.util.HashMap;
 public class SceneManager
 {
 	public static final String MAIN_MENU_FXML_PATH = "FXMLs/mainMenu.fxml";
+	public static final String PAWN_CHOICE_FXML_PATH = "FXMLs/pawnChoice.fxml";
 	public static final String LOBBY_FXML_PATH = "FXMLs/lobby.fxml";
 	public static final String BOARD_FXML_PATH = "FXMLs/board.fxml";
 	public static final String EXCHANGE_FXML_PATH = "FXMLs/exchange.fxml";
@@ -51,8 +52,22 @@ public class SceneManager
 		}
 		else
 		{
-			AlertUtil.showErrorAlert("Missing resources", "Cannot find file", "The file " + MAIN_MENU_FXML_PATH +
-			                                                                  " is missing");
+			AlertUtil.showErrorAlert("Missing resources",
+			                         "Cannot find file", "The file " + MAIN_MENU_FXML_PATH + " is missing");
+			System.exit(-1);
+		}
+
+		Parent pawnChoiceRoot = FXMLFileLoader.loadFXML("/" + PAWN_CHOICE_FXML_PATH, this);
+		if (pawnChoiceRoot != null)
+		{
+			Scene lobbyScene = new Scene(pawnChoiceRoot);
+			allScenes.put(SceneType.PAWN_CHOICE,
+			              new SceneFXWrapper(lobbyScene, true, "MonopolyFX - Scelta pedina"));
+		}
+		else
+		{
+			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
+			                         "The file " + PAWN_CHOICE_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
@@ -60,16 +75,12 @@ public class SceneManager
 		if (lobbyRoot != null)
 		{
 			Scene lobbyScene = new Scene(lobbyRoot);
-			allScenes
-					.put(SceneType.LOBBY,
-					     new SceneFXWrapper(lobbyScene, true, "MonopolyFX - " +
-					                                          "Lobby"));
+			allScenes.put(SceneType.LOBBY, new SceneFXWrapper(lobbyScene, true, "MonopolyFX - Lobby"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-			                         "The file " + LOBBY_FXML_PATH +
-			                         " is missing");
+			                         "The file " + LOBBY_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
