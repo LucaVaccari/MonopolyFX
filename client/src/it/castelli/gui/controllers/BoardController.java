@@ -460,8 +460,6 @@ public class BoardController
 			pawnImageView.setFitWidth(20);
 			playerPawns.put(player.getPawn(), pawnImageView);
 		}
-
-		update();
 	}
 
 	/**
@@ -648,8 +646,10 @@ public class BoardController
 			flowPane.setHgap(5);
 			ObservableList<Node> children = flowPane.getChildren();
 			ImageView imageView = playerPawns.get(player.getPawn());
-			System.out.println(playerPawns);
-			children.add(imageView);
+			if (imageView == null)
+				System.out.println("BoardController::updatePawnsOnBoard - Pawn image is null");
+			else
+				children.add(imageView);
 		}
 	}
 
