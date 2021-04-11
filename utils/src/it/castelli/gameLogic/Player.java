@@ -350,4 +350,14 @@ public class Player
 		}
 		return false;
 	}
+
+	public boolean partialEquals(Object obj)
+	{
+		if (obj instanceof Player)
+		{
+			Player other = (Player) obj;
+			return this.name.equals(other.name) && this.pawn == other.pawn;
+		}
+		return false;
+	}
 }

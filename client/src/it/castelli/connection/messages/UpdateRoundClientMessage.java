@@ -45,7 +45,6 @@ public class UpdateRoundClientMessage implements Message
 		System.out.println(Game.getPlayer().getPawn().toString());
 
 
-
 		Platform.runLater(() -> {
 			if (round.getCurrentActivePlayer().equals(Game.getPlayer()))
 			{
