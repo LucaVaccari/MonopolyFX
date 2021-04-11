@@ -39,6 +39,7 @@ public class UpdateDiceResultClientMessage implements Message
 				String.valueOf(getClass().getResource("/images/dice/face_" + diceResult.getSecondResult() + ".png")));
 		BoardController.getInstance().getDie2Image().setImage(secondDieImage);
 
-		Game.useDiceResult();
+		if (Game.getGameManager().getCurrentRound().getCurrentActivePlayer().betterEquals(Game.getPlayer()))
+			Game.useDiceResult();
 	}
 }
