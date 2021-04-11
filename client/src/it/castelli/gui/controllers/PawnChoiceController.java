@@ -57,5 +57,11 @@ public class PawnChoiceController
 		boatPawnImageView.setOnMouseClicked(event ->
 				ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME, Serializer.toJson(Pawn.BOAT))
 		);
+
+
+	}
+	private void checkPawn(Pawn pawn){
+
+		ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME, Serializer.toJson(pawn));
 	}
 }
