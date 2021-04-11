@@ -417,31 +417,29 @@ public class BoardController
 
 		// button callback
 		throwDiceButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
-		                                                                     Serializer
-				                                                                     .toJson(new ThrowDiceClientMessage(
-						                                                                     Game.getGameCode()))));
+				Serializer
+						.toJson(new ThrowDiceClientMessage(
+								Game.getGameCode()))));
 
 		endTurnButton.setOnAction(event -> {
 			if (Game.getGameManager().getCurrentRound().isDiceThrown())
 				if (Game.getPlayer().hasMoney(0))
 					ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME,
-					                                Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
+							Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
 				else
 					AlertUtil.showInformationAlert("Debito", "Sei in debito",
-					                               "Salda il debito prima di finire il turno. Se finisci le " +
-					                               "risorse perderai la partita.");
+							"Salda il debito prima di finire il turno. Se finisci le " +
+									"risorse perderai la partita.");
 			else
 				AlertUtil.showInformationAlert("Tira!", "Devi tirare i dadi",
-				                               "Non puoi finire il turno senza tirare prima i dadi.");
+						"Non puoi finire il turno senza tirare prima i dadi.");
 		});
 
 		leaveGameButton.setOnAction(event -> {
 			ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-			                                Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+					Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 			SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 		});
-
-		update();
 	}
 
 	/**
@@ -556,8 +554,6 @@ public class BoardController
 		}
 	}
 
-	// Calculate the properties owned by the player to show under the board
-
 	/**
 	 * Calculate and show the owned terrains in the pane under the board
 	 */
@@ -587,7 +583,7 @@ public class BoardController
 				for (Contract contract : getPlayer().getContracts())
 				{
 					if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-					    !mostProductiveContracts.contains(mostProductiveContract))
+							!mostProductiveContracts.contains(mostProductiveContract))
 						mostProductiveContract = contract;
 				}
 
@@ -652,6 +648,7 @@ public class BoardController
 			flowPane.setHgap(5);
 			ObservableList<Node> children = flowPane.getChildren();
 			ImageView imageView = playerPawns.get(player.getPawn());
+			System.out.println(playerPawns);
 			children.add(imageView);
 		}
 	}
