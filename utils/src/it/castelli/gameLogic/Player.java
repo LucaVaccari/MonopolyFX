@@ -42,6 +42,16 @@ public class Player
 	private Pawn pawn;
 
 	/**
+	 * The type of the last random event the player encountered
+	 */
+	private String randomEventType = null;
+
+	/**
+	 * The description of the last random event the player encountered
+	 */
+	private String randomEventDescription = null;
+
+	/**
 	 * Constructor for the Player
 	 *
 	 * @param money The amount of money the player has
@@ -209,6 +219,46 @@ public class Player
 	public Pawn getPawn()
 	{
 		return pawn;
+	}
+
+	/**
+	 * Getter for randomEventType
+	 *
+	 * @return The type of the last random event the player encountered
+	 */
+	public String getRandomEventType()
+	{
+		return randomEventType;
+	}
+
+	/**
+	 * Set the last encountered random event type
+	 *
+	 * @param randomEventType the last encountered random event type
+	 */
+	public void setRandomEventType(String randomEventType)
+	{
+		this.randomEventType = randomEventType;
+	}
+
+	/**
+	 * Getter for randomEventDescription
+	 *
+	 * @return The description of the last random event the player encountered
+	 */
+	public String getRandomEventDescription()
+	{
+		return randomEventDescription;
+	}
+
+	/**
+	 * Set the last encountered random event description
+	 *
+	 * @param randomEventDescription the last encountered random event description
+	 */
+	public void setRandomEventDescription(String randomEventDescription)
+	{
+		this.randomEventDescription = randomEventDescription;
 	}
 
 	/**
