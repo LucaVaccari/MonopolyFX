@@ -46,7 +46,9 @@ public class MovePlayerServerMessage implements Message
         for (Player element : gameConnectionManager.getGameManager().getPlayers())
         {
             if (element.equals(this.player))
+            {
                 element.move(squares);
+            }
         }
 
         gameConnectionManager.updatePlayers();

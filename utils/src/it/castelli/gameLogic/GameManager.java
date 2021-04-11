@@ -255,11 +255,6 @@ public class GameManager
 		return randomEventManager;
 	}
 
-	public void createExchange(Player player1, Player player2)
-	{
-
-	}
-
 	public void removeExchange(Exchange exchange)
 	{
 		exchanges.remove(exchange);

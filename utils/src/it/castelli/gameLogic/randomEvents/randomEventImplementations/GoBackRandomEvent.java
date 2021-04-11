@@ -17,6 +17,5 @@ public class GoBackRandomEvent extends RandomEvent
 	public void applyEffect(Player player)
 	{
 		player.move(numberOfSteps);
-		//TODO: send the message to all players
 	}
 }

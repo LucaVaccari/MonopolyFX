@@ -82,6 +82,8 @@ public class GameConnectionManager
 	public void startGame()
 	{
 		gameManager.startGame();
+		sendAll(ServerMessages.GAME_STARTED_MESSAGE_NAME, Serializer.toJson(new GameStartedServerMessage()));
+		updatePlayers();
 	}
 
 	public void startAuction()
@@ -108,11 +110,6 @@ public class GameConnectionManager
 
 	public void updatePlayers()
 	{
-		sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer
-				.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
-		sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
-		sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
-
 		for (Player player : gameManager.getPlayers())
 		{
 			if (player.getRandomEventType() != null)
@@ -120,7 +117,18 @@ public class GameConnectionManager
             	sendAll(ServerMessages.RANDOM_EVENT_MESSAGE_NAME, Serializer.toJson(new RandomEventServerMessage(player.getRandomEventType(), player.getRandomEventDescription())));
             	player.setLastRandomEvent(null, null);
 			}
+
+			if (player.getPreviousPosition() != player.getPosition())
+			{
+				gameManager.getSquare(player.getPosition()).interact(player);
+			}
 		}
+
+		sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer
+				.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
+		sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
+		sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
+
 	}
 
 	public Connection getConnectionFromPlayer(Player player)

@@ -57,6 +57,7 @@ public class CreateExchangeServerMessage implements Message
         if (exchange1 == null && exchange2 == null)
         {
             Exchange newExchange = new Exchange(player1, player2);
+            gameManager.addExchange(newExchange);
             player1Connection.send(ServerMessages.NEW_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new NewExchangeServerMessage(newExchange)));
             player2Connection.send(ServerMessages.NEW_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new NewExchangeServerMessage(newExchange)));
         }

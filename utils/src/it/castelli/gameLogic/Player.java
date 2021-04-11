@@ -52,6 +52,21 @@ public class Player
 	private String randomEventDescription = null;
 
 	/**
+	 * The previous position of the player
+	 */
+	private int previousPosition;
+
+	/**
+	 * Getter for previousPosition
+	 *
+	 * @return The previous position of the player
+	 */
+	public int getPreviousPosition()
+	{
+		return previousPosition;
+	}
+
+	/**
 	 * Constructor for the Player
 	 *
 	 * @param money The amount of money the player has
@@ -158,11 +173,11 @@ public class Player
 	 */
 	public void setPosition(int position, boolean passThroughGoSquare)
 	{
+		this.previousPosition = this.position;
 		this.position = position;
 		if (position >= 40)
-			addMoney(200);// TODO: give money to player
+			addMoney(200);
 		this.position %= 40;
-		// TODO: GameManager.getSquare(position).interact();
 	}
 
 	/**

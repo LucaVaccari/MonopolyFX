@@ -8,8 +8,6 @@ import it.castelli.gameLogic.randomEvents.RandomEvent;
  */
 public class PrisonEscapeRandomEvent extends RandomEvent
 {
-	//TODO: verify if necessary
-	private String message;
 	/**
 	 * Constructor for the PrisonEscapeRandomEvent
 	 *
@@ -18,7 +16,6 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 	public PrisonEscapeRandomEvent(String message)
 	{
 		super(message);
-		this.message = message;
 	}
 
 	/**
@@ -29,8 +26,15 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 	@Override
 	public void applyEffect(Player player)
 	{
-		// TODO: verify the implementation
-		player.getKeptRandomEventCards().add(new PrisonEscapeRandomEvent(message));
-		// TODO: send the message to all players
+		if (!player.isInPrison())
+			player.getKeptRandomEventCards().add(this);
+		else
+		{
+			player.setInPrison(false);
+			player.getKeptRandomEventCards().remove(this);
+			//TODO: RandomEventManager.addChance(this); in ALL randomEventImplementations
+			// RandomEventManager is not accessible
+		}
+
 	}
 }
