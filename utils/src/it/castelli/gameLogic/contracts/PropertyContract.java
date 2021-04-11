@@ -10,29 +10,33 @@ public class PropertyContract extends Contract
 	 * it) for each house
 	 * quantity
 	 */
-	private int[] revenues;
+	private final int[] revenues;
 	/**
 	 * The color of the property
 	 */
-	private  PropertyColor color;
+	private final PropertyColor color;
 	/**
 	 * The cost of each house
 	 */
-	private  int houseCost;
+	private final int houseCost;
 	/**
 	 * The number of houses bought by the player (5 houses = hotel)
 	 */
 	private int numberOfHouses = 0;
 
 	/**
+	 * The number of PropertyContracts of tha same color in the game
+	 */
+	private final int colorSetContractNumber;
+
+	/**
 	 * Constructor of the PropertyContract
-	 *
-	 * @param name           The name of the contract
+	 *  @param name           The name of the contract
 	 * @param value          The cost of the property when buying from the bank
 	 * @param revenueBase    The revenue of the property when a player lands
-	 *                       on it when the
-	 *                       property
-	 *                       has no houses
+ *                       on it when the
+ *                       property
+ *                       has no houses
 	 * @param revenue1House  The revenue with 1 house
 	 * @param revenue2Houses The revenue with 2 houses
 	 * @param revenue3Houses The revenue with 3 houses
@@ -40,13 +44,15 @@ public class PropertyContract extends Contract
 	 * @param revenueHotel   The revenue with the hotel (5 houses)
 	 * @param houseCost      The cost of each house
 	 * @param color          The color of the property
+	 * @param colorSetContractNumber The number of Contract with this color in the game
 	 */
 	public PropertyContract(String name, int value, int revenueBase,
-	                        int revenue1House, int revenue2Houses,
-	                        int revenue3Houses, int revenue4Houses,
-	                        int revenueHotel, int houseCost,
-	                        PropertyColor color)
+							int revenue1House, int revenue2Houses,
+							int revenue3Houses, int revenue4Houses,
+							int revenueHotel, int houseCost,
+							PropertyColor color, int colorSetContractNumber)
 	{
+		this.colorSetContractNumber = colorSetContractNumber;
 		this.name = name;
 		this.value = value;
 		this.revenues =
@@ -128,8 +134,7 @@ public class PropertyContract extends Contract
 			}
 		}
 
-		//TODO: add the setContractNumber in ALL PropertyContracts, (int setContractNumber representing the number of total contracts in the set)
-		if (this.numberOfHouses == 0) // TODO: && numberOfProprietiesOfTheSameSet == setContractsNumber)
+		if (this.numberOfHouses == 0 && numberOfPropertiesOfTheSameSet == this.colorSetContractNumber)
 			return revenues[0] * 2;
 		return revenues[numberOfHouses];
 	}
