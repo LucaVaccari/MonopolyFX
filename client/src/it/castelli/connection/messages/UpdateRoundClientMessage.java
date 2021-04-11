@@ -31,22 +31,19 @@ public class UpdateRoundClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		Game.getGameManager().setCurrentRound(round);
-		System.out.println("UpdateRoundClientMessage, dice already thrown? " + round.isDiceThrown());
-		//TODO: disable the throwDiceButton according to round.isDiceThrown()
 
 		Platform.runLater(() -> {
 			if (round.getCurrentActivePlayer().equals(Game.getPlayer()))
 			{
 				BoardController.getInstance().getThrowDiceButton().setDisable(round.isDiceThrown());
 				BoardController.getInstance().getThrowDiceButton().setVisible(!round.isDiceThrown());
-				BoardController.getInstance().update();
 			}
 			else
 			{
 				BoardController.getInstance().getThrowDiceButton().setDisable(true);
 				BoardController.getInstance().getThrowDiceButton().setVisible(false);
-				BoardController.getInstance().update();
 			}
+			BoardController.getInstance().update();
 		});
 	}
 }
