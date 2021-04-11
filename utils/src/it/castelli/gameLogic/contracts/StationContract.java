@@ -20,8 +20,6 @@ public class StationContract extends Contract
 		this.mortgageValue = value / 2;
 	}
 
-	public StationContract(){}
-
 	/**
 	 * Getter for the revenue
 	 *
