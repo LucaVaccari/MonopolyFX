@@ -15,6 +15,7 @@ public class GUIUtils
 	 */
 	private static final HashMap<PropertyColor, String> propertyColorsCodes = new HashMap<>();
 	private static final HashMap<Pawn,String > pawnPaths = new HashMap<>();
+	private static  final HashMap<Pawn,String > pawnColor = new HashMap<>();
 
 	static{
 		propertyColorsCodes.put(PropertyColor.BROWN, "#965336");
@@ -32,6 +33,13 @@ public class GUIUtils
 		pawnPaths.put(Pawn.CAR,"/images/pawns/car.png");
 		pawnPaths.put(Pawn.WAGON,"/images/pawns/wagon.png");
 		pawnPaths.put(Pawn.THIMBLE,"/images/pawns/thimble.png");
+
+		pawnColor.put(Pawn.BOAT,"#f9951c");
+		pawnColor.put(Pawn.DOG,"#ee1b23");
+		pawnColor.put(Pawn.SHOE,"#1fb25a");
+		pawnColor.put(Pawn.CAR,"#0072bd");
+		pawnColor.put(Pawn.WAGON,"#dd3997");
+		pawnColor.put(Pawn.THIMBLE,"#ffef06");
 	}
 	/**
 	 *
@@ -42,6 +50,14 @@ public class GUIUtils
 		return pawnPaths;
 	}
 
+	/**
+	 *
+	 * Getter for the pawnColor HashMap
+	 */
+	public static HashMap<Pawn, String> getPawnColor()
+	{
+		return pawnColor;
+	}
 	/**
 	 * Private constructor to prevent instantiating the class
 	 */

@@ -1,9 +1,11 @@
 package it.castelli.gui.controllers;
 
 import it.castelli.ClientMain;
+import it.castelli.Game;
 import it.castelli.connection.messages.ClientMessages;
 import it.castelli.connection.messages.CreateGameClientMessage;
 import it.castelli.connection.messages.JoinGameClientMessage;
+import it.castelli.connection.messages.LeaveGameClientMessage;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.serialization.Serializer;
@@ -30,8 +32,11 @@ public class MainMenuController
 	@FXML
 	private void initialize()
 	{
-		exitButton.setOnAction(event -> SceneManager.getInstance().getPrimaryStage().close());
-		//TODO: actually close the program
+		exitButton.setOnAction(event -> {
+			SceneManager.getInstance().getPrimaryStage().close();
+			System.exit(-1);
+		}
+		);
 
 		joinButton.setOnAction(this::onJoinButtonPressed);
 
