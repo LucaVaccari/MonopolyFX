@@ -63,6 +63,7 @@ public class BuyContractServerMessage implements Message
         else
         {
             gameManager.startAuction(contract);
+            gameConnectionManager.startAuction();
             gameConnectionManager.sendAll(ServerMessages.NEW_AUCTION_MESSAGE_NAME, Serializer.toJson(new NewAuctionServerMessage(contract, null, 9)));
         }
     }

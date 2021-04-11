@@ -236,7 +236,7 @@ public class Player
 	 *
 	 * @param randomEventType the last encountered random event type
 	 */
-	public void setRandomEventType(String randomEventType)
+	private void setRandomEventType(String randomEventType)
 	{
 		this.randomEventType = randomEventType;
 	}
@@ -256,10 +256,17 @@ public class Player
 	 *
 	 * @param randomEventDescription the last encountered random event description
 	 */
-	public void setRandomEventDescription(String randomEventDescription)
+	private void setRandomEventDescription(String randomEventDescription)
 	{
 		this.randomEventDescription = randomEventDescription;
 	}
+
+	public void setLastRandomEvent(String randomEventType, String randomEventDescription)
+	{
+		setRandomEventType(randomEventType);
+		setRandomEventDescription(randomEventDescription);
+	}
+
 
 	/**
 	 * Setter for the pawn

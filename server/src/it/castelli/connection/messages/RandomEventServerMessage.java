@@ -21,13 +21,13 @@ public class RandomEventServerMessage implements Message
     /**
      * Constructor for RandomEventServerMessage
      *
-     * @param randomEventText The random event text body
      * @param randomEventType The random event type
+     * @param randomEventText The random event text body
      */
-    public RandomEventServerMessage(String randomEventText, String randomEventType)
+    public RandomEventServerMessage(String randomEventType, String randomEventText)
     {
-        this.randomEventText = randomEventText;
         this.randomEventType = randomEventType;
+        this.randomEventText = randomEventText;
     }
 
     @Override
