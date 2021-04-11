@@ -664,8 +664,8 @@ public class BoardController
 			else
 			{
 				children.add(pawnImageView);
-				pawnImageView.setFitHeight(30.0 / children.size() * (Math.abs(children.size() % 2 - 1) * 2 + 1));
-				pawnImageView.setFitWidth(30.0 / children.size() * (Math.abs(children.size() % 2 - 1) * 2 + 1));
+				pawnImageView.setFitHeight(30.0 / children.size());
+				pawnImageView.setFitWidth(30.0 / children.size());
 			}
 		}
 	}

@@ -30,8 +30,7 @@ public class MainMenuController
 	@FXML
 	private void initialize()
 	{
-		exitButton.setOnAction(
-				event -> SceneManager.getInstance().getPrimaryStage().close());
+		exitButton.setOnAction(event -> SceneManager.getInstance().getPrimaryStage().close());
 		//TODO: actually close the program
 
 		joinButton.setOnAction(this::onJoinButtonPressed);
@@ -64,7 +63,7 @@ public class MainMenuController
 			if (name.length() == 0)
 			{
 				AlertUtil.showErrorAlert("Nome invalido", "Nome vuoto", "Il nome non può essere vuoto");
-				askPlayerName();
+				return askPlayerName();
 			}
 
 			return name;
@@ -87,7 +86,7 @@ public class MainMenuController
 				{
 					AlertUtil.showErrorAlert("Errore", "Inserire un codice valido",
 							"Il codice inserito deve essere un intero maggiore di 0");
-					askGameCode();
+					return askGameCode();
 				}
 				return matchCode;
 			}
@@ -95,7 +94,7 @@ public class MainMenuController
 			{
 				AlertUtil.showErrorAlert("Errore", "Inserire un codice valido",
 						"Il codice inserito non e' un numero.");
-				askGameCode();
+				return askGameCode();
 			}
 		}
 		return -1;
