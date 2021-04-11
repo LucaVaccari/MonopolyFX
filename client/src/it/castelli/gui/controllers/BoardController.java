@@ -664,8 +664,16 @@ public class BoardController
 			else
 			{
 				children.add(pawnImageView);
-				pawnImageView.setFitHeight(30.0 / children.size());
-				pawnImageView.setFitWidth(30.0 / children.size());
+				// TODO: switch number of player on the square
+				int size = switch (children.size())
+						{
+							case 1 -> 30;
+							case 2, 3, 4 -> 20;
+							case 5, 6 -> 15;
+							default -> 10;
+						};
+				pawnImageView.setFitHeight(size);
+				pawnImageView.setFitWidth(size);
 			}
 		}
 	}
