@@ -458,8 +458,8 @@ public class BoardController
 			Image pawnImage = new Image(String.valueOf(getClass().getResource(imagePath)));
 			ImageView pawnImageView = new ImageView(pawnImage);
 			pawnImageView.setPreserveRatio(true);
-			pawnImageView.setFitHeight(15);
-			pawnImageView.setFitWidth(15);
+			pawnImageView.setFitHeight(20);
+			pawnImageView.setFitWidth(20);
 			playerPawns.put(player.getPawn(), pawnImageView);
 		}
 
@@ -642,8 +642,10 @@ public class BoardController
 	{
 		for (Player player : Game.getGameManager().getPlayers())
 		{
-			FlowPane goSquareFlowPane = (FlowPane) squares[player.getPosition()].getChildren().get(1);
-			ObservableList<Node> children = goSquareFlowPane.getChildren();
+			FlowPane flowPane = (FlowPane) squares[player.getPosition()].getChildren().get(1);
+			flowPane.setVgap(5);
+			flowPane.setHgap(5);
+			ObservableList<Node> children = flowPane.getChildren();
 			ImageView imageView = playerPawns.get(player.getPawn());
 			children.add(imageView);
 		}
