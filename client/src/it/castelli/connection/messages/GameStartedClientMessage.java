@@ -2,6 +2,7 @@ package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
+import it.castelli.gui.controllers.BoardController;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import javafx.application.Platform;
@@ -16,5 +17,6 @@ public class GameStartedClientMessage implements Message
 	{
 		System.out.println("Starting the game");
 		Platform.runLater(() -> SceneManager.getInstance().showScene(SceneType.BOARD));
+		Platform.runLater(() -> BoardController.getInstance().onSceneLoaded());
 	}
 }

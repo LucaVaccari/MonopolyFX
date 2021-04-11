@@ -1,6 +1,8 @@
 package it.castelli.gui;
 
+import it.castelli.gameLogic.Pawn;
 import it.castelli.gameLogic.contracts.PropertyColor;
+import it.castelli.gui.controllers.PawnChoiceController;
 
 import java.util.HashMap;
 
@@ -13,9 +15,9 @@ public class GUIUtils
 	 * Map containing all PropertyColors bound to their hex color codes <#nnnnnn>
 	 */
 	private static final HashMap<PropertyColor, String> propertyColorsCodes = new HashMap<>();
+	private static final HashMap<Pawn,String > pawnPaths = new HashMap<>();
 
-	static
-	{
+	static{
 		propertyColorsCodes.put(PropertyColor.BROWN, "#965336");
 		propertyColorsCodes.put(PropertyColor.LIGHT_BLUE, "#ace2fc");
 		propertyColorsCodes.put(PropertyColor.MAGENTA, "#dd3997");
@@ -24,6 +26,21 @@ public class GUIUtils
 		propertyColorsCodes.put(PropertyColor.YELLOW, "#ffef06");
 		propertyColorsCodes.put(PropertyColor.GREEN, "#1fb25a");
 		propertyColorsCodes.put(PropertyColor.BLUE, "#0072bd");
+
+		pawnPaths.put(Pawn.BOAT,"images/pawns/boat.png");
+		pawnPaths.put(Pawn.DOG,"images/pawns/dog.png");
+		pawnPaths.put(Pawn.SHOE,"images/pawns/shoe.png");
+		pawnPaths.put(Pawn.CAR,"images/pawns/car.png");
+		pawnPaths.put(Pawn.WAGON,"images/pawns/wagon.png");
+		pawnPaths.put(Pawn.THIMBLE,"images/pawns/thimble.png");
+	}
+	/**
+	 *
+	 * Getter for the pawnPaths HashMap
+	 */
+	public static HashMap<Pawn, String> getPawnPaths()
+	{
+		return pawnPaths;
 	}
 
 	/**
