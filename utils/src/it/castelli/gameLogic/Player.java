@@ -351,7 +351,7 @@ public class Player
 		return false;
 	}
 
-	public boolean partialEquals(Object obj)
+	public boolean betterEquals(Object obj)
 	{
 		if (obj instanceof Player)
 		{

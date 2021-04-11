@@ -36,7 +36,7 @@ public class UpdatePlayersListClientMessage implements Message
 		for (Player element : players)
 		{
 			Game.getGameManager().addPlayer(element);
-			if (element.partialEquals(Game.getPlayer()))
+			if (element.betterEquals(Game.getPlayer()))
 				Game.setPlayer(element);
 		}
 
