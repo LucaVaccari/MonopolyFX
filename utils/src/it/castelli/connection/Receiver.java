@@ -51,8 +51,7 @@ public class Receiver implements Runnable
 		System.out.println("Receiver is working");
 		try
 		{
-			BufferedReader in = new BufferedReader(
-					new InputStreamReader(connectionSocket.getInputStream()));
+			BufferedReader in = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
 			while (isRunning)
 			{
 				String firstMessage;
@@ -60,8 +59,7 @@ public class Receiver implements Runnable
 				{
 					String classType = firstMessage.trim();
 					String jsonObject = in.readLine().trim();
-					Message message = (Message) Serializer
-							.fromJson(jsonObject, classType);
+					Message message = (Message) Serializer.fromJson(jsonObject, classType);
 					message.onReceive(this.connection, this.player);
 				}
 			}

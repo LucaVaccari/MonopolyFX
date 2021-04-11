@@ -2,7 +2,6 @@ package it.castelli.gui;
 
 import it.castelli.gameLogic.Pawn;
 import it.castelli.gameLogic.contracts.PropertyColor;
-import it.castelli.gui.controllers.PawnChoiceController;
 
 import java.util.HashMap;
 
@@ -27,12 +26,12 @@ public class GUIUtils
 		propertyColorsCodes.put(PropertyColor.GREEN, "#1fb25a");
 		propertyColorsCodes.put(PropertyColor.BLUE, "#0072bd");
 
-		pawnPaths.put(Pawn.BOAT,"images/pawns/boat.png");
-		pawnPaths.put(Pawn.DOG,"images/pawns/dog.png");
-		pawnPaths.put(Pawn.SHOE,"images/pawns/shoe.png");
-		pawnPaths.put(Pawn.CAR,"images/pawns/car.png");
-		pawnPaths.put(Pawn.WAGON,"images/pawns/wagon.png");
-		pawnPaths.put(Pawn.THIMBLE,"images/pawns/thimble.png");
+		pawnPaths.put(Pawn.BOAT,"/images/pawns/boat.png");
+		pawnPaths.put(Pawn.DOG,"/images/pawns/dog.png");
+		pawnPaths.put(Pawn.SHOE,"/images/pawns/shoe.png");
+		pawnPaths.put(Pawn.CAR,"/images/pawns/car.png");
+		pawnPaths.put(Pawn.WAGON,"/images/pawns/wagon.png");
+		pawnPaths.put(Pawn.THIMBLE,"/images/pawns/thimble.png");
 	}
 	/**
 	 *

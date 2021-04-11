@@ -2,6 +2,7 @@ package it.castelli.gui.controllers;
 
 import it.castelli.ClientMain;
 import it.castelli.Game;
+import it.castelli.connection.messages.ChoosePawnClientMessage;
 import it.castelli.connection.messages.ClientMessages;
 import it.castelli.gameLogic.Pawn;
 import it.castelli.gameLogic.Player;
@@ -12,8 +13,6 @@ import it.castelli.serialization.Serializer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
-
-import java.util.HashMap;
 
 public class PawnChoiceController
 {
@@ -36,17 +35,19 @@ public class PawnChoiceController
 	private void initialize()
 	{
 		thimblePawnImageView.setOnMouseClicked(event -> checkPawn(Pawn.THIMBLE));
-		wagonPawnImageView.setOnMouseClicked(event ->checkPawn(Pawn.WAGON));
-		shoePawnImageView.setOnMouseClicked(event ->checkPawn(Pawn.SHOE));
-		dogPawnImageView.setOnMouseClicked(event ->checkPawn(Pawn.DOG));
-		carPawnImageView.setOnMouseClicked(event ->checkPawn(Pawn.CAR));
-		boatPawnImageView.setOnMouseClicked(event ->checkPawn(Pawn.BOAT));
+		wagonPawnImageView.setOnMouseClicked(event -> checkPawn(Pawn.WAGON));
+		shoePawnImageView.setOnMouseClicked(event -> checkPawn(Pawn.SHOE));
+		dogPawnImageView.setOnMouseClicked(event -> checkPawn(Pawn.DOG));
+		carPawnImageView.setOnMouseClicked(event -> checkPawn(Pawn.CAR));
+		boatPawnImageView.setOnMouseClicked(event -> checkPawn(Pawn.BOAT));
 
 
 	}
-	private void checkPawn(Pawn pawn){
+
+	private void checkPawn(Pawn pawn)
+	{
 		boolean pawnAlreadyUsed = false;
-		for (Player player: Game.getGameManager().getPlayers())
+		for (Player player : Game.getGameManager().getPlayers())
 		{
 			if (player.getPawn() == pawn)
 			{
@@ -54,13 +55,20 @@ public class PawnChoiceController
 				break;
 			}
 		}
-		if (!pawnAlreadyUsed){
-			ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME, Serializer.toJson(pawn));
-			Platform.runLater(() -> SceneManager.getInstance().showScene(SceneType.LOBBY));
+		if (!pawnAlreadyUsed)
+		{
+			ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME,
+			                                Serializer.toJson(new ChoosePawnClientMessage(pawn, Game.getGameCode())));
+			Platform.runLater(() -> {
+				SceneManager.getInstance().showScene(SceneType.LOBBY);
+				SceneManager.getInstance().getPrimaryStage().setTitle("MonopolyFX - Lobby: " + Game.getGameCode());
+			});
 		}
-		else{
-			AlertUtil.showInformationAlert("Errore","pedina già stata scelta",
-					"la pedina che hai selezionato non è disponibile,seleziona un'altra pedina");
+		else
+		{
+			AlertUtil.showInformationAlert("Errore", "pedina gia' stata scelta",
+			                               "la pedina che hai selezionato non è disponibile,seleziona un'altra " +
+			                               "pedina");
 		}
 	}
 }

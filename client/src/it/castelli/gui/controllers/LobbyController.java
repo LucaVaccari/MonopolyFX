@@ -10,7 +10,6 @@ import it.castelli.gui.customComponents.PlayerInfoComponent;
 import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 /**
@@ -61,6 +60,7 @@ public class LobbyController
 
 	public void updatePlayerListView()
 	{
+		playerListView.getChildren().clear();
 		for (Player player : Game.getGameManager().getPlayers())
 		{
 			//player.setPawnPath(pawnPath);

@@ -14,6 +14,7 @@ import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.FXMLFileLoader;
+import it.castelli.gui.GUIUtils;
 import it.castelli.gui.customComponents.ChatComponent;
 import it.castelli.gui.customComponents.PlayerInfoComponent;
 import it.castelli.gui.customComponents.SmallTerrainViewComponent;
@@ -453,8 +454,8 @@ public class BoardController
 
 		for (Player player : Game.getGameManager().getPlayers())
 		{
-			// TODO: get the image based on the player pawn
-			Image pawnImage = new Image(String.valueOf(getClass().getResource("/images/pawns/boat.png")));
+			String imagePath = GUIUtils.getPawnPaths().get(player.getPawn());
+			Image pawnImage = new Image(String.valueOf(getClass().getResource(imagePath)));
 			ImageView pawnImageView = new ImageView(pawnImage);
 			pawnImageView.setPreserveRatio(true);
 			pawnImageView.setFitHeight(15);
@@ -580,26 +581,29 @@ public class BoardController
 				continue;
 			}
 
-			Contract mostProductiveContract = getPlayer().getContracts().get(0);
-			for (Contract contract : getPlayer().getContracts())
+			if (getPlayer().getContracts().size() > 0)
 			{
-				if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-				    !mostProductiveContracts.contains(mostProductiveContract))
-					mostProductiveContract = contract;
-			}
+				Contract mostProductiveContract = getPlayer().getContracts().get(0);
+				for (Contract contract : getPlayer().getContracts())
+				{
+					if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
+					    !mostProductiveContracts.contains(mostProductiveContract))
+						mostProductiveContract = contract;
+				}
 
-			if (mostProductiveContract != null)
-			{
-				ownedTerrains[i].setDisable(false);
-				ownedTerrains[i].setVisible(true);
-				ownedTerrains[i].setContract(mostProductiveContract);
+				if (mostProductiveContract != null)
+				{
+					ownedTerrains[i].setDisable(false);
+					ownedTerrains[i].setVisible(true);
+					ownedTerrains[i].setContract(mostProductiveContract);
+				}
+				else
+				{
+					ownedTerrains[i].setVisible(false);
+					ownedTerrains[i].setDisable(true);
+				}
+				mostProductiveContracts.add(mostProductiveContract);
 			}
-			else
-			{
-				ownedTerrains[i].setVisible(false);
-				ownedTerrains[i].setDisable(true);
-			}
-			mostProductiveContracts.add(mostProductiveContract);
 		}
 	}
 
@@ -638,7 +642,7 @@ public class BoardController
 	{
 		for (Player player : Game.getGameManager().getPlayers())
 		{
-			FlowPane goSquareFlowPane = (FlowPane) squares[0].getChildren().get(1);
+			FlowPane goSquareFlowPane = (FlowPane) squares[player.getPosition()].getChildren().get(1);
 			ObservableList<Node> children = goSquareFlowPane.getChildren();
 			ImageView imageView = playerPawns.get(player.getPawn());
 			children.add(imageView);

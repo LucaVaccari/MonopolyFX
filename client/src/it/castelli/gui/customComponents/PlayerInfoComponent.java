@@ -2,9 +2,11 @@ package it.castelli.gui.customComponents;
 
 import it.castelli.gameLogic.Player;
 import it.castelli.gui.FXMLFileLoader;
+import it.castelli.gui.GUIUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -40,6 +42,9 @@ public class PlayerInfoComponent extends AnchorPane
 
 	private void setPlayer(Player player)
 	{
+		if (player.getPawn() != null)
+			pawnImageView.setImage(
+					new Image(String.valueOf(getClass().getResource(GUIUtils.getPawnPaths().get(player.getPawn())))));
 		playerNameLabel.setText(player.getName());
 		playerMoneyLabel.setText(player.getMoney() + "M");
 	}

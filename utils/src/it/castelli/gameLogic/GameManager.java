@@ -66,13 +66,13 @@ public class GameManager
 								450, 620, 750, 100,
 								PropertyColor.MAGENTA)),
 				new CompanySquare(
-						new CompanyContract("Società Elettrica", CompanyContract.Company.ELECTRIC, 150)),
+						new CompanyContract("Societa' Elettrica", CompanyContract.Company.ELECTRIC, 150)),
 				new PropertySquare(
-						new PropertyContract("Corsa Ateneo", 140, 10, 50, 150,
+						new PropertyContract("Corso Ateneo", 140, 10, 50, 150,
 								450, 620, 750, 100,
 								PropertyColor.MAGENTA)),
 				new PropertySquare(
-						new PropertyContract("Piazza Università", 160, 12, 60,
+						new PropertyContract("Piazza Universita'", 160, 12, 60,
 								180, 500, 700, 900, 100,
 								PropertyColor.MAGENTA)),
 				new StationSquare(
