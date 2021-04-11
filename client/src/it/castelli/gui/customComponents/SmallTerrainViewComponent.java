@@ -49,13 +49,20 @@ public class SmallTerrainViewComponent extends AnchorPane
 		Tooltip.install(this, new Tooltip(contract.getName()));
 
 		terrainNameLabel.setText(contract.getName());
+		System.out.println("Revenue of " + contract.getName() + ": " + contract.getRevenue());
 		terrainValueLabel.setText(String.valueOf(contract.getRevenue()));
 
 		if (contract instanceof PropertyContract)
+		{
+			System.out.println(contract.getName() + " is a property");
 			terrainNameLabel.setStyle("-fx-background-color: " + GUIUtils.getPropertyColorsCodes()
 					.get(((PropertyContract) contract).getColor()));
+		}
 		else
+		{
+			System.out.println(contract.getName() + " is not a property");
 			terrainNameLabel.setStyle("-fx-background-color: #ffffff"); // set to white if station or company
+		}
 
 		if (contract instanceof PropertyContract)
 			setOnMouseClicked(event -> BoardController.showTerrainView((PropertyContract) contract));

@@ -640,12 +640,18 @@ public class BoardController
 
 			if (getPlayer().getContracts().size() > 0)
 			{
-				Contract mostProductiveContract = getPlayer().getContracts().get(0);
+				Contract mostProductiveContract = null;
+
+				for (Contract contract : getPlayer().getContracts())
+					if (!mostProductiveContracts.contains(contract))
+						mostProductiveContract = contract;
+
 				for (Contract contract : getPlayer().getContracts())
 				{
-					if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-							!mostProductiveContracts.contains(mostProductiveContract))
-						mostProductiveContract = contract;
+					if (mostProductiveContract != null)
+						if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
+								!mostProductiveContracts.contains(mostProductiveContract))
+							mostProductiveContract = contract;
 				}
 
 				if (mostProductiveContract != null)

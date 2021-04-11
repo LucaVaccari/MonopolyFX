@@ -1,9 +1,11 @@
 package it.castelli.gameLogic.contracts;
 
+import java.io.Serializable;
+
 /**
  * Contract for a station
  */
-public class StationContract extends Contract
+public class StationContract extends Contract implements Serializable
 {
 	/**
 	 * Constructor for the Station Contract

@@ -1,9 +1,11 @@
 package it.castelli.gameLogic.contracts;
 
+import java.io.Serializable;
+
 /**
  * Contract for a property (all terrains)
  */
-public class PropertyContract extends Contract
+public class PropertyContract extends Contract implements Serializable
 {
 	/**
 	 * The list of revenues (revenues of the property when a player lands on

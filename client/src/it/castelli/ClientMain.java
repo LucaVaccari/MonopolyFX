@@ -1,12 +1,15 @@
 package it.castelli;
 
 import it.castelli.connection.Connection;
+import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
+import it.castelli.serialization.Serializer;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.Socket;
 
 public class ClientMain extends Application
@@ -18,8 +21,8 @@ public class ClientMain extends Application
 		Socket clientSocket = null;
 		try
 		{
-			clientSocket = new Socket("82.52.35.104", 1111);
-//			clientSocket = new Socket("localhost", 1111);
+//			clientSocket = new Socket("82.52.35.104", 1111);
+			clientSocket = new Socket("localhost", 1111);
 		}
 		catch (IOException e)
 		{
