@@ -311,8 +311,8 @@ public class GameManager
 		for (Player element : players)
 		{
 			if (element.betterEquals(player))
-				return player;
+				return element;
 		}
-		return player;
+		return null;
 	}
 }
