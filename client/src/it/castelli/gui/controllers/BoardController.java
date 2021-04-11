@@ -640,6 +640,12 @@ public class BoardController
 	 */
 	public void updatePawnsOnBoard()
 	{
+		for (Group square : squares)
+		{
+			FlowPane flowPane = (FlowPane) square.getChildren().get(1);
+			flowPane.getChildren().clear();
+		}
+
 		for (Player player : Game.getGameManager().getPlayers())
 		{
 			FlowPane flowPane = (FlowPane) squares[player.getPosition()].getChildren().get(1);
