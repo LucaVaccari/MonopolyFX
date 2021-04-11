@@ -29,5 +29,6 @@ public class UpdateRoundClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		Game.getGameManager().setCurrentRound(round);
+		System.out.println("UpdateRoundClientMessage, dice already thrown? " + round.isDiceThrown());
 	}
 }

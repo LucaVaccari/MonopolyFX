@@ -45,6 +45,5 @@ public class Round
 	{
 		diceResult = Dice.rollDice();
 		diceThrown = !diceResult.areResultsEquals();
-		currentActivePlayer.move(diceResult.resultsSum());
 	}
 }
