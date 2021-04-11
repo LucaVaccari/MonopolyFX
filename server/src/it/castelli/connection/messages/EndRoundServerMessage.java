@@ -33,6 +33,7 @@ public class EndRoundServerMessage implements Message
 		GameManager gameManager = gameConnectionManager.getGameManager();
 		gameManager.nextRound();
 
+		System.out.println("EndRoundServerMessageCalled");
 		gameConnectionManager.updatePlayers();
 	}
 }

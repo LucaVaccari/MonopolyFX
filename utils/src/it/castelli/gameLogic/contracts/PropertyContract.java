@@ -123,7 +123,8 @@ public class PropertyContract extends Contract
 	@Override
 	public int getRevenue()
 	{
-		int numberOfPropertiesOfTheSameSet = 0;
+		//TODO: move into PropertySquare
+		/*int numberOfPropertiesOfTheSameSet = 0;
 
 		for (Contract contract : owner.getContracts())
 		{
@@ -136,7 +137,8 @@ public class PropertyContract extends Contract
 
 		if (this.numberOfHouses == 0 && numberOfPropertiesOfTheSameSet == this.colorSetContractNumber)
 			return revenues[0] * 2;
-		return revenues[numberOfHouses];
+		return revenues[numberOfHouses];*/
+		return 0;
 	}
 
 	public PropertyColor getColor()

@@ -1,5 +1,6 @@
 package it.castelli.gameLogic.squares;
 
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 
@@ -13,7 +14,7 @@ public interface Square
 	 *
 	 * @param player The player who landed on the square
 	 */
-	void interact(Player player);
+	void interact(Player player, GameManager gameManager);
 
 	/**
 	 * Get the contract of the square (or null otherwise)

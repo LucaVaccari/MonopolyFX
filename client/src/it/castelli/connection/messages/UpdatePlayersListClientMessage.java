@@ -33,6 +33,7 @@ public class UpdatePlayersListClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
+		System.out.println("Updating player list which contains " + players.size() + " players");
 		Game.getGameManager().clearPlayers();
 		for (Player element : players)
 		{
@@ -40,6 +41,7 @@ public class UpdatePlayersListClientMessage implements Message
 			if (element.betterEquals(Game.getPlayer()))
 				Game.setPlayer(element);
 
+			System.out.println("Il player " + element.getName() + " possiede " + element.getContracts().size() + " proprietà");
 			for (Contract contract : element.getContracts())
 			{
 				System.out.println(element.getName() + " possiede " + contract.getName());
