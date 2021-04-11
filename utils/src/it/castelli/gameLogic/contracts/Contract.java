@@ -9,8 +9,6 @@ import java.util.HashMap;
  */
 public abstract class Contract
 {
-	public Contract(){}
-
 	/**
 	 * Name of the Monopoly property
 	 */
