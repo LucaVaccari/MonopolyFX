@@ -41,8 +41,6 @@ public class UpdatePlayersListClientMessage implements Message
 		}
 
 		Platform.runLater(() -> LobbyController.getInstance().updatePlayerListView());
-		Platform.runLater(() -> BoardController.getInstance().updatePlayerListView());
-
-
+		Platform.runLater(() -> BoardController.getInstance().update());
 	}
 }

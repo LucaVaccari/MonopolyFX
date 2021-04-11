@@ -29,6 +29,6 @@ public class ErrorClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		Platform.runLater(
-				() -> AlertUtil.showInformationAlert("Error", "Error from the server", errorMessage));
+				() -> AlertUtil.showInformationAlert("Errore", "Errore dal server", errorMessage));
 	}
 }

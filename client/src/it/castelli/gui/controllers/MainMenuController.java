@@ -56,7 +56,7 @@ public class MainMenuController
 	private String askPlayerName()
 	{
 		Optional<String> nameResult = AlertUtil.showTextInputDialogue(playerName, "Nome",
-				"Inserisci il nome da usare in gioco", "Nome:");
+				"Inserite il nome da usare in gioco", "Nome:");
 		if (nameResult.isPresent())
 		{
 			String name = nameResult.get().strip();
@@ -74,8 +74,7 @@ public class MainMenuController
 	private int askGameCode()
 	{
 		Optional<String> gameCodeResult = AlertUtil.showTextInputDialogue("", "Codice di gioco",
-				"Inserisci il codice che l'host della " +
-						"partita ti ha fornito",
+				"Inserite il codice che l'host della partita Vi ha fornito",
 				"Codice:");
 		if (gameCodeResult.isPresent())
 		{

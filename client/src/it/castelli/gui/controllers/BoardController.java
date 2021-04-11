@@ -30,6 +30,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -42,6 +43,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 
 import static it.castelli.Game.getGameManager;
 import static it.castelli.Game.getPlayer;
@@ -72,7 +74,7 @@ public class BoardController
 	@FXML
 	private VBox playerListView;
 	@FXML
-	private Button endTurnButton;
+	private Button endRoundButton;
 	@FXML
 	private Button exchangeButton;
 	@FXML
@@ -417,28 +419,35 @@ public class BoardController
 
 		// button callback
 		throwDiceButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
-				Serializer
-						.toJson(new ThrowDiceClientMessage(
-								Game.getGameCode()))));
+				Serializer.toJson(new ThrowDiceClientMessage(Game.getGameCode()))));
 
-		endTurnButton.setOnAction(event -> {
+		endRoundButton.setOnAction(event -> {
 			if (Game.getGameManager().getCurrentRound().isDiceThrown())
 				if (Game.getPlayer().hasMoney(0))
 					ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME,
 							Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
 				else
-					AlertUtil.showInformationAlert("Debito", "Sei in debito",
-							"Salda il debito prima di finire il turno. Se finisci le " +
-									"risorse perderai la partita.");
+					AlertUtil.showInformationAlert("Debito", "Siete in debito",
+							"Saldate il debito prima di finire il turno. Se finite le " +
+									"risorse perderete la partita.");
 			else
-				AlertUtil.showInformationAlert("Tira!", "Devi tirare i dadi",
-						"Non puoi finire il turno senza tirare prima i dadi.");
+				AlertUtil.showInformationAlert("Tirate!", "Dovete tirare i dadi",
+						"Non potete finire il turno senza tirare prima i dadi.");
 		});
 
 		leaveGameButton.setOnAction(event -> {
-			ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-					Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
-			SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
+			Optional<ButtonType> confirm =
+					AlertUtil.showConfirmationAlert("Conferma", "Volete davvero uscire?", "Siete veramente sicuri?");
+			if (confirm.isPresent())
+			{
+				if (confirm.get().equals(ButtonType.OK))
+				{
+					ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
+							Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+
+					SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
+				}
+			}
 		});
 	}
 
@@ -596,6 +605,11 @@ public class BoardController
 				}
 				mostProductiveContracts.add(mostProductiveContract);
 			}
+			else
+			{
+				ownedTerrains[i].setVisible(false);
+				ownedTerrains[i].setDisable(true);
+			}
 		}
 	}
 
@@ -625,20 +639,29 @@ public class BoardController
 			playerListView.getChildren().add(playerInfoComponent);
 		}
 	}
+
 	/**
-	 //	 * Update the view of player pawns on the board
-	 //	 */
+	 * //	 * Update the view of player pawns on the board //
+	 */
 	public void updateRound()
 	{
+		boolean yourTurn = getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer());
+
+		// player list view
 		ObservableList<Node> list = playerListView.getChildren();
-		for (Node element : list){
+		for (Node element : list)
+		{
 			PlayerInfoComponent player = (PlayerInfoComponent) element;
-			if(player.getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer()))
+			if (player.getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer()))
 			{
 				player.getPlayerNameLabel().setStyle("-fx-background-color: #cc000f");
 				return;
 			}
 		}
+
+		// hide buttons
+		endRoundButton.setVisible(yourTurn);
+		endRoundButton.setDisable(!yourTurn);
 	}
 
 	/**
@@ -664,17 +687,22 @@ public class BoardController
 			else
 			{
 				children.add(pawnImageView);
-				// TODO: switch number of player on the square
-				int size = switch (children.size())
-						{
-							case 1 -> 30;
-							case 2, 3, 4 -> 20;
-							case 5, 6 -> 15;
-							default -> 10;
-						};
-				pawnImageView.setFitHeight(size);
-				pawnImageView.setFitWidth(size);
 			}
+		}
+		for (Player player : Game.getGameManager().getPlayers())
+		{
+			FlowPane flowPane = (FlowPane) squares[player.getPosition()].getChildren().get(1);
+			ObservableList<Node> children = flowPane.getChildren();
+			ImageView pawnImageView = playerPawns.get(player.getPawn());
+			int size = switch (children.size())
+					{
+						case 1 -> 30;
+						case 2, 3, 4 -> 20;
+						case 5, 6 -> 15;
+						default -> 10;
+					};
+			pawnImageView.setFitHeight(size);
+			pawnImageView.setFitWidth(size);
 		}
 	}
 
