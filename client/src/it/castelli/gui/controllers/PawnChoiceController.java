@@ -67,7 +67,7 @@ public class PawnChoiceController
 		else
 		{
 			AlertUtil.showInformationAlert("Errore", "pedina gia' stata scelta",
-			                               "la pedina che hai selezionato non è disponibile,seleziona un'altra " +
+			                               "la pedina che hai selezionato non e' disponibile,seleziona un'altra " +
 			                               "pedina");
 		}
 	}

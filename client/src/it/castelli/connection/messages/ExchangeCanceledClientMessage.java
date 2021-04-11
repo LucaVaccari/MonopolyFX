@@ -33,7 +33,7 @@ public class ExchangeCanceledClientMessage implements Message
         {
             Game.getGameManager().removeExchange(exchange);
             AlertUtil.showInformationAlert("Fallimento", "Scambio rifiutato",
-                    "Lo scambio è stato rifiutato.");
+                    "Lo scambio e' stato rifiutato.");
             // TODO: close the exchange window
         }
     }
