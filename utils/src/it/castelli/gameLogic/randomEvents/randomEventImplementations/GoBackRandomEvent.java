@@ -10,12 +10,13 @@ public class GoBackRandomEvent extends RandomEvent
 	public GoBackRandomEvent(String message, int numberOfSteps)
 	{
 		super(message);
-		this.numberOfSteps = numberOfSteps;
+		this.numberOfSteps = -numberOfSteps;
 	}
 
 	@Override
 	public void applyEffect(Player player)
 	{
-		// TODO: implement
+		player.move(numberOfSteps);
+		//TODO: send the message to all players
 	}
 }

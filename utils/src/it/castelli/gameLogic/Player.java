@@ -150,7 +150,7 @@ public class Player
 	{
 		this.position = position;
 		if (position >= 40)
-			;// TODO: give money to player
+			addMoney(200);// TODO: give money to player
 		this.position %= 40;
 		// TODO: GameManager.getSquare(position).interact();
 	}

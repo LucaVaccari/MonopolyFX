@@ -29,6 +29,7 @@ public class YouWonRandomEvent extends RandomEvent
 	@Override
 	public void applyEffect(Player player)
 	{
-		// TODO: implement
+		player.addMoney(reward);
+		// TODO: send the message to all players
 	}
 }

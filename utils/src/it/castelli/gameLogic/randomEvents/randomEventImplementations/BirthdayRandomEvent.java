@@ -10,6 +10,7 @@ public class BirthdayRandomEvent extends RandomEvent
 {
 	private final int present;
 
+
 	/**
 	 * Constructor for the BirthdayRandomEvent
 	 *

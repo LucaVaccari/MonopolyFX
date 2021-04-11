@@ -19,10 +19,10 @@
             </font>
         </Label>
         <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-               text="Se possiedi una sola compagnia, la rendita è quattro volte l'ammontare uscito dai dadi"
+               text="Se possiedi una sola compagnia, la rendita e' quattro volte l'ammontare uscito dai dadi"
                textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS"/>
         <Label layoutX="10.0" layoutY="177.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-               text="Se possiedi entrambe le compagnie, la rendita è dieci volte l'ammontare uscito dai dadi"
+               text="Se possiedi entrambe le compagnie, la rendita e' dieci volte l'ammontare uscito dai dadi"
                textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS"/>
     </VBox>
 </AnchorPane>
