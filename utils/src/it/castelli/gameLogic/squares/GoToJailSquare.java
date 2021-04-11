@@ -16,7 +16,6 @@ public class GoToJailSquare implements Square
 	@Override
 	public void interact(Player player)
 	{
-		// TODO: send the message that a player is in prison
 		player.setInPrison(true);
 		player.setPosition(10, false);
 	}

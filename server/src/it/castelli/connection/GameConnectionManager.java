@@ -84,6 +84,7 @@ public class GameConnectionManager
 	public void startGame()
 	{
 		gameManager.startGame();
+		sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
 		sendAll(ServerMessages.GAME_STARTED_MESSAGE_NAME, Serializer.toJson(new GameStartedServerMessage()));
 		updatePlayers();
 	}

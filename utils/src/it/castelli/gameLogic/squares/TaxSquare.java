@@ -58,7 +58,6 @@ public class TaxSquare implements Square
 	@Override
 	public void interact(Player player)
 	{
-		// TODO: send message to other Clients
 		player.removeMoney(value);
 	}
 

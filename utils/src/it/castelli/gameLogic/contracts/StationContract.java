@@ -30,9 +30,17 @@ public class StationContract extends Contract
 	@Override
 	public int getRevenue()
 	{
-		// TODO: check the number of stations
-		// return 2^(numberOfStations - 1) * revenue
-		return 0;
+		int numberOfOwnedStations = 0;
+
+		for (Contract contract : owner.getContracts())
+		{
+			if (contract instanceof StationContract)
+			{
+				numberOfOwnedStations++;
+			}
+		}
+
+		return 2^(numberOfOwnedStations - 1) * revenue;
 	}
 
 	/**
