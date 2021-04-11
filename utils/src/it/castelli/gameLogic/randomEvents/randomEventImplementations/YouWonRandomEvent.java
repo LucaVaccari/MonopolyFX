@@ -30,6 +30,5 @@ public class YouWonRandomEvent extends RandomEvent
 	public void applyEffect(Player player)
 	{
 		player.addMoney(reward);
-		// TODO: send the message to all players
 	}
 }

@@ -1,6 +1,8 @@
 package it.castelli.gameLogic.randomEvents.randomEventImplementations;
 
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
 
 /**
@@ -33,6 +35,23 @@ public class PayHousesRandomEvent extends RandomEvent
 	@Override
 	public void applyEffect(Player player)
 	{
-		// TODO: implement
+		int totalCost = 0;
+
+		for (Contract contract : player.getContracts())
+		{
+			if (contract instanceof PropertyContract)
+			{
+				if (((PropertyContract) contract).getNumberOfHouses() < 5)
+				{
+					totalCost += ((PropertyContract) contract).getNumberOfHouses() * houseCost;
+				}
+				else
+				{
+					totalCost += hotelCost;
+				}
+			}
+		}
+
+		player.removeMoney(totalCost);
 	}
 }

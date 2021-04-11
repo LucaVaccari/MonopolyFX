@@ -34,6 +34,6 @@ public class GoToRandomEvent extends RandomEvent
 	@Override
 	public void applyEffect(Player player)
 	{
-		// TODO: implement
+		player.setPosition(square, passThroughGo);
 	}
 }

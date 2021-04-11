@@ -33,7 +33,7 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 			player.setInPrison(false);
 			player.getKeptRandomEventCards().remove(this);
 			//TODO: RandomEventManager.addChance(this); in ALL randomEventImplementations
-			// RandomEventManager is not accessible
+			// RandomEventManager is not accessible (maybe change to static?)
 		}
 
 	}

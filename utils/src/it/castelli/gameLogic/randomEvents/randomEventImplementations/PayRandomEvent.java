@@ -31,6 +31,5 @@ public class PayRandomEvent extends RandomEvent
 	public void applyEffect(Player player)
 	{
 		player.removeMoney(cost);
-		//TODO: send message to all players
 	}
 }

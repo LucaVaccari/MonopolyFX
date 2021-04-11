@@ -175,7 +175,7 @@ public class Player
 	{
 		this.previousPosition = this.position;
 		this.position = position;
-		if (position >= 40)
+		if (position >= 40 && passThroughGoSquare)
 			addMoney(200);
 		this.position %= 40;
 	}
