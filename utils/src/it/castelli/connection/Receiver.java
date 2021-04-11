@@ -59,8 +59,18 @@ public class Receiver implements Runnable
 				{
 					String classType = firstMessage.trim();
 					String jsonObject = in.readLine().trim();
-					Message message = (Message) Serializer.fromJson(jsonObject, classType);
-					message.onReceive(this.connection, this.player);
+					try
+					{
+						Message message = (Message) Serializer.fromJson(jsonObject, classType);
+						message.onReceive(this.connection, this.player);
+					}
+					catch (RuntimeException e)
+					{
+						System.out.println("Exception in Receiver reading the object type: " + classType);
+						System.out.println("Exception in Receiver reading the object: " + jsonObject);
+						e.printStackTrace();
+					}
+
 				}
 			}
 		}
