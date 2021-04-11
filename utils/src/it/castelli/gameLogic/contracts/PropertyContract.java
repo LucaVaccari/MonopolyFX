@@ -59,6 +59,8 @@ public class PropertyContract extends Contract
 		this.color = color;
 	}
 
+	public PropertyContract(){}
+
 	/**
 	 * Add houses to the property (this function DOES NOT take money from
 	 * player)

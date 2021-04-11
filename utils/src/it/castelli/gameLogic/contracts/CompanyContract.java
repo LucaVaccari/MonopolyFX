@@ -22,6 +22,8 @@ public class CompanyContract extends Contract
 		this.mortgageValue = value / 2;
 	}
 
+	public CompanyContract(){}
+
 	/**
 	 * Get the revenue of the contract
 	 *
