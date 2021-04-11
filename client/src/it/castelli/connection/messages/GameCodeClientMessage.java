@@ -31,6 +31,9 @@ public class GameCodeClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		Game.setGameCode(gameCode);
-		Platform.runLater(() -> SceneManager.getInstance().showScene(SceneType.LOBBY));
+		Platform.runLater(() -> {
+			SceneManager.getInstance().showScene(SceneType.LOBBY);
+			SceneManager.getInstance().getPrimaryStage().setTitle("MonopolyFX - Lobby: " + Game.getGameCode());
+		});
 	}
 }
