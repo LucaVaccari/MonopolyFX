@@ -676,4 +676,9 @@ public class BoardController
 	{
 		return chat;
 	}
+
+	public Button getThrowDiceButton()
+	{
+		return throwDiceButton;
+	}
 }

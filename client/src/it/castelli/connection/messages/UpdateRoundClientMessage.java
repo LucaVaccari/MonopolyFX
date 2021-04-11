@@ -4,6 +4,8 @@ import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.Round;
+import it.castelli.gui.controllers.BoardController;
+import javafx.application.Platform;
 
 /**
  * Message received from server that updates the current round (receive only)
@@ -31,5 +33,17 @@ public class UpdateRoundClientMessage implements Message
 		Game.getGameManager().setCurrentRound(round);
 		System.out.println("UpdateRoundClientMessage, dice already thrown? " + round.isDiceThrown());
 		//TODO: disable the throwDiceButton according to round.isDiceThrown()
+		Platform.runLater(() -> {
+			if (round.getCurrentActivePlayer().equals(Game.getPlayer()))
+			{
+				BoardController.getInstance().getThrowDiceButton().setDisable(round.isDiceThrown());
+				BoardController.getInstance().getThrowDiceButton().setVisible(!round.isDiceThrown());
+			}
+			else
+			{
+				BoardController.getInstance().getThrowDiceButton().setDisable(true);
+				BoardController.getInstance().getThrowDiceButton().setVisible(false);
+			}
+		});
 	}
 }
