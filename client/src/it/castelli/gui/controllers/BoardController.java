@@ -625,7 +625,6 @@ public class BoardController
 
 		for (Player player : Game.getGameManager().getPlayers())
 		{
-			System.out.println("Updating player view for " + player.getName());
 			//player.setPawnPath(pawnPath);
 			PlayerInfoComponent playerInfoComponent = new PlayerInfoComponent(player);
 			playerInfoComponent.setMaxHeight(Double.MAX_VALUE);

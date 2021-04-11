@@ -50,7 +50,7 @@ public class MovePlayerServerMessage implements Message
                 element.move(squares);
             }
         }
-
+        System.out.println("MovePlayerServerMessage");
         gameConnectionManager.updatePlayers();
     }
 }

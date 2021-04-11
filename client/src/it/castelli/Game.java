@@ -1,8 +1,12 @@
 package it.castelli;
 
+import it.castelli.connection.messages.ClientMessages;
+import it.castelli.connection.messages.Message;
+import it.castelli.connection.messages.MovePlayerClientMessage;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.dice.DiceResult;
+import it.castelli.serialization.Serializer;
 
 /**
  * Static class for storing information about the game
@@ -119,9 +123,11 @@ public class Game
 		{
 			if (lastDiceResult.areResultsEquals())
 				player.setInPrison(false);
-		} else
+		}
+		else
 		{
-			// TODO: send move request to the server
+			Message moveMessage = new MovePlayerClientMessage(Game.getPlayer(), lastDiceResult.resultsSum(), Game.getGameCode());
+			ClientMain.getConnection().send(ClientMessages.MOVE_PLAYER_MESSAGE_NAME, Serializer.toJson(moveMessage));
 		}
 	}
 
