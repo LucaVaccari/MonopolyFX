@@ -654,7 +654,8 @@ public class BoardController
 			PlayerInfoComponent player = (PlayerInfoComponent) element;
 			if (player.getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer()))
 			{
-				player.getPlayerNameLabel().setStyle("-fx-background-color: #cc000f");
+				player.getPlayerNameLabel().setStyle("-fx-background-color: "+GUIUtils.getPawnColor().get(player.getPlayer().getPawn()));
+				player.getPlayerNameLabel().setText(player.getPlayerNameLabel().getText()+"   E' il tuo turno");
 				return;
 			}
 		}
