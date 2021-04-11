@@ -84,7 +84,7 @@ public class GameConnectionManager
 		gameManager.startGame();
 	}
 
-	private void startAuction()
+	public void startAuction()
 	{
 		for (Connection connection : playerConnections)
 		{
@@ -112,6 +112,15 @@ public class GameConnectionManager
 				.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
 		sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
 		sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
+
+		for (Player player : gameManager.getPlayers())
+		{
+			if (player.getRandomEventType() != null)
+			{
+            	sendAll(ServerMessages.RANDOM_EVENT_MESSAGE_NAME, Serializer.toJson(new RandomEventServerMessage(player.getRandomEventType(), player.getRandomEventDescription())));
+            	player.setLastRandomEvent(null, null);
+			}
+		}
 	}
 
 	public Connection getConnectionFromPlayer(Player player)
