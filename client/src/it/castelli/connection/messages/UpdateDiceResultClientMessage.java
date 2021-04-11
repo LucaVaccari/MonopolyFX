@@ -5,6 +5,7 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.dice.DiceResult;
 import it.castelli.gui.controllers.BoardController;
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 
 /**
@@ -32,12 +33,7 @@ public class UpdateDiceResultClientMessage implements Message
 	{
 		Game.setLastDiceResult(diceResult);
 
-		Image firstDieImage = new Image(
-				String.valueOf(getClass().getResource("/images/dice/face_" + diceResult.getFirstResult() + ".png")));
-		BoardController.getInstance().getDie1Image().setImage(firstDieImage);
-		Image secondDieImage = new Image(
-				String.valueOf(getClass().getResource("/images/dice/face_" + diceResult.getSecondResult() + ".png")));
-		BoardController.getInstance().getDie2Image().setImage(secondDieImage);
+		Platform.runLater(() -> BoardController.getInstance().updateDice(diceResult));
 
 		if (Game.getGameManager().getCurrentRound().getCurrentActivePlayer().betterEquals(Game.getPlayer()))
 			Game.useDiceResult();

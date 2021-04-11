@@ -13,6 +13,7 @@ import it.castelli.gameLogic.contracts.CompanyContract;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.contracts.StationContract;
+import it.castelli.gameLogic.dice.DiceResult;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.GUIUtils;
@@ -224,7 +225,8 @@ public class BoardController
 			bastioniGranSassoSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) bastioniGranSassoSquareComponent.getContract()));
 			squares[6] = bastioniGranSassoSquare;
-			Tooltip.install(bastioniGranSassoSquare, new Tooltip(bastioniGranSassoSquareComponent.getContract().getName()));
+			Tooltip.install(bastioniGranSassoSquare,
+					new Tooltip(bastioniGranSassoSquareComponent.getContract().getName()));
 
 			SquareComponent vialeMonterosaSquareComponent =
 					(SquareComponent) vialeMonterosaSquare.getChildren().get(0);
@@ -261,7 +263,8 @@ public class BoardController
 			piazzaUniversitaSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) piazzaUniversitaSquareComponent.getContract()));
 			squares[14] = piazzaUniversitaSquare;
-			Tooltip.install(piazzaUniversitaSquare, new Tooltip(piazzaUniversitaSquareComponent.getContract().getName()));
+			Tooltip.install(piazzaUniversitaSquare,
+					new Tooltip(piazzaUniversitaSquareComponent.getContract().getName()));
 
 			SquareComponent viaVerdiSquareComponent = (SquareComponent) viaVerdiSquare.getChildren().get(0);
 			viaVerdiSquareComponent.setContract(getGameManager().getSquare(16).getContract());
@@ -328,7 +331,8 @@ public class BoardController
 			piazzaGiulioCesareSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) piazzaGiulioCesareSquareComponent.getContract()));
 			squares[29] = piazzaGiulioCesareSquare;
-			Tooltip.install(piazzaGiulioCesareSquare, new Tooltip(piazzaGiulioCesareSquareComponent.getContract().getName()));
+			Tooltip.install(piazzaGiulioCesareSquare,
+					new Tooltip(piazzaGiulioCesareSquareComponent.getContract().getName()));
 
 			SquareComponent viaRomaSquareComponent = (SquareComponent) viaRomaSquare.getChildren().get(0);
 			viaRomaSquareComponent.setContract(getGameManager().getSquare(31).getContract());
@@ -357,7 +361,8 @@ public class BoardController
 			vialeDeiGiardiniSquare.setOnMouseClicked(event -> showTerrainView(
 					(PropertyContract) vialeDeiGiardiniSquareComponent.getContract()));
 			squares[37] = vialeDeiGiardiniSquare;
-			Tooltip.install(vialeDeiGiardiniSquare, new Tooltip(vialeDeiGiardiniSquareComponent.getContract().getName()));
+			Tooltip.install(vialeDeiGiardiniSquare,
+					new Tooltip(vialeDeiGiardiniSquareComponent.getContract().getName()));
 
 			SquareComponent parcoDellaVittoriaSquareComponent =
 					(SquareComponent) parcoDellaVittoriaSquare.getChildren().get(0);
@@ -365,7 +370,8 @@ public class BoardController
 			parcoDellaVittoriaSquare.setOnMouseClicked(
 					event -> showTerrainView((PropertyContract) parcoDellaVittoriaSquareComponent.getContract()));
 			squares[39] = parcoDellaVittoriaSquare;
-			Tooltip.install(parcoDellaVittoriaSquare, new Tooltip(parcoDellaVittoriaSquareComponent.getContract().getName()));
+			Tooltip.install(parcoDellaVittoriaSquare,
+					new Tooltip(parcoDellaVittoriaSquareComponent.getContract().getName()));
 
 			// STATIONS
 			SquareComponent southStationSquareComponent = (SquareComponent) southStationSquare.getChildren().get(0);
@@ -473,7 +479,7 @@ public class BoardController
 					AlertUtil.showInformationAlert("Debito", "Siete in debito",
 							"Saldate il debito prima di finire il turno. Se finite le " +
 									"risorse perderete la partita.");
-			else if(Game.getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer()))
+			else if (Game.getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer()))
 				AlertUtil.showInformationAlert("turno!", "Non è il tuo turno",
 						"Non potete finire il turno perchè non è il vostro turno.");
 			else
@@ -687,7 +693,7 @@ public class BoardController
 	}
 
 	/**
-	 * //	 * Update the view of player pawns on the board //
+	 * Update the view of player pawns on the board
 	 */
 	public void updateRound()
 	{
@@ -703,8 +709,9 @@ public class BoardController
 			PlayerInfoComponent player = (PlayerInfoComponent) element;
 			if (player.getPlayer().betterEquals(currentRound.getCurrentActivePlayer()))
 			{
-				player.getPlayerNameLabel().setStyle("-fx-background-color: "+GUIUtils.getPawnColor().get(player.getPlayer().getPawn()));
-				player.getPlayerNameLabel().setText(player.getPlayerNameLabel().getText()+"   E' il tuo turno");
+				player.getPlayerNameLabel()
+						.setStyle("-fx-background-color: " + GUIUtils.getPawnColor().get(player.getPlayer().getPawn()));
+				player.getPlayerNameLabel().setText(player.getPlayerNameLabel().getText() + "   E' il tuo turno");
 				return;
 			}
 		}
@@ -712,6 +719,9 @@ public class BoardController
 		// hide buttons
 		endRoundButton.setVisible(yourTurn);
 		endRoundButton.setDisable(!yourTurn);
+
+		throwDiceButton.setVisible(yourTurn);
+		throwDiceButton.setDisable(!yourTurn);
 	}
 
 	/**
@@ -769,23 +779,22 @@ public class BoardController
 		updateRound();
 	}
 
-	public ImageView getDie1Image()
+	/**
+	 * Update the images of the dice
+	 * @param result The result of a dice throw to put into dice
+	 */
+	public void updateDice(DiceResult result)
 	{
-		return die1Image;
-	}
-
-	public ImageView getDie2Image()
-	{
-		return die2Image;
+		Image firstDieImage = new Image(
+			String.valueOf(getClass().getResource("/images/dice/face_" + result.getFirstResult() + ".png")));
+		die1Image.setImage(firstDieImage);
+		Image secondDieImage = new Image(
+				String.valueOf(getClass().getResource("/images/dice/face_" + result.getSecondResult() + ".png")));
+		die2Image.setImage(secondDieImage);
 	}
 
 	public ChatComponent getChat()
 	{
 		return chat;
-	}
-
-	public Button getThrowDiceButton()
-	{
-		return throwDiceButton;
 	}
 }

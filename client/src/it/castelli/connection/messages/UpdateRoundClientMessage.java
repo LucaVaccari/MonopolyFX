@@ -32,18 +32,6 @@ public class UpdateRoundClientMessage implements Message
 	{
 		Game.getGameManager().setCurrentRound(round);
 
-		Platform.runLater(() -> {
-			if (round.getCurrentActivePlayer().equals(Game.getPlayer()))
-			{
-				BoardController.getInstance().getThrowDiceButton().setDisable(round.isDiceThrown());
-				BoardController.getInstance().getThrowDiceButton().setVisible(!round.isDiceThrown());
-			}
-			else
-			{
-				BoardController.getInstance().getThrowDiceButton().setDisable(true);
-				BoardController.getInstance().getThrowDiceButton().setVisible(false);
-			}
-			BoardController.getInstance().update();
-		});
+		Platform.runLater(() -> BoardController.getInstance().update());
 	}
 }
