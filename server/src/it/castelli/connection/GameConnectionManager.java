@@ -127,6 +127,7 @@ public class GameConnectionManager
 			{
 				interactWithSquare(player);
 				player.setPreviousPosition(player.getPosition());
+				updatePlayers();
 			}
 		}
 
@@ -162,7 +163,6 @@ public class GameConnectionManager
 		}
 		else
 		{
-			updatePlayers();
 			square.interact(player);
 		}
 
