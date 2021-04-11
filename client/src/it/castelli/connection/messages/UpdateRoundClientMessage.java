@@ -30,5 +30,6 @@ public class UpdateRoundClientMessage implements Message
 	{
 		Game.getGameManager().setCurrentRound(round);
 		System.out.println("UpdateRoundClientMessage, dice already thrown? " + round.isDiceThrown());
+		//TODO: disable the throwDiceButton according to round.isDiceThrown()
 	}
 }
