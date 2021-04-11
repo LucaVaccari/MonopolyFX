@@ -162,6 +162,8 @@ public class GameConnectionManager
 		}
 		else
 			square.interact(player);
+
+		updatePlayers();
 	}
 
 }
