@@ -163,9 +163,15 @@ public class BoardController
 	@FXML
 	private Group parcoDellaVittoriaSquare;
 
+	/**
+	 * Array of all the Group squares on the board, containing a SquareComponent (image) and a FlowPane (pawn parent)
+	 */
 	private final Group[] squares = new Group[40];
 
 	// player pawns
+	/**
+	 * Maps the ImageView shown on the board with the corresponding piece
+	 */
 	private final HashMap<Pawn, ImageView> playerPawns = new HashMap<>();
 
 	@FXML
@@ -173,6 +179,11 @@ public class BoardController
 	@FXML
 	private Label moneyLabel;
 
+	/**
+	 * Singleton instance getter
+	 *
+	 * @return The singleton instance
+	 */
 	public static BoardController getInstance()
 	{
 		return instance;
@@ -432,6 +443,9 @@ public class BoardController
 		update();
 	}
 
+	/**
+	 * Should be called when the Board scene is loaded by the SceneManager
+	 */
 	public void onSceneLoaded()
 	{
 		// player pawns
@@ -448,7 +462,7 @@ public class BoardController
 			playerPawns.put(player.getPawn(), pawnImageView);
 		}
 
-		updatePawnsOnBoard();
+		update();
 	}
 
 	/**
@@ -617,6 +631,9 @@ public class BoardController
 		}
 	}
 
+	/**
+	 * Update the view of player pawns on the board
+	 */
 	public void updatePawnsOnBoard()
 	{
 		for (Player player : Game.getGameManager().getPlayers())
@@ -636,8 +653,7 @@ public class BoardController
 		calculateOwnedTerrains();
 		updateMoneyLabel();
 		updatePlayerListView();
-		// TODO: remove comment
-//		updatePawnsOnBoard();
+		updatePawnsOnBoard();
 	}
 
 	public ImageView getDie1Image()
