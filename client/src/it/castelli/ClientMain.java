@@ -1,6 +1,8 @@
 package it.castelli;
 
 import it.castelli.connection.Connection;
+import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.gameLogic.contracts.PropertyColor;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
@@ -8,9 +10,17 @@ import it.castelli.serialization.Serializer;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.net.Socket;
+
+class Test implements Serializable
+{
+	public Contract bestContractEver;
+
+	public Test(Contract contract)
+	{
+		this.bestContractEver = contract;
+	}
+}
 
 public class ClientMain extends Application
 {
@@ -18,18 +28,36 @@ public class ClientMain extends Application
 
 	public static void main(String[] args)
 	{
-		Socket clientSocket = null;
-		try
-		{
-//			clientSocket = new Socket("82.52.35.104", 1111);
-			clientSocket = new Socket("localhost", 1111);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-		connection = new Connection(clientSocket);
-		launch(args);
+		// TEST
+		Contract contract = new PropertyContract("SUS",
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				PropertyColor.BLUE,
+				3);
+		Test test = new Test(contract);
+		String json = Serializer.toJson(test);
+		Contract contract2 = ((Test) Serializer.fromJson(json, "it.castelli.Test")).bestContractEver;
+		System.out.println(contract2 instanceof PropertyContract);
+		// END TEST
+
+//		Socket clientSocket = null;
+//		try
+//		{
+////			clientSocket = new Socket("82.52.35.104", 1111);
+//			clientSocket = new Socket("localhost", 1111);
+//		}
+//		catch (IOException e)
+//		{
+//			e.printStackTrace();
+//		}
+//		connection = new Connection(clientSocket);
+//		launch(args);
 	}
 
 	public static Connection getConnection()

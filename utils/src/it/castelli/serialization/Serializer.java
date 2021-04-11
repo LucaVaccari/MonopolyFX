@@ -65,7 +65,7 @@ public class Serializer
 	 */
 	public static String toJson(Serializable obj)
 	{
-		return new GsonBuilder().registerTypeAdapter(Contract.class, new ContractAdapter()).create().toJson(obj);
+		return new GsonBuilder()/*.registerTypeAdapter(Contract.class, new ContractAdapter())*/.create().toJson(obj);
 	}
 
 
