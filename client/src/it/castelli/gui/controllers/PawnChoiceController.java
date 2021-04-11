@@ -56,7 +56,7 @@ public class PawnChoiceController
 		}
 		if (!pawnAlreadyUsed){
 			ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME, Serializer.toJson(pawn));
-			Platform.runLater(() -> SceneManager.getInstance().showScene(SceneType.BOARD));
+			Platform.runLater(() -> SceneManager.getInstance().showScene(SceneType.LOBBY));
 		}
 		else{
 			AlertUtil.showInformationAlert("Errore","pedina già stata scelta",
