@@ -1,6 +1,7 @@
 package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
+import it.castelli.gameLogic.Pawn;
 import it.castelli.gameLogic.Player;
 
 /**
@@ -11,7 +12,7 @@ public class ChoosePawnClientMessage implements Message
 	/**
 	 * The pawn URL that represent the image of the pawn
 	 */
-	private final String pawnURL;
+	private final Pawn pawn;
 
 	/**
 	 * The game code
@@ -21,12 +22,12 @@ public class ChoosePawnClientMessage implements Message
 	/**
 	 * Constructor for ChoosePawnClientMessage
 	 *
-	 * @param pawnURL  The pawn URL that represent the image of the pawn
+	 * @param pawn  The pawn URL that represent the image of the pawn
 	 * @param gameCode The game code
 	 */
-	public ChoosePawnClientMessage(String pawnURL, int gameCode)
+	public ChoosePawnClientMessage(Pawn pawn, int gameCode)
 	{
-		this.pawnURL = pawnURL;
+		this.pawn = pawn;
 		this.gameCode = gameCode;
 	}
 
