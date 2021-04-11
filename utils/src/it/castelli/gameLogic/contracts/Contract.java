@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Represents the properties of a Monopoly property
  */
-public abstract class Contract
+public class Contract
 {
 	/**
 	 * Name of the Monopoly property
@@ -109,7 +109,7 @@ public abstract class Contract
 	 *
 	 * @return The revenue of the property when a player lands on it
 	 */
-	public abstract int getRevenue();
+	public int getRevenue(){return 0;}
 
 	/**
 	 * Returns a hash code value for the object. This method is supported for
