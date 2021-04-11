@@ -27,6 +27,7 @@ public class ContractOnSaleClientMessage implements Message
     @Override
     public void onReceive(Connection connection, Player player)
     {
+        System.out.println(contract.getName());
         //TODO: show the property and the "want to buy it" choose window
     }
 }
