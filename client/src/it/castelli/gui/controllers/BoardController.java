@@ -627,6 +627,21 @@ public class BoardController
 			playerListView.getChildren().add(playerInfoComponent);
 		}
 	}
+	/**
+	 //	 * Update the view of player pawns on the board
+	 //	 */
+	public void updateRound()
+	{
+		ObservableList<Node> list = playerListView.getChildren();
+		for (Node element : list){
+			PlayerInfoComponent player = (PlayerInfoComponent) element;
+			if(player.getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer()))
+			{
+				player.getPlayerNameLabel().setStyle("-fx-background-color: #cc000f");
+				return;
+			}
+		}
+	}
 
 	/**
 	 * Update the view of player pawns on the board
@@ -662,6 +677,7 @@ public class BoardController
 		updateMoneyLabel();
 		updatePlayerListView();
 		updatePawnsOnBoard();
+		updateRound();
 	}
 
 	public ImageView getDie1Image()

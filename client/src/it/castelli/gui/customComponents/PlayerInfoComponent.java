@@ -16,12 +16,29 @@ public class PlayerInfoComponent extends AnchorPane
 {
 	public static final String PLAYER_INFO_ELEMENT_FXML_PATH = "/FXMLs/playerInfoElement.fxml";
 
+	/**
+	 //	 * Singleton instance
+	 	 */
+	private static PlayerInfoComponent instance;
+
+	private Player player;
 	@FXML
 	private ImageView pawnImageView;
 	@FXML
 	private Label playerNameLabel;
 	@FXML
 	private Label playerMoneyLabel;
+
+	public static PlayerInfoComponent getInstance()
+	{
+		return instance;
+	}
+
+	@FXML
+	private void initialize()
+	{
+		instance=this;
+	}
 
 	public PlayerInfoComponent(Player player)
 	{
@@ -39,13 +56,23 @@ public class PlayerInfoComponent extends AnchorPane
 			e.printStackTrace();
 		}
 	}
-
 	private void setPlayer(Player player)
 	{
+		this.player = player;
 		if (player.getPawn() != null)
 			pawnImageView.setImage(
 					new Image(String.valueOf(getClass().getResource(GUIUtils.getPawnPaths().get(player.getPawn())))));
 		playerNameLabel.setText(player.getName());
 		playerMoneyLabel.setText(player.getMoney() + "M");
+	}
+
+	public Label getPlayerNameLabel()
+	{
+		return playerNameLabel;
+	}
+
+	public Player getPlayer()
+	{
+		return player;
 	}
 }
