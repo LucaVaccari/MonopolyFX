@@ -1,7 +1,7 @@
 package it.castelli.gameLogic;
 
 /**
- * Enumaration of all possible pawns
+ * Enumeration of all possible pawns
  */
 public enum Pawn
 {
