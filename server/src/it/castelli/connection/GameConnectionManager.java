@@ -3,8 +3,10 @@ package it.castelli.connection;
 import it.castelli.connection.messages.*;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
-import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.gameLogic.squares.CompanySquare;
+import it.castelli.gameLogic.squares.PropertySquare;
 import it.castelli.gameLogic.squares.Square;
+import it.castelli.gameLogic.squares.StationSquare;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.serialization.Serializer;
 
@@ -149,9 +151,9 @@ public class GameConnectionManager
 	private void interactWithSquare(Player player)
 	{
 		Square square = gameManager.getSquare(player.getPosition());
-		if (square instanceof Contract)
+		if (square instanceof PropertySquare || square instanceof StationSquare || square instanceof CompanySquare)
 		{
-			if (((Contract) square).getOwner() == null)
+			if (square.getContract().getOwner() == null)
 				getConnectionFromPlayer(player).send(ServerMessages.CONTRACT_ON_SALE_MESSAGE_NAME, Serializer.toJson(new ContractOnSaleServerMessage(square.getContract())));
 			else
 				square.interact(player);
