@@ -508,6 +508,8 @@ public class BoardController
 	 */
 	public void onSceneLoaded()
 	{
+		System.out.println("Board scene loaded!");
+
 		// player pawns
 		playerPawns.clear();
 
@@ -519,6 +521,8 @@ public class BoardController
 			pawnImageView.setPreserveRatio(true);
 			playerPawns.put(player.getPawn(), pawnImageView);
 		}
+
+		update();
 	}
 
 	/**
@@ -695,38 +699,6 @@ public class BoardController
 	/**
 	 * Update the view of player pawns on the board
 	 */
-	public void updateRound()
-	{
-		Round currentRound = getGameManager().getCurrentRound();
-		if (currentRound == null)
-			return;
-		boolean yourTurn = getPlayer().betterEquals(currentRound.getCurrentActivePlayer());
-
-		// player list view
-		ObservableList<Node> list = playerListView.getChildren();
-		for (Node element : list)
-		{
-			PlayerInfoComponent player = (PlayerInfoComponent) element;
-			if (player.getPlayer().betterEquals(currentRound.getCurrentActivePlayer()))
-			{
-				player.getPlayerNameLabel()
-						.setStyle("-fx-background-color: " + GUIUtils.getPawnColor().get(player.getPlayer().getPawn()));
-				player.getPlayerNameLabel().setText(player.getPlayerNameLabel().getText() + "   E' il tuo turno");
-				return;
-			}
-		}
-
-		// hide buttons
-		endRoundButton.setVisible(yourTurn);
-		endRoundButton.setDisable(!yourTurn);
-
-		throwDiceButton.setVisible(yourTurn);
-		throwDiceButton.setDisable(!yourTurn);
-	}
-
-	/**
-	 * Update the view of player pawns on the board
-	 */
 	public void updatePawnsOnBoard()
 	{
 		for (Group square : squares)
@@ -768,6 +740,37 @@ public class BoardController
 	}
 
 	/**
+	 * Update the view of player pawns on the board
+	 */
+	public void updateRound()
+	{
+		Round currentRound = getGameManager().getCurrentRound();
+		if (currentRound == null)
+			return;
+		boolean yourTurn = getPlayer().betterEquals(currentRound.getCurrentActivePlayer());
+
+		// player list view
+		ObservableList<Node> list = playerListView.getChildren();
+		for (Node element : list)
+		{
+			PlayerInfoComponent player = (PlayerInfoComponent) element;
+			if (player.getPlayer().betterEquals(currentRound.getCurrentActivePlayer()))
+			{
+				player.getPlayerNameLabel()
+						.setStyle("-fx-background-color: " + GUIUtils.getPawnColor().get(player.getPlayer().getPawn()));
+				player.getPlayerNameLabel().setText(player.getPlayerNameLabel().getText() + "   E' il tuo turno");
+			}
+		}
+
+		// hide buttons
+		endRoundButton.setVisible(yourTurn);
+		endRoundButton.setDisable(!yourTurn);
+
+		throwDiceButton.setVisible(yourTurn);
+		throwDiceButton.setDisable(!yourTurn);
+	}
+
+	/**
 	 * Update everything (ownedTerrains, moneyLabel, playerListView, pawnsOnBoard)
 	 */
 	public void update()
@@ -781,12 +784,13 @@ public class BoardController
 
 	/**
 	 * Update the images of the dice
+	 *
 	 * @param result The result of a dice throw to put into dice
 	 */
 	public void updateDice(DiceResult result)
 	{
 		Image firstDieImage = new Image(
-			String.valueOf(getClass().getResource("/images/dice/face_" + result.getFirstResult() + ".png")));
+				String.valueOf(getClass().getResource("/images/dice/face_" + result.getFirstResult() + ".png")));
 		die1Image.setImage(firstDieImage);
 		Image secondDieImage = new Image(
 				String.valueOf(getClass().getResource("/images/dice/face_" + result.getSecondResult() + ".png")));
