@@ -1,5 +1,13 @@
 package it.castelli.gui;
 
+import it.castelli.ClientMain;
+import it.castelli.Game;
+import it.castelli.connection.messages.BuyContractClientMessage;
+import it.castelli.connection.messages.ChatClientMessage;
+import it.castelli.connection.messages.ClientMessages;
+import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.serialization.Serializer;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
@@ -59,6 +67,7 @@ public class AlertUtil
 		alert.setContentText(contentText);
 		return alert.showAndWait();
 	}
+
 
 	/**
 	 * Shows a simple dialog message not interactive (with an ok button to

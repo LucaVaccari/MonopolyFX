@@ -57,7 +57,9 @@ public class BuyContractServerMessage implements Message
 
         if (buy)
         {
-            this.player.addContract(contract);
+            Player buyingPlayer = gameManager.getSamePlayer(this.player);
+            buyingPlayer.addContract(contract);
+            System.out.println("Player " + buyingPlayer.getName() + " bought " + contract.getName());
             gameConnectionManager.updatePlayers();
         }
         else

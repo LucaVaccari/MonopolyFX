@@ -25,7 +25,7 @@ public class GameManager
 	private Auction auction;
 	private CopyOnWriteArrayList<Exchange> exchanges;
 	private Round currentRound;
-	private RandomEventManager randomEventManager = new RandomEventManager();
+	private RandomEventManager randomEventManager;
 	private boolean inGame = false;
 
 	/**
@@ -210,6 +210,9 @@ public class GameManager
 		Player newPlayer = players.get(0);
 		currentRound = new Round(newPlayer, 0);
 		inGame = true;
+		randomEventManager = new RandomEventManager();
+		randomEventManager.shuffleCards();
+
 	}
 
 	public void nextRound()
@@ -301,5 +304,15 @@ public class GameManager
 	public boolean isInGame()
 	{
 		return inGame;
+	}
+
+	public Player getSamePlayer(Player player)
+	{
+		for (Player element : players)
+		{
+			if (element.betterEquals(player))
+				return player;
+		}
+		return player;
 	}
 }

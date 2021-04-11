@@ -4,6 +4,8 @@ import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
+import it.castelli.gameLogic.randomEvents.RandomEventManager;
+import it.castelli.gameLogic.randomEvents.RandomEventType;
 
 /**
  * Random event to make a player pay a certain amount based on the number of
@@ -19,9 +21,9 @@ public class PayHousesRandomEvent extends RandomEvent
 	 *
 	 * @param message The message shown to the player when he draws the card
 	 */
-	public PayHousesRandomEvent(String message, int houseCost, int hotelCost)
+	public PayHousesRandomEvent(String message, RandomEventManager randomEventManager, RandomEventType randomEventType, int houseCost, int hotelCost)
 	{
-		super(message);
+		super(message, randomEventManager, randomEventType);
 		this.houseCost = houseCost;
 		this.hotelCost = hotelCost;
 	}
@@ -53,5 +55,9 @@ public class PayHousesRandomEvent extends RandomEvent
 		}
 
 		player.removeMoney(totalCost);
+		if (super.getType() == RandomEventType.CHANCE)
+			super.getRandomEventManager().addChance(this);
+		else
+			super.getRandomEventManager().addCommunityChest(this);
 	}
 }
