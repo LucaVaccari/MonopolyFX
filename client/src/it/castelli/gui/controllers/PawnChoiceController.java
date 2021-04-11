@@ -57,6 +57,7 @@ public class PawnChoiceController
 		}
 		if (!pawnAlreadyUsed)
 		{
+			Game.getPlayer().setPawn(pawn);
 			ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME,
 			                                Serializer.toJson(new ChoosePawnClientMessage(pawn, Game.getGameCode())));
 			Platform.runLater(() -> {
