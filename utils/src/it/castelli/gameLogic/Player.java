@@ -294,7 +294,7 @@ public class Player
 	}
 
 	/**
-	 * Indicates whether some other object is "equal to" this one.
+	 * Indicates whether some other object is "equal to" this one. (do not use)
 	 * <p>
 	 * The {@code equals} method implements an equivalence relation
 	 * on non-null object references:
@@ -351,6 +351,12 @@ public class Player
 		return false;
 	}
 
+	/**
+	 * Tells if two players are actually equals
+	 *
+	 * @param obj the other player
+	 * @return if the two players are the same one
+	 */
 	public boolean betterEquals(Object obj)
 	{
 		if (obj instanceof Player)
