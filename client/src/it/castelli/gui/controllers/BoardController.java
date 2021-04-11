@@ -6,6 +6,7 @@ import it.castelli.connection.messages.ClientMessages;
 import it.castelli.connection.messages.EndRoundClientMessage;
 import it.castelli.connection.messages.LeaveGameClientMessage;
 import it.castelli.connection.messages.ThrowDiceClientMessage;
+import it.castelli.gameLogic.Pawn;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.CompanyContract;
 import it.castelli.gameLogic.contracts.Contract;
@@ -20,6 +21,7 @@ import it.castelli.gui.customComponents.SquareComponent;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -164,7 +166,7 @@ public class BoardController
 	private final Group[] squares = new Group[40];
 
 	// player pawns
-	private final HashMap<Player, ImageView> playerPawns = new HashMap<>();
+	private final HashMap<Pawn, ImageView> playerPawns = new HashMap<>();
 
 	@FXML
 	private FlowPane ownedPropertiesPane;
@@ -427,21 +429,26 @@ public class BoardController
 			SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 		});
 
+		update();
+	}
+
+	public void onSceneLoaded()
+	{
 		// player pawns
+		playerPawns.clear();
+
 		for (Player player : Game.getGameManager().getPlayers())
 		{
 			// TODO: get the image based on the player pawn
 			Image pawnImage = new Image(String.valueOf(getClass().getResource("/images/pawns/boat.png")));
 			ImageView pawnImageView = new ImageView(pawnImage);
 			pawnImageView.setPreserveRatio(true);
-			pawnImageView.setFitHeight(8);
-			pawnImageView.setFitWidth(8);
-			playerPawns.put(player, pawnImageView);
+			pawnImageView.setFitHeight(15);
+			pawnImageView.setFitWidth(15);
+			playerPawns.put(player.getPawn(), pawnImageView);
 		}
 
-		update();
-
-		// TEST CODE!!!!!!!!
+		updatePawnsOnBoard();
 	}
 
 	/**
@@ -612,7 +619,13 @@ public class BoardController
 
 	public void updatePawnsOnBoard()
 	{
-		// TODO: implement
+		for (Player player : Game.getGameManager().getPlayers())
+		{
+			FlowPane goSquareFlowPane = (FlowPane) squares[0].getChildren().get(1);
+			ObservableList<Node> children = goSquareFlowPane.getChildren();
+			ImageView imageView = playerPawns.get(player.getPawn());
+			children.add(imageView);
+		}
 	}
 
 	/**
@@ -623,7 +636,8 @@ public class BoardController
 		calculateOwnedTerrains();
 		updateMoneyLabel();
 		updatePlayerListView();
-		updatePawnsOnBoard();
+		// TODO: remove comment
+//		updatePawnsOnBoard();
 	}
 
 	public ImageView getDie1Image()
