@@ -473,6 +473,9 @@ public class BoardController
 					AlertUtil.showInformationAlert("Debito", "Siete in debito",
 							"Saldate il debito prima di finire il turno. Se finite le " +
 									"risorse perderete la partita.");
+			else if(Game.getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer()))
+				AlertUtil.showInformationAlert("turno!", "Non è il tuo turno",
+						"Non potete finire il turno perchè non è il vostro turno.");
 			else
 				AlertUtil.showInformationAlert("Tirate!", "Dovete tirare i dadi",
 						"Non potete finire il turno senza tirare prima i dadi.");
@@ -700,7 +703,8 @@ public class BoardController
 			PlayerInfoComponent player = (PlayerInfoComponent) element;
 			if (player.getPlayer().betterEquals(currentRound.getCurrentActivePlayer()))
 			{
-				player.getPlayerNameLabel().setStyle("-fx-background-color: #cc000f");
+				player.getPlayerNameLabel().setStyle("-fx-background-color: "+GUIUtils.getPawnColor().get(player.getPlayer().getPawn()));
+				player.getPlayerNameLabel().setText(player.getPlayerNameLabel().getText()+"   E' il tuo turno");
 				return;
 			}
 		}

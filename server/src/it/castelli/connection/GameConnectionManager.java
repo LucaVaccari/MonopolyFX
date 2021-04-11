@@ -127,12 +127,13 @@ public class GameConnectionManager
 			{
 				interactWithSquare(player);
 				player.setPreviousPosition(player.getPosition());
-				updatePlayers();
+				//updatePlayers();
 			}
 		}
 
 		sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer
 				.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
+
 		//TODO: fix problem with boardMessage: json can't instanciate an interface (Square)
 		//sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
 		sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
@@ -159,11 +160,11 @@ public class GameConnectionManager
 			if (square.getContract().getOwner() == null)
 				getConnectionFromPlayer(player).send(ServerMessages.CONTRACT_ON_SALE_MESSAGE_NAME, Serializer.toJson(new ContractOnSaleServerMessage(square.getContract())));
 			else
-				square.interact(player);
+				square.interact(player, gameManager);
 		}
 		else
 		{
-			square.interact(player);
+			square.interact(player, gameManager);
 		}
 
 	}

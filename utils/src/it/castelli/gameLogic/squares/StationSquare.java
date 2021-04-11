@@ -1,5 +1,6 @@
 package it.castelli.gameLogic.squares;
 
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.StationContract;
 
@@ -42,7 +43,7 @@ public class StationSquare implements Square
 	 * @param player The player who landed on the square
 	 */
 	@Override
-	public void interact(Player player)
+	public void interact(Player player, GameManager gameManager)
 	{
 		int revenue = contract.getRevenue();
 		player.removeMoney(revenue);

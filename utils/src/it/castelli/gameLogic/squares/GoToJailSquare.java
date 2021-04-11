@@ -1,5 +1,6 @@
 package it.castelli.gameLogic.squares;
 
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 
@@ -14,7 +15,7 @@ public class GoToJailSquare implements Square
 	 * @param player The player to be arrested
 	 */
 	@Override
-	public void interact(Player player)
+	public void interact(Player player, GameManager gameManager)
 	{
 		player.setInPrison(true);
 		player.setPosition(10, false);

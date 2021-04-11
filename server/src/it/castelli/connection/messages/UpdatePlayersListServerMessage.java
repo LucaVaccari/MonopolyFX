@@ -22,6 +22,7 @@ public class UpdatePlayersListServerMessage implements Message
 	 */
 	public UpdatePlayersListServerMessage(CopyOnWriteArrayList<Player> players)
 	{
+		System.out.println(players.size() + " players in the list");
 		this.players = players;
 	}
 

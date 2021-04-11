@@ -30,7 +30,8 @@ public class StationContract extends Contract
 	@Override
 	public int getRevenue()
 	{
-		int numberOfOwnedStations = 0;
+		//TODO: Move in StationSquare
+		/*int numberOfOwnedStations = 0;
 
 		for (Contract contract : owner.getContracts())
 		{
@@ -40,7 +41,8 @@ public class StationContract extends Contract
 			}
 		}
 
-		return 2^(numberOfOwnedStations - 1) * revenue;
+		return 2^(numberOfOwnedStations - 1) * revenue;*/
+		return 0;
 	}
 
 	/**

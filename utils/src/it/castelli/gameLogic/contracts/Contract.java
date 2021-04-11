@@ -1,5 +1,6 @@
 package it.castelli.gameLogic.contracts;
 
+import it.castelli.gameLogic.OwnerPlayer;
 import it.castelli.gameLogic.Player;
 
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class Contract
 	/**
 	 * The player who owns the property
 	 */
-	protected Player owner;
+	protected OwnerPlayer owner;
 	/**
 	 * Is the property mortgaged?
 	 */
@@ -69,7 +70,7 @@ public class Contract
 	 *
 	 * @return The player who owns the property
 	 */
-	public Player getOwner()
+	public OwnerPlayer getOwner()
 	{
 		return owner;
 	}
@@ -81,7 +82,7 @@ public class Contract
 	 */
 	public void setOwner(Player owner)
 	{
-		this.owner = owner;
+		this.owner = new OwnerPlayer(owner);
 	}
 
 	/**

@@ -1,8 +1,8 @@
 package it.castelli.gameLogic.squares;
 
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.CompanyContract;
-import it.castelli.gameLogic.contracts.Contract;
 
 /**
  * Square containing a company
@@ -43,9 +43,10 @@ public class CompanySquare implements Square
 	 * @param player The player who landed on the square
 	 */
 	@Override
-	public void interact(Player player)
+	public void interact(Player player, GameManager gameManager)
 	{
-		int revenue = player.getPosition() - player.getPreviousPosition();
+		//TODO: find the owner
+		/*int revenue = player.getPosition() - player.getPreviousPosition();
 
 		int numberOfCompaniesOwned = 0;
 		for (Contract contract : contract.getOwner().getContracts())
@@ -58,7 +59,7 @@ public class CompanySquare implements Square
 			revenue = revenue * 2;
 
 		player.removeMoney(revenue);
-		contract.getOwner().addMoney(revenue);
+		contract.getOwner().addMoney(revenue);*/
 	}
 
 }
