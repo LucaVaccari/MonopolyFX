@@ -305,4 +305,14 @@ public class GameManager
 	{
 		return inGame;
 	}
+
+	public Player getSamePlayer(Player player)
+	{
+		for (Player element : players)
+		{
+			if (element.betterEquals(player))
+				return player;
+		}
+		return player;
+	}
 }
