@@ -50,11 +50,13 @@ public class UpdateRoundClientMessage implements Message
 			{
 				BoardController.getInstance().getThrowDiceButton().setDisable(round.isDiceThrown());
 				BoardController.getInstance().getThrowDiceButton().setVisible(!round.isDiceThrown());
+				BoardController.getInstance().update();
 			}
 			else
 			{
 				BoardController.getInstance().getThrowDiceButton().setDisable(true);
 				BoardController.getInstance().getThrowDiceButton().setVisible(false);
+				BoardController.getInstance().update();
 			}
 		});
 	}

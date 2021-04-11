@@ -29,5 +29,6 @@ public class ContractOnSaleClientMessage implements Message
     {
         System.out.println(contract.getName());
         //TODO: show the property and the "want to buy it" choose window
+
     }
 }
