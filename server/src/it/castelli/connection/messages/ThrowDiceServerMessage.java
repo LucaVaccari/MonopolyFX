@@ -39,7 +39,7 @@ public class ThrowDiceServerMessage implements Message
 		ConnectionManager.getInstance().getGames().get(gameCode).sendAll(ServerMessages.UPDATE_DICE_RESULT_MESSAGE_NAME,
 				Serializer.toJson(new UpdateDiceResultServerMessage(
 						diceResult)));
-
+		ConnectionManager.getInstance().getGames().get(gameCode).updatePlayers();
 
 	}
 }
