@@ -5,7 +5,7 @@ package it.castelli.gameLogic.contracts;
  */
 public class CompanyContract extends Contract
 {
-	private final Company company;
+	private Company company;
 
 	/**
 	 * Constructor for the CompanyContract
