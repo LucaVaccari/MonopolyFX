@@ -32,7 +32,7 @@ public class ExchangeSuccessfulClientMessage implements Message
 		if (exchange.getPlayer1().equals(Game.getPlayer()) || exchange.getPlayer2().equals(Game.getPlayer()))
 		{
 			AlertUtil.showInformationAlert("Successo", "Scambio eseguito",
-					"Lo scambio è stato effettuato con successo!");
+					"Lo scambio e' stato effettuato con successo!");
 			// TODO: close the exchange window
 		}
 	}

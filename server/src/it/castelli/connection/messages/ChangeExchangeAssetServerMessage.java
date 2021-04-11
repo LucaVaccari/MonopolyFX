@@ -63,7 +63,7 @@ public class ChangeExchangeAssetServerMessage implements Message
 		} else
 		{
 			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer
-					.toJson(new ErrorServerMessage("L'altro giocatore ha già accettato, puoi solo accettare o " +
+					.toJson(new ErrorServerMessage("L'altro giocatore ha gia' accettato, puoi solo accettare o " +
 							"rifiutare lo scambio!")));
 		}
 

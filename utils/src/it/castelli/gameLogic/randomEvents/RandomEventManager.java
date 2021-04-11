@@ -76,7 +76,7 @@ public class RandomEventManager
 
 		communityChests.addAll(Arrays.asList(
 				new BirthdayRandomEvent(
-						"È il vostro compleanno: ogni giocatore vi regala 10" +
+						"e' il vostro compleanno: ogni giocatore vi regala 10" +
 								" M",
 						10),
 				new GoToRandomEvent("Ritornate al Vicolo Corto", 1, false),
@@ -97,7 +97,7 @@ public class RandomEventManager
 								" di servirvene (non si sa mai!) oppure venderlo"),
 				new GoToRandomEvent("Andate avanti sino al 'Via!'", 0, true),
 				new YouWonRandomEvent(
-						"È maturata la cedola delle vostre azioni: ritirate " +
+						"E' maturata la cedola delle vostre azioni: ritirate " +
 								"25" +
 								" M",
 						25),

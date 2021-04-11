@@ -94,7 +94,7 @@ public class MainMenuController
 			catch (NumberFormatException e)
 			{
 				AlertUtil.showErrorAlert("Errore", "Inserire un codice valido",
-						"Il codice inserito non è un numero.");
+						"Il codice inserito non e' un numero.");
 				askGameCode();
 			}
 		}

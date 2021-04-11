@@ -40,7 +40,7 @@
                 </VBox>
             </HBox>
             <Button fx:id="addPropertyButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                    mnemonicParsing="false" text="Aggiungi proprietà" VBox.vgrow="ALWAYS"/>
+                    mnemonicParsing="false" text="Aggiungi proprieta'" VBox.vgrow="ALWAYS"/>
             <FlowPane fx:id="yourPropertiesPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                       prefHeight="343.0" prefWidth="215.0" VBox.vgrow="ALWAYS"/>
         </VBox>
