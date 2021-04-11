@@ -42,4 +42,5 @@ public class ChoosePawnServerMessage implements Message
 		manager.sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME,
 		                Serializer.toJson(new UpdatePlayersListServerMessage(manager.getGameManager().getPlayers())));
 	}
+
 }
