@@ -14,11 +14,11 @@ public class PropertyContract extends Contract
 	/**
 	 * The color of the property
 	 */
-	private PropertyColor color;
+	private  PropertyColor color;
 	/**
 	 * The cost of each house
 	 */
-	private int houseCost;
+	private  int houseCost;
 	/**
 	 * The number of houses bought by the player (5 houses = hotel)
 	 */
