@@ -26,30 +26,30 @@
                       prefHeight="550.0" prefWidth="550.0" style="-fx-border-color: 000000; -fx-border-image-width: 5;"
                       VBox.vgrow="ALWAYS">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
+                    <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="ALWAYS"/>
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
                 </rowConstraints>
 
 

@@ -33,10 +33,10 @@ public class UpdateDiceResultClientMessage implements Message
 		Game.setLastDiceResult(diceResult);
 
 		Image firstDieImage = new Image(
-				String.valueOf(getClass().getResource("/images/face_" + diceResult.getFirstResult() + ".png")));
+				String.valueOf(getClass().getResource("/images/dice/face_" + diceResult.getFirstResult() + ".png")));
 		BoardController.getInstance().getDie1Image().setImage(firstDieImage);
 		Image secondDieImage = new Image(
-				String.valueOf(getClass().getResource("/images/face_" + diceResult.getSecondResult() + ".png")));
+				String.valueOf(getClass().getResource("/images/dice/face_" + diceResult.getSecondResult() + ".png")));
 		BoardController.getInstance().getDie2Image().setImage(secondDieImage);
 
 		Game.useDiceResult();
