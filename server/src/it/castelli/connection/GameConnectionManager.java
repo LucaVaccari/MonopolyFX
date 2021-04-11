@@ -126,6 +126,7 @@ public class GameConnectionManager
 			if (player.getPreviousPosition() != player.getPosition())
 			{
 				interactWithSquare(player);
+				player.setPreviousPosition(player.getPosition());
 			}
 		}
 

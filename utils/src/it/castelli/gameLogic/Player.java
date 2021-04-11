@@ -173,11 +173,22 @@ public class Player
 	 */
 	public void setPosition(int position, boolean passThroughGoSquare)
 	{
-		this.previousPosition = this.position;
+		setPreviousPosition(this.position);
 		this.position = position;
 		if (position >= 40 && passThroughGoSquare)
 			addMoney(200);
 		this.position %= 40;
+	}
+
+	/**
+	 * Set the previous position of the player
+	 *
+	 * @param previousPosition The new position for the player
+	 *
+	 */
+	public void setPreviousPosition(int previousPosition)
+	{
+		this.previousPosition = previousPosition;
 	}
 
 	/**
