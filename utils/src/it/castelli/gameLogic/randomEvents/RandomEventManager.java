@@ -3,6 +3,7 @@ package it.castelli.gameLogic.randomEvents;
 import it.castelli.gameLogic.randomEvents.randomEventImplementations.*;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -24,100 +25,96 @@ public class RandomEventManager
 		chances.addAll(Arrays.asList(
 				new GoToRandomEvent(
 						"Andate in prigione direttamente senza passare dal " +
-								"via",
+								"via",this, RandomEventType.CHANCE,
 						30, false),
 				new PayHousesRandomEvent(
 						"Avete tutti i vostri stabili da riparare: " +
 								"pagare 25 M per ogni casa e 100 M per ogni albergo",
-						25, 100),
+						this, RandomEventType.CHANCE, 25, 100),
 				new GoToRandomEvent(
 						"Andate alla Stazione NORD; se passate dal 'Via!' " +
-								"ritirate 200 M",
+								"ritirate 200 M", this, RandomEventType.CHANCE,
 						25, true),
 				new YouWonRandomEvent(
-						"Avete vinto un terno al lotto: ritirate 100 M", 100),
-				new GoToRandomEvent("Andate avanti sino al 'Via!'", 0, true),
+						"Avete vinto un terno al lotto: ritirate 100 M", this, RandomEventType.CHANCE, 100),
+				new GoToRandomEvent("Andate avanti sino al 'Via!'", this, RandomEventType.CHANCE, 0, true),
 				new GoToRandomEvent(
 						"Andate sino al Largo Colombo: se passate dal 'Via!'" +
 								" " +
-								"ritirate 200 M",
+								"ritirate 200 M", this, RandomEventType.CHANCE,
 						24, true),
 				new PayRandomEvent(
-						"Matrimonio in famiglia: spese impreviste 150 M", 150),
+						"Matrimonio in famiglia: spese impreviste 150 M", this, RandomEventType.CHANCE,150),
 				new YouWonRandomEvent(
 						"Maturano le cedole delle vostre cartelle di rendita," +
 								" " +
-								"ritirate 150 M",
+								"ritirate 150 M", this, RandomEventType.CHANCE,
 						150),
 				new PayHousesRandomEvent(
 						"Dovete pagare un contributo di miglioria stradale, " +
 								"40" +
 								" M per ogni casa, " +
-								"100 M per ogni albergo che possedete", 40, 100),
+								"100 M per ogni albergo che possedete", this, RandomEventType.CHANCE, 40, 100),
 				new GoBackRandomEvent(
-						"Fate 3 passi indietro (con tanti auguri!)", 3),
-				new GoToRandomEvent("Andate fino al Parco della Vittoria", 39,
+						"Fate 3 passi indietro (con tanti auguri!)",this , RandomEventType.CHANCE,3),
+				new GoToRandomEvent("Andate fino al Parco della Vittoria", this, RandomEventType.CHANCE, 39,
 						false),
 				new GoToRandomEvent(
 						"Andate fino alla Via Accademia: se passate dal " +
 								"'Via!'" +
-								" ritirate 200 M",
+								" ritirate 200 M", this, RandomEventType.CHANCE,
 						11, true),
 				new PrisonEscapeRandomEvent(
 						"Uscite gratis di prigione, se ci siete: potete " +
 								"conservare questo cartoncino sino al momento" +
-								" di servirvene (non si sa mai!) oppure venderlo"),
+								" di servirvene (non si sa mai!) oppure venderlo", this, RandomEventType.CHANCE),
 				new YouWonRandomEvent(
 						"La Banca Vi paga gli interessi del vostro Conto " +
-								"Corrente: ritirate 50 M",
+								"Corrente: ritirate 50 M", this, RandomEventType.CHANCE,
 						50),
-				new PayRandomEvent("Versate 20 M per benificenza", 20)
+				new PayRandomEvent("Versate 20 M per benificenza", this, RandomEventType.CHANCE, 20)
 		));
 
 		communityChests.addAll(Arrays.asList(
-				new BirthdayRandomEvent(
-						"e' il vostro compleanno: ogni giocatore vi regala 10" +
-								" M",
-						10),
-				new GoToRandomEvent("Ritornate al Vicolo Corto", 1, false),
+				new GoToRandomEvent("Ritornate al Vicolo Corto", this, RandomEventType.COMMUNITY_CHEST,1, false),
 				new GoToRandomEvent(
 						"Andate in prigione direttamente senza passare dal " +
-								"via",
+								"via", this, RandomEventType.COMMUNITY_CHEST,
 						30, false),
 				new YouWonRandomEvent(
-						"Avete venduto delle azioni: ricavate 50 M", 50),
+						"Avete venduto delle azioni: ricavate 50 M", this, RandomEventType.COMMUNITY_CHEST,50),
 				new YouWonRandomEvent(
-						"Siete creditori verso la Banca di 200 M: ritiratele",
+						"Siete creditori verso la Banca di 200 M: ritiratele", this, RandomEventType.COMMUNITY_CHEST,
 						200),
-				new YouWonRandomEvent("Ereditate da un lontano parente 100 M",
+				new YouWonRandomEvent("Ereditate da un lontano parente 100 M", this, RandomEventType.COMMUNITY_CHEST,
 						100),
 				new PrisonEscapeRandomEvent(
 						"Uscite gratis di prigione, se ci siete: potete " +
 								"conservare questo cartoncino sino al momento" +
-								" di servirvene (non si sa mai!) oppure venderlo"),
-				new GoToRandomEvent("Andate avanti sino al 'Via!'", 0, true),
+								" di servirvene (non si sa mai!) oppure venderlo", this, RandomEventType.COMMUNITY_CHEST),
+				new GoToRandomEvent("Andate avanti sino al 'Via!'", this, RandomEventType.COMMUNITY_CHEST, 0, true),
 				new YouWonRandomEvent(
 						"E' maturata la cedola delle vostre azioni: ritirate " +
 								"25" +
-								" M",
+								" M", this, RandomEventType.CHANCE,
 						25),
 				new PayRandomEvent(
-						"Scade il Vostro premio di assicurazione: pagate 50 M",
+						"Scade il Vostro premio di assicurazione: pagate 50 M", this, RandomEventType.COMMUNITY_CHEST,
 						50),
 				new YouWonRandomEvent(
 						"Avete vinto un premio di consolazione alla Lotteria" +
 								" " +
-								"di Merano, ritirate 100 M",
+								"di Merano, ritirate 100 M", this, RandomEventType.COMMUNITY_CHEST,
 						100),
 				new YouWonRandomEvent(
 						"Avete vinto il secondo premio in un concorso di " +
-								"bellezza: ritirate 10 M",
+								"bellezza: ritirate 10 M", this, RandomEventType.COMMUNITY_CHEST,
 						10),
 				new YouWonRandomEvent(
 						"Rimborso tassa sul reddito: ritirate 20 M dalla " +
-								"Banca",
+								"Banca", this, RandomEventType.COMMUNITY_CHEST,
 						20),
-				new PayRandomEvent("Avete perso una causa: pagate 100 M", 100)
+				new PayRandomEvent("Avete perso una causa: pagate 100 M", this, RandomEventType.COMMUNITY_CHEST,100)
 		));
 	}
 
@@ -160,4 +157,11 @@ public class RandomEventManager
 	{
 		communityChests.add(communityChest);
 	}
+
+	public void shuffleCards()
+	{
+		Collections.shuffle(chances);
+		Collections.shuffle(communityChests);
+	}
+
 }

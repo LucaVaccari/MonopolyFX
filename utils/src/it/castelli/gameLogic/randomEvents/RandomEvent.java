@@ -16,13 +16,46 @@ public abstract class RandomEvent
 	private final String message;
 
 	/**
-	 * Generic constructor for the RandomEvent
-	 *
-	 * @param message The message shown to the player when drawing the card
+	 * The random event manager
 	 */
-	public RandomEvent(String message)
+	private final RandomEventManager randomEventManager;
+
+	/**
+	 * The type of the random event
+	 */
+	private final RandomEventType type;
+
+	/**
+	 * Generic constructor for the RandomEvent
+	 *  @param message The message shown to the player when drawing the card
+	 * @param randomEventManager The randomEventManager
+	 * @param type
+	 */
+	public RandomEvent(String message, RandomEventManager randomEventManager, RandomEventType type)
 	{
 		this.message = message;
+		this.randomEventManager = randomEventManager;
+		this.type = type;
+	}
+
+	/**
+	 * Getter for type
+	 *
+	 * @return The type of the random event
+	 */
+	public RandomEventType getType()
+	{
+		return type;
+	}
+
+	/**
+	 * Getter for randomEventManager
+	 *
+	 * @return The random event manager
+	 */
+	public RandomEventManager getRandomEventManager()
+	{
+		return randomEventManager;
 	}
 
 	/**
