@@ -32,7 +32,7 @@ public class GameCodeClientMessage implements Message
 	{
 		Game.setGameCode(gameCode);
 		Platform.runLater(() -> {
-			SceneManager.getInstance().showScene(SceneType.LOBBY);
+			SceneManager.getInstance().showScene(SceneType.PAWN_CHOICE);
 			SceneManager.getInstance().getPrimaryStage().setTitle("MonopolyFX - Lobby: " + Game.getGameCode());
 		});
 	}

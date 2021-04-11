@@ -1,8 +1,12 @@
 package it.castelli.connection.messages;
 
+import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Pawn;
 import it.castelli.gameLogic.Player;
+import it.castelli.gui.scene.SceneManager;
+import it.castelli.gui.scene.SceneType;
+import javafx.application.Platform;
 
 /**
  * Request to set the player's pawn with the chosen one (send only)
