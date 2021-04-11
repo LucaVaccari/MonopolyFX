@@ -30,9 +30,6 @@ public class CompanyContract extends Contract
 	@Override
 	public int getRevenue()
 	{
-		// TODO: check if owner owns both companies
-		// dice roll
-		// return diceResult * (has both ? 10 : 4)
 		return 0;
 	}
 

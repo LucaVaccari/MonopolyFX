@@ -2,6 +2,7 @@ package it.castelli.gameLogic.squares;
 
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.CompanyContract;
+import it.castelli.gameLogic.contracts.Contract;
 
 /**
  * Square containing a company
@@ -44,16 +45,20 @@ public class CompanySquare implements Square
 	@Override
 	public void interact(Player player)
 	{
-		if (contract.getOwner() == null)
+		int revenue = player.getPosition() - player.getPreviousPosition();
+
+		int numberOfCompaniesOwned = 0;
+		for (Contract contract : contract.getOwner().getContracts())
 		{
-			// TODO: give the player the possibility to buy the company
-		} else
-		{
-			int revenue = contract.getRevenue();
-			player.removeMoney(revenue);
-			contract.getOwner().addMoney(revenue);
-			// TODO: Send the message to all Clients
+			if (contract instanceof CompanyContract)
+				numberOfCompaniesOwned++;
 		}
+
+		if (numberOfCompaniesOwned == 2)
+			revenue = revenue * 2;
+
+		player.removeMoney(revenue);
+		contract.getOwner().addMoney(revenue);
 	}
 
 }

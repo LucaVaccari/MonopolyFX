@@ -117,7 +117,19 @@ public class PropertyContract extends Contract
 	@Override
 	public int getRevenue()
 	{
-		if (this.numberOfHouses == 0) // TODO: && player has all properties)
+		int numberOfPropertiesOfTheSameSet = 0;
+
+		for (Contract contract : owner.getContracts())
+		{
+			if (contract instanceof PropertyContract)
+			{
+				if (((PropertyContract) contract).getColor() == this.color)
+					numberOfPropertiesOfTheSameSet++;
+			}
+		}
+
+		//TODO: add the setContractNumber in ALL PropertyContracts, (int setContractNumber representing the number of total contracts in the set)
+		if (this.numberOfHouses == 0) // TODO: && numberOfProprietiesOfTheSameSet == setContractsNumber)
 			return revenues[0] * 2;
 		return revenues[numberOfHouses];
 	}

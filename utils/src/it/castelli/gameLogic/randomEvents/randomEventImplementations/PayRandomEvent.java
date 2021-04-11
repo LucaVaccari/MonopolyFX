@@ -8,8 +8,10 @@ import it.castelli.gameLogic.randomEvents.RandomEvent;
  */
 public class PayRandomEvent extends RandomEvent
 {
+	/**
+	 * The amount of money that this event will remove from the player
+	 */
 	private final int cost;
-	// TODO: add parameters (cost: int)
 
 	/**
 	 * Constructor for the PayRandomEvent

@@ -3,6 +3,8 @@ package it.castelli.connection;
 import it.castelli.connection.messages.*;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.gameLogic.squares.Square;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.serialization.Serializer;
 
@@ -120,7 +122,7 @@ public class GameConnectionManager
 
 			if (player.getPreviousPosition() != player.getPosition())
 			{
-				gameManager.getSquare(player.getPosition()).interact(player);
+				interactWithSquare(player);
 			}
 		}
 
@@ -143,5 +145,18 @@ public class GameConnectionManager
 		return null;
 	}
 
+	private void interactWithSquare(Player player)
+	{
+		Square square = gameManager.getSquare(player.getPosition());
+		if (square instanceof Contract)
+		{
+			if (((Contract) square).getOwner() == null)
+				getConnectionFromPlayer(player).send(ServerMessages.CONTRACT_ON_SALE_MESSAGE_NAME, Serializer.toJson(new ContractOnSaleServerMessage(square.getContract())));
+			else
+				square.interact(player);
+		}
+		else
+			square.interact(player);
+	}
 
 }
