@@ -17,7 +17,7 @@ public class ConnectionReceiver implements Runnable
 	/**
 	 * Indicate the time between two server's checks to verify a connection activity (in seconds)
 	 */
-	private int checkTime = 10;
+	private static final int CHECK_TIME = 4;
 	private Thread keepAliveReceiver;
 	private Thread keepAliveSender;
 
@@ -27,8 +27,8 @@ public class ConnectionReceiver implements Runnable
 		System.out.println("ConnectionReceiver is working");
 
 
-		keepAliveReceiver = new Thread(new KeepAliveReceiver(checkTime));
-		keepAliveSender = new Thread(new KeepAliveSender(checkTime / 2));
+		keepAliveReceiver = new Thread(new KeepAliveReceiver(CHECK_TIME));
+		keepAliveSender = new Thread(new KeepAliveSender(CHECK_TIME / 2));
 		keepAliveReceiver.start();
 		keepAliveSender.start();
 
