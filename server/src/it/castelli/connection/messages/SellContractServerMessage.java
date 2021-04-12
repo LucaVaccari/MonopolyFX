@@ -6,6 +6,8 @@ import it.castelli.connection.GameConnectionManager;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.gameLogic.contracts.PropertyContract;
+import it.castelli.serialization.Serializer;
 
 /**
  * Message that sells a given contract and gives the owner half of the price of sale (receive only)
@@ -42,8 +44,22 @@ public class SellContractServerMessage implements Message
 
         Contract contractToSell = gameManager.getSameContract(contract);
         Player owner = gameManager.getSamePlayer(contractToSell.getOwner().toPlayer());
-        contractToSell.setOwner(null);
-        owner.addMoney(contractToSell.getValue() / 2);
+
+        boolean isSellable = true;
+
+        if (contractToSell instanceof PropertyContract)
+            if (((PropertyContract) contractToSell).getNumberOfHouses() != 0)
+                isSellable = false;
+
+        if (isSellable)
+        {
+            contractToSell.setOwner(null);
+            owner.addMoney(contractToSell.getValue() / 2);
+        }
+        else
+        {
+            connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("Non potete vendere questa proprietà perchè vi sono ancora delle case o un albergo! Per vendere la proprietà vendere prima le case o l'albergo.")));
+        }
 
         gameConnectionManager.updatePlayers();
     }
