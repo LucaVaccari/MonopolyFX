@@ -84,7 +84,10 @@ public class Contract
 	 */
 	public void setOwner(Player owner)
 	{
-		this.owner = new OwnerPlayer(owner);
+		if (owner == null)
+			this.owner = null;
+		else
+			this.owner = new OwnerPlayer(owner);
 	}
 
 	/**

@@ -26,7 +26,6 @@ public class ConnectionReceiver implements Runnable
 	{
 		System.out.println("ConnectionReceiver is working");
 
-
 		keepAliveReceiver = new Thread(new KeepAliveReceiver(CHECK_TIME));
 		keepAliveSender = new Thread(new KeepAliveSender(CHECK_TIME / 2));
 		keepAliveReceiver.start();

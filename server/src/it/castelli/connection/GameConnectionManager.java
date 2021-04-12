@@ -3,6 +3,7 @@ package it.castelli.connection;
 import it.castelli.connection.messages.*;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.squares.CompanySquare;
 import it.castelli.gameLogic.squares.PropertySquare;
 import it.castelli.gameLogic.squares.Square;
@@ -171,6 +172,24 @@ public class GameConnectionManager
 		else
 		{
 			square.interact(player, gameManager);
+		}
+	}
+
+	public void resetPlayerProperties(Connection connection)
+	{
+		for (Connection element : playerConnections)
+		{
+			if (element.equals(connection))
+			{
+				Player playerWhoLeft = element.getReceiver().getPlayer();
+				for (Contract el : playerWhoLeft.getContracts())
+				{
+					Contract contract = gameManager.getSameContract(el);
+					contract.setOwner(null);
+				}
+
+				updatePlayers();
+			}
 		}
 	}
 }

@@ -81,17 +81,6 @@ public class KeepAliveReceiver implements Runnable
 		for (GameConnectionManager gameConnectionManager : connectionManager
 				.getGames().values())
 		{
-			//remove inactive connections from joiningPlayers list
-			for (Connection connection : gameConnectionManager.getPlayerConnections())
-			{
-				if (!connection.getKeepAliveFlag())
-				{
-					connection.interrupt();
-					gameConnectionManager.removePlayer(connection);
-					System.out.println("Connection removed");
-				}
-			}
-
 			//remove inactive connections from players list
 			for (Connection connection : gameConnectionManager.getPlayerConnections())
 			{
@@ -99,10 +88,10 @@ public class KeepAliveReceiver implements Runnable
 				{
 					connection.interrupt();
 					gameConnectionManager.removePlayer(connection);
+					gameConnectionManager.resetPlayerProperties(connection);
 					System.out.println("Connection removed");
 				}
 			}
-
 		}
 	}
 
