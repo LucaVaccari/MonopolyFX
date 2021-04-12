@@ -233,8 +233,8 @@ public class GameManager
 	public Contract getSameContract(Contract contract){
 		for (Square square : board)
 		{
-			if(square instanceof PropertySquare)
-				if (((PropertySquare)square).getContract().equals(contract))
+			if(square.getContract() != null)
+				if (square.getContract().equals(contract))
 					return square.getContract();
 		}
 		return null;
