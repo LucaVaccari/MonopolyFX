@@ -14,6 +14,8 @@ sos
 - evidenziare meglio il giocatore negli imprevisti
 - visione giocatori in prigione
 - piccola icona vicino al moneyLabel per vedere se si è in prigione
+- sistemare l'asta
+- non mostrare revenue ma value nei propri possedimenti
 
 
 - Terminare automaticamente il turno se un giocatore si disconnette

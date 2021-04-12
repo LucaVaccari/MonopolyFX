@@ -119,7 +119,9 @@ public class Game
 	{
 		if (player.isInPrison())
 		{
+			System.out.println("getThrowdice 1="+player.getThrowDiceInPrison());
 			player.setThrowDiceInPrison(player.getThrowDiceInPrison() + 1);
+			System.out.println("setThrowdice="+player.getThrowDiceInPrison());
 			if (!lastDiceResult.areResultsEquals() && player.getThrowDiceInPrison() == 3)
 			{
 				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), true)));
@@ -135,8 +137,9 @@ public class Game
 				player.setDoubleDiceResult(player.getDoubleDiceResult() + 1);
 			else
 				player.setDoubleDiceResult(0);
-			if (player.getDoubleDiceResult() == 3)
+			if (player.getDoubleDiceResult() == 1)
 			{
+				System.out.println("vai in prigione schiavo di merda");
 				ClientMain.getConnection().send(ClientMessages.GO_TO_JAIL_MESSAGE_NAME, Serializer.toJson(new GoToJailClientMessage(Game.getGameCode(), player)));
 			}
 			else
