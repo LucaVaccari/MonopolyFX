@@ -37,7 +37,6 @@ public class RandomEventClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		Player activePlayer = Game.getGameManager().getCurrentRound().getCurrentActivePlayer();
-		System.out.println(randomEventType + "! " + randomEventText);
-		Platform.runLater(() -> AlertUtil.showInformationAlert(activePlayer.getName(), randomEventType, randomEventText));
+		Platform.runLater(() -> AlertUtil.showInformationAlert(randomEventType, activePlayer.getName(), randomEventText));
 	}
 }

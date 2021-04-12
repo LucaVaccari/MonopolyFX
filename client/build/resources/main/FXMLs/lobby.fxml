@@ -3,20 +3,29 @@
 <?import it.castelli.gui.customComponents.ChatComponent?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1f802c;" stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.LobbyController">
-    <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="267.0" prefWidth="600.0" stylesheets="@Style/style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="417.0" stylesheets="@Style/style.css" HBox.hgrow="ALWAYS">
-            <VBox fx:id="playerListView" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="315.0" prefWidth="290.0" VBox.vgrow="ALWAYS" />
-            <Button fx:id="playButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="46.0" prefWidth="290.0" style="-fx-background-color: #cc000f; -fx-text-fill: #ffffff;" text="Play">
+<?import javafx.scene.layout.*?>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0"
+            style="-fx-background-color: #1f802c;" stylesheets="@Style/style.css"
+            xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="it.castelli.gui.controllers.LobbyController">
+    <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="267.0"
+          prefWidth="600.0" stylesheets="@Style/style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+          AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+              prefHeight="400.0" prefWidth="417.0" stylesheets="@Style/style.css" HBox.hgrow="ALWAYS">
+            <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" text="Indietro" VBox.vgrow="ALWAYS"/>
+            <VBox fx:id="playerListView" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308"
+                  maxWidth="1.7976931348623157E308" prefHeight="315.0" prefWidth="290.0" VBox.vgrow="ALWAYS"/>
+            <Button fx:id="playButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                    mnemonicParsing="false" prefHeight="46.0" prefWidth="290.0"
+                    style="-fx-background-color: #cc000f; -fx-text-fill: #ffffff;" text="Play">
                 <effect>
-                    <InnerShadow blurType="GAUSSIAN" />
+                    <InnerShadow blurType="GAUSSIAN"/>
                 </effect>
             </Button>
         </VBox>
-        <ChatComponent fx:id="chat" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="417.0" stylesheets="@Style/style.css" HBox.hgrow="ALWAYS" />
+        <ChatComponent fx:id="chat" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308"
+                       maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="417.0"
+                       stylesheets="@Style/style.css" HBox.hgrow="ALWAYS"/>
     </HBox>
 </AnchorPane>
