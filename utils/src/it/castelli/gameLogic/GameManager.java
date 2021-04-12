@@ -25,9 +25,9 @@ public class GameManager
 	 */
 	private Square[] board;
 	private Auction auction;
-	private CopyOnWriteArrayList<Exchange> exchanges;
+	private final CopyOnWriteArrayList<Exchange> exchanges= new CopyOnWriteArrayList<>();;
 	private Round currentRound;
-	private RandomEventManager randomEventManager = new RandomEventManager();;
+	private final RandomEventManager randomEventManager = new RandomEventManager();;
 	private boolean inGame = false;
 
 	/**
@@ -213,7 +213,6 @@ public class GameManager
 		currentRound = new Round(newPlayer, 0);
 		inGame = true;
 		randomEventManager.shuffleCards();
-		exchanges = new CopyOnWriteArrayList<>();
 	}
 
 	public void nextRound()
