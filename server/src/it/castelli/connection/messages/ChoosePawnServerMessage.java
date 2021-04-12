@@ -38,9 +38,9 @@ public class ChoosePawnServerMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		player.setPawn(pawn);
-		GameConnectionManager manager = ConnectionManager.getInstance().getGames().get(gameCode);
-		manager.sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME,
-		                Serializer.toJson(new UpdatePlayersListServerMessage(manager.getGameManager().getPlayers())));
+		GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
+		gameConnectionManager.sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME,
+		                Serializer.toJson(new UpdatePlayersListServerMessage(gameConnectionManager.getGameManager().getPlayers())));
 	}
 
 }
