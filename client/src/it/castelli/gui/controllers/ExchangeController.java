@@ -138,11 +138,6 @@ public class ExchangeController
 					.toJson(new AcceptExchangeClientMessage(false, Game.getPlayer(), Game.getGameCode())));
 			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(CROSS_IMAGE_PATH))));
 		});
-//
-		//TODO:Luca questa cosa che hai fatto non fa partire il programma
-//		SceneManager.getInstance().getStageByType(SceneType.EXCHANGE).setOnCloseRequest(
-//				event -> ClientMain.getConnection().send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
-//						.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode()))));
 	}
 
 	/**
@@ -163,6 +158,10 @@ public class ExchangeController
 		hisPropertiesPane.getChildren().clear();
 		for (Contract contract : hisAsset.getContracts())
 			hisPropertiesPane.getChildren().add(new SmallTerrainViewComponent(contract));
+
+		SceneManager.getInstance().getStageByType(SceneType.EXCHANGE).setOnCloseRequest(
+				event -> ClientMain.getConnection().send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
+						.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode()))));
 	}
 
 	/**
