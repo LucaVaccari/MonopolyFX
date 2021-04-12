@@ -675,7 +675,7 @@ public class BoardController
 				{
 					if (mostProductiveContract != null)
 						if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-								!mostProductiveContracts.contains(mostProductiveContract))
+								!mostProductiveContracts.contains(contract))
 							mostProductiveContract = contract;
 				}
 
