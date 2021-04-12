@@ -1,7 +1,15 @@
 package it.castelli.gui.controllers;
 
+import it.castelli.ClientMain;
 import it.castelli.Game;
+import it.castelli.connection.messages.ClientMessages;
+import it.castelli.connection.messages.MortgageContractClientMessage;
+import it.castelli.connection.messages.SellContractClientMessage;
+import it.castelli.connection.messages.UnmortgageContractClientMessage;
 import it.castelli.gameLogic.contracts.StationContract;
+import it.castelli.gui.scene.SceneManager;
+import it.castelli.gui.scene.SceneType;
+import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -56,11 +64,20 @@ public class StationViewController
 		onlyIfOwnedPane.setDisable(!contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
 
 		sellButton.setOnAction(event -> {
-			// TODO: sell property
+			ClientMain.getConnection().send(ClientMessages.SELL_CONTRACT_MESSAGE_NAME, Serializer
+					.toJson(new SellContractClientMessage(Game.getGameCode(), contract)));
+			SceneManager.getInstance().getStageByType(SceneType.STATION_VIEW).close();
 		});
 
+		mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 		mortgageButton.setOnAction(event -> {
-			// TODO: mortgage property
+			if (contract.isMortgaged())
+				ClientMain.getConnection().send(ClientMessages.UNMORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
+						.toJson(new UnmortgageContractClientMessage(Game.getGameCode(), contract)));
+			else
+				ClientMain.getConnection().send(ClientMessages.MORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
+						.toJson(new MortgageContractClientMessage(Game.getGameCode(), contract)));
+			SceneManager.getInstance().getStageByType(SceneType.STATION_VIEW).close();
 		});
 	}
 }

@@ -1,8 +1,13 @@
 package it.castelli.gui.controllers;
 
+import it.castelli.ClientMain;
 import it.castelli.Game;
+import it.castelli.connection.messages.*;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gui.GUIUtils;
+import it.castelli.gui.scene.SceneManager;
+import it.castelli.gui.scene.SceneType;
+import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -72,15 +77,29 @@ public class PropertyViewController
 		onlyIfOwnedPane2.setDisable(!contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
 
 		sellButton.setOnAction(event -> {
-			// TODO: sell property
+			ClientMain.getConnection().send(ClientMessages.SELL_CONTRACT_MESSAGE_NAME, Serializer
+					.toJson(new SellContractClientMessage(Game.getGameCode(), contract)));
+			SceneManager.getInstance().getStageByType(SceneType.PROPERTY_VIEW).close();
 		});
 
+		mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 		mortgageButton.setOnAction(event -> {
-			// TODO: mortgage property
+			if (contract.isMortgaged())
+				ClientMain.getConnection().send(ClientMessages.UNMORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
+						.toJson(new UnmortgageContractClientMessage(Game.getGameCode(), contract)));
+			else
+				ClientMain.getConnection().send(ClientMessages.MORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
+						.toJson(new MortgageContractClientMessage(Game.getGameCode(), contract)));
+			SceneManager.getInstance().getStageByType(SceneType.PROPERTY_VIEW).close();
 		});
 
-		buyHouseButton.setOnAction(event -> {
-			// TODO. buy a house
-		});
+		// TODO: some checks
+		buyHouseButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.BUY_HOUSES_MESSAGE_NAME,
+		                                                                    Serializer
+				                                                                    .toJson(new BuyHousesClientMessage(
+						                                                                    Game.getGameCode(),
+						                                                                    contract, 1))));
+
+		// TODO: add sell house button
 	}
 }
