@@ -124,8 +124,6 @@ public class GameConnectionManager
             	player.setLastRandomEvent(null, null);
 			}
 
-
-
 			if (player.hasSomethingChanged())
 			{
 				if (player.getPreviousPosition() != player.getPosition())
@@ -160,6 +158,7 @@ public class GameConnectionManager
 	private void interactWithSquare(Player player)
 	{
 		Square square = gameManager.getSquare(player.getPosition());
+		player.setPreviousPosition(player.getPosition());
 		if (square instanceof PropertySquare || square instanceof StationSquare || square instanceof CompanySquare)
 		{
 			if (square.getContract().getOwner() == null)
