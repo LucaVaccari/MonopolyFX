@@ -48,15 +48,18 @@ public class CreateExchangeServerMessage implements Message
         GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
         GameManager gameManager = gameConnectionManager.getGameManager();
 
-        Exchange exchange1 = gameManager.getExchangeFromPlayer(player1);
-        Exchange exchange2 = gameManager.getExchangeFromPlayer(player2);
+        Player actualPlayer1 = gameManager.getSamePlayer(player1);
+        Player actualPlayer2 = gameManager.getSamePlayer(player2);
 
-        Connection player1Connection = gameConnectionManager.getConnectionFromPlayer(player1);
-        Connection player2Connection = gameConnectionManager.getConnectionFromPlayer(player2);
+        Exchange exchange1 = gameManager.getExchangeFromPlayer(actualPlayer1);
+        Exchange exchange2 = gameManager.getExchangeFromPlayer(actualPlayer2);
+
+        Connection player1Connection = gameConnectionManager.getConnectionFromPlayer(actualPlayer1);
+        Connection player2Connection = gameConnectionManager.getConnectionFromPlayer(actualPlayer2);
 
         if (exchange1 == null && exchange2 == null)
         {
-            Exchange newExchange = new Exchange(player1, player2);
+            Exchange newExchange = new Exchange(actualPlayer1, actualPlayer2);
             gameManager.addExchange(newExchange);
             player1Connection.send(ServerMessages.NEW_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new NewExchangeServerMessage(newExchange)));
             player2Connection.send(ServerMessages.NEW_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new NewExchangeServerMessage(newExchange)));
