@@ -3,13 +3,12 @@ package it.castelli.gameLogic.contracts;
 import it.castelli.gameLogic.OwnerPlayer;
 import it.castelli.gameLogic.Player;
 
-import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * Represents the properties of a Monopoly property
  */
-public class Contract implements Serializable
+public class Contract
 {
 	/**
 	 * Name of the Monopoly property
@@ -146,6 +145,9 @@ public class Contract implements Serializable
 	 * @see Object#equals(Object)
 	 * @see System#identityHashCode
 	 */
+
+
+
 	@Override
 	public int hashCode()
 	{
