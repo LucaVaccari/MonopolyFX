@@ -9,13 +9,13 @@
             xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="it.castelli.gui.controllers.LobbyController">
     <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="267.0"
-          prefWidth="600.0" stylesheets="@Style/style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-          AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+          prefWidth="600.0" spacing="10.0" stylesheets="@Style/style.css" AnchorPane.bottomAnchor="10.0"
+          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-              prefHeight="400.0" prefWidth="417.0" stylesheets="@Style/style.css" HBox.hgrow="ALWAYS">
+              prefHeight="380.0" prefWidth="313.0" spacing="10.0" stylesheets="@Style/style.css" HBox.hgrow="ALWAYS">
             <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" text="Indietro" VBox.vgrow="ALWAYS"/>
             <VBox fx:id="playerListView" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308"
-                  maxWidth="1.7976931348623157E308" prefHeight="315.0" prefWidth="290.0" VBox.vgrow="ALWAYS"/>
+                  maxWidth="1.7976931348623157E308" prefHeight="294.0" prefWidth="378.0" VBox.vgrow="ALWAYS"/>
             <Button fx:id="playButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                     mnemonicParsing="false" prefHeight="46.0" prefWidth="290.0"
                     style="-fx-background-color: #cc000f; -fx-text-fill: #ffffff;" text="Play">

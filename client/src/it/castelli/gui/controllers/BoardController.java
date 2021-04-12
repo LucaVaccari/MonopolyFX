@@ -35,6 +35,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -736,22 +737,58 @@ public class BoardController
 	 */
 	public void updatePawnsOnBoard()
 	{
-		for (Group square : squares)
+		for (int i = 0; i < squares.length; i++)
 		{
+			Group square = squares[i];
 			FlowPane flowPane = (FlowPane) square.getChildren().get(1);
-			flowPane.getChildren().clear();
+
+			if (i != 10)
+				flowPane.getChildren().clear();
+			else
+			{
+				// prison / just visiting
+				((VBox) flowPane.getChildren().get(0)).getChildren().clear();
+				((FlowPane) flowPane.getChildren().get(1)).getChildren().clear();
+				((HBox) flowPane.getChildren().get(2)).getChildren().clear();
+			}
 		}
 
 		for (Player player : Game.getGameManager().getPlayers())
 		{
 			FlowPane flowPane = (FlowPane) squares[player.getPosition()].getChildren().get(1);
-			flowPane.setVgap(5);
-			flowPane.setHgap(5);
 			ObservableList<Node> children = flowPane.getChildren();
 			ImageView pawnImageView = playerPawns.get(player.getPawn());
-			if (pawnImageView != null)
+			if (player.getPosition() != 10)
 			{
-				children.add(pawnImageView);
+				flowPane.setVgap(5);
+				flowPane.setHgap(5);
+				if (pawnImageView != null)
+					children.add(pawnImageView);
+			}
+			else
+			{
+				VBox vBox = (VBox) flowPane.getChildren().get(0);
+				FlowPane flowPane1 = (FlowPane) flowPane.getChildren().get(1);
+				HBox hBox = (HBox) flowPane.getChildren().get(2);
+
+				if (player.isInPrison())
+				{
+					if (pawnImageView != null)
+						flowPane1.getChildren().add(pawnImageView);
+				}
+				else
+				{
+					if (vBox.getChildren().size() < 3)
+					{
+						if (pawnImageView != null)
+							vBox.getChildren().add(pawnImageView);
+					}
+					else
+					{
+						if (pawnImageView != null)
+							hBox.getChildren().add(pawnImageView);
+					}
+				}
 			}
 		}
 		for (Player player : Game.getGameManager().getPlayers())
@@ -761,13 +798,34 @@ public class BoardController
 			ImageView pawnImageView = playerPawns.get(player.getPawn());
 			if (pawnImageView != null)
 			{
-				int size = switch (children.size())
-						{
-							case 1 -> 30;
-							case 2, 3, 4 -> 20;
-							case 5, 6 -> 15;
-							default -> 10;
-						};
+				int size;
+				if (player.isInPrison())
+				{
+					size = switch (((FlowPane)children.get(1)).getChildren().size())
+							{
+								case 1 -> 30;
+								case 2, 3, 4 -> 20;
+								case 5, 6 -> 10;
+								default -> 5;
+							};
+				}
+				else
+				{
+					if (player.getPosition() == 10)
+					{
+						size = 15;
+					}
+					else
+					{
+						size = switch (children.size())
+								{
+									case 1 -> 30;
+									case 2, 3, 4 -> 20;
+									case 5, 6 -> 15;
+									default -> 10;
+								};
+					}
+				}
 				pawnImageView.setFitHeight(size);
 				pawnImageView.setFitWidth(size);
 			}
