@@ -49,7 +49,7 @@ public class SellHousesServerMessage implements Message
         GameManager gameManager = gameConnectionManager.getGameManager();
 
         Contract sameContract = gameManager.getSameContract(contract);
-        Player owner = sameContract.getOwner().toPlayer();
+        Player owner = gameManager.getSamePlayer(sameContract.getOwner().toPlayer());
 
         if(sameContract instanceof PropertyContract)
         {
@@ -57,7 +57,7 @@ public class SellHousesServerMessage implements Message
             owner.addMoney(((PropertyContract) sameContract).getHouseCost() / 2 * numberOfHousesToSell);
         }
         else
-            connection.send(ServerMessages.ERROR_MESSAGE_NAME, "Non potete vendere case di questa proprietà, poiché è una stazione oppure una società");;
+            connection.send(ServerMessages.ERROR_MESSAGE_NAME, "Non potete vendere case di questa proprietà, poiché è una stazione oppure una società");
 
         gameConnectionManager.updatePlayers();
     }

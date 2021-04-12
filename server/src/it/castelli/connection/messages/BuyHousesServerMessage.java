@@ -49,7 +49,7 @@ public class BuyHousesServerMessage implements Message
         GameManager gameManager = gameConnectionManager.getGameManager();
 
         Contract sameContract = gameManager.getSameContract(contract);
-        Player owner = sameContract.getOwner().toPlayer();
+        Player owner = gameManager.getSamePlayer(sameContract.getOwner().toPlayer());
 
         if(sameContract instanceof PropertyContract)
         {

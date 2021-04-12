@@ -1,15 +1,50 @@
 package it.castelli.connection.messages;
 
 import it.castelli.connection.Connection;
+import it.castelli.connection.ConnectionManager;
+import it.castelli.connection.GameConnectionManager;
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.Contract;
 
+/**
+ * Message that sells a given contract and gives the owner half of the price of sale (receive only)
+ */
 public class SellContractServerMessage implements Message
 {
-    //gameCode (int), contract Contract
+    /**
+     * The game code
+     */
+    private final int gameCode;
+
+    /**
+     * The contract to sell
+     */
+    private final Contract contract;
+
+    /**
+     * Constructor for SellContractServerMessage (do not use)
+     *
+     * @param gameCode The game code
+     * @param contract The contract to sell
+     */
+    public SellContractServerMessage(int gameCode, Contract contract)
+    {
+        this.gameCode = gameCode;
+        this.contract = contract;
+    }
 
     @Override
     public void onReceive(Connection connection, Player player)
     {
+        GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
+        GameManager gameManager = gameConnectionManager.getGameManager();
 
+        Contract contractToSell = gameManager.getSameContract(contract);
+        Player owner = gameManager.getSamePlayer(contractToSell.getOwner().toPlayer());
+        contractToSell.setOwner(null);
+        owner.addMoney(contractToSell.getValue() / 2);
+
+        gameConnectionManager.updatePlayers();
     }
 }
