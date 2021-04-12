@@ -32,7 +32,7 @@ public class ServerMessages
 	public static final String EXCHANGE_CANCELED_MESSAGE_NAME =
 			"it.castelli.connection.messages.ExchangeCanceledClientMessage";
 	public static final String UPDATE_EXCHANGE_MESSAGE_NAME =
-			"it.castelli.connection.messages.ExchangeClientMessage";
+			"it.castelli.connection.messages.UpdateExchangeClientMessage";
 	public static final String EXCHANGE_SUCCESSFUL_MESSAGE_NAME =
 			"it.castelli.connection.messages.ExchangeSuccessfulClientMessage";
 	public static final String NEW_EXCHANGE_MESSAGE_NAME =
