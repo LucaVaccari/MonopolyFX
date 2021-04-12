@@ -49,7 +49,7 @@ public class SmallTerrainViewComponent extends AnchorPane
 		Tooltip.install(this, new Tooltip(contract.getName()));
 
 		terrainNameLabel.setText(contract.getName());
-		terrainValueLabel.setText(String.valueOf(contract.getRevenue()));
+		terrainValueLabel.setText(String.valueOf(contract.getValue()));
 
 		if (contract instanceof PropertyContract)
 		{
