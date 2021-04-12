@@ -11,8 +11,8 @@ sos
 - stampare un messaggio quando si paga qualcuno
 - piccola icona vicino al moneyLabel per vedere se si è in prigione
 - sistemare l'asta
-- chiudere l'asta la rifiuta
-- sistemare gli scambi
+- chiudere l'asta se la si rifiuta
+- sistemare gli scambi (TO TEST)
 
 
 - Terminare automaticamente il turno se un giocatore si disconnette
