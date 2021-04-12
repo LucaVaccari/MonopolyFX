@@ -61,10 +61,10 @@ public class CompanySquare implements Square
 		else
 			revenue *= 4;
 
-		System.out.println("CompanySquare, the player has paid " + revenue);
-
 		player.removeMoney(revenue);
-		owner.addMoney(revenue);
+
+		if (!contract.isMortgaged())
+			owner.addMoney(revenue);
 	}
 
 }

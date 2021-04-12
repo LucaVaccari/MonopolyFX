@@ -1,12 +1,21 @@
 package it.castelli.gui.scene;
 
+import it.castelli.gameLogic.contracts.CompanyContract;
+import it.castelli.gameLogic.contracts.PropertyContract;
+import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.FXMLFileLoader;
+import it.castelli.gui.controllers.BoardController;
+import it.castelli.gui.controllers.CompanyViewController;
+import it.castelli.gui.controllers.PropertyViewController;
+import it.castelli.gui.controllers.StationViewController;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -153,6 +162,105 @@ public class SceneManager
 		if (instance == null)
 			instance = new SceneManager();
 		return instance;
+	}
+
+	/**
+	 * Show a new not resizable stage containing information about a company
+	 *
+	 * @param contract The contract of the company to show
+	 */
+	public void showTerrainView(CompanyContract contract)
+	{
+		if (contract == null)
+			return;
+
+		try
+		{
+			FXMLLoader loader = FXMLFileLoader.getLoader(BoardController.COMPANY_VIEW_FXML_PATH);
+			Parent root = loader.load();
+			CompanyViewController controller = loader.getController();
+			controller.setContract(contract);
+			Stage companyViewStage = new Stage();
+			Scene scene = new Scene(root);
+			companyViewStage.setScene(scene);
+			companyViewStage.initModality(Modality.APPLICATION_MODAL);
+			companyViewStage.setAlwaysOnTop(true);
+			companyViewStage.setResizable(false);
+			companyViewStage.show();
+
+			openStages.put(SceneType.COMPANY_VIEW, companyViewStage);
+			companyViewStage.setOnCloseRequest(event -> openStages.remove(SceneType.COMPANY_VIEW));
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Show a new not resizable stage containing information about a station
+	 *
+	 * @param contract The contract of the station to show
+	 */
+	public void showTerrainView(StationContract contract)
+	{
+		if (contract == null)
+			return;
+
+		try
+		{
+			FXMLLoader loader = FXMLFileLoader.getLoader(BoardController.STATION_VIEW_FXML_PATH);
+			Parent root = loader.load();
+			StationViewController controller = loader.getController();
+			controller.setContract(contract);
+			Stage stationViewStage = new Stage();
+			Scene scene = new Scene(root);
+			stationViewStage.setScene(scene);
+			stationViewStage.initModality(Modality.APPLICATION_MODAL);
+			stationViewStage.setAlwaysOnTop(true);
+			stationViewStage.setResizable(false);
+			stationViewStage.show();
+
+			openStages.put(SceneType.STATION_VIEW, stationViewStage);
+			stationViewStage.setOnCloseRequest(event -> openStages.remove(SceneType.STATION_VIEW));
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Show a new not resizable stage containing information about a property
+	 *
+	 * @param contract The contract of the property to show
+	 */
+	public void showTerrainView(PropertyContract contract)
+	{
+		if (contract == null)
+			return;
+
+		try
+		{
+			FXMLLoader loader = FXMLFileLoader.getLoader(BoardController.PROPERTY_VIEW_FXML_PATH);
+			Parent root = loader.load();
+			PropertyViewController controller = loader.getController();
+			controller.setContract(contract);
+			Stage propertyViewStage = new Stage();
+			Scene scene = new Scene(root);
+			propertyViewStage.setScene(scene);
+			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
+			propertyViewStage.setAlwaysOnTop(true);
+			propertyViewStage.setResizable(false);
+			propertyViewStage.show();
+
+			openStages.put(SceneType.PROPERTY_VIEW, propertyViewStage);
+			propertyViewStage.setOnCloseRequest(event -> openStages.remove(SceneType.PROPERTY_VIEW));
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	public Stage getPrimaryStage()
