@@ -1,8 +1,6 @@
 package it.castelli;
 
-import it.castelli.connection.messages.ClientMessages;
-import it.castelli.connection.messages.Message;
-import it.castelli.connection.messages.MovePlayerClientMessage;
+import it.castelli.connection.messages.*;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.dice.DiceResult;
@@ -121,13 +119,31 @@ public class Game
 	{
 		if (player.isInPrison())
 		{
-			if (lastDiceResult.areResultsEquals())
+			player.setThrowDiceInPrison(player.getThrowDiceInPrison() + 1);
+			if (!lastDiceResult.areResultsEquals() && player.getThrowDiceInPrison() == 3)
+			{
+				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), true)));
 				player.setInPrison(false);
-		}
-		else
+			} else if (lastDiceResult.areResultsEquals())
+			{
+				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), false)));
+			}
+		} else
 		{
-			Message moveMessage = new MovePlayerClientMessage(Game.getPlayer(), lastDiceResult.resultsSum(), Game.getGameCode());
-			ClientMain.getConnection().send(ClientMessages.MOVE_PLAYER_MESSAGE_NAME, Serializer.toJson(moveMessage));
+			if (lastDiceResult.areResultsEquals())
+				player.setDoubleDiceResult(player.getDoubleDiceResult() + 1);
+			else
+				player.setDoubleDiceResult(0);
+			if (player.getDoubleDiceResult() == 3)
+			{
+				ClientMain.getConnection().send(ClientMessages.GO_TO_JAIL_MESSAGE_NAME, Serializer.toJson(new GoToJailClientMessage(Game.getGameCode(), player)));
+			} else
+			{
+				Message moveMessage = new MovePlayerClientMessage(Game.getPlayer(), lastDiceResult.resultsSum(), Game.getGameCode());
+				ClientMain.getConnection().send(ClientMessages.MOVE_PLAYER_MESSAGE_NAME, Serializer.toJson(moveMessage));
+//
+//			}
+			}
 		}
 	}
 
