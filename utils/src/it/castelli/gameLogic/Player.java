@@ -410,7 +410,7 @@ public class Player
 	}
 
 	/**
-	 * Tells if two players are actually equals
+	 * Like equals, but better
 	 *
 	 * @param obj the other player
 	 * @return if the two players are the same one

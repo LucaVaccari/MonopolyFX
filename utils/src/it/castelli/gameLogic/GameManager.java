@@ -279,7 +279,7 @@ public class GameManager
 	{
 		for (Exchange exchange : exchanges)
 		{
-			if (exchange.getPlayer1() == player || exchange.getPlayer2() == player)
+			if (exchange.getPlayer1().betterEquals(player) || exchange.getPlayer2().betterEquals(player))
 			{
 				return exchange;
 			}
