@@ -47,8 +47,11 @@ public class NewAuctionClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		Game.getGameManager().setAuction(new Auction(contract, bestOfferProposed, this.player));
-		Platform.runLater(() -> SceneManager.getInstance().showScene(SceneType.AUCTION));
-		Platform.runLater(() -> AuctionController.getInstance().update());
+		Auction auction = new Auction(contract, bestOfferProposed, this.player);
+		Game.getGameManager().setAuction(auction);
+		Platform.runLater(() -> {
+			SceneManager.getInstance().showScene(SceneType.AUCTION);
+			AuctionController.getInstance().setAuction(auction);
+		});
 	}
 }

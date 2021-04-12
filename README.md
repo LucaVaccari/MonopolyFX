@@ -6,9 +6,16 @@ sos
 
 - Visualizzare i propri possedimenti
 - il giocatore si muove anche se dovrebbe essere in prigione (to fix)
-- quando si compra una proprietà la lista delle proprietà si riempie di copie identiche della stessa
 - aggiungere un tasto per uscire dalla lobby
 - far partire il gioco solo quando tutti hanno una pedina
+- tutto il sistema delle case
+- tutto il sistema dell'ipoteca
+- stampare un messaggio quando si paga a qualcuno
+- evidenziare meglio il giocatore negli imprevisti
+- visione giocatori in prigione
+- piccola icona vicino al moneyLabel per vedere se si è in prigione
+
 
 - Terminare automaticamente il turno se un giocatore si disconnette
+- messaggio per quando un client deve pagare a un altro
 
