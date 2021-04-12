@@ -1,10 +1,13 @@
 package it.castelli.gui.controllers;
 
+import it.castelli.Game;
 import it.castelli.gameLogic.contracts.CompanyContract;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
 /**
  * Controller for companyView FXML
@@ -15,6 +18,12 @@ public class CompanyViewController
 	private ImageView companyImage;
 	@FXML
 	private Label companyNameLabel;
+	@FXML
+	private HBox onlyIfOwnedPane;
+	@FXML
+	private Button sellButton;
+	@FXML
+	private Button mortgageButton;
 
 	/**
 	 * Update the visuals of the CompanyView.
@@ -30,5 +39,16 @@ public class CompanyViewController
 		}
 
 		companyNameLabel.setText(contract.getName());
+
+		onlyIfOwnedPane.setVisible(contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
+		onlyIfOwnedPane.setDisable(!contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
+
+		sellButton.setOnAction(event -> {
+			// TODO: sell property
+		});
+
+		mortgageButton.setOnAction(event -> {
+			// TODO: mortgage property
+		});
 	}
 }

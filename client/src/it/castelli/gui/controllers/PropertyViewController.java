@@ -1,9 +1,12 @@
 package it.castelli.gui.controllers;
 
+import it.castelli.Game;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gui.GUIUtils;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 
 /**
  * Controller for propertyView FXML
@@ -30,6 +33,18 @@ public class PropertyViewController
 	private Label houseCostLabel;
 	@FXML
 	private Label mortgageValueLabel;
+	@FXML
+	private HBox onlyIfOwnedPane1;
+	@FXML
+	private Label numberOfHousesLabel;
+	@FXML
+	private HBox onlyIfOwnedPane2;
+	@FXML
+	private Button sellButton;
+	@FXML
+	private Button mortgageButton;
+	@FXML
+	private Button buyHouseButton;
 
 	/**
 	 * Update the visuals of the PropertyView.
@@ -50,5 +65,22 @@ public class PropertyViewController
 		revenueHotelLabel.setText(String.valueOf(contract.getRevenues()[5]));
 		houseCostLabel.setText(String.valueOf(contract.getHouseCost()));
 		mortgageValueLabel.setText(String.valueOf(contract.getValue() / 2));
+
+		onlyIfOwnedPane1.setVisible(contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
+		onlyIfOwnedPane1.setDisable(!contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
+		onlyIfOwnedPane2.setVisible(contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
+		onlyIfOwnedPane2.setDisable(!contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
+
+		sellButton.setOnAction(event -> {
+			// TODO: sell property
+		});
+
+		mortgageButton.setOnAction(event -> {
+			// TODO: mortgage property
+		});
+
+		buyHouseButton.setOnAction(event -> {
+			// TODO. buy a house
+		});
 	}
 }

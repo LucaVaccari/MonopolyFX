@@ -6,7 +6,7 @@ import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.GUIUtils;
-import it.castelli.gui.controllers.BoardController;
+import it.castelli.gui.scene.SceneManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -60,10 +60,10 @@ public class SmallTerrainViewComponent extends AnchorPane
 			terrainNameLabel.setStyle("-fx-background-color: #ffffff"); // set to white if station or company
 
 		if (contract instanceof PropertyContract)
-			setOnMouseClicked(event -> BoardController.showTerrainView((PropertyContract) contract));
+			setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView((PropertyContract) contract));
 		else if (contract instanceof StationContract)
-			setOnMouseClicked(event -> BoardController.showTerrainView((StationContract) contract));
+			setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView((StationContract) contract));
 		else if (contract instanceof CompanyContract)
-			setOnMouseClicked(event -> BoardController.showTerrainView((CompanyContract) contract));
+			setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView((CompanyContract) contract));
 	}
 }
