@@ -17,7 +17,7 @@ public class ConnectionReceiver implements Runnable
 	/**
 	 * Indicate the time between two server's checks to verify a connection activity (in seconds)
 	 */
-	private static final int CHECK_TIME = 4;
+	private static final int CHECK_TIME = 10;
 	private Thread keepAliveReceiver;
 	private Thread keepAliveSender;
 
@@ -31,32 +31,22 @@ public class ConnectionReceiver implements Runnable
 		keepAliveReceiver.start();
 		keepAliveSender.start();
 
-		ServerSocket welcomeSocket = null;
 		try
 		{
-			welcomeSocket = new ServerSocket(ConnectionManager.SERVER_PORT);
+			ServerSocket welcomeSocket = new ServerSocket(ConnectionManager.SERVER_PORT);
+			while (isRunning)
+			{
+				Socket connectionSocket = welcomeSocket.accept();
+				System.out.println(
+						"New connection established with " + connectionSocket.getInetAddress().getHostAddress());
+				//generate new connection
+				Connection newConnection = new Connection(connectionSocket);
+				ConnectionManager.getInstance().addToWaitingRoom(newConnection);
+			}
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
-		}
-		while (isRunning)
-		{
-			try
-			{
-				Socket connectionSocket = welcomeSocket.accept();
-				System.out.println(
-						"New connection established with " +
-								connectionSocket.getInetAddress().getHostAddress());
-				//generate new connection
-				Connection newConnection = new Connection(connectionSocket);
-				ConnectionManager.getInstance().addToWaitingRoom(newConnection);
-
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
 		}
 	}
 

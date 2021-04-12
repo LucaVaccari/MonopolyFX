@@ -30,7 +30,6 @@ public class ThrowDiceServerMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		System.out.println("Throwing dice");
 		Round currentRound =
 				ConnectionManager.getInstance().getGames().get(gameCode).getGameManager().getCurrentRound();
 		currentRound.throwDice();
