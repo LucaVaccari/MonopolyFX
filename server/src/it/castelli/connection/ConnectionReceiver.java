@@ -37,20 +37,12 @@ public class ConnectionReceiver implements Runnable
 			ServerSocket welcomeSocket = new ServerSocket(ConnectionManager.SERVER_PORT);
 			while (isRunning)
 			{
-				try
-				{
-					Socket connectionSocket = welcomeSocket.accept();
-					System.out.println(
-							"New connection established with " + connectionSocket.getInetAddress().getHostAddress());
-					//generate new connection
-					Connection newConnection = new Connection(connectionSocket);
-					ConnectionManager.getInstance().addToWaitingRoom(newConnection);
-
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-				}
+				Socket connectionSocket = welcomeSocket.accept();
+				System.out.println(
+						"New connection established with " + connectionSocket.getInetAddress().getHostAddress());
+				//generate new connection
+				Connection newConnection = new Connection(connectionSocket);
+				ConnectionManager.getInstance().addToWaitingRoom(newConnection);
 			}
 		}
 		catch (IOException e)
