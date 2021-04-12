@@ -9,6 +9,11 @@ import it.castelli.gameLogic.Player;
 public class AcceptExchangeClientMessage implements Message
 {
 	/**
+	 * Does the player accept the offer?
+	 */
+	private final boolean accept;
+
+	/**
 	 * The player
 	 */
 	private final Player player;
@@ -21,11 +26,13 @@ public class AcceptExchangeClientMessage implements Message
 	/**
 	 * Constructor for AcceptExchangeClientMessage
 	 *
+	 * @param accept
 	 * @param player   The player accepting the exchange
 	 * @param gameCode The game code
 	 */
-	public AcceptExchangeClientMessage(Player player, int gameCode)
+	public AcceptExchangeClientMessage(boolean accept, Player player, int gameCode)
 	{
+		this.accept = accept;
 		this.player = player;
 		this.gameCode = gameCode;
 	}

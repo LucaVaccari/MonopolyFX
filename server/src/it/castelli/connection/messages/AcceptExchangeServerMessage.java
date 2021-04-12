@@ -14,6 +14,11 @@ import it.castelli.serialization.Serializer;
 public class AcceptExchangeServerMessage implements Message
 {
 	/**
+	 * Does the player accept the offer?
+	 */
+	private final boolean accept;
+
+	/**
 	 * The player
 	 */
 	private final Player player;
@@ -26,11 +31,13 @@ public class AcceptExchangeServerMessage implements Message
 	/**
 	 * Constructor for AcceptExchangeServerMessage (do not use)
 	 *
-	 * @param player   The player accepting the exchange
+	 * @param accept Does the player accept the offer?
+	 * @param player The player accepting the exchange
 	 * @param gameCode The game code
 	 */
-	public AcceptExchangeServerMessage(Player player, int gameCode)
+	public AcceptExchangeServerMessage(boolean accept, Player player, int gameCode)
 	{
+		this.accept = accept;
 		this.player = player;
 		this.gameCode = gameCode;
 	}
@@ -41,18 +48,30 @@ public class AcceptExchangeServerMessage implements Message
 		GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
 		GameManager gameManager = gameConnectionManager.getGameManager();
 
-		Exchange exchange = gameManager.getExchangeFromPlayer(this.player);
-		exchange.acceptExchange(this.player);
+		Player acceptingPlayer = gameManager.getSamePlayer(this.player);
+		Exchange exchange = gameManager.getExchangeFromPlayer(acceptingPlayer);
+
+		Connection player1Connection = gameConnectionManager.getConnectionFromPlayer(exchange.getPlayer1());
+		Connection player2Connection = gameConnectionManager.getConnectionFromPlayer(exchange.getPlayer2());
+
+		if (accept)
+			exchange.acceptExchange(acceptingPlayer);
+		else
+			exchange.undoAcceptExchange(acceptingPlayer);
+
 		if (exchange.getAccepted1() && exchange.getAccepted2())
 		{
 			exchange.endExchange();
-			gameConnectionManager.sendAll(ServerMessages.EXCHANGE_SUCCESSFUL_MESSAGE_NAME, Serializer.toJson(new ExchangeSuccessfulServerMessage(exchange)));
-		} else
+			player1Connection.send(ServerMessages.EXCHANGE_SUCCESSFUL_MESSAGE_NAME, Serializer.toJson(new ExchangeSuccessfulServerMessage(exchange)));
+			player2Connection.send(ServerMessages.EXCHANGE_SUCCESSFUL_MESSAGE_NAME, Serializer.toJson(new ExchangeSuccessfulServerMessage(exchange)));
+			gameManager.removeExchange(exchange);
+		}
+		else
 		{
-			gameConnectionManager.sendAll(ServerMessages.UPDATE_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new UpdateExchangeServerMessage(exchange)));
+			player1Connection.send(ServerMessages.UPDATE_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new UpdateExchangeServerMessage(exchange)));
+			player2Connection.send(ServerMessages.UPDATE_EXCHANGE_MESSAGE_NAME, Serializer.toJson(new UpdateExchangeServerMessage(exchange)));
 		}
 
 		gameConnectionManager.updatePlayers();
-		gameManager.removeExchange(exchange);
 	}
 }

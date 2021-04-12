@@ -5,7 +5,6 @@ import it.castelli.Game;
 import it.castelli.connection.messages.AcceptExchangeClientMessage;
 import it.castelli.connection.messages.ChangeExchangeAssetClientMessage;
 import it.castelli.connection.messages.ClientMessages;
-import it.castelli.connection.messages.RefuseExchangeClientMessage;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.transactions.Asset;
@@ -101,13 +100,13 @@ public class ExchangeController
 
 		acceptButton.setOnAction(event -> {
 			ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
-					.toJson(new AcceptExchangeClientMessage(Game.getPlayer(), Game.getGameCode())));
+					.toJson(new AcceptExchangeClientMessage(true, Game.getPlayer(), Game.getGameCode())));
 			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(TICK_IMAGE_PATH))));
 		});
 
 		cancelButton.setOnAction(event -> {
-			ClientMain.getConnection().send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
-					.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode())));
+			ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
+					.toJson(new AcceptExchangeClientMessage(false, Game.getPlayer(), Game.getGameCode())));
 			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(CROSS_IMAGE_PATH))));
 		});
 	}

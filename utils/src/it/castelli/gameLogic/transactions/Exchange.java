@@ -46,6 +46,15 @@ public class Exchange
 			accepted2 = true;
 	}
 
+	public void undoAcceptExchange(Player player)
+	{
+		if (player == this.player1)
+			accepted1 = false;
+		else
+			accepted2 = false;
+	}
+
+
 	public void endExchange()
 	{
 		asset1.removeFromPlayer(player1);
