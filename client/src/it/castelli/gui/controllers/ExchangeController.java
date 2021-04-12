@@ -81,7 +81,7 @@ public class ExchangeController
 	public void initialize()
 	{
 		instance = this;
-
+//
 		yourOfferTextField.setOnAction(event -> {
 			try
 			{
@@ -100,7 +100,7 @@ public class ExchangeController
 			{
 			}
 		});
-
+//
 		addPropertyButton.setOnAction(event -> {
 			if (exchange == null)
 			{
@@ -116,7 +116,7 @@ public class ExchangeController
 								yourAsset, Game.getGameCode(), Game.getPlayer())));
 			}
 		});
-
+//
 		acceptButton.setOnAction(event -> {
 			if (exchange == null)
 			{
@@ -138,10 +138,11 @@ public class ExchangeController
 					.toJson(new AcceptExchangeClientMessage(false, Game.getPlayer(), Game.getGameCode())));
 			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(CROSS_IMAGE_PATH))));
 		});
-
-		SceneManager.getInstance().getStageByType(SceneType.EXCHANGE).setOnCloseRequest(
-				event -> ClientMain.getConnection().send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
-						.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode()))));
+//
+		//TODO:Luca questa cosa che hai fatto non fa partire il programma
+//		SceneManager.getInstance().getStageByType(SceneType.EXCHANGE).setOnCloseRequest(
+//				event -> ClientMain.getConnection().send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
+//						.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode()))));
 	}
 
 	/**

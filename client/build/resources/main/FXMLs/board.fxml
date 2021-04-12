@@ -142,9 +142,9 @@
                     </SquareComponent>
                     <FlowPane prefHeight="50.0" prefWidth="50.0" rowValignment="TOP">
                   <children>
-                     <VBox prefHeight="39.0" prefWidth="11.0" />
-                     <FlowPane prefHeight="39.0" prefWidth="35.0" />
-                     <HBox prefHeight="11.0" prefWidth="50.0" />
+                     <VBox alignment="CENTER" prefHeight="39.0" prefWidth="11.0" />
+                     <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="39.0" prefWidth="35.0" />
+                     <HBox alignment="CENTER" prefHeight="11.0" prefWidth="50.0" />
                   </children></FlowPane>
                 </Group>
                 <Group fx:id="viaAccademiaSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
