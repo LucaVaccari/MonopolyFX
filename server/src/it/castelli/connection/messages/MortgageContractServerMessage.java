@@ -7,6 +7,7 @@ import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
+import it.castelli.serialization.Serializer;
 
 /**
  * Message that mortgages a given contract
@@ -56,6 +57,10 @@ public class MortgageContractServerMessage implements Message
         {
             contractToMortgage.setMortgaged(true);
             mortgagingPlayer.addMoney(contractToMortgage.getMortgageValue());
+        }
+        else
+        {
+            connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("Non potete ipotecare questa proprietà, assicuratevi che non vi siano case o alberghi o che la proprietà non sia già ipotecata!")));
         }
 
         gameConnectionManager.updatePlayers();
