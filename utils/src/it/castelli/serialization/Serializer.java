@@ -3,6 +3,7 @@ package it.castelli.serialization;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.gameLogic.squares.Square;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -63,9 +64,14 @@ public class Serializer
 	 * @param obj The object to convert
 	 * @return The json string representing the given object
 	 */
-	public static String toJson(Serializable obj)
+	public static String toJson(Object obj)
 	{
-		return new GsonBuilder().registerTypeAdapter(Contract.class, new ContractAdapter()).serializeNulls().create().toJson(obj);
+		return new GsonBuilder()
+				.registerTypeAdapter(Contract.class, new ContractAdapter())
+				.registerTypeAdapter(Square.class, new SquareAdapter())
+				.serializeNulls()
+				.create()
+				.toJson(obj);
 	}
 
 
@@ -76,10 +82,14 @@ public class Serializer
 	 * @param className The class name
 	 * @return The object of the specified type contained in the Json string
 	 */
-	public static Serializable fromJson(String data, String className)
+	public static Object fromJson(String data, String className)
 	{
-		Gson json = new GsonBuilder().registerTypeAdapter(Contract.class, new ContractAdapter()).serializeNulls().create();
-		Serializable obj = null;
+		Gson json = new GsonBuilder()
+				.registerTypeAdapter(Contract.class, new ContractAdapter())
+				.registerTypeAdapter(Square.class, new SquareAdapter())
+				.serializeNulls()
+				.create();
+		Object obj = null;
 		try
 		{
 			Module module = Class.forName(className).getModule();

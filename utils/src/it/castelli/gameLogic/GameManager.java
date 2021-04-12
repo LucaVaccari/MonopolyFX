@@ -41,7 +41,7 @@ public class GameManager
 						new PropertyContract("Vicolo Corto", 60, 2, 10, 30, 90,
 								160, 250, 50,
 								PropertyColor.BROWN, 2)),
-				new CommunityChestSquare(randomEventManager),
+				new CommunityChestSquare(),
 				new PropertySquare(
 						new PropertyContract("Vicolo Stretto", 60, 4, 20, 60,
 								180, 320, 450, 50,
@@ -53,7 +53,7 @@ public class GameManager
 						new PropertyContract("Bastioni Gransasso", 100, 6, 30,
 								90, 270, 400, 550, 50,
 								PropertyColor.LIGHT_BLUE, 3)),
-				new ChanceSquare(randomEventManager),
+				new ChanceSquare(),
 				new PropertySquare(
 						new PropertyContract("Viale Monterosa", 100, 6, 30, 90,
 								270, 400, 550, 50,
@@ -84,7 +84,7 @@ public class GameManager
 								550,
 								750, 950, 100,
 								PropertyColor.ORANGE, 3)),
-				new CommunityChestSquare(randomEventManager),
+				new CommunityChestSquare(),
 				new PropertySquare(
 						new PropertyContract("Corso Raffaello", 180, 14, 70,
 								200, 550, 750, 950, 100,
@@ -99,7 +99,7 @@ public class GameManager
 								250,
 								700, 880, 1050, 150,
 								PropertyColor.RED, 3)),
-				new ChanceSquare(randomEventManager),
+				new ChanceSquare(),
 				new PropertySquare(
 						new PropertyContract("Corso Magellano", 220, 18, 90,
 								250, 700, 880, 1050, 150,
@@ -137,7 +137,7 @@ public class GameManager
 						new PropertyContract("Corso Impero", 300, 26, 130, 400,
 								900, 1100, 1300, 200,
 								PropertyColor.GREEN, 3)),
-				new CommunityChestSquare(randomEventManager),
+				new CommunityChestSquare(),
 				new PropertySquare(
 						new PropertyContract("Largo Augusto", 320, 28, 150,
 								450,
@@ -145,7 +145,7 @@ public class GameManager
 								PropertyColor.GREEN, 3)),
 				new StationSquare(new StationContract("Stazione Est", 200,
 						25)),
-				new ChanceSquare(randomEventManager),
+				new ChanceSquare(),
 				new PropertySquare(
 						new PropertyContract("Viale dei Giardini", 350, 35,
 								200,

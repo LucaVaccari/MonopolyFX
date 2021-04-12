@@ -66,24 +66,26 @@ public class ContractAdapter extends TypeAdapter<Contract>
 
 		out.name("owner");
 		out.beginObject();
-		if (contract.getOwner() != null)
 		{
-			out.name("money");
-			out.value(contract.getOwner().getMoney());
-			out.name("name");
-			out.value(contract.getOwner().getName());
-			out.name("inPrison");
-			out.value(contract.getOwner().isInPrison());
-			out.name("position");
-			out.value(contract.getOwner().getPosition());
-			out.name("previousPosition");
-			out.value(contract.getOwner().getPreviousPosition());
-			out.name("pawn");
-			out.value(String.valueOf(contract.getOwner().getPawn()));
-			out.name("randomEventDescription");
-			out.value(contract.getOwner().getRandomEventDescription());
-			out.name("randomEventType");
-			out.value(contract.getOwner().getRandomEventType());
+			if (contract.getOwner() != null)
+			{
+				out.name("money");
+				out.value(contract.getOwner().getMoney());
+				out.name("name");
+				out.value(contract.getOwner().getName());
+				out.name("inPrison");
+				out.value(contract.getOwner().isInPrison());
+				out.name("position");
+				out.value(contract.getOwner().getPosition());
+				out.name("previousPosition");
+				out.value(contract.getOwner().getPreviousPosition());
+				out.name("pawn");
+				out.value(String.valueOf(contract.getOwner().getPawn()));
+				out.name("randomEventDescription");
+				out.value(contract.getOwner().getRandomEventDescription());
+				out.name("randomEventType");
+				out.value(contract.getOwner().getRandomEventType());
+			}
 		}
 		out.endObject();
 
@@ -108,6 +110,7 @@ public class ContractAdapter extends TypeAdapter<Contract>
 		PropertyColor color = null;
 		int houseCost = 0, numberOfHouses = 0, colorSetContractNumber = 0;
 
+		// COMPANY ONLY
 		CompanyContract.Company company = null;
 
 		String name;

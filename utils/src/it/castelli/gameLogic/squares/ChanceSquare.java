@@ -4,20 +4,12 @@ import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
-import it.castelli.gameLogic.randomEvents.RandomEventManager;
 
 /**
  * Square which make the player pick a chance card
  */
 public class ChanceSquare implements Square
 {
-	private final RandomEventManager randomEventManager;
-
-	public ChanceSquare(RandomEventManager randomEventManager)
-	{
-		this.randomEventManager = randomEventManager;
-	}
-
 	/**
 	 * Pick a chance card
 	 *
@@ -26,7 +18,7 @@ public class ChanceSquare implements Square
 	@Override
 	public void interact(Player player, GameManager gameManager)
 	{
-		RandomEvent randomEvent = randomEventManager.drawChance();
+		RandomEvent randomEvent = gameManager.getRandomEventManager().drawChance();
 		player.setLastRandomEvent("Chance", randomEvent.getMessage());
 		randomEvent.applyEffect(player, gameManager);
 	}
