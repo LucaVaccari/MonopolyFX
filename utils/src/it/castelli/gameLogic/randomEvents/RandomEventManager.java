@@ -36,7 +36,7 @@ public class RandomEventManager
 						25, true),
 				new YouWonRandomEvent(
 						"Avete vinto un terno al lotto: ritirate 100 M", RandomEventType.CHANCE, 100),
-				new GoToRandomEvent("Andate avanti sino al 'Via!'", RandomEventType.CHANCE, 0, true),
+				new GoToRandomEvent("Andate avanti sino al 'Via!'", RandomEventType.CHANCE, 40, true),
 				new GoToRandomEvent(
 						"Andate sino al Largo Colombo: se passate dal 'Via!'" +
 								" " +
@@ -61,10 +61,10 @@ public class RandomEventManager
 								"'Via!'" +
 								" ritirate 200 M", RandomEventType.CHANCE,
 						11, true),
-				new PrisonEscapeRandomEvent(
+				/*new PrisonEscapeRandomEvent(
 						"Uscite gratis di prigione, se ci siete: potete " +
 								"conservare questo cartoncino sino al momento" +
-								" di servirvene (non si sa mai!) oppure venderlo", RandomEventType.CHANCE),
+								" di servirvene (non si sa mai!) oppure venderlo", RandomEventType.CHANCE),*/
 				new YouWonRandomEvent(
 						"La Banca Vi paga gli interessi del vostro Conto " +
 								"Corrente: ritirate 50 M", RandomEventType.CHANCE,
@@ -85,11 +85,11 @@ public class RandomEventManager
 						200),
 				new YouWonRandomEvent("Ereditate da un lontano parente 100 M", RandomEventType.COMMUNITY_CHEST,
 						100),
-				new PrisonEscapeRandomEvent(
+				/*new PrisonEscapeRandomEvent(
 						"Uscite gratis di prigione, se ci siete: potete " +
 								"conservare questo cartoncino sino al momento" +
 								" di servirvene (non si sa mai!) oppure venderlo",
-						RandomEventType.COMMUNITY_CHEST),
+						RandomEventType.COMMUNITY_CHEST),*/
 				new GoToRandomEvent("Andate avanti sino al 'Via!'", RandomEventType.COMMUNITY_CHEST, 0, true),
 				new YouWonRandomEvent(
 						"E' maturata la cedola delle vostre azioni: ritirate " +
