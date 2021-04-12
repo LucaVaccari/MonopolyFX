@@ -39,4 +39,6 @@ public class ClientMessages
 			"it.castelli.connection.messages.BuyContractServerMessage";
 	public static final String EXIT_FROM_PRISON_MESSAGE_NAME =
 			"it.castelli.connection.messages.ExitFromPrisonServerMessage";
+	public static final String GO_TO_JAIL_MESSAGE_NAME =
+			"it.castelli.connection.messages.GoToJailServerMessage";
 }
