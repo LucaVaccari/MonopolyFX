@@ -2,6 +2,7 @@ package it.castelli.gameLogic.squares;
 
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.StationContract;
 
 /**
@@ -46,7 +47,20 @@ public class StationSquare implements Square
 	public void interact(Player player, GameManager gameManager)
 	{
 		int revenue = contract.getRevenue();
+		Player owner = gameManager.getSamePlayer(contract.getOwner().toPlayer());
+
+		//checks the number of station owned by the owner of the contract on this square
+		int numberOfOwnedStations = 0;
+		for (Contract contract : owner.getContracts())
+		{
+			if (contract instanceof StationContract)
+			{
+				numberOfOwnedStations++;
+			}
+		}
+		revenue *= 2 ^(numberOfOwnedStations - 1);
+
 		player.removeMoney(revenue);
-		contract.getOwner().addMoney(revenue);
+		owner.addMoney(revenue);
 	}
 }

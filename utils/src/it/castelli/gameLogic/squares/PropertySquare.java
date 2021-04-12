@@ -2,6 +2,7 @@ package it.castelli.gameLogic.squares;
 
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
 
 /**
@@ -46,7 +47,22 @@ public class PropertySquare implements Square
 	public void interact(Player player, GameManager gameManager)
 	{
 		int revenue = contract.getRevenue();
+		Player owner = gameManager.getSamePlayer(contract.getOwner().toPlayer());
+
+		//checks if the owner owns all the company of the set
+		int numberOfPropertiesOfTheSameSet = 0;
+		for (Contract contract : owner.getContracts())
+		{
+			if (contract instanceof PropertyContract)
+			{
+				if (((PropertyContract) contract).getColor() == this.contract.getColor())
+					numberOfPropertiesOfTheSameSet++;
+			}
+		}
+		if (this.contract.getNumberOfHouses() == 0 && numberOfPropertiesOfTheSameSet == this.contract.getColorSetContractNumber())
+			revenue *= 2;
+
 		player.removeMoney(revenue);
-		contract.getOwner().addMoney(revenue);
+		owner.addMoney(revenue);
 	}
 }

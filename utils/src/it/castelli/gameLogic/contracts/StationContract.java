@@ -32,19 +32,7 @@ public class StationContract extends Contract implements Serializable
 	@Override
 	public int getRevenue()
 	{
-		//TODO: Move in StationSquare
-		/*int numberOfOwnedStations = 0;
-
-		for (Contract contract : owner.getContracts())
-		{
-			if (contract instanceof StationContract)
-			{
-				numberOfOwnedStations++;
-			}
-		}
-
-		return 2^(numberOfOwnedStations - 1) * revenue;*/
-		return 0;
+		return revenue;
 	}
 
 	/**

@@ -126,22 +126,7 @@ public class PropertyContract extends Contract implements Serializable
 	@Override
 	public int getRevenue()
 	{
-		//TODO: move into PropertySquare
-		/*int numberOfPropertiesOfTheSameSet = 0;
-
-		for (Contract contract : owner.getContracts())
-		{
-			if (contract instanceof PropertyContract)
-			{
-				if (((PropertyContract) contract).getColor() == this.color)
-					numberOfPropertiesOfTheSameSet++;
-			}
-		}
-
-		if (this.numberOfHouses == 0 && numberOfPropertiesOfTheSameSet == this.colorSetContractNumber)
-			return revenues[0] * 2;
-		return revenues[numberOfHouses];*/
-		return 0;
+		return revenues[numberOfHouses];
 	}
 
 	public PropertyColor getColor()

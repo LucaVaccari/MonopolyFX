@@ -28,7 +28,7 @@ public class CompanyContract extends Contract implements Serializable
 	}
 
 	/**
-	 * Get the revenue of the contract
+	 * Get the revenue of the contract (do NOT use)
 	 *
 	 * @return The revenue of the property when a player lands on it (taking care of the other company)
 	 */
