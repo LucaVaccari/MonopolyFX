@@ -4,6 +4,7 @@ import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
+import it.castelli.gui.controllers.ExchangeController;
 
 /**
  * Message received from the server that updates the exchange in which the player is involved (receive only)
@@ -29,5 +30,6 @@ public class UpdateExchangeClientMessage implements Message
     public void onReceive(Connection connection, Player player)
     {
         Game.getGameManager().updateExchange(exchange);
+        ExchangeController.getInstance().setExchange(exchange);
     }
 }

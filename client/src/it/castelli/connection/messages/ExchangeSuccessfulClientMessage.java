@@ -5,6 +5,9 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Exchange;
 import it.castelli.gui.AlertUtil;
+import it.castelli.gui.scene.SceneManager;
+import it.castelli.gui.scene.SceneType;
+import javafx.application.Platform;
 
 /**
  * Message received from the server that closes the window of the successfully closed exchange (receive only)
@@ -31,9 +34,11 @@ public class ExchangeSuccessfulClientMessage implements Message
 	{
 		if (exchange.getPlayer1().equals(Game.getPlayer()) || exchange.getPlayer2().equals(Game.getPlayer()))
 		{
-			AlertUtil.showInformationAlert("Successo", "Scambio eseguito",
-					"Lo scambio e' stato effettuato con successo!");
-			// TODO: close the exchange window
+			Platform.runLater(() -> {
+				SceneManager.getInstance().getStageByType(SceneType.EXCHANGE).close();
+				AlertUtil.showInformationAlert("Successo", "Scambio eseguito",
+				                               "Lo scambio e' stato effettuato con successo!");
+			});
 		}
 	}
 }
