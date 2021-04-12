@@ -4,7 +4,6 @@ sos
 
 #### TODO
 
-- il giocatore si muove anche se dovrebbe essere in prigione (to fix)
 - far partire il gioco solo quando tutti hanno una pedina (TO TEST)
 - tutto il sistema delle case
 - tutto il sistema dell'ipoteca
