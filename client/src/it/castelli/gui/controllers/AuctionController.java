@@ -7,6 +7,7 @@ import it.castelli.connection.messages.ClientMessages;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gui.customComponents.ChatComponent;
 import it.castelli.serialization.Serializer;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -79,6 +80,7 @@ public class AuctionController
 	{
 		auctionBaseLabel.setText(auction.getBestOfferProposed() + "M");
 		totalMoneyLabel.setText(Game.getPlayer().getMoney() + "M");
+		yourOfferLabel.setText(yourOffer + "M");
 	}
 
 	/**
@@ -89,7 +91,7 @@ public class AuctionController
 	 */
 	private void changeOffer(int value)
 	{
-		if (yourOffer + value > Game.getPlayer().getMoney())
+		if (yourOffer + value < Game.getPlayer().getMoney())
 		{
 			yourOffer += value;
 			yourOfferLabel.setText(yourOffer + "M");
@@ -99,7 +101,8 @@ public class AuctionController
 	public void setAuction(Auction auction)
 	{
 		this.auction = auction;
-		update();
+		yourOffer = auction.getBestOfferProposed();
+		Platform.runLater(this::update);
 	}
 
 	public ChatComponent getChat()

@@ -10,7 +10,7 @@ sos
 - stampare un messaggio quando si paga qualcuno
 - piccola icona vicino al moneyLabel per vedere se si è in prigione
 - sistemare l'asta
-- chiudere l'asta se la si rifiuta
+- chiudere lo scambio se lo si rifiuta (TO TEST)
 - sistemare gli scambi (TO TEST)
 
 
