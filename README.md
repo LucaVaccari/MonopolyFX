@@ -9,7 +9,7 @@ sos
 - tutto il sistema dell'ipoteca
 - stampare un messaggio quando si paga qualcuno
 - piccola icona vicino al moneyLabel per vedere se si è in prigione
-- sistemare l'asta
+- sistemare l'asta (To TEST)
 - chiudere lo scambio se lo si rifiuta (TO TEST)
 - sistemare gli scambi (TO TEST)
 

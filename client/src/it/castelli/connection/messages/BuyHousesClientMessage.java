@@ -13,17 +13,17 @@ public class BuyHousesClientMessage implements Message
     /**
      * The game code
      */
-    private int gameCode;
+    private final int gameCode;
 
     /**
      * Contract for which player want to buy houses
      */
-    private Contract contract;
+    private final Contract contract;
 
     /**
      * Number of houses that player wants to buy
      */
-    private int numberOfHousesToBuy;
+    private final int numberOfHousesToBuy;
 
     /**
      * Constructor for BuyHousesClientMessage
