@@ -9,10 +9,10 @@ import it.castelli.gameLogic.Player;
 /**
  * Request to exit prison (receive only)
  */
-public class ExitFromPrisonServerMessage implements Message
+public class ExitFromJailServerMessage implements Message
 {
     /**
-     * The player that wants to exit from prison
+     * The player that wants to exit from jail
      */
     private final Player player;
 
@@ -27,13 +27,13 @@ public class ExitFromPrisonServerMessage implements Message
     private final boolean pay;
 
     /**
-     * Constructor for ExitFromPrisonServerMessage (do not use)
+     * Constructor for ExitFromJailServerMessage (do not use)
      *
-     *  @param player The player that wants to exit from prison
+     *  @param player The player that wants to exit from jail
      * @param gameCode The game code
      * @param pay Does the player pay to exit?
      */
-    public ExitFromPrisonServerMessage(Player player, int gameCode, boolean pay)
+    public ExitFromJailServerMessage(Player player, int gameCode, boolean pay)
     {
         this.player = player;
         this.gameCode = gameCode;

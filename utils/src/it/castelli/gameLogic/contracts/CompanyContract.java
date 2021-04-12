@@ -7,6 +7,9 @@ import java.io.Serializable;
  */
 public class CompanyContract extends Contract implements Serializable
 {
+	/**
+	 * The company enum
+	 */
 	private final Company company;
 
 	/**
