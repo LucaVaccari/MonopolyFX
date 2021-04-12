@@ -180,7 +180,7 @@ public class GameConnectionManager
 		{
 			if (element.equals(connection))
 			{
-				Player playerWhoLeft = element.getReceiver().getPlayer();
+				Player playerWhoLeft = gameManager.getSamePlayer(connection.getReceiver().getPlayer());
 				for (Contract el : playerWhoLeft.getContracts())
 				{
 					Contract contract = gameManager.getSameContract(el);
