@@ -1,8 +1,5 @@
 package it.castelli.gameLogic;
 
-import it.castelli.gameLogic.randomEvents.RandomEvent;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -10,10 +7,6 @@ import java.util.HashMap;
  */
 public class OwnerPlayer
 {
-    /**
-     * All kept RandomEvent cards (like PrisonEscape)
-     */
-    private final ArrayList<RandomEvent> keptRandomEventCards;
     /**
      * The name of the player
      */
@@ -74,10 +67,22 @@ public class OwnerPlayer
         this.position = player.getPosition();
         this.previousPosition = player.getPreviousPosition();
         this.pawn = player.getPawn();
-        this.keptRandomEventCards = player.getKeptRandomEventCards();
         this.randomEventDescription = player.getRandomEventDescription();
         this.randomEventType = player.getRandomEventType();
 
+    }
+
+    public OwnerPlayer(String name, int money, int position, boolean inPrison, Pawn pawn, String randomEventType,
+                       String randomEventDescription, int previousPosition)
+    {
+        this.name = name;
+        this.money = money;
+        this.position = position;
+        this.inPrison = inPrison;
+        this.pawn = pawn;
+        this.randomEventType = randomEventType;
+        this.randomEventDescription = randomEventDescription;
+        this.previousPosition = previousPosition;
     }
 
     public Player toPlayer()
@@ -88,7 +93,6 @@ public class OwnerPlayer
         player.setInPrison(this.inPrison);
         player.setPawn(this.pawn);
         player.setLastRandomEvent(this.randomEventType, this.randomEventDescription);
-        player.getKeptRandomEventCards().addAll(this.getKeptRandomEventCards());
         return player;
     }
 
@@ -136,16 +140,6 @@ public class OwnerPlayer
     public void setInPrison(boolean inPrison)
     {
         this.inPrison = inPrison;
-    }
-
-    /**
-     * Getter for the list of kept random event cards
-     *
-     * @return The list of kept random event cards
-     */
-    public ArrayList<RandomEvent> getKeptRandomEventCards()
-    {
-        return keptRandomEventCards;
     }
 
     /**

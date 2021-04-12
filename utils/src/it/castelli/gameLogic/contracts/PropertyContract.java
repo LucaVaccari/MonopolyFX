@@ -33,26 +33,27 @@ public class PropertyContract extends Contract implements Serializable
 
 	/**
 	 * Constructor of the PropertyContract
-	 *  @param name           The name of the contract
-	 * @param value          The cost of the property when buying from the bank
-	 * @param revenueBase    The revenue of the property when a player lands
- *                       on it when the
- *                       property
- *                       has no houses
-	 * @param revenue1House  The revenue with 1 house
-	 * @param revenue2Houses The revenue with 2 houses
-	 * @param revenue3Houses The revenue with 3 houses
-	 * @param revenue4Houses The revenue with 4 houses
-	 * @param revenueHotel   The revenue with the hotel (5 houses)
-	 * @param houseCost      The cost of each house
-	 * @param color          The color of the property
+	 *
+	 * @param name                   The name of the contract
+	 * @param value                  The cost of the property when buying from the bank
+	 * @param revenueBase            The revenue of the property when a player lands
+	 *                               on it when the
+	 *                               property
+	 *                               has no houses
+	 * @param revenue1House          The revenue with 1 house
+	 * @param revenue2Houses         The revenue with 2 houses
+	 * @param revenue3Houses         The revenue with 3 houses
+	 * @param revenue4Houses         The revenue with 4 houses
+	 * @param revenueHotel           The revenue with the hotel (5 houses)
+	 * @param houseCost              The cost of each house
+	 * @param color                  The color of the property
 	 * @param colorSetContractNumber The number of Contract with this color in the game
 	 */
 	public PropertyContract(String name, int value, int revenueBase,
-							int revenue1House, int revenue2Houses,
-							int revenue3Houses, int revenue4Houses,
-							int revenueHotel, int houseCost,
-							PropertyColor color, int colorSetContractNumber)
+	                        int revenue1House, int revenue2Houses,
+	                        int revenue3Houses, int revenue4Houses,
+	                        int revenueHotel, int houseCost,
+	                        PropertyColor color, int colorSetContractNumber)
 	{
 		this.colorSetContractNumber = colorSetContractNumber;
 		this.name = name;
@@ -151,5 +152,10 @@ public class PropertyContract extends Contract implements Serializable
 	public int[] getRevenues()
 	{
 		return revenues;
+	}
+
+	public int getColorSetContractNumber()
+	{
+		return colorSetContractNumber;
 	}
 }
