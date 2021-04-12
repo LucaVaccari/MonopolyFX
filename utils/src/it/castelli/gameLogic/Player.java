@@ -218,7 +218,6 @@ public class Player
 	 *
 	 * @param x The amount of money to add
 	 */
-	// TODO: change x name
 	public void addMoney(int x)
 	{
 		money += x;
@@ -229,11 +228,9 @@ public class Player
 	 *
 	 * @param x The amount of money to take
 	 */
-	// TODO: change x name
 	public void removeMoney(int x)
 	{
-		if (money >= x)
-			money -= x;
+		money -= x;
 	}
 
 	/**
@@ -242,7 +239,6 @@ public class Player
 	 * @param x The amount of money to compare
 	 * @return If the player has enough money
 	 */
-	// TODO: change x name
 	public boolean hasMoney(int x)
 	{
 		return money >= x;
