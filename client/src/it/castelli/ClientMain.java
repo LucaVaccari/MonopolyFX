@@ -1,32 +1,13 @@
 package it.castelli;
 
 import it.castelli.connection.Connection;
-import it.castelli.gameLogic.contracts.PropertyColor;
-import it.castelli.gameLogic.contracts.PropertyContract;
-import it.castelli.gameLogic.contracts.StationContract;
-import it.castelli.gameLogic.squares.PropertySquare;
-import it.castelli.gameLogic.squares.Square;
-import it.castelli.gameLogic.squares.StationSquare;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
-import it.castelli.serialization.Serializer;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-class Test
-{
-	private final Square square;
-
-	public Test(Square square)
-	{
-		this.square = square;
-	}
-
-	public Square getSquare()
-	{
-		return square;
-	}
-}
+import java.io.IOException;
+import java.net.Socket;
 
 public class ClientMain extends Application
 {
@@ -34,35 +15,18 @@ public class ClientMain extends Application
 
 	public static void main(String[] args)
 	{
-		Square square1 = new PropertySquare(new PropertyContract("SUS",
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				8,
-				PropertyColor.BLUE,
-				5));
-		Square square = new StationSquare(new StationContract("Sus", 4, 6));
-		Test test = new Test(square);
-		String s = Serializer.toJson(test);
-		System.out.println(s);
-		Test newTest = (Test) Serializer.fromJson(s, "it.castelli.Test");
-
-//		Socket clientSocket = null;
-//		try
-//		{
-////			clientSocket = new Socket("82.52.35.104", 1111);
-//			clientSocket = new Socket("localhost", 1111);
-//		}
-//		catch (IOException e)
-//		{
-//			e.printStackTrace();
-//		}
-//		connection = new Connection(clientSocket);
-//		launch(args);
+		Socket clientSocket = null;
+		try
+		{
+//			clientSocket = new Socket("82.52.35.104", 1111);
+			clientSocket = new Socket("localhost", 1111);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		connection = new Connection(clientSocket);
+		launch(args);
 	}
 
 	public static Connection getConnection()
