@@ -115,7 +115,6 @@ public class GameConnectionManager
 
 	public void updatePlayers()
 	{
-		System.out.println("Updating players");
 		for (Player player : gameManager.getPlayers())
 		{
 			if (player.getRandomEventType() != null)
