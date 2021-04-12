@@ -54,14 +54,15 @@ public class BuyContractServerMessage implements Message
     {
         GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
         GameManager gameManager = gameConnectionManager.getGameManager();
+        Player buyingPlayer = gameManager.getSamePlayer(this.player);
+        Contract contractToBuy = gameManager.getSameContract(contract);
 
         if (buy)
         {
-            Player buyingPlayer = gameManager.getSamePlayer(this.player);
-            buyingPlayer.addContract(contract);
-            buyingPlayer.removeMoney(contract.getValue());
-            System.out.println(buyingPlayer.getName() + " ha pagato " + contract.getValue());
-            System.out.println("Player " + buyingPlayer.getName() + " ha comprato " + contract.getName());
+            buyingPlayer.addContract(contractToBuy);
+            buyingPlayer.removeMoney(contractToBuy.getValue());
+            System.out.println(buyingPlayer.getName() + " ha pagato " + contractToBuy.getValue());
+            System.out.println("Player " + buyingPlayer.getName() + " ha comprato " + contractToBuy.getName());
             gameConnectionManager.updatePlayers();
 
             for (Player element : gameManager.getPlayers())
@@ -74,9 +75,9 @@ public class BuyContractServerMessage implements Message
         }
         else
         {
-            gameManager.startAuction(contract);
+            gameManager.startAuction(contractToBuy);
             gameConnectionManager.startAuction();
-            gameConnectionManager.sendAll(ServerMessages.NEW_AUCTION_MESSAGE_NAME, Serializer.toJson(new NewAuctionServerMessage(contract, null, 9)));
+            gameConnectionManager.sendAll(ServerMessages.NEW_AUCTION_MESSAGE_NAME, Serializer.toJson(new NewAuctionServerMessage(contractToBuy, null, 9)));
         }
     }
 }

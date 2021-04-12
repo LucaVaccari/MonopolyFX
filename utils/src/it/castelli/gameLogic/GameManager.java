@@ -230,6 +230,15 @@ public class GameManager
 		this.auction.startAuction();
 	}
 
+	public Contract getSameContract(Contract contract){
+		for (Square square : board)
+		{
+			if (((PropertySquare)square).getContract().equals(contract))
+				return square.getContract();
+		}
+		return null;
+	}
+
 	public void auctionOffer(Player player, int offer)
 	{
 		this.auction.offer(player, offer);

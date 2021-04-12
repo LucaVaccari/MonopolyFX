@@ -128,7 +128,8 @@ public class Game
 			{
 				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), false)));
 			}
-		} else
+		}
+		else
 		{
 			if (lastDiceResult.areResultsEquals())
 				player.setDoubleDiceResult(player.getDoubleDiceResult() + 1);
@@ -137,7 +138,8 @@ public class Game
 			if (player.getDoubleDiceResult() == 3)
 			{
 				ClientMain.getConnection().send(ClientMessages.GO_TO_JAIL_MESSAGE_NAME, Serializer.toJson(new GoToJailClientMessage(Game.getGameCode(), player)));
-			} else
+			}
+			else
 			{
 				Message moveMessage = new MovePlayerClientMessage(Game.getPlayer(), lastDiceResult.resultsSum(), Game.getGameCode());
 				ClientMain.getConnection().send(ClientMessages.MOVE_PLAYER_MESSAGE_NAME, Serializer.toJson(moveMessage));
