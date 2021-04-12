@@ -4,6 +4,7 @@ import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
 import it.castelli.gameLogic.randomEvents.RandomEventType;
+import it.castelli.gameLogic.squares.Square;
 
 /**
  * Random event to make a player move to a specific square (checking if it
@@ -34,9 +35,11 @@ public class GoToRandomEvent extends RandomEvent
 	 * @param player The player who drew the card and must be moved
 	 */
 	@Override
-	public void applyEffect(Player player, GameManager manager)
+	public void applyEffect(Player player, GameManager gameManager)
 	{
 		player.setPosition(square, passThroughGo);
-		manager.addRandomEvent(this, getType());
+		System.out.println("The player " + player.getName() + " was in square " + player.getPreviousPosition() + " and is now in square " + player.getPosition() + " (GoToRandomEvent)");
+		Square square = gameManager.getSquare(player.getPosition());
+		gameManager.addRandomEvent(this, getType());
 	}
 }

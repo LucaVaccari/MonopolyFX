@@ -23,10 +23,17 @@ public class Player
 	 * The name of the player
 	 */
 	private final String name;
+
+	/**
+	 * Something changed in the player?
+	 */
+	private boolean somethingChanged = false;
+
 	/**
 	 * The amount of money the player has
 	 */
 	private int money;
+
 	/**
 	 * The position of the player on the board
 	 */
@@ -136,8 +143,32 @@ public class Player
 	 */
 	public void addContract(Contract contract)
 	{
-		contract.setOwner(this);
-		contracts.add(contract);
+		somethingChanged = true;
+		if (!contracts.contains(contract))
+		{
+			contract.setOwner(this);
+			contracts.add(contract);
+		}
+	}
+
+	/**
+	 * Getter for somethingChanged
+	 *
+	 * @return Something changed in the player?
+	 */
+	public boolean hasSomethingChanged()
+	{
+		return somethingChanged;
+	}
+
+	/**
+	 * Setter for somethingChanged
+	 *
+	 * @param somethingChanged if something has changed or is marked as applied
+	 */
+	public void setSomethingChanged(boolean somethingChanged)
+	{
+		this.somethingChanged = somethingChanged;
 	}
 
 	/**
@@ -147,6 +178,7 @@ public class Player
 	 */
 	public void removeContract(Contract contract)
 	{
+		somethingChanged = true;
 		contracts.remove(contract);
 	}
 
@@ -162,6 +194,7 @@ public class Player
 
 	public void setInPrison(boolean inPrison)
 	{
+		somethingChanged = true;
 		this.inPrison = inPrison;
 	}
 
@@ -184,6 +217,7 @@ public class Player
 	 */
 	public void setPosition(int position, boolean passThroughGoSquare)
 	{
+		somethingChanged = true;
 		setPreviousPosition(this.position);
 		this.position = position;
 		if (position >= 40 && passThroughGoSquare)
@@ -199,6 +233,7 @@ public class Player
 	 */
 	public void setPreviousPosition(int previousPosition)
 	{
+		somethingChanged = true;
 		this.previousPosition = previousPosition;
 	}
 
@@ -220,6 +255,7 @@ public class Player
 	 */
 	public void addMoney(int x)
 	{
+		somethingChanged = true;
 		money += x;
 	}
 
@@ -230,6 +266,7 @@ public class Player
 	 */
 	public void removeMoney(int x)
 	{
+		somethingChanged = true;
 		money -= x;
 	}
 
@@ -271,6 +308,7 @@ public class Player
 	 */
 	private void setRandomEventType(String randomEventType)
 	{
+		somethingChanged = true;
 		this.randomEventType = randomEventType;
 	}
 
@@ -291,15 +329,16 @@ public class Player
 	 */
 	private void setRandomEventDescription(String randomEventDescription)
 	{
+		somethingChanged = true;
 		this.randomEventDescription = randomEventDescription;
 	}
 
 	public void setLastRandomEvent(String randomEventType, String randomEventDescription)
 	{
+		somethingChanged = true;
 		setRandomEventType(randomEventType);
 		setRandomEventDescription(randomEventDescription);
 	}
-
 
 	/**
 	 * Setter for the pawn
@@ -308,6 +347,7 @@ public class Player
 	 */
 	public void setPawn(Pawn pawn)
 	{
+		somethingChanged = true;
 		this.pawn = pawn;
 	}
 

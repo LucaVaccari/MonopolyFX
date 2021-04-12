@@ -124,10 +124,15 @@ public class GameConnectionManager
             	player.setLastRandomEvent(null, null);
 			}
 
-			if (player.getPreviousPosition() != player.getPosition())
+
+
+			if (player.hasSomethingChanged())
 			{
-				interactWithSquare(player);
-				player.setPreviousPosition(player.getPosition());
+				if (player.getPreviousPosition() != player.getPosition())
+				{
+					interactWithSquare(player);
+				}
+				player.setSomethingChanged(false);
 				updatePlayers();
 			}
 		}
@@ -162,6 +167,8 @@ public class GameConnectionManager
 				getConnectionFromPlayer(player).send(ServerMessages.CONTRACT_ON_SALE_MESSAGE_NAME, Serializer.toJson(new ContractOnSaleServerMessage(square.getContract())));
 			else
 				square.interact(player, gameManager);
+
+			player.setPreviousPosition(player.getPosition());
 		}
 		else
 		{
