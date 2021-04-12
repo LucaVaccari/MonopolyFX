@@ -4,6 +4,7 @@ import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gui.AlertUtil;
+import javafx.application.Platform;
 
 /**
  * Message from the server that communicates the random event (receive only)
@@ -37,6 +38,6 @@ public class RandomEventClientMessage implements Message
 	{
 		Player activePlayer = Game.getGameManager().getCurrentRound().getCurrentActivePlayer();
 		System.out.println(randomEventType + "! " + randomEventText);
-		AlertUtil.showInformationAlert(activePlayer.getName(), randomEventType, randomEventText);
+		Platform.runLater(() -> AlertUtil.showInformationAlert(activePlayer.getName(), randomEventType, randomEventText));
 	}
 }
