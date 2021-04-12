@@ -27,10 +27,7 @@ import it.castelli.serialization.Serializer;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -43,7 +40,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import javax.tools.Tool;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,6 +58,7 @@ public class BoardController
 	public static final String COMPANY_VIEW_FXML_PATH = "/FXMLs/companyView.fxml";
 
 	private static final int SHOWN_OWNED_PROPERTIES = 9;
+	public static final String PLAYER_INFO_FXML_PATH = "/FXMLs/playerInfo.fxml";
 
 	/**
 	 * Singleton instance
@@ -79,8 +76,6 @@ public class BoardController
 	private VBox playerListView;
 	@FXML
 	private Button endRoundButton;
-	@FXML
-	private Button exchangeButton;
 	@FXML
 	private Button leaveGameButton;
 
@@ -468,11 +463,11 @@ public class BoardController
 
 		// button callback
 		throwDiceButton.setOnAction(event -> {
-			if(Game.getPlayer().isInPrison())
+			if (Game.getPlayer().isInPrison())
 				//TODO: nicola mi serve un messaggio ti quando uno è in prigione,il lancio dei dadi e il pagamento deve esser fatto da server credo
 				//ClientMain.getConnection().send(ClientMessages.THROW_DICE_INPRISON_MESSAGE_NAME,Serializer.toJson(new ThrowDiceClientMessage(Game.getGameCode())));
-			ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
-					Serializer.toJson(new ThrowDiceClientMessage(Game.getGameCode())));
+				ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
+						Serializer.toJson(new ThrowDiceClientMessage(Game.getGameCode())));
 		});
 
 		endRoundButton.setOnAction(event -> {
@@ -620,6 +615,31 @@ public class BoardController
 		}
 	}
 
+	public static void showPlayerInfoView(Player player)
+	{
+		if (player == null)
+			return;
+
+		try
+		{
+			FXMLLoader loader = FXMLFileLoader.getLoader(PLAYER_INFO_FXML_PATH);
+			Parent root = loader.load();
+			PlayerInfoController controller = loader.getController();
+			controller.setPlayer(player);
+			Stage propertyViewStage = new Stage();
+			Scene scene = new Scene(root);
+			propertyViewStage.setScene(scene);
+			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
+			propertyViewStage.setAlwaysOnTop(true);
+			propertyViewStage.setResizable(false);
+			propertyViewStage.show();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * Calculate and show the owned terrains in the pane under the board
 	 */
@@ -698,8 +718,9 @@ public class BoardController
 
 		for (Player player : Game.getGameManager().getPlayers())
 		{
-			//player.setPawnPath(pawnPath);
 			PlayerInfoComponent playerInfoComponent = new PlayerInfoComponent(player);
+			playerInfoComponent.setCursor(Cursor.HAND);
+			playerInfoComponent.setOnMouseClicked(event -> showPlayerInfoView(player));
 			playerInfoComponent.setMaxHeight(Double.MAX_VALUE);
 			playerInfoComponent.setMaxWidth(Double.MAX_VALUE);
 			VBox.setVgrow(playerInfoComponent, Priority.ALWAYS);

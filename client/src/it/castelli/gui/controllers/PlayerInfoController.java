@@ -27,12 +27,19 @@ public class PlayerInfoController
 	@FXML
 	private FlowPane propertyView;
 
-	private void setPlayer(Player player)
+	public void setPlayer(Player player)
 	{
 		playerNameLabel.setText(player.getName());
 		playerMoneyLabel.setText(player.getMoney() + "M");
+
 		for (Contract contract : player.getContracts())
 			propertyView.getChildren().add(new SmallTerrainViewComponent(contract));
+
+		if (player.betterEquals(Game.getPlayer()))
+		{
+			exchangeButton.setDisable(true);
+			exchangeButton.setVisible(false);
+		}
 
 		exchangeButton.setOnAction(event -> ClientMain.getConnection()
 				.send(ClientMessages.CREATE_EXCHANGE_MESSAGE_NAME, Serializer
