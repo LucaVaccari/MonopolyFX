@@ -463,7 +463,7 @@ public class BoardController
 
 		// button callback
 		throwDiceButton.setOnAction(event -> {
-			if (Game.getPlayer().isInPrison())
+//			if (Game.getPlayer().isInPrison())
 				//TODO: nicola mi serve un messaggio ti quando uno è in prigione,il lancio dei dadi e il pagamento deve esser fatto da server credo
 				//ClientMain.getConnection().send(ClientMessages.THROW_DICE_INPRISON_MESSAGE_NAME,Serializer.toJson(new ThrowDiceClientMessage(Game.getGameCode())));
 				ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
@@ -479,7 +479,7 @@ public class BoardController
 					AlertUtil.showInformationAlert("Debito", "Siete in debito",
 							"Saldate il debito prima di finire il turno. Se finite le " +
 									"risorse perderete la partita.");
-			else if (Game.getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer()))
+			else if (!Game.getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer()))
 				AlertUtil.showInformationAlert("turno!", "Non è il tuo turno",
 						"Non potete finire il turno perchè non è il vostro turno.");
 			else
