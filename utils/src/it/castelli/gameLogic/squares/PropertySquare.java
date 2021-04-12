@@ -62,7 +62,6 @@ public class PropertySquare implements Square
 		if (this.contract.getNumberOfHouses() == 0 && numberOfPropertiesOfTheSameSet == this.contract.getColorSetContractNumber())
 			revenue *= 2;
 
-		player.removeMoney(revenue);
-		owner.addMoney(revenue);
+
 	}
 }

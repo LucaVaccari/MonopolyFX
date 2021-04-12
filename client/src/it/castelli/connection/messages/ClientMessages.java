@@ -41,4 +41,6 @@ public class ClientMessages
 			"it.castelli.connection.messages.ExitFromJailServerMessage";
 	public static final String GO_TO_JAIL_MESSAGE_NAME =
 			"it.castelli.connection.messages.GoToJailServerMessage";
+	public static final String MORTGAGE_CONTRACT_MESSAGE_NAME =
+			"it.castelli.connection.messages.MortgageContractServerMessage";
 }
