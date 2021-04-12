@@ -15,6 +15,7 @@ sos
 - visione giocatori in prigione
 - piccola icona vicino al moneyLabel per vedere se si è in prigione
 - sistemare l'asta
+- sistemare gli scambi
 - non mostrare revenue ma value nei propri possedimenti
 
 
