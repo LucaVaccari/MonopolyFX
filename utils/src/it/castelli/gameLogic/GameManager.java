@@ -213,8 +213,7 @@ public class GameManager
 		currentRound = new Round(newPlayer, 0);
 		inGame = true;
 		randomEventManager.shuffleCards();
-		System.out.println("Shuffling cards");
-
+		exchanges = new CopyOnWriteArrayList<>();
 	}
 
 	public void nextRound()
