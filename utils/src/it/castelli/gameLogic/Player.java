@@ -44,15 +44,7 @@ public class Player
 	 */
 	private boolean inPrison = false;
 
-	/**
-	 * number of dice thrown where you are in prison
-	 */
-	private int throwDiceInPrison=0;
 
-	/**
-	 * counter of dice results equals
-	 */
-	private int doubleDiceResult=0;
 
 	/**
 	 * the player's pawn
@@ -425,43 +417,4 @@ public class Player
 		return false;
 	}
 
-	/**
-	* Getter for the number of dice thrown in prison
-	 *
-	 * @return the number of dice thrown in prison
-	*/
-	public int getThrowDiceInPrison()
-	{
-		return throwDiceInPrison;
-	}
-
-	/**
-	 * Setter for the number of dice thrown in prison
-	 *
-	 * @param throwDiceInPrison the int of number of dice thrown
-	 */
-	public void setThrowDiceInPrison(int throwDiceInPrison)
-	{
-		this.throwDiceInPrison = throwDiceInPrison;
-	}
-
-	/**
-	 * Getter for the counter of double dice results
-	 *
-	 * @return the counter of double dice results
-	 */
-	public int getDoubleDiceResult()
-	{
-		return doubleDiceResult;
-	}
-
-	/**
-	 * Setter for the counter of double dice result
-	 *
-	 * @param doubleDiceResult the counter of double dice result
-	 */
-	public void setDoubleDiceResult(int doubleDiceResult)
-	{
-		this.doubleDiceResult = doubleDiceResult;
-	}
 }
