@@ -460,8 +460,10 @@ public class BoardController
 		ownedPropertiesPane.getChildren().add(showOtherProperties);
 
 		ownedPropertiesPane.getChildren().get(SHOWN_OWNED_PROPERTIES)
-				.setOnMouseClicked(event -> SceneManager.getInstance().showScene(
-						SceneType.OWNED_TERRAIN));
+				.setOnMouseClicked(event -> {
+					OwnedTerrainViewController.getInstance().update();
+					SceneManager.getInstance().showScene(SceneType.OWNED_TERRAIN);
+				});
 
 		// button callback
 		throwDiceButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
