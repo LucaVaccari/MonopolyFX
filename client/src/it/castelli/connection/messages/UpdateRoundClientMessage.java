@@ -33,7 +33,7 @@ public class UpdateRoundClientMessage implements Message
 		Game.getGameManager().setCurrentRound(round);
 
 		System.out.println("Il giocatore (dal round) " + round.getCurrentActivePlayer() + " è in prigione? " + round.getCurrentActivePlayer().isInPrison());
-		System.out.println("Il giocatore (dal Game) " + Game.getPlayer() + " è in prigione? " + Game.getPlayer().isInPrison());
+		System.out.println("Il giocatore (dal Game) " + Game.getPlayer().getName() + " è in prigione? " + Game.getPlayer().isInPrison());
 		Platform.runLater(() -> BoardController.getInstance().update());
 	}
 }
