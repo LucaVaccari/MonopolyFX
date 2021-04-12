@@ -164,7 +164,13 @@ public class GameConnectionManager
 			if (square.getContract().getOwner() == null)
 				getConnectionFromPlayer(player).send(ServerMessages.CONTRACT_ON_SALE_MESSAGE_NAME, Serializer.toJson(new ContractOnSaleServerMessage(square.getContract())));
 			else
+			{
+				int playerMoneyBeforeInteract = player.getMoney();
 				square.interact(player, gameManager);
+				int playerMoneyAfterInteract = player.getMoney();
+				int moneyPaid = playerMoneyBeforeInteract - playerMoneyAfterInteract;
+				//TODO send a message with the owner's name, the player's name, the contract name and moneyPaid
+			}
 
 			player.setPreviousPosition(player.getPosition());
 		}
