@@ -3,8 +3,10 @@ package it.castelli;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.contracts.PropertyColor;
 import it.castelli.gameLogic.contracts.PropertyContract;
+import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gameLogic.squares.PropertySquare;
 import it.castelli.gameLogic.squares.Square;
+import it.castelli.gameLogic.squares.StationSquare;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
@@ -32,7 +34,7 @@ public class ClientMain extends Application
 
 	public static void main(String[] args)
 	{
-		Square square = new PropertySquare(new PropertyContract("SUS",
+		Square square1 = new PropertySquare(new PropertyContract("SUS",
 				1,
 				2,
 				3,
@@ -43,6 +45,7 @@ public class ClientMain extends Application
 				8,
 				PropertyColor.BLUE,
 				5));
+		Square square = new StationSquare(new StationContract("Sus", 4, 6));
 		Test test = new Test(square);
 		String s = Serializer.toJson(test);
 		System.out.println(s);

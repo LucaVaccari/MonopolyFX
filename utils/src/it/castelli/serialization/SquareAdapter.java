@@ -231,7 +231,7 @@ public class SquareAdapter extends TypeAdapter<Square>
 	@Override
 	public Square read(JsonReader in) throws IOException
 	{
-		Square square = null;
+		Square square;
 
 		JsonToken token;
 		// square
@@ -246,9 +246,9 @@ public class SquareAdapter extends TypeAdapter<Square>
 				case "CommunityChest" -> square = new CommunityChestSquare();
 				case "Company" -> {
 					CompanyContract contract;
-					CompanyContract.Company company = null;
+					CompanyContract.Company company;
 					String name;
-					int value, revenue, mortgageValue;
+					int value;
 					OwnerPlayer owner = null;
 					int money;
 					String ownerName;
@@ -262,7 +262,7 @@ public class SquareAdapter extends TypeAdapter<Square>
 					in.beginObject();
 					{
 						in.nextName();
-						String contractType = in.nextString();
+						in.nextString();
 						in.nextName();
 						company = CompanyContract.Company.valueOf(in.nextString());
 
@@ -273,10 +273,10 @@ public class SquareAdapter extends TypeAdapter<Square>
 						value = in.nextInt();
 
 						in.nextName();
-						revenue = in.nextInt();
+						in.nextInt(); // revenue
 
 						in.nextName();
-						mortgageValue = in.nextInt();
+						in.nextInt(); // mortgageValue
 
 						// OWNER
 						in.nextName();
@@ -335,7 +335,7 @@ public class SquareAdapter extends TypeAdapter<Square>
 					contract = new CompanyContract(name, company, value);
 
 					if (owner != null)
-					{contract.setOwner(owner.toPlayer());}
+						contract.setOwner(owner.toPlayer());
 
 					contract.setMortgaged(mortgaged);
 					square = new CompanySquare(contract);
@@ -345,10 +345,10 @@ public class SquareAdapter extends TypeAdapter<Square>
 				case "JustVisiting" -> square = new JustVisitingSquare();
 				case "Property" -> {
 					int[] revenues = new int[6];
-					PropertyColor color = null;
-					int houseCost = 0, numberOfHouses = 0, colorSetContractNumber = 0;
+					PropertyColor color;
+					int houseCost, numberOfHouses, colorSetContractNumber;
 					String name;
-					int value, revenue, mortgageValue;
+					int value;
 					OwnerPlayer owner = null;
 					int money;
 					String ownerName;
@@ -358,29 +358,112 @@ public class SquareAdapter extends TypeAdapter<Square>
 					String randomEventType = "", randomEventDescription = "";
 					boolean mortgaged;
 
+					PropertyContract contract;
+
 					in.nextName();
-					in.beginArray();
-					for (int i = 0; i < 6; i++)
+					// contract
+					in.beginObject();
 					{
-						revenues[i] = in.nextInt();
+						in.nextName();
+						in.nextString();
+						in.nextName();
+						in.beginArray();
+						for (int i = 0; i < 6; i++)
+						{
+							revenues[i] = in.nextInt();
+						}
+						in.endArray();
+
+						in.nextName();
+						color = PropertyColor.valueOf(in.nextString());
+
+						in.nextName();
+						houseCost = in.nextInt();
+
+						in.nextName();
+						numberOfHouses = in.nextInt();
+
+						in.nextName();
+						colorSetContractNumber = in.nextInt();
+
+						in.nextName();
+						name = in.nextString();
+
+						in.nextName();
+						value = in.nextInt();
+
+						in.nextName();
+						in.nextInt(); // revenue
+
+						in.nextName();
+						in.nextInt(); // mortgageValue
+
+						// OWNER
+						in.nextName();
+						in.beginObject();
+						{
+							token = in.peek();
+							if (!token.equals(JsonToken.END_OBJECT))
+							{
+								in.nextName();
+								money = in.nextInt();
+
+								in.nextName();
+								ownerName = in.nextString();
+
+								in.nextName();
+								inPrison = in.nextBoolean();
+
+								in.nextName();
+								position = in.nextInt();
+
+								in.nextName();
+								previousPosition = in.nextInt();
+
+								in.nextName();
+								String pawnString = in.nextString();
+								if (!pawnString.equals("null"))
+									pawn = Pawn.valueOf(pawnString);
+
+								in.nextName();
+								token = in.peek();
+								if (!token.equals(JsonToken.NULL))
+									randomEventDescription = in.nextString();
+								else
+									in.nextNull();
+
+								in.nextName();
+								token = in.peek();
+								if (!token.equals(JsonToken.NULL))
+									randomEventType = in.nextString();
+								else
+									in.nextNull();
+
+								owner = new OwnerPlayer(ownerName, money, position, inPrison, pawn, randomEventType,
+										randomEventDescription,
+										previousPosition);
+							}
+						}
+						in.endObject();
+
+						in.nextName();
+						mortgaged = in.nextBoolean();
+
+						contract = new PropertyContract(name, value, revenues[0], revenues[1], revenues[2], revenues[3],
+								revenues[4], revenues[5], houseCost, color, colorSetContractNumber);
+
+						if (owner != null)
+							contract.setOwner(owner.toPlayer());
+
+						contract.setMortgaged(mortgaged);
+						contract.addHouses(numberOfHouses);
+						square = new PropertySquare(contract);
 					}
-					in.endArray();
-
-					in.nextName();
-					color = PropertyColor.valueOf(in.nextString());
-
-					in.nextName();
-					houseCost = in.nextInt();
-
-					in.nextName();
-					numberOfHouses = in.nextInt();
-
-					in.nextName();
-					colorSetContractNumber = in.nextInt();
+					in.endObject();
 				}
 				case "Station" -> {
 					String name;
-					int value, revenue, mortgageValue;
+					int value, revenue;
 					OwnerPlayer owner = null;
 					int money;
 					String ownerName;
@@ -389,6 +472,88 @@ public class SquareAdapter extends TypeAdapter<Square>
 					boolean inPrison;
 					String randomEventType = "", randomEventDescription = "";
 					boolean mortgaged;
+
+					StationContract contract;
+
+					in.nextName();
+					// contract
+					in.beginObject();
+					{
+						in.nextName();
+						in.nextString();
+
+						in.nextName();
+						name = in.nextString();
+
+						in.nextName();
+						value = in.nextInt();
+
+						in.nextName();
+						revenue = in.nextInt(); // revenue
+
+						in.nextName();
+						in.nextInt(); // mortgageValue
+
+						// OWNER
+						in.nextName();
+						in.beginObject();
+						{
+							token = in.peek();
+							if (!token.equals(JsonToken.END_OBJECT))
+							{
+								in.nextName();
+								money = in.nextInt();
+
+								in.nextName();
+								ownerName = in.nextString();
+
+								in.nextName();
+								inPrison = in.nextBoolean();
+
+								in.nextName();
+								position = in.nextInt();
+
+								in.nextName();
+								previousPosition = in.nextInt();
+
+								in.nextName();
+								String pawnString = in.nextString();
+								if (!pawnString.equals("null"))
+									pawn = Pawn.valueOf(pawnString);
+
+								in.nextName();
+								token = in.peek();
+								if (!token.equals(JsonToken.NULL))
+									randomEventDescription = in.nextString();
+								else
+									in.nextNull();
+
+								in.nextName();
+								token = in.peek();
+								if (!token.equals(JsonToken.NULL))
+									randomEventType = in.nextString();
+								else
+									in.nextNull();
+
+								owner = new OwnerPlayer(ownerName, money, position, inPrison, pawn, randomEventType,
+										randomEventDescription,
+										previousPosition);
+							}
+						}
+						in.endObject();
+
+						in.nextName();
+						mortgaged = in.nextBoolean();
+
+						contract = new StationContract(name, value, revenue);
+
+						if (owner != null)
+							contract.setOwner(owner.toPlayer());
+
+						contract.setMortgaged(mortgaged);
+						square = new StationSquare(contract);
+					}
+					in.endObject();
 				}
 				case "Tax" -> {
 					int value;
