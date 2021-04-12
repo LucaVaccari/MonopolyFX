@@ -1,8 +1,8 @@
 package it.castelli.gameLogic.randomEvents.randomEventImplementations;
 
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
-import it.castelli.gameLogic.randomEvents.RandomEventManager;
 import it.castelli.gameLogic.randomEvents.RandomEventType;
 
 /**
@@ -17,9 +17,9 @@ public class YouWonRandomEvent extends RandomEvent
 	 *
 	 * @param message The message shown to the player when drawing this card
 	 */
-	public YouWonRandomEvent(String message, RandomEventManager randomEventManager, RandomEventType randomEventType, int reward)
+	public YouWonRandomEvent(String message, RandomEventType randomEventType, int reward)
 	{
-		super(message, randomEventManager, randomEventType);
+		super(message, randomEventType);
 		this.reward = reward;
 	}
 
@@ -29,12 +29,9 @@ public class YouWonRandomEvent extends RandomEvent
 	 * @param player The player who drew the cards
 	 */
 	@Override
-	public void applyEffect(Player player)
+	public void applyEffect(Player player, GameManager manager)
 	{
 		player.addMoney(reward);
-		if (super.getType() == RandomEventType.CHANCE)
-			super.getRandomEventManager().addChance(this);
-		else
-			super.getRandomEventManager().addCommunityChest(this);
+		manager.addRandomEvent(this, getType());
 	}
 }

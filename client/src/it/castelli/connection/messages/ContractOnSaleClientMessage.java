@@ -36,8 +36,7 @@ public class ContractOnSaleClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		System.out.println(contract.getName() + " è in vendita!");
-		//TODO: show the property and the "want to buy it" choose window
+		// TODO: Should not offer if the player can't afford
 		Platform.runLater(() -> showSuggestionOfBuy("Proprietà", contract.getName() + " e' in vendita!",
 				"Volete comprare la proprieta' o metterla all'asta?", contract));
 
@@ -45,30 +44,32 @@ public class ContractOnSaleClientMessage implements Message
 
 	public static void showSuggestionOfBuy(String title, String headerText, String contentText, Contract contract)
 	{
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setTitle(title);
-		alert.setHeaderText(headerText);
-		alert.setContentText(contentText);
-		ButtonType buyButtonType = new ButtonType("Acquisto");
-		ButtonType auctionButtonType = new ButtonType("Asta");
-
-		alert.setGraphic(new SmallTerrainViewComponent(contract));
-
-		alert.getButtonTypes().setAll(buyButtonType, auctionButtonType);
-
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.isPresent())
+		if (Game.getPlayer().hasMoney(contract.getValue()))
 		{
-			if (result.get() == buyButtonType)
-			{
-				ClientMain.getConnection().send(ClientMessages.BUY_CONTRACT_MESSAGE_NAME, Serializer
-						.toJson(new BuyContractClientMessage(contract, Game.getPlayer(), true, Game.getGameCode())));
-			}
-			else if (result.get() == auctionButtonType)
-				ClientMain.getConnection().send(ClientMessages.BUY_CONTRACT_MESSAGE_NAME, Serializer
-						.toJson(new BuyContractClientMessage(contract, Game.getPlayer(), false, Game.getGameCode())));
-			else showSuggestionOfBuy(title, headerText, contentText, contract);
-		}
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setTitle(title);
+			alert.setHeaderText(headerText);
+			alert.setContentText(contentText);
+			ButtonType buyButtonType = new ButtonType("Acquisto");
+			ButtonType auctionButtonType = new ButtonType("Asta");
 
+			alert.setGraphic(new SmallTerrainViewComponent(contract));
+
+			alert.getButtonTypes().setAll(buyButtonType, auctionButtonType);
+
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.isPresent())
+			{
+				if (result.get() == buyButtonType)
+				{
+					ClientMain.getConnection().send(ClientMessages.BUY_CONTRACT_MESSAGE_NAME, Serializer
+							.toJson(new BuyContractClientMessage(contract, Game.getPlayer(), true, Game.getGameCode())));
+				}
+				else if (result.get() == auctionButtonType)
+					ClientMain.getConnection().send(ClientMessages.BUY_CONTRACT_MESSAGE_NAME, Serializer
+							.toJson(new BuyContractClientMessage(contract, Game.getPlayer(), false, Game.getGameCode())));
+				else showSuggestionOfBuy(title, headerText, contentText, contract);
+			}
+		}
 	}
 }

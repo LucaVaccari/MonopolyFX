@@ -1,8 +1,8 @@
 package it.castelli.gameLogic.randomEvents.randomEventImplementations;
 
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
-import it.castelli.gameLogic.randomEvents.RandomEventManager;
 import it.castelli.gameLogic.randomEvents.RandomEventType;
 
 /**
@@ -20,9 +20,9 @@ public class GoToRandomEvent extends RandomEvent
 	 *
 	 * @param message The message shown to the player when drawing this card
 	 */
-	public GoToRandomEvent(String message, RandomEventManager randomEventManager, RandomEventType randomEventType, int square, boolean passThroughGo)
+	public GoToRandomEvent(String message, RandomEventType randomEventType, int square, boolean passThroughGo)
 	{
-		super(message, randomEventManager, randomEventType);
+		super(message, randomEventType);
 		this.square = square;
 		this.passThroughGo = passThroughGo;
 	}
@@ -34,12 +34,9 @@ public class GoToRandomEvent extends RandomEvent
 	 * @param player The player who drew the card and must be moved
 	 */
 	@Override
-	public void applyEffect(Player player)
+	public void applyEffect(Player player, GameManager manager)
 	{
 		player.setPosition(square, passThroughGo);
-		if (super.getType() == RandomEventType.CHANCE)
-			super.getRandomEventManager().addChance(this);
-		else
-			super.getRandomEventManager().addCommunityChest(this);
+		manager.addRandomEvent(this, getType());
 	}
 }

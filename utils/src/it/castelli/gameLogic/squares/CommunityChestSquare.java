@@ -11,8 +11,7 @@ import it.castelli.gameLogic.randomEvents.RandomEventManager;
  */
 public class CommunityChestSquare implements Square
 {
-
-	private RandomEventManager randomEventManager;
+	private final RandomEventManager randomEventManager;
 
 	public CommunityChestSquare(RandomEventManager randomEventManager)
 	{
@@ -29,7 +28,7 @@ public class CommunityChestSquare implements Square
 	{
 		RandomEvent randomEvent = randomEventManager.drawCommunityChest();
 		player.setLastRandomEvent("Community Chest", randomEvent.getMessage());
-		randomEvent.applyEffect(player);
+		randomEvent.applyEffect(player, gameManager);
 	}
 
 	@Override

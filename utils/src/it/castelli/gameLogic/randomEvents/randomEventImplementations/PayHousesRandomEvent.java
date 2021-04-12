@@ -1,10 +1,10 @@
 package it.castelli.gameLogic.randomEvents.randomEventImplementations;
 
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
-import it.castelli.gameLogic.randomEvents.RandomEventManager;
 import it.castelli.gameLogic.randomEvents.RandomEventType;
 
 /**
@@ -21,9 +21,9 @@ public class PayHousesRandomEvent extends RandomEvent
 	 *
 	 * @param message The message shown to the player when he draws the card
 	 */
-	public PayHousesRandomEvent(String message, RandomEventManager randomEventManager, RandomEventType randomEventType, int houseCost, int hotelCost)
+	public PayHousesRandomEvent(String message, RandomEventType randomEventType, int houseCost, int hotelCost)
 	{
-		super(message, randomEventManager, randomEventType);
+		super(message, randomEventType);
 		this.houseCost = houseCost;
 		this.hotelCost = hotelCost;
 	}
@@ -35,7 +35,7 @@ public class PayHousesRandomEvent extends RandomEvent
 	 * @param player The player who must pay
 	 */
 	@Override
-	public void applyEffect(Player player)
+	public void applyEffect(Player player, GameManager manager)
 	{
 		int totalCost = 0;
 
@@ -44,20 +44,13 @@ public class PayHousesRandomEvent extends RandomEvent
 			if (contract instanceof PropertyContract)
 			{
 				if (((PropertyContract) contract).getNumberOfHouses() < 5)
-				{
 					totalCost += ((PropertyContract) contract).getNumberOfHouses() * houseCost;
-				}
 				else
-				{
 					totalCost += hotelCost;
-				}
 			}
 		}
 
 		player.removeMoney(totalCost);
-		if (super.getType() == RandomEventType.CHANCE)
-			super.getRandomEventManager().addChance(this);
-		else
-			super.getRandomEventManager().addCommunityChest(this);
+		manager.addRandomEvent(this, getType());
 	}
 }

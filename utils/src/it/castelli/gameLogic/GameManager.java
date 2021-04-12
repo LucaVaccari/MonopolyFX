@@ -1,7 +1,9 @@
 package it.castelli.gameLogic;
 
 import it.castelli.gameLogic.contracts.*;
+import it.castelli.gameLogic.randomEvents.RandomEvent;
 import it.castelli.gameLogic.randomEvents.RandomEventManager;
+import it.castelli.gameLogic.randomEvents.RandomEventType;
 import it.castelli.gameLogic.squares.*;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gameLogic.transactions.Exchange;
@@ -314,5 +316,14 @@ public class GameManager
 				return element;
 		}
 		return null;
+	}
+
+	public void addRandomEvent(RandomEvent event, RandomEventType type)
+	{
+		switch (type)
+		{
+			case CHANCE -> randomEventManager.addChance(event);
+			case COMMUNITY_CHEST -> randomEventManager.addCommunityChest(event);
+		}
 	}
 }

@@ -11,7 +11,7 @@ import it.castelli.gameLogic.randomEvents.RandomEventManager;
  */
 public class ChanceSquare implements Square
 {
-	private RandomEventManager randomEventManager;
+	private final RandomEventManager randomEventManager;
 
 	public ChanceSquare(RandomEventManager randomEventManager)
 	{
@@ -28,7 +28,7 @@ public class ChanceSquare implements Square
 	{
 		RandomEvent randomEvent = randomEventManager.drawChance();
 		player.setLastRandomEvent("Chance", randomEvent.getMessage());
-		randomEvent.applyEffect(player);
+		randomEvent.applyEffect(player, gameManager);
 	}
 
 	@Override

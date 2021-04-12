@@ -1,5 +1,6 @@
 package it.castelli.gameLogic.randomEvents;
 
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 
 /**
@@ -16,11 +17,6 @@ public abstract class RandomEvent
 	private final String message;
 
 	/**
-	 * The random event manager
-	 */
-	private final RandomEventManager randomEventManager;
-
-	/**
 	 * The type of the random event
 	 */
 	private final RandomEventType type;
@@ -28,13 +24,11 @@ public abstract class RandomEvent
 	/**
 	 * Generic constructor for the RandomEvent
 	 *  @param message The message shown to the player when drawing the card
-	 * @param randomEventManager The randomEventManager
-	 * @param type
+	 * @param type The type of random event (chance or community chest)
 	 */
-	public RandomEvent(String message, RandomEventManager randomEventManager, RandomEventType type)
+	public RandomEvent(String message, RandomEventType type)
 	{
 		this.message = message;
-		this.randomEventManager = randomEventManager;
 		this.type = type;
 	}
 
@@ -49,21 +43,11 @@ public abstract class RandomEvent
 	}
 
 	/**
-	 * Getter for randomEventManager
-	 *
-	 * @return The random event manager
-	 */
-	public RandomEventManager getRandomEventManager()
-	{
-		return randomEventManager;
-	}
-
-	/**
 	 * Apply the effect of the card (must be overridden by the subclasses)
 	 *
 	 * @param player The player who drew the card
 	 */
-	public abstract void applyEffect(Player player);
+	public abstract void applyEffect(Player player, GameManager manager);
 
 	/**
 	 * Getter for the message

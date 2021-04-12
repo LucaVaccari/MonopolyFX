@@ -1,8 +1,8 @@
 package it.castelli.gameLogic.randomEvents.randomEventImplementations;
 
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
-import it.castelli.gameLogic.randomEvents.RandomEventManager;
 import it.castelli.gameLogic.randomEvents.RandomEventType;
 
 /**
@@ -15,9 +15,9 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 	 *
 	 * @param message The message shown from the player when drawing this card
 	 */
-	public PrisonEscapeRandomEvent(String message, RandomEventManager randomEventManager, RandomEventType randomEventType)
+	public PrisonEscapeRandomEvent(String message, RandomEventType randomEventType)
 	{
-		super(message, randomEventManager, randomEventType);
+		super(message, randomEventType);
 	}
 
 	/**
@@ -26,7 +26,7 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 	 * @param player The player who drew the card
 	 */
 	@Override
-	public void applyEffect(Player player)
+	public void applyEffect(Player player, GameManager manager)
 	{
 		if (!player.isInPrison())
 			player.getKeptRandomEventCards().add(this);
@@ -34,10 +34,7 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 		{
 			player.setInPrison(false);
 			player.getKeptRandomEventCards().remove(this);
-			if (super.getType() == RandomEventType.CHANCE)
-				super.getRandomEventManager().addChance(this);
-			else
-				super.getRandomEventManager().addCommunityChest(this);
+			manager.addRandomEvent(this, getType());
 		}
 
 	}
