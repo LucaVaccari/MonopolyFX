@@ -3,10 +3,13 @@ package it.castelli.gui.controllers;
 import it.castelli.ClientMain;
 import it.castelli.Game;
 import it.castelli.connection.messages.ClientMessages;
+import it.castelli.connection.messages.LeaveGameClientMessage;
 import it.castelli.connection.messages.StartGameClientMessage;
 import it.castelli.gameLogic.Player;
 import it.castelli.gui.customComponents.ChatComponent;
 import it.castelli.gui.customComponents.PlayerInfoComponent;
+import it.castelli.gui.scene.SceneManager;
+import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -22,8 +25,8 @@ public class LobbyController
 	 */
 	private static LobbyController instance;
 
-	private String pawnPath;
-
+	@FXML
+	private Button backButton;
 	@FXML
 	private Button playButton;
 	@FXML
@@ -41,14 +44,19 @@ public class LobbyController
 	{
 		instance = this;
 
+		backButton.setOnAction(event -> {
+			SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
+			ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
+			                                Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+		});
+
 		playButton.setVisible(false);
 		playButton.setDisable(true);
 
 		playButton.setOnAction(
-				event -> {
-					ClientMain.getConnection().send(ClientMessages.START_GAME_MESSAGE_NAME,
-							Serializer.toJson(new StartGameClientMessage(Game.getGameCode())));
-				});
+				event -> ClientMain.getConnection().send(ClientMessages.START_GAME_MESSAGE_NAME,
+				                                         Serializer.toJson(new StartGameClientMessage(
+						                                         Game.getGameCode()))));
 
 	}
 

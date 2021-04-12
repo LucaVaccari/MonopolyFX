@@ -4,9 +4,7 @@ sos
 
 #### TODO
 
-- Visualizzare i propri possedimenti
 - il giocatore si muove anche se dovrebbe essere in prigione (to fix)
-- aggiungere un tasto per uscire dalla lobby
 - far partire il gioco solo quando tutti hanno una pedina
 - tutto il sistema delle case
 - tutto il sistema dell'ipoteca
@@ -21,4 +19,3 @@ sos
 
 - Terminare automaticamente il turno se un giocatore si disconnette
 - messaggio per quando un client deve pagare a un altro
-
