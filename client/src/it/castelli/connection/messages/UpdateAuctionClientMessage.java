@@ -5,7 +5,6 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gui.controllers.AuctionController;
-import javafx.application.Platform;
 
 /**
  * Message received from the server that updates the auction (receive only)
@@ -31,6 +30,6 @@ public class UpdateAuctionClientMessage implements Message
     public void onReceive(Connection connection, Player player)
     {
         Game.getGameManager().setAuction(auction);
-        Platform.runLater(() -> AuctionController.getInstance().update());
+        AuctionController.getInstance().setAuction(auction);
     }
 }

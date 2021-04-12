@@ -303,7 +303,7 @@ public class SceneManager
 			stage.setResizable(false);
 			stage.show();
 
-			if (sceneType == SceneType.EXCHANGE)
+			if (sceneType == SceneType.EXCHANGE || sceneType == SceneType.AUCTION)
 				stage.initModality(Modality.APPLICATION_MODAL);
 
 			openStages.put(sceneType, stage);
