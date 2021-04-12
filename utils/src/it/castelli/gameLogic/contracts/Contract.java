@@ -3,12 +3,13 @@ package it.castelli.gameLogic.contracts;
 import it.castelli.gameLogic.OwnerPlayer;
 import it.castelli.gameLogic.Player;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * Represents the properties of a Monopoly property
  */
-public class Contract
+public class Contract implements Serializable
 {
 	/**
 	 * Name of the Monopoly property
@@ -34,6 +35,8 @@ public class Contract
 	 * Is the property mortgaged?
 	 */
 	protected boolean mortgaged;
+
+	protected Contract() {}
 
 	/**
 	 * Getter for the name of the property
@@ -110,7 +113,7 @@ public class Contract
 	 *
 	 * @return The revenue of the property when a player lands on it
 	 */
-	public int getRevenue(){return 0;}
+	public int getRevenue() {return 0;}
 
 	/**
 	 * Returns a hash code value for the object. This method is supported for

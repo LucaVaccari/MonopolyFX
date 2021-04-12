@@ -1,11 +1,13 @@
 package it.castelli.gameLogic.contracts;
 
+import java.io.Serializable;
+
 /**
  * Contract for a Company (Electric Company or Water Company)
  */
-public class CompanyContract extends Contract
+public class CompanyContract extends Contract implements Serializable
 {
-	private Company company;
+	private final Company company;
 
 	/**
 	 * Constructor for the CompanyContract

@@ -1,6 +1,8 @@
 package it.castelli.serialization;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import it.castelli.gameLogic.contracts.Contract;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -63,8 +65,7 @@ public class Serializer
 	 */
 	public static String toJson(Serializable obj)
 	{
-		Gson json = new Gson();
-		return json.toJson(obj);
+		return new GsonBuilder().registerTypeAdapter(Contract.class, new ContractAdapter()).serializeNulls().create().toJson(obj);
 	}
 
 
@@ -77,7 +78,7 @@ public class Serializer
 	 */
 	public static Serializable fromJson(String data, String className)
 	{
-		Gson json = new Gson();
+		Gson json = new GsonBuilder().registerTypeAdapter(Contract.class, new ContractAdapter()).serializeNulls().create();
 		Serializable obj = null;
 		try
 		{

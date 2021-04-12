@@ -4,8 +4,8 @@ sos
 
 #### TODO
 
-- finisci turno non dovrebbe essere visibile
 - Mostrare informazioni giocatore quando ci si clicca sopra nel board
+- Visualizzare i propri possedimenti
 
 
-- messaggio per uscire di prigione
+- Terminare automaticamente il turno se un giocatore si disconnette
