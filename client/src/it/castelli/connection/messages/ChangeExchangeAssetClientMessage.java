@@ -3,7 +3,6 @@ package it.castelli.connection.messages;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.transactions.Asset;
-import it.castelli.gameLogic.transactions.Exchange;
 
 /**
  * Request to modify the money or the proprieties offered during an exchange (send only)
@@ -32,7 +31,7 @@ public class ChangeExchangeAssetClientMessage implements Message
 	 * @param gameCode The game code
 	 * @param player   The player
 	 */
-	public ChangeExchangeAssetClientMessage(Asset asset, int gameCode, Exchange exchange, Player player)
+	public ChangeExchangeAssetClientMessage(Asset asset, int gameCode, Player player)
 	{
 		this.asset = asset;
 		this.gameCode = gameCode;

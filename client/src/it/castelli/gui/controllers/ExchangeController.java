@@ -81,7 +81,7 @@ public class ExchangeController
 				yourAsset.setMoney(yourOffer);
 				ClientMain.getConnection().send(ClientMessages.CHANGE_EXCHANGE_ASSET_MESSAGE_NAME, Serializer
 						.toJson(new ChangeExchangeAssetClientMessage(
-								yourAsset, Game.getGameCode(), exchange, Game.getPlayer())));
+								yourAsset, Game.getGameCode(), Game.getPlayer())));
 			}
 			catch (NumberFormatException ignored)
 			{
@@ -95,7 +95,7 @@ public class ExchangeController
 				yourAsset.getContracts().add(optionalContract.get());
 				ClientMain.getConnection().send(ClientMessages.CHANGE_EXCHANGE_ASSET_MESSAGE_NAME, Serializer
 						.toJson(new ChangeExchangeAssetClientMessage(
-								yourAsset, Game.getGameCode(), exchange, Game.getPlayer())));
+								yourAsset, Game.getGameCode(), Game.getPlayer())));
 			}
 		});
 
