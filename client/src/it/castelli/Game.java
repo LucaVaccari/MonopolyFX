@@ -6,6 +6,7 @@ import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.dice.DiceResult;
 import it.castelli.gui.AlertUtil;
 import it.castelli.serialization.Serializer;
+import javafx.application.Platform;
 
 /**
  * Static class for storing information about the game
@@ -134,14 +135,14 @@ public class Game
 			if (!lastDiceResult.areResultsEquals() && throwDiceInPrison == 3)
 			{
 				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), true)));
-				AlertUtil.showInformationAlert("Usciti di prigione","Siete usciti di prigione","Siete usciti di prigione pagando 50 M");
+				Platform.runLater(()->AlertUtil.showInformationAlert("Usciti di prigione","Siete usciti di prigione","Siete usciti di prigione pagando 50 M"));
 				player.setInPrison(false);
 			} else if (lastDiceResult.areResultsEquals())
 			{
 				throwDiceInPrison = 0;
 				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), false)));
 
-				AlertUtil.showInformationAlert("Usciti di prigione","Siete usciti di prigione","Siete usciti di prigione tirando i dadi e facendo doppio. Complimenti!");
+				Platform.runLater(()->AlertUtil.showInformationAlert("Usciti di prigione","Siete usciti di prigione","Siete usciti di prigione tirando i dadi e facendo doppio. Complimenti!"));
 			}
 		}
 		else
@@ -153,7 +154,7 @@ public class Game
 			if (doubleDiceResult == 3)
 			{
 				ClientMain.getConnection().send(ClientMessages.GO_TO_JAIL_MESSAGE_NAME, Serializer.toJson(new GoToJailClientMessage(Game.getGameCode(), player)));
-				AlertUtil.showInformationAlert("Finiti in prigione","Siete finiti in prigione","Siete finiti in prigione dopo aver fatto tre volte il tiro dei dadi doppio");
+				Platform.runLater(()->AlertUtil.showInformationAlert("Finiti in prigione","Siete finiti in prigione","Siete finiti in prigione dopo aver fatto tre volte il tiro dei dadi doppio"));
 
 			}
 			else
