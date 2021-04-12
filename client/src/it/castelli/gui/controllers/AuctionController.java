@@ -101,4 +101,9 @@ public class AuctionController
 		this.auction = auction;
 		update();
 	}
+
+	public ChatComponent getChat()
+	{
+		return chat;
+	}
 }

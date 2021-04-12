@@ -140,8 +140,7 @@ public class GameConnectionManager
 		sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer
 				.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
 
-		//TODO: fix problem with boardMessage: json can't instanciate an interface (Square)
-		//sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
+		sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
 		sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
 
 	}
@@ -174,9 +173,5 @@ public class GameConnectionManager
 		{
 			square.interact(player, gameManager);
 		}
-
 	}
-
-
-
 }

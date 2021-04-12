@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -30,7 +29,7 @@ public class SceneManager
 	/**
 	 * List of all opened windows
 	 */
-	private final ArrayList<Stage> openStages = new ArrayList<>();
+	private final HashMap<SceneType, Stage> openStages = new HashMap<>();
 	/**
 	 * The main stage created by JavaFX
 	 */
@@ -194,8 +193,17 @@ public class SceneManager
 			stage.setTitle(scene.getWindowTitle());
 			stage.setResizable(false);
 			stage.show();
-			openStages.add(stage);
-			stage.setOnCloseRequest(event -> openStages.remove(stage));
+			openStages.put(sceneType, stage);
+			stage.setOnCloseRequest(event -> openStages.remove(sceneType));
 		}
+	}
+
+	/**
+	 * Get a stage by providing a sceneType
+	 * @param sceneType The type of the scene contained in the stage
+	 */
+	public Stage getStageByType(SceneType sceneType)
+	{
+		return openStages.get(sceneType);
 	}
 }
