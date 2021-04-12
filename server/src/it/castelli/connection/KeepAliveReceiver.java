@@ -78,8 +78,7 @@ public class KeepAliveReceiver implements Runnable
 		}
 
 		//remove inactive connections in every game
-		for (GameConnectionManager gameConnectionManager : connectionManager
-				.getGames().values())
+		for (GameConnectionManager gameConnectionManager : connectionManager.getGames().values())
 		{
 			//remove inactive connections from players list
 			for (Connection connection : gameConnectionManager.getPlayerConnections())
