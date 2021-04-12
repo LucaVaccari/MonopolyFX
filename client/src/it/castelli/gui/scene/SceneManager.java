@@ -4,6 +4,7 @@ import it.castelli.gui.AlertUtil;
 import it.castelli.gui.FXMLFileLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
@@ -50,7 +51,7 @@ public class SceneManager
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources",
-					"Cannot find file", "The file " + MAIN_MENU_FXML_PATH + " is missing");
+			                         "Cannot find file", "The file " + MAIN_MENU_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
@@ -59,12 +60,12 @@ public class SceneManager
 		{
 			Scene lobbyScene = new Scene(pawnChoiceRoot);
 			allScenes.put(SceneType.PAWN_CHOICE,
-					new SceneFXWrapper(lobbyScene, true, "MonopolyFX - Scelta pedina"));
+			              new SceneFXWrapper(lobbyScene, true, "MonopolyFX - Scelta pedina"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + PAWN_CHOICE_FXML_PATH + " is missing");
+			                         "The file " + PAWN_CHOICE_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
@@ -77,24 +78,24 @@ public class SceneManager
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + LOBBY_FXML_PATH + " is missing");
+			                         "The file " + LOBBY_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
 		Parent boardRoot = FXMLFileLoader.loadFXML("/" + BOARD_FXML_PATH,
-				this);
+		                                           this);
 		if (boardRoot != null)
 		{
 			Scene boardScene = new Scene(boardRoot);
 			allScenes
 					.put(SceneType.BOARD, new SceneFXWrapper(boardScene, true,
-							"MonopolyFX - In Gioco"));
+					                                         "MonopolyFX - In Gioco"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + BOARD_FXML_PATH +
-							" is missing");
+			                         "The file " + BOARD_FXML_PATH +
+			                         " is missing");
 			System.exit(-1);
 		}
 
@@ -103,12 +104,12 @@ public class SceneManager
 		{
 			Scene exchangeScene = new Scene(exchangeRoot);
 			allScenes.put(SceneType.EXCHANGE,
-					new SceneFXWrapper(exchangeScene, false, "Scambio"));
+			              new SceneFXWrapper(exchangeScene, false, "Scambio"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + EXCHANGE_FXML_PATH + " is missing");
+			                         "The file " + EXCHANGE_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
@@ -118,12 +119,12 @@ public class SceneManager
 		{
 			Scene auctionScene = new Scene(auctionRoot);
 			allScenes.put(SceneType.AUCTION,
-					new SceneFXWrapper(auctionScene, false, "Asta"));
+			              new SceneFXWrapper(auctionScene, false, "Asta"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + AUCTION_FXML_PATH + " is missing");
+			                         "The file " + AUCTION_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 
@@ -132,12 +133,12 @@ public class SceneManager
 		{
 			Scene propertyViewScene = new Scene(propertyViewRoot);
 			allScenes.put(SceneType.OWNED_TERRAIN, new SceneFXWrapper(propertyViewScene, false,
-					"I Vostri possedimenti"));
+			                                                          "I Vostri possedimenti"));
 		}
 		else
 		{
 			AlertUtil.showErrorAlert("Missing resources", "Cannot find file",
-					"The file " + OWNED_TERRAIN_FXML_PATH + " is missing");
+			                         "The file " + OWNED_TERRAIN_FXML_PATH + " is missing");
 			System.exit(-1);
 		}
 	}
@@ -193,6 +194,10 @@ public class SceneManager
 			stage.setTitle(scene.getWindowTitle());
 			stage.setResizable(false);
 			stage.show();
+
+			if (sceneType == SceneType.EXCHANGE)
+				stage.initModality(Modality.APPLICATION_MODAL);
+
 			openStages.put(sceneType, stage);
 			stage.setOnCloseRequest(event -> openStages.remove(sceneType));
 		}
@@ -200,6 +205,7 @@ public class SceneManager
 
 	/**
 	 * Get a stage by providing a sceneType
+	 *
 	 * @param sceneType The type of the scene contained in the stage
 	 */
 	public Stage getStageByType(SceneType sceneType)

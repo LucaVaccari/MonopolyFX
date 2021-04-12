@@ -6,6 +6,7 @@ import it.castelli.connection.messages.ClientMessages;
 import it.castelli.connection.messages.LeaveGameClientMessage;
 import it.castelli.connection.messages.StartGameClientMessage;
 import it.castelli.gameLogic.Player;
+import it.castelli.gui.AlertUtil;
 import it.castelli.gui.customComponents.ChatComponent;
 import it.castelli.gui.customComponents.PlayerInfoComponent;
 import it.castelli.gui.scene.SceneManager;
@@ -54,9 +55,25 @@ public class LobbyController
 		playButton.setDisable(true);
 
 		playButton.setOnAction(
-				event -> ClientMain.getConnection().send(ClientMessages.START_GAME_MESSAGE_NAME,
-				                                         Serializer.toJson(new StartGameClientMessage(
-						                                         Game.getGameCode()))));
+				event -> {
+					boolean canStart = true;
+					for (Player player : Game.getGameManager().getPlayers())
+					{
+						if (player.getPawn() == null)
+						{
+							canStart = false;
+							break;
+						}
+					}
+					if (canStart)
+						ClientMain.getConnection().send(ClientMessages.START_GAME_MESSAGE_NAME,
+						                                Serializer.toJson(new StartGameClientMessage(
+								                                Game.getGameCode())));
+					else
+						AlertUtil.showInformationAlert("Aspettate", "Non tutti i giocatori sono pronti",
+						                               "Alcuni giocatori stanno ancora scegliendo la pedina da " +
+						                               "utilizzare in gioco");
+				});
 
 	}
 

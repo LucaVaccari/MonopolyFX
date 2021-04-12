@@ -1,594 +1,458 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import it.castelli.gui.customComponents.*?>
+<?import it.castelli.gui.customComponents.ChatComponent?>
+<?import it.castelli.gui.customComponents.SquareComponent?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="800.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/15.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.BoardController">
-    <ImageView fitHeight="800.0" fitWidth="1250.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0"
-               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Image url="@../images/poker.jpg"/>
+
+<AnchorPane prefHeight="800.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.BoardController">
+    <ImageView fitHeight="800.0" fitWidth="1250.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Image url="@../images/poker.jpg" />
     </ImageView>
-    <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0"
-          prefWidth="200.0" spacing="10.0" stylesheets="@Style/style.css" AnchorPane.bottomAnchor="0.0"
-          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" stylesheets="@Style/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <padding>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
         </padding>
-        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0"
-              prefWidth="521.0" HBox.hgrow="ALWAYS">
-            <GridPane alignment="CENTER" maxHeight="550.0" maxWidth="550.0" minHeight="550.0" minWidth="550.0"
-                      prefHeight="550.0" prefWidth="550.0" style="-fx-border-color: 000000; -fx-border-image-width: 5;"
-                      VBox.vgrow="ALWAYS">
+        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="521.0" HBox.hgrow="ALWAYS">
+            <GridPane alignment="CENTER" maxHeight="550.0" maxWidth="550.0" minHeight="550.0" minWidth="550.0" prefHeight="550.0" prefWidth="550.0" style="-fx-border-color: 000000; -fx-border-image-width: 5;" VBox.vgrow="ALWAYS">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="ALWAYS"/>
-                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
-                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
-                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
-                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
-                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
-                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
-                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
-                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
-                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
-                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS"/>
+                    <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="ALWAYS" />
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+                    <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
                 </rowConstraints>
 
 
-                <Group fx:id="goSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                       GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/go_square.png"/>
+                <Group fx:id="goSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/go_square.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
 
-                <Group fx:id="vicoloCortoSquare" GridPane.columnIndex="9" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="9" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/brown.png"/>
+                <Group fx:id="vicoloCortoSquare" GridPane.columnIndex="9" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/brown.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="communityChestSquare1" GridPane.columnIndex="8" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/communityChest.png"/>
+                <Group fx:id="communityChestSquare1" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/communityChest.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="vicoloStrettoSquare" GridPane.columnIndex="7" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/brown.png"/>
+                <Group fx:id="vicoloStrettoSquare" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/brown.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="patrimonialTaxSquare" GridPane.columnIndex="6" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/patrimonial_tax.png"/>
+                <Group fx:id="patrimonialTaxSquare" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/patrimonial_tax.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="southStationSquare" GridPane.columnIndex="5" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/station.png"/>
+                <Group fx:id="southStationSquare" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/station.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="bastioniGranSassoSquare" GridPane.columnIndex="4" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/light_blue.png"/>
+                <Group fx:id="bastioniGranSassoSquare" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/light_blue.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="chanceSquare1" GridPane.columnIndex="3" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="3" GridPane.rowIndex="10">
-                        <Image url="@../images/squares/chance.png"/>
+                <Group fx:id="chanceSquare1" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                        <Image url="@../images/squares/chance.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="vialeMonterosaSquare" GridPane.columnIndex="2" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/light_blue.png"/>
+                <Group fx:id="vialeMonterosaSquare" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/light_blue.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="vialeVesuvioSquare" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/viale_vesuvio.png"/>
+                <Group fx:id="vialeVesuvioSquare" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/viale_vesuvio.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="justVisitingSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                       GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10"
-                                     GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/passaggio.png"/>
+                <Group fx:id="justVisitingSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/passaggio.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane prefHeight="50.0" prefWidth="50.0" rowValignment="TOP">
+                  <children>
+                     <VBox alignment="CENTER" prefHeight="39.0" prefWidth="11.0" />
+                     <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="39.0" prefWidth="35.0" />
+                     <HBox alignment="CENTER" prefHeight="11.0" prefWidth="50.0" />
+                  </children></FlowPane>
                 </Group>
-                <Group fx:id="viaAccademiaSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                       GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9"
-                                     GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/magenta.png"/>
+                <Group fx:id="viaAccademiaSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/magenta.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="electricSocietySquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                       GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8"
-                                     GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/electric_society.png"/>
+                <Group fx:id="electricSocietySquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/electric_society.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="corsoAteneoSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                       GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7"
-                                     GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/magenta.png"/>
+                <Group fx:id="corsoAteneoSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/magenta.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="piazzaUniversitaSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                       GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6"
-                                     GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/piazza_università.png"/>
+                <Group fx:id="piazzaUniversitaSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/piazza_università.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="westStationSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                       GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5"
-                                     GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/station.png"/>
+                <Group fx:id="westStationSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/station.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="viaVerdiSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4"
-                       GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4"
-                                     GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/orange.png"/>
+                <Group fx:id="viaVerdiSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/orange.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="communityChestSquare2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                       GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3"
-                                     GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/communityChest.png"/>
+                <Group fx:id="communityChestSquare2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/communityChest.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="corsoRaffaelloSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                       GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2"
-                                     GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/orange.png"/>
+                <Group fx:id="corsoRaffaelloSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/orange.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="piazzaDanteSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                       GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1"
-                                     GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/piazza-dante.png"/>
+                <Group fx:id="piazzaDanteSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/piazza-dante.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="freeParkingSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                       GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                <Group fx:id="freeParkingSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                     <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../images/squares/free_parking.png"/>
+                        <Image url="@../images/squares/free_parking.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="viaMarcoPoloSquare" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="1">
-                        <Image url="@../images/squares/red.png"/>
+                <Group fx:id="viaMarcoPoloSquare" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                        <Image url="@../images/squares/red.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="chanceSquare2" GridPane.columnIndex="2" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="2">
-                        <Image url="@../images/squares/chance.png"/>
+                <Group fx:id="chanceSquare2" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                        <Image url="@../images/squares/chance.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="corsoMagellanoSquare" GridPane.columnIndex="3" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="3">
-                        <Image url="@../images/squares/red.png"/>
+                <Group fx:id="corsoMagellanoSquare" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                        <Image url="@../images/squares/red.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="largoColomboSquare" GridPane.columnIndex="4" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="4">
-                        <Image url="@../images/squares/largo_colombo.png"/>
+                <Group fx:id="largoColomboSquare" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                        <Image url="@../images/squares/largo_colombo.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="northStationSquare" GridPane.columnIndex="5" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="5">
-                        <Image url="@../images/squares/station.png"/>
+                <Group fx:id="northStationSquare" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+                        <Image url="@../images/squares/station.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="vialeCostantinoSquare" GridPane.columnIndex="6" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="6">
-                        <Image url="@../images/squares/yellow.png"/>
+                <Group fx:id="vialeCostantinoSquare" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
+                        <Image url="@../images/squares/yellow.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="vialeTraianoSquare" GridPane.columnIndex="7" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="7">
-                        <Image url="@../images/squares/yellow.png"/>
+                <Group fx:id="vialeTraianoSquare" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
+                        <Image url="@../images/squares/yellow.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="waterWorksSquare" GridPane.columnIndex="8" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="8">
-                        <Image url="@../images/squares/water_works.png"/>
+                <Group fx:id="waterWorksSquare" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8">
+                        <Image url="@../images/squares/water_works.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="piazzaGiulioCesareSquare" GridPane.columnIndex="9" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="9">
-                        <Image url="@../images/squares/piazza_cesare.png"/>
+                <Group fx:id="piazzaGiulioCesareSquare" GridPane.columnIndex="9" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9">
+                        <Image url="@../images/squares/piazza_cesare.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="goToJailSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="10">
-                        <Image url="@../images/squares/go_to_prison.png"/>
+                <Group fx:id="goToJailSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10">
+                        <Image url="@../images/squares/go_to_prison.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="viaRomaSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="10" GridPane.rowIndex="1">
-                        <Image url="@../images/squares/green.png"/>
+                <Group fx:id="viaRomaSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="1">
+                        <Image url="@../images/squares/green.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="corsoImperoSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/green.png"/>
+                <Group fx:id="corsoImperoSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/green.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="communityChestSquare3" GridPane.columnIndex="10" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/communityChest.png"/>
+                <Group fx:id="communityChestSquare3" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/communityChest.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="largoAugustoSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/largo_augusto.png"/>
+                <Group fx:id="largoAugustoSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/largo_augusto.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="eastStationSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/station.png"/>
+                <Group fx:id="eastStationSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/station.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="chanceSquare3" GridPane.columnIndex="10" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/chance.png"/>
+                <Group fx:id="chanceSquare3" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/chance.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="vialeDeiGiardiniSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/viale_giardini.png"/>
+                <Group fx:id="vialeDeiGiardiniSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/viale_giardini.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="luxuryTaxSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/luxury_tax.png"/>
+                <Group fx:id="luxuryTaxSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/luxury_tax.png" />
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <Group fx:id="parcoDellaVittoriaSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
-                       GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER"
-                       GridPane.vgrow="ALWAYS">
-                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true"
-                                     GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                     GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                        <Image url="@../images/squares/parco_vittoria.png"/>
+                <Group fx:id="parcoDellaVittoriaSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <SquareComponent fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="9" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Image url="@../images/squares/parco_vittoria.png" />
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </SquareComponent>
-                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
+                    <FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0" />
                 </Group>
-                <ImageView disable="true" fitHeight="450.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true"
-                           GridPane.columnIndex="1" GridPane.rowIndex="5">
-                    <Image url="@../images/squares/board_center.png"/>
+                <ImageView disable="true" fitHeight="450.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <Image url="@../images/squares/board_center.png" />
                 </ImageView>
             </GridPane>
-            <FlowPane fx:id="ownedPropertiesPane" alignment="CENTER" columnHalignment="CENTER"
-                      nodeOrientation="LEFT_TO_RIGHT" prefHeight="126.0" prefWidth="556.0" VBox.vgrow="ALWAYS">
+            <FlowPane fx:id="ownedPropertiesPane" alignment="CENTER" columnHalignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="126.0" prefWidth="556.0" VBox.vgrow="ALWAYS">
                 <padding>
-                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                 </padding>
-                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
-                       maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="60.0"
-                       style="-fx-background-color: #ffffff;" text="..." textAlignment="CENTER">
+                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #ffffff;" text="..." textAlignment="CENTER">
                     <padding>
-                        <Insets bottom="5.0"/>
+                        <Insets bottom="5.0" />
                     </padding>
                     <font>
-                        <Font size="36.0"/>
+                        <Font size="36.0" />
                     </font>
                 </Label>
             </FlowPane>
         </VBox>
-        <VBox alignment="TOP_CENTER" maxHeight="700.0" maxWidth="1.7976931348623157E308" prefHeight="700.0"
-              prefWidth="282.0" spacing="60.0" HBox.hgrow="ALWAYS">
-            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="117.0"
-                        prefWidth="270.0" VBox.vgrow="ALWAYS">
+        <VBox alignment="TOP_CENTER" maxHeight="700.0" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="282.0" spacing="60.0" HBox.hgrow="ALWAYS">
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="117.0" prefWidth="270.0" VBox.vgrow="ALWAYS">
                 <VBox alignment="CENTER" layoutX="22.0" layoutY="17.0" spacing="20.0">
-                    <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                          spacing="50.0" VBox.vgrow="ALWAYS">
-                        <ImageView fx:id="die1Image" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true"
-                                   preserveRatio="true" HBox.hgrow="ALWAYS">
-                            <Image url="@../images/dice/face_0.png"/>
+                    <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="50.0" VBox.vgrow="ALWAYS">
+                        <ImageView fx:id="die1Image" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                            <Image url="@../images/dice/face_0.png" />
                             <effect>
-                                <DropShadow height="5.0" radius="2.0" spread="1.0" width="5.0"/>
+                                <DropShadow height="5.0" radius="2.0" spread="1.0" width="5.0" />
                             </effect>
                         </ImageView>
-                        <ImageView fx:id="die2Image" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true"
-                                   preserveRatio="true">
-                            <Image url="@../images/dice/face_0.png"/>
+                        <ImageView fx:id="die2Image" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../images/dice/face_0.png" />
                             <effect>
-                                <DropShadow height="5.0" radius="2.0" spread="1.0" width="5.0"/>
+                                <DropShadow height="5.0" radius="2.0" spread="1.0" width="5.0" />
                             </effect>
                         </ImageView>
                     </HBox>
-                    <Button fx:id="throwDiceButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                            prefHeight="23.0" prefWidth="136.0" stylesheets="@Style/style.css" text="Lancia i dadi"
-                            textOverrun="CLIP">
+                    <Button fx:id="throwDiceButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="23.0" prefWidth="136.0" stylesheets="@Style/style.css" text="Lancia i dadi" textOverrun="CLIP">
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
                     </Button>
                 </VBox>
             </AnchorPane>
-            <VBox fx:id="playerListView" alignment="CENTER" maxHeight="385.0" maxWidth="1.7976931348623157E308"
-                  prefHeight="385.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" VBox.vgrow="ALWAYS"/>
-            <Label fx:id="moneyLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308"
-                   maxWidth="1.7976931348623157E308" prefHeight="102.0" prefWidth="303.0"
-                   style="-fx-background-color: #ffffff;" text="0M" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS"
-                   VBox.vgrow="ALWAYS">
+            <VBox fx:id="playerListView" alignment="CENTER" maxHeight="385.0" maxWidth="1.7976931348623157E308" prefHeight="385.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" VBox.vgrow="ALWAYS" />
+            <Label fx:id="moneyLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="102.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" text="0M" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" VBox.vgrow="ALWAYS">
                 <font>
-                    <Font name="System Bold" size="48.0"/>
+                    <Font name="System Bold" size="48.0" />
                 </font>
             </Label>
         </VBox>
-        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="773.0" prefWidth="227.0"
-              HBox.hgrow="ALWAYS">
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="773.0" prefWidth="227.0" HBox.hgrow="ALWAYS">
             <VBox prefHeight="230.0" prefWidth="231.0">
-                <Button fx:id="endRoundButton" alignment="CENTER" maxHeight="1.7976931348623157E308"
-						maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Termina turno"
-						VBox.vgrow="ALWAYS">
+                <Button fx:id="endRoundButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Termina turno" VBox.vgrow="ALWAYS">
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button id="leave-button" fx:id="leaveGameButton" maxHeight="1.7976931348623157E308"
-                        maxWidth="1.7976931348623157E308" mnemonicParsing="false" stylesheets="@Style/style.css"
-                        text="Lascia partita" VBox.vgrow="ALWAYS">
+                <Button id="leave-button" fx:id="leaveGameButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" stylesheets="@Style/style.css" text="Lascia partita" VBox.vgrow="ALWAYS">
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                 </Button>
             </VBox>
-            <ChatComponent fx:id="chat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                           prefHeight="466.0" prefWidth="248.0" stylesheets="@Style/style.css" VBox.vgrow="ALWAYS"/>
+            <ChatComponent fx:id="chat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="466.0" prefWidth="248.0" stylesheets="@Style/style.css" VBox.vgrow="ALWAYS" />
         </VBox>
     </HBox>
 </AnchorPane>

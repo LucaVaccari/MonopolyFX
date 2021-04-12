@@ -4,6 +4,7 @@ import it.castelli.connection.messages.*;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.dice.DiceResult;
+import it.castelli.gui.AlertUtil;
 import it.castelli.serialization.Serializer;
 
 /**
@@ -24,6 +25,16 @@ public class Game
 	 * The code of the game
 	 */
 	private static int gameCode;
+	/**
+	 * counter of dice results equals
+    */
+	private static int doubleDiceResult;
+
+	/**
+	 * number of dice thrown where you are in prison
+	 */
+	private static int throwDiceInPrison = 0;
+
 
 	/**
 	 * The result from the last dice throw
@@ -119,28 +130,31 @@ public class Game
 	{
 		if (player.isInPrison())
 		{
-			System.out.println("getThrowdice 1="+player.getThrowDiceInPrison());
-			player.setThrowDiceInPrison(player.getThrowDiceInPrison() + 1);
-			System.out.println("setThrowdice="+player.getThrowDiceInPrison());
-			if (!lastDiceResult.areResultsEquals() && player.getThrowDiceInPrison() == 3)
+			throwDiceInPrison += 1;
+			if (!lastDiceResult.areResultsEquals() && throwDiceInPrison == 3)
 			{
 				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), true)));
+				AlertUtil.showInformationAlert("Usciti di prigione","Siete usciti di prigione","Siete usciti di prigione pagando 50 M");
 				player.setInPrison(false);
 			} else if (lastDiceResult.areResultsEquals())
 			{
+				throwDiceInPrison = 0;
 				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), false)));
+
+				AlertUtil.showInformationAlert("Usciti di prigione","Siete usciti di prigione","Siete usciti di prigione tirando i dadi e facendo doppio. Complimenti!");
 			}
 		}
 		else
 		{
 			if (lastDiceResult.areResultsEquals())
-				player.setDoubleDiceResult(player.getDoubleDiceResult() + 1);
+				doubleDiceResult += 1;
 			else
-				player.setDoubleDiceResult(0);
-			if (player.getDoubleDiceResult() == 1)
+				doubleDiceResult = 0;
+			if (doubleDiceResult == 3)
 			{
-				System.out.println("vai in prigione schiavo di merda");
 				ClientMain.getConnection().send(ClientMessages.GO_TO_JAIL_MESSAGE_NAME, Serializer.toJson(new GoToJailClientMessage(Game.getGameCode(), player)));
+				AlertUtil.showInformationAlert("Finiti in prigione","Siete finiti in prigione","Siete finiti in prigione dopo aver fatto tre volte il tiro dei dadi doppio");
+
 			}
 			else
 			{
@@ -160,5 +174,43 @@ public class Game
 	public static void setHost(boolean isHost)
 	{
 		Game.host = isHost;
+	}
+
+	/**
+	 * Getter for the number of dice thrown in prison
+	 *
+	 * @return the number of dice thrown in prison
+	 */
+	public int getThrowDiceInPrison()
+	{
+		return throwDiceInPrison;
+	}
+
+	/**
+	 * Setter for the number of dice thrown in prison
+	 *
+	 * @param throwDiceInPrison the int of number of dice thrown
+	 */
+	public void setThrowDiceInPrison(int throwDiceInPrison){Game.throwDiceInPrison = throwDiceInPrison;
+	}
+
+	/**
+	 * Getter for the counter of double dice results
+	 *
+	 * @return the counter of double dice results
+	 */
+	public int getDoubleDiceResult()
+	{
+		return doubleDiceResult;
+	}
+
+	/**
+	 * Setter for the counter of double dice result
+	 *
+	 * @param doubleDiceResult the counter of double dice result
+	 */
+	public void setDoubleDiceResult(int doubleDiceResult)
+	{
+		Game.doubleDiceResult = doubleDiceResult;
 	}
 }
