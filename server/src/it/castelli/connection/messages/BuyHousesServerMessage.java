@@ -49,12 +49,29 @@ public class BuyHousesServerMessage implements Message
         GameManager gameManager = gameConnectionManager.getGameManager();
 
         Contract sameContract = gameManager.getSameContract(contract);
-        Player owner = gameManager.getSamePlayer(sameContract.getOwner().toPlayer());
+        Player samePlayer = gameManager.getSamePlayer(sameContract.getOwner().toPlayer());
 
         if(sameContract instanceof PropertyContract)
         {
-            ((PropertyContract) sameContract).addHouses(numberOfHousesToBuy);
-            owner.removeMoney(numberOfHousesToBuy * ((PropertyContract) sameContract).getHouseCost());
+            int numberOfSetContracts = 0;
+            for (Contract contract: samePlayer.getContracts())
+            {
+                if(contract instanceof PropertyContract)
+                {
+                    if (((PropertyContract) contract).getColor() == ((PropertyContract) sameContract).getColor())
+                        numberOfSetContracts++;
+                }
+            }
+
+            if (numberOfSetContracts == ((PropertyContract) sameContract).getColorSetContractNumber())
+            {
+                ((PropertyContract) sameContract).addHouses(numberOfHousesToBuy);
+                samePlayer.removeMoney(numberOfHousesToBuy * ((PropertyContract) sameContract).getHouseCost());
+            }
+            else
+            {
+                connection.send(ServerMessages.ERROR_MESSAGE_NAME, "Non potete comprare case di questa proprietà, poiché non possedete tutte le proprietà dello stesso colore");
+            }
         }
         else
             connection.send(ServerMessages.ERROR_MESSAGE_NAME, "Non potete comprare case di questa proprietà, poiché è una stazione oppure una società");
