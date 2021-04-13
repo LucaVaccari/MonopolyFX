@@ -60,8 +60,19 @@ public class StationViewController
 				String.valueOf(contract.getRevenueFromNumberOfStations(4)));
 		mortgageValue.setText(String.valueOf(contract.getValue() / 2));
 
-		onlyIfOwnedPane.setVisible(contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
-		onlyIfOwnedPane.setDisable(!contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
+		if (contract.getOwner() != null)
+		{
+			boolean isOwnedByMe = contract.getOwner().toPlayer().betterEquals(Game.getPlayer());
+			boolean isMyRound = contract.getOwner().toPlayer()
+					.betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer());
+			onlyIfOwnedPane.setVisible(isOwnedByMe && isMyRound);
+			onlyIfOwnedPane.setDisable(!isOwnedByMe && !isMyRound);
+		}
+		else
+		{
+			onlyIfOwnedPane.setVisible(false);
+			onlyIfOwnedPane.setDisable(true);
+		}
 
 		sellButton.setOnAction(event -> {
 			ClientMain.getConnection().send(ClientMessages.SELL_CONTRACT_MESSAGE_NAME, Serializer
