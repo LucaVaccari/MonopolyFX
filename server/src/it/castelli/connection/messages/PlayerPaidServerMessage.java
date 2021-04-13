@@ -29,19 +29,26 @@ public class PlayerPaidServerMessage implements Message
     private final int moneyPaid;
 
     /**
+     * Did the owner got paid? (else the bank got paid)
+     */
+    private final boolean ownerGotPaid;
+
+    /**
      * Constructor for PlayerPaidServerMessage
      *
-     * @param playerName The name of the player that paid
+     *  @param playerName The name of the player that paid
      * @param ownerName The name of the owner of the contract
      * @param contractName The contract name
      * @param moneyPaid The amount of money that got paid
+     * @param ownerGotPaid Did the owner got paid? (else the bank got paid)
      */
-    public PlayerPaidServerMessage(String playerName, String ownerName, String contractName, int moneyPaid)
+    public PlayerPaidServerMessage(String playerName, String ownerName, String contractName, int moneyPaid, boolean ownerGotPaid)
     {
         this.playerName = playerName;
         this.ownerName = ownerName;
         this.contractName = contractName;
         this.moneyPaid = moneyPaid;
+        this.ownerGotPaid = ownerGotPaid;
     }
 
     @Override

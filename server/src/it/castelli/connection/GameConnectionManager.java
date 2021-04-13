@@ -169,7 +169,7 @@ public class GameConnectionManager
 				square.interact(player, gameManager);
 				int playerMoneyAfterInteract = player.getMoney();
 				int moneyPaid = playerMoneyBeforeInteract - playerMoneyAfterInteract;
-				sendAll(ServerMessages.PLAYER_PAID_MESSAGE_NAME, Serializer.toJson(new PlayerPaidServerMessage(player.getName(), square.getContract().getOwner().getName(), square.getContract().getName(), moneyPaid)));
+				sendAll(ServerMessages.PLAYER_PAID_MESSAGE_NAME, Serializer.toJson(new PlayerPaidServerMessage(player.getName(), square.getContract().getOwner().getName(), square.getContract().getName(), moneyPaid, !square.getContract().isMortgaged())));
 			}
 
 			player.setPreviousPosition(player.getPosition());
