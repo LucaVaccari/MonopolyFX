@@ -52,7 +52,7 @@ public class GameConnectionManager
 		} else
 		{
 			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage(
-					"You can't enter this game, lobby is full or the game has already started")));
+					"Non potete unirvi alla partita, la lobby è piena oppure la partita è già iniziata")));
 		}
 	}
 
