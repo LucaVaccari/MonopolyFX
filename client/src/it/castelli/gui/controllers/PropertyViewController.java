@@ -71,35 +71,51 @@ public class PropertyViewController
 		houseCostLabel.setText(String.valueOf(contract.getHouseCost()));
 		mortgageValueLabel.setText(String.valueOf(contract.getValue() / 2));
 
-		onlyIfOwnedPane1.setVisible(contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
-		onlyIfOwnedPane1.setDisable(!contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
-		onlyIfOwnedPane2.setVisible(contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
-		onlyIfOwnedPane2.setDisable(!contract.getOwner().toPlayer().betterEquals(Game.getPlayer()));
+		if (contract.getOwner() != null)
+		{
+			boolean isOwnedByMe = contract.getOwner().toPlayer().betterEquals(Game.getPlayer());
+			boolean isMyRound = contract.getOwner().toPlayer()
+					.betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer());
+			onlyIfOwnedPane1.setVisible(isOwnedByMe);
+			onlyIfOwnedPane1.setDisable(!isOwnedByMe);
+			onlyIfOwnedPane2.setVisible(isOwnedByMe && isMyRound);
+			onlyIfOwnedPane2.setDisable(!isOwnedByMe && !isMyRound);
 
-		sellButton.setOnAction(event -> {
-			ClientMain.getConnection().send(ClientMessages.SELL_CONTRACT_MESSAGE_NAME, Serializer
-					.toJson(new SellContractClientMessage(Game.getGameCode(), contract)));
-			SceneManager.getInstance().getStageByType(SceneType.PROPERTY_VIEW).close();
-		});
+			numberOfHousesLabel.setText(String.valueOf(contract.getNumberOfHouses()));
 
-		mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
-		mortgageButton.setOnAction(event -> {
-			if (contract.isMortgaged())
-				ClientMain.getConnection().send(ClientMessages.UNMORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
-						.toJson(new UnmortgageContractClientMessage(Game.getGameCode(), contract)));
-			else
-				ClientMain.getConnection().send(ClientMessages.MORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
-						.toJson(new MortgageContractClientMessage(Game.getGameCode(), contract)));
-			SceneManager.getInstance().getStageByType(SceneType.PROPERTY_VIEW).close();
-		});
+			sellButton.setOnAction(event -> {
+				ClientMain.getConnection().send(ClientMessages.SELL_CONTRACT_MESSAGE_NAME, Serializer
+						.toJson(new SellContractClientMessage(Game.getGameCode(), contract)));
+				SceneManager.getInstance().getStageByType(SceneType.PROPERTY_VIEW).close();
+			});
 
-		// TODO: some checks
-		buyHouseButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.BUY_HOUSES_MESSAGE_NAME,
-		                                                                    Serializer
-				                                                                    .toJson(new BuyHousesClientMessage(
-						                                                                    Game.getGameCode(),
-						                                                                    contract, 1))));
+			mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
+			mortgageButton.setOnAction(event -> {
+				if (contract.isMortgaged())
+					ClientMain.getConnection().send(ClientMessages.UNMORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
+							.toJson(new UnmortgageContractClientMessage(Game.getGameCode(), contract)));
+				else
+					ClientMain.getConnection().send(ClientMessages.MORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
+							.toJson(new MortgageContractClientMessage(Game.getGameCode(), contract)));
+				SceneManager.getInstance().getStageByType(SceneType.PROPERTY_VIEW).close();
+			});
 
-		// TODO: add sell house button
+			buyHouseButton.setOnAction(event -> {
+				if (Game.getPlayer().hasMoney(contract.getHouseCost()))
+				{
+					ClientMain.getConnection().send(ClientMessages.BUY_HOUSES_MESSAGE_NAME, Serializer
+							.toJson(new BuyHousesClientMessage(Game.getGameCode(), contract, 1)));
+				}
+			});
+
+			// TODO: add sell house button
+		}
+		else
+		{
+			onlyIfOwnedPane1.setVisible(false);
+			onlyIfOwnedPane1.setDisable(true);
+			onlyIfOwnedPane2.setVisible(false);
+			onlyIfOwnedPane2.setDisable(false);
+		}
 	}
 }
