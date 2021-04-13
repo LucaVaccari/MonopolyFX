@@ -15,7 +15,6 @@ public class ClientMain extends Application
 
 	public static void main(String[] args)
 	{
-		launch(args);
 		Socket clientSocket = null;
 		try
 		{
@@ -27,6 +26,7 @@ public class ClientMain extends Application
 			e.printStackTrace();
 		}
 		connection = new Connection(clientSocket);
+		launch(args);
 	}
 
 	public static Connection getConnection()
