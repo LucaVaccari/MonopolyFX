@@ -7,6 +7,9 @@ import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.contracts.PropertyContract;
+import it.castelli.serialization.Serializer;
+
+import java.io.Serial;
 
 /**
  * Message for buy houses (receive only)
@@ -70,11 +73,11 @@ public class BuyHousesServerMessage implements Message
             }
             else
             {
-                connection.send(ServerMessages.ERROR_MESSAGE_NAME, "Non potete comprare case di questa proprietà, poiché non possedete tutte le proprietà dello stesso colore");
+                connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("Non potete comprare case di questa proprietà, poiché non possedete tutte le proprietà dello stesso colore")));
             }
         }
         else
-            connection.send(ServerMessages.ERROR_MESSAGE_NAME, "Non potete comprare case di questa proprietà, poiché è una stazione oppure una società");
+            connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("Non potete comprare case di questa proprietà, poiché è una stazione oppure una società")));
 
         gameConnectionManager.updatePlayers();
     }
