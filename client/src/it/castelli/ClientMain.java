@@ -49,10 +49,9 @@ public class ClientMain extends Application
 	 *                     Applications may create other stages, if needed,
 	 *                     but they will not be
 	 *                     primary stages.
-	 * @throws Exception if something goes wrong
 	 */
 	@Override
-	public void start(Stage primaryStage) throws Exception
+	public void start(Stage primaryStage)
 	{
 		SceneManager.getInstance().setPrimaryStage(primaryStage);
 		SceneManager.getInstance().showScene(SceneType.MAIN_MENU);

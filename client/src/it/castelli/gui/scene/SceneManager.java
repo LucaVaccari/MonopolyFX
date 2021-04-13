@@ -298,13 +298,14 @@ public class SceneManager
 		else
 		{
 			Stage stage = new Stage();
+
+			if (sceneType == SceneType.EXCHANGE || sceneType == SceneType.AUCTION)
+				stage.initModality(Modality.APPLICATION_MODAL);
+
 			stage.setScene(scene.getScene());
 			stage.setTitle(scene.getWindowTitle());
 			stage.setResizable(false);
 			stage.show();
-
-			if (sceneType == SceneType.EXCHANGE || sceneType == SceneType.AUCTION)
-				stage.initModality(Modality.APPLICATION_MODAL);
 
 			openStages.put(sceneType, stage);
 			stage.setOnCloseRequest(event -> openStages.remove(sceneType));
