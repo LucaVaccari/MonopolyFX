@@ -9,6 +9,7 @@ import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -43,13 +44,15 @@ public class PropertyViewController
 	@FXML
 	private Label numberOfHousesLabel;
 	@FXML
-	private HBox onlyIfOwnedPane2;
+	private Parent onlyIfOwnedPane2;
 	@FXML
 	private Button sellButton;
 	@FXML
 	private Button mortgageButton;
 	@FXML
 	private Button buyHouseButton;
+	@FXML
+	private Button sellHouseButton;
 
 	/**
 	 * Update the visuals of the PropertyView.
@@ -108,7 +111,7 @@ public class PropertyViewController
 				}
 			});
 
-			// TODO: add sell house button
+			// TODO: add sell house button callback
 		}
 		else
 		{
