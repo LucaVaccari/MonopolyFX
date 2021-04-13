@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.BoardController">
+<AnchorPane prefHeight="800.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.BoardController">
     <ImageView fitHeight="800.0" fitWidth="1250.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Image url="@../images/poker.jpg" />
     </ImageView>
@@ -430,11 +430,20 @@
                 </VBox>
             </AnchorPane>
             <VBox fx:id="playerListView" alignment="CENTER" maxHeight="385.0" maxWidth="1.7976931348623157E308" prefHeight="385.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" VBox.vgrow="ALWAYS" />
-            <Label fx:id="moneyLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="102.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" text="0M" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" VBox.vgrow="ALWAYS">
-                <font>
-                    <Font name="System Bold" size="48.0" />
-                </font>
-            </Label>
+         <Group>
+            <children>
+                  <Label fx:id="moneyLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="102.0" prefWidth="303.0" style="-fx-background-color: #ffffff;" text="0M" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+                      <font>
+                          <Font name="System Bold" size="48.0" />
+                      </font>
+                  </Label>
+               <ImageView fx:id="prisonImageView" fitHeight="59.0" fitWidth="83.0" layoutX="220.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../images/prison.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </Group>
         </VBox>
         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="773.0" prefWidth="227.0" HBox.hgrow="ALWAYS">
             <VBox prefHeight="230.0" prefWidth="231.0">
