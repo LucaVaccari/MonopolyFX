@@ -4,7 +4,6 @@ sos
 
 #### TODO
 
-- far partire il gioco solo quando tutti hanno una pedina (TO TEST)
 - tutto il sistema delle case (TO TEST)
 - tutto il sistema dell'ipoteca (TO TEST)
 - stampare un messaggio quando si paga qualcuno
@@ -13,6 +12,8 @@ sos
 - chiudere lo scambio se lo si rifiuta (TO TEST)
 - sistemare gli scambi (TO TEST)
 - mettere le immagini delle case affianco al numero (con hotel)
+- can't see the list of players when starting without a pawn
+- aggiornare la lista delle proprietà quando vendi
 
 
 - Terminare automaticamente il turno se un giocatore si disconnette
