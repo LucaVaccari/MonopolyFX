@@ -60,9 +60,10 @@ public class StationSquare implements Square
 		}
 		revenue *= 2 ^(numberOfOwnedStations - 1);
 
-		player.removeMoney(revenue);
-
 		if (!contract.isMortgaged())
-			owner.addMoney(revenue);
+			revenue = 0;
+
+		owner.addMoney(revenue);
+		player.removeMoney(revenue);
 	}
 }

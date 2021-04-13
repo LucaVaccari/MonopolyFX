@@ -46,7 +46,7 @@ public class CompanySquare implements Square
 	@Override
 	public void interact(Player player, GameManager gameManager)
 	{
-		int revenue = player.getPosition() - player.getPreviousPosition();
+		int revenue = gameManager.getCurrentRound().getDiceResult().resultsSum();
 		Player owner = gameManager.getSamePlayer(contract.getOwner().toPlayer());
 
 		int numberOfCompaniesOwned = 0;
@@ -61,10 +61,11 @@ public class CompanySquare implements Square
 		else
 			revenue *= 4;
 
-		player.removeMoney(revenue);
-
 		if (!contract.isMortgaged())
-			owner.addMoney(revenue);
+			revenue = 0;
+
+		owner.addMoney(revenue);
+		player.removeMoney(revenue);
 	}
 
 }

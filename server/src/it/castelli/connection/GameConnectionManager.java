@@ -61,6 +61,11 @@ public class GameConnectionManager
 		playerConnections.remove(connection);
 		gameManager.removePlayer(connection.getReceiver().getPlayer());
 
+		Player playerToRemove = gameManager.getSamePlayer(connection.getReceiver().getPlayer());
+		Player currentRoundPlayer = gameManager.getSamePlayer(gameManager.getCurrentRound().getCurrentActivePlayer());
+		if (playerToRemove.betterEquals(currentRoundPlayer))
+			gameManager.nextRound();
+
 		if (playerConnections.isEmpty())
 		{
 			ConnectionManager.getInstance().removeGame(gameCode);
@@ -169,7 +174,15 @@ public class GameConnectionManager
 				square.interact(player, gameManager);
 				int playerMoneyAfterInteract = player.getMoney();
 				int moneyPaid = playerMoneyBeforeInteract - playerMoneyAfterInteract;
-				sendAll(ServerMessages.PLAYER_PAID_MESSAGE_NAME, Serializer.toJson(new PlayerPaidServerMessage(player.getName(), square.getContract().getOwner().getName(), square.getContract().getName(), moneyPaid, !square.getContract().isMortgaged())));
+				if (moneyPaid != 0)
+					sendAll(ServerMessages.PLAYER_PAID_MESSAGE_NAME, Serializer.toJson(new PlayerPaidServerMessage(player.getName(), square.getContract().getOwner().getName(), square.getContract().getName(), moneyPaid, !square.getContract().isMortgaged())));
+				else
+				{
+					if (square.getContract().isMortgaged() && !gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
+					{
+						sendAll(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("Il terreno è ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
+					}
+				}
 			}
 
 			player.setPreviousPosition(player.getPosition());

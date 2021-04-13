@@ -20,9 +20,6 @@ sos
 - scambio non inizializzato
 
 
-- Terminare automaticamente il turno se un giocatore si disconnette
-- messaggio per quando un client deve pagare a un altro
+- Terminare automaticamente il turno se un giocatore si disconnette (da testare)
 - riutilizzare i codici non usati
-- controllare se si finisce su un terreno posseduto
-- pagare la banca se il proprio terreno è ipotecato
 - messaggio quando si paga una tassa
