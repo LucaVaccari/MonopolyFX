@@ -47,7 +47,7 @@ public class UnmortgageContractServerMessage implements Message
         if (contractToMortgage.isMortgaged())
         {
             contractToMortgage.setMortgaged(false);
-            unmortgagingPlayer.removeMoney(contractToMortgage.getMortgageValue() + (int)(contractToMortgage.getMortgageValue() * 10));
+            unmortgagingPlayer.removeMoney(contractToMortgage.getMortgageValue() + (int)(contractToMortgage.getMortgageValue() / 10));
         }
         else
         {
