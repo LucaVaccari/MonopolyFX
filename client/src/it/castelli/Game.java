@@ -151,7 +151,7 @@ public class Game
 				doubleDiceResult += 1;
 			else
 				doubleDiceResult = 0;
-			if (doubleDiceResult == 3)
+			if (doubleDiceResult == 1)
 			{
 				ClientMain.getConnection().send(ClientMessages.GO_TO_JAIL_MESSAGE_NAME, Serializer.toJson(new GoToJailClientMessage(Game.getGameCode(), player)));
 				Platform.runLater(()->AlertUtil.showInformationAlert("Finiti in prigione","Siete finiti in prigione","Siete finiti in prigione dopo aver fatto tre volte il tiro dei dadi doppio"));
