@@ -62,11 +62,13 @@ public class GameConnectionManager
 
 	public void removePlayer(Connection connection)
 	{
-
-		Player playerToRemove = gameManager.getSamePlayer(connection.getReceiver().getPlayer());
-		Player currentRoundPlayer = gameManager.getSamePlayer(gameManager.getCurrentRound().getCurrentActivePlayer());
-		if (currentRoundPlayer.betterEquals(playerToRemove))
-			gameManager.nextRound();
+		if (gameManager.isInGame())
+		{
+			Player playerToRemove = gameManager.getSamePlayer(connection.getReceiver().getPlayer());
+			Player currentRoundPlayer = gameManager.getSamePlayer(gameManager.getCurrentRound().getCurrentActivePlayer());
+			if (currentRoundPlayer.betterEquals(playerToRemove))
+				gameManager.nextRound();
+		}
 
 		playerConnections.remove(connection);
 		gameManager.removePlayer(connection.getReceiver().getPlayer());
