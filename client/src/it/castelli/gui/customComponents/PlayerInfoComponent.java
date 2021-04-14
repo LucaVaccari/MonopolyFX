@@ -61,13 +61,6 @@ public class PlayerInfoComponent extends AnchorPane
 		}
 	}
 
-	public void updateInPrison()
-	{
-		if(Game.getPlayer().isInPrison())
-			prisonImageView.setVisible(true);
-		else
-			prisonImageView.setVisible(false);
-	}
 
 	private void setPlayer(Player player)
 	{
@@ -82,6 +75,11 @@ public class PlayerInfoComponent extends AnchorPane
 	public Label getPlayerNameLabel()
 	{
 		return playerNameLabel;
+	}
+
+	public ImageView getPrisonImageView()
+	{
+		return prisonImageView;
 	}
 
 	public Player getPlayer()

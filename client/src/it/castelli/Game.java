@@ -5,6 +5,7 @@ import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.dice.DiceResult;
 import it.castelli.gui.AlertUtil;
+import it.castelli.gui.controllers.BoardController;
 import it.castelli.serialization.Serializer;
 import javafx.application.Platform;
 
@@ -136,6 +137,8 @@ public class Game
 			{
 				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), true)));
 				Platform.runLater(()->AlertUtil.showInformationAlert("Usciti di prigione","Siete usciti di prigione","Siete usciti di prigione pagando 50 M"));
+				Game.getGameManager().getCurrentRound().setDiceThrown(false);
+				BoardController.getInstance().update();
 				player.setInPrison(false);
 			} else if (lastDiceResult.areResultsEquals())
 			{
@@ -151,7 +154,7 @@ public class Game
 				doubleDiceResult += 1;
 			else
 				doubleDiceResult = 0;
-			if (doubleDiceResult == 1)
+			if (doubleDiceResult == 3)
 			{
 				ClientMain.getConnection().send(ClientMessages.GO_TO_JAIL_MESSAGE_NAME, Serializer.toJson(new GoToJailClientMessage(Game.getGameCode(), player)));
 				Platform.runLater(()->AlertUtil.showInformationAlert("Finiti in prigione","Siete finiti in prigione","Siete finiti in prigione dopo aver fatto tre volte il tiro dei dadi doppio"));

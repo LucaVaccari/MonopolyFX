@@ -782,7 +782,22 @@ public class BoardController
 		updatePlayerListView();
 		updatePawnsOnBoard();
 		updateRound();
-		PlayerInfoComponent.getInstance().updateInPrison();
+		updateInPrison();
+	}
+
+	private void updateInPrison()
+	{
+		ObservableList<Node> list = playerListView.getChildren();
+		for (Node element : list)
+		{
+			PlayerInfoComponent player = (PlayerInfoComponent) element;
+			if (player.getPlayer().isInPrison())
+			{
+				player.getPrisonImageView().setVisible(true);
+			}
+			else
+				player.getPrisonImageView().setVisible(false);
+		}
 	}
 
 	/**
