@@ -1,5 +1,6 @@
 package it.castelli.gui.customComponents;
 
+import it.castelli.Game;
 import it.castelli.gameLogic.Player;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.GUIUtils;
@@ -28,6 +29,8 @@ public class PlayerInfoComponent extends AnchorPane
 	private Label playerNameLabel;
 	@FXML
 	private Label playerMoneyLabel;
+	@FXML
+	private ImageView prisonImageView;
 
 	public static PlayerInfoComponent getInstance()
 	{
@@ -38,6 +41,7 @@ public class PlayerInfoComponent extends AnchorPane
 	private void initialize()
 	{
 		instance=this;
+		prisonImageView.setVisible(false);
 	}
 
 	public PlayerInfoComponent(Player player)
@@ -56,6 +60,15 @@ public class PlayerInfoComponent extends AnchorPane
 			e.printStackTrace();
 		}
 	}
+
+	public void updateInPrison()
+	{
+		if(Game.getPlayer().isInPrison())
+			prisonImageView.setVisible(true);
+		else
+			prisonImageView.setVisible(false);
+	}
+
 	private void setPlayer(Player player)
 	{
 		this.player = player;

@@ -72,8 +72,6 @@ public class BoardController
 	@FXML
 	private ImageView die2Image;
 	@FXML
-	private ImageView prisonImageView;
-	@FXML
 	private Button throwDiceButton;
 	@FXML
 	private VBox playerListView;
@@ -748,10 +746,6 @@ public class BoardController
 	 */
 	public void updateRound()
 	{
-		if(Game.getPlayer().isInPrison())
-			prisonImageView.setVisible(true);
-		else
-			prisonImageView.setVisible(false);
 		Round currentRound = getGameManager().getCurrentRound();
 		if (currentRound == null)
 			return;
@@ -788,6 +782,7 @@ public class BoardController
 		updatePlayerListView();
 		updatePawnsOnBoard();
 		updateRound();
+		PlayerInfoComponent.getInstance().updateInPrison();
 	}
 
 	/**
