@@ -42,7 +42,7 @@ public class GameConnectionManager
 
 			//adding the player
 			playerConnections.add(connection);
-			connection.addPlayer(player);
+			connection.setPlayer(player);
 
 			// Sending game code to the client
 			connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME,

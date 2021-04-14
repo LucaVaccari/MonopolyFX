@@ -30,7 +30,7 @@ public class Connection
 
 	}
 
-	public void addPlayer(Player player)
+	public void setPlayer(Player player)
 	{
 		this.receiver.setPlayer(player);
 	}
