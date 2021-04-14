@@ -122,7 +122,6 @@ public class GameConnectionManager
 
 		long delay = 20000L;
 		auctionTimer.schedule(task, delay);
-		System.out.println("Auction started");
 
 		for (Connection connection : playerConnections)
 		{
@@ -137,15 +136,10 @@ public class GameConnectionManager
 	{
 		if (gameManager.getAuction().getBestOfferProposed() < offer)
 		{
-			System.out.println("Il giocatore " + player.getName() + " ha proposto " +
-					offer + " per " + gameManager.getAuction().getContract().getName());
 			auctionTimer.cancel();
 			gameManager.getAuction().setBestOfferProposed(offer);
 			gameManager.getAuction().setPlayer(player);
 			startAuction(gameManager.getAuction().getContract(), offer);
-			System.out.println("Il giocatore " + player.getName() + " ha proposto " +
-							gameManager.getAuction().getBestOfferProposed() + " per" +
-							" " + gameManager.getAuction().getContract().getName());
 		}
 	}
 

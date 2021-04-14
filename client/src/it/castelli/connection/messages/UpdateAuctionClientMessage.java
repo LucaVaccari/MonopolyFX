@@ -29,7 +29,6 @@ public class UpdateAuctionClientMessage implements Message
     @Override
     public void onReceive(Connection connection, Player player)
     {
-        System.out.println("Auction offer: " + auction.getBestOfferProposed());
         Game.getGameManager().setAuction(auction);
         AuctionController.getInstance().setAuction(auction);
     }

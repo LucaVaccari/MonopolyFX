@@ -16,6 +16,7 @@ public class Auction
 		this.player = player;
 	}
 
+	// TODO: move to gameManager
 	public void endAuction()
 	{
 		if (player != null)
@@ -41,7 +42,6 @@ public class Auction
 
 	public void setBestOfferProposed(int bestOfferProposed)
 	{
-		System.out.println("Setting best offer proposed to " + bestOfferProposed);
 		this.bestOfferProposed = bestOfferProposed;
 	}
 

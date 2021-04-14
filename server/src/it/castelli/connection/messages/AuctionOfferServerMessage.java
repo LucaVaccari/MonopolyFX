@@ -41,7 +41,5 @@ public class AuctionOfferServerMessage implements Message
 		gameConnectionManager.auctionOffer(offeringPlayer, offer);
 		gameConnectionManager.sendAll(ServerMessages.UPDATE_AUCTION_MESSAGE_NAME, Serializer
 				.toJson(new UpdateAuctionServerMessage(gameConnectionManager.getGameManager().getAuction())));
-		System.out.println("Sending auction with offer " +
-				gameConnectionManager.getGameManager().getAuction().getBestOfferProposed());
 	}
 }
