@@ -138,7 +138,7 @@ public class Game
 				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), true)));
 				Platform.runLater(()->AlertUtil.showInformationAlert("Usciti di prigione","Siete usciti di prigione","Siete usciti di prigione pagando 50 M"));
 				Game.getGameManager().getCurrentRound().setDiceThrown(false);
-				BoardController.getInstance().update();
+				Platform.runLater(()->BoardController.getInstance().update());
 				player.setInPrison(false);
 			} else if (lastDiceResult.areResultsEquals())
 			{
