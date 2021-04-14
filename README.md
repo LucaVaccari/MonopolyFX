@@ -20,11 +20,9 @@ sos
 - tasto ipoteca company
 - sbarre si mettono sul giocatore sbagliato
 - messaggio per la conferma della vendita
-- Se non si ha abbastanz adenaro per comprare attività, mandare il messaggio al server per far partire l asta
+- Se non si ha abbastanza denaro per comprare attività, mandare il messaggio al server per far partire l asta
 
-- Messaggio per quando l'asta finisce  (da testare / implementare client)
+- Messaggio per quando l'asta finisce (da testare / implementare client)
 - riutilizzare i codici non usati
 - votekick
 - vittoria e sconfitta
-
-- Togliere gli spazi tra i valori e M in RandomEvent
