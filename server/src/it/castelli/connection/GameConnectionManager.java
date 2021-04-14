@@ -67,11 +67,14 @@ public class GameConnectionManager
 			Player playerToRemove = gameManager.getSamePlayer(connection.getReceiver().getPlayer());
 			Player currentRoundPlayer = null;
 			if (gameManager.getCurrentRound().getCurrentActivePlayer() != null)
+			{
 				currentRoundPlayer = gameManager.getSamePlayer(gameManager.getCurrentRound().getCurrentActivePlayer());
+				if (currentRoundPlayer.betterEquals(playerToRemove))
+					gameManager.nextRound();
+			}
 			else
 				System.out.println("CurrentRoundPlayer is null; probably the last player in the game?");
-			if (currentRoundPlayer.betterEquals(playerToRemove))
-				gameManager.nextRound();
+
 		}
 
 		playerConnections.remove(connection);
