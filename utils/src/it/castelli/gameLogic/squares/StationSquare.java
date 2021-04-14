@@ -60,7 +60,7 @@ public class StationSquare implements Square
 		}
 		revenue *= 2 ^(numberOfOwnedStations - 1);
 
-		if (!contract.isMortgaged())
+		if (contract.isMortgaged())
 			revenue = 0;
 
 		owner.addMoney(revenue);

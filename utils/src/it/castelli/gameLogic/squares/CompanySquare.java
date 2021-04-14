@@ -61,7 +61,7 @@ public class CompanySquare implements Square
 		else
 			revenue *= 4;
 
-		if (!contract.isMortgaged())
+		if (contract.isMortgaged())
 			revenue = 0;
 
 		owner.addMoney(revenue);

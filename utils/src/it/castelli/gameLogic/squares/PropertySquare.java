@@ -62,7 +62,7 @@ public class PropertySquare implements Square
 		if (this.contract.getNumberOfHouses() == 0 && numberOfPropertiesOfTheSameSet == this.contract.getColorSetContractNumber())
 			revenue *= 2;
 
-		if (!contract.isMortgaged())
+		if (contract.isMortgaged())
 			revenue = 0;
 
 		owner.addMoney(revenue);
