@@ -60,7 +60,7 @@ public class MortgageContractServerMessage implements Message
         }
         else
         {
-            connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("Non potete ipotecare questa proprietà, assicuratevi che non vi siano case o alberghi o che la proprietà non sia già ipotecata!")));
+            connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage("Operazione negata", "Non potete ipotecare questa proprietà, assicuratevi che non vi siano case o alberghi o che la proprietà non sia già ipotecata!")));
         }
 
         gameConnectionManager.updatePlayers();

@@ -13,8 +13,8 @@ public class ServerMessages
 			"it.castelli.connection.messages.UpdatePlayersListClientMessage";
 	public static final String GAME_CODE_MESSAGE_NAME =
 			"it.castelli.connection.messages.GameCodeClientMessage";
-	public static final String ERROR_MESSAGE_NAME =
-			"it.castelli.connection.messages.ErrorClientMessage";
+	public static final String GENERIC_MESSAGE_NAME =
+			"it.castelli.connection.messages.GenericClientMessage";
 	public static final String NEW_AUCTION_MESSAGE_NAME =
 			"it.castelli.connection.messages.NewAuctionClientMessage";
 	public static final String UPDATE_AUCTION_MESSAGE_NAME =

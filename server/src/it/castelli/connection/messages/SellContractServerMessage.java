@@ -59,7 +59,7 @@ public class SellContractServerMessage implements Message
         }
         else
         {
-            connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("Non potete vendere questa proprietà perchè vi sono ancora delle case o un albergo! Per vendere la proprietà vendere prima le case o l'albergo.")));
+            connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage("Operazione negata", "Non potete vendere questa proprietà perchè vi sono ancora delle case o un albergo! Per vendere la proprietà vendere prima le case o l'albergo.")));
         }
 
         gameConnectionManager.updatePlayers();

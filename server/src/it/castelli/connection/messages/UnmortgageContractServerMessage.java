@@ -51,7 +51,7 @@ public class UnmortgageContractServerMessage implements Message
         }
         else
         {
-            connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("Non potete sciogliere l'ipoteca da questa proprietà, poichè non è ipotecata!")));
+            connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage("Operazione negata", "Non potete sciogliere l'ipoteca da questa proprietà, poichè non è ipotecata!")));
         }
 
         gameConnectionManager.updatePlayers();

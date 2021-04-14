@@ -1,6 +1,6 @@
 package it.castelli.connection;
 
-import it.castelli.connection.messages.ErrorServerMessage;
+import it.castelli.connection.messages.GenericServerMessage;
 import it.castelli.connection.messages.ServerMessages;
 import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
@@ -77,9 +77,9 @@ public class ConnectionManager
 
 		} else
 		{
-			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer
-					.toJson(new ErrorServerMessage(
-							"La partita con codice: " + gameCode +
+			connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer
+					.toJson(new GenericServerMessage(
+							"Errore", "La partita con codice: " + gameCode +
 									" non e' stata trovata!")));
 		}
 	}

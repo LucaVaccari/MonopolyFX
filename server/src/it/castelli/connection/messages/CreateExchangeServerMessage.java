@@ -66,7 +66,7 @@ public class CreateExchangeServerMessage implements Message
         }
         else
         {
-            connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("Il giocatore da te selezionato sta effettuando un altro scambio in questo momento")));
+            connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage("Operazione negata", "Il giocatore da te selezionato sta effettuando un altro scambio in questo momento")));
         }
 
     }
