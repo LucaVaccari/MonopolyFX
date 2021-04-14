@@ -6,25 +6,25 @@ import it.castelli.gameLogic.Player;
 /**
  * Message to communicate te client the random event (send only)
  */
-public class RandomEventServerMessage implements Message
+public class EventServerMessage implements Message
 {
     /**
-     * The random event text body
+     * The event text body
      */
     private final String randomEventText;
 
     /**
-     * The random event type
+     * The event type
      */
     private final String randomEventType;
 
     /**
-     * Constructor for RandomEventServerMessage
+     * Constructor for EventServerMessage (do not use)
      *
-     * @param randomEventType The random event type
-     * @param randomEventText The random event text body
+     * @param randomEventType The event type
+     * @param randomEventText The event text body
      */
-    public RandomEventServerMessage(String randomEventType, String randomEventText)
+    public EventServerMessage(String randomEventType, String randomEventText)
     {
         this.randomEventType = randomEventType;
         this.randomEventText = randomEventText;

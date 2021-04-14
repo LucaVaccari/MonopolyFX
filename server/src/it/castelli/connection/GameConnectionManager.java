@@ -162,8 +162,8 @@ public class GameConnectionManager
 		{
 			if (player.getEventType() != null)
 			{
-				sendAll(ServerMessages.RANDOM_EVENT_MESSAGE_NAME, Serializer
-						.toJson(new RandomEventServerMessage(player.getEventType(), player
+				sendAll(ServerMessages.EVENT_MESSAGE_NAME, Serializer
+						.toJson(new EventServerMessage(player.getEventType(), player
 								.getEventDescription())));
 				player.setLastEncounteredEvent(null, null);
 			}

@@ -39,8 +39,8 @@ public class ServerMessages
 			"it.castelli.connection.messages.NewExchangeClientMessage";
 	public static final String CONTRACT_ON_SALE_MESSAGE_NAME =
 			"it.castelli.connection.messages.ContractOnSaleClientMessage";
-	public static final String RANDOM_EVENT_MESSAGE_NAME =
-			"it.castelli.connection.messages.RandomEventClientMessage";
+	public static final String EVENT_MESSAGE_NAME =
+			"it.castelli.connection.messages.EventClientMessage";
 	public static final String PLAYER_PAID_MESSAGE_NAME =
 			"it.castelli.connection.messages.PlayerPaidClientMessage";
 	public static final String AUCTION_ENDED_MESSAGE_NAME =
