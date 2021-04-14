@@ -8,6 +8,8 @@ import it.castelli.gameLogic.squares.*;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gameLogic.transactions.Exchange;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -29,6 +31,7 @@ public class GameManager
 	private Round currentRound;
 	private final RandomEventManager randomEventManager = new RandomEventManager();
 	private boolean inGame = false;
+	private Timer auctionTimer;
 
 	/**
 	 * Constructor for the GameManager
@@ -39,122 +42,122 @@ public class GameManager
 				new GoSquare(),
 				new PropertySquare(
 						new PropertyContract("Vicolo Corto", 60, 2, 10, 30, 90,
-						                     160, 250, 50,
-						                     PropertyColor.BROWN, 2)),
+								160, 250, 50,
+								PropertyColor.BROWN, 2)),
 				new CommunityChestSquare(),
 				new PropertySquare(
 						new PropertyContract("Vicolo Stretto", 60, 4, 20, 60,
-						                     180, 320, 450, 50,
-						                     PropertyColor.BROWN, 2)),
+								180, 320, 450, 50,
+								PropertyColor.BROWN, 2)),
 				new TaxSquare(200, "Tassa Patrimoniale"),
 				new StationSquare(new StationContract("Stazione Sud", 200,
-				                                      25)),
+						25)),
 				new PropertySquare(
 						new PropertyContract("Bastioni Gransasso", 100, 6, 30,
-						                     90, 270, 400, 550, 50,
-						                     PropertyColor.LIGHT_BLUE, 3)),
+								90, 270, 400, 550, 50,
+								PropertyColor.LIGHT_BLUE, 3)),
 				new ChanceSquare(),
 				new PropertySquare(
 						new PropertyContract("Viale Monterosa", 100, 6, 30, 90,
-						                     270, 400, 550, 50,
-						                     PropertyColor.LIGHT_BLUE, 3)),
+								270, 400, 550, 50,
+								PropertyColor.LIGHT_BLUE, 3)),
 				new PropertySquare(
 						new PropertyContract("Viale Vesuvio", 120, 8, 40, 100,
-						                     300, 450, 600, 50,
-						                     PropertyColor.LIGHT_BLUE, 3)),
+								300, 450, 600, 50,
+								PropertyColor.LIGHT_BLUE, 3)),
 				new JustVisitingSquare(),
 				new PropertySquare(
 						new PropertyContract("Via Accademia", 140, 10, 50, 150,
-						                     450, 620, 750, 100,
-						                     PropertyColor.MAGENTA, 3)),
+								450, 620, 750, 100,
+								PropertyColor.MAGENTA, 3)),
 				new CompanySquare(
 						new CompanyContract("Societa' Elettrica", CompanyContract.Company.ELECTRIC, 150)),
 				new PropertySquare(
 						new PropertyContract("Corso Ateneo", 140, 10, 50, 150,
-						                     450, 620, 750, 100,
-						                     PropertyColor.MAGENTA, 3)),
+								450, 620, 750, 100,
+								PropertyColor.MAGENTA, 3)),
 				new PropertySquare(
 						new PropertyContract("Piazza Universita'", 160, 12, 60,
-						                     180, 500, 700, 900, 100,
-						                     PropertyColor.MAGENTA, 3)),
+								180, 500, 700, 900, 100,
+								PropertyColor.MAGENTA, 3)),
 				new StationSquare(
 						new StationContract("Stazione Ovest", 200, 25)),
 				new PropertySquare(
 						new PropertyContract("Via Verdi", 180, 14, 70, 200,
-						                     550,
-						                     750, 950, 100,
-						                     PropertyColor.ORANGE, 3)),
+								550,
+								750, 950, 100,
+								PropertyColor.ORANGE, 3)),
 				new CommunityChestSquare(),
 				new PropertySquare(
 						new PropertyContract("Corso Raffaello", 180, 14, 70,
-						                     200, 550, 750, 950, 100,
-						                     PropertyColor.ORANGE, 3)),
+								200, 550, 750, 950, 100,
+								PropertyColor.ORANGE, 3)),
 				new PropertySquare(
 						new PropertyContract("Piazza Dante", 200, 16, 80, 220,
-						                     600, 800, 1000, 100,
-						                     PropertyColor.ORANGE, 3)),
+								600, 800, 1000, 100,
+								PropertyColor.ORANGE, 3)),
 				new JustVisitingSquare(),
 				new PropertySquare(
 						new PropertyContract("Via Marco Polo", 220, 18, 90,
-						                     250,
-						                     700, 880, 1050, 150,
-						                     PropertyColor.RED, 3)),
+								250,
+								700, 880, 1050, 150,
+								PropertyColor.RED, 3)),
 				new ChanceSquare(),
 				new PropertySquare(
 						new PropertyContract("Corso Magellano", 220, 18, 90,
-						                     250, 700, 880, 1050, 150,
-						                     PropertyColor.RED, 3)),
+								250, 700, 880, 1050, 150,
+								PropertyColor.RED, 3)),
 				new PropertySquare(new PropertyContract("Largo Colombo", 240, 20, 100,
-						                     300,
-						                     750, 900, 1100, 150,
-						                     PropertyColor.RED, 3)),
+						300,
+						750, 900, 1100, 150,
+						PropertyColor.RED, 3)),
 				new StationSquare(
 						new StationContract("Stazione Nord", 200, 25)),
 				new PropertySquare(
 						new PropertyContract("Viale Costantino", 260, 22, 110,
-						                     330, 800, 1000, 1200, 150,
-						                     PropertyColor.YELLOW, 3)),
+								330, 800, 1000, 1200, 150,
+								PropertyColor.YELLOW, 3)),
 				new PropertySquare(
 						new PropertyContract("Viale Traiano", 260, 22, 110,
-						                     330,
-						                     800, 1000, 1200, 150,
-						                     PropertyColor.YELLOW, 3)),
+								330,
+								800, 1000, 1200, 150,
+								PropertyColor.YELLOW, 3)),
 				new CompanySquare(
 						new CompanyContract("Societa' Acqua Potabile", CompanyContract.Company.WATER, 150)),
 				new PropertySquare(
 						new PropertyContract("Piazza Giulio Cesare", 280, 24,
-						                     120, 360, 850, 1050, 1250,
-						                     150,
-						                     PropertyColor.YELLOW, 3)),
+								120, 360, 850, 1050, 1250,
+								150,
+								PropertyColor.YELLOW, 3)),
 				new GoToJailSquare(),
 				new PropertySquare(
 						new PropertyContract("Via Roma", 300, 26, 130, 400,
-						                     900,
-						                     1100, 1300, 200,
-						                     PropertyColor.GREEN, 3)),
+								900,
+								1100, 1300, 200,
+								PropertyColor.GREEN, 3)),
 				new PropertySquare(
 						new PropertyContract("Corso Impero", 300, 26, 130, 400,
-						                     900, 1100, 1300, 200,
-						                     PropertyColor.GREEN, 3)),
+								900, 1100, 1300, 200,
+								PropertyColor.GREEN, 3)),
 				new CommunityChestSquare(),
 				new PropertySquare(
 						new PropertyContract("Largo Augusto", 320, 28, 150,
-						                     450,
-						                     1000, 1200, 1400, 200,
-						                     PropertyColor.GREEN, 3)),
+								450,
+								1000, 1200, 1400, 200,
+								PropertyColor.GREEN, 3)),
 				new StationSquare(new StationContract("Stazione Est", 200,
-				                                      25)),
+						25)),
 				new ChanceSquare(),
 				new PropertySquare(
 						new PropertyContract("Viale dei Giardini", 350, 35,
-						                     200,
-						                     500, 1100, 1300, 1500, 200,
-						                     PropertyColor.BLUE, 2)),
+								200,
+								500, 1100, 1300, 1500, 200,
+								PropertyColor.BLUE, 2)),
 				new TaxSquare(100, "Tassa di lusso"),
 				new PropertySquare(
 						new PropertyContract("Parco della Vittoria", 400, 50,
-						                     200, 600, 1400, 1700, 2000, 200,
-						                     PropertyColor.BLUE, 2))
+								200, 600, 1400, 1700, 2000, 200,
+								PropertyColor.BLUE, 2))
 		};
 	}
 
@@ -226,8 +229,30 @@ public class GameManager
 
 	public void startAuction(Contract contract)
 	{
-		this.auction = new Auction(contract, 10, null);
-		this.auction.startAuction();
+		auction = new Auction(contract, 9, null);
+		auctionTimer = new Timer();
+		TimerTask task = new TimerTask()
+		{
+			public void run()
+			{
+				auction.endAuction();
+				auctionTimer.cancel();
+			}
+		};
+
+		long delay = 10000L;
+		auctionTimer.schedule(task, delay);
+	}
+
+	public void auctionOffer(Player player, int offer)
+	{
+		if (auction.getBestOfferProposed() < offer)
+		{
+			auctionTimer.cancel();
+			auction.setBestOfferProposed(offer);
+			auction.setPlayer(player);
+			startAuction(auction.getContract());
+		}
 	}
 
 	public Contract getSameContract(Contract contract)
@@ -239,11 +264,6 @@ public class GameManager
 					return square.getContract();
 		}
 		return null;
-	}
-
-	public void auctionOffer(Player player, int offer)
-	{
-		this.auction.offer(player, offer);
 	}
 
 	public Auction getAuction()

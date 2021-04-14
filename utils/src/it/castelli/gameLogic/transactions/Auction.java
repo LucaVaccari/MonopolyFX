@@ -3,15 +3,11 @@ package it.castelli.gameLogic.transactions;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class Auction
 {
-	private Contract contract;
+	private final Contract contract;
 	private int bestOfferProposed;
 	private Player player;
-	private Timer timer;
 
 	public Auction(Contract contract, int bestOfferProposed, Player player)
 	{
@@ -20,34 +16,7 @@ public class Auction
 		this.player = player;
 	}
 
-	public void offer(Player player, int offer)
-	{
-		if (bestOfferProposed < offer)
-		{
-			timer.cancel();
-			bestOfferProposed = offer;
-			this.player = player;
-			startAuction();
-		}
-	}
-
-	public void startAuction()
-	{
-		timer = new Timer();
-		TimerTask task = new TimerTask()
-		{
-			public void run()
-			{
-				endAuction();
-				timer.cancel();
-			}
-		};
-
-		long delay = 10000L;
-		timer.schedule(task, delay);
-	}
-
-	private void endAuction()
+	public void endAuction()
 	{
 		if (player != null)
 		{
@@ -68,5 +37,15 @@ public class Auction
 	public Player getPlayer()
 	{
 		return player;
+	}
+
+	public void setBestOfferProposed(int bestOfferProposed)
+	{
+		this.bestOfferProposed = bestOfferProposed;
+	}
+
+	public void setPlayer(Player player)
+	{
+		this.player = player;
 	}
 }
