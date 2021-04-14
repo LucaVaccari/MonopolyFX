@@ -88,6 +88,8 @@ public class GameConnectionManager
 			sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer
 					.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
 		}
+
+		updatePlayers();
 	}
 
 	public CopyOnWriteArrayList<Connection> getPlayerConnections()
