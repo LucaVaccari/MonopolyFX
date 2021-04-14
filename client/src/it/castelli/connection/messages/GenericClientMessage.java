@@ -36,6 +36,6 @@ public class GenericClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		Platform.runLater(
-				() -> AlertUtil.showInformationAlert(messageTitle, "Informazione", messageBody));
+				() -> AlertUtil.showInformationAlert("Informazione", messageTitle, messageBody));
 	}
 }
