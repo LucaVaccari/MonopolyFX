@@ -28,7 +28,6 @@ public class GameManager
 	private final CopyOnWriteArrayList<Exchange> exchanges = new CopyOnWriteArrayList<>();
 	private Round currentRound;
 	private final RandomEventManager randomEventManager = new RandomEventManager();
-	;
 	private boolean inGame = false;
 
 	/**
@@ -105,8 +104,7 @@ public class GameManager
 						new PropertyContract("Corso Magellano", 220, 18, 90,
 						                     250, 700, 880, 1050, 150,
 						                     PropertyColor.RED, 3)),
-				new PropertySquare(
-						new PropertyContract("Largo Colombo", 240, 20, 100,
+				new PropertySquare(new PropertyContract("Largo Colombo", 240, 20, 100,
 						                     300,
 						                     750, 900, 1100, 150,
 						                     PropertyColor.RED, 3)),
@@ -218,9 +216,12 @@ public class GameManager
 
 	public void nextRound()
 	{
-		int newIndex = (currentRound.getPlayerIndex() + 1) % players.size();
-		Player newPlayer = players.get(newIndex);
-		currentRound = new Round(newPlayer, newIndex);
+		if (players.size() > 0)
+		{
+			int newIndex = (currentRound.getPlayerIndex() + 1) % players.size();
+			Player newPlayer = players.get(newIndex);
+			currentRound = new Round(newPlayer, newIndex);
+		}
 	}
 
 	public void startAuction(Contract contract)
@@ -299,12 +300,10 @@ public class GameManager
 
 	public void updateExchange(Exchange exchange)
 	{
-		for (Exchange element : exchanges)
+		for (int i = 0, exchangesSize = exchanges.size(); i < exchangesSize; i++)
 		{
-			if (element.arePlayersEquals(exchange))
-			{
-				element = exchange;
-			}
+			if (exchanges.get(i).arePlayersEquals(exchange))
+				exchanges.set(i, exchange);
 		}
 	}
 

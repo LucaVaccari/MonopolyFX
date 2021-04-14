@@ -54,6 +54,7 @@ public class SellContractServerMessage implements Message
         if (isSellable)
         {
             contractToSell.setOwner(null);
+            owner.getContracts().remove(contractToSell);
             owner.addMoney(contractToSell.getValue() / 2);
         }
         else

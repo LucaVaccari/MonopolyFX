@@ -451,23 +451,6 @@ public class BoardController
 			Tooltip.install(goToJailSquare, new Tooltip("Andate in prigione"));
 		}
 
-		// add SmallTerrainViewComponents to the owned properties
-		Label showOtherProperties = (Label) ownedPropertiesPane.getChildren().get(0);
-		ownedPropertiesPane.getChildren().clear();
-		for (int i = 0; i < SHOWN_OWNED_PROPERTIES; i++)
-		{
-			SmallTerrainViewComponent terrainView = new SmallTerrainViewComponent(null);
-			terrainView.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-			ownedPropertiesPane.getChildren().add(terrainView);
-		}
-		ownedPropertiesPane.getChildren().add(showOtherProperties);
-
-		ownedPropertiesPane.getChildren().get(SHOWN_OWNED_PROPERTIES)
-				.setOnMouseClicked(event -> {
-					OwnedTerrainViewController.getInstance().update();
-					SceneManager.getInstance().showScene(SceneType.OWNED_TERRAIN);
-				});
-
 		// button callback
 		throwDiceButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
 		                                                                     Serializer
@@ -561,6 +544,23 @@ public class BoardController
 	 */
 	private void calculateOwnedTerrains()
 	{
+		Label showOtherProperties = (Label) ownedPropertiesPane.getChildren().get(ownedPropertiesPane.getChildren().size() - 1);
+		ownedPropertiesPane.getChildren().clear();
+		System.out.println("SUS");
+		for (int i = 0; i < SHOWN_OWNED_PROPERTIES; i++)
+		{
+			SmallTerrainViewComponent terrainView = new SmallTerrainViewComponent(null);
+			terrainView.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+			ownedPropertiesPane.getChildren().add(terrainView);
+		}
+		ownedPropertiesPane.getChildren().add(showOtherProperties);
+
+		ownedPropertiesPane.getChildren().get(SHOWN_OWNED_PROPERTIES)
+				.setOnMouseClicked(event -> {
+					OwnedTerrainViewController.getInstance().update();
+					SceneManager.getInstance().showScene(SceneType.OWNED_TERRAIN);
+				});
+
 		SmallTerrainViewComponent[] ownedTerrains = new SmallTerrainViewComponent[SHOWN_OWNED_PROPERTIES];
 		ArrayList<Contract> mostProductiveContracts = new ArrayList<>(SHOWN_OWNED_PROPERTIES);
 

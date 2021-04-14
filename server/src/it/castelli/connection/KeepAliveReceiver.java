@@ -4,7 +4,7 @@ public class KeepAliveReceiver implements Runnable
 {
 	ConnectionManager connectionManager = ConnectionManager.getInstance();
 	private boolean isRunning;
-	private int checkTime;
+	private final int checkTime;
 
 	/**
 	 * KeepAliveReceiver Constructor
@@ -85,9 +85,9 @@ public class KeepAliveReceiver implements Runnable
 			{
 				if (!connection.getKeepAliveFlag())
 				{
-					connection.interrupt();
 					gameConnectionManager.resetPlayerProperties(connection);
 					gameConnectionManager.removePlayer(connection);
+					connection.interrupt();
 					System.out.println("Connection removed");
 				}
 			}
