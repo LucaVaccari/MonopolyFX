@@ -58,7 +58,7 @@ public class StationSquare implements Square
 				numberOfOwnedStations++;
 			}
 		}
-		revenue *= 2 ^(numberOfOwnedStations - 1);
+		revenue *= (2 ^(numberOfOwnedStations - 1));
 
 		if (contract.isMortgaged())
 			revenue = 0;

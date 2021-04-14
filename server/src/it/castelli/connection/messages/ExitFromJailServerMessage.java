@@ -51,6 +51,7 @@ public class ExitFromJailServerMessage implements Message
         if (this.pay)
             playerToFree.removeMoney(50);
         playerToFree.setPosition(10, false);
+        gameManager.getCurrentRound().setDiceThrown(false);
 
         gameConnectionManager.updatePlayers();
     }
