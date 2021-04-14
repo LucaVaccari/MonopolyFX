@@ -49,5 +49,6 @@ public class ClientMessages
 			"it.castelli.connection.messages.SellContractServerMessage";
 	public static final String UNMORTGAGE_CONTRACT_MESSAGE_NAME =
 			"it.castelli.connection.messages.UnmortgageContractServerMessage";
-
+	public static final String SELL_HOUSES_MESSAGE_NAME =
+			"it.castelli.connection.messages.SellHousesServerMessage";
 }

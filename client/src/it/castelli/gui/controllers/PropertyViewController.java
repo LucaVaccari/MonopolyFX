@@ -81,7 +81,7 @@ public class PropertyViewController
 					.betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer());
 			onlyIfOwnedPane1.setVisible(isOwnedByMe);
 			onlyIfOwnedPane1.setDisable(!isOwnedByMe);
-			onlyIfOwnedPane2.setVisible(isOwnedByMe && isMyRound);
+			onlyIfOwnedPane2.setVisible(isOwnedByMe);
 			onlyIfOwnedPane2.setDisable(!isOwnedByMe && !isMyRound);
 
 			numberOfHousesLabel.setText(String.valueOf(contract.getNumberOfHouses()));
@@ -92,14 +92,21 @@ public class PropertyViewController
 				SceneManager.getInstance().getStageByType(SceneType.PROPERTY_VIEW).close();
 			});
 
+			if (contract.isMortgaged())
+				mortgageButton.setDisable(!Game.getPlayer().hasMoney(contract.getMortgageValue() * 11 / 10));
+
 			mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 			mortgageButton.setOnAction(event -> {
 				if (contract.isMortgaged())
+				{
 					ClientMain.getConnection().send(ClientMessages.UNMORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
 							.toJson(new UnmortgageContractClientMessage(Game.getGameCode(), contract)));
+				}
 				else
+				{
 					ClientMain.getConnection().send(ClientMessages.MORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
 							.toJson(new MortgageContractClientMessage(Game.getGameCode(), contract)));
+				}
 				SceneManager.getInstance().getStageByType(SceneType.PROPERTY_VIEW).close();
 			});
 
@@ -111,7 +118,13 @@ public class PropertyViewController
 				}
 			});
 
-			// TODO: add sell house button callback
+			sellHouseButton.setOnAction(event -> {
+				if (contract.getNumberOfHouses() > 0)
+				{
+					ClientMain.getConnection().send(ClientMessages.SELL_HOUSES_MESSAGE_NAME, Serializer
+							.toJson(new SellHousesClientMessage(Game.getGameCode(), contract, 1)));
+				}
+			});
 		}
 		else
 		{

@@ -18,6 +18,7 @@ sos
 - l'errore non compare in primo piano
 - controllo sui soldi per sciogliere ipoteca
 - scambio non inizializzato
+- cambiare i pulsanti dell'asta in un TextField
 
 
 - Terminare automaticamente il turno se un giocatore si disconnette (da testare)

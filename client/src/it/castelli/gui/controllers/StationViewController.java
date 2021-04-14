@@ -65,7 +65,7 @@ public class StationViewController
 			boolean isOwnedByMe = contract.getOwner().toPlayer().betterEquals(Game.getPlayer());
 			boolean isMyRound = contract.getOwner().toPlayer()
 					.betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer());
-			onlyIfOwnedPane.setVisible(isOwnedByMe && isMyRound);
+			onlyIfOwnedPane.setVisible(isOwnedByMe);
 			onlyIfOwnedPane.setDisable(!isOwnedByMe && !isMyRound);
 		}
 		else
@@ -80,14 +80,21 @@ public class StationViewController
 			SceneManager.getInstance().getStageByType(SceneType.STATION_VIEW).close();
 		});
 
+		if (contract.isMortgaged())
+			mortgageButton.setDisable(!Game.getPlayer().hasMoney(contract.getMortgageValue() * 11 / 10));
+
 		mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 		mortgageButton.setOnAction(event -> {
 			if (contract.isMortgaged())
+			{
 				ClientMain.getConnection().send(ClientMessages.UNMORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
 						.toJson(new UnmortgageContractClientMessage(Game.getGameCode(), contract)));
+			}
 			else
+			{
 				ClientMain.getConnection().send(ClientMessages.MORTGAGE_CONTRACT_MESSAGE_NAME, Serializer
 						.toJson(new MortgageContractClientMessage(Game.getGameCode(), contract)));
+			}
 			SceneManager.getInstance().getStageByType(SceneType.STATION_VIEW).close();
 		});
 	}

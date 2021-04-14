@@ -68,6 +68,9 @@ public class CompanyViewController
 			SceneManager.getInstance().getStageByType(SceneType.COMPANY_VIEW).close();
 		});
 
+		if (contract.isMortgaged())
+			mortgageButton.setDisable(!Game.getPlayer().hasMoney(contract.getMortgageValue() * 11 / 10));
+
 		mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 		mortgageButton.setOnAction(event -> {
 			if (contract.isMortgaged())
