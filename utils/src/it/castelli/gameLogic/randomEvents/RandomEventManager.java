@@ -23,6 +23,8 @@ public class RandomEventManager
 	public RandomEventManager()
 	{
 		chances.addAll(Arrays.asList(
+				new BirthdayRandomEvent(
+						"E' il vostro compleanno, ogni giocatore vi regala 10M", RandomEventType.CHANCE),
 				new GoToRandomEvent(
 						"Andate in prigione direttamente senza passare dal " +
 								"via", RandomEventType.CHANCE,
