@@ -116,7 +116,7 @@ public class GameConnectionManager
 				gameManager.getAuction().endAuction();
 				auctionTimer.cancel();
 
-				// TODO: send EndAuctionMessage
+				sendAll(ServerMessages.AUCTION_ENDED_MESSAGE_NAME, Serializer.toJson(new AuctionEndedServerMessage()));
 			}
 		};
 

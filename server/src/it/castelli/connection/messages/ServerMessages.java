@@ -43,6 +43,7 @@ public class ServerMessages
 			"it.castelli.connection.messages.RandomEventClientMessage";
 	public static final String PLAYER_PAID_MESSAGE_NAME =
 			"it.castelli.connection.messages.PlayerPaidClientMessage";
-
+	public static final String AUCTION_ENDED_MESSAGE_NAME =
+			"it.castelli.connection.messages.AuctionEndedClientMessage";
 
 }
