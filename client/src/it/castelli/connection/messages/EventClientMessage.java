@@ -7,27 +7,27 @@ import it.castelli.gui.AlertUtil;
 import javafx.application.Platform;
 
 /**
- * Message from the server that communicates the random event (receive only)
+ * Message from the server that communicates the last encountered event (receive only)
  */
-public class RandomEventClientMessage implements Message
+public class EventClientMessage implements Message
 {
 	/**
-	 * The random event text body
+	 * The event text body
 	 */
 	private final String randomEventText;
 
 	/**
-	 * The random event type
+	 * The event type
 	 */
 	private final String randomEventType;
 
 	/**
-	 * Constructor for RandomEventClientMessage (do not use)
+	 * Constructor for EventClientMessage (do not use)
 	 *
-	 * @param randomEventType The random event type
-	 * @param randomEventText The random event text body
+	 * @param randomEventType The event type
+	 * @param randomEventText The event text body
 	 */
-	public RandomEventClientMessage(String randomEventType, String randomEventText)
+	public EventClientMessage(String randomEventType, String randomEventText)
 	{
 		this.randomEventType = randomEventType;
 		this.randomEventText = randomEventText;
