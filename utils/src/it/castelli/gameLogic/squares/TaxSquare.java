@@ -60,6 +60,7 @@ public class TaxSquare implements Square
 	public void interact(Player player, GameManager gameManager)
 	{
 		player.removeMoney(value);
+		player.setLastEncounteredEvent(message, (String)("Pagate " + value + "M"));
 	}
 
 	@Override

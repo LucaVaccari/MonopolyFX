@@ -160,12 +160,12 @@ public class GameConnectionManager
 	{
 		for (Player player : gameManager.getPlayers())
 		{
-			if (player.getRandomEventType() != null)
+			if (player.getEventType() != null)
 			{
 				sendAll(ServerMessages.RANDOM_EVENT_MESSAGE_NAME, Serializer
-						.toJson(new RandomEventServerMessage(player.getRandomEventType(), player
-								.getRandomEventDescription())));
-				player.setLastRandomEvent(null, null);
+						.toJson(new RandomEventServerMessage(player.getEventType(), player
+								.getEventDescription())));
+				player.setLastEncounteredEvent(null, null);
 			}
 
 			if (player.hasSomethingChanged())

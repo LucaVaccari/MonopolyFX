@@ -19,7 +19,7 @@ public class CommunityChestSquare implements Square
 	public void interact(Player player, GameManager gameManager)
 	{
 		RandomEvent randomEvent = gameManager.getRandomEventManager().drawCommunityChest();
-		player.setLastRandomEvent("Community Chest", randomEvent.getMessage());
+		player.setLastEncounteredEvent("Community Chest", randomEvent.getMessage());
 		randomEvent.applyEffect(player, gameManager);
 	}
 

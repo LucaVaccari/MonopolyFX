@@ -67,8 +67,8 @@ public class OwnerPlayer
         this.position = player.getPosition();
         this.previousPosition = player.getPreviousPosition();
         this.pawn = player.getPawn();
-        this.randomEventDescription = player.getRandomEventDescription();
-        this.randomEventType = player.getRandomEventType();
+        this.randomEventDescription = player.getEventDescription();
+        this.randomEventType = player.getEventType();
 
     }
 
@@ -92,7 +92,7 @@ public class OwnerPlayer
         player.setPosition(this.position, false);
         player.setInPrison(this.inPrison);
         player.setPawn(this.pawn);
-        player.setLastRandomEvent(this.randomEventType, this.randomEventDescription);
+        player.setLastEncounteredEvent(this.randomEventType, this.randomEventDescription);
         return player;
     }
 

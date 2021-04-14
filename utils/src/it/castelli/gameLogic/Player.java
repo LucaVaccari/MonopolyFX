@@ -44,22 +44,20 @@ public class Player
 	 */
 	private boolean inPrison = false;
 
-
-
 	/**
 	 * the player's pawn
 	 */
 	private Pawn pawn;
 
 	/**
-	 * The type of the last random event the player encountered
+	 * The type of the last event the player encountered
 	 */
-	private String randomEventType = null;
+	private String eventType = null;
 
 	/**
-	 * The description of the last random event the player encountered
+	 * The description of the last event the player encountered
 	 */
-	private String randomEventDescription = null;
+	private String eventDescription = null;
 
 	/**
 	 * The previous position of the player
@@ -288,20 +286,20 @@ public class Player
 	 *
 	 * @return The type of the last random event the player encountered
 	 */
-	public String getRandomEventType()
+	public String getEventType()
 	{
-		return randomEventType;
+		return eventType;
 	}
 
 	/**
 	 * Set the last encountered random event type
 	 *
-	 * @param randomEventType the last encountered random event type
+	 * @param eventType the last encountered random event type
 	 */
-	private void setRandomEventType(String randomEventType)
+	private void setEventType(String eventType)
 	{
 		somethingChanged = true;
-		this.randomEventType = randomEventType;
+		this.eventType = eventType;
 	}
 
 	/**
@@ -309,27 +307,27 @@ public class Player
 	 *
 	 * @return The description of the last random event the player encountered
 	 */
-	public String getRandomEventDescription()
+	public String getEventDescription()
 	{
-		return randomEventDescription;
+		return eventDescription;
 	}
 
 	/**
 	 * Set the last encountered random event description
 	 *
-	 * @param randomEventDescription the last encountered random event description
+	 * @param eventDescription the last encountered random event description
 	 */
-	private void setRandomEventDescription(String randomEventDescription)
+	private void setEventDescription(String eventDescription)
 	{
 		somethingChanged = true;
-		this.randomEventDescription = randomEventDescription;
+		this.eventDescription = eventDescription;
 	}
 
-	public void setLastRandomEvent(String randomEventType, String randomEventDescription)
+	public void setLastEncounteredEvent(String randomEventType, String randomEventDescription)
 	{
 		somethingChanged = true;
-		setRandomEventType(randomEventType);
-		setRandomEventDescription(randomEventDescription);
+		setEventType(randomEventType);
+		setEventDescription(randomEventDescription);
 	}
 
 	/**
