@@ -24,7 +24,7 @@ public class AuctionOfferServerMessage implements Message
 	/**
 	 * Constructor for AuctionOfferServerMessage (do not use)
 	 *
-	 * @param offer The money amount to offer
+	 * @param offer    The money amount to offer
 	 * @param gameCode The game code
 	 */
 	public AuctionOfferServerMessage(int offer, int gameCode)
@@ -37,7 +37,11 @@ public class AuctionOfferServerMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
-		gameConnectionManager.getGameManager().auctionOffer(player, offer);
-		gameConnectionManager.sendAll(ServerMessages.UPDATE_AUCTION_MESSAGE_NAME, Serializer.toJson(new UpdateAuctionServerMessage(gameConnectionManager.getGameManager().getAuction())));
+		Player offeringPlayer = gameConnectionManager.getGameManager().getSamePlayer(player);
+		gameConnectionManager.auctionOffer(offeringPlayer, offer);
+		gameConnectionManager.sendAll(ServerMessages.UPDATE_AUCTION_MESSAGE_NAME, Serializer
+				.toJson(new UpdateAuctionServerMessage(gameConnectionManager.getGameManager().getAuction())));
+		System.out.println("Sending auction with offer " +
+				gameConnectionManager.getGameManager().getAuction().getBestOfferProposed());
 	}
 }

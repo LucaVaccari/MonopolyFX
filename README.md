@@ -22,6 +22,7 @@ sos
 
 
 - Terminare automaticamente il turno se un giocatore si disconnette (da testare)
+- Messaggio per quando l'asta finisce  
 - riutilizzare i codici non usati
 - messaggio quando si paga una tassa
 - votekick

@@ -11,6 +11,8 @@ import it.castelli.gameLogic.squares.StationSquare;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.serialization.Serializer;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameConnectionManager
@@ -19,6 +21,7 @@ public class GameConnectionManager
 	private final GameManager gameManager;
 	private final int gameCode;
 	private Connection host = null;
+	private Timer auctionTimer;
 
 	public GameConnectionManager(int gameCode)
 	{
@@ -49,7 +52,8 @@ public class GameConnectionManager
 			gameManager.addPlayer(player);
 			sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME,
 					Serializer.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
-		} else
+		}
+		else
 		{
 			connection.send(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage(
 					"Non potete unirvi alla partita, la lobby è piena oppure la partita è già iniziata")));
@@ -71,7 +75,8 @@ public class GameConnectionManager
 		{
 			ConnectionManager.getInstance().removeGame(gameCode);
 			System.out.println("Removed game with code " + gameCode);
-		} else
+		}
+		else
 		{
 			System.out.println("Still " + playerConnections.size() + " players in the game with code " + gameCode);
 			if (connection == host)
@@ -93,19 +98,54 @@ public class GameConnectionManager
 	public void startGame()
 	{
 		gameManager.startGame();
-		sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
+		sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer
+				.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
 		sendAll(ServerMessages.GAME_STARTED_MESSAGE_NAME, Serializer.toJson(new GameStartedServerMessage()));
 		updatePlayers();
 	}
 
-	public void startAuction()
+	public void startAuction(Contract contract, int offer)
 	{
+		gameManager.startAuction(contract, offer);
+		auctionTimer = new Timer();
+		TimerTask task = new TimerTask()
+		{
+			public void run()
+			{
+				System.out.println("Auction timer finished");
+				gameManager.getAuction().endAuction();
+				auctionTimer.cancel();
+
+				// TODO: send EndAuctionMessage
+			}
+		};
+
+		long delay = 20000L;
+		auctionTimer.schedule(task, delay);
+		System.out.println("Auction started");
+
 		for (Connection connection : playerConnections)
 		{
 			Auction auction = gameManager.getAuction();
 			NewAuctionServerMessage message = new NewAuctionServerMessage(auction.getContract(), auction.getPlayer(),
 					auction.getBestOfferProposed());
 			connection.send(ServerMessages.NEW_AUCTION_MESSAGE_NAME, Serializer.toJson(message));
+		}
+	}
+
+	public void auctionOffer(Player player, int offer)
+	{
+		if (gameManager.getAuction().getBestOfferProposed() < offer)
+		{
+			System.out.println("Il giocatore " + player.getName() + " ha proposto " +
+					offer + " per " + gameManager.getAuction().getContract().getName());
+			auctionTimer.cancel();
+			gameManager.getAuction().setBestOfferProposed(offer);
+			gameManager.getAuction().setPlayer(player);
+			startAuction(gameManager.getAuction().getContract(), offer);
+			System.out.println("Il giocatore " + player.getName() + " ha proposto " +
+							gameManager.getAuction().getBestOfferProposed() + " per" +
+							" " + gameManager.getAuction().getContract().getName());
 		}
 	}
 
@@ -126,8 +166,10 @@ public class GameConnectionManager
 		{
 			if (player.getRandomEventType() != null)
 			{
-            	sendAll(ServerMessages.RANDOM_EVENT_MESSAGE_NAME, Serializer.toJson(new RandomEventServerMessage(player.getRandomEventType(), player.getRandomEventDescription())));
-            	player.setLastRandomEvent(null, null);
+				sendAll(ServerMessages.RANDOM_EVENT_MESSAGE_NAME, Serializer
+						.toJson(new RandomEventServerMessage(player.getRandomEventType(), player
+								.getRandomEventDescription())));
+				player.setLastRandomEvent(null, null);
 			}
 
 			if (player.hasSomethingChanged())
@@ -144,8 +186,10 @@ public class GameConnectionManager
 		sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer
 				.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
 
-		sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
-		sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
+		sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer
+				.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
+		sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer
+				.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
 
 	}
 
@@ -168,7 +212,8 @@ public class GameConnectionManager
 		if (square instanceof PropertySquare || square instanceof StationSquare || square instanceof CompanySquare)
 		{
 			if (square.getContract().getOwner() == null)
-				getConnectionFromPlayer(player).send(ServerMessages.CONTRACT_ON_SALE_MESSAGE_NAME, Serializer.toJson(new ContractOnSaleServerMessage(square.getContract())));
+				getConnectionFromPlayer(player).send(ServerMessages.CONTRACT_ON_SALE_MESSAGE_NAME, Serializer
+						.toJson(new ContractOnSaleServerMessage(square.getContract())));
 			else
 			{
 				int playerMoneyBeforeInteract = player.getMoney();
@@ -176,12 +221,17 @@ public class GameConnectionManager
 				int playerMoneyAfterInteract = player.getMoney();
 				int moneyPaid = playerMoneyBeforeInteract - playerMoneyAfterInteract;
 				if (moneyPaid != 0)
-					sendAll(ServerMessages.PLAYER_PAID_MESSAGE_NAME, Serializer.toJson(new PlayerPaidServerMessage(player.getName(), square.getContract().getOwner().getName(), square.getContract().getName(), moneyPaid, !square.getContract().isMortgaged())));
+					sendAll(ServerMessages.PLAYER_PAID_MESSAGE_NAME, Serializer
+							.toJson(new PlayerPaidServerMessage(player.getName(), square.getContract().getOwner()
+									.getName(), square.getContract().getName(), moneyPaid, !square.getContract()
+									.isMortgaged())));
 				else
 				{
-					if (square.getContract().isMortgaged() && !gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
+					if (square.getContract().isMortgaged() &&
+							!gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
 					{
-						sendAll(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage("Il terreno è ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
+						sendAll(ServerMessages.ERROR_MESSAGE_NAME, Serializer.toJson(new ErrorServerMessage(
+								"Il terreno è ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
 					}
 				}
 			}

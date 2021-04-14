@@ -297,6 +297,9 @@ public class SceneManager
 		}
 		else
 		{
+			if (openStages.containsKey(sceneType))
+				return;
+
 			Stage stage = new Stage();
 
 			if (sceneType == SceneType.EXCHANGE || sceneType == SceneType.AUCTION)

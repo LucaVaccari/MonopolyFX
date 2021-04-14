@@ -8,8 +8,6 @@ import it.castelli.gameLogic.squares.*;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gameLogic.transactions.Exchange;
 
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -31,7 +29,6 @@ public class GameManager
 	private Round currentRound;
 	private final RandomEventManager randomEventManager = new RandomEventManager();
 	private boolean inGame = false;
-	private Timer auctionTimer;
 
 	/**
 	 * Constructor for the GameManager
@@ -227,32 +224,9 @@ public class GameManager
 		}
 	}
 
-	public void startAuction(Contract contract)
+	public void startAuction(Contract contract, int offer)
 	{
-		auction = new Auction(contract, 9, null);
-		auctionTimer = new Timer();
-		TimerTask task = new TimerTask()
-		{
-			public void run()
-			{
-				auction.endAuction();
-				auctionTimer.cancel();
-			}
-		};
-
-		long delay = 10000L;
-		auctionTimer.schedule(task, delay);
-	}
-
-	public void auctionOffer(Player player, int offer)
-	{
-		if (auction.getBestOfferProposed() < offer)
-		{
-			auctionTimer.cancel();
-			auction.setBestOfferProposed(offer);
-			auction.setPlayer(player);
-			startAuction(auction.getContract());
-		}
+		auction = new Auction(contract, offer, null);
 	}
 
 	public Contract getSameContract(Contract contract)

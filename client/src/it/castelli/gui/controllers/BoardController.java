@@ -546,7 +546,6 @@ public class BoardController
 	{
 		Label showOtherProperties = (Label) ownedPropertiesPane.getChildren().get(ownedPropertiesPane.getChildren().size() - 1);
 		ownedPropertiesPane.getChildren().clear();
-		System.out.println("SUS");
 		for (int i = 0; i < SHOWN_OWNED_PROPERTIES; i++)
 		{
 			SmallTerrainViewComponent terrainView = new SmallTerrainViewComponent(null);
