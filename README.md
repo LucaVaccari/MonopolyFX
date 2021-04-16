@@ -21,7 +21,6 @@ sos
 - Possibilità di rimuovere i terreni dallo scambio
 - Cambiare i bottoni dello scambio in accetta/annulla, rifiuta
 
-- Messaggio per quando l'asta finisce (da testare / implementare client)
 - riutilizzare i codici non usati
 - votekick
 - vittoria e sconfitta
