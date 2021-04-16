@@ -67,6 +67,7 @@ public class ChangeExchangeAssetServerMessage implements Message
 							"rifiutare lo scambio!")));
 		}
 
+		gameConnectionManager.updatePlayers();
 
 	}
 }

@@ -55,7 +55,7 @@ public class Exchange
 	}
 
 
-	public void endExchange()
+	public void endExchange(Player player1, Player player2)
 	{
 		asset1.removeFromPlayer(player1);
 		asset1.addToPlayer(player2);
@@ -86,7 +86,9 @@ public class Exchange
 	@Override
 	public boolean equals(Object obj)
 	{
-		return arePlayersEquals((Exchange) obj);
+		if (obj instanceof Exchange)
+			return arePlayersEquals((Exchange) obj);
+		return false;
 	}
 
 	public boolean arePlayersEquals(Exchange exchange)
