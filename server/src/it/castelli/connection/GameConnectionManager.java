@@ -131,7 +131,7 @@ public class GameConnectionManager
 			}
 		};
 
-		long delay = 20000L;
+		long delay = 10000L;
 		auctionTimer.schedule(task, delay);
 
 		for (Connection connection : playerConnections)

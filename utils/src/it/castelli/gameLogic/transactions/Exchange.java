@@ -32,7 +32,7 @@ public class Exchange
 
 	public void changeAsset(Player player, Asset newOffer)
 	{
-		if (player == this.player1)
+		if (player.betterEquals(this.player1))
 			asset1 = newOffer;
 		else
 			asset2 = newOffer;
@@ -40,7 +40,7 @@ public class Exchange
 
 	public void acceptExchange(Player player)
 	{
-		if (player == this.player1)
+		if (player.betterEquals(this.player1))
 			accepted1 = true;
 		else
 			accepted2 = true;
@@ -48,7 +48,7 @@ public class Exchange
 
 	public void undoAcceptExchange(Player player)
 	{
-		if (player == this.player1)
+		if (player.betterEquals(this.player1))
 			accepted1 = false;
 		else
 			accepted2 = false;
@@ -87,13 +87,12 @@ public class Exchange
 	public boolean equals(Object obj)
 	{
 		return arePlayersEquals((Exchange) obj);
-
 	}
 
 	public boolean arePlayersEquals(Exchange exchange)
 	{
-		return (((Exchange) exchange).player1 == this.player1 || ((Exchange) exchange).player2 == this.player2) &&
-				(((Exchange) exchange).player2 == this.player1 || ((Exchange) exchange).player2 == this.player2);
+		return (((Exchange) exchange).player1.betterEquals(this.player1) || ((Exchange) exchange).player2.betterEquals(this.player2)) &&
+				(((Exchange) exchange).player2.betterEquals(this.player1) || ((Exchange) exchange).player2.betterEquals(this.player1));
 	}
 
 }
