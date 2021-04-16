@@ -41,13 +41,13 @@ public class RefuseExchangeServerMessage implements Message
 		GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
 		GameManager gameManager = gameConnectionManager.getGameManager();
 
-		Connection connectionFromPlayer;
-		if (exchange.getPlayer1().betterEquals(player))
-			connectionFromPlayer = gameConnectionManager.getConnectionFromPlayer(exchange.getPlayer2());
-		else
-			connectionFromPlayer = gameConnectionManager.getConnectionFromPlayer(exchange.getPlayer1());
+		gameConnectionManager.getConnectionFromPlayer(exchange.getPlayer2())
+				.send(ServerMessages.EXCHANGE_CANCELED_MESSAGE_NAME, Serializer
+						.toJson(new ExchangeCanceledServerMessage(exchange)));
 
-		connectionFromPlayer.send(ServerMessages.EXCHANGE_CANCELED_MESSAGE_NAME, Serializer.toJson(new ExchangeCanceledServerMessage(exchange)));
+		gameConnectionManager.getConnectionFromPlayer(exchange.getPlayer1())
+				.send(ServerMessages.EXCHANGE_CANCELED_MESSAGE_NAME, Serializer
+						.toJson(new ExchangeCanceledServerMessage(exchange)));
 
 		gameManager.removeExchange(exchange);
 	}
