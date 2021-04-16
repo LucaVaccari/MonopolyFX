@@ -43,9 +43,9 @@ public class RefuseExchangeClientMessage implements Message
 		{
 			Game.getGameManager().removeExchange(exchange);
 			Platform.runLater(() -> {
+				SceneManager.getInstance().getStageByType(SceneType.EXCHANGE).close();
 				AlertUtil.showInformationAlert("Fallimento", "Scambio rifiutato",
 						"Lo scambio e' stato rifiutato.");
-				SceneManager.getInstance().getStageByType(SceneType.EXCHANGE).close();
 			});
 		}
 	}
