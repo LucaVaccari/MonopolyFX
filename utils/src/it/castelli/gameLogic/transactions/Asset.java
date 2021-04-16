@@ -3,17 +3,16 @@ package it.castelli.gameLogic.transactions;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Asset
 {
 	private int money;
-	private ArrayList<Contract> contracts;
+	private HashSet<Contract> contracts = new HashSet<>();
 
 	public Asset()
 	{
 		this.money = 0;
-		this.contracts = new ArrayList<>();
 	}
 
 	public int getMoney()
@@ -26,12 +25,12 @@ public class Asset
 		this.money = money;
 	}
 
-	public ArrayList<Contract> getContracts()
+	public HashSet<Contract> getContracts()
 	{
 		return contracts;
 	}
 
-	public void setContracts(ArrayList<Contract> contracts)
+	public void setContracts(HashSet<Contract> contracts)
 	{
 		this.contracts = contracts;
 	}

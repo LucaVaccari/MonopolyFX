@@ -29,7 +29,6 @@ public class ContractOnSaleClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		// TODO: Should not offer if the player can't afford
 		Platform.runLater(() -> showSuggestionOfBuy("Proprietà", contract.getName() + " e' in vendita!",
 				"Volete comprare la proprieta' o metterla all'asta?", contract));
 
