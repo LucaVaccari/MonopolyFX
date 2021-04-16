@@ -4,13 +4,21 @@ import it.castelli.ClientMain;
 import it.castelli.Game;
 import it.castelli.connection.messages.AuctionOfferClientMessage;
 import it.castelli.connection.messages.ClientMessages;
+import it.castelli.gameLogic.contracts.CompanyContract;
+import it.castelli.gameLogic.contracts.PropertyContract;
+import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.gui.customComponents.ChatComponent;
+import it.castelli.gui.customComponents.CompanyViewComponent;
+import it.castelli.gui.customComponents.PropertyViewComponent;
+import it.castelli.gui.customComponents.StationViewComponent;
 import it.castelli.serialization.Serializer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
 /**
  * Controller for the auction FXML
@@ -32,21 +40,13 @@ public class AuctionController
 	@FXML
 	private Label auctionBaseLabel;
 	@FXML
-	private Button minusOneButton;
-	@FXML
-	private Button minusTenButton;
-	@FXML
-	private Button minusHundredButton;
-	@FXML
 	private Label yourOfferLabel;
 	@FXML
 	private Button offerButton;
 	@FXML
-	private Button plusOneButton;
+	private TextField offerTextField;
 	@FXML
-	private Button plusTenButton;
-	@FXML
-	private Button plusHundredButton;
+	private VBox terrainVBox;
 
 	public static AuctionController getInstance()
 	{
@@ -58,18 +58,16 @@ public class AuctionController
 	{
 		instance = this;
 
-		minusOneButton.setOnAction(event -> changeOffer(-1));
-		minusTenButton.setOnAction(event -> changeOffer(-10));
-		minusHundredButton.setOnAction(event -> changeOffer(-100));
-		plusOneButton.setOnAction(event -> changeOffer(1));
-		plusTenButton.setOnAction(event -> changeOffer(10));
-		plusHundredButton.setOnAction(event -> changeOffer(100));
-
 		offerButton.setOnAction(event -> {
 			// Send offer to the server
-			if (yourOffer > auction.getBestOfferProposed())
+			int offer = Integer.parseInt(offerTextField.getText());
+			if (offer > auction.getBestOfferProposed())
+			{
 				ClientMain.getConnection().send(ClientMessages.AUCTION_OFFER_MESSAGE_NAME, Serializer
-						.toJson(new AuctionOfferClientMessage(yourOffer, Game.getGameCode())));
+						.toJson(new AuctionOfferClientMessage(offer, Game.getGameCode())));
+				yourOfferLabel.setText("la tua offerta: " + offerTextField.getText() + "M");
+			}
+			update();
 		});
 	}
 
@@ -78,31 +76,28 @@ public class AuctionController
 	 */
 	public void update()
 	{
-		auctionBaseLabel.setText(auction.getBestOfferProposed() + "M");
-		totalMoneyLabel.setText(Game.getPlayer().getMoney() + "M");
-		yourOfferLabel.setText(yourOffer + "M");
+		auctionBaseLabel.setText("prezzo attuale: " + auction.getBestOfferProposed() + "M");
+		totalMoneyLabel.setText("i tuoi soldi: " + Game.getPlayer().getMoney() + "M");
+		yourOfferLabel.setText(String.valueOf(auction.getBestOfferProposed()));
 	}
 
-	/**
-	 * Change the offer by a positive or a negative value. The sum of the current offer and the value should be greater
-	 * than the base offer
-	 *
-	 * @param value The value to be added to the current offer
-	 */
-	private void changeOffer(int value)
-	{
-		if (yourOffer + value < Game.getPlayer().getMoney())
-		{
-			yourOffer += value;
-			yourOfferLabel.setText(yourOffer + "M");
-		}
-	}
 
 	public void setAuction(Auction auction)
 	{
+
 		this.auction = auction;
 		yourOffer = auction.getBestOfferProposed();
-		Platform.runLater(this::update);
+		Platform.runLater(() -> {
+			update();
+			terrainVBox.getChildren().clear();
+			if (auction.getContract() instanceof PropertyContract)
+				terrainVBox.getChildren().add(new PropertyViewComponent((PropertyContract) auction.getContract()));
+			else if (auction.getContract() instanceof CompanyContract)
+				terrainVBox.getChildren().add(new CompanyViewComponent((CompanyContract) auction.getContract()));
+			else
+				terrainVBox.getChildren().add(new StationViewComponent((StationContract) auction.getContract()));
+
+		});
 	}
 
 	public ChatComponent getChat()

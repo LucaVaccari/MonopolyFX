@@ -7,6 +7,7 @@ import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.controllers.*;
+import it.castelli.gui.customComponents.PropertyViewComponent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -182,6 +183,7 @@ public class SceneManager
 			Scene scene = new Scene(root);
 			companyViewStage.setScene(scene);
 			companyViewStage.initModality(Modality.APPLICATION_MODAL);
+			companyViewStage.setAlwaysOnTop(true);
 			companyViewStage.setResizable(false);
 			companyViewStage.show();
 
@@ -214,6 +216,7 @@ public class SceneManager
 			Scene scene = new Scene(root);
 			stationViewStage.setScene(scene);
 			stationViewStage.initModality(Modality.APPLICATION_MODAL);
+			stationViewStage.setAlwaysOnTop(true);
 			stationViewStage.setResizable(false);
 			stationViewStage.show();
 
@@ -236,26 +239,20 @@ public class SceneManager
 		if (contract == null)
 			return;
 
-		try
-		{
-			FXMLLoader loader = FXMLFileLoader.getLoader(BoardController.PROPERTY_VIEW_FXML_PATH);
-			Parent root = loader.load();
-			PropertyViewController controller = loader.getController();
-			controller.setContract(contract);
-			Stage propertyViewStage = new Stage();
-			Scene scene = new Scene(root);
-			propertyViewStage.setScene(scene);
-			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
-			propertyViewStage.setResizable(false);
-			propertyViewStage.show();
+		//			FXMLLoader loader = FXMLFileLoader.getLoader(BoardController.PROPERTY_VIEW_FXML_PATH);
+		Parent root = new PropertyViewComponent(contract);
+//			PropertyViewController controller = loader.getController();
+//			controller.setContract(contract);
+		Stage propertyViewStage = new Stage();
+		Scene scene = new Scene(root);
+		propertyViewStage.setScene(scene);
+		propertyViewStage.initModality(Modality.APPLICATION_MODAL);
+		propertyViewStage.setAlwaysOnTop(true);
+		propertyViewStage.setResizable(false);
+		propertyViewStage.show();
 
-			openStages.put(SceneType.PROPERTY_VIEW, propertyViewStage);
-			propertyViewStage.setOnCloseRequest(event -> openStages.remove(SceneType.PROPERTY_VIEW));
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
+		openStages.put(SceneType.PROPERTY_VIEW, propertyViewStage);
+		propertyViewStage.setOnCloseRequest(event -> openStages.remove(SceneType.PROPERTY_VIEW));
 	}
 
 	public Stage getPrimaryStage()
@@ -290,6 +287,7 @@ public class SceneManager
 			Scene scene = new Scene(root);
 			playerInfoStage.setScene(scene);
 			playerInfoStage.initModality(Modality.APPLICATION_MODAL);
+			playerInfoStage.setAlwaysOnTop(true);
 			playerInfoStage.setResizable(false);
 			openStages.put(SceneType.PLAYER_INFO, playerInfoStage);
 			playerInfoStage.setOnCloseRequest(event -> openStages.remove(SceneType.PLAYER_INFO));
