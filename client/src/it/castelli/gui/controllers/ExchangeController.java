@@ -149,12 +149,9 @@ public class ExchangeController
 				AlertUtil.showInformationAlert("Errore", "Lo scambio non è ancora stato inizializzato", "");
 				return;
 			}
-			if ((isPlayer1 ? exchange.getAccepted1() : exchange.getAccepted2()))
-				ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
-						.toJson(new AcceptExchangeClientMessage(true, Game.getPlayer(), Game.getGameCode())));
-			else
-				ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
-						.toJson(new AcceptExchangeClientMessage(false, Game.getPlayer(), Game.getGameCode())));
+			ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
+					.toJson(new AcceptExchangeClientMessage(!(isPlayer1 ? exchange.getAccepted1() :
+							exchange.getAccepted2()), Game.getPlayer(), Game.getGameCode())));
 		});
 
 		refuseButton.setOnAction(event -> {
