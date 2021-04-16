@@ -29,6 +29,7 @@ public class UpdateExchangeClientMessage implements Message
     @Override
     public void onReceive(Connection connection, Player player)
     {
+        System.out.println("Updating exchange");
         Game.getGameManager().updateExchange(exchange);
         ExchangeController.getInstance().setExchange(exchange);
         //TODO: update the accepted image

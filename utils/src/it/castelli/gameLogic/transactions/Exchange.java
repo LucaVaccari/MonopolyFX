@@ -2,6 +2,8 @@ package it.castelli.gameLogic.transactions;
 
 import it.castelli.gameLogic.Player;
 
+import java.util.Objects;
+
 
 public class Exchange
 {
@@ -89,6 +91,12 @@ public class Exchange
 		if (obj instanceof Exchange)
 			return arePlayersEquals((Exchange) obj);
 		return false;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(player1, player2);
 	}
 
 	public boolean arePlayersEquals(Exchange exchange)
