@@ -149,8 +149,6 @@ public abstract class Contract
 	 * @see System#identityHashCode
 	 */
 
-
-
 	@Override
 	public int hashCode()
 	{

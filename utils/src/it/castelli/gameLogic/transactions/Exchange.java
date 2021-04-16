@@ -56,7 +56,6 @@ public class Exchange
 			accepted2 = false;
 	}
 
-
 	public void endExchange(Player player1, Player player2)
 	{
 		asset1.removeFromPlayer(player1);
@@ -102,7 +101,7 @@ public class Exchange
 	public boolean arePlayersEquals(Exchange exchange)
 	{
 		return (exchange.player1.betterEquals(this.player1) || exchange.player2.betterEquals(this.player2)) &&
-				(exchange.player2.betterEquals(this.player1) || exchange.player2.betterEquals(this.player1));
+				(exchange.player2.betterEquals(this.player1) || exchange.player2.betterEquals(this.player2));
 	}
 
 }
