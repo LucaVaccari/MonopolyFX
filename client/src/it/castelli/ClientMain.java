@@ -20,7 +20,7 @@ public class ClientMain extends Application
 		{
  			clientSocket = new Socket("87.2.100.5", 1111);
 			//clientSocket = new Socket("95.244.31.45", 1111);
-//			clientSocket = new Socket("localhost", 1111);
+			//clientSocket = new Socket("localhost", 1111);
 		}
 		catch (IOException e)
 		{

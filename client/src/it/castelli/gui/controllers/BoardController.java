@@ -761,12 +761,7 @@ public class BoardController
 		for (Node element : list)
 		{
 			PlayerInfoComponent player = (PlayerInfoComponent) element;
-			if (player.getPlayer().isInPrison())
-			{
-				player.getPrisonImageView().setVisible(true);
-			}
-			else
-				player.getPrisonImageView().setVisible(false);
+			player.getPrisonImageView().setVisible(player.getPlayer().isInPrison());
 		}
 	}
 
