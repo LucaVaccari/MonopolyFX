@@ -323,7 +323,10 @@ public class SceneManager
 		else
 		{
 			if (openStages.containsKey(sceneType))
+			{
+				openStages.get(sceneType).close();
 				return;
+			}
 
 			Stage stage = new Stage();
 
