@@ -32,8 +32,9 @@ public class ExchangeSuccessfulClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		if (exchange.getPlayer1().equals(Game.getPlayer()) || exchange.getPlayer2().equals(Game.getPlayer()))
+		if (exchange.getPlayer1().betterEquals(Game.getPlayer()) || exchange.getPlayer2().betterEquals(Game.getPlayer()))
 		{
+			Game.getGameManager().removeExchange(exchange);
 			Platform.runLater(() -> {
 				SceneManager.getInstance().getStageByType(SceneType.EXCHANGE).close();
 				AlertUtil.showInformationAlert("Successo", "Scambio eseguito",
