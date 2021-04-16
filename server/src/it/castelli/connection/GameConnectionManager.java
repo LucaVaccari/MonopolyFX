@@ -117,45 +117,25 @@ public class GameConnectionManager
 	//TODO: to complete and TEST
 	public void startAuction(Contract contract, int offer)
 	{
+
 		gameManager.startAuction(contract, offer);
-		auctionTimer = new Timer();
-		TimerTask task = new TimerTask()
-		{
-			public void run()
-			{
-				//TODO: send update auction timer message
-				auctionTimerCounter--;
-				if (auctionTimerCounter == 0)
-				{
-					System.out.println("Auction timer finished");
-					gameManager.getAuction().endAuction();
-					auctionTimer.cancel();
-					sendAll(ServerMessages.AUCTION_ENDED_MESSAGE_NAME, Serializer.toJson(new AuctionEndedServerMessage()));
-				}
-			}
-		};
+		if (auctionTask != null)
+			auctionTask.interrupt();
+		auctionTask = new AuctionTimerTask(auctionDuration, gameCode);
+		auctionTask.init();
 
-		for (int i = 0; i < auctionDuration; i++)
-			auctionTimer.schedule(task, 1);
-
-		for (Connection connection : playerConnections)
-		{
-			Auction auction = gameManager.getAuction();
-			NewAuctionServerMessage message = new NewAuctionServerMessage(auction.getContract(), auction.getPlayer(),
-					auction.getBestOfferProposed());
-			connection.send(ServerMessages.NEW_AUCTION_MESSAGE_NAME, Serializer.toJson(message));
-		}
+		Auction auction = gameManager.getAuction();
+		sendAll(ServerMessages.NEW_AUCTION_MESSAGE_NAME, Serializer.toJson(new NewAuctionServerMessage(auction.getContract(), auction.getPlayer(),
+				auction.getBestOfferProposed())));
 	}
 
 	public void auctionOffer(Player player, int offer)
 	{
 		if (gameManager.getAuction().getBestOfferProposed() < offer)
 		{
-			auctionTimerCounter = (int)auctionDuration;
-			auctionTimer.cancel();
+			startAuction(gameManager.getAuction().getContract(), offer);
 			gameManager.getAuction().setBestOfferProposed(offer);
 			gameManager.getAuction().setPlayer(player);
-			startAuction(gameManager.getAuction().getContract(), offer);
 		}
 	}
 

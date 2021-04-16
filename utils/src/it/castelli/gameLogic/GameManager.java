@@ -229,6 +229,16 @@ public class GameManager
 		auction = new Auction(contract, offer, null);
 	}
 
+	public void endAuction()
+	{
+		if (getSamePlayer(auction.getPlayer()) != null)
+		{
+			getSamePlayer(auction.getPlayer()).addContract(getSameContract(auction.getContract()));
+		}
+		else
+			System.out.println("Auction player is null");
+	}
+
 	public Contract getSameContract(Contract contract)
 	{
 		for (Square square : board)

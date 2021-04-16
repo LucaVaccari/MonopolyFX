@@ -16,14 +16,7 @@ public class Auction
 		this.player = player;
 	}
 
-	// TODO: move to gameManager
-	public void endAuction()
-	{
-		if (player != null)
-		{
-			player.addContract(contract);
-		}
-	}
+
 
 	public Contract getContract()
 	{

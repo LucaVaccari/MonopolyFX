@@ -32,8 +32,10 @@ public class AuctionTimerTask extends TimerTask
     {
         if (repeats == 0)
             stop();
-        //ConnectionManager.getInstance().getGames().get(gameCode).sendAll(ServerMessages.UPDATE_AUCTION_TIMER_MESSAGE_NAME, Serializer.toJson(new UpdateAuctionTimerServerMessage(repeats)));
-        System.out.println(repeats);
+        else
+        {
+            ConnectionManager.getInstance().getGames().get(gameCode).sendAll(ServerMessages.UPDATE_AUCTION_TIMER_MESSAGE_NAME, Serializer.toJson(new UpdateAuctionTimerServerMessage(repeats)));
+        }
         repeats--;
     }
 
@@ -41,7 +43,14 @@ public class AuctionTimerTask extends TimerTask
     {
         timer.cancel();
         System.out.println("Auction timer finished");
-        //ConnectionManager.getInstance().getGames().get(gameCode).sendAll(ServerMessages.AUCTION_ENDED_MESSAGE_NAME, Serializer.toJson(new AuctionEndedServerMessage()));
-        //ConnectionManager.getInstance().getGames().get(gameCode).getGameManager().getAuction().endAuction();
+        ConnectionManager.getInstance().getGames().get(gameCode).sendAll(ServerMessages.AUCTION_ENDED_MESSAGE_NAME, Serializer.toJson(new AuctionEndedServerMessage()));
+        ConnectionManager.getInstance().getGames().get(gameCode).getGameManager().endAuction();
+        ConnectionManager.getInstance().getGames().get(gameCode).updatePlayers();
+
+    }
+
+    public void interrupt()
+    {
+        timer.cancel();
     }
 }
