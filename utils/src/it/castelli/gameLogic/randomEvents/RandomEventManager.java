@@ -63,10 +63,10 @@ public class RandomEventManager
 								"'Via!'" +
 								" ritirate 200M", RandomEventType.CHANCE,
 						11, true),
-				new PrisonEscapeRandomEvent(
+				/*new PrisonEscapeRandomEvent(
 						"Uscite gratis di prigione, se ci siete: potete " +
 								"conservare questo cartoncino sino al momento" +
-								" di servirvene (non si sa mai!) oppure venderlo", RandomEventType.CHANCE),
+								" di servirvene (non si sa mai!) oppure venderlo", RandomEventType.CHANCE),*/
 				new YouWonRandomEvent(
 						"La Banca Vi paga gli interessi del vostro Conto " +
 								"Corrente: ritirate 50M", RandomEventType.CHANCE,
@@ -87,11 +87,11 @@ public class RandomEventManager
 						200),
 				new YouWonRandomEvent("Ereditate da un lontano parente 100M", RandomEventType.COMMUNITY_CHEST,
 						100),
-				new PrisonEscapeRandomEvent(
+				/*new PrisonEscapeRandomEvent(
 						"Uscite gratis di prigione, se ci siete: potete " +
 								"conservare questo cartoncino sino al momento" +
 								" di servirvene (non si sa mai!) oppure venderlo",
-						RandomEventType.COMMUNITY_CHEST),
+						RandomEventType.COMMUNITY_CHEST),*/
 				new GoToRandomEvent("Andate avanti sino al 'Via!'", RandomEventType.COMMUNITY_CHEST, 0, true),
 				new YouWonRandomEvent(
 						"E' maturata la cedola delle vostre azioni: ritirate " +
