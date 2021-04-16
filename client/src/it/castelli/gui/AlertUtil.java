@@ -156,7 +156,8 @@ public final class AlertUtil
 		}
 		else
 		{
-			// TODO
+			ClientMain.getConnection().send(ClientMessages.BUY_CONTRACT_MESSAGE_NAME, Serializer
+					.toJson(new BuyContractClientMessage(contract, Game.getPlayer(), false, Game.getGameCode())));
 		}
 	}
 

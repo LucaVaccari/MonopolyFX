@@ -34,7 +34,7 @@ import java.util.Optional;
 public class ExchangeController
 {
 	private static final String TICK_IMAGE_PATH = "/images/tick.png";
-	private static final String CROSS_IMAGE_PATH = "/images/cross.png";
+	private static final String PLACEHOLDER_IMAGE_PATH = "/images/placeholder.png";
 	private static ExchangeController instance;
 	private Exchange exchange;
 	private boolean isPlayer1 = true;
@@ -47,6 +47,8 @@ public class ExchangeController
 	private TextField yourOfferTextField;
 	@FXML
 	private Button addPropertyButton;
+	@FXML
+	private Button removeProperties;
 	@FXML
 	private FlowPane yourPropertiesPane;
 	@FXML
@@ -80,8 +82,9 @@ public class ExchangeController
 	public void initialize()
 	{
 		instance = this;
-//
-		yourOfferTextField.setOnAction(event -> {
+
+		yourOfferTextField.setOnKeyTyped(event -> {
+			String offerText = yourOfferTextField.getText();
 			try
 			{
 				if (exchange == null)
@@ -89,7 +92,7 @@ public class ExchangeController
 					AlertUtil.showInformationAlert("Errore", "Lo scambio non è ancora stato inizializzato", "");
 					return;
 				}
-				int yourOffer = Integer.parseInt(yourOfferTextField.getText());
+				int yourOffer = Integer.parseInt(offerText);
 
 				if (isPlayer1)
 					exchange.getAsset1().setMoney(yourOffer);
@@ -103,9 +106,10 @@ public class ExchangeController
 			}
 			catch (NumberFormatException ignored)
 			{
+				yourOfferTextField.setText(offerText.substring(0, offerText.length() - 2));
 			}
 		});
-//
+
 		addPropertyButton.setOnAction(event -> {
 			if (exchange == null)
 			{
@@ -116,26 +120,42 @@ public class ExchangeController
 					new TerrainChoiceDialog(isPlayer1 ? exchange.getPlayer1() : exchange.getPlayer2()).showAndWait();
 			if (optionalContract.isPresent())
 			{
+				Contract contract = optionalContract.get();
 				if (isPlayer1)
-					exchange.getAsset1().getContracts().add(optionalContract.get());
+					exchange.getAsset1().getContracts().add(contract);
 				else
-					exchange.getAsset2().getContracts().add(optionalContract.get());
+					exchange.getAsset2().getContracts().add(contract);
 				ClientMain.getConnection().send(ClientMessages.CHANGE_EXCHANGE_ASSET_MESSAGE_NAME, Serializer
 						.toJson(new ChangeExchangeAssetClientMessage(
 								isPlayer1 ? exchange.getAsset1() : exchange.getAsset2(), Game.getGameCode(), Game
 								.getPlayer())));
 			}
 		});
-//
+
+		removeProperties.setOnAction(event -> {
+			if (isPlayer1)
+				exchange.getAsset1().getContracts().clear();
+			else
+				exchange.getAsset2().getContracts().clear();
+
+			ClientMain.getConnection().send(ClientMessages.CHANGE_EXCHANGE_ASSET_MESSAGE_NAME, Serializer
+					.toJson(new ChangeExchangeAssetClientMessage(
+							isPlayer1 ? exchange.getAsset1() : exchange.getAsset2(), Game.getGameCode(), Game
+							.getPlayer())));
+		});
+
 		acceptButton.setOnAction(event -> {
 			if (exchange == null)
 			{
 				AlertUtil.showInformationAlert("Errore", "Lo scambio non è ancora stato inizializzato", "");
 				return;
 			}
-			ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
-					.toJson(new AcceptExchangeClientMessage(true, Game.getPlayer(), Game.getGameCode())));
-			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(TICK_IMAGE_PATH))));
+			if ((isPlayer1 ? exchange.getAccepted1() : exchange.getAccepted2()))
+				ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
+						.toJson(new AcceptExchangeClientMessage(true, Game.getPlayer(), Game.getGameCode())));
+			else
+				ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
+						.toJson(new AcceptExchangeClientMessage(false, Game.getPlayer(), Game.getGameCode())));
 		});
 
 		refuseButton.setOnAction(event -> {
@@ -144,9 +164,8 @@ public class ExchangeController
 				AlertUtil.showInformationAlert("Errore", "Lo scambio non è ancora stato inizializzato", "");
 				return;
 			}
-			ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
-					.toJson(new AcceptExchangeClientMessage(false, Game.getPlayer(), Game.getGameCode())));
-			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(CROSS_IMAGE_PATH))));
+			ClientMain.getConnection().send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
+					.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode())));
 		});
 	}
 
@@ -179,7 +198,7 @@ public class ExchangeController
 		}
 
 		yourNameLabel.setText(you.getName());
-		yourOfferTextField.setText(yourAsset.getMoney() + "M");
+		yourOfferTextField.setText(String.valueOf(yourAsset.getMoney()));
 		yourTotalMoneyLabel.setText(you.getMoney() + "M");
 		yourPropertiesPane.getChildren().clear();
 		for (Contract contract : yourAsset.getContracts())
@@ -196,8 +215,22 @@ public class ExchangeController
 				event -> ClientMain.getConnection().send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
 						.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode()))));
 
+		if ((isPlayer1 ? exchange.getAccepted1() : exchange.getAccepted2()))
+		{
+			acceptButton.setText("Annulla offerta");
+			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(TICK_IMAGE_PATH))));
+		}
+		else
+		{
+			acceptButton.setText("Accetta");
+			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(PLACEHOLDER_IMAGE_PATH))));
+		}
+
+
 		if ((isPlayer1 ? exchange.getAccepted2() : exchange.getAccepted1()))
 			hisChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(TICK_IMAGE_PATH))));
+		else
+			hisChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(PLACEHOLDER_IMAGE_PATH))));
 	}
 
 	/**

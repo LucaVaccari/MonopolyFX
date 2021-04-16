@@ -182,7 +182,6 @@ public class SceneManager
 			Scene scene = new Scene(root);
 			companyViewStage.setScene(scene);
 			companyViewStage.initModality(Modality.APPLICATION_MODAL);
-			companyViewStage.setAlwaysOnTop(true);
 			companyViewStage.setResizable(false);
 			companyViewStage.show();
 
@@ -215,7 +214,6 @@ public class SceneManager
 			Scene scene = new Scene(root);
 			stationViewStage.setScene(scene);
 			stationViewStage.initModality(Modality.APPLICATION_MODAL);
-			stationViewStage.setAlwaysOnTop(true);
 			stationViewStage.setResizable(false);
 			stationViewStage.show();
 
@@ -248,7 +246,6 @@ public class SceneManager
 			Scene scene = new Scene(root);
 			propertyViewStage.setScene(scene);
 			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
-			propertyViewStage.setAlwaysOnTop(true);
 			propertyViewStage.setResizable(false);
 			propertyViewStage.show();
 
@@ -293,7 +290,6 @@ public class SceneManager
 			Scene scene = new Scene(root);
 			playerInfoStage.setScene(scene);
 			playerInfoStage.initModality(Modality.APPLICATION_MODAL);
-			playerInfoStage.setAlwaysOnTop(true);
 			playerInfoStage.setResizable(false);
 			openStages.put(SceneType.PLAYER_INFO, playerInfoStage);
 			playerInfoStage.setOnCloseRequest(event -> openStages.remove(SceneType.PLAYER_INFO));
