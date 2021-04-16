@@ -131,7 +131,8 @@ public class GameConnectionManager
 					System.out.println("Auction timer finished");
 					gameManager.getAuction().endAuction();
 					auctionTimer.cancel();
-					sendAll(ServerMessages.AUCTION_ENDED_MESSAGE_NAME, Serializer.toJson(new AuctionEndedServerMessage()));
+					sendAll(ServerMessages.AUCTION_ENDED_MESSAGE_NAME, Serializer
+							.toJson(new AuctionEndedServerMessage()));
 				}
 			}
 		};
@@ -152,7 +153,7 @@ public class GameConnectionManager
 	{
 		if (gameManager.getAuction().getBestOfferProposed() < offer)
 		{
-			auctionTimerCounter = (int)auctionDuration;
+			auctionTimerCounter = (int) auctionDuration;
 			auctionTimer.cancel();
 			gameManager.getAuction().setBestOfferProposed(offer);
 			gameManager.getAuction().setPlayer(player);
@@ -212,7 +213,6 @@ public class GameConnectionManager
 		}
 
 
-
 	}
 
 	public Connection getConnectionFromPlayer(Player player)
@@ -253,7 +253,8 @@ public class GameConnectionManager
 							!gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
 					{
 						sendAll(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage(
-								"Operazione negata", "Il terreno è ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
+								"Operazione negata",
+								"Il terreno è ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
 					}
 				}
 			}
