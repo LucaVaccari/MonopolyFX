@@ -101,8 +101,8 @@ public class Exchange
 
 	public boolean arePlayersEquals(Exchange exchange)
 	{
-		return (((Exchange) exchange).player1.betterEquals(this.player1) || ((Exchange) exchange).player2.betterEquals(this.player2)) &&
-				(((Exchange) exchange).player2.betterEquals(this.player1) || ((Exchange) exchange).player2.betterEquals(this.player1));
+		return (exchange.player1.betterEquals(this.player1) || exchange.player2.betterEquals(this.player2)) &&
+				(exchange.player2.betterEquals(this.player1) || exchange.player2.betterEquals(this.player1));
 	}
 
 }
