@@ -32,6 +32,5 @@ public class UpdateExchangeClientMessage implements Message
         System.out.println("Updating exchange");
         Game.getGameManager().updateExchange(exchange);
         ExchangeController.getInstance().setExchange(exchange);
-        //TODO: update the accepted image
     }
 }
