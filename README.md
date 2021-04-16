@@ -22,4 +22,3 @@ sos
 
 - votekick (implementare da client / TO TEST)
 - vittoria e sconfitta (implementare da client / TO TEST)
-- il rifiuto arriva solo all'altro giocatore
