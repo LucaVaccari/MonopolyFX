@@ -1,14 +1,12 @@
 package it.castelli.gui.scene;
 
+import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.CompanyContract;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.FXMLFileLoader;
-import it.castelli.gui.controllers.BoardController;
-import it.castelli.gui.controllers.CompanyViewController;
-import it.castelli.gui.controllers.PropertyViewController;
-import it.castelli.gui.controllers.StationViewController;
+import it.castelli.gui.controllers.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -278,6 +276,33 @@ public class SceneManager
 	{
 		primaryStage.setOnCloseRequest(event -> System.exit(0));
 		this.primaryStage = primaryStage;
+	}
+
+	public void showPlayerInfoView(Player player)
+	{
+		if (player == null)
+			return;
+
+		try
+		{
+			FXMLLoader loader = FXMLFileLoader.getLoader(BoardController.PLAYER_INFO_FXML_PATH);
+			Parent root = loader.load();
+			PlayerInfoController controller = loader.getController();
+			controller.setPlayer(player);
+			Stage playerInfoStage = new Stage();
+			Scene scene = new Scene(root);
+			playerInfoStage.setScene(scene);
+			playerInfoStage.initModality(Modality.APPLICATION_MODAL);
+			playerInfoStage.setAlwaysOnTop(true);
+			playerInfoStage.setResizable(false);
+			openStages.put(SceneType.PLAYER_INFO, playerInfoStage);
+			playerInfoStage.setOnCloseRequest(event -> openStages.remove(SceneType.PLAYER_INFO));
+			playerInfoStage.show();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**

@@ -15,7 +15,6 @@ import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gameLogic.dice.DiceResult;
 import it.castelli.gui.AlertUtil;
-import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.GUIUtils;
 import it.castelli.gui.customComponents.ChatComponent;
 import it.castelli.gui.customComponents.PlayerInfoComponent;
@@ -26,7 +25,6 @@ import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -38,10 +36,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
@@ -512,31 +507,6 @@ public class BoardController
 		update();
 	}
 
-	public static void showPlayerInfoView(Player player)
-	{
-		if (player == null)
-			return;
-
-		try
-		{
-			FXMLLoader loader = FXMLFileLoader.getLoader(PLAYER_INFO_FXML_PATH);
-			Parent root = loader.load();
-			PlayerInfoController controller = loader.getController();
-			controller.setPlayer(player);
-			Stage propertyViewStage = new Stage();
-			Scene scene = new Scene(root);
-			propertyViewStage.setScene(scene);
-			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
-			propertyViewStage.setAlwaysOnTop(true);
-			propertyViewStage.setResizable(false);
-			propertyViewStage.show();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * Calculate and show the owned terrains in the pane under the board
 	 */
@@ -633,7 +603,7 @@ public class BoardController
 		{
 			PlayerInfoComponent playerInfoComponent = new PlayerInfoComponent(player);
 			playerInfoComponent.setCursor(Cursor.HAND);
-			playerInfoComponent.setOnMouseClicked(event -> showPlayerInfoView(player));
+			playerInfoComponent.setOnMouseClicked(event -> SceneManager.getInstance().showPlayerInfoView(player));
 			playerInfoComponent.setMaxHeight(Double.MAX_VALUE);
 			playerInfoComponent.setMaxWidth(Double.MAX_VALUE);
 			VBox.setVgrow(playerInfoComponent, Priority.ALWAYS);
