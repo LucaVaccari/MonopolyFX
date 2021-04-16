@@ -8,7 +8,7 @@ import java.util.HashMap;
 /**
  * Represents the properties of a Monopoly property
  */
-public class Contract
+public abstract class Contract
 {
 	/**
 	 * Name of the Monopoly property

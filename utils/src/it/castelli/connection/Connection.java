@@ -9,6 +9,7 @@ public class Connection
 	private final Socket connectionSocket;
 	private final Sender sender;
 	private final Receiver receiver;
+	private final Thread thread;
 	private boolean isConnected;
 	private boolean keepAliveFlag = true;
 
@@ -17,7 +18,8 @@ public class Connection
 		this.connectionSocket = connectionSocket;
 		sender = new Sender(connectionSocket);
 		receiver = new Receiver(this);
-		new Thread(receiver).start();
+		thread = new Thread(receiver);
+		thread.start();
 	}
 
 	private boolean isConnected()
@@ -59,6 +61,11 @@ public class Connection
 	public Receiver getReceiver()
 	{
 		return receiver;
+	}
+
+	public Thread getThread()
+	{
+		return thread;
 	}
 
 	@Override

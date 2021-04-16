@@ -172,7 +172,7 @@ public class ExchangeController
 	public void setExchange(Exchange exchange)
 	{
 		this.exchange = exchange;
-		if (Game.getPlayer().equals(exchange.getPlayer1()))
+		if (Game.getPlayer().betterEquals(exchange.getPlayer1()))
 		{
 			you = exchange.getPlayer1();
 			him = exchange.getPlayer2();

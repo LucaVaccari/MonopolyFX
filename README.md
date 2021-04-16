@@ -21,6 +21,7 @@ sos
 - sbarre si mettono sul giocatore sbagliato
 - messaggio per la conferma della vendita
 - Se non si ha abbastanza denaro per comprare attività, mandare il messaggio al server per far partire l asta
+- coda delle finestre
 
 - Messaggio per quando l'asta finisce (da testare / implementare client)
 - riutilizzare i codici non usati

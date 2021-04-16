@@ -1,17 +1,10 @@
 package it.castelli.connection.messages;
 
-import it.castelli.ClientMain;
-import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
-import it.castelli.gui.customComponents.SmallTerrainViewComponent;
-import it.castelli.serialization.Serializer;
+import it.castelli.gui.AlertUtil;
 import javafx.application.Platform;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-
-import java.util.Optional;
 
 /**
  * Message from server that is received when the contract is on sale (receive only)
@@ -44,32 +37,6 @@ public class ContractOnSaleClientMessage implements Message
 
 	public static void showSuggestionOfBuy(String title, String headerText, String contentText, Contract contract)
 	{
-		if (Game.getPlayer().hasMoney(contract.getValue()))
-		{
-			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			alert.setTitle(title);
-			alert.setHeaderText(headerText);
-			alert.setContentText(contentText);
-			ButtonType buyButtonType = new ButtonType("Acquisto");
-			ButtonType auctionButtonType = new ButtonType("Asta");
-
-			alert.setGraphic(new SmallTerrainViewComponent(contract));
-
-			alert.getButtonTypes().setAll(buyButtonType, auctionButtonType);
-
-			Optional<ButtonType> result = alert.showAndWait();
-			if (result.isPresent())
-			{
-				if (result.get() == buyButtonType)
-				{
-					ClientMain.getConnection().send(ClientMessages.BUY_CONTRACT_MESSAGE_NAME, Serializer
-							.toJson(new BuyContractClientMessage(contract, Game.getPlayer(), true, Game.getGameCode())));
-				}
-				else if (result.get() == auctionButtonType)
-					ClientMain.getConnection().send(ClientMessages.BUY_CONTRACT_MESSAGE_NAME, Serializer
-							.toJson(new BuyContractClientMessage(contract, Game.getPlayer(), false, Game.getGameCode())));
-				else showSuggestionOfBuy(title, headerText, contentText, contract);
-			}
-		}
+		AlertUtil.showSuggestionOfBuy(title, headerText, contentText, contract);
 	}
 }

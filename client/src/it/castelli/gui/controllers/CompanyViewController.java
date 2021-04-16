@@ -53,7 +53,7 @@ public class CompanyViewController
 			boolean isOwnedByMe = contract.getOwner().toPlayer().betterEquals(Game.getPlayer());
 			boolean isMyRound = contract.getOwner().toPlayer()
 					.betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer());
-			onlyIfOwnedPane.setVisible(isOwnedByMe && isMyRound);
+			onlyIfOwnedPane.setVisible(isOwnedByMe);
 			onlyIfOwnedPane.setDisable(!isOwnedByMe && !isMyRound);
 		}
 		else

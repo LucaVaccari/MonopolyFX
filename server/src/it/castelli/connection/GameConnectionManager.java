@@ -202,7 +202,7 @@ public class GameConnectionManager
 	{
 		for (Connection connection : playerConnections)
 		{
-			if (connection.getReceiver().getPlayer().equals(player))
+			if (connection.getReceiver().getPlayer().betterEquals(player))
 			{
 				return connection;
 			}
