@@ -50,9 +50,11 @@ public class AcceptExchangeServerMessage implements Message
 
 		Player acceptingPlayer = gameManager.getSamePlayer(this.player);
 		Exchange exchange = gameManager.getExchangeFromPlayer(acceptingPlayer);
+		Player player1 = gameManager.getSamePlayer(exchange.getPlayer1());
+		Player player2 = gameManager.getSamePlayer(exchange.getPlayer2());
 
-		Connection player1Connection = gameConnectionManager.getConnectionFromPlayer(exchange.getPlayer1());
-		Connection player2Connection = gameConnectionManager.getConnectionFromPlayer(exchange.getPlayer2());
+		Connection player1Connection = gameConnectionManager.getConnectionFromPlayer(player1);
+		Connection player2Connection = gameConnectionManager.getConnectionFromPlayer(player2);
 
 		if (accept)
 			exchange.acceptExchange(acceptingPlayer);
@@ -61,7 +63,7 @@ public class AcceptExchangeServerMessage implements Message
 
 		if (exchange.getAccepted1() && exchange.getAccepted2())
 		{
-			exchange.endExchange();
+			exchange.endExchange(player1, player2);
 			player1Connection.send(ServerMessages.EXCHANGE_SUCCESSFUL_MESSAGE_NAME, Serializer.toJson(new ExchangeSuccessfulServerMessage(exchange)));
 			player2Connection.send(ServerMessages.EXCHANGE_SUCCESSFUL_MESSAGE_NAME, Serializer.toJson(new ExchangeSuccessfulServerMessage(exchange)));
 			gameManager.removeExchange(exchange);

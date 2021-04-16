@@ -268,6 +268,7 @@ public class GameManager
 	public void removeExchange(Exchange exchange)
 	{
 		exchanges.remove(exchange);
+		System.out.println("Still " + exchanges.size() + " exchanges active");
 	}
 
 	public Exchange getExchangeFromPlayer(Player player)
@@ -296,7 +297,7 @@ public class GameManager
 	{
 		for (int i = 0, exchangesSize = exchanges.size(); i < exchangesSize; i++)
 		{
-			if (exchanges.get(i).arePlayersEquals(exchange))
+			if (exchanges.equals(exchange))
 				exchanges.set(i, exchange);
 		}
 	}
