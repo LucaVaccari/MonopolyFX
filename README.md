@@ -27,6 +27,7 @@ sos
 - Non mostrare i pulsanti dei terreni durante lo scambio
 - chiudere tutte le finestre quando parte uno scambio o un'asta
 - ndo cacchio sono i pulsanti per vendere e gestire case?
+- BORDI TONDIIIIII
 
 
 - votekick (implementare da client / TO TEST)
