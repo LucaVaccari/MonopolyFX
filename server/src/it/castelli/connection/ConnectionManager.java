@@ -6,6 +6,7 @@ import it.castelli.gameLogic.Player;
 import it.castelli.serialization.Serializer;
 
 import java.util.Hashtable;
+import java.util.LinkedList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ConnectionManager
@@ -16,10 +17,12 @@ public class ConnectionManager
 	private final Hashtable<Integer, GameConnectionManager> games;
 	private int lastGameCode = 0;
 	private Thread connectionReceiverThread;
+	private final LinkedList<Integer> reusedGameCodes;
 
 	private ConnectionManager()
 	{
 		waitingRoom = new CopyOnWriteArrayList<>();
+		reusedGameCodes = new LinkedList<>();
 		games = new Hashtable<>();
 	}
 
@@ -58,12 +61,18 @@ public class ConnectionManager
 	public void removeGame(int gameCode)
 	{
 		games.remove(gameCode);
+		reusedGameCodes.add(gameCode);
 		System.out.println("Game with code " + gameCode + " removed.");
 	}
 
 	public int createGame()
 	{
-		int gameCode = lastGameCode++;
+		int gameCode;
+		if (reusedGameCodes.isEmpty())
+			gameCode = lastGameCode++;
+		else
+			gameCode = reusedGameCodes.poll();
+
 		addGame(gameCode, new GameConnectionManager(gameCode));
 		return gameCode;
 	}
