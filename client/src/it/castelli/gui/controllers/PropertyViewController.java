@@ -95,6 +95,10 @@ public class PropertyViewController
 			if (contract.isMortgaged())
 				mortgageButton.setDisable(!Game.getPlayer().hasMoney(contract.getMortgageValue() * 11 / 10));
 
+			buyHouseButton.setDisable(contract.isMortgaged());
+			sellHouseButton.setDisable(contract.isMortgaged());
+			mortgageButton.setDisable(contract.getNumberOfHouses() > 0);
+
 			mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 			mortgageButton.setOnAction(event -> {
 				if (contract.isMortgaged())
@@ -111,7 +115,7 @@ public class PropertyViewController
 			});
 
 			buyHouseButton.setOnAction(event -> {
-				if (Game.getPlayer().hasMoney(contract.getHouseCost()))
+				if (Game.getPlayer().hasMoney(contract.getHouseCost()) && contract.getNumberOfHouses() < 5)
 				{
 					ClientMain.getConnection().send(ClientMessages.BUY_HOUSES_MESSAGE_NAME, Serializer
 							.toJson(new BuyHousesClientMessage(Game.getGameCode(), contract, 1)));
