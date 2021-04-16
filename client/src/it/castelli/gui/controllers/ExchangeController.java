@@ -106,7 +106,6 @@ public class ExchangeController
 			}
 			catch (NumberFormatException ignored)
 			{
-				yourOfferTextField.setText(offerText.substring(0, offerText.length() - 2));
 			}
 		});
 
@@ -198,7 +197,6 @@ public class ExchangeController
 		}
 
 		yourNameLabel.setText(you.getName());
-		yourOfferTextField.setText(String.valueOf(yourAsset.getMoney()));
 		yourTotalMoneyLabel.setText(you.getMoney() + "M");
 		yourPropertiesPane.getChildren().clear();
 		for (Contract contract : yourAsset.getContracts())
