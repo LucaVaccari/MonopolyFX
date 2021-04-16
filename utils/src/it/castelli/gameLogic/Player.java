@@ -65,6 +65,11 @@ public class Player
 	private int previousPosition;
 
 	/**
+	 * The number of vote to kick this player
+	 */
+	private int numberOfVotes = 0;
+
+	/**
 	 * Getter for previousPosition
 	 *
 	 * @return The previous position of the player
@@ -182,6 +187,11 @@ public class Player
 		return inPrison;
 	}
 
+	/**
+	 * Setter for inPrison
+	 *
+	 * @param inPrison Is the player in prison?
+	 */
 	public void setInPrison(boolean inPrison)
 	{
 		somethingChanged = true;
@@ -213,6 +223,24 @@ public class Player
 		if (position >= 40 && passThroughGoSquare)
 			addMoney(200);
 		this.position %= 40;
+	}
+
+	/**
+	 * Getter for numberOfVOtes
+	 *
+	 * @return The number of vote to kick this player
+	 */
+	public int getNumberOfVotes()
+	{
+		return numberOfVotes;
+	}
+
+	/**
+	 * Adds a vote to the player votes
+	 */
+	public void addVote()
+	{
+		this.numberOfVotes++;
 	}
 
 	/**

@@ -21,6 +21,5 @@ sos
 - Possibilità di rimuovere i terreni dallo scambio
 - Cambiare i bottoni dello scambio in accetta/annulla, rifiuta
 
-- riutilizzare i codici non usati
 - votekick
 - vittoria e sconfitta
