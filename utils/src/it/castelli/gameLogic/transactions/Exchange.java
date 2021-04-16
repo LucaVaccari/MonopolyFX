@@ -100,7 +100,7 @@ public class Exchange
 
 	public boolean arePlayersEquals(Exchange exchange)
 	{
-		return (exchange.player1.betterEquals(this.player1) || exchange.player2.betterEquals(this.player2)) &&
+		return (exchange.player1.betterEquals(this.player1) || exchange.player1.betterEquals(this.player2)) &&
 				(exchange.player2.betterEquals(this.player1) || exchange.player2.betterEquals(this.player2));
 	}
 
