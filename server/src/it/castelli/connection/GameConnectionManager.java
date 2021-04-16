@@ -64,6 +64,7 @@ public class GameConnectionManager
 	{
 		if (gameManager.isInGame())
 		{
+			resetPlayerProperties(connection);
 			Player playerToRemove = gameManager.getSamePlayer(connection.getReceiver().getPlayer());
 			Player currentRoundPlayer = null;
 			if (gameManager.getCurrentRound().getCurrentActivePlayer() != null)
@@ -72,8 +73,6 @@ public class GameConnectionManager
 				if (currentRoundPlayer != null)
 					if (currentRoundPlayer.betterEquals(playerToRemove))
 						gameManager.nextRound();
-					else
-						System.out.println("Last player in the game Removed");
 			}
 		}
 
@@ -87,7 +86,6 @@ public class GameConnectionManager
 		}
 		else
 		{
-			System.out.println("Still " + playerConnections.size() + " players in the game with code " + gameCode);
 			if (connection == host)
 			{
 				host = playerConnections.get(0);
@@ -167,34 +165,45 @@ public class GameConnectionManager
 
 	public void updatePlayers()
 	{
-		for (Player player : gameManager.getPlayers())
+		//TODO: uncomment line and remove if (false)
+		//if (gameManager.isInGame() && gameManager.getPlayers().size() == 1 )
+		if (false)
 		{
-			if (player.getEventType() != null)
+			//TODO: send victory message to player
+		}
+		else
+		{
+			for (Player player : gameManager.getPlayers())
 			{
-				sendAll(ServerMessages.EVENT_MESSAGE_NAME, Serializer
-						.toJson(new EventServerMessage(player.getEventType(), player
-								.getEventDescription())));
-				player.setLastEncounteredEvent(null, null);
+				if (player.getEventType() != null)
+				{
+					sendAll(ServerMessages.EVENT_MESSAGE_NAME, Serializer
+							.toJson(new EventServerMessage(player.getEventType(), player
+									.getEventDescription())));
+					player.setLastEncounteredEvent(null, null);
+				}
+
+				if (player.hasSomethingChanged())
+				{
+					if (player.getPreviousPosition() != player.getPosition())
+					{
+						interactWithSquare(player);
+						updatePlayers();
+					}
+					player.setSomethingChanged(false);
+				}
 			}
 
-			if (player.hasSomethingChanged())
-			{
-				if (player.getPreviousPosition() != player.getPosition())
-				{
-					interactWithSquare(player);
-					updatePlayers();
-				}
-				player.setSomethingChanged(false);
-			}
+			sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer
+					.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
+
+			sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer
+					.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
+			sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer
+					.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
 		}
 
-		sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer
-				.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
 
-		sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer
-				.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
-		sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer
-				.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
 
 	}
 

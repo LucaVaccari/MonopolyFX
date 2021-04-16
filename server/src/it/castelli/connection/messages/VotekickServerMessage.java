@@ -49,7 +49,7 @@ public class VotekickServerMessage implements Message
         Player playerToKick = gameManager.getSamePlayer(this.player);
         playerToKick.addVote();
 
-        if (playerToKick.getNumberOfVotes() >= gameManager.getPlayers().size() - 1)
+        if (playerToKick.getNumberOfVotes() >= gameManager.getPlayers().size() - 1 && gameManager.getPlayers().size() > 2)
         {
             gameConnectionManager.removePlayer(gameConnectionManager.getConnectionFromPlayer(playerToKick));
         }

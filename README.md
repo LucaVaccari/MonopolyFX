@@ -21,5 +21,5 @@ sos
 - Possibilità di rimuovere i terreni dallo scambio
 - Cambiare i bottoni dello scambio in accetta/annulla, rifiuta
 
-- votekick
-- vittoria e sconfitta
+- votekick (implementare da client / TO TEST)
+- vittoria e sconfitta (implementare da client / TO TEST)
