@@ -234,6 +234,7 @@ public class GameManager
 		if (getSamePlayer(auction.getPlayer()) != null)
 		{
 			getSamePlayer(auction.getPlayer()).addContract(getSameContract(auction.getContract()));
+			getSamePlayer(auction.getPlayer()).removeMoney(auction.getBestOfferProposed());
 		}
 		else
 			System.out.println("Auction player is null");

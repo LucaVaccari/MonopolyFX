@@ -92,7 +92,7 @@ public class RandomEventManager
 								"conservare questo cartoncino sino al momento" +
 								" di servirvene (non si sa mai!) oppure venderlo",
 						RandomEventType.COMMUNITY_CHEST),*/
-				new GoToRandomEvent("Andate avanti sino al 'Via!'", RandomEventType.COMMUNITY_CHEST, 0, true),
+				new GoToRandomEvent("Andate avanti sino al 'Via!'", RandomEventType.COMMUNITY_CHEST, 40, true),
 				new YouWonRandomEvent(
 						"E' maturata la cedola delle vostre azioni: ritirate " +
 								"25" +

@@ -11,8 +11,6 @@ import it.castelli.gameLogic.squares.StationSquare;
 import it.castelli.gameLogic.transactions.Auction;
 import it.castelli.serialization.Serializer;
 
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameConnectionManager
@@ -21,7 +19,7 @@ public class GameConnectionManager
 	private final GameManager gameManager;
 	private final int gameCode;
 	private Connection host = null;
-	private int auctionDuration = 10;
+	private final int AUCTION_DURATION = 6;
 	private AuctionTimerTask auctionTask;
 
 	public GameConnectionManager(int gameCode)
@@ -121,7 +119,7 @@ public class GameConnectionManager
 		gameManager.startAuction(contract, offer);
 		if (auctionTask != null)
 			auctionTask.interrupt();
-		auctionTask = new AuctionTimerTask(auctionDuration, gameCode);
+		auctionTask = new AuctionTimerTask(AUCTION_DURATION, gameCode);
 		auctionTask.init();
 
 		Auction auction = gameManager.getAuction();
