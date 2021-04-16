@@ -47,5 +47,7 @@ public class ServerMessages
 			"it.castelli.connection.messages.AuctionEndedClientMessage";
 	public static final String VICTORY_MESSAGE_NAME =
 			"it.castelli.connection.messages.VictoryClientMessage";
+	public static final String UPDATE_AUCTION_TIMER_MESSAGE_NAME =
+			"it.castelli.connection.messages.UpdateAuctionTimerClientMessage";
 
 }
