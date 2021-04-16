@@ -26,7 +26,7 @@ public class AcceptExchangeClientMessage implements Message
 	/**
 	 * Constructor for AcceptExchangeClientMessage
 	 *
-	 * @param accept
+	 * @param accept   Has the player accepted?
 	 * @param player   The player accepting the exchange
 	 * @param gameCode The game code
 	 */

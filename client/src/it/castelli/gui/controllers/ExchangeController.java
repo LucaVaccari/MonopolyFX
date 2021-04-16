@@ -197,7 +197,10 @@ public class ExchangeController
 						.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode()))));
 
 		if ((isPlayer1 ? exchange.getAccepted2() : exchange.getAccepted1()))
+		{
+			System.out.println("The other player accepted the exchange!");
 			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(TICK_IMAGE_PATH))));
+		}
 	}
 
 	/**
