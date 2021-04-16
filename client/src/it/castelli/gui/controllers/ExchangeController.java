@@ -36,9 +36,8 @@ public class ExchangeController
 	private static final String TICK_IMAGE_PATH = "/images/tick.png";
 	private static final String CROSS_IMAGE_PATH = "/images/cross.png";
 	private static ExchangeController instance;
-	private Player you, him;
-	private Asset yourAsset, hisAsset;
 	private Exchange exchange;
+	private boolean isPlayer1 = true;
 
 	@FXML
 	private Label yourNameLabel;
@@ -91,10 +90,16 @@ public class ExchangeController
 					return;
 				}
 				int yourOffer = Integer.parseInt(yourOfferTextField.getText());
-				yourAsset.setMoney(yourOffer);
+
+				if (isPlayer1)
+					exchange.getAsset1().setMoney(yourOffer);
+				else
+					exchange.getAsset2().setMoney(yourOffer);
+
 				ClientMain.getConnection().send(ClientMessages.CHANGE_EXCHANGE_ASSET_MESSAGE_NAME, Serializer
 						.toJson(new ChangeExchangeAssetClientMessage(
-								yourAsset, Game.getGameCode(), Game.getPlayer())));
+								isPlayer1 ? exchange.getAsset1() : exchange.getAsset2(), Game.getGameCode(), Game
+								.getPlayer())));
 			}
 			catch (NumberFormatException ignored)
 			{
@@ -107,13 +112,18 @@ public class ExchangeController
 				AlertUtil.showInformationAlert("Errore", "Lo scambio non è ancora stato inizializzato", "");
 				return;
 			}
-			Optional<Contract> optionalContract = new TerrainChoiceDialog(you).showAndWait();
+			Optional<Contract> optionalContract =
+					new TerrainChoiceDialog(isPlayer1 ? exchange.getPlayer1() : exchange.getPlayer2()).showAndWait();
 			if (optionalContract.isPresent())
 			{
-				yourAsset.getContracts().add(optionalContract.get());
+				if (isPlayer1)
+					exchange.getAsset1().getContracts().add(optionalContract.get());
+				else
+					exchange.getAsset2().getContracts().add(optionalContract.get());
 				ClientMain.getConnection().send(ClientMessages.CHANGE_EXCHANGE_ASSET_MESSAGE_NAME, Serializer
 						.toJson(new ChangeExchangeAssetClientMessage(
-								yourAsset, Game.getGameCode(), Game.getPlayer())));
+								isPlayer1 ? exchange.getAsset1() : exchange.getAsset2(), Game.getGameCode(), Game
+								.getPlayer())));
 			}
 		});
 //
@@ -145,6 +155,29 @@ public class ExchangeController
 	 */
 	public void update()
 	{
+		Player you, him;
+		if (isPlayer1)
+		{
+			you = exchange.getPlayer1();
+			him = exchange.getPlayer2();
+		}
+		else
+		{
+			you = exchange.getPlayer2();
+			him = exchange.getPlayer1();
+		}
+		Asset yourAsset, hisAsset;
+		if (isPlayer1)
+		{
+			yourAsset = exchange.getAsset1();
+			hisAsset = exchange.getAsset2();
+		}
+		else
+		{
+			yourAsset = exchange.getAsset2();
+			hisAsset = exchange.getAsset1();
+		}
+
 		yourNameLabel.setText(you.getName());
 		yourOfferTextField.setText(yourAsset.getMoney() + "M");
 		yourTotalMoneyLabel.setText(you.getMoney() + "M");
@@ -162,6 +195,9 @@ public class ExchangeController
 		SceneManager.getInstance().getStageByType(SceneType.EXCHANGE).setOnCloseRequest(
 				event -> ClientMain.getConnection().send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
 						.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode()))));
+
+		if ((isPlayer1 ? exchange.getAccepted2() : exchange.getAccepted1()))
+			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(TICK_IMAGE_PATH))));
 	}
 
 	/**
@@ -172,20 +208,7 @@ public class ExchangeController
 	public void setExchange(Exchange exchange)
 	{
 		this.exchange = exchange;
-		if (Game.getPlayer().betterEquals(exchange.getPlayer1()))
-		{
-			you = exchange.getPlayer1();
-			him = exchange.getPlayer2();
-			yourAsset = exchange.getAsset1();
-			hisAsset = exchange.getAsset2();
-		}
-		else
-		{
-			you = exchange.getPlayer2();
-			him = exchange.getPlayer1();
-			yourAsset = exchange.getAsset2();
-			hisAsset = exchange.getAsset1();
-		}
+		isPlayer1 = Game.getPlayer().betterEquals(exchange.getPlayer1());
 		Platform.runLater(this::update);
 	}
 
