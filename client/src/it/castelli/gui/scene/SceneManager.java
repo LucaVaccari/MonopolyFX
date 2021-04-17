@@ -7,11 +7,11 @@ import it.castelli.gameLogic.contracts.StationContract;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.controllers.*;
-import it.castelli.gui.customComponents.PropertyViewComponent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -53,7 +53,6 @@ public class SceneManager
 		if (mainMenuRoot != null)
 		{
 			Scene mainMenuScene = new Scene(mainMenuRoot);
-			mainMenuScene.getStylesheets().add(getClass().getResource("/FXMLs/Style/style.css").toExternalForm());
 			allScenes.put(SceneType.MAIN_MENU, new SceneFXWrapper(mainMenuScene, true, "MonopolyFX"));
 		}
 		else
@@ -239,20 +238,28 @@ public class SceneManager
 		if (contract == null)
 			return;
 
-		//			FXMLLoader loader = FXMLFileLoader.getLoader(BoardController.PROPERTY_VIEW_FXML_PATH);
-		Parent root = new PropertyViewComponent(contract);
-//			PropertyViewController controller = loader.getController();
-//			controller.setContract(contract);
-		Stage propertyViewStage = new Stage();
-		Scene scene = new Scene(root);
-		propertyViewStage.setScene(scene);
-		propertyViewStage.initModality(Modality.APPLICATION_MODAL);
-		propertyViewStage.setAlwaysOnTop(true);
-		propertyViewStage.setResizable(false);
-		propertyViewStage.show();
+		FXMLLoader loader = FXMLFileLoader.getLoader(BoardController.PROPERTY_VIEW_FXML_PATH);
+		Parent root;
+		try
+		{
+			root = loader.load();
+			PropertyViewController controller = loader.getController();
+			controller.setContract(contract);
+			Stage propertyViewStage = new Stage();
+			Scene scene = new Scene(root);
+			propertyViewStage.setScene(scene);
+			propertyViewStage.initModality(Modality.APPLICATION_MODAL);
+			propertyViewStage.setAlwaysOnTop(true);
+			propertyViewStage.setResizable(false);
+			propertyViewStage.show();
 
-		openStages.put(SceneType.PROPERTY_VIEW, propertyViewStage);
-		propertyViewStage.setOnCloseRequest(event -> openStages.remove(SceneType.PROPERTY_VIEW));
+			openStages.put(SceneType.PROPERTY_VIEW, propertyViewStage);
+			propertyViewStage.setOnCloseRequest(event -> openStages.remove(SceneType.PROPERTY_VIEW));
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	public Stage getPrimaryStage()
@@ -311,6 +318,15 @@ public class SceneManager
 		{
 			primaryStage.setScene(scene.getScene());
 			primaryStage.setTitle(scene.getWindowTitle());
+
+			double sceneWidth = scene.getScene().getWidth();
+			double sceneHeight = scene.getScene().getHeight();
+			if (sceneWidth != 0)
+				primaryStage.setX(Screen.getPrimary().getBounds().getWidth() / 2 - sceneWidth / 2);
+			if (sceneHeight != 0)
+				primaryStage.setY(Screen.getPrimary().getBounds().getHeight() / 2 - sceneHeight / 2);
+
+			primaryStage.sizeToScene();
 			primaryStage.setResizable(false);
 			primaryStage.show();
 		}
@@ -332,6 +348,15 @@ public class SceneManager
 			openStages.put(sceneType, stage);
 			stage.setOnCloseRequest(event -> openStages.remove(sceneType));
 		}
+	}
+
+	/**
+	 * Close all windows except for the primaryStage
+	 */
+	public void closeSecondaryStages()
+	{
+		for (var stage : openStages.values())
+			stage.close();
 	}
 
 	/**

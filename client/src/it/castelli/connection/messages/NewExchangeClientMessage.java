@@ -36,7 +36,9 @@ public class NewExchangeClientMessage implements Message
 		Platform.runLater(() -> {
 			if (exchange.getPlayer1().equals(Game.getPlayer()) || exchange.getPlayer2().equals(Game.getPlayer()))
 			{
+				SceneManager.getInstance().closeSecondaryStages();
 				SceneManager.getInstance().showScene(SceneType.EXCHANGE);
+				ExchangeController.getInstance().reset();
 				ExchangeController.getInstance().setExchange(exchange);
 			}
 		});

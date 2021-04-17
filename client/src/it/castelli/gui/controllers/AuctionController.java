@@ -14,6 +14,7 @@ import it.castelli.gui.customComponents.PropertyViewComponent;
 import it.castelli.gui.customComponents.StationViewComponent;
 import it.castelli.serialization.Serializer;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,10 +28,6 @@ public class AuctionController
 {
 	private static AuctionController instance;
 
-	/**
-	 * Temp variable for storing the money to offer
-	 */
-	private int yourOffer = 0;
 	private Auction auction;
 
 	@FXML
@@ -47,6 +44,8 @@ public class AuctionController
 	private TextField offerTextField;
 	@FXML
 	private VBox terrainVBox;
+	@FXML
+	private Label timerLabel;
 
 	public static AuctionController getInstance()
 	{
@@ -58,17 +57,8 @@ public class AuctionController
 	{
 		instance = this;
 
-		offerButton.setOnAction(event -> {
-			// Send offer to the server
-			int offer = Integer.parseInt(offerTextField.getText());
-			if (offer > auction.getBestOfferProposed())
-			{
-				ClientMain.getConnection().send(ClientMessages.AUCTION_OFFER_MESSAGE_NAME, Serializer
-						.toJson(new AuctionOfferClientMessage(offer, Game.getGameCode())));
-				yourOfferLabel.setText("la tua offerta: " + offerTextField.getText() + "M");
-			}
-			update();
-		});
+		offerTextField.setOnAction(this::offer);
+		offerButton.setOnAction(this::offer);
 	}
 
 	/**
@@ -81,25 +71,66 @@ public class AuctionController
 		yourOfferLabel.setText(String.valueOf(auction.getBestOfferProposed()));
 	}
 
-
+	/**
+	 * Set the current ongoing auction
+	 *
+	 * @param auction The ongoing auction
+	 */
 	public void setAuction(Auction auction)
 	{
-
 		this.auction = auction;
-		yourOffer = auction.getBestOfferProposed();
 		Platform.runLater(() -> {
-			update();
-			terrainVBox.getChildren().clear();
 			if (auction.getContract() instanceof PropertyContract)
 				terrainVBox.getChildren().add(new PropertyViewComponent((PropertyContract) auction.getContract()));
 			else if (auction.getContract() instanceof CompanyContract)
 				terrainVBox.getChildren().add(new CompanyViewComponent((CompanyContract) auction.getContract()));
 			else
 				terrainVBox.getChildren().add(new StationViewComponent((StationContract) auction.getContract()));
-
+			update();
 		});
 	}
 
+	/**
+	 * Callback for sending an offer to the server
+	 */
+	private void offer(ActionEvent event)
+	{
+		// Send offer to the server
+		try
+		{
+			int offer = Integer.parseInt(offerTextField.getText());
+			if (offer > auction.getBestOfferProposed() && Game.getPlayer().hasMoney(offer))
+			{
+				ClientMain.getConnection().send(ClientMessages.AUCTION_OFFER_MESSAGE_NAME, Serializer
+						.toJson(new AuctionOfferClientMessage(offer, Game.getGameCode())));
+				yourOfferLabel.setText("la tua offerta: " + offerTextField.getText() + "M");
+			}
+			update();
+		}
+		catch (NumberFormatException ignored)
+		{
+		}
+	}
+
+	/**
+	 * Reset all buttons and inputs to their default values
+	 */
+	public void reset()
+	{
+		terrainVBox.getChildren().clear();
+		offerTextField.setText("10");
+	}
+
+	public void setTimer(int timerValue)
+	{
+		timerLabel.setText(String.valueOf(timerValue));
+	}
+
+	/**
+	 * Getter for the Auction window chat
+	 *
+	 * @return The chat of this window
+	 */
 	public ChatComponent getChat()
 	{
 		return chat;

@@ -57,7 +57,7 @@ public class SellHousesServerMessage implements Message
             owner.addMoney(((PropertyContract) sameContract).getHouseCost() / 2 * numberOfHousesToSell);
         }
         else
-            connection.send(ServerMessages.GENERIC_MESSAGE_NAME, "Non potete vendere case di questa proprietà, poiché è una stazione oppure una società");
+            connection.send(ServerMessages.GENERIC_MESSAGE_NAME, "Non potete vendere case di questa proprietà, poiché e' una stazione oppure una società");
 
         gameConnectionManager.updatePlayers();
     }

@@ -55,7 +55,7 @@ public class GameConnectionManager
 		else
 		{
 			connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage(
-					"Errore", "Non potete unirvi alla partita, la lobby è piena oppure la partita è già iniziata")));
+					"Errore", "Non potete unirvi alla partita, la lobby e' piena oppure la partita e' già iniziata")));
 		}
 	}
 
@@ -230,7 +230,7 @@ public class GameConnectionManager
 							!gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
 					{
 						sendAll(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage(
-								"Operazione negata", "Il terreno è ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
+								"Operazione negata", "Il terreno e' ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
 					}
 				}
 			}

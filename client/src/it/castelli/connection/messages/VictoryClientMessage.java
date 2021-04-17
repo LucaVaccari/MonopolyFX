@@ -36,7 +36,7 @@ public class VictoryClientMessage implements Message
 				"Nessuno vi fermerà mai!",
 				"GG EZ",
 				"Brao",
-				"Hai giocato bene",
+				"Avete giocato bene",
 		};
 
 		Random random = new Random();
