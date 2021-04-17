@@ -28,6 +28,8 @@ public class PlayerInfoController
 	@FXML
 	private Button exchangeButton;
 	@FXML
+	private Button votekickButton;
+	@FXML
 	private FlowPane propertyView;
 
 	public void setPlayer(Player player)
@@ -52,5 +54,7 @@ public class PlayerInfoController
 			if (thisStage != null)
 				thisStage.close();
 		});
+
+		// TODO: add callback votekick button
 	}
 }

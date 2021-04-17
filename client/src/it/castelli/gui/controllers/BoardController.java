@@ -24,6 +24,8 @@ import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
@@ -76,6 +78,8 @@ public class BoardController
 	private Button endRoundButton;
 	@FXML
 	private Button leaveGameButton;
+	@FXML
+	private Button giveUpButton;
 
 	// CHAT
 	@FXML
@@ -478,7 +482,7 @@ public class BoardController
 				                               "Non potete finire il turno senza tirare prima i dadi.");
 		});
 
-		leaveGameButton.setOnAction(event -> {
+		EventHandler<ActionEvent> onLeave = event -> {
 			Optional<ButtonType> confirm =
 					AlertUtil.showConfirmationAlert("Conferma", "Volete davvero uscire?",
 					                                "Siete veramente sicuri?");
@@ -486,7 +490,7 @@ public class BoardController
 			{
 				if (confirm.get().equals(ButtonType.OK))
 				{
-					if (Game.getGameManager().getCurrentRound().getCurrentActivePlayer().betterEquals(getPlayer()))
+					if (getGameManager().getCurrentRound().getCurrentActivePlayer().betterEquals(getPlayer()))
 						ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME, Serializer
 								.toJson(new EndRoundClientMessage(Game.getGameCode())));
 					ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
@@ -495,7 +499,9 @@ public class BoardController
 					SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 				}
 			}
-		});
+		};
+		leaveGameButton.setOnAction(onLeave);
+		giveUpButton.setOnAction(onLeave);
 	}
 
 	/**

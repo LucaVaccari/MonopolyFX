@@ -11,6 +11,7 @@ sos
 - Non mostrare i pulsanti dei terreni durante lo scambio (TO TEST)
 - chiudere tutte le finestre quando parte uno scambio o un'asta (TO TEST)
 - Resettare il TextField nello scambio e nell'asta (TO TEST)
+- votekick (TO TEST)
 
 
 - mettere le immagini delle case affianco al numero (con hotel)
@@ -22,6 +23,7 @@ sos
 - TextField più grosso nell'asta
 - BORDI TONDIIIIII
 - Tooltip a tutti i pulsanti che esistono
+- Messaggio dopo votekick
+- Aggiornare il contratto di una proprietà aperta
 
-- votekick (implementare da client / TO TEST)
 - sconfitta (implementare da client / TO TEST)
