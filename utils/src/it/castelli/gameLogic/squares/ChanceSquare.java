@@ -19,7 +19,7 @@ public class ChanceSquare implements Square
 	public void interact(Player player, GameManager gameManager)
 	{
 		RandomEvent randomEvent = gameManager.getRandomEventManager().drawChance();
-		player.setLastEncounteredEvent("Chance", randomEvent.getMessage());
+		player.setLastEncounteredEvent("Imprevisti", randomEvent.getMessage());
 		randomEvent.applyEffect(player, gameManager);
 	}
 

@@ -6,25 +6,37 @@ import it.castelli.gui.scene.SceneType;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class ClientMain extends Application
 {
 	private static Connection connection;
+	private final static HashMap<String, String> configs = new HashMap<>();
+	private static String serverIp;
+	private static int serverPort;
+	private final static String configPath = "data/config.cfg";
 
 	public static void main(String[] args)
 	{
+		ClientMain.readConfigFile(configPath);
+
+		serverIp = configs.get("server.ip");
+		serverPort = Integer.parseInt(configs.get("server.port"));
+
 		Socket clientSocket = null;
 		try
 		{
-// 			clientSocket = new Socket("87.2.100.5", 1111);
-			//clientSocket = new Socket("95.244.31.45", 1111);
-			clientSocket = new Socket("localhost", 1111);
+ 			clientSocket = new Socket(serverIp, serverPort);
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
+			System.out.println("Impossibile connettersi al server");
 		}
 		connection = new Connection(clientSocket);
 		launch(args);
@@ -51,5 +63,25 @@ public class ClientMain extends Application
 	{
 		SceneManager.getInstance().setPrimaryStage(primaryStage);
 		SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
+	}
+
+	/**
+	 * Method to read the config file and set its content in a map of properties
+	 *
+	 * @param pathName the path of the config file
+	 */
+	public static void readConfigFile(String pathName) {
+		try {
+			Scanner myReader = new Scanner(new File(pathName));
+			while (myReader.hasNextLine()) {
+				String data = myReader.nextLine().toLowerCase();
+				String[] tokens = data.strip().split("=");
+				configs.put(tokens[0], tokens[1]);
+			}
+			myReader.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("An error occurred reading the config file");
+			e.printStackTrace();
+		}
 	}
 }

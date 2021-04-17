@@ -112,13 +112,13 @@ public class GameConnectionManager
 		updatePlayers();
 	}
 
-	//TODO: to complete and TEST
 	public void startAuction(Contract contract, int offer)
 	{
-
 		gameManager.startAuction(contract, offer);
+
 		if (auctionTask != null)
 			auctionTask.interrupt();
+
 		auctionTask = new AuctionTimerTask(AUCTION_DURATION, gameCode);
 		auctionTask.init();
 
@@ -154,7 +154,7 @@ public class GameConnectionManager
 		//if (gameManager.isInGame() && gameManager.getPlayers().size() == 1 )
 		if (false)
 		{
-			//TODO: send victory message to player
+			sendAll(ServerMessages.VICTORY_MESSAGE_NAME, Serializer.toJson(new VictoryServerMessage()));
 		}
 		else
 		{
