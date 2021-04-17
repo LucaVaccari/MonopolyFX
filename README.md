@@ -18,7 +18,6 @@ sos
 - mettere Thread.sleep() in giro
 - aggiungere una label con il codice della partita
 - messaggio per la conferma della vendita
-- Se non si ha abbastanza denaro per comprare attività, mandare il messaggio al server per far partire l'asta (TO TEST)
 - Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata
 - TextField più grosso nell'asta
 - Bordo colorato alle caselle

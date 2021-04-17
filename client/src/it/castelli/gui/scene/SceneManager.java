@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -52,7 +53,6 @@ public class SceneManager
 		if (mainMenuRoot != null)
 		{
 			Scene mainMenuScene = new Scene(mainMenuRoot);
-			mainMenuScene.getStylesheets().add(getClass().getResource("/FXMLs/Style/style.css").toExternalForm());
 			allScenes.put(SceneType.MAIN_MENU, new SceneFXWrapper(mainMenuScene, true, "MonopolyFX"));
 		}
 		else
@@ -318,6 +318,15 @@ public class SceneManager
 		{
 			primaryStage.setScene(scene.getScene());
 			primaryStage.setTitle(scene.getWindowTitle());
+
+			double sceneWidth = scene.getScene().getWidth();
+			double sceneHeight = scene.getScene().getHeight();
+			if (sceneWidth != 0)
+				primaryStage.setX(Screen.getPrimary().getBounds().getWidth() / 2 - sceneWidth / 2);
+			if (sceneHeight != 0)
+				primaryStage.setY(Screen.getPrimary().getBounds().getHeight() / 2 - sceneHeight / 2);
+
+			primaryStage.sizeToScene();
 			primaryStage.setResizable(false);
 			primaryStage.show();
 		}

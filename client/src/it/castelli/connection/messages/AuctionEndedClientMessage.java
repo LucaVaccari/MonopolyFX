@@ -25,7 +25,7 @@ public class AuctionEndedClientMessage implements Message
 			String content = winningPlayer == null ?
 			                 "Nessuno ha vinto l'asta. Il terreno resta alla banca" : 
 			                 winningPlayer + " ha ottenuto " + auction.getContract() + "!";
-			AlertUtil.showInformationAlert("Fine asta", "L'asta si è conclusa", content);
+			AlertUtil.showInformationAlert("Fine asta", "L'asta si e' conclusa", content);
 
 			Game.getGameManager().setAuction(null);
 		});
