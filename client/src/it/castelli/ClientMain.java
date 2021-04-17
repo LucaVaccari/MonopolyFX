@@ -32,7 +32,6 @@ public class ClientMain extends Application
 		try
 		{
  			clientSocket = new Socket(serverIp, serverPort);
-
 		}
 		catch (IOException e)
 		{
