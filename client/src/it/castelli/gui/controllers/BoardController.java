@@ -751,19 +751,6 @@ public class BoardController
 	}
 
 	/**
-	 * Update everything (ownedTerrains, moneyLabel, playerListView, pawnsOnBoard)
-	 */
-	public void update()
-	{
-		calculateOwnedTerrains();
-		updateMoneyLabel();
-		updatePlayerListView();
-		updatePawnsOnBoard();
-		updateRound();
-		updateInPrison();
-	}
-
-	/**
 	 * Update the labels of all players if they are in prison
 	 */
 	private void updateInPrison()
@@ -789,6 +776,48 @@ public class BoardController
 		Image secondDieImage = new Image(
 				String.valueOf(getClass().getResource("/images/dice/face_" + result.getSecondResult() + ".png")));
 		die2Image.setImage(secondDieImage);
+	}
+
+	/**
+	 * Set the border color of all squares
+	 */
+	public void updateBoard()
+	{
+		for (int i = 0, squaresLength = squares.length; i < squaresLength; i++)
+		{
+			Group square = squares[i];
+			SquareComponent squareComponent = (SquareComponent) square.getChildren().get(0);
+			squareComponent.setContract(Game.getGameManager().getSquare(i).getContract());
+			Contract contract = squareComponent.getContract();
+			if (contract != null)
+			{
+				if (contract.getOwner() == null)
+				{
+					square.getChildren().get(1).setStyle("-fx-border-width: 0");
+				}
+				else
+				{
+					square.getChildren().get(1)
+							.setStyle(
+									"-fx-border-color: " + GUIUtils.getPawnColor().get(contract.getOwner().getPawn())
+									+ ";-fx-border-width: 2");
+				}
+			}
+		}
+	}
+
+	/**
+	 * Update everything (ownedTerrains, moneyLabel, playerListView, pawnsOnBoard)
+	 */
+	public void update()
+	{
+		calculateOwnedTerrains();
+		updateMoneyLabel();
+		updatePlayerListView();
+		updatePawnsOnBoard();
+		updateRound();
+		updateInPrison();
+		updateBoard();
 	}
 
 	/**

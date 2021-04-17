@@ -4,6 +4,8 @@ import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.squares.Square;
+import it.castelli.gui.controllers.BoardController;
+import javafx.application.Platform;
 
 /**
  * Message received from the server that updates the board (receive only)
@@ -29,5 +31,6 @@ public class UpdateBoardClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		Game.getGameManager().setBoard(board);
+		Platform.runLater(() -> BoardController.getInstance().update());
 	}
 }
