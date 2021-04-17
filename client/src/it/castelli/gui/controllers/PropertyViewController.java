@@ -74,7 +74,9 @@ public class PropertyViewController
 		houseCostLabel.setText(String.valueOf(contract.getHouseCost()));
 		mortgageValueLabel.setText(String.valueOf(contract.getValue() / 2));
 
-		if (contract.getOwner() != null)
+		boolean exchanging = Game.getGameManager().getExchangeFromPlayer(Game.getPlayer()) != null;
+
+		if (contract.getOwner() != null && !exchanging)
 		{
 			boolean isOwnedByMe = contract.getOwner().toPlayer().betterEquals(Game.getPlayer());
 			boolean isMyRound = contract.getOwner().toPlayer()

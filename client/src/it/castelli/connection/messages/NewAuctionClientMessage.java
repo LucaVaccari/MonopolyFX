@@ -50,7 +50,9 @@ public class NewAuctionClientMessage implements Message
 		Auction auction = new Auction(contract, bestOfferProposed, this.player);
 		Game.getGameManager().setAuction(auction);
 		Platform.runLater(() -> {
+			SceneManager.getInstance().closeSecondaryStages();
 			SceneManager.getInstance().showScene(SceneType.AUCTION);
+			AuctionController.getInstance().reset();
 			AuctionController.getInstance().setAuction(auction);
 		});
 	}

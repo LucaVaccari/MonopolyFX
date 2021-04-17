@@ -25,7 +25,9 @@ import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.*;
+import javafx.scene.Cursor;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -198,7 +200,8 @@ public class BoardController
 			SquareComponent vicoloCortoSquareComponent = (SquareComponent) vicoloCortoSquare.getChildren().get(0);
 			vicoloCortoSquareComponent.setContract(getGameManager().getSquare(1).getContract());
 			vicoloCortoSquare.setOnMouseClicked(
-					event -> SceneManager.getInstance().showTerrainView((PropertyContract) vicoloCortoSquareComponent.getContract()));
+					event -> SceneManager.getInstance()
+							.showTerrainView((PropertyContract) vicoloCortoSquareComponent.getContract()));
 			squares[1] = vicoloCortoSquare;
 			Tooltip.install(squares[1], new Tooltip(vicoloCortoSquareComponent.getContract().getName()));
 
@@ -206,7 +209,8 @@ public class BoardController
 			vicoloStrettoSquareComponent.setContract(getGameManager().getSquare(3).getContract());
 			vicoloStrettoSquare
 					.setOnMouseClicked(
-							event -> SceneManager.getInstance().showTerrainView((PropertyContract) vicoloStrettoSquareComponent.getContract()));
+							event -> SceneManager.getInstance()
+									.showTerrainView((PropertyContract) vicoloStrettoSquareComponent.getContract()));
 			squares[3] = vicoloStrettoSquare;
 			Tooltip.install(squares[3], new Tooltip(vicoloStrettoSquareComponent.getContract().getName()));
 
@@ -360,7 +364,8 @@ public class BoardController
 					(SquareComponent) parcoDellaVittoriaSquare.getChildren().get(0);
 			parcoDellaVittoriaSquareComponent.setContract(getGameManager().getSquare(39).getContract());
 			parcoDellaVittoriaSquare.setOnMouseClicked(
-					event -> SceneManager.getInstance().showTerrainView((PropertyContract) parcoDellaVittoriaSquareComponent.getContract()));
+					event -> SceneManager.getInstance()
+							.showTerrainView((PropertyContract) parcoDellaVittoriaSquareComponent.getContract()));
 			squares[39] = parcoDellaVittoriaSquare;
 			Tooltip.install(parcoDellaVittoriaSquare,
 			                new Tooltip(parcoDellaVittoriaSquareComponent.getContract().getName()));
@@ -369,28 +374,32 @@ public class BoardController
 			SquareComponent southStationSquareComponent = (SquareComponent) southStationSquare.getChildren().get(0);
 			southStationSquareComponent.setContract(getGameManager().getSquare(5).getContract());
 			southStationSquare.setOnMouseClicked(
-					event -> SceneManager.getInstance().showTerrainView((StationContract) southStationSquareComponent.getContract()));
+					event -> SceneManager.getInstance()
+							.showTerrainView((StationContract) southStationSquareComponent.getContract()));
 			squares[5] = southStationSquare;
 			Tooltip.install(southStationSquare, new Tooltip(southStationSquareComponent.getContract().getName()));
 
 			SquareComponent westStationSquareComponent = (SquareComponent) westStationSquare.getChildren().get(0);
 			westStationSquareComponent.setContract(getGameManager().getSquare(15).getContract());
 			westStationSquare.setOnMouseClicked(
-					event -> SceneManager.getInstance().showTerrainView((StationContract) westStationSquareComponent.getContract()));
+					event -> SceneManager.getInstance()
+							.showTerrainView((StationContract) westStationSquareComponent.getContract()));
 			squares[15] = westStationSquare;
 			Tooltip.install(westStationSquare, new Tooltip(westStationSquareComponent.getContract().getName()));
 
 			SquareComponent northStationSquareComponent = (SquareComponent) northStationSquare.getChildren().get(0);
 			northStationSquareComponent.setContract(getGameManager().getSquare(25).getContract());
 			northStationSquare.setOnMouseClicked(
-					event -> SceneManager.getInstance().showTerrainView((StationContract) northStationSquareComponent.getContract()));
+					event -> SceneManager.getInstance()
+							.showTerrainView((StationContract) northStationSquareComponent.getContract()));
 			squares[25] = northStationSquare;
 			Tooltip.install(northStationSquare, new Tooltip(northStationSquareComponent.getContract().getName()));
 
 			SquareComponent eastStationSquareComponent = (SquareComponent) eastStationSquare.getChildren().get(0);
 			eastStationSquareComponent.setContract(getGameManager().getSquare(35).getContract());
 			eastStationSquare.setOnMouseClicked(
-					event -> SceneManager.getInstance().showTerrainView((StationContract) eastStationSquareComponent.getContract()));
+					event -> SceneManager.getInstance()
+							.showTerrainView((StationContract) eastStationSquareComponent.getContract()));
 			squares[35] = eastStationSquare;
 			Tooltip.install(eastStationSquare, new Tooltip(eastStationSquareComponent.getContract().getName()));
 
@@ -399,7 +408,8 @@ public class BoardController
 					(SquareComponent) electricSocietySquare.getChildren().get(0);
 			electricSocietySquareComponent.setContract(getGameManager().getSquare(12).getContract());
 			electricSocietySquare.setOnMouseClicked(
-					event -> SceneManager.getInstance().showTerrainView((CompanyContract) electricSocietySquareComponent.getContract()));
+					event -> SceneManager.getInstance()
+							.showTerrainView((CompanyContract) electricSocietySquareComponent.getContract()));
 			squares[12] = electricSocietySquare;
 			Tooltip.install(electricSocietySquare,
 			                new Tooltip(electricSocietySquareComponent.getContract().getName()));
@@ -407,7 +417,8 @@ public class BoardController
 			SquareComponent waterWorksSquareComponent = (SquareComponent) waterWorksSquare.getChildren().get(0);
 			waterWorksSquareComponent.setContract(getGameManager().getSquare(28).getContract());
 			waterWorksSquare.setOnMouseClicked(
-					event -> SceneManager.getInstance().showTerrainView((CompanyContract) waterWorksSquareComponent.getContract()));
+					event -> SceneManager.getInstance()
+							.showTerrainView((CompanyContract) waterWorksSquareComponent.getContract()));
 			squares[28] = waterWorksSquare;
 			Tooltip.install(waterWorksSquare, new Tooltip(waterWorksSquareComponent.getContract().getName()));
 
@@ -512,7 +523,8 @@ public class BoardController
 	 */
 	private void calculateOwnedTerrains()
 	{
-		Label showOtherProperties = (Label) ownedPropertiesPane.getChildren().get(ownedPropertiesPane.getChildren().size() - 1);
+		Label showOtherProperties =
+				(Label) ownedPropertiesPane.getChildren().get(ownedPropertiesPane.getChildren().size() - 1);
 		ownedPropertiesPane.getChildren().clear();
 		for (int i = 0; i < SHOWN_OWNED_PROPERTIES; i++)
 		{
@@ -680,7 +692,7 @@ public class BoardController
 				int size;
 				if (player.isInPrison())
 				{
-					size = switch (((FlowPane)children.get(1)).getChildren().size())
+					size = switch (((FlowPane) children.get(1)).getChildren().size())
 							{
 								case 1 -> 30;
 								case 2, 3, 4 -> 20;
@@ -727,11 +739,7 @@ public class BoardController
 		{
 			PlayerInfoComponent player = (PlayerInfoComponent) element;
 			if (player.getPlayer().betterEquals(currentRound.getCurrentActivePlayer()))
-			{
-				player.getPlayerNameLabel()
-						.setStyle("-fx-background-color: " + GUIUtils.getPawnColor().get(player.getPlayer().getPawn()));
-				player.getPlayerNameLabel().setText(player.getPlayerNameLabel().getText() + "   E' il tuo turno");
-			}
+				player.setRound();
 		}
 
 		// hide buttons
@@ -755,13 +763,16 @@ public class BoardController
 		updateInPrison();
 	}
 
+	/**
+	 * Update the labels of all players if they are in prison
+	 */
 	private void updateInPrison()
 	{
 		ObservableList<Node> list = playerListView.getChildren();
 		for (Node element : list)
 		{
 			PlayerInfoComponent player = (PlayerInfoComponent) element;
-			player.getPrisonImageView().setVisible(player.getPlayer().isInPrison());
+			player.setInPrison(player.getPlayer().isInPrison());
 		}
 	}
 
@@ -780,6 +791,11 @@ public class BoardController
 		die2Image.setImage(secondDieImage);
 	}
 
+	/**
+	 * Get the board chat component
+	 *
+	 * @return The board chat component
+	 */
 	public ChatComponent getChat()
 	{
 		return chat;

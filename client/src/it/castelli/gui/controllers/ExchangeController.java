@@ -10,7 +10,6 @@ import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.transactions.Asset;
 import it.castelli.gameLogic.transactions.Exchange;
-import it.castelli.gui.AlertUtil;
 import it.castelli.gui.customComponents.ChatComponent;
 import it.castelli.gui.customComponents.SmallTerrainViewComponent;
 import it.castelli.gui.customComponents.TerrainChoiceDialog;
@@ -87,12 +86,20 @@ public class ExchangeController
 			String offerText = yourOfferTextField.getText();
 			try
 			{
-				if (exchange == null)
-				{
-					AlertUtil.showInformationAlert("Errore", "Lo scambio non è ancora stato inizializzato", "");
-					return;
-				}
 				int yourOffer = Integer.parseInt(offerText);
+
+				// check if the player has enough money
+				if (!Game.getPlayer().hasMoney(yourOffer))
+				{
+					yourOffer = Game.getPlayer().getMoney() - 1;
+					yourOfferTextField.setText(String.valueOf(yourOffer));
+				}
+				// reverse the offer if negative
+				if (yourOffer < 0)
+				{
+					yourOffer = Math.abs(yourOffer);
+					yourOfferTextField.setText(String.valueOf(yourOffer));
+				}
 
 				if (isPlayer1)
 					exchange.getAsset1().setMoney(yourOffer);
@@ -110,11 +117,6 @@ public class ExchangeController
 		});
 
 		addPropertyButton.setOnAction(event -> {
-			if (exchange == null)
-			{
-				AlertUtil.showInformationAlert("Errore", "Lo scambio non è ancora stato inizializzato", "");
-				return;
-			}
 			Optional<Contract> optionalContract =
 					new TerrainChoiceDialog(isPlayer1 ? exchange.getPlayer1() : exchange.getPlayer2()).showAndWait();
 			if (optionalContract.isPresent())
@@ -144,22 +146,13 @@ public class ExchangeController
 		});
 
 		acceptButton.setOnAction(event -> {
-			if (exchange == null)
-			{
-				AlertUtil.showInformationAlert("Errore", "Lo scambio non è ancora stato inizializzato", "");
-				return;
-			}
 			ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
 					.toJson(new AcceptExchangeClientMessage(!(isPlayer1 ? exchange.getAccepted1() :
-							exchange.getAccepted2()), Game.getPlayer(), Game.getGameCode())));
+					                                          exchange.getAccepted2()), Game.getPlayer(),
+					                                        Game.getGameCode())));
 		});
 
 		refuseButton.setOnAction(event -> {
-			if (exchange == null)
-			{
-				AlertUtil.showInformationAlert("Errore", "Lo scambio non è ancora stato inizializzato", "");
-				return;
-			}
 			ClientMain.getConnection().send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
 					.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode())));
 		});
@@ -240,6 +233,24 @@ public class ExchangeController
 		Platform.runLater(this::update);
 	}
 
+	/**
+	 * Reset all buttons and inputs to their default values
+	 */
+	public void reset()
+	{
+		yourOfferTextField.setText("0");
+		hisOfferLabel.setText("0");
+		yourPropertiesPane.getChildren().clear();
+		hisPropertiesPane.getChildren().clear();
+		yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(PLACEHOLDER_IMAGE_PATH))));
+		hisChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(PLACEHOLDER_IMAGE_PATH))));
+		acceptButton.setText("Accetta");
+	}
+
+	/**
+	 * Getter for the exchange window chat
+	 * @return The exchange chat
+	 */
 	public ChatComponent getChat()
 	{
 		return chat;

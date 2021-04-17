@@ -1,6 +1,5 @@
 package it.castelli.gui.customComponents;
 
-import it.castelli.Game;
 import it.castelli.gameLogic.Player;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.GUIUtils;
@@ -18,8 +17,8 @@ public class PlayerInfoComponent extends AnchorPane
 	public static final String PLAYER_INFO_ELEMENT_FXML_PATH = "/FXMLs/playerInfoElement.fxml";
 
 	/**
-	 //	 * Singleton instance
-	 	 */
+	 * Singleton instance
+	 */
 	private static PlayerInfoComponent instance;
 
 	private Player player;
@@ -40,7 +39,7 @@ public class PlayerInfoComponent extends AnchorPane
 	@FXML
 	private void initialize()
 	{
-		instance=this;
+		instance = this;
 		prisonImageView.setVisible(false);
 	}
 
@@ -61,7 +60,10 @@ public class PlayerInfoComponent extends AnchorPane
 		}
 	}
 
-
+	/**
+	 * Update all GUI based on the player passed
+	 * @param player The player bound to this element
+	 */
 	private void setPlayer(Player player)
 	{
 		this.player = player;
@@ -72,14 +74,22 @@ public class PlayerInfoComponent extends AnchorPane
 		playerMoneyLabel.setText(player.getMoney() + "M");
 	}
 
-	public Label getPlayerNameLabel()
+	/**
+	 * Set that this is this player's round, by coloring the label
+	 */
+	public void setRound()
 	{
-		return playerNameLabel;
+		playerNameLabel.setStyle("-fx-background-color: " + GUIUtils.getPawnColor().get(player.getPawn()));
+		playerNameLabel.setText(player.getName() + "   E' il tuo turno");
 	}
 
-	public ImageView getPrisonImageView()
+	/**
+	 * Set whether is in prison or not, showing a small icon near the money
+	 * @param inPrison Is the player in prison?
+	 */
+	public void setInPrison(boolean inPrison)
 	{
-		return prisonImageView;
+		prisonImageView.setVisible(inPrison);
 	}
 
 	public Player getPlayer()

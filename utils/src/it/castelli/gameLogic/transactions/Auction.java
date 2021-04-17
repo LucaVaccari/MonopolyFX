@@ -28,6 +28,10 @@ public class Auction
 		return bestOfferProposed;
 	}
 
+	/**
+	 * Get the player with the highest offer (null if no one offered)
+	 * @return The winning player
+	 */
 	public Player getPlayer()
 	{
 		return player;
