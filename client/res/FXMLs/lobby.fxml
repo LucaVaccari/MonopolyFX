@@ -18,7 +18,7 @@
                   maxWidth="1.7976931348623157E308" prefHeight="294.0" prefWidth="378.0" VBox.vgrow="ALWAYS"/>
             <Button fx:id="playButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                     mnemonicParsing="false" prefHeight="46.0" prefWidth="290.0"
-                    style="-fx-background-color: #cc000f; -fx-text-fill: #ffffff;" text="Play">
+                    style="-fx-background-color: #cc000f; -fx-text-fill: #ffffff;" text="Gioca">
                 <effect>
                     <InnerShadow blurType="GAUSSIAN"/>
                 </effect>

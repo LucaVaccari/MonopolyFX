@@ -20,10 +20,8 @@ sos
 - messaggio per la conferma della vendita
 - Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata
 - TextField più grosso nell'asta
-- Bordo colorato alle caselle
 - BORDI TONDIIIIII
-
+- Tooltip a tutti i pulsanti che esistono
 
 - votekick (implementare da client / TO TEST)
-- vittoria e sconfitta (implementare da client / TO TEST)
-- togliere i soldi con l'asta
+- sconfitta (implementare da client / TO TEST)

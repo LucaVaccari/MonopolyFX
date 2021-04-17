@@ -23,7 +23,7 @@ public class GameManager
 	/**
 	 * The array of all the squares
 	 */
-	private Square[] board;
+	private final Square[] board;
 	private Auction auction;
 	private final CopyOnWriteArrayList<Exchange> exchanges = new CopyOnWriteArrayList<>();
 	private Round currentRound;
@@ -212,6 +212,15 @@ public class GameManager
 		currentRound = new Round(newPlayer, 0);
 		inGame = true;
 		randomEventManager.shuffleCards();
+	}
+
+	public void endGame()
+	{
+		inGame = false;
+		players.clear();
+		auction = null;
+		exchanges.clear();
+		currentRound = null;
 	}
 
 	public void nextRound()

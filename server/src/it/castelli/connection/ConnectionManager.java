@@ -60,6 +60,11 @@ public class ConnectionManager
 
 	public void removeGame(int gameCode)
 	{
+		for (var connection : games.get(gameCode).getPlayerConnections())
+		{
+			addToWaitingRoom(connection);
+			leaveGame(gameCode, connection);
+		}
 		games.remove(gameCode);
 		reusedGameCodes.add(gameCode);
 		System.out.println("Game with code " + gameCode + " removed.");
@@ -84,12 +89,13 @@ public class ConnectionManager
 			games.get(gameCode).addPlayer(connection, player);
 			waitingRoom.remove(connection);
 
-		} else
+		}
+		else
 		{
 			connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer
 					.toJson(new GenericServerMessage(
 							"Errore", "La partita con codice: " + gameCode +
-									" non e' stata trovata!")));
+							          " non e' stata trovata!")));
 		}
 	}
 

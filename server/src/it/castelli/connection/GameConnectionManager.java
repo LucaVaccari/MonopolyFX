@@ -45,12 +45,12 @@ public class GameConnectionManager
 
 			// Sending game code to the client
 			connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME,
-					Serializer.toJson(new GameCodeServerMessage(gameCode)));
+			                Serializer.toJson(new GameCodeServerMessage(gameCode)));
 
 			//Updating other players player list
 			gameManager.addPlayer(player);
 			sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME,
-					Serializer.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
+			        Serializer.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
 		}
 		else
 		{
@@ -65,7 +65,7 @@ public class GameConnectionManager
 		{
 			resetPlayerProperties(connection);
 			Player playerToRemove = gameManager.getSamePlayer(connection.getReceiver().getPlayer());
-			Player currentRoundPlayer = null;
+			Player currentRoundPlayer;
 			if (gameManager.getCurrentRound().getCurrentActivePlayer() != null)
 			{
 				currentRoundPlayer = gameManager.getSamePlayer(gameManager.getCurrentRound().getCurrentActivePlayer());
@@ -123,8 +123,9 @@ public class GameConnectionManager
 		auctionTask.init();
 
 		Auction auction = gameManager.getAuction();
-		sendAll(ServerMessages.NEW_AUCTION_MESSAGE_NAME, Serializer.toJson(new NewAuctionServerMessage(auction.getContract(), auction.getPlayer(),
-				auction.getBestOfferProposed())));
+		sendAll(ServerMessages.NEW_AUCTION_MESSAGE_NAME,
+		        Serializer.toJson(new NewAuctionServerMessage(auction.getContract(), auction.getPlayer(),
+		                                                      auction.getBestOfferProposed())));
 	}
 
 	public void auctionOffer(Player player, int offer)
@@ -151,10 +152,12 @@ public class GameConnectionManager
 	public void updatePlayers()
 	{
 		//TODO: uncomment line and remove if (false)
-		//if (gameManager.isInGame() && gameManager.getPlayers().size() == 1 )
+//		if (gameManager.isInGame() && gameManager.getPlayers().size() == 1)
 		if (false)
 		{
 			sendAll(ServerMessages.VICTORY_MESSAGE_NAME, Serializer.toJson(new VictoryServerMessage()));
+			gameManager.endGame();
+			ConnectionManager.getInstance().removeGame(gameCode);
 		}
 		else
 		{
@@ -187,7 +190,6 @@ public class GameConnectionManager
 			sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer
 					.toJson(new UpdateRoundServerMessage(gameManager.getCurrentRound())));
 		}
-
 
 
 	}
@@ -227,10 +229,11 @@ public class GameConnectionManager
 				else
 				{
 					if (square.getContract().isMortgaged() &&
-							!gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
+					    !gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
 					{
 						sendAll(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage(
-								"Operazione negata", "Il terreno e' ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
+								"Operazione negata",
+								"Il terreno e' ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
 					}
 				}
 			}

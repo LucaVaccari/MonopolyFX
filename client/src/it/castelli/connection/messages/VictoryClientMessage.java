@@ -4,7 +4,8 @@ import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gui.AlertUtil;
-import it.castelli.serialization.Serializer;
+import it.castelli.gui.scene.SceneManager;
+import it.castelli.gui.scene.SceneType;
 import javafx.application.Platform;
 
 import java.util.Random;
@@ -17,11 +18,12 @@ public class VictoryClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		Platform.runLater(() -> AlertUtil
-				.showInformationAlert("Vittoria", getRandomWinSentence(), getRandomWinSentence()));
-
-		connection.send(ClientMessages.LEAVE_GAME_MESSAGE_NAME, Serializer
-				.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+		Platform.runLater(() -> {
+			SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
+			AlertUtil.showInformationAlert("Vittoria", getRandomWinSentence(), getRandomWinSentence());
+			SceneManager.getInstance().closeSecondaryStages();
+			System.out.println("Game finished");
+		});
 	}
 
 	private String getRandomWinSentence()
@@ -37,7 +39,7 @@ public class VictoryClientMessage implements Message
 				"GG EZ",
 				"Brao",
 				"Avete giocato bene",
-		};
+				};
 
 		Random random = new Random();
 		return sentences[random.nextInt(sentences.length)];
