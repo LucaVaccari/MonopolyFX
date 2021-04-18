@@ -230,7 +230,7 @@ public class GameConnectionManager
 					    !gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
 					{
 						sendAll(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage(
-								"Operazione negata",
+								"Affitto gratuito",
 								"Il terreno e' ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
 					}
 				}
