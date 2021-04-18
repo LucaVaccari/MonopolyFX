@@ -58,7 +58,6 @@ public class PropertyViewComponent extends AnchorPane
 	public void setContract(PropertyContract contract)
 	{
 		titleLabel.setStyle("-fx-background-color: " + GUIUtils.getPropertyColorsCodes().get(contract.getColor()));
-
 		valueLabel.setText(String.valueOf(contract.getValue()));
 		titleLabel.setText(contract.getName());
 		revenueLabel.setText(String.valueOf(contract.getRevenues()[0]));
@@ -68,9 +67,5 @@ public class PropertyViewComponent extends AnchorPane
 		revenue4housesLabel.setText(String.valueOf(contract.getRevenues()[4]));
 		revenueHotelLabel.setText(String.valueOf(contract.getRevenues()[5]));
 		houseCostLabel.setText(String.valueOf(contract.getHouseCost()));
-
-
 	}
-
-
 }

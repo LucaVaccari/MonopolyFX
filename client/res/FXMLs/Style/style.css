@@ -11,7 +11,8 @@
   -fx-text-fill: "white";
 }
 .button {
-  -fx-background-color: #ff0F00;
+  -fx-background-color: #ff0f00;
+  -fx-text-fill: #ffffff;
   -fx-border-color: #000000;
   -fx-border-width: 2;
   -fx-border-radius: 30px;
@@ -19,18 +20,34 @@
 }
 
 .anchor-pane {
-  -fx-background-color:  #1f802c;
+  -fx-background-color: #1f802c;
 }
-#offer-button{
- -fx-background-color: #060aff;
- -fx-text-fill:"white"
+#offer-button {
+  -fx-background-color: #060aff;
+  -fx-text-fill: "white";
 }
-#leave-button{
- -fx-background-color: #FFFFFF;
- -fx-text-fill:"black"
+#leave-button {
+  -fx-background-color: #ffffff;
+  -fx-text-fill: "black";
 }
-.MainMenuButton{
--fx-background-color: #cc000f;
--fx-text-fill: #ffffff;
--fx-font-size:21
+.MainMenuButton {
+  -fx-background-color: #cc000f;
+  -fx-text-fill: #ffffff;
+  -fx-font-size: 21;
+}
+.button:hover {
+  -fx-background-color: #ffffff;
+  -fx-border-color: #000000;
+  -fx-text-fill: #ff0f00;
+  -fx-border-width: 2;
+  -fx-border-radius: 30px;
+  -fx-background-radius: 30px;
+}
+#offer-button:hover {
+  -fx-background-color: "white";
+  -fx-text-fill: #060aff;
+}
+#leave-button:hover {
+  -fx-background-color: "black";
+  -fx-text-fill: #ffffff;
 }
