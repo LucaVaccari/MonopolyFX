@@ -130,7 +130,7 @@ public class PropertyViewController
 				}
 			});
 
-			sellButton.setTooltip(new Tooltip("Vendete una casa (la rendita diminuira'"));
+			sellHouseButton.setTooltip(new Tooltip("Vendete una casa (la rendita diminuira'"));
 			sellHouseButton.setOnAction(event -> {
 				if (contract.getNumberOfHouses() > 0)
 				{
