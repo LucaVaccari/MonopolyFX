@@ -12,6 +12,7 @@ sos
 - chiudere tutte le finestre quando parte uno scambio o un'asta (TO TEST)
 - Resettare il TextField nello scambio e nell'asta (TO TEST)
 
+
 - cambiare la vista della proprietà se è ipotecata
 - mettere le immagini delle case affianco al numero (con hotel)
 - messaggio per la conferma della vendita
@@ -21,6 +22,9 @@ sos
 - Quando si compra una casa, il messaggio dell operazione negata sta dietro le finestre
 - Prigione non funziona correttamente
 - Non viene aggiornato l owner dopo lo scambio
+- Controllare messaggio fine asta
+- Controllare errore alert ShowandWait already open
+
 
 - votekick (implementare da client / TO TEST)
 - sconfitta (implementare da client / TO TEST)

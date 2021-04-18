@@ -35,8 +35,6 @@ public class GoToRandomEvent extends RandomEvent
 	public void applyEffect(Player player, GameManager gameManager)
 	{
 		player.setPosition(square, passThroughGo);
-		System.out.println("The player " + player.getName() + " was in square " + player.getPreviousPosition() +
-				" and is now in square " + player.getPosition() + " (GoToRandomEvent)");
 		Square square = gameManager.getSquare(player.getPosition());
 		gameManager.addRandomEvent(this, getType());
 	}

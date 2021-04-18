@@ -288,7 +288,6 @@ public class GameManager
 	public void removeExchange(Exchange exchange)
 	{
 		exchanges.remove(exchange);
-		System.out.println("Still " + exchanges.size() + " exchanges active");
 	}
 
 	public Exchange getExchangeFromPlayer(Player player)

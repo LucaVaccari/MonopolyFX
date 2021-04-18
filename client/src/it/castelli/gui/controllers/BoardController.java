@@ -25,6 +25,7 @@ import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -579,15 +580,13 @@ public class BoardController
 					ownedTerrains[i].setDisable(false);
 					ownedTerrains[i].setVisible(true);
 					ownedTerrains[i].setContract(mostProductiveContract);
-				}
-				else
+				} else
 				{
 					ownedTerrains[i].setVisible(false);
 					ownedTerrains[i].setDisable(true);
 				}
 				mostProductiveContracts.add(mostProductiveContract);
-			}
-			else
+			} else
 			{
 				ownedTerrains[i].setVisible(false);
 				ownedTerrains[i].setDisable(true);
@@ -655,8 +654,7 @@ public class BoardController
 				flowPane.setHgap(5);
 				if (pawnImageView != null)
 					children.add(pawnImageView);
-			}
-			else
+			} else
 			{
 				VBox vBox = (VBox) flowPane.getChildren().get(0);
 				FlowPane flowPane1 = (FlowPane) flowPane.getChildren().get(1);
@@ -666,15 +664,13 @@ public class BoardController
 				{
 					if (pawnImageView != null)
 						flowPane1.getChildren().add(pawnImageView);
-				}
-				else
+				} else
 				{
 					if (vBox.getChildren().size() < 3)
 					{
 						if (pawnImageView != null)
 							vBox.getChildren().add(pawnImageView);
-					}
-					else
+					} else
 					{
 						if (pawnImageView != null)
 							hBox.getChildren().add(pawnImageView);
@@ -699,14 +695,12 @@ public class BoardController
 								case 5, 6 -> 10;
 								default -> 5;
 							};
-				}
-				else
+				} else
 				{
 					if (player.getPosition() == 10)
 					{
 						size = 15;
-					}
-					else
+					} else
 					{
 						size = switch (children.size())
 								{
@@ -794,13 +788,41 @@ public class BoardController
 				if (contract.getOwner() == null)
 				{
 					square.getChildren().get(1).setStyle("-fx-border-width: 0");
-				}
-				else
+				} else
 				{
 					square.getChildren().get(1)
 							.setStyle(
 									"-fx-border-color: " + GUIUtils.getPawnColor().get(contract.getOwner().getPawn())
 											+ ";-fx-border-width: 2");
+					if (contract instanceof PropertyContract)
+					{
+						int numberOfHouses = ((PropertyContract) contract).getNumberOfHouses();
+						HBox houseHolder = (HBox) square.getChildren().get(2);
+						houseHolder.getChildren().clear();
+						if (numberOfHouses == 0) ;
+						else if (numberOfHouses != 5)
+						{
+							houseHolder.setPrefSize(50, 20);
+							houseHolder.setAlignment(Pos.CENTER);
+							for (int j = 0; j < numberOfHouses; j++)
+							{
+								String imagePath = "/images/houses/house.png";
+								Image houseImage = new Image(String.valueOf(getClass().getResource(imagePath)));
+								ImageView houseImageView = new ImageView(houseImage);
+								houseImageView.setFitWidth(12);
+								houseImageView.setFitHeight(20);
+								houseHolder.getChildren().add(houseImageView);
+							}
+						} else
+						{
+							String imagePath = "/images/houses/hotel.png";
+							Image houseImage = new Image(String.valueOf(getClass().getResource(imagePath)));
+							ImageView houseImageView = new ImageView(houseImage);
+							houseImageView.setFitWidth(20);
+							houseImageView.setFitHeight(20);
+							houseHolder.getChildren().add(houseImageView);
+						}
+					}
 				}
 			}
 		}
