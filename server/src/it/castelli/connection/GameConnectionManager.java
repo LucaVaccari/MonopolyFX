@@ -81,7 +81,6 @@ public class GameConnectionManager
 		if (playerConnections.isEmpty())
 		{
 			ConnectionManager.getInstance().removeGame(gameCode);
-			System.out.println("Removed game with code " + gameCode);
 		}
 		else
 		{
