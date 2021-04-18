@@ -35,7 +35,9 @@ public abstract class Contract
 	 */
 	protected boolean mortgaged;
 
-	protected Contract() {}
+	protected Contract()
+	{
+	}
 
 	/**
 	 * Getter for the name of the property
@@ -115,12 +117,14 @@ public abstract class Contract
 	 *
 	 * @return The revenue of the property when a player lands on it
 	 */
-	public int getRevenue() {return 0;}
+	public int getRevenue()
+	{
+		return 0;
+	}
 
 	/**
-	 * Returns a hash code value for the object. This method is supported for
-	 * the benefit of hash
-	 * tables such as those provided by {@link HashMap}.
+	 * Returns a hash code value for the object. This method is supported for the benefit of hash tables such as those
+	 * provided by {@link HashMap}.
 	 * <p>
 	 * The general contract of {@code hashCode} is:
 	 * <ul>
@@ -142,9 +146,8 @@ public abstract class Contract
 	 * </ul>
 	 *
 	 * @return a hash code value for this object.
-	 * @implSpec As far as is reasonably practical, the {@code hashCode}
-	 * method defined by class
-	 * {@code Object} returns distinct integers for distinct objects.
+	 * @implSpec As far as is reasonably practical, the {@code hashCode} method defined by class {@code Object}
+	 * 		returns distinct integers for distinct objects.
 	 * @see Object#equals(Object)
 	 * @see System#identityHashCode
 	 */
@@ -158,8 +161,7 @@ public abstract class Contract
 	/**
 	 * Indicates whether some other object is "equal to" this one.
 	 * <p>
-	 * The {@code equals} method implements an equivalence relation on
-	 * non-null object references:
+	 * The {@code equals} method implements an equivalence relation on non-null object references:
 	 * <ul>
 	 * <li>It is <i>reflexive</i>: for any non-null reference value
 	 *     {@code x}, {@code x.equals(x)} should return
@@ -196,9 +198,7 @@ public abstract class Contract
 	 * that equal objects must have equal hash codes.
 	 *
 	 * @param obj the reference object with which to compare.
-	 * @return {@code true} if this object is the same as the obj argument;
-	 * {@code false}
-	 * otherwise.
+	 * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
 	 * @see #hashCode()
 	 * @see HashMap
 	 */
@@ -215,19 +215,13 @@ public abstract class Contract
 	}
 
 	/**
-	 * Returns a string representation of the object. In general, the
-	 * {@code toString} method returns a string that
-	 * "textually represents" this object. The result should
-	 * be a concise but informative representation that is easy for a
-	 * person to read.
-	 * It is recommended that all subclasses override this method.
+	 * Returns a string representation of the object. In general, the {@code toString} method returns a string that
+	 * "textually represents" this object. The result should be a concise but informative representation that is easy
+	 * for a person to read. It is recommended that all subclasses override this method.
 	 * <p>
-	 * The {@code toString} method for class {@code Object}
-	 * returns a string consisting of the name of the class of which the
-	 * object is an instance, the at-sign character `{@code @}', and
-	 * the unsigned hexadecimal representation of the hash code of the
-	 * object. In other words, this method returns a string equal to the
-	 * value of:
+	 * The {@code toString} method for class {@code Object} returns a string consisting of the name of the class of
+	 * which the object is an instance, the at-sign character `{@code @}', and the unsigned hexadecimal representation
+	 * of the hash code of the object. In other words, this method returns a string equal to the value of:
 	 * <blockquote>
 	 * <pre>
 	 * getClass().getName() + '@' + Integer.toHexString(hashCode())

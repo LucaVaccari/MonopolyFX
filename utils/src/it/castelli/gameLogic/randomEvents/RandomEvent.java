@@ -4,10 +4,8 @@ import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 
 /**
- * Abstract class from which each RandomEvent derives. Represent a
- * RandomEvent, a card (either a
- * Chance or a CommunityChest) which can be drawn and will make the player do
- * something random
+ * Abstract class from which each RandomEvent derives. Represent a RandomEvent, a card (either a Chance or a
+ * CommunityChest) which can be drawn and will make the player do something random
  */
 public abstract class RandomEvent
 {
@@ -23,8 +21,9 @@ public abstract class RandomEvent
 
 	/**
 	 * Generic constructor for the RandomEvent
-	 *  @param message The message shown to the player when drawing the card
-	 * @param type The type of random event (chance or community chest)
+	 *
+	 * @param message The message shown to the player when drawing the card
+	 * @param type    The type of random event (chance or community chest)
 	 */
 	public RandomEvent(String message, RandomEventType type)
 	{

@@ -7,9 +7,9 @@
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="503.0" prefWidth="600.0"
-			style="-fx-background-color: #1f802c;" stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/16"
-			xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.LobbyController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="503.0"
+			prefWidth="600.0" style="-fx-background-color: #1f802c;" stylesheets="@Style/style.css"
+			xmlns="http://javafx.com/javafx/16" fx:controller="it.castelli.gui.controllers.LobbyController">
 	<HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="267.0"
 		  prefWidth="600.0" spacing="10.0" stylesheets="@Style/style.css" AnchorPane.bottomAnchor="10.0"
 		  AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -26,19 +26,19 @@
 				</effect>
 			</Button>
 		</VBox>
-        <VBox HBox.hgrow="ALWAYS">
-            <Label fx:id="codeLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                   prefHeight="37.0" prefWidth="337.0" style="-fx-font-size: 20;" text="Codice: "
-                   VBox.vgrow="ALWAYS">
-                <padding>
-                    <Insets left="10.0"/>
-                </padding>
-                <font>
-                    <Font size="15.0"/>
-                </font>
-            </Label>
-            <ChatComponent fx:id="chat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                           prefHeight="400.0" prefWidth="417.0" stylesheets="@Style/style.css" VBox.vgrow="ALWAYS"/>
-        </VBox>
+		<VBox HBox.hgrow="ALWAYS">
+			<Label fx:id="codeLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+				   prefHeight="37.0" prefWidth="337.0" style="-fx-font-size: 20;" text="Codice: "
+				   VBox.vgrow="ALWAYS">
+				<padding>
+					<Insets left="10.0"/>
+				</padding>
+				<font>
+					<Font size="15.0"/>
+				</font>
+			</Label>
+			<ChatComponent fx:id="chat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+						   prefHeight="400.0" prefWidth="417.0" stylesheets="@Style/style.css" VBox.vgrow="ALWAYS"/>
+		</VBox>
 	</HBox>
 </AnchorPane>

@@ -9,31 +9,31 @@ import it.castelli.gameLogic.contracts.Contract;
  */
 public class SellContractClientMessage implements Message
 {
-    /**
-     * The game code
-     */
-    private final int gameCode;
+	/**
+	 * The game code
+	 */
+	private final int gameCode;
 
-    /**
-     * The contract to sell
-     */
-    private final Contract contract;
+	/**
+	 * The contract to sell
+	 */
+	private final Contract contract;
 
-    /**
-     * Constructor for SellContractClientMessage
-     *
-     * @param gameCode The game code
-     * @param contract The contract to sell
-     */
-    public SellContractClientMessage(int gameCode, Contract contract)
-    {
-        this.gameCode = gameCode;
-        this.contract = contract;
-    }
+	/**
+	 * Constructor for SellContractClientMessage
+	 *
+	 * @param gameCode The game code
+	 * @param contract The contract to sell
+	 */
+	public SellContractClientMessage(int gameCode, Contract contract)
+	{
+		this.gameCode = gameCode;
+		this.contract = contract;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        // do nothing
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		// do nothing
+	}
 }

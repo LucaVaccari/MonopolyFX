@@ -13,6 +13,7 @@ import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 
 /**
@@ -74,6 +75,7 @@ public class StationViewController
 			onlyIfOwnedPane.setDisable(true);
 		}
 
+		sellButton.setTooltip(new Tooltip("Vendete questa stazione"));
 		sellButton.setOnAction(event -> {
 			ClientMain.getConnection().send(ClientMessages.SELL_CONTRACT_MESSAGE_NAME, Serializer
 					.toJson(new SellContractClientMessage(Game.getGameCode(), contract)));
@@ -83,6 +85,9 @@ public class StationViewController
 		if (contract.isMortgaged())
 			mortgageButton.setDisable(!Game.getPlayer().hasMoney(contract.getMortgageValue() * 11 / 10));
 
+		mortgageButton.setTooltip(new Tooltip(contract.isMortgaged() ?
+				"Rimuovete l'ipoteca e riottenete il terreno (pagando il 10% in più del costo dell'ipoteca)" :
+				"Ipotecate il terreno"));
 		mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 		mortgageButton.setOnAction(event -> {
 			if (contract.isMortgaged())

@@ -1,28 +1,18 @@
 package it.castelli.gui.customComponents;
 
-import it.castelli.ClientMain;
-import it.castelli.Game;
-import it.castelli.connection.messages.*;
 import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gui.FXMLFileLoader;
 import it.castelli.gui.GUIUtils;
-import it.castelli.gui.scene.SceneManager;
-import it.castelli.gui.scene.SceneType;
-import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 
 public class PropertyViewComponent extends AnchorPane
 {
 	public static String PROPERTY_VIEW_FXML_PATH = "/FXMLs/propertyViewComponent.fxml";
-
 
 	@FXML
 	private Label valueLabel;
@@ -42,7 +32,6 @@ public class PropertyViewComponent extends AnchorPane
 	private Label revenueHotelLabel;
 	@FXML
 	private Label houseCostLabel;
-
 
 	public PropertyViewComponent(PropertyContract contract)
 	{
@@ -82,7 +71,6 @@ public class PropertyViewComponent extends AnchorPane
 
 
 	}
-
 
 
 }

@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
-<fx:root prefHeight="83.0" prefWidth="218.0" style="-fx-border-color: #000000; -fx-border-width: 3;" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-        <ImageView fx:id="pawnImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
-        <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-            <Label fx:id="playerNameLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Player name" VBox.vgrow="ALWAYS">
-            <padding>
-               <Insets left="10.0" />
-            </padding></Label>
-         <Group layoutX="50.0" VBox.vgrow="ALWAYS">
-            <children>
-                  <Label fx:id="playerMoneyLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="PlayerMoney">
-                  <padding>
-                     <Insets left="10.0" />
-                  </padding>
-               </Label>
-               <ImageView fx:id="prisonImageView" fitHeight="24.0" fitWidth="46.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" x="100.0">
-                  <image>
-                     <Image url="@../images/prison.png" />
-                  </image>
-               </ImageView>
-            </children>
-         </Group>
-        </VBox>
-    </HBox>
+<fx:root xmlns:fx="http://javafx.com/fxml/1" prefHeight="83.0" prefWidth="218.0" style="-fx-border-color: #000000; -fx-border-width: 3;"
+		 type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1">
+	<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="10.0"
+		  AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+		<ImageView fx:id="pawnImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true"
+				   HBox.hgrow="ALWAYS"/>
+		<VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+			  prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+			<Label fx:id="playerNameLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+				   text="Player name" VBox.vgrow="ALWAYS">
+				<padding>
+					<Insets left="10.0"/>
+				</padding>
+			</Label>
+			<Group layoutX="50.0" VBox.vgrow="ALWAYS">
+				<children>
+					<Label fx:id="playerMoneyLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+						   text="PlayerMoney">
+						<padding>
+							<Insets left="10.0"/>
+						</padding>
+					</Label>
+					<ImageView fx:id="prisonImageView" fitHeight="24.0" fitWidth="46.0" layoutY="-3.0"
+							   pickOnBounds="true" preserveRatio="true" x="100.0">
+						<image>
+							<Image url="@../images/prison.png"/>
+						</image>
+					</ImageView>
+				</children>
+			</Group>
+		</VBox>
+	</HBox>
 </fx:root>

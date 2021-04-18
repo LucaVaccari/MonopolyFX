@@ -25,9 +25,7 @@ public class StationContract extends Contract implements Serializable
 	/**
 	 * Getter for the revenue
 	 *
-	 * @return The revenue of the station when a player lands on it (taking
-	 * care of the other
-	 * stations)
+	 * @return The revenue of the station when a player lands on it (taking care of the other stations)
 	 */
 	@Override
 	public int getRevenue()
@@ -38,8 +36,7 @@ public class StationContract extends Contract implements Serializable
 	/**
 	 * Get the revenue based on the number of station taken as int
 	 *
-	 * @param numberOfStation The number of station from which to calculate
-	 *                        the revenue
+	 * @param numberOfStation The number of station from which to calculate the revenue
 	 * @return The revenue calculated
 	 */
 	public int getRevenueFromNumberOfStations(int numberOfStation)

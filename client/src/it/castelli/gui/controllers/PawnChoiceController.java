@@ -59,7 +59,7 @@ public class PawnChoiceController
 		{
 			Game.getPlayer().setPawn(pawn);
 			ClientMain.getConnection().send(ClientMessages.CHOOSE_PAWN_MESSAGE_NAME,
-			                                Serializer.toJson(new ChoosePawnClientMessage(pawn, Game.getGameCode())));
+					Serializer.toJson(new ChoosePawnClientMessage(pawn, Game.getGameCode())));
 			Platform.runLater(() -> {
 				SceneManager.getInstance().showScene(SceneType.LOBBY);
 			});
@@ -67,8 +67,8 @@ public class PawnChoiceController
 		else
 		{
 			AlertUtil.showInformationAlert("Errore", "pedina gia' stata scelta",
-			                               "la pedina che hai selezionato non e' disponibile,seleziona un'altra " +
-			                               "pedina");
+					"la pedina che hai selezionato non e' disponibile,seleziona un'altra " +
+							"pedina");
 		}
 	}
 }

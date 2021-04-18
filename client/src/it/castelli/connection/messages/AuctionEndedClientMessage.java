@@ -23,8 +23,8 @@ public class AuctionEndedClientMessage implements Message
 			Auction auction = Game.getGameManager().getAuction();
 			Player winningPlayer = auction.getPlayer();
 			String content = winningPlayer == null ?
-			                 "Nessuno ha vinto l'asta. Il terreno resta alla banca" : 
-			                 winningPlayer + " ha ottenuto " + auction.getContract() + "!";
+					"Nessuno ha vinto l'asta. Il terreno resta alla banca" :
+					winningPlayer + " ha ottenuto " + auction.getContract() + "!";
 			AlertUtil.showInformationAlert("Fine asta", "L'asta si e' conclusa", content);
 
 			Game.getGameManager().setAuction(null);

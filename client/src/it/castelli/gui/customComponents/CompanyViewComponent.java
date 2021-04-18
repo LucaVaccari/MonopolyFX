@@ -1,9 +1,7 @@
 package it.castelli.gui.customComponents;
 
 import it.castelli.gameLogic.contracts.CompanyContract;
-import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gui.FXMLFileLoader;
-import it.castelli.gui.GUIUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -58,7 +56,6 @@ public class CompanyViewComponent extends AnchorPane
 
 
 	}
-
 
 
 }

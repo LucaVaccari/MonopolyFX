@@ -29,7 +29,7 @@ public class Game
 	private static int gameCode;
 	/**
 	 * counter of dice results equals
-    */
+	 */
 	private static int doubleDiceResult;
 
 	/**
@@ -135,17 +135,24 @@ public class Game
 			throwDiceInPrison += 1;
 			if (!lastDiceResult.areResultsEquals() && throwDiceInPrison == 3)
 			{
-				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), true)));
-				Platform.runLater(()->AlertUtil.showInformationAlert("Usciti di prigione","Siete usciti di prigione","Siete usciti di prigione pagando 50 M"));
+				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer
+						.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), true)));
+				Platform.runLater(() -> AlertUtil
+						.showInformationAlert("Usciti di prigione", "Siete usciti di prigione", "Siete usciti di " +
+								"prigione pagando 50 M"));
 				Game.getGameManager().getCurrentRound().setDiceThrown(false);
-				Platform.runLater(()->BoardController.getInstance().update());
+				Platform.runLater(() -> BoardController.getInstance().update());
 				player.setInPrison(false);
-			} else if (lastDiceResult.areResultsEquals())
+			}
+			else if (lastDiceResult.areResultsEquals())
 			{
 				throwDiceInPrison = 0;
-				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), false)));
+				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer
+						.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), false)));
 
-				Platform.runLater(()->AlertUtil.showInformationAlert("Usciti di prigione","Siete usciti di prigione","Siete usciti di prigione tirando i dadi e facendo doppio. Complimenti!"));
+				Platform.runLater(() -> AlertUtil
+						.showInformationAlert("Usciti di prigione", "Siete usciti di prigione", "Siete usciti di " +
+								"prigione tirando i dadi e facendo doppio. Complimenti!"));
 			}
 		}
 		else
@@ -156,14 +163,19 @@ public class Game
 				doubleDiceResult = 0;
 			if (doubleDiceResult == 3)
 			{
-				ClientMain.getConnection().send(ClientMessages.GO_TO_JAIL_MESSAGE_NAME, Serializer.toJson(new GoToJailClientMessage(Game.getGameCode(), player)));
-				Platform.runLater(()->AlertUtil.showInformationAlert("Finiti in prigione","Siete finiti in prigione","Siete finiti in prigione dopo aver fatto tre volte il tiro dei dadi doppio"));
+				ClientMain.getConnection().send(ClientMessages.GO_TO_JAIL_MESSAGE_NAME, Serializer
+						.toJson(new GoToJailClientMessage(Game.getGameCode(), player)));
+				Platform.runLater(() -> AlertUtil
+						.showInformationAlert("Finiti in prigione", "Siete finiti in prigione", "Siete finiti in " +
+								"prigione dopo aver fatto tre volte il tiro dei dadi doppio"));
 
 			}
 			else
 			{
-				Message moveMessage = new MovePlayerClientMessage(Game.getPlayer(), lastDiceResult.resultsSum(), Game.getGameCode());
-				ClientMain.getConnection().send(ClientMessages.MOVE_PLAYER_MESSAGE_NAME, Serializer.toJson(moveMessage));
+				Message moveMessage =
+						new MovePlayerClientMessage(Game.getPlayer(), lastDiceResult.resultsSum(), Game.getGameCode());
+				ClientMain.getConnection()
+						.send(ClientMessages.MOVE_PLAYER_MESSAGE_NAME, Serializer.toJson(moveMessage));
 //
 //			}
 			}
@@ -195,7 +207,9 @@ public class Game
 	 *
 	 * @param throwDiceInPrison the int of number of dice thrown
 	 */
-	public void setThrowDiceInPrison(int throwDiceInPrison){Game.throwDiceInPrison = throwDiceInPrison;
+	public void setThrowDiceInPrison(int throwDiceInPrison)
+	{
+		Game.throwDiceInPrison = throwDiceInPrison;
 	}
 
 	/**

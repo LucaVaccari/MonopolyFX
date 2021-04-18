@@ -39,7 +39,7 @@ public class VictoryClientMessage implements Message
 				"GG EZ",
 				"Brao",
 				"Avete giocato bene",
-				};
+		};
 
 		Random random = new Random();
 		return sentences[random.nextInt(sentences.length)];

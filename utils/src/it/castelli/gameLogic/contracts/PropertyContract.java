@@ -8,9 +8,7 @@ import java.io.Serializable;
 public class PropertyContract extends Contract implements Serializable
 {
 	/**
-	 * The list of revenues (revenues of the property when a player lands on
-	 * it) for each house
-	 * quantity
+	 * The list of revenues (revenues of the property when a player lands on it) for each house quantity
 	 */
 	private final int[] revenues;
 	/**
@@ -22,24 +20,21 @@ public class PropertyContract extends Contract implements Serializable
 	 */
 	private final int houseCost;
 	/**
-	 * The number of houses bought by the player (5 houses = hotel)
-	 */
-	private int numberOfHouses = 0;
-
-	/**
 	 * The number of PropertyContracts of tha same color in the game
 	 */
 	private final int colorSetContractNumber;
+	/**
+	 * The number of houses bought by the player (5 houses = hotel)
+	 */
+	private int numberOfHouses = 0;
 
 	/**
 	 * Constructor of the PropertyContract
 	 *
 	 * @param name                   The name of the contract
 	 * @param value                  The cost of the property when buying from the bank
-	 * @param revenueBase            The revenue of the property when a player lands
-	 *                               on it when the
-	 *                               property
-	 *                               has no houses
+	 * @param revenueBase            The revenue of the property when a player lands on it when the property has no
+	 *                               houses
 	 * @param revenue1House          The revenue with 1 house
 	 * @param revenue2Houses         The revenue with 2 houses
 	 * @param revenue3Houses         The revenue with 3 houses
@@ -69,8 +64,7 @@ public class PropertyContract extends Contract implements Serializable
 	}
 
 	/**
-	 * Add houses to the property (this function DOES NOT take money from
-	 * player)
+	 * Add houses to the property (this function DOES NOT take money from player)
 	 *
 	 * @param numberOfHouses The number of houses to add
 	 */
@@ -83,8 +77,7 @@ public class PropertyContract extends Contract implements Serializable
 	}
 
 	/**
-	 * Revome houses from the property (this function DOES NOT give money to
-	 * the player)
+	 * Revome houses from the property (this function DOES NOT give money to the player)
 	 *
 	 * @param numberOfHouses The number of houses to remove
 	 */
@@ -119,9 +112,7 @@ public class PropertyContract extends Contract implements Serializable
 	/**
 	 * Getter for the revenue
 	 *
-	 * @return The revenue of the property when a player lands on it (taking
-	 * care of the other
-	 * properties)
+	 * @return The revenue of the property when a player lands on it (taking care of the other properties)
 	 */
 	@Override
 	public int getRevenue()

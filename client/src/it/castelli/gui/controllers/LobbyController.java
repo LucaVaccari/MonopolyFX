@@ -15,6 +15,7 @@ import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 
 /**
@@ -48,17 +49,20 @@ public class LobbyController
 	{
 		instance = this;
 
+		backButton.setTooltip(new Tooltip("Tornate indietro al menu (uscendo dalla partita)"));
 		backButton.setOnAction(event -> {
 			SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 			ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
 					Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 		});
 
+		Tooltip.install(codeLabel, new Tooltip("Condividete questo codice con i Vostri amici!"));
 		codeLabel.setText("Codice: " + Game.getGameCode());
 
 		playButton.setVisible(false);
 		playButton.setDisable(true);
 
+		playButton.setTooltip(new Tooltip("Iniziate la partita (nessun altro potrà piu' entrare)"));
 		playButton.setOnAction(
 				event -> {
 					boolean canStart = true;

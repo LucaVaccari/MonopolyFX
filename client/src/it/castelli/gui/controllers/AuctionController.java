@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 
 /**
@@ -59,6 +60,7 @@ public class AuctionController
 
 		offerTextField.setOnAction(this::offer);
 		offerButton.setOnAction(this::offer);
+		offerButton.setTooltip(new Tooltip("Proponete la Vostra offerta"));
 	}
 
 	/**

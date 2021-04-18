@@ -20,7 +20,7 @@ sos
 - Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata
 - TextField più grosso nell'asta
 - BORDI TONDIIIIII
-- Tooltip a tutti i pulsanti che esistono
+- Sezione con guida
 
 - votekick (implementare da client / TO TEST)
 - sconfitta (implementare da client / TO TEST)

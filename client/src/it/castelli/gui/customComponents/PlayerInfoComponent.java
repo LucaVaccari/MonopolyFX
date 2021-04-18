@@ -31,18 +31,6 @@ public class PlayerInfoComponent extends AnchorPane
 	@FXML
 	private ImageView prisonImageView;
 
-	public static PlayerInfoComponent getInstance()
-	{
-		return instance;
-	}
-
-	@FXML
-	private void initialize()
-	{
-		instance = this;
-		prisonImageView.setVisible(false);
-	}
-
 	public PlayerInfoComponent(Player player)
 	{
 		super();
@@ -60,18 +48,16 @@ public class PlayerInfoComponent extends AnchorPane
 		}
 	}
 
-	/**
-	 * Update all GUI based on the player passed
-	 * @param player The player bound to this element
-	 */
-	private void setPlayer(Player player)
+	public static PlayerInfoComponent getInstance()
 	{
-		this.player = player;
-		if (player.getPawn() != null)
-			pawnImageView.setImage(
-					new Image(String.valueOf(getClass().getResource(GUIUtils.getPawnPaths().get(player.getPawn())))));
-		playerNameLabel.setText(player.getName());
-		playerMoneyLabel.setText(player.getMoney() + "M");
+		return instance;
+	}
+
+	@FXML
+	private void initialize()
+	{
+		instance = this;
+		prisonImageView.setVisible(false);
 	}
 
 	/**
@@ -85,6 +71,7 @@ public class PlayerInfoComponent extends AnchorPane
 
 	/**
 	 * Set whether is in prison or not, showing a small icon near the money
+	 *
 	 * @param inPrison Is the player in prison?
 	 */
 	public void setInPrison(boolean inPrison)
@@ -95,5 +82,20 @@ public class PlayerInfoComponent extends AnchorPane
 	public Player getPlayer()
 	{
 		return player;
+	}
+
+	/**
+	 * Update all GUI based on the player passed
+	 *
+	 * @param player The player bound to this element
+	 */
+	private void setPlayer(Player player)
+	{
+		this.player = player;
+		if (player.getPawn() != null)
+			pawnImageView.setImage(
+					new Image(String.valueOf(getClass().getResource(GUIUtils.getPawnPaths().get(player.getPawn())))));
+		playerNameLabel.setText(player.getName());
+		playerMoneyLabel.setText(player.getMoney() + "M");
 	}
 }

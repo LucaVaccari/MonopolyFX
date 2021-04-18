@@ -24,7 +24,7 @@ public class GenericClientMessage implements Message
 	 * Constructor for GenericClientMessage
 	 *
 	 * @param messageTitle The title of the message
-	 * @param messageBody The body of the message text
+	 * @param messageBody  The body of the message text
 	 */
 	public GenericClientMessage(String messageTitle, String messageBody)
 	{

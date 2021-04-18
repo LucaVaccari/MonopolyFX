@@ -38,13 +38,14 @@ public class PlayerPaidClientMessage implements Message
 	/**
 	 * Constructor for PlayerPaidClientMessage (do not use)
 	 *
-	 *  @param playerName   The name of the player that paid
+	 * @param playerName   The name of the player that paid
 	 * @param ownerName    The name of the owner of the contract
 	 * @param contractName The contract name
 	 * @param moneyPaid    The amount of money that got paid
 	 * @param ownerGotPaid Did the owner got paid? (else the bank got paid)
 	 */
-	public PlayerPaidClientMessage(String playerName, String ownerName, String contractName, int moneyPaid, boolean ownerGotPaid)
+	public PlayerPaidClientMessage(String playerName, String ownerName, String contractName, int moneyPaid,
+	                               boolean ownerGotPaid)
 	{
 		this.playerName = playerName;
 		this.ownerName = ownerName;
@@ -57,8 +58,8 @@ public class PlayerPaidClientMessage implements Message
 	public void onReceive(Connection connection, Player player)
 	{
 		Platform.runLater(() -> AlertUtil.showInformationAlert("Pedaggio pagato",
-		                                                       "Il giocatore " + playerName + " e' finito su " +
-		                                                       contractName + "!",
-		                                                       "Ha pagato " + moneyPaid + "M a " + ownerName));
+				"Il giocatore " + playerName + " e' finito su " +
+						contractName + "!",
+				"Ha pagato " + moneyPaid + "M a " + ownerName));
 	}
 }

@@ -11,25 +11,25 @@ import it.castelli.gui.controllers.AuctionController;
  */
 public class UpdateAuctionClientMessage implements Message
 {
-    /**
-     * The updated auction
-     */
-    private final Auction auction;
+	/**
+	 * The updated auction
+	 */
+	private final Auction auction;
 
-    /**
-     * Constructor for UpdateAuctionClientMessage (do not use)
-     *
-     * @param auction The updated auction
-     */
-    public UpdateAuctionClientMessage(Auction auction)
-    {
-        this.auction = auction;
-    }
+	/**
+	 * Constructor for UpdateAuctionClientMessage (do not use)
+	 *
+	 * @param auction The updated auction
+	 */
+	public UpdateAuctionClientMessage(Auction auction)
+	{
+		this.auction = auction;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        Game.getGameManager().setAuction(auction);
-        AuctionController.getInstance().setAuction(auction);
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		Game.getGameManager().setAuction(auction);
+		AuctionController.getInstance().setAuction(auction);
+	}
 }

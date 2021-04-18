@@ -21,6 +21,13 @@ public final class AlertUtil
 {
 	private static final LinkedList<Alert> alertQueue = new LinkedList<>();
 
+	/**
+	 * Private constructor to prevent instantiating
+	 */
+	private AlertUtil()
+	{
+	}
+
 	private static void showGenericAlert(Alert.AlertType alertType, String title, String header, String content)
 	{
 		Alert alert = new Alert(alertType);
@@ -66,7 +73,6 @@ public final class AlertUtil
 		alert.setContentText(contentText);
 		return alert.showAndWait();
 	}
-
 
 	/**
 	 * Shows a simple dialog message not interactive (with an ok button to close)
@@ -159,12 +165,5 @@ public final class AlertUtil
 			ClientMain.getConnection().send(ClientMessages.BUY_CONTRACT_MESSAGE_NAME, Serializer
 					.toJson(new BuyContractClientMessage(contract, Game.getPlayer(), false, Game.getGameCode())));
 		}
-	}
-
-	/**
-	 * Private constructor to prevent instantiating
-	 */
-	private AlertUtil()
-	{
 	}
 }

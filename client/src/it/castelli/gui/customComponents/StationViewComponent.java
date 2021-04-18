@@ -13,7 +13,6 @@ public class StationViewComponent extends AnchorPane
 {
 	public static String STATION_VIEW_FXML_PATH = "/FXMLs/stationViewComponent.fxml";
 
-
 	@FXML
 	private Label titleLabel;
 	@FXML
@@ -63,6 +62,4 @@ public class StationViewComponent extends AnchorPane
 				String.valueOf(contract.getRevenueFromNumberOfStations(4)));
 
 	}
-
-
 }
