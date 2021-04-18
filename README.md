@@ -19,6 +19,7 @@ sos
 - Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata (TO TEST)
 - mettere Thread.sleep() in giro
 - Sezione con guida
+- Quando si compra una casa, il messaggio dell operazione negata sta dietro le finestre
 
 - votekick (implementare da client / TO TEST)
 - sconfitta (implementare da client / TO TEST)
