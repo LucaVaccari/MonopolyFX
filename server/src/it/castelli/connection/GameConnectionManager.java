@@ -151,7 +151,6 @@ public class GameConnectionManager
 	public void updatePlayers()
 	{
 		if (gameManager.isInGame() && gameManager.getPlayers().size() == 1)
-		if (false)
 		{
 			sendAll(ServerMessages.VICTORY_MESSAGE_NAME, Serializer.toJson(new VictoryServerMessage()));
 			gameManager.endGame();
