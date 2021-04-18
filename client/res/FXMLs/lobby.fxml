@@ -15,7 +15,7 @@
 		<VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="380.0" prefWidth="313.0" spacing="10.0" stylesheets="@Style/style.css" HBox.hgrow="ALWAYS">
 			<Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" text="Indietro" VBox.vgrow="ALWAYS" />
 			<VBox fx:id="playerListView" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="294.0" prefWidth="378.0" VBox.vgrow="ALWAYS" />
-			<Button fx:id="playButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="46.0" prefWidth="290.0" text="Gioca">
+			<Button fx:id="playButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="46.0" prefWidth="290.0" text="Giocate">
 				<effect>
 					<InnerShadow blurType="GAUSSIAN" />
 				</effect>
