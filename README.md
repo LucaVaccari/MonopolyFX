@@ -13,7 +13,6 @@ sos
 - Resettare il TextField nello scambio e nell'asta (TO TEST)
 
 
-- BORDI TONDIIIIII
 - cambiare la vista della proprietà se è ipotecata
 - mettere le immagini delle case affianco al numero (con hotel)
 - messaggio per la conferma della vendita
