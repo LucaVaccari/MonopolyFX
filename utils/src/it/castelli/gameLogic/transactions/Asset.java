@@ -49,8 +49,9 @@ public class Asset
 		player.addMoney(money);
 		for (Contract contract : contracts)
 		{
-			contract.setOwner(player);
+			System.out.println("contract owner first: " + contract.getOwner().getName());
 			player.addContract(contract);
+			System.out.println("contract owner then: " + contract.getOwner().getName());
 		}
 	}
 }
