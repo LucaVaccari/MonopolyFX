@@ -13,13 +13,12 @@ sos
 - Resettare il TextField nello scambio e nell'asta (TO TEST)
 
 
-- mettere le immagini delle case affianco al numero (con hotel)
-- cambiare la vista della proprietà se è ipotecata
-- mettere Thread.sleep() in giro
-- messaggio per la conferma della vendita
-- Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata
-- TextField più grosso nell'asta
 - BORDI TONDIIIIII
+- cambiare la vista della proprietà se è ipotecata
+- mettere le immagini delle case affianco al numero (con hotel)
+- messaggio per la conferma della vendita
+- Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata (TO TEST)
+- mettere Thread.sleep() in giro
 - Sezione con guida
 
 - votekick (implementare da client / TO TEST)
