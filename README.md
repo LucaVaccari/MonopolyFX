@@ -12,7 +12,6 @@ sos
 - chiudere tutte le finestre quando parte uno scambio o un'asta (TO TEST)
 - Resettare il TextField nello scambio e nell'asta (TO TEST)
 
-
 - cambiare la vista della proprietà se è ipotecata
 - mettere le immagini delle case affianco al numero (con hotel)
 - messaggio per la conferma della vendita

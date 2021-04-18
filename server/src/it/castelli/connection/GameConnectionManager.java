@@ -150,8 +150,7 @@ public class GameConnectionManager
 
 	public void updatePlayers()
 	{
-		//TODO: uncomment line and remove if (false)
-//		if (gameManager.isInGame() && gameManager.getPlayers().size() == 1)
+		if (gameManager.isInGame() && gameManager.getPlayers().size() == 1)
 		if (false)
 		{
 			sendAll(ServerMessages.VICTORY_MESSAGE_NAME, Serializer.toJson(new VictoryServerMessage()));
@@ -230,7 +229,7 @@ public class GameConnectionManager
 					    !gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
 					{
 						sendAll(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage(
-								"Operazione negata",
+								"Affitto gratuito",
 								"Il terreno e' ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
 					}
 				}
