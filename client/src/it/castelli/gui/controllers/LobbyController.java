@@ -14,6 +14,7 @@ import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 /**
@@ -33,6 +34,8 @@ public class LobbyController
 	@FXML
 	private ChatComponent chat;
 	@FXML
+	private Label codeLabel;
+	@FXML
 	private VBox playerListView;
 
 	public static LobbyController getInstance()
@@ -48,8 +51,10 @@ public class LobbyController
 		backButton.setOnAction(event -> {
 			SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 			ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-			                                Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+					Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 		});
+
+		codeLabel.setText("Codice: " + Game.getGameCode());
 
 		playButton.setVisible(false);
 		playButton.setDisable(true);
@@ -67,12 +72,12 @@ public class LobbyController
 					}
 					if (canStart)
 						ClientMain.getConnection().send(ClientMessages.START_GAME_MESSAGE_NAME,
-						                                Serializer.toJson(new StartGameClientMessage(
-								                                Game.getGameCode())));
+								Serializer.toJson(new StartGameClientMessage(
+										Game.getGameCode())));
 					else
 						AlertUtil.showInformationAlert("Aspettate", "Non tutti i giocatori sono pronti",
-						                               "Alcuni giocatori stanno ancora scegliendo la pedina da " +
-						                               "utilizzare in gioco");
+								"Alcuni giocatori stanno ancora scegliendo la pedina da " +
+										"utilizzare in gioco");
 				});
 
 	}

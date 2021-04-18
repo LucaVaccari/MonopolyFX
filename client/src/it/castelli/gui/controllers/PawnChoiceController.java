@@ -62,7 +62,6 @@ public class PawnChoiceController
 			                                Serializer.toJson(new ChoosePawnClientMessage(pawn, Game.getGameCode())));
 			Platform.runLater(() -> {
 				SceneManager.getInstance().showScene(SceneType.LOBBY);
-				SceneManager.getInstance().getPrimaryStage().setTitle("MonopolyFX - Lobby: " + Game.getGameCode());
 			});
 		}
 		else
