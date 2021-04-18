@@ -65,6 +65,10 @@ public class ChatComponent extends AnchorPane
 
 	public void addMessage(String message)
 	{
-		messageListView.getItems().add(new Label(message));
+		Label messageLabel = new Label(message);
+		messageLabel.setWrapText(true);
+		messageLabel.setMaxWidth(messageListView.getWidth());
+		messageLabel.setMaxHeight(Double.MAX_VALUE);
+		messageListView.getItems().add(messageLabel);
 	}
 }
