@@ -426,9 +426,9 @@ public class BoardController
 			squares[2] = communityChestSquare1;
 			squares[17] = communityChestSquare2;
 			squares[33] = communityChestSquare3;
-			Tooltip.install(communityChestSquare1, new Tooltip("Probabilità"));
-			Tooltip.install(communityChestSquare2, new Tooltip("Probabilità"));
-			Tooltip.install(communityChestSquare3, new Tooltip("Probabilità"));
+			Tooltip.install(communityChestSquare1, new Tooltip("Probabilita'"));
+			Tooltip.install(communityChestSquare2, new Tooltip("Probabilita'"));
+			Tooltip.install(communityChestSquare3, new Tooltip("Probabilita'"));
 
 			// TAXES
 			squares[4] = patrimonialTaxSquare;
@@ -470,11 +470,11 @@ public class BoardController
 						"Non potete finire il turno senza tirare prima i dadi.");
 		});
 
-		leaveGameButton.setTooltip(new Tooltip("Abbandonante la partita corrente (non potrete più rientrare)"));
+		leaveGameButton.setTooltip(new Tooltip("Abbandonate la partita corrente (non potrete piu' rientrare)"));
 		leaveGameButton.setOnAction(event -> {
 			Optional<ButtonType> confirm =
 					AlertUtil.showConfirmationAlert("Conferma", "Volete davvero uscire?",
-							"Non potrete più rientrare nella partita. Siete veramente sicuri?");
+							"Non potrete piu' rientrare nella partita. Siete veramente sicuri?");
 			if (confirm.isPresent())
 			{
 				if (confirm.get().equals(ButtonType.OK))
@@ -491,6 +491,11 @@ public class BoardController
 		});
 
 		Tooltip.install(moneyLabel, new Tooltip("I Vostri soldi"));
+		Tooltip.install(die1Image, new Tooltip("Dado 1"));
+		Tooltip.install(die2Image, new Tooltip("Dado 2"));
+		Tooltip.install(throwDiceButton, new Tooltip("Schiacciate per lanciare i dadi"));
+		Tooltip.install(ownedPropertiesPane, new Tooltip("Le Vostre proprieta'"));
+
 	}
 
 	/**

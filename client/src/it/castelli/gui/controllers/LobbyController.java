@@ -62,7 +62,7 @@ public class LobbyController
 		playButton.setVisible(false);
 		playButton.setDisable(true);
 
-		playButton.setTooltip(new Tooltip("Iniziate la partita (nessun altro potrà piu' entrare)"));
+		playButton.setTooltip(new Tooltip("Iniziate la partita (nessun altro potra' piu' entrare)"));
 		playButton.setOnAction(
 				event -> {
 					boolean canStart = true;

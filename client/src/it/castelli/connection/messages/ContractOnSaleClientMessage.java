@@ -34,7 +34,7 @@ public class ContractOnSaleClientMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		Platform.runLater(() -> showSuggestionOfBuy("Proprietà", contract.getName() + " e' in vendita!",
+		Platform.runLater(() -> showSuggestionOfBuy("Proprieta'", contract.getName() + " e' in vendita!",
 				"Volete comprare la proprieta' o metterla all'asta?", contract));
 
 	}

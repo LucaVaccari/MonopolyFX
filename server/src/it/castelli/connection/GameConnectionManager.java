@@ -55,7 +55,7 @@ public class GameConnectionManager
 		else
 		{
 			connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage(
-					"Errore", "Non potete unirvi alla partita, la lobby e' piena oppure la partita e' già iniziata")));
+					"Errore", "Non potete unirvi alla partita, la lobby e' piena oppure la partita e' gia' iniziata")));
 		}
 	}
 
