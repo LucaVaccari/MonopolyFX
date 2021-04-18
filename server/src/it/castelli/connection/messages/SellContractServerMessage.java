@@ -51,6 +51,9 @@ public class SellContractServerMessage implements Message
             if (((PropertyContract) contractToSell).getNumberOfHouses() != 0)
                 isSellable = false;
 
+        if (contractToSell.isMortgaged())
+            isSellable = false;
+
         if (isSellable)
         {
             contractToSell.setOwner(null);
@@ -59,7 +62,7 @@ public class SellContractServerMessage implements Message
         }
         else
         {
-            connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage("Operazione negata", "Non potete vendere questa proprieta' perchè vi sono ancora delle case o un albergo! Per vendere la proprieta' vendere prima le case o l'albergo.")));
+            connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage("Operazione negata", "Non potete vendere questa proprieta' perchè vi sono ancora delle case o un albergo oppure è ipotecata!")));
         }
 
         gameConnectionManager.updatePlayers();
