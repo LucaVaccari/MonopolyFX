@@ -33,6 +33,9 @@ public class OwnedTerrainViewController
 	{
 		ownedTerrainViewFlowPane.getChildren().clear();
 		for (Contract contract : Game.getPlayer().getContracts())
+		{
+			System.out.println("contract name:"+contract.getName()+" contract owner: " +contract.getOwner().getName());
 			ownedTerrainViewFlowPane.getChildren().add(new SmallTerrainViewComponent(contract));
+		}
 	}
 }
