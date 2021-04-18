@@ -82,13 +82,14 @@ public class AuctionController
 	{
 		this.auction = auction;
 		Platform.runLater(() -> {
+			update();
+			terrainVBox.getChildren().clear();
 			if (auction.getContract() instanceof PropertyContract)
 				terrainVBox.getChildren().add(new PropertyViewComponent((PropertyContract) auction.getContract()));
 			else if (auction.getContract() instanceof CompanyContract)
 				terrainVBox.getChildren().add(new CompanyViewComponent((CompanyContract) auction.getContract()));
 			else
 				terrainVBox.getChildren().add(new StationViewComponent((StationContract) auction.getContract()));
-			update();
 		});
 	}
 
