@@ -18,6 +18,7 @@ public class GoToJailSquare implements Square
 	public void interact(Player player, GameManager gameManager)
 	{
 		player.setInPrison(true);
+		player.setLastEncounteredEvent("Prigione", "Andate in prigione direttamente e senza passare dal Via!");
 		player.setPosition(10, false);
 	}
 
