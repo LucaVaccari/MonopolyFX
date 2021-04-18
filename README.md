@@ -20,6 +20,8 @@ sos
 - mettere Thread.sleep() in giro
 - Sezione con guida
 - Quando si compra una casa, il messaggio dell operazione negata sta dietro le finestre
+- Prigione non funziona correttamente
+- Non viene aggiornato l owner dopo lo scambio
 
 - votekick (implementare da client / TO TEST)
 - sconfitta (implementare da client / TO TEST)

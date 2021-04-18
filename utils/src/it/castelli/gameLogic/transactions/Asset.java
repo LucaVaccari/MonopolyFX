@@ -49,6 +49,7 @@ public class Asset
 		player.addMoney(money);
 		for (Contract contract : contracts)
 		{
+			contract.setOwner(player);
 			player.addContract(contract);
 		}
 	}
