@@ -797,7 +797,6 @@ public class BoardController
 				}
 				else
 				{
-					System.out.println("contract name:"+contract.getName()+" contract owner: " +contract.getOwner().getName());
 					square.getChildren().get(1)
 							.setStyle(
 									"-fx-border-color: " + GUIUtils.getPawnColor().get(contract.getOwner().getPawn())
