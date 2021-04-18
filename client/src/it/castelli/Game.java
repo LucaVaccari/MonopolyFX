@@ -135,6 +135,7 @@ public class Game
 			throwDiceInPrison += 1;
 			if (!lastDiceResult.areResultsEquals() && throwDiceInPrison == 3)
 			{
+				throwDiceInPrison = 0;
 				ClientMain.getConnection().send(ClientMessages.EXIT_FROM_JAIL_MESSAGE_NAME, Serializer
 						.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), true)));
 				Platform.runLater(() -> AlertUtil

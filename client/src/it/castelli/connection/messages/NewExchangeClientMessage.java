@@ -2,7 +2,9 @@ package it.castelli.connection.messages;
 
 import it.castelli.Game;
 import it.castelli.connection.Connection;
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
+import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gameLogic.transactions.Exchange;
 import it.castelli.gui.controllers.ExchangeController;
 import it.castelli.gui.scene.SceneManager;
