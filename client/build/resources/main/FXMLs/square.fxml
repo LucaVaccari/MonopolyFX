@@ -2,6 +2,6 @@
 
 <?import javafx.scene.image.ImageView?>
 <fx:root xmlns:fx="http://javafx.com/fxml"
-         xmlns="http://javafx.com/javafx"
-         type="ImageView">
+		 xmlns="http://javafx.com/javafx"
+		 type="ImageView">
 </fx:root>

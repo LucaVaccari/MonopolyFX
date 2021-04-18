@@ -1,5 +1,6 @@
 package it.castelli.gameLogic.transactions;
 
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 
@@ -35,23 +36,23 @@ public class Asset
 		this.contracts = contracts;
 	}
 
-	public void removeFromPlayer(Player player)
+	public void removeFromPlayer(Player player, GameManager gameManager)
 	{
 		player.removeMoney(money);
 		for (Contract contract : contracts)
 		{
-			player.removeContract(contract);
+			Contract contractToRemove = gameManager.getSameContract(contract);
+			player.removeContract(contractToRemove);
 		}
 	}
 
-	public void addToPlayer(Player player)
+	public void addToPlayer(Player player, GameManager gameManager)
 	{
 		player.addMoney(money);
 		for (Contract contract : contracts)
 		{
-			System.out.println("contract owner first: " + contract.getOwner().getName());
-			player.addContract(contract);
-			System.out.println("contract owner then: " + contract.getOwner().getName());
+			Contract contractToAdd = gameManager.getSameContract(contract);
+			player.addContract(contractToAdd);
 		}
 	}
 }

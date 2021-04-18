@@ -185,6 +185,7 @@ public class Player
 	public void removeContract(Contract contract)
 	{
 		somethingChanged = true;
+		contract.setOwner(null);
 		contracts.remove(contract);
 	}
 
