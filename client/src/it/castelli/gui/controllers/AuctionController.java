@@ -123,6 +123,8 @@ public class AuctionController
 		terrainVBox.getChildren().clear();
 		if(auction != null)
 			offerTextField.setText(String.valueOf(auction.getBestOfferProposed()+1));
+		else
+			offerTextField.setText("10");
 	}
 
 	public void setTimer(int timerValue)
