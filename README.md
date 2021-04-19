@@ -20,7 +20,6 @@ sos
 - mettere Thread.sleep() in giro
 - Sezione con guida
 - Controllare errore alert window already open
-- finire il sistema d'id dei contratti
 
 
 - sistemare il votekick con messaggio di callback

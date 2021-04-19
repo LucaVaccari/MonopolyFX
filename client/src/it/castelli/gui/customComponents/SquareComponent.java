@@ -1,5 +1,6 @@
 package it.castelli.gui.customComponents;
 
+import it.castelli.Game;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gui.FXMLFileLoader;
 import javafx.fxml.FXMLLoader;
@@ -14,9 +15,9 @@ public class SquareComponent extends ImageView
 {
 	public static final String SQUARE_FXML_PATH = "/FXMLs/square.fxml";
 	/**
-	 * The contract bound to the square (if the square has non contract, this is null)
+	 * The id of the contract bound to the square (if the square has non contract, this is null)
 	 */
-	private Contract contract;
+	private int contractId;
 
 	/**
 	 * Constructor of SquareComponent
@@ -38,22 +39,31 @@ public class SquareComponent extends ImageView
 	}
 
 	/**
-	 * Getter for contract
+	 * Getter for contract id
 	 *
+	 * @return The id of the contract bound to the square (if the square has non contract, this is null)
+	 */
+	public int getContractId()
+	{
+		return contractId;
+	}
+
+	/**
+	 * Setter for contract id
+	 *
+	 * @param contractId The id of the contract bound to the square (if the square has non contract, this is null)
+	 */
+	public void setContractId(int contractId)
+	{
+		this.contractId = contractId;
+	}
+
+	/**
+	 * Getter for the contract
 	 * @return The contract bound to the square (if the square has non contract, this is null)
 	 */
 	public Contract getContract()
 	{
-		return contract;
-	}
-
-	/**
-	 * Setter for contract
-	 *
-	 * @param contract The contract bound to the square (if the square has non contract, this is null)
-	 */
-	public void setContract(Contract contract)
-	{
-		this.contract = contract;
+		return Game.getGameManager().getContract(contractId);
 	}
 }

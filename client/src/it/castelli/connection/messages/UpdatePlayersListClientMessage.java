@@ -42,7 +42,6 @@ public class UpdatePlayersListClientMessage implements Message
 		Platform.runLater(() -> {
 			LobbyController.getInstance().update();
 			BoardController.getInstance().update();
-			System.out.println("Updating players");
 
 			if (PropertyViewController.getInstance() != null)
 				PropertyViewController.getInstance().update();

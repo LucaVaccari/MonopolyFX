@@ -190,7 +190,7 @@ public class BoardController
 		{
 			// PROPERTIES
 			SquareComponent vicoloCortoSquareComponent = (SquareComponent) vicoloCortoSquare.getChildren().get(0);
-			vicoloCortoSquareComponent.setContract(getGameManager().getSquare(1).getContract());
+			vicoloCortoSquareComponent.setContractId(getGameManager().getSquare(1).getContract().getId());
 			vicoloCortoSquare.setOnMouseClicked(
 					event -> SceneManager.getInstance()
 							.showTerrainView((PropertyContract) vicoloCortoSquareComponent.getContract()));
@@ -198,7 +198,7 @@ public class BoardController
 			Tooltip.install(squares[1], new Tooltip(vicoloCortoSquareComponent.getContract().getName()));
 
 			SquareComponent vicoloStrettoSquareComponent = (SquareComponent) vicoloStrettoSquare.getChildren().get(0);
-			vicoloStrettoSquareComponent.setContract(getGameManager().getSquare(3).getContract());
+			vicoloStrettoSquareComponent.setContractId(getGameManager().getSquare(3).getContract().getId());
 			vicoloStrettoSquare
 					.setOnMouseClicked(
 							event -> SceneManager.getInstance()
@@ -208,7 +208,7 @@ public class BoardController
 
 			SquareComponent bastioniGranSassoSquareComponent =
 					(SquareComponent) bastioniGranSassoSquare.getChildren().get(0);
-			bastioniGranSassoSquareComponent.setContract(getGameManager().getSquare(6).getContract());
+			bastioniGranSassoSquareComponent.setContractId(getGameManager().getSquare(6).getContract().getId());
 			bastioniGranSassoSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) bastioniGranSassoSquareComponent.getContract()));
 			squares[6] = bastioniGranSassoSquare;
@@ -217,28 +217,28 @@ public class BoardController
 
 			SquareComponent vialeMonterosaSquareComponent =
 					(SquareComponent) vialeMonterosaSquare.getChildren().get(0);
-			vialeMonterosaSquareComponent.setContract(getGameManager().getSquare(8).getContract());
+			vialeMonterosaSquareComponent.setContractId(getGameManager().getSquare(8).getContract().getId());
 			vialeMonterosaSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) vialeMonterosaSquareComponent.getContract()));
 			squares[8] = vialeMonterosaSquare;
 			Tooltip.install(vialeMonterosaSquare, new Tooltip(vialeMonterosaSquareComponent.getContract().getName()));
 
 			SquareComponent vialeVesuvioSquareComponent = (SquareComponent) vialeVesuvioSquare.getChildren().get(0);
-			vialeVesuvioSquareComponent.setContract(getGameManager().getSquare(9).getContract());
+			vialeVesuvioSquareComponent.setContractId(getGameManager().getSquare(9).getContract().getId());
 			vialeVesuvioSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) vialeVesuvioSquareComponent.getContract()));
 			squares[9] = vialeVesuvioSquare;
 			Tooltip.install(vialeVesuvioSquare, new Tooltip(vialeVesuvioSquareComponent.getContract().getName()));
 
 			SquareComponent viaAccademiaSquareComponent = (SquareComponent) viaAccademiaSquare.getChildren().get(0);
-			viaAccademiaSquareComponent.setContract(getGameManager().getSquare(11).getContract());
+			viaAccademiaSquareComponent.setContractId(getGameManager().getSquare(11).getContract().getId());
 			viaAccademiaSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) viaAccademiaSquareComponent.getContract()));
 			squares[11] = viaAccademiaSquare;
 			Tooltip.install(viaAccademiaSquare, new Tooltip(viaAccademiaSquareComponent.getContract().getName()));
 
 			SquareComponent corsoAteneoSquareComponent = (SquareComponent) corsoAteneoSquare.getChildren().get(0);
-			corsoAteneoSquareComponent.setContract(getGameManager().getSquare(13).getContract());
+			corsoAteneoSquareComponent.setContractId(getGameManager().getSquare(13).getContract().getId());
 			corsoAteneoSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) corsoAteneoSquareComponent.getContract()));
 			squares[13] = corsoAteneoSquare;
@@ -246,7 +246,7 @@ public class BoardController
 
 			SquareComponent piazzaUniversitaSquareComponent =
 					(SquareComponent) piazzaUniversitaSquare.getChildren().get(0);
-			piazzaUniversitaSquareComponent.setContract(getGameManager().getSquare(14).getContract());
+			piazzaUniversitaSquareComponent.setContractId(getGameManager().getSquare(14).getContract().getId());
 			piazzaUniversitaSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) piazzaUniversitaSquareComponent.getContract()));
 			squares[14] = piazzaUniversitaSquare;
@@ -254,7 +254,7 @@ public class BoardController
 			                new Tooltip(piazzaUniversitaSquareComponent.getContract().getName()));
 
 			SquareComponent viaVerdiSquareComponent = (SquareComponent) viaVerdiSquare.getChildren().get(0);
-			viaVerdiSquareComponent.setContract(getGameManager().getSquare(16).getContract());
+			viaVerdiSquareComponent.setContractId(getGameManager().getSquare(16).getContract().getId());
 			viaVerdiSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) viaVerdiSquareComponent.getContract()));
 			squares[16] = viaVerdiSquare;
@@ -262,21 +262,21 @@ public class BoardController
 
 			SquareComponent corsoRaffaelloSquareComponent =
 					(SquareComponent) corsoRaffaelloSquare.getChildren().get(0);
-			corsoRaffaelloSquareComponent.setContract(getGameManager().getSquare(18).getContract());
+			corsoRaffaelloSquareComponent.setContractId(getGameManager().getSquare(18).getContract().getId());
 			corsoRaffaelloSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) corsoRaffaelloSquareComponent.getContract()));
 			squares[18] = corsoRaffaelloSquare;
 			Tooltip.install(corsoRaffaelloSquare, new Tooltip(corsoRaffaelloSquareComponent.getContract().getName()));
 
 			SquareComponent piazzaDanteSquareComponent = (SquareComponent) piazzaDanteSquare.getChildren().get(0);
-			piazzaDanteSquareComponent.setContract(getGameManager().getSquare(19).getContract());
+			piazzaDanteSquareComponent.setContractId(getGameManager().getSquare(19).getContract().getId());
 			piazzaDanteSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) piazzaDanteSquareComponent.getContract()));
 			squares[19] = piazzaDanteSquare;
 			Tooltip.install(piazzaDanteSquare, new Tooltip(piazzaDanteSquareComponent.getContract().getName()));
 
 			SquareComponent viaMarcoPoloSquareComponent = (SquareComponent) viaMarcoPoloSquare.getChildren().get(0);
-			viaMarcoPoloSquareComponent.setContract(getGameManager().getSquare(21).getContract());
+			viaMarcoPoloSquareComponent.setContractId(getGameManager().getSquare(21).getContract().getId());
 			viaMarcoPoloSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) viaMarcoPoloSquareComponent.getContract()));
 			squares[21] = viaMarcoPoloSquare;
@@ -284,14 +284,14 @@ public class BoardController
 
 			SquareComponent corsoMagellanoSquareComponent =
 					(SquareComponent) corsoMagellanoSquare.getChildren().get(0);
-			corsoMagellanoSquareComponent.setContract(getGameManager().getSquare(23).getContract());
+			corsoMagellanoSquareComponent.setContractId(getGameManager().getSquare(23).getContract().getId());
 			corsoMagellanoSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) corsoMagellanoSquareComponent.getContract()));
 			squares[23] = corsoMagellanoSquare;
 			Tooltip.install(corsoMagellanoSquare, new Tooltip(corsoMagellanoSquareComponent.getContract().getName()));
 
 			SquareComponent largoColomboSquareComponent = (SquareComponent) largoColomboSquare.getChildren().get(0);
-			largoColomboSquareComponent.setContract(getGameManager().getSquare(24).getContract());
+			largoColomboSquareComponent.setContractId(getGameManager().getSquare(24).getContract().getId());
 			largoColomboSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) largoColomboSquareComponent.getContract()));
 			squares[24] = largoColomboSquare;
@@ -299,7 +299,7 @@ public class BoardController
 
 			SquareComponent vialeCostantinoSquareComponent =
 					(SquareComponent) vialeCostantinoSquare.getChildren().get(0);
-			vialeCostantinoSquareComponent.setContract(getGameManager().getSquare(26).getContract());
+			vialeCostantinoSquareComponent.setContractId(getGameManager().getSquare(26).getContract().getId());
 			vialeCostantinoSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) vialeCostantinoSquareComponent.getContract()));
 			squares[26] = vialeCostantinoSquare;
@@ -307,7 +307,7 @@ public class BoardController
 			                new Tooltip(vialeCostantinoSquareComponent.getContract().getName()));
 
 			SquareComponent vialeTraianoSquareComponent = (SquareComponent) vialeTraianoSquare.getChildren().get(0);
-			vialeTraianoSquareComponent.setContract(getGameManager().getSquare(27).getContract());
+			vialeTraianoSquareComponent.setContractId(getGameManager().getSquare(27).getContract().getId());
 			vialeTraianoSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) vialeTraianoSquareComponent.getContract()));
 			squares[27] = vialeTraianoSquare;
@@ -315,7 +315,7 @@ public class BoardController
 
 			SquareComponent piazzaGiulioCesareSquareComponent =
 					(SquareComponent) piazzaGiulioCesareSquare.getChildren().get(0);
-			piazzaGiulioCesareSquareComponent.setContract(getGameManager().getSquare(29).getContract());
+			piazzaGiulioCesareSquareComponent.setContractId(getGameManager().getSquare(29).getContract().getId());
 			piazzaGiulioCesareSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) piazzaGiulioCesareSquareComponent.getContract()));
 			squares[29] = piazzaGiulioCesareSquare;
@@ -323,21 +323,21 @@ public class BoardController
 			                new Tooltip(piazzaGiulioCesareSquareComponent.getContract().getName()));
 
 			SquareComponent viaRomaSquareComponent = (SquareComponent) viaRomaSquare.getChildren().get(0);
-			viaRomaSquareComponent.setContract(getGameManager().getSquare(31).getContract());
+			viaRomaSquareComponent.setContractId(getGameManager().getSquare(31).getContract().getId());
 			viaRomaSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) viaRomaSquareComponent.getContract()));
 			squares[31] = viaRomaSquare;
 			Tooltip.install(viaRomaSquare, new Tooltip(viaRomaSquareComponent.getContract().getName()));
 
 			SquareComponent corsoImperoSquareComponent = (SquareComponent) corsoImperoSquare.getChildren().get(0);
-			corsoImperoSquareComponent.setContract(getGameManager().getSquare(32).getContract());
+			corsoImperoSquareComponent.setContractId(getGameManager().getSquare(32).getContract().getId());
 			corsoImperoSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) corsoImperoSquareComponent.getContract()));
 			squares[32] = corsoImperoSquare;
 			Tooltip.install(corsoImperoSquare, new Tooltip(corsoImperoSquareComponent.getContract().getName()));
 
 			SquareComponent largoAugustoSquareComponent = (SquareComponent) largoAugustoSquare.getChildren().get(0);
-			largoAugustoSquareComponent.setContract(getGameManager().getSquare(34).getContract());
+			largoAugustoSquareComponent.setContractId(getGameManager().getSquare(34).getContract().getId());
 			largoAugustoSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) largoAugustoSquareComponent.getContract()));
 			squares[34] = largoAugustoSquare;
@@ -345,7 +345,7 @@ public class BoardController
 
 			SquareComponent vialeDeiGiardiniSquareComponent =
 					(SquareComponent) vialeDeiGiardiniSquare.getChildren().get(0);
-			vialeDeiGiardiniSquareComponent.setContract(getGameManager().getSquare(37).getContract());
+			vialeDeiGiardiniSquareComponent.setContractId(getGameManager().getSquare(37).getContract().getId());
 			vialeDeiGiardiniSquare.setOnMouseClicked(event -> SceneManager.getInstance().showTerrainView(
 					(PropertyContract) vialeDeiGiardiniSquareComponent.getContract()));
 			squares[37] = vialeDeiGiardiniSquare;
@@ -354,7 +354,7 @@ public class BoardController
 
 			SquareComponent parcoDellaVittoriaSquareComponent =
 					(SquareComponent) parcoDellaVittoriaSquare.getChildren().get(0);
-			parcoDellaVittoriaSquareComponent.setContract(getGameManager().getSquare(39).getContract());
+			parcoDellaVittoriaSquareComponent.setContractId(getGameManager().getSquare(39).getContract().getId());
 			parcoDellaVittoriaSquare.setOnMouseClicked(
 					event -> SceneManager.getInstance()
 							.showTerrainView((PropertyContract) parcoDellaVittoriaSquareComponent.getContract()));
@@ -364,7 +364,7 @@ public class BoardController
 
 			// STATIONS
 			SquareComponent southStationSquareComponent = (SquareComponent) southStationSquare.getChildren().get(0);
-			southStationSquareComponent.setContract(getGameManager().getSquare(5).getContract());
+			southStationSquareComponent.setContractId(getGameManager().getSquare(5).getContract().getId());
 			southStationSquare.setOnMouseClicked(
 					event -> SceneManager.getInstance()
 							.showTerrainView((StationContract) southStationSquareComponent.getContract()));
@@ -372,7 +372,7 @@ public class BoardController
 			Tooltip.install(southStationSquare, new Tooltip(southStationSquareComponent.getContract().getName()));
 
 			SquareComponent westStationSquareComponent = (SquareComponent) westStationSquare.getChildren().get(0);
-			westStationSquareComponent.setContract(getGameManager().getSquare(15).getContract());
+			westStationSquareComponent.setContractId(getGameManager().getSquare(15).getContract().getId());
 			westStationSquare.setOnMouseClicked(
 					event -> SceneManager.getInstance()
 							.showTerrainView((StationContract) westStationSquareComponent.getContract()));
@@ -380,7 +380,7 @@ public class BoardController
 			Tooltip.install(westStationSquare, new Tooltip(westStationSquareComponent.getContract().getName()));
 
 			SquareComponent northStationSquareComponent = (SquareComponent) northStationSquare.getChildren().get(0);
-			northStationSquareComponent.setContract(getGameManager().getSquare(25).getContract());
+			northStationSquareComponent.setContractId(getGameManager().getSquare(25).getContract().getId());
 			northStationSquare.setOnMouseClicked(
 					event -> SceneManager.getInstance()
 							.showTerrainView((StationContract) northStationSquareComponent.getContract()));
@@ -388,7 +388,7 @@ public class BoardController
 			Tooltip.install(northStationSquare, new Tooltip(northStationSquareComponent.getContract().getName()));
 
 			SquareComponent eastStationSquareComponent = (SquareComponent) eastStationSquare.getChildren().get(0);
-			eastStationSquareComponent.setContract(getGameManager().getSquare(35).getContract());
+			eastStationSquareComponent.setContractId(getGameManager().getSquare(35).getContract().getId());
 			eastStationSquare.setOnMouseClicked(
 					event -> SceneManager.getInstance()
 							.showTerrainView((StationContract) eastStationSquareComponent.getContract()));
@@ -398,18 +398,16 @@ public class BoardController
 			// COMPANIES
 			SquareComponent electricSocietySquareComponent =
 					(SquareComponent) electricSocietySquare.getChildren().get(0);
-			electricSocietySquareComponent.setContract(getGameManager().getSquare(12).getContract());
+			electricSocietySquareComponent.setContractId(getGameManager().getSquare(12).getContract().getId());
 			electricSocietySquare.setOnMouseClicked(
 					event -> SceneManager.getInstance()
 							.showTerrainView((CompanyContract) electricSocietySquareComponent.getContract()));
 			squares[12] = electricSocietySquare;
-			Tooltip.install(electricSocietySquare,
-			                new Tooltip(electricSocietySquareComponent.getContract().getName()));
+			Tooltip.install(electricSocietySquare, new Tooltip(electricSocietySquareComponent.getContract().getName()));
 
 			SquareComponent waterWorksSquareComponent = (SquareComponent) waterWorksSquare.getChildren().get(0);
-			waterWorksSquareComponent.setContract(getGameManager().getSquare(28).getContract());
-			waterWorksSquare.setOnMouseClicked(
-					event -> SceneManager.getInstance()
+			waterWorksSquareComponent.setContractId(getGameManager().getSquare(28).getContract().getId());
+			waterWorksSquare.setOnMouseClicked(event -> SceneManager.getInstance()
 							.showTerrainView((CompanyContract) waterWorksSquareComponent.getContract()));
 			squares[28] = waterWorksSquare;
 			Tooltip.install(waterWorksSquare, new Tooltip(waterWorksSquareComponent.getContract().getName()));
@@ -803,11 +801,9 @@ public class BoardController
 	 */
 	public void updateBoard()
 	{
-		for (int i = 0, squaresLength = squares.length; i < squaresLength; i++)
+		for (Group square : squares)
 		{
-			Group square = squares[i];
 			SquareComponent squareComponent = (SquareComponent) square.getChildren().get(0);
-			squareComponent.setContract(Game.getGameManager().getSquare(i).getContract());
 			Contract contract = squareComponent.getContract();
 			if (contract != null)
 			{
