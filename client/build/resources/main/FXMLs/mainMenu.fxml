@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.*?>
 <?import java.lang.String?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/16"
-            fx:controller="it.castelli.gui.controllers.MainMenuController">
+			prefWidth="600.0" stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/16"
+			fx:controller="it.castelli.gui.controllers.MainMenuController">
 	<ImageView fitHeight="151.0" fitWidth="467.0" layoutX="101.0" layoutY="76.0" pickOnBounds="true"
 			   preserveRatio="true" AnchorPane.bottomAnchor="173.0" AnchorPane.leftAnchor="101.0"
 			   AnchorPane.rightAnchor="101.61126708984375" AnchorPane.topAnchor="76.0">

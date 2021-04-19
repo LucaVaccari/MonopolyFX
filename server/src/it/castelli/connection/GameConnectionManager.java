@@ -44,7 +44,7 @@ public class GameConnectionManager
 	private final int AUCTION_DURATION = 10;
 
 	/**
-	 *The task that handles the auction on its own thread
+	 * The task that handles the auction on its own thread
 	 */
 	private AuctionTimerTask auctionTask;
 
@@ -61,11 +61,11 @@ public class GameConnectionManager
 	}
 
 	/**
-	 * Tries to add a player to the player list in this game.
-	 * This operation does not work if the game is full (max 6 players) or the game has already started
+	 * Tries to add a player to the player list in this game. This operation does not work if the game is full (max 6
+	 * players) or the game has already started
 	 *
 	 * @param connection The connection of the player to add
-	 * @param player The player to add
+	 * @param player     The player to add
 	 */
 	public void addPlayer(Connection connection, Player player)
 	{
@@ -83,12 +83,12 @@ public class GameConnectionManager
 
 			// Sending game code to the client
 			connection.send(ServerMessages.GAME_CODE_MESSAGE_NAME,
-			                Serializer.toJson(new GameCodeServerMessage(gameCode)));
+					Serializer.toJson(new GameCodeServerMessage(gameCode)));
 
 			//Updating other players player list
 			gameManager.addPlayer(player);
 			sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME,
-			        Serializer.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
+					Serializer.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
 		}
 		else
 		{
@@ -164,11 +164,10 @@ public class GameConnectionManager
 	}
 
 	/**
-	 * Starts the auction
-	 * Used to actually start the auction and also to reset the timer after a new offer is proposed
+	 * Starts the auction Used to actually start the auction and also to reset the timer after a new offer is proposed
 	 *
 	 * @param contract The contract which is being sold in the auction
-	 * @param offer The best offer proposed until now
+	 * @param offer    The best offer proposed until now
 	 */
 	public void startAuction(Contract contract, int offer)
 	{
@@ -182,16 +181,16 @@ public class GameConnectionManager
 
 		Auction auction = gameManager.getAuction();
 		sendAll(ServerMessages.NEW_AUCTION_MESSAGE_NAME,
-		        Serializer.toJson(new NewAuctionServerMessage(auction.getContract(), auction.getPlayer(),
-		                                                      auction.getBestOfferProposed())));
+				Serializer.toJson(new NewAuctionServerMessage(auction.getContract(), auction.getPlayer(),
+						auction.getBestOfferProposed())));
 	}
 
 	/**
-	 * Offer the given amount of money in tha auction.
-	 * If it's the highest, the given player will be the owner of the contract at the end of the auction
+	 * Offer the given amount of money in tha auction. If it's the highest, the given player will be the owner of the
+	 * contract at the end of the auction
 	 *
 	 * @param player The player offering money
-	 * @param offer The offer of the player
+	 * @param offer  The offer of the player
 	 */
 	public void auctionOffer(Player player, int offer)
 	{
@@ -217,7 +216,7 @@ public class GameConnectionManager
 	 * Send the given message to all the players in this game
 	 *
 	 * @param messageName the name of the message (from either ServerMessages or ClientMessages)
-	 * @param message the string from json conversion of the Message class
+	 * @param message     the string from json conversion of the Message class
 	 */
 	public void sendAll(String messageName, String message)
 	{
@@ -226,16 +225,15 @@ public class GameConnectionManager
 	}
 
 	/**
-	 * Updates all the connected players about in-game changes and others (such as player leaving the game)
-	 * This method send messages to update the player list, the board, the round class
-	 * This method is also responsible for detecting a player winning the game
-	 *
+	 * Updates all the connected players about in-game changes and others (such as player leaving the game). This
+	 * method
+	 * send messages to update the player list, the board, the round class. This method is also responsible for
+	 * detecting a player winning the game
 	 */
 	public void updatePlayers()
 	{
-		if (false)
-			//TODO: remove the previous line and uncomment the next line
-//		if (gameManager.isInGame() && gameManager.getPlayers().size() == 1)
+		//if (false)
+		if (gameManager.isInGame() && gameManager.getPlayers().size() == 1)
 		{
 			sendAll(ServerMessages.VICTORY_MESSAGE_NAME, Serializer.toJson(new VictoryServerMessage()));
 			gameManager.endGame();
@@ -321,7 +319,7 @@ public class GameConnectionManager
 				else
 				{
 					if (square.getContract().isMortgaged() &&
-					    !gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
+							!gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
 					{
 						sendAll(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage(
 								"Affitto gratuito",
