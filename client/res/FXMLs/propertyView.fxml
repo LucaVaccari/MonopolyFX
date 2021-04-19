@@ -4,10 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="394.0" prefWidth="283.0"
-			xmlns="http://javafx.com/javafx/11.0.1" fx:controller="it.castelli.gui.controllers.PropertyViewController">
-	<VBox prefHeight="400.0" prefWidth="300.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-		  AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+<AnchorPane prefHeight="394.0" prefWidth="283.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+			fx:controller="it.castelli.gui.controllers.PropertyViewController">
+	<VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0" AnchorPane.bottomAnchor="10.0"
+		  AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
 		<Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308"
 			   prefHeight="91.0" prefWidth="280.0" text="property name" textAlignment="CENTER" wrapText="true"
 			   VBox.vgrow="ALWAYS">
@@ -154,25 +154,7 @@
 				</padding>
 			</Label>
 		</GridPane>
-		<HBox fx:id="onlyIfOwnedPane1" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0"
-			  VBox.vgrow="ALWAYS">
-			<Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-				   text="Numero di case" HBox.hgrow="ALWAYS">
-				<padding>
-					<Insets right="10.0"/>
-				</padding>
-			</Label>
-			<Label fx:id="numberOfHousesLabel" layoutX="128.0" layoutY="28.0" maxHeight="1.7976931348623157E308"
-				   maxWidth="1.7976931348623157E308" prefHeight="53.0" prefWidth="30.0" text="Case" HBox.hgrow="ALWAYS">
-				<opaqueInsets>
-					<Insets/>
-				</opaqueInsets>
-				<padding>
-					<Insets left="10.0"/>
-				</padding>
-			</Label>
-		</HBox>
-		<GridPane fx:id="onlyIfOwnedPane2" hgap="10.0" maxHeight="1.7976931348623157E308"
+		<GridPane fx:id="onlyIfOwnedPane" hgap="10.0" maxHeight="1.7976931348623157E308"
 				  maxWidth="1.7976931348623157E308" prefHeight="169.0" prefWidth="263.0" vgap="10.0"
 				  VBox.vgrow="ALWAYS">
 			<columnConstraints>

@@ -473,6 +473,4 @@ public class Player
 	{
 		return getName();
 	}
-
-
 }

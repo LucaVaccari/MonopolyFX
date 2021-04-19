@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
-import javafx.scene.layout.HBox;
 
 /**
  * Controller for propertyView FXML
@@ -45,11 +44,7 @@ public class PropertyViewController
 	@FXML
 	private Label mortgageValueLabel;
 	@FXML
-	private HBox onlyIfOwnedPane1;
-	@FXML
-	private Label numberOfHousesLabel;
-	@FXML
-	private Parent onlyIfOwnedPane2;
+	private Parent onlyIfOwnedPane;
 	@FXML
 	private Button sellButton;
 	@FXML
@@ -108,12 +103,8 @@ public class PropertyViewController
 			boolean isOwnedByMe = contract.getOwner().toPlayer().betterEquals(Game.getPlayer());
 			boolean isMyRound = contract.getOwner().toPlayer()
 					.betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer());
-			onlyIfOwnedPane1.setVisible(isOwnedByMe);
-			onlyIfOwnedPane1.setDisable(!isOwnedByMe);
-			onlyIfOwnedPane2.setVisible(isOwnedByMe);
-			onlyIfOwnedPane2.setDisable(!isOwnedByMe && !isMyRound);
-
-			numberOfHousesLabel.setText(String.valueOf(contract.getNumberOfHouses()));
+			onlyIfOwnedPane.setVisible(isOwnedByMe);
+			onlyIfOwnedPane.setDisable(!isOwnedByMe && !isMyRound);
 
 			sellButton.setTooltip(new Tooltip("Vendete questa proprieta'"));
 			sellButton.setOnAction(event -> {
@@ -167,10 +158,8 @@ public class PropertyViewController
 		}
 		else
 		{
-			onlyIfOwnedPane1.setVisible(false);
-			onlyIfOwnedPane1.setDisable(true);
-			onlyIfOwnedPane2.setVisible(false);
-			onlyIfOwnedPane2.setDisable(false);
+			onlyIfOwnedPane.setVisible(false);
+			onlyIfOwnedPane.setDisable(false);
 		}
 	}
 }

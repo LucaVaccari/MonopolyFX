@@ -32,6 +32,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.effect.Lighting;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -801,23 +802,25 @@ public class BoardController
 	 */
 	public void updateBoard()
 	{
-		for (int i = 0, squaresLength = squares.length; i < squaresLength; i++)
+		for (Group square : squares)
 		{
-			Group square = squares[i];
 			SquareComponent squareComponent = (SquareComponent) square.getChildren().get(0);
 			Contract contract = squareComponent.getContract();
 			if (contract != null)
 			{
+				Node squareNode = square.getChildren().get(1);
 				if (contract.getOwner() == null)
 				{
-					square.getChildren().get(1).setStyle("-fx-border-width: 0");
+					squareNode.setStyle("-fx-border-width: 0");
 				}
 				else
 				{
-					square.getChildren().get(1)
-							.setStyle(
-									"-fx-border-color: " + GUIUtils.getPawnColor().get(contract.getOwner().getPawn())
-											+ ";-fx-border-width: 2");
+					squareNode
+							.setStyle("-fx-border-color: " + GUIUtils.getPawnColor().get(contract.getOwner().getPawn())
+									+ ";-fx-border-width: 2");
+
+					square.getChildren().get(0).setEffect(contract.isMortgaged() ? new Lighting() : null);
+
 					if (contract instanceof PropertyContract)
 					{
 						int numberOfHouses = ((PropertyContract) contract).getNumberOfHouses();

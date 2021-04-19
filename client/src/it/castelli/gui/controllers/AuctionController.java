@@ -44,6 +44,8 @@ public class AuctionController
 	@FXML
 	private TextField offerTextField;
 	@FXML
+	private Label winningPlayerNameLabel;
+	@FXML
 	private VBox terrainVBox;
 	@FXML
 	private Label timerLabel;
@@ -68,11 +70,12 @@ public class AuctionController
 	 */
 	public void update()
 	{
-		auctionBaseLabel.setText("prezzo attuale: " + auction.getBestOfferProposed() + "M");
-		totalMoneyLabel.setText("i tuoi soldi: " + Game.getPlayer().getMoney() + "M");
+		auctionBaseLabel.setText(auction.getBestOfferProposed() + "M");
+		totalMoneyLabel.setText(Game.getPlayer().getMoney() + "M");
 		yourOfferLabel.setText(String.valueOf(auction.getBestOfferProposed()));
 		offerTextField.setText(String.valueOf(auction.getBestOfferProposed() + 1));
 		offerTextField.positionCaret(offerTextField.getText().length());
+		winningPlayerNameLabel.setText(auction.getPlayer() == null ? "Nessuno" : auction.getPlayer().getName());
 	}
 
 	/**
