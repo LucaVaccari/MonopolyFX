@@ -14,7 +14,7 @@ public class Player
 	/**
 	 * The money quantity each player has at the start of a game
 	 */
-	public static int START_MONEY = 15000;
+	public static int START_MONEY = 1500;
 
 	/**
 	 * The list of his contracts
