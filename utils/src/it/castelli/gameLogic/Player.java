@@ -257,6 +257,14 @@ public class Player
 	}
 
 	/**
+	 * Removes a vote from the player votes
+	 */
+	public void removeVote()
+	{
+		numberOfVotes--;
+	}
+
+	/**
 	 * Move the player towards by a certain amount (after throwing the dice or a random event)
 	 *
 	 * @param units The number of squares to move
@@ -461,4 +469,6 @@ public class Player
 	{
 		return getName();
 	}
+
+
 }
