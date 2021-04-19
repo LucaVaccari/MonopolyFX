@@ -13,15 +13,46 @@ import it.castelli.serialization.Serializer;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * Class representing a game. It manage the lobby, the actual game and all the message between players
+ */
 public class GameConnectionManager
 {
+	/**
+	 * The list of all the connections of the players connected to this game
+	 */
 	private final CopyOnWriteArrayList<Connection> playerConnections;
+
+	/**
+	 * The game manager handling this game
+	 */
 	private final GameManager gameManager;
+
+	/**
+	 * The code of this game
+	 */
 	private final int gameCode;
+
+	/**
+	 * The connection of the host player (the only one able to start the game)
+	 */
 	private Connection host = null;
-	private final int AUCTION_DURATION = 6;
+
+	/**
+	 * The time after which the auction ends without further offers
+	 */
+	private final int AUCTION_DURATION = 10;
+
+	/**
+	 *The task that handles the auction on its own thread
+	 */
 	private AuctionTimerTask auctionTask;
 
+	/**
+	 * Constructor for GameConnectionManager
+	 *
+	 * @param gameCode The code of this game
+	 */
 	public GameConnectionManager(int gameCode)
 	{
 		this.gameCode = gameCode;
@@ -29,6 +60,13 @@ public class GameConnectionManager
 		this.playerConnections = new CopyOnWriteArrayList<>();
 	}
 
+	/**
+	 * Tries to add a player to the player list in this game.
+	 * This operation does not work if the game is full (max 6 players) or the game has already started
+	 *
+	 * @param connection The connection of the player to add
+	 * @param player The player to add
+	 */
 	public void addPlayer(Connection connection, Player player)
 	{
 		if (playerConnections.size() < 6 && !gameManager.isInGame())
@@ -60,6 +98,11 @@ public class GameConnectionManager
 		}
 	}
 
+	/**
+	 * Removes a player from the game, resetting all his in-game properties
+	 *
+	 * @param connection the connection of the player to remove
+	 */
 	public void removePlayer(Connection connection)
 	{
 		if (gameManager.isInGame())
@@ -98,11 +141,19 @@ public class GameConnectionManager
 		updatePlayers();
 	}
 
+	/**
+	 * Getter for playerConnections
+	 *
+	 * @return The list of all the connections of the players connected to this game
+	 */
 	public CopyOnWriteArrayList<Connection> getPlayerConnections()
 	{
 		return playerConnections;
 	}
 
+	/**
+	 * Starts the game
+	 */
 	public void startGame()
 	{
 		gameManager.startGame();
@@ -112,6 +163,13 @@ public class GameConnectionManager
 		updatePlayers();
 	}
 
+	/**
+	 * Starts the auction
+	 * Used to actually start the auction and also to reset the timer after a new offer is proposed
+	 *
+	 * @param contract The contract which is being sold in the auction
+	 * @param offer The best offer proposed until now
+	 */
 	public void startAuction(Contract contract, int offer)
 	{
 		gameManager.startAuction(contract, offer);
@@ -128,6 +186,13 @@ public class GameConnectionManager
 		                                                      auction.getBestOfferProposed())));
 	}
 
+	/**
+	 * Offer the given amount of money in tha auction.
+	 * If it's the highest, the given player will be the owner of the contract at the end of the auction
+	 *
+	 * @param player The player offering money
+	 * @param offer The offer of the player
+	 */
 	public void auctionOffer(Player player, int offer)
 	{
 		if (gameManager.getAuction().getBestOfferProposed() < offer)
@@ -138,20 +203,38 @@ public class GameConnectionManager
 		}
 	}
 
+	/**
+	 * Getter for gameManager
+	 *
+	 * @return The game manager handling this game
+	 */
 	public GameManager getGameManager()
 	{
 		return gameManager;
 	}
 
+	/**
+	 * Send the given message to all the players in this game
+	 *
+	 * @param messageName the name of the message (from either ServerMessages or ClientMessages)
+	 * @param message the string from json conversion of the Message class
+	 */
 	public void sendAll(String messageName, String message)
 	{
 		for (Connection element : playerConnections)
 			element.send(messageName, message);
 	}
 
+	/**
+	 * Updates all the connected players about in-game changes and others (such as player leaving the game)
+	 * This method send messages to update the player list, the board, the round class
+	 * This method is also responsible for detecting a player winning the game
+	 *
+	 */
 	public void updatePlayers()
 	{
 		if (false)
+			//TODO: remove the previous line and uncomment the next line
 //		if (gameManager.isInGame() && gameManager.getPlayers().size() == 1)
 		{
 			sendAll(ServerMessages.VICTORY_MESSAGE_NAME, Serializer.toJson(new VictoryServerMessage()));
@@ -192,6 +275,12 @@ public class GameConnectionManager
 
 	}
 
+	/**
+	 * Returns the connection corresponding to the given player
+	 *
+	 * @param player The player to obtain the connection from
+	 * @return The connection corresponding to the given player
+	 */
 	public Connection getConnectionFromPlayer(Player player)
 	{
 		for (Connection connection : playerConnections)
@@ -204,6 +293,11 @@ public class GameConnectionManager
 		return null;
 	}
 
+	/**
+	 * Makes the player interact with the square he landed on
+	 *
+	 * @param player The player interacting with the square
+	 */
 	private void interactWithSquare(Player player)
 	{
 		Square square = gameManager.getSquare(player.getPosition());
@@ -244,6 +338,11 @@ public class GameConnectionManager
 		}
 	}
 
+	/**
+	 * Removes all the properties from the player corresponding to the given connection
+	 *
+	 * @param connection The connection of the player
+	 */
 	public void resetPlayerProperties(Connection connection)
 	{
 		for (Connection element : playerConnections)
