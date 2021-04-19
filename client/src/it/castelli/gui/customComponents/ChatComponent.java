@@ -69,4 +69,9 @@ public class ChatComponent extends AnchorPane
 		messageLabel.setMaxHeight(Double.MAX_VALUE);
 		messageListView.getItems().add(messageLabel);
 	}
+
+	public void clear()
+	{
+		messageListView.getItems().clear();
+	}
 }
