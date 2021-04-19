@@ -17,8 +17,9 @@ public class CompanyContract extends Contract
 	 * @param company The Company enum
 	 * @param value   The cost of the contract when buying from the bank
 	 */
-	public CompanyContract(String name, Company company, int value)
+	public CompanyContract(int id, String name, Company company, int value)
 	{
+		super(id);
 		this.name = name;
 		this.company = company;
 		this.value = value;

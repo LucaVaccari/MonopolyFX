@@ -10,7 +10,6 @@ sos
 - Controlli sull'input in asta e scambio (TO TEST)
 - Non mostrare i pulsanti dei terreni durante lo scambio (TO TEST)
 - chiudere tutte le finestre quando parte uno scambio o un'asta (TO TEST)
-- Resettare il TextField nello scambio e nell'asta (TO TEST)
 - votekick (TO TEST)
 
 
@@ -20,11 +19,8 @@ sos
 - Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata (TO TEST)
 - mettere Thread.sleep() in giro
 - Sezione con guida
-- Quando si compra una casa, il messaggio dell operazione negata sta dietro le finestre
-- Prigione non funziona correttamente
-- Non viene aggiornato l owner dopo lo scambio
-- Controllare messaggio fine asta
-- Controllare errore alert ShowandWait already open
+- Controllare errore alert window already open
+- finire il sistema d'id dei contratti
 
 
 - sconfitta (implementare da client / TO TEST)

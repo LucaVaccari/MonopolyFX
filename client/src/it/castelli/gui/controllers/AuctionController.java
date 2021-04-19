@@ -71,6 +71,7 @@ public class AuctionController
 		auctionBaseLabel.setText("prezzo attuale: " + auction.getBestOfferProposed() + "M");
 		totalMoneyLabel.setText("i tuoi soldi: " + Game.getPlayer().getMoney() + "M");
 		yourOfferLabel.setText(String.valueOf(auction.getBestOfferProposed()));
+		offerTextField.setText(String.valueOf(auction.getBestOfferProposed() + 1));
 	}
 
 	/**

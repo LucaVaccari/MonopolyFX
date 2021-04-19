@@ -9,8 +9,6 @@ public class Connection
 	private final Socket connectionSocket;
 	private final Sender sender;
 	private final Receiver receiver;
-	private final Thread thread;
-	private boolean isConnected;
 	private boolean keepAliveFlag = true;
 
 	public Connection(Socket connectionSocket)
@@ -18,18 +16,13 @@ public class Connection
 		this.connectionSocket = connectionSocket;
 		sender = new Sender(connectionSocket);
 		receiver = new Receiver(this);
-		thread = new Thread(receiver);
+		Thread thread = new Thread(receiver);
 		thread.start();
-	}
-
-	private boolean isConnected()
-	{
-		return isConnected;
 	}
 
 	public void interrupt()
 	{
-
+		receiver.interrupt();
 	}
 
 	public void setPlayer(Player player)
@@ -37,9 +30,9 @@ public class Connection
 		this.receiver.setPlayer(player);
 	}
 
-	public boolean getKeepAliveFlag()
+	public boolean notConnected()
 	{
-		return keepAliveFlag;
+		return !keepAliveFlag;
 	}
 
 	public void setKeepAliveFlag(boolean flag)
@@ -49,8 +42,7 @@ public class Connection
 
 	public void send(String messageName, String message)
 	{
-		sender.send(messageName);
-		sender.send(message);
+		sender.send(messageName + "|" + message);
 	}
 
 	public Socket getSocket()
@@ -61,11 +53,6 @@ public class Connection
 	public Receiver getReceiver()
 	{
 		return receiver;
-	}
-
-	public Thread getThread()
-	{
-		return thread;
 	}
 
 	@Override
@@ -80,8 +67,7 @@ public class Connection
 		//compares connections' remote IP addresses
 		if (obj instanceof Connection)
 			return connectionSocket.getInetAddress().getHostAddress()
-					.equals(((Connection) obj).connectionSocket.getInetAddress()
-							.getHostAddress());
+					.equals(((Connection) obj).connectionSocket.getInetAddress().getHostAddress());
 		return false;
 	}
 }

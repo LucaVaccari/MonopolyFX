@@ -57,8 +57,9 @@ public class Receiver implements Runnable
 				String firstMessage;
 				while ((firstMessage = in.readLine()) != null)
 				{
-					String classType = firstMessage.trim();
-					String jsonObject = in.readLine().trim();
+					String[] tokens = firstMessage.trim().strip().split("\\|");
+					String classType = tokens[0];
+					String jsonObject = tokens[1];
 					try
 					{
 						Message message = (Message) Serializer.fromJson(jsonObject, classType);

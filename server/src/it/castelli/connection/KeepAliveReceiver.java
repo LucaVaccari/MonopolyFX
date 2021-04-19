@@ -69,7 +69,7 @@ public class KeepAliveReceiver implements Runnable
 		//remove inactive players from the waiting room
 		for (Connection connection : connectionManager.getWaitingRoom())
 		{
-			if (!connection.getKeepAliveFlag())
+			if (connection.notConnected())
 			{
 				connection.interrupt();
 				connectionManager.getWaitingRoom().remove(connection);
@@ -83,7 +83,7 @@ public class KeepAliveReceiver implements Runnable
 			//remove inactive connections from players list
 			for (Connection connection : gameConnectionManager.getPlayerConnections())
 			{
-				if (!connection.getKeepAliveFlag())
+				if (connection.notConnected())
 				{
 					gameConnectionManager.removePlayer(connection);
 					connection.interrupt();

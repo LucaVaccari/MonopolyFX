@@ -39,6 +39,10 @@ public class SquareAdapter extends TypeAdapter<Square>
 					out.name("company");
 					CompanyContract contract = ((CompanySquare) square).getContract();
 					out.value(String.valueOf(contract.getCompany()));
+
+					out.name("id");
+					out.value(contract.getId());
+
 					out.name("name");
 					out.value(contract.getName());
 
@@ -117,6 +121,9 @@ public class SquareAdapter extends TypeAdapter<Square>
 					out.name("colorSetContractNumber");
 					out.value(contract.getColorSetContractNumber());
 
+					out.name("id");
+					out.value(contract.getId());
+
 					out.name("name");
 					out.value(contract.getName());
 
@@ -170,6 +177,10 @@ public class SquareAdapter extends TypeAdapter<Square>
 					out.name("Type");
 					out.value("Station");
 					StationContract contract = ((StationSquare) square).getContract();
+
+					out.name("id");
+					out.value(contract.getId());
+
 					out.name("name");
 					out.value(contract.getName());
 
@@ -247,6 +258,7 @@ public class SquareAdapter extends TypeAdapter<Square>
 				case "Company" -> {
 					CompanyContract contract;
 					CompanyContract.Company company;
+					int id;
 					String name;
 					int value;
 					OwnerPlayer owner = null;
@@ -265,6 +277,9 @@ public class SquareAdapter extends TypeAdapter<Square>
 						in.nextString();
 						in.nextName();
 						company = CompanyContract.Company.valueOf(in.nextString());
+
+						in.nextName();
+						id = in.nextInt();
 
 						in.nextName();
 						name = in.nextString();
@@ -320,8 +335,8 @@ public class SquareAdapter extends TypeAdapter<Square>
 									in.nextNull();
 
 								owner = new OwnerPlayer(ownerName, money, position, inPrison, pawn, randomEventType,
-										randomEventDescription,
-										previousPosition);
+								                        randomEventDescription,
+								                        previousPosition);
 							}
 						}
 						in.endObject();
@@ -332,7 +347,7 @@ public class SquareAdapter extends TypeAdapter<Square>
 						in.endObject();
 
 					}
-					contract = new CompanyContract(name, company, value);
+					contract = new CompanyContract(id, name, company, value);
 
 					if (owner != null)
 						contract.setOwner(owner.toPlayer());
@@ -347,6 +362,7 @@ public class SquareAdapter extends TypeAdapter<Square>
 					int[] revenues = new int[6];
 					PropertyColor color;
 					int houseCost, numberOfHouses, colorSetContractNumber;
+					int id;
 					String name;
 					int value;
 					OwnerPlayer owner = null;
@@ -387,6 +403,9 @@ public class SquareAdapter extends TypeAdapter<Square>
 						colorSetContractNumber = in.nextInt();
 
 						in.nextName();
+						id = in.nextInt();
+
+						in.nextName();
 						name = in.nextString();
 
 						in.nextName();
@@ -440,8 +459,8 @@ public class SquareAdapter extends TypeAdapter<Square>
 									in.nextNull();
 
 								owner = new OwnerPlayer(ownerName, money, position, inPrison, pawn, randomEventType,
-										randomEventDescription,
-										previousPosition);
+								                        randomEventDescription,
+								                        previousPosition);
 							}
 						}
 						in.endObject();
@@ -449,9 +468,9 @@ public class SquareAdapter extends TypeAdapter<Square>
 						in.nextName();
 						mortgaged = in.nextBoolean();
 
-						contract = new PropertyContract(name, value, revenues[0], revenues[1], revenues[2],
-								revenues[3],
-								revenues[4], revenues[5], houseCost, color, colorSetContractNumber);
+						contract = new PropertyContract(id, name, value, revenues[0], revenues[1], revenues[2],
+						                                revenues[3], revenues[4], revenues[5], houseCost, color,
+						                                colorSetContractNumber);
 
 						if (owner != null)
 							contract.setOwner(owner.toPlayer());
@@ -463,6 +482,7 @@ public class SquareAdapter extends TypeAdapter<Square>
 					in.endObject();
 				}
 				case "Station" -> {
+					int id;
 					String name;
 					int value, revenue;
 					OwnerPlayer owner = null;
@@ -482,6 +502,9 @@ public class SquareAdapter extends TypeAdapter<Square>
 					{
 						in.nextName();
 						in.nextString();
+
+						in.nextName();
+						id = in.nextInt();
 
 						in.nextName();
 						name = in.nextString();
@@ -537,8 +560,8 @@ public class SquareAdapter extends TypeAdapter<Square>
 									in.nextNull();
 
 								owner = new OwnerPlayer(ownerName, money, position, inPrison, pawn, randomEventType,
-										randomEventDescription,
-										previousPosition);
+								                        randomEventDescription,
+								                        previousPosition);
 							}
 						}
 						in.endObject();
@@ -546,7 +569,7 @@ public class SquareAdapter extends TypeAdapter<Square>
 						in.nextName();
 						mortgaged = in.nextBoolean();
 
-						contract = new StationContract(name, value, revenue);
+						contract = new StationContract(id, name, value, revenue);
 
 						if (owner != null)
 							contract.setOwner(owner.toPlayer());

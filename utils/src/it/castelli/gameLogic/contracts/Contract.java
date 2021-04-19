@@ -10,6 +10,7 @@ import java.util.HashMap;
  */
 public abstract class Contract
 {
+	private final int id;
 	/**
 	 * Name of the Monopoly property
 	 */
@@ -35,8 +36,14 @@ public abstract class Contract
 	 */
 	protected boolean mortgaged;
 
-	protected Contract()
+	protected Contract(int id)
 	{
+		this.id = id;
+	}
+
+	public int getId()
+	{
+		return id;
 	}
 
 	/**
