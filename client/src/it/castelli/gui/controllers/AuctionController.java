@@ -72,6 +72,7 @@ public class AuctionController
 		totalMoneyLabel.setText("i tuoi soldi: " + Game.getPlayer().getMoney() + "M");
 		yourOfferLabel.setText(String.valueOf(auction.getBestOfferProposed()));
 		offerTextField.setText(String.valueOf(auction.getBestOfferProposed() + 1));
+		offerTextField.positionCaret(offerTextField.getText().length());
 	}
 
 	/**
@@ -113,6 +114,7 @@ public class AuctionController
 		}
 		catch (NumberFormatException ignored)
 		{
+			update();
 		}
 	}
 
@@ -122,8 +124,8 @@ public class AuctionController
 	public void reset()
 	{
 		terrainVBox.getChildren().clear();
-		if(auction != null)
-			offerTextField.setText(String.valueOf(auction.getBestOfferProposed()+1));
+		if (auction != null)
+			offerTextField.setText(String.valueOf(auction.getBestOfferProposed() + 1));
 		else
 			offerTextField.setText("10");
 	}
