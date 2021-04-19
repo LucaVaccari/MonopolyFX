@@ -79,7 +79,7 @@ public class PlayerInfoController
 				ClientMain.getConnection().send(ClientMessages.VOTE_KICK_MESSAGE_NAME, Serializer
 						.toJson(new VoteKickClientMessage(player, true, Game.getGameCode())));
 				AlertUtil.showInformationAlert("Espulsione", "Avete votato per espellere " + player.getName(),
-						"Altri " + player.getNumberOfKickVotes() + " hanno votato per farlo");
+						"Altri " + (player.getNumberOfKickVotes() - 1) + " hanno votato per farlo");
 				Game.getVoteKickedPlayers().add(player);
 				votekickButton.setText("Annullate espulsione");
 			}
