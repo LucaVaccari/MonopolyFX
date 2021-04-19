@@ -229,10 +229,12 @@ public class Player
 	public void setPosition(int position, boolean passThroughGoSquare)
 	{
 		somethingChanged = true;
+		if ((position >= 40 || this.position > position) && passThroughGoSquare)
+		{
+			addMoney(200);
+		}
 		setPreviousPosition(this.position);
 		this.position = position;
-		if (position >= 40 && passThroughGoSquare)
-			addMoney(200);
 		this.position %= 40;
 	}
 
