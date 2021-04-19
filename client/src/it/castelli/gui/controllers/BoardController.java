@@ -80,6 +80,8 @@ public class BoardController
 	private Button endRoundButton;
 	@FXML
 	private Button leaveGameButton;
+	@FXML
+	private Button giveUpButton;
 	// CHAT
 	@FXML
 	private ChatComponent chat;
@@ -489,6 +491,30 @@ public class BoardController
 			}
 		});
 
+		giveUpButton.setTooltip(new Tooltip("Se siete in debito, abbandonate la partita e perdete :("));
+		giveUpButton.setOnAction(event -> {
+			Optional<ButtonType> confirm;
+			if (Game.getPlayer().hasMoney(0))
+				confirm = AlertUtil.showConfirmationAlert("Conferma", "Volete davvero arrendervi??",
+				                                          "Avete ancora soldi a disposizione per giocare...");
+			else
+				confirm = Optional.of(ButtonType.OK);
+
+			if (confirm.isPresent())
+			{
+				if (confirm.get().equals(ButtonType.OK))
+				{
+					if (Game.getGameManager().getCurrentRound().getCurrentActivePlayer().betterEquals(getPlayer()))
+						ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME, Serializer
+								.toJson(new EndRoundClientMessage(Game.getGameCode())));
+					ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
+					                                Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+
+					SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
+				}
+			}
+		});
+
 		Tooltip.install(moneyLabel, new Tooltip("I Vostri soldi"));
 	}
 
@@ -564,7 +590,7 @@ public class BoardController
 				{
 					if (mostProductiveContract != null)
 						if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-								!mostProductiveContracts.contains(contract))
+						    !mostProductiveContracts.contains(contract))
 							mostProductiveContract = contract;
 				}
 
@@ -794,7 +820,7 @@ public class BoardController
 					square.getChildren().get(1)
 							.setStyle(
 									"-fx-border-color: " + GUIUtils.getPawnColor().get(contract.getOwner().getPawn())
-											+ ";-fx-border-width: 2");
+									+ ";-fx-border-width: 2");
 					if (contract instanceof PropertyContract)
 					{
 						int numberOfHouses = ((PropertyContract) contract).getNumberOfHouses();
