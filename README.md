@@ -9,8 +9,9 @@ sos
 - chiudere tutte le finestre quando parte uno scambio o un'asta (TO TEST)
 - votekick (TO TEST)
 - il tasto per il votekick non mantiene la scritta "annulla" se si chiude e riapre la finestra IMPORTANTE (TO TEST)
-
-
 - Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata (TO TEST)
+
+
 - mettere Thread.sleep() in giro
 - Sezione con guida
+- Presentazione
