@@ -26,6 +26,8 @@ public class StationViewController
 	 */
 	private int contractId;
 
+	private static StationViewController instance;
+
 	@FXML
 	private Label titleLabel;
 	@FXML
@@ -46,6 +48,17 @@ public class StationViewController
 	private Button sellButton;
 	@FXML
 	private Button mortgageButton;
+
+	public static StationViewController getInstance()
+	{
+		return instance;
+	}
+
+	@FXML
+	public void initialize()
+	{
+		instance = this;
+	}
 
 	/**
 	 * Set the contract and update the visuals of the StationView.

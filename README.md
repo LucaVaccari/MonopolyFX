@@ -10,7 +10,7 @@ sos
 - Controlli sull'input in asta e scambio (TO TEST)
 - Non mostrare i pulsanti dei terreni durante lo scambio (TO TEST)
 - chiudere tutte le finestre quando parte uno scambio o un'asta (TO TEST)
-- finire il sistema d'id dei contratti (TO TEST)
+- votekick (TO TEST)
 
 
 - cambiare la vista della proprietà se è ipotecata
@@ -20,4 +20,7 @@ sos
 - mettere Thread.sleep() in giro
 - Sezione con guida
 - Controllare errore alert window already open
-- votekick
+- finire il sistema d'id dei contratti
+
+
+- sistemare il votekick con messaggio di callback

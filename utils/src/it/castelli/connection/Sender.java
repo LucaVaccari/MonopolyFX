@@ -13,8 +13,7 @@ public class Sender
 	{
 		try
 		{
-			out = new BufferedWriter(
-					new OutputStreamWriter(connectionSocket.getOutputStream()));
+			out = new BufferedWriter(new OutputStreamWriter(connectionSocket.getOutputStream()));
 		}
 		catch (IOException e)
 		{

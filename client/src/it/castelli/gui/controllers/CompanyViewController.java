@@ -23,7 +23,12 @@ import javafx.scene.layout.HBox;
  */
 public class CompanyViewController
 {
+	/**
+	 * The id of the contract
+	 */
 	private int contractId;
+
+	private static CompanyViewController instance;
 
 	@FXML
 	private ImageView companyImage;
@@ -35,6 +40,17 @@ public class CompanyViewController
 	private Button sellButton;
 	@FXML
 	private Button mortgageButton;
+
+	public static CompanyViewController getInstance()
+	{
+		return instance;
+	}
+
+	@FXML
+	public void initialize()
+	{
+		instance = this;
+	}
 
 	/**
 	 * Update the visuals of the CompanyView.
@@ -87,7 +103,8 @@ public class CompanyViewController
 			mortgageButton.setDisable(!Game.getPlayer().hasMoney(contract.getMortgageValue() * 11 / 10));
 
 		mortgageButton.setTooltip(new Tooltip(contract.isMortgaged() ?
-		                                      "Rimuovete l'ipoteca e riottenete il terreno (pagando il 10% in piu' del costo dell'ipoteca)" :
+		                                      "Rimuovete l'ipoteca e riottenete il terreno (pagando il 10% in piu' del" +
+		                                      " costo dell'ipoteca)" :
 		                                      "Ipotecate il terreno"));
 		mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 		mortgageButton.setOnAction(event -> {

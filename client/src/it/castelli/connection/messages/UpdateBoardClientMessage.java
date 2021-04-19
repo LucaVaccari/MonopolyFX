@@ -5,7 +5,9 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.squares.Square;
 import it.castelli.gui.controllers.BoardController;
+import it.castelli.gui.controllers.CompanyViewController;
 import it.castelli.gui.controllers.PropertyViewController;
+import it.castelli.gui.controllers.StationViewController;
 import javafx.application.Platform;
 
 /**
@@ -37,6 +39,10 @@ public class UpdateBoardClientMessage implements Message
 
 			if (PropertyViewController.getInstance() != null)
 				PropertyViewController.getInstance().update();
+			if (StationViewController.getInstance() != null)
+				StationViewController.getInstance().update();
+			if (CompanyViewController.getInstance() != null)
+				CompanyViewController.getInstance().update();
 		});
 	}
 }

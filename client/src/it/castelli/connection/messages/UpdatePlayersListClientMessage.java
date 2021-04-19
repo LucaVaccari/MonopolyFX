@@ -3,9 +3,7 @@ package it.castelli.connection.messages;
 import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
-import it.castelli.gui.controllers.BoardController;
-import it.castelli.gui.controllers.LobbyController;
-import it.castelli.gui.controllers.PropertyViewController;
+import it.castelli.gui.controllers.*;
 import javafx.application.Platform;
 
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -42,11 +40,16 @@ public class UpdatePlayersListClientMessage implements Message
 		}
 
 		Platform.runLater(() -> {
-			LobbyController.getInstance().updatePlayerListView();
+			LobbyController.getInstance().update();
 			BoardController.getInstance().update();
+			System.out.println("Updating players");
 
 			if (PropertyViewController.getInstance() != null)
 				PropertyViewController.getInstance().update();
+			if (StationViewController.getInstance() != null)
+				StationViewController.getInstance().update();
+			if (CompanyViewController.getInstance() != null)
+				CompanyViewController.getInstance().update();
 		});
 	}
 }

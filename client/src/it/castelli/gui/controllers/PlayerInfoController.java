@@ -4,6 +4,7 @@ import it.castelli.ClientMain;
 import it.castelli.Game;
 import it.castelli.connection.messages.ClientMessages;
 import it.castelli.connection.messages.CreateExchangeClientMessage;
+import it.castelli.connection.messages.VoteKickClientMessage;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
 import it.castelli.gui.customComponents.SmallTerrainViewComponent;
@@ -41,11 +42,8 @@ public class PlayerInfoController
 		for (Contract contract : player.getContracts())
 			propertyView.getChildren().add(new SmallTerrainViewComponent(contract));
 
-		if (player.betterEquals(Game.getPlayer()))
-		{
-			exchangeButton.setDisable(true);
-			exchangeButton.setVisible(false);
-		}
+		exchangeButton.setVisible(!Game.getPlayer().betterEquals(player));
+		exchangeButton.setDisable(Game.getPlayer().betterEquals(player));
 
 		exchangeButton.setTooltip(new Tooltip("Effettuate uno scambio con questo giocatore"));
 		exchangeButton.setOnAction(event -> {
@@ -57,6 +55,30 @@ public class PlayerInfoController
 				thisStage.close();
 		});
 
-		// TODO: add callback votekick button
+		votekickButton
+				.setVisible(!Game.getPlayer().betterEquals(player) && Game.getGameManager().getPlayers().size() > 2);
+		votekickButton
+				.setDisable(Game.getPlayer().betterEquals(player) && Game.getGameManager().getPlayers().size() <= 2);
+		votekickButton.setOnAction(event -> {
+			if (Game.hasKickedPlayer(player))
+			{
+				ClientMain.getConnection().send(ClientMessages.VOTE_KICK_MESSAGE_NAME, Serializer
+						.toJson(new VoteKickClientMessage(player, false, Game.getGameCode())));
+//				AlertUtil.showInformationAlert("Espulsione", "Avete votato per non espellere " + player.getName(),
+//				                               "Altri " + player.getNumberOfKickVotes() +
+//				                               " hanno votato per espellerlo");
+				Game.getVoteKickedPlayers().remove(player);
+				votekickButton.setText("Votate espulsione");
+			}
+			else
+			{
+				ClientMain.getConnection().send(ClientMessages.VOTE_KICK_MESSAGE_NAME, Serializer
+						.toJson(new VoteKickClientMessage(player, true, Game.getGameCode())));
+//				AlertUtil.showInformationAlert("Espulsione", "Avete votato per espellere " + player.getName(),
+//				                               "Altri " + player.getNumberOfKickVotes() + " hanno votato per farlo");
+				Game.getVoteKickedPlayers().add(player);
+				votekickButton.setText("Annullate espulsione");
+			}
+		});
 	}
 }

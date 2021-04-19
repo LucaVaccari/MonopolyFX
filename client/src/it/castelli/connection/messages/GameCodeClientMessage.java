@@ -3,6 +3,7 @@ package it.castelli.connection.messages;
 import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
+import it.castelli.gui.controllers.LobbyController;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import javafx.application.Platform;
@@ -33,6 +34,7 @@ public class GameCodeClientMessage implements Message
 		Game.setGameCode(gameCode);
 		Platform.runLater(() -> {
 			SceneManager.getInstance().showScene(SceneType.PAWN_CHOICE);
+			LobbyController.getInstance().update();
 		});
 	}
 }

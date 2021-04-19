@@ -67,7 +67,7 @@ public class Player
 	/**
 	 * The number of vote to kick this player
 	 */
-	private int numberOfVotes = 0;
+	private int numberOfKickVotes = 0;
 
 	/**
 	 * Constructor for the Player
@@ -243,25 +243,25 @@ public class Player
 	 *
 	 * @return The number of vote to kick this player
 	 */
-	public int getNumberOfVotes()
+	public int getNumberOfKickVotes()
 	{
-		return numberOfVotes;
+		return numberOfKickVotes;
 	}
 
 	/**
 	 * Adds a vote to the player votes
 	 */
-	public void addVote()
+	public void addKickVote()
 	{
-		this.numberOfVotes++;
+		this.numberOfKickVotes++;
 	}
 
 	/**
 	 * Removes a vote from the player votes
 	 */
-	public void removeVote()
+	public void removeKickVote()
 	{
-		numberOfVotes--;
+		numberOfKickVotes--;
 	}
 
 	/**

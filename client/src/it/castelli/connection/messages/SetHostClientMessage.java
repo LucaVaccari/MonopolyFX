@@ -4,6 +4,7 @@ import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gui.controllers.LobbyController;
+import javafx.application.Platform;
 
 /**
  * Message from the server that sets the player as the game host (receive only)
@@ -15,6 +16,6 @@ public class SetHostClientMessage implements Message
 	{
 		Game.setHost(true);
 		System.out.println("Host");
-		LobbyController.getInstance().showPlayButton();
+		Platform.runLater(() -> LobbyController.getInstance().update());
 	}
 }

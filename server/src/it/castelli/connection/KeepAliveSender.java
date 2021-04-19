@@ -9,7 +9,7 @@ public class KeepAliveSender implements Runnable
 	ConnectionManager connectionManager = ConnectionManager.getInstance();
 	String message = Serializer.toJson(new KeepAliveServerMessage());
 	private boolean isRunning;
-	private int sendTime;
+	private final int sendTime;
 
 	/**
 	 * KeepAliveReceiver Constructor
@@ -47,29 +47,18 @@ public class KeepAliveSender implements Runnable
 	{
 		//remove inactive players from the waiting room
 		for (Connection connection : connectionManager.getWaitingRoom())
-		{
 			connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME, message);
-		}
 
 		//remove inactive connections in every game
-		for (GameConnectionManager gameConnectionManager : connectionManager
-				.getGames().values())
+		for (GameConnectionManager gameConnectionManager : connectionManager.getGames().values())
 		{
-
 			//remove inactive connections from joiningPlayers list
 			for (Connection connection : gameConnectionManager.getPlayerConnections())
-			{
-				connection
-						.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME, message);
-			}
+				connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME, message);
 
 			//remove inactive connections from players list
 			for (Connection connection : gameConnectionManager.getPlayerConnections())
-			{
-				connection
-						.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME, message);
-			}
-
+				connection.send(ServerMessages.KEEP_ALIVE_MESSAGE_NAME, message);
 		}
 	}
 

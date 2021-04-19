@@ -42,7 +42,7 @@ public class Connection
 
 	public void send(String messageName, String message)
 	{
-		sender.send(messageName + "|" + message);
+		sender.send(messageName + " | " + message);
 	}
 
 	public Socket getSocket()

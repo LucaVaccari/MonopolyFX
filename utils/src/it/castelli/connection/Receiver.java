@@ -54,10 +54,10 @@ public class Receiver implements Runnable
 			BufferedReader in = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
 			while (isRunning)
 			{
-				String firstMessage;
-				while ((firstMessage = in.readLine()) != null)
+				String messageString;
+				while ((messageString = in.readLine()) != null)
 				{
-					String[] tokens = firstMessage.trim().strip().split("\\|");
+					String[] tokens = messageString.strip().split("\\s\\|\\s");
 					String classType = tokens[0];
 					String jsonObject = tokens[1];
 					try
