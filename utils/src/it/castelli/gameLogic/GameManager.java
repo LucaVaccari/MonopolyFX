@@ -254,11 +254,19 @@ public class GameManager
 		return board[index];
 	}
 
+	/**
+	 * Get the list of the players
+	 *
+	 * @return The list of players
+	 */
 	public CopyOnWriteArrayList<Player> getPlayers()
 	{
 		return players;
 	}
 
+	/**
+	 * Start the game
+	 */
 	public void startGame()
 	{
 		Player newPlayer = players.get(0);
@@ -267,6 +275,9 @@ public class GameManager
 		randomEventManager.shuffleCards();
 	}
 
+	/**
+	 * End the game
+	 */
 	public void endGame()
 	{
 		inGame = false;
@@ -276,6 +287,9 @@ public class GameManager
 		currentRound = null;
 	}
 
+	/**
+	 * Begin the next round
+	 */
 	public void nextRound()
 	{
 		if (players.size() > 0)
@@ -286,11 +300,20 @@ public class GameManager
 		}
 	}
 
+	/**
+	 * Start an auction
+	 *
+	 * @param contract Contract which has been auctioned
+	 * @param offer Initial offer
+	 */
 	public void startAuction(Contract contract, int offer)
 	{
 		auction = new Auction(contract, offer, null);
 	}
 
+	/**
+	 * End auction
+	 */
 	public void endAuction()
 	{
 		if (getSamePlayer(auction.getPlayer()) != null)
@@ -302,6 +325,12 @@ public class GameManager
 			System.out.println("Auction player is null");
 	}
 
+	/**
+	 * Get the desired contract in the specific game
+	 *
+	 * @param contract Desired contract
+	 * @return Desired contract
+	 */
 	public Contract getSameContract(Contract contract)
 	{
 		for (Square square : board)
@@ -313,36 +342,72 @@ public class GameManager
 		return null;
 	}
 
+	/**
+	 * Get the auction
+	 *
+	 * @return The current ongoing auction
+	 */
 	public Auction getAuction()
 	{
 		return auction;
 	}
 
+	/**
+	 * Set the auction
+	 *
+	 * @param auction The current ongoing auction
+	 */
 	public void setAuction(Auction auction)
 	{
 		this.auction = auction;
 	}
 
+	/**
+	 * Get the current round
+	 *
+	 * @return the current round
+	 */
 	public Round getCurrentRound()
 	{
 		return currentRound;
 	}
 
+	/**
+	 * Set a current round
+	 *
+	 * @param currentRound The current round
+	 */
 	public void setCurrentRound(Round currentRound)
 	{
 		this.currentRound = currentRound;
 	}
 
+	/**
+	 * Get the Manager of all Chances and CommunityChests
+	 *
+	 * @return The Manager of all Chances and CommunityChests
+	 */
 	public RandomEventManager getRandomEventManager()
 	{
 		return randomEventManager;
 	}
 
+	/**
+	 * Remove a finished exchange
+	 *
+	 * @param exchange Exchange to remove
+	 */
 	public void removeExchange(Exchange exchange)
 	{
 		exchanges.remove(exchange);
 	}
 
+	/**
+	 * Get the exchange of a desired player
+	 *
+	 * @param player Desired player from who you want obtain the exchange
+	 * @return The exchange of the player
+	 */
 	public Exchange getExchangeFromPlayer(Player player)
 	{
 		for (Exchange exchange : exchanges)
@@ -355,11 +420,21 @@ public class GameManager
 		return null;
 	}
 
+	/**
+	 * Get a board of the game
+	 *
+	 * @return The array of all the squares
+	 */
 	public Square[] getBoard()
 	{
 		return board;
 	}
 
+	/**
+	 * Overwrites the board with new changes done
+	 *
+	 * @param board board to update
+	 */
 	public void setBoard(Square[] board)
 	{
 		System.arraycopy(board, 0, this.board, 0, board.length);
@@ -375,6 +450,11 @@ public class GameManager
 		}
 	}
 
+	/**
+	 * Updates a current exchange with a new offer
+	 *
+	 * @param exchange Exchange to update
+	 */
 	public void updateExchange(Exchange exchange)
 	{
 		for (int i = 0, exchangesSize = exchanges.size(); i < exchangesSize; i++)
@@ -384,16 +464,32 @@ public class GameManager
 		}
 	}
 
+	/**
+	 * Starts a new exchange
+	 *
+	 * @param exchange New exchange to add
+	 */
 	public void addExchange(Exchange exchange)
 	{
 		exchanges.add(exchange);
 	}
 
+	/**
+	 * Game started?
+	 *
+	 * @return if the game is started or not
+	 */
 	public boolean isInGame()
 	{
 		return inGame;
 	}
 
+	/**
+	 * To get the copy of player contained in GameManager instead of using an instance
+	 *
+	 * @param player Player to get
+	 * @return Desired player or null if not found
+	 */
 	public Player getSamePlayer(Player player)
 	{
 		for (Player element : players)
@@ -404,6 +500,12 @@ public class GameManager
 		return null;
 	}
 
+	/**
+	 * Add a random event to the random events' deck
+	 *
+	 * @param event Event to add
+	 * @param type Type of the random event (Community Chest, Chance)
+	 */
 	public void addRandomEvent(RandomEvent event, RandomEventType type)
 	{
 		switch (type)
