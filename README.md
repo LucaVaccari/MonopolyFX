@@ -15,11 +15,9 @@ sos
 
 - cambiare la vista della proprietà se è ipotecata
 - mettere le immagini delle case affianco al numero (con hotel)
-- messaggio per la conferma della vendita
 - Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata (TO TEST)
 - mettere Thread.sleep() in giro
 - Sezione con guida
-- Controllare errore alert window already open
 
 
 - sistemare il votekick con messaggio di callback

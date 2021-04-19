@@ -69,7 +69,7 @@ public class GUIUtils
 	/**
 	 * Getter for the propertyColorsCodes HashMap
 	 *
-	 * @return Map containing all PropertyColors bound to their hex color codes <#nnnnnn>
+	 * @return Map containing all PropertyColors bound to their hex color codes #nnnnnn
 	 */
 	public static HashMap<PropertyColor, String> getPropertyColorsCodes()
 	{

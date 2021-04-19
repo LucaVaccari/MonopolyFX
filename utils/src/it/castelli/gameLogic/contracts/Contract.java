@@ -153,8 +153,6 @@ public abstract class Contract
 	 * </ul>
 	 *
 	 * @return a hash code value for this object.
-	 * @implSpec As far as is reasonably practical, the {@code hashCode} method defined by class {@code Object}
-	 * 		returns distinct integers for distinct objects.
 	 * @see Object#equals(Object)
 	 * @see System#identityHashCode
 	 */
