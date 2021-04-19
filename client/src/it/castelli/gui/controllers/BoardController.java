@@ -521,9 +521,10 @@ public class BoardController
 	 */
 	public void onSceneLoaded()
 	{
+		System.out.println(squares[1].getChildren());
 		// player pawns
 		playerPawns.clear();
-
+		chat.clear();
 		for (Player player : Game.getGameManager().getPlayers())
 		{
 			String imagePath = GUIUtils.getPawnPaths().get(player.getPawn());
@@ -801,6 +802,7 @@ public class BoardController
 	 */
 	public void updateBoard()
 	{
+		System.out.println(squares[1].getChildren());
 		for (Group square : squares)
 		{
 			SquareComponent squareComponent = (SquareComponent) square.getChildren().get(0);

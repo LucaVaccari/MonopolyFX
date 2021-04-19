@@ -130,10 +130,10 @@ public class GameManager
 		                                                             PropertyColor.GREEN, 3);
 		StationContract stazioneEstContract = new StationContract(25, "Stazione Est", 200,
 		                                                          25);
-		PropertyContract vialeDeiGiardiniContract = new PropertyContract(6, "Viale dei Giardini", 350, 35,
+		PropertyContract vialeDeiGiardiniContract = new PropertyContract(26, "Viale dei Giardini", 350, 35,
 		                                                                 200, 500, 1100, 1300, 1500, 200,
 		                                                                 PropertyColor.BLUE, 2);
-		PropertyContract parcoDellaVittoriaContract = new PropertyContract(25, "Parco della Vittoria", 400, 50,
+		PropertyContract parcoDellaVittoriaContract = new PropertyContract(27, "Parco della Vittoria", 400, 50,
 		                                                                   200, 600, 1400, 1700, 2000, 200,
 		                                                                   PropertyColor.BLUE, 2);
 		allContracts = new Contract[]{
