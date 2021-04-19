@@ -1,17 +1,16 @@
 package it.castelli.gui.controllers;
 
 import it.castelli.ClientMain;
-import it.castelli.Game;
 import it.castelli.connection.messages.ClientMessages;
 import it.castelli.connection.messages.CreateGameClientMessage;
 import it.castelli.connection.messages.JoinGameClientMessage;
-import it.castelli.connection.messages.LeaveGameClientMessage;
 import it.castelli.gui.AlertUtil;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.serialization.Serializer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 
 import java.util.Optional;
 
@@ -32,14 +31,17 @@ public class MainMenuController
 	@FXML
 	private void initialize()
 	{
+		exitButton.setTooltip(new Tooltip("Chiudete l'applicazione"));
 		exitButton.setOnAction(event -> {
-			SceneManager.getInstance().getPrimaryStage().close();
-			System.exit(-1);
-		}
+					SceneManager.getInstance().getPrimaryStage().close();
+					System.exit(-1);
+				}
 		);
 
+		joinButton.setTooltip(new Tooltip("Unitevi ad una partita creata da un Vostro amico"));
 		joinButton.setOnAction(this::onJoinButtonPressed);
 
+		createButton.setTooltip(new Tooltip("Create una partita per poi far entrare i Vostri amici!"));
 		createButton.setOnAction(event -> {
 			playerName = askPlayerName();
 			if (playerName == null) return;

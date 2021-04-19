@@ -70,6 +70,18 @@ public class Player
 	private int numberOfVotes = 0;
 
 	/**
+	 * Constructor for the Player
+	 *
+	 * @param money The amount of money the player has
+	 * @param name  The name of the player
+	 */
+	public Player(int money, String name)
+	{
+		this.money = money;
+		this.name = name;
+	}
+
+	/**
 	 * Getter for previousPosition
 	 *
 	 * @return The previous position of the player
@@ -80,15 +92,14 @@ public class Player
 	}
 
 	/**
-	 * Constructor for the Player
+	 * Set the previous position of the player
 	 *
-	 * @param money The amount of money the player has
-	 * @param name  The name of the player
+	 * @param previousPosition The new position for the player
 	 */
-	public Player(int money, String name)
+	public void setPreviousPosition(int previousPosition)
 	{
-		this.money = money;
-		this.name = name;
+		somethingChanged = true;
+		this.previousPosition = previousPosition;
 	}
 
 	/**
@@ -174,6 +185,7 @@ public class Player
 	public void removeContract(Contract contract)
 	{
 		somethingChanged = true;
+		contract.setOwner(null);
 		contracts.remove(contract);
 	}
 
@@ -212,8 +224,7 @@ public class Player
 	 * Set the position of the player by specifying it precisely
 	 *
 	 * @param position            The new position for the player
-	 * @param passThroughGoSquare If it passes through the GoSquare, should it
-	 *                            get paid?
+	 * @param passThroughGoSquare If it passes through the GoSquare, should it get paid?
 	 */
 	public void setPosition(int position, boolean passThroughGoSquare)
 	{
@@ -244,20 +255,7 @@ public class Player
 	}
 
 	/**
-	 * Set the previous position of the player
-	 *
-	 * @param previousPosition The new position for the player
-	 *
-	 */
-	public void setPreviousPosition(int previousPosition)
-	{
-		somethingChanged = true;
-		this.previousPosition = previousPosition;
-	}
-
-	/**
-	 * Move the player towards by a certain amount (after throwing the dice or
-	 * a random event)
+	 * Move the player towards by a certain amount (after throwing the dice or a random event)
 	 *
 	 * @param units The number of squares to move
 	 */
@@ -310,6 +308,17 @@ public class Player
 	}
 
 	/**
+	 * Setter for the pawn
+	 *
+	 * @param pawn The new player pawn
+	 */
+	public void setPawn(Pawn pawn)
+	{
+		somethingChanged = true;
+		this.pawn = pawn;
+	}
+
+	/**
 	 * Getter for randomEventType
 	 *
 	 * @return The type of the last random event the player encountered
@@ -359,21 +368,9 @@ public class Player
 	}
 
 	/**
-	 * Setter for the pawn
-	 *
-	 * @param pawn The new player pawn
-	 */
-	public void setPawn(Pawn pawn)
-	{
-		somethingChanged = true;
-		this.pawn = pawn;
-	}
-
-	/**
 	 * Indicates whether some other object is "equal to" this one. (do not use)
 	 * <p>
-	 * The {@code equals} method implements an equivalence relation
-	 * on non-null object references:
+	 * The {@code equals} method implements an equivalence relation on non-null object references:
 	 * <ul>
 	 * <li>It is <i>reflexive</i>: for any non-null reference value
 	 *     {@code x}, {@code x.equals(x)} should return
@@ -410,8 +407,7 @@ public class Player
 	 * that equal objects must have equal hash codes.
 	 *
 	 * @param obj the reference object with which to compare.
-	 * @return {@code true} if this object is the same as the obj
-	 * argument; {@code false} otherwise.
+	 * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
 	 * @see #hashCode()
 	 * @see HashMap
 	 */
@@ -422,7 +418,7 @@ public class Player
 		{
 			Player other = (Player) obj;
 			return this.money == other.money && this.name.equals(other.name) && this.position == other.position &&
-			       this.inPrison == other.inPrison && this.pawn == other.pawn;
+					this.inPrison == other.inPrison && this.pawn == other.pawn;
 		}
 		return false;
 	}
@@ -444,19 +440,13 @@ public class Player
 	}
 
 	/**
-	 * Returns a string representation of the object. In general, the
-	 * {@code toString} method returns a string that
-	 * "textually represents" this object. The result should
-	 * be a concise but informative representation that is easy for a
-	 * person to read.
-	 * It is recommended that all subclasses override this method.
+	 * Returns a string representation of the object. In general, the {@code toString} method returns a string that
+	 * "textually represents" this object. The result should be a concise but informative representation that is easy
+	 * for a person to read. It is recommended that all subclasses override this method.
 	 * <p>
-	 * The {@code toString} method for class {@code Object}
-	 * returns a string consisting of the name of the class of which the
-	 * object is an instance, the at-sign character `{@code @}', and
-	 * the unsigned hexadecimal representation of the hash code of the
-	 * object. In other words, this method returns a string equal to the
-	 * value of:
+	 * The {@code toString} method for class {@code Object} returns a string consisting of the name of the class of
+	 * which the object is an instance, the at-sign character `{@code @}', and the unsigned hexadecimal representation
+	 * of the hash code of the object. In other words, this method returns a string equal to the value of:
 	 * <blockquote>
 	 * <pre>
 	 * getClass().getName() + '@' + Integer.toHexString(hashCode())

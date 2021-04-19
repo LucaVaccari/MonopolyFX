@@ -3,9 +3,7 @@ package it.castelli.gui.scene;
 import javafx.scene.Scene;
 
 /**
- * Wrapper for a JavaFX scene, containing the scene, the window title and
- * whether it should open
- * a new stage or not
+ * Wrapper for a JavaFX scene, containing the scene, the window title and whether it should open a new stage or not
  */
 public class SceneFXWrapper
 {

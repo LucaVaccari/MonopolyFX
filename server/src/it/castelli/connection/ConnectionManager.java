@@ -48,9 +48,8 @@ public class ConnectionManager
 
 	public void addToWaitingRoom(Connection connection)
 	{
-		System.out.println("Connection added to the waiting room");
 		waitingRoom.add(connection);
-		System.out.println("The total number of connection in the waiting is: " + waitingRoom.size());
+		System.out.println("Connection added to the waiting room, now containing " + waitingRoom.size() + " connections");
 	}
 
 	private void addGame(int gameCode, GameConnectionManager game)
@@ -60,14 +59,9 @@ public class ConnectionManager
 
 	public void removeGame(int gameCode)
 	{
-		for (var connection : games.get(gameCode).getPlayerConnections())
-		{
-			addToWaitingRoom(connection);
-			leaveGame(gameCode, connection);
-		}
 		games.remove(gameCode);
 		reusedGameCodes.add(gameCode);
-		System.out.println("Game with code " + gameCode + " removed.");
+		System.out.println("Removed game with game code: " + gameCode);
 	}
 
 	public int createGame()
@@ -104,6 +98,7 @@ public class ConnectionManager
 		if (games.containsKey(gameCode))
 		{
 			games.get(gameCode).removePlayer(connection);
+			addToWaitingRoom(connection);
 		}
 	}
 

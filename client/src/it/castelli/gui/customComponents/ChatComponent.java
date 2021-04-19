@@ -9,10 +9,7 @@ import it.castelli.serialization.Serializer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -48,6 +45,7 @@ public class ChatComponent extends AnchorPane
 	public void initialize()
 	{
 		messageTextField.setOnAction(this::onMessageSend);
+		sendButton.setTooltip(new Tooltip("Inviate il messaggio a tutti gli altri giocatori"));
 		sendButton.setOnAction(this::onMessageSend);
 	}
 
@@ -65,6 +63,10 @@ public class ChatComponent extends AnchorPane
 
 	public void addMessage(String message)
 	{
-		messageListView.getItems().add(new Label(message));
+		Label messageLabel = new Label(message);
+		messageLabel.setWrapText(true);
+		messageLabel.setMaxWidth(messageListView.getWidth());
+		messageLabel.setMaxHeight(Double.MAX_VALUE);
+		messageListView.getItems().add(messageLabel);
 	}
 }

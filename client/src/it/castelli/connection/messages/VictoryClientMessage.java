@@ -35,11 +35,11 @@ public class VictoryClientMessage implements Message
 				"Un bel brindisi per " + playerName + "!",
 				"Bella partita, complimenti",
 				"La fortuna era dalla vostra, " + playerName,
-				"Nessuno vi fermerà mai!",
+				"Nessuno vi fermera' mai!",
 				"GG EZ",
 				"Brao",
 				"Avete giocato bene",
-				};
+		};
 
 		Random random = new Random();
 		return sentences[random.nextInt(sentences.length)];

@@ -17,7 +17,7 @@ public class ConnectionReceiver implements Runnable
 	/**
 	 * Indicate the time between two server's checks to verify a connection activity (in seconds)
 	 */
-	private static final int CHECK_TIME = 10;
+	private static final int CHECK_TIME = 4;
 	private Thread keepAliveReceiver;
 	private Thread keepAliveSender;
 

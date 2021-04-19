@@ -2,52 +2,59 @@
 
 <?import it.castelli.gui.customComponents.ChatComponent?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="512.0" prefWidth="1069.0" stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/16"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.AuctionController">
-    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0"
-          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-        <ChatComponent fx:id="chat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                       prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS"/>
-        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="492.0"
-              prefWidth="398.0" spacing="10.0" HBox.hgrow="ALWAYS">
-            <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                   prefHeight="95.0" prefWidth="556.0" text="ASTA" VBox.vgrow="ALWAYS">
-                <font>
-                    <Font name="System Bold" size="53.0"/>
-                </font>
-            </Label>
-            <Label fx:id="totalMoneyLabel" alignment="CENTER" maxHeight="1.7976931348623157E308"
-                   maxWidth="1.7976931348623157E308" text="Total money" VBox.vgrow="ALWAYS">
-                <font>
-                    <Font name="System Italic" size="14.0"/>
-                </font>
-            </Label>
-            <Label fx:id="auctionBaseLabel" alignment="CENTER" maxHeight="1.7976931348623157E308"
-                   maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="556.0" text="Auction base"
-                   VBox.vgrow="ALWAYS">
-                <font>
-                    <Font name="System Italic" size="14.0"/>
-                </font>
-            </Label>
-            <Label fx:id="yourOfferLabel" alignment="CENTER" maxHeight="1.7976931348623157E308"
-                   maxWidth="1.7976931348623157E308" prefHeight="39.0" prefWidth="556.0" text="offerta"
-                   VBox.vgrow="ALWAYS"/>
-            <TextField fx:id="offerTextField" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="31.0"
-                       prefWidth="226.0" VBox.vgrow="ALWAYS">
-                <padding>
-                    <Insets left="100.0" right="100.0"/>
-                </padding>
-            </TextField>
-            <Button id="offer-button" fx:id="offerButton" maxHeight="-Infinity" maxWidth="-Infinity"
-                    mnemonicParsing="false" prefHeight="97.0" prefWidth="135.0" stylesheets="@Style/style.css"
-                    text="Offer" VBox.vgrow="ALWAYS"/>
-            <Label fx:id="timerLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                   prefHeight="72.0" prefWidth="556.0" text="Timer" VBox.vgrow="ALWAYS"/>
-        </VBox>
-        <VBox fx:id="terrainVBox" alignment="CENTER" maxHeight="1.7976931348623157E308"
-              maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS"/>
-    </HBox>
+
+<AnchorPane prefHeight="512.0" prefWidth="1069.0" stylesheets="@Style/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.AuctionController">
+	<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+		<ChatComponent fx:id="chat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+		<VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="492.0" prefWidth="398.0" spacing="10.0" HBox.hgrow="ALWAYS">
+			<Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="70.0" prefWidth="548.0" style="-fx-font-size: 30;" text="ASTA" textFill="#168c37" VBox.vgrow="ALWAYS">
+				<font>
+					<Font name="System Bold" size="53.0" />
+				</font>
+			</Label>
+			<Label fx:id="timerLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="49.0" prefWidth="548.0" style="-fx-font-size: 20;" text="Timer" VBox.vgrow="ALWAYS">
+            <font>
+               <Font size="22.0" />
+            </font></Label>
+         <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" VBox.vgrow="ALWAYS">
+            <children>
+               <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="I tuoi soldi:" HBox.hgrow="ALWAYS" />
+      			<Label fx:id="totalMoneyLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Total money" HBox.hgrow="ALWAYS">
+      				<font>
+      					<Font name="System Italic" size="14.0" />
+      				</font>
+      			</Label>
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" VBox.vgrow="ALWAYS">
+            <children>
+               <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Offerta di base: " HBox.hgrow="ALWAYS" />
+      			<Label fx:id="auctionBaseLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Auction base" HBox.hgrow="ALWAYS">
+      				<font>
+      					<Font name="System Italic" size="14.0" />
+      				</font>
+      			</Label>
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
+            <children>
+               <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="La Vostra offerta: " HBox.hgrow="ALWAYS" />
+      			<Label fx:id="yourOfferLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Offerta" HBox.hgrow="ALWAYS" />
+            </children>
+         </HBox>
+			<TextField fx:id="offerTextField" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="31.0" prefWidth="226.0" promptText="offerta..." VBox.vgrow="ALWAYS" />
+			<Button id="offer-button" fx:id="offerButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="75.0" prefWidth="135.0" stylesheets="@Style/style.css" text="Offer" VBox.vgrow="ALWAYS" />
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
+		</VBox>
+		<VBox fx:id="terrainVBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+	</HBox>
 </AnchorPane>

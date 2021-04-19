@@ -71,11 +71,11 @@ public class BuyHousesServerMessage implements Message
             }
             else
             {
-                connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage("Operazione negata", "Non potete comprare case di questa proprietà, poiché non possedete tutte le proprietà dello stesso colore")));
+                connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage("Operazione negata", "Non potete comprare case di questa proprieta', poiché non possedete tutte le proprieta' dello stesso colore")));
             }
         }
         else
-            connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage("Operazione negata", "Non potete comprare case di questa proprietà, poiché e' una stazione oppure una società")));
+            connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage("Operazione negata", "Non potete comprare case di questa proprieta', poiché e' una stazione oppure una societa'")));
 
         gameConnectionManager.updatePlayers();
     }

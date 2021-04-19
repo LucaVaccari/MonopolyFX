@@ -17,7 +17,6 @@ public class Auction
 	}
 
 
-
 	public Contract getContract()
 	{
 		return contract;
@@ -28,18 +27,19 @@ public class Auction
 		return bestOfferProposed;
 	}
 
+	public void setBestOfferProposed(int bestOfferProposed)
+	{
+		this.bestOfferProposed = bestOfferProposed;
+	}
+
 	/**
 	 * Get the player with the highest offer (null if no one offered)
+	 *
 	 * @return The winning player
 	 */
 	public Player getPlayer()
 	{
 		return player;
-	}
-
-	public void setBestOfferProposed(int bestOfferProposed)
-	{
-		this.bestOfferProposed = bestOfferProposed;
 	}
 
 	public void setPlayer(Player player)

@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 
 /**
@@ -59,6 +60,7 @@ public class AuctionController
 
 		offerTextField.setOnAction(this::offer);
 		offerButton.setOnAction(this::offer);
+		offerButton.setTooltip(new Tooltip("Proponete la Vostra offerta"));
 	}
 
 	/**
@@ -80,13 +82,14 @@ public class AuctionController
 	{
 		this.auction = auction;
 		Platform.runLater(() -> {
+			update();
+			terrainVBox.getChildren().clear();
 			if (auction.getContract() instanceof PropertyContract)
 				terrainVBox.getChildren().add(new PropertyViewComponent((PropertyContract) auction.getContract()));
 			else if (auction.getContract() instanceof CompanyContract)
 				terrainVBox.getChildren().add(new CompanyViewComponent((CompanyContract) auction.getContract()));
 			else
 				terrainVBox.getChildren().add(new StationViewComponent((StationContract) auction.getContract()));
-			update();
 		});
 	}
 
@@ -118,7 +121,10 @@ public class AuctionController
 	public void reset()
 	{
 		terrainVBox.getChildren().clear();
-		offerTextField.setText("10");
+		if(auction != null)
+			offerTextField.setText(String.valueOf(auction.getBestOfferProposed()+1));
+		else
+			offerTextField.setText("10");
 	}
 
 	public void setTimer(int timerValue)

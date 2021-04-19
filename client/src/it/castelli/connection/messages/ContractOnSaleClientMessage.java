@@ -26,16 +26,16 @@ public class ContractOnSaleClientMessage implements Message
 		this.contract = contract;
 	}
 
-	@Override
-	public void onReceive(Connection connection, Player player)
-	{
-		Platform.runLater(() -> showSuggestionOfBuy("Proprietà", contract.getName() + " e' in vendita!",
-				"Volete comprare la proprieta' o metterla all'asta?", contract));
-
-	}
-
 	public static void showSuggestionOfBuy(String title, String headerText, String contentText, Contract contract)
 	{
 		AlertUtil.showSuggestionOfBuy(title, headerText, contentText, contract);
+	}
+
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		Platform.runLater(() -> showSuggestionOfBuy("Proprieta'", contract.getName() + " e' in vendita!",
+				"Volete comprare la proprieta' o metterla all'asta?", contract));
+
 	}
 }

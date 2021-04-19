@@ -61,17 +61,7 @@ public class BuyContractServerMessage implements Message
         {
             buyingPlayer.addContract(contractToBuy);
             buyingPlayer.removeMoney(contractToBuy.getValue());
-            System.out.println(buyingPlayer.getName() + " ha pagato " + contractToBuy.getValue());
-            System.out.println("Player " + buyingPlayer.getName() + " ha comprato " + contractToBuy.getName());
             gameConnectionManager.updatePlayers();
-
-            for (Player element : gameManager.getPlayers())
-            {
-                for (Contract contract : element.getContracts())
-                {
-                    System.out.println(element.getName() + " ora possiede " + contract.getName());
-                }
-            }
         }
         else
         {

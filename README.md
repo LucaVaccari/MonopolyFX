@@ -14,16 +14,17 @@ sos
 - votekick (TO TEST)
 
 
-- mettere le immagini delle case affianco al numero (con hotel)
 - cambiare la vista della proprietà se è ipotecata
-- mettere Thread.sleep() in giro
-- aggiungere una label con il codice della partita
+- mettere le immagini delle case affianco al numero (con hotel)
 - messaggio per la conferma della vendita
-- Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata
-- TextField più grosso nell'asta
-- BORDI TONDIIIIII
-- Tooltip a tutti i pulsanti che esistono
-- Messaggio dopo votekick
-- Aggiornare il contratto di una proprietà aperta
+- Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata (TO TEST)
+- mettere Thread.sleep() in giro
+- Sezione con guida
+- Quando si compra una casa, il messaggio dell operazione negata sta dietro le finestre
+- Prigione non funziona correttamente
+- Non viene aggiornato l owner dopo lo scambio
+- Controllare messaggio fine asta
+- Controllare errore alert ShowandWait already open
+
 
 - sconfitta (implementare da client / TO TEST)

@@ -22,7 +22,7 @@ public class GoToJailClientMessage implements Message
 	 * Constructor for GoToJailClientMessage
 	 *
 	 * @param gameCode The game code
-	 * @param player The player to move into the prison
+	 * @param player   The player to move into the prison
 	 */
 	public GoToJailClientMessage(int gameCode, Player player)
 	{

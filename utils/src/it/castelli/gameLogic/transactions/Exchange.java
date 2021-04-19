@@ -1,5 +1,6 @@
 package it.castelli.gameLogic.transactions;
 
+import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 
 import java.util.Objects;
@@ -56,12 +57,12 @@ public class Exchange
 			accepted2 = false;
 	}
 
-	public void endExchange(Player player1, Player player2)
+	public void endExchange(Player player1, Player player2, GameManager gameManager)
 	{
-		asset1.removeFromPlayer(player1);
-		asset1.addToPlayer(player2);
-		asset2.removeFromPlayer(player2);
-		asset2.addToPlayer(player1);
+		asset1.removeFromPlayer(player1, gameManager);
+		asset1.addToPlayer(player2, gameManager);
+		asset2.removeFromPlayer(player2, gameManager);
+		asset2.addToPlayer(player1, gameManager);
 	}
 
 	public Boolean getAccepted1()

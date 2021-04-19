@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -116,6 +117,7 @@ public class ExchangeController
 			}
 		});
 
+		addPropertyButton.setTooltip(new Tooltip("Aggiungete proprieta' da scambiare con l'altro giocatore"));
 		addPropertyButton.setOnAction(event -> {
 			Optional<Contract> optionalContract =
 					new TerrainChoiceDialog(isPlayer1 ? exchange.getPlayer1() : exchange.getPlayer2()).showAndWait();
@@ -133,6 +135,7 @@ public class ExchangeController
 			}
 		});
 
+		removeProperties.setTooltip(new Tooltip("Rimuovete tutte le proprieta' che volevate scambiare"));
 		removeProperties.setOnAction(event -> {
 			if (isPlayer1)
 				exchange.getAsset1().getContracts().clear();
@@ -145,17 +148,15 @@ public class ExchangeController
 							.getPlayer())));
 		});
 
-		acceptButton.setOnAction(event -> {
-			ClientMain.getConnection().send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
-					.toJson(new AcceptExchangeClientMessage(!(isPlayer1 ? exchange.getAccepted1() :
-					                                          exchange.getAccepted2()), Game.getPlayer(),
-					                                        Game.getGameCode())));
-		});
+		acceptButton.setOnAction(event -> ClientMain.getConnection()
+				.send(ClientMessages.ACCEPT_EXCHANGE_MESSAGE_NAME, Serializer
+						.toJson(new AcceptExchangeClientMessage(!(isPlayer1 ? exchange.getAccepted1() :
+								exchange.getAccepted2()), Game.getPlayer(), Game.getGameCode()))));
 
-		refuseButton.setOnAction(event -> {
-			ClientMain.getConnection().send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
-					.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode())));
-		});
+		refuseButton.setTooltip(new Tooltip("Rifiutate lo scambio (equivale a chiudere la finestra)"));
+		refuseButton.setOnAction(event -> ClientMain.getConnection()
+				.send(ClientMessages.REFUSE_EXCHANGE_MESSAGE_NAME, Serializer
+						.toJson(new RefuseExchangeClientMessage(exchange, Game.getGameCode()))));
 	}
 
 	/**
@@ -205,11 +206,15 @@ public class ExchangeController
 
 		if ((isPlayer1 ? exchange.getAccepted1() : exchange.getAccepted2()))
 		{
+			acceptButton.setTooltip(new Tooltip("Annullate l'offerta per cambiare l'accordo (non annulla lo scambio"));
 			acceptButton.setText("Annulla offerta");
 			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(TICK_IMAGE_PATH))));
 		}
 		else
 		{
+			acceptButton
+					.setTooltip(new Tooltip("Accettate l'offerta (se anche l'altro accettera', lo scambio si " +
+							"concludera'"));
 			acceptButton.setText("Accetta");
 			yourChoiceImage.setImage(new Image(String.valueOf(getClass().getResource(PLACEHOLDER_IMAGE_PATH))));
 		}
@@ -249,6 +254,7 @@ public class ExchangeController
 
 	/**
 	 * Getter for the exchange window chat
+	 *
 	 * @return The exchange chat
 	 */
 	public ChatComponent getChat()

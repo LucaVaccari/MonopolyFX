@@ -55,7 +55,7 @@ public class GameConnectionManager
 		else
 		{
 			connection.send(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage(
-					"Errore", "Non potete unirvi alla partita, la lobby e' piena oppure la partita e' già iniziata")));
+					"Errore", "Non potete unirvi alla partita, la lobby e' piena oppure la partita e' gia' iniziata")));
 		}
 	}
 
@@ -81,7 +81,6 @@ public class GameConnectionManager
 		if (playerConnections.isEmpty())
 		{
 			ConnectionManager.getInstance().removeGame(gameCode);
-			System.out.println("Removed game with code " + gameCode);
 		}
 		else
 		{
@@ -151,9 +150,7 @@ public class GameConnectionManager
 
 	public void updatePlayers()
 	{
-		//TODO: uncomment line and remove if (false)
-//		if (gameManager.isInGame() && gameManager.getPlayers().size() == 1)
-		if (false)
+		if (gameManager.isInGame() && gameManager.getPlayers().size() == 1)
 		{
 			sendAll(ServerMessages.VICTORY_MESSAGE_NAME, Serializer.toJson(new VictoryServerMessage()));
 			gameManager.endGame();
@@ -184,7 +181,6 @@ public class GameConnectionManager
 
 			sendAll(ServerMessages.UPDATE_PLAYERS_LIST_MESSAGE_NAME, Serializer
 					.toJson(new UpdatePlayersListServerMessage(gameManager.getPlayers())));
-
 			sendAll(ServerMessages.UPDATE_BOARD_MESSAGE_NAME, Serializer
 					.toJson(new UpdateBoardServerMessage(gameManager.getBoard())));
 			sendAll(ServerMessages.UPDATE_ROUND_MESSAGE_NAME, Serializer
@@ -232,7 +228,7 @@ public class GameConnectionManager
 					    !gameManager.getSamePlayer(square.getContract().getOwner().toPlayer()).betterEquals(player))
 					{
 						sendAll(ServerMessages.GENERIC_MESSAGE_NAME, Serializer.toJson(new GenericServerMessage(
-								"Operazione negata",
+								"Affitto gratuito",
 								"Il terreno e' ipotecato, " + player.getName() + " non deve pagare l'affitto!")));
 					}
 				}

@@ -63,7 +63,7 @@ public class AcceptExchangeServerMessage implements Message
 
 		if (exchange.getAccepted1() && exchange.getAccepted2())
 		{
-			exchange.endExchange(player1, player2);
+			exchange.endExchange(player1, player2, gameManager);
 			player1Connection.send(ServerMessages.EXCHANGE_SUCCESSFUL_MESSAGE_NAME, Serializer.toJson(new ExchangeSuccessfulServerMessage(exchange)));
 			player2Connection.send(ServerMessages.EXCHANGE_SUCCESSFUL_MESSAGE_NAME, Serializer.toJson(new ExchangeSuccessfulServerMessage(exchange)));
 			gameManager.removeExchange(exchange);

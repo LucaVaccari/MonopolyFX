@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 
 /**
@@ -88,6 +89,7 @@ public class PropertyViewController
 
 			numberOfHousesLabel.setText(String.valueOf(contract.getNumberOfHouses()));
 
+			sellButton.setTooltip(new Tooltip("Vendete questa proprieta'"));
 			sellButton.setOnAction(event -> {
 				ClientMain.getConnection().send(ClientMessages.SELL_CONTRACT_MESSAGE_NAME, Serializer
 						.toJson(new SellContractClientMessage(Game.getGameCode(), contract)));
@@ -101,6 +103,9 @@ public class PropertyViewController
 			sellHouseButton.setDisable(contract.isMortgaged());
 			mortgageButton.setDisable(contract.getNumberOfHouses() > 0);
 
+			mortgageButton.setTooltip(new Tooltip(contract.isMortgaged() ?
+					"Rimuovete l'ipoteca e riottenete il terreno (pagando il 10% in piu' del costo dell'ipoteca)" :
+					"Ipotecate il terreno"));
 			mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 			mortgageButton.setOnAction(event -> {
 				if (contract.isMortgaged())
@@ -116,6 +121,7 @@ public class PropertyViewController
 				SceneManager.getInstance().getStageByType(SceneType.PROPERTY_VIEW).close();
 			});
 
+			buyHouseButton.setTooltip(new Tooltip("Aumentate la rendita del terreno acquistando una casa"));
 			buyHouseButton.setOnAction(event -> {
 				if (Game.getPlayer().hasMoney(contract.getHouseCost()) && contract.getNumberOfHouses() < 5)
 				{
@@ -124,6 +130,7 @@ public class PropertyViewController
 				}
 			});
 
+			sellHouseButton.setTooltip(new Tooltip("Vendete una casa (la rendita diminuira'"));
 			sellHouseButton.setOnAction(event -> {
 				if (contract.getNumberOfHouses() > 0)
 				{

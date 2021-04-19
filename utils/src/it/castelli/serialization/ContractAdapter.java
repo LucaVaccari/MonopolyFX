@@ -207,7 +207,8 @@ public class ContractAdapter extends TypeAdapter<Contract>
 			else
 				in.nextNull();
 
-			owner = new OwnerPlayer(ownerName, money, position, inPrison, pawn, randomEventType, randomEventDescription,
+			owner = new OwnerPlayer(ownerName, money, position, inPrison, pawn, randomEventType,
+					randomEventDescription,
 					previousPosition);
 		}
 		in.endObject();
@@ -222,7 +223,7 @@ public class ContractAdapter extends TypeAdapter<Contract>
 			case "Property" -> {
 				contract = new PropertyContract(name, value, revenues[0], revenues[1], revenues[2],
 						revenues[3], revenues[4], revenues[5], houseCost, color, colorSetContractNumber);
-				((PropertyContract)contract).addHouses(numberOfHouses);
+				((PropertyContract) contract).addHouses(numberOfHouses);
 			}
 			case "Station" -> {
 				contract = new StationContract(name, value, revenue);
@@ -231,7 +232,8 @@ public class ContractAdapter extends TypeAdapter<Contract>
 				contract = new CompanyContract(name, company, value);
 			}
 			default -> throw new IllegalStateException("Unexpected value: " + contractType);
-		};
+		}
+		;
 
 		if (owner != null)
 			contract.setOwner(owner.toPlayer());

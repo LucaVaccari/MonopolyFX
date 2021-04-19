@@ -14,8 +14,7 @@ public class SquareComponent extends ImageView
 {
 	public static final String SQUARE_FXML_PATH = "/FXMLs/square.fxml";
 	/**
-	 * The contract bound to the square (if the square has non contract, this
-	 * is null)
+	 * The contract bound to the square (if the square has non contract, this is null)
 	 */
 	private Contract contract;
 
@@ -41,8 +40,7 @@ public class SquareComponent extends ImageView
 	/**
 	 * Getter for contract
 	 *
-	 * @return The contract bound to the square (if the square has non
-	 * contract, this is null)
+	 * @return The contract bound to the square (if the square has non contract, this is null)
 	 */
 	public Contract getContract()
 	{
@@ -52,8 +50,7 @@ public class SquareComponent extends ImageView
 	/**
 	 * Setter for contract
 	 *
-	 * @param contract The contract bound to the square (if the square has non
-	 *                 contract, this is null)
+	 * @param contract The contract bound to the square (if the square has non contract, this is null)
 	 */
 	public void setContract(Contract contract)
 	{

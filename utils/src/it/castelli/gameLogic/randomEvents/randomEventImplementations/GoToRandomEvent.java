@@ -7,9 +7,7 @@ import it.castelli.gameLogic.randomEvents.RandomEventType;
 import it.castelli.gameLogic.squares.Square;
 
 /**
- * Random event to make a player move to a specific square (checking if it
- * passes through the go
- * square)
+ * Random event to make a player move to a specific square (checking if it passes through the go square)
  */
 public class GoToRandomEvent extends RandomEvent
 {
@@ -29,8 +27,7 @@ public class GoToRandomEvent extends RandomEvent
 	}
 
 	/**
-	 * Move the player to a specific cell, checking if it passes through the
-	 * Go square
+	 * Move the player to a specific cell, checking if it passes through the Go square
 	 *
 	 * @param player The player who drew the card and must be moved
 	 */
@@ -38,7 +35,6 @@ public class GoToRandomEvent extends RandomEvent
 	public void applyEffect(Player player, GameManager gameManager)
 	{
 		player.setPosition(square, passThroughGo);
-		System.out.println("The player " + player.getName() + " was in square " + player.getPreviousPosition() + " and is now in square " + player.getPosition() + " (GoToRandomEvent)");
 		Square square = gameManager.getSquare(player.getPosition());
 		gameManager.addRandomEvent(this, getType());
 	}

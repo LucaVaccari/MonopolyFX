@@ -17,16 +17,14 @@ public class ClientMain extends Application
 {
 	private static Connection connection;
 	private final static HashMap<String, String> configs = new HashMap<>();
-	private static String serverIp;
-	private static int serverPort;
 	private final static String configPath = "data/config.cfg";
 
 	public static void main(String[] args)
 	{
 		ClientMain.readConfigFile(configPath);
 
-		serverIp = configs.get("server.ip");
-		serverPort = Integer.parseInt(configs.get("server.port"));
+		String serverIp = configs.get("server.ip");
+		int serverPort = Integer.parseInt(configs.get("server.port"));
 
 		Socket clientSocket = null;
 		try

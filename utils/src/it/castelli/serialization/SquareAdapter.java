@@ -449,7 +449,8 @@ public class SquareAdapter extends TypeAdapter<Square>
 						in.nextName();
 						mortgaged = in.nextBoolean();
 
-						contract = new PropertyContract(name, value, revenues[0], revenues[1], revenues[2], revenues[3],
+						contract = new PropertyContract(name, value, revenues[0], revenues[1], revenues[2],
+								revenues[3],
 								revenues[4], revenues[5], houseCost, color, colorSetContractNumber);
 
 						if (owner != null)

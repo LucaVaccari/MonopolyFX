@@ -3,19 +3,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.*?>
-<fx:root xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="261.0" stylesheets="@Style/style.css"
-         type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1">
-    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="10.0"
-          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-        <ListView fx:id="messageListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                  prefHeight="342.0" prefWidth="241.0" VBox.vgrow="ALWAYS"/>
-        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="241.0"
-              VBox.vgrow="NEVER">
-            <TextField fx:id="messageTextField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                       promptText="Messaggio..." HBox.hgrow="ALWAYS"/>
-            <Button fx:id="sendButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                    mnemonicParsing="false" text="Invio" HBox.hgrow="ALWAYS"/>
-        </HBox>
-    </VBox>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root prefHeight="400.0" prefWidth="261.0" stylesheets="@Style/style.css" type="AnchorPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+	<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+		<ListView fx:id="messageListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="342.0" prefWidth="241.0" VBox.vgrow="ALWAYS" />
+		<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="241.0" VBox.vgrow="NEVER">
+			<TextField fx:id="messageTextField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Messaggio..." HBox.hgrow="ALWAYS" />
+			<Button fx:id="sendButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-radius: 5; -fx-border-radius: 5;" text="Invio" HBox.hgrow="ALWAYS" />
+		</HBox>
+	</VBox>
 </fx:root>

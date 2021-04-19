@@ -24,8 +24,6 @@ import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
@@ -56,16 +54,20 @@ public class BoardController
 	public static final String PROPERTY_VIEW_FXML_PATH = "/FXMLs/propertyView.fxml";
 	public static final String STATION_VIEW_FXML_PATH = "/FXMLs/stationView.fxml";
 	public static final String COMPANY_VIEW_FXML_PATH = "/FXMLs/companyView.fxml";
-
-	private static final int SHOWN_OWNED_PROPERTIES = 9;
 	public static final String PLAYER_INFO_FXML_PATH = "/FXMLs/playerInfo.fxml";
-
+	private static final int SHOWN_OWNED_PROPERTIES = 9;
 	/**
 	 * Singleton instance
 	 */
 	private static BoardController instance;
-
-
+	/**
+	 * Array of all the Group squares on the board, containing a SquareComponent (image) and a FlowPane (pawn parent)
+	 */
+	private final Group[] squares = new Group[40];
+	/**
+	 * Maps the ImageView shown on the board with the corresponding piece
+	 */
+	private final HashMap<Pawn, ImageView> playerPawns = new HashMap<>();
 	@FXML
 	private ImageView die1Image;
 	@FXML
@@ -78,13 +80,9 @@ public class BoardController
 	private Button endRoundButton;
 	@FXML
 	private Button leaveGameButton;
-	@FXML
-	private Button giveUpButton;
-
 	// CHAT
 	@FXML
 	private ChatComponent chat;
-
 	// BOARD
 	@FXML
 	private Group goSquare;
@@ -166,18 +164,6 @@ public class BoardController
 	private Group luxuryTaxSquare;
 	@FXML
 	private Group parcoDellaVittoriaSquare;
-
-	/**
-	 * Array of all the Group squares on the board, containing a SquareComponent (image) and a FlowPane (pawn parent)
-	 */
-	private final Group[] squares = new Group[40];
-
-	// player pawns
-	/**
-	 * Maps the ImageView shown on the board with the corresponding piece
-	 */
-	private final HashMap<Pawn, ImageView> playerPawns = new HashMap<>();
-
 	@FXML
 	private FlowPane ownedPropertiesPane;
 	@FXML
@@ -438,9 +424,9 @@ public class BoardController
 			squares[2] = communityChestSquare1;
 			squares[17] = communityChestSquare2;
 			squares[33] = communityChestSquare3;
-			Tooltip.install(communityChestSquare1, new Tooltip("Probabilità"));
-			Tooltip.install(communityChestSquare2, new Tooltip("Probabilità"));
-			Tooltip.install(communityChestSquare3, new Tooltip("Probabilità"));
+			Tooltip.install(communityChestSquare1, new Tooltip("Probabilita'"));
+			Tooltip.install(communityChestSquare2, new Tooltip("Probabilita'"));
+			Tooltip.install(communityChestSquare3, new Tooltip("Probabilita'"));
 
 			// TAXES
 			squares[4] = patrimonialTaxSquare;
@@ -464,7 +450,7 @@ public class BoardController
 		                                                                     Serializer
 				                                                                     .toJson(new ThrowDiceClientMessage(
 						                                                                     Game.getGameCode()))));
-
+		endRoundButton.setTooltip(new Tooltip("Lasciate il turno al giocatore successivo"));
 		endRoundButton.setOnAction(event -> {
 			if (Game.getGameManager().getCurrentRound().isDiceThrown())
 				if (Game.getPlayer().hasMoney(0))
@@ -482,15 +468,17 @@ public class BoardController
 				                               "Non potete finire il turno senza tirare prima i dadi.");
 		});
 
-		EventHandler<ActionEvent> onLeave = event -> {
+		leaveGameButton.setTooltip(new Tooltip("Abbandonate la partita corrente (non potrete piu' rientrare)"));
+		leaveGameButton.setOnAction(event -> {
 			Optional<ButtonType> confirm =
 					AlertUtil.showConfirmationAlert("Conferma", "Volete davvero uscire?",
-					                                "Siete veramente sicuri?");
+					                                "Non potrete piu' rientrare nella partita. Siete veramente " +
+					                                "sicuri?");
 			if (confirm.isPresent())
 			{
 				if (confirm.get().equals(ButtonType.OK))
 				{
-					if (getGameManager().getCurrentRound().getCurrentActivePlayer().betterEquals(getPlayer()))
+					if (Game.getGameManager().getCurrentRound().getCurrentActivePlayer().betterEquals(getPlayer()))
 						ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME, Serializer
 								.toJson(new EndRoundClientMessage(Game.getGameCode())));
 					ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
@@ -499,9 +487,9 @@ public class BoardController
 					SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 				}
 			}
-		};
-		leaveGameButton.setOnAction(onLeave);
-		giveUpButton.setOnAction(onLeave);
+		});
+
+		Tooltip.install(moneyLabel, new Tooltip("I Vostri soldi"));
 	}
 
 	/**
@@ -576,7 +564,7 @@ public class BoardController
 				{
 					if (mostProductiveContract != null)
 						if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-						    !mostProductiveContracts.contains(contract))
+								!mostProductiveContracts.contains(contract))
 							mostProductiveContract = contract;
 				}
 
@@ -806,7 +794,37 @@ public class BoardController
 					square.getChildren().get(1)
 							.setStyle(
 									"-fx-border-color: " + GUIUtils.getPawnColor().get(contract.getOwner().getPawn())
-									+ ";-fx-border-width: 2");
+											+ ";-fx-border-width: 2");
+					if (contract instanceof PropertyContract)
+					{
+						int numberOfHouses = ((PropertyContract) contract).getNumberOfHouses();
+						HBox houseHolder = (HBox) square.getChildren().get(2);
+						houseHolder.getChildren().clear();
+						if (numberOfHouses > 0)
+						{
+							if (numberOfHouses < 5)
+							{
+								for (int j = 0; j < numberOfHouses; j++)
+								{
+									String imagePath = "/images/houses/house.png";
+									Image houseImage = new Image(String.valueOf(getClass().getResource(imagePath)));
+									ImageView houseImageView = new ImageView(houseImage);
+									houseImageView.setFitWidth(12);
+									houseImageView.setFitHeight(20);
+									houseHolder.getChildren().add(houseImageView);
+								}
+							}
+							else
+							{
+								String imagePath = "/images/houses/hotel.png";
+								Image houseImage = new Image(String.valueOf(getClass().getResource(imagePath)));
+								ImageView houseImageView = new ImageView(houseImage);
+								houseImageView.setFitWidth(20);
+								houseImageView.setFitHeight(20);
+								houseHolder.getChildren().add(houseImageView);
+							}
+						}
+					}
 				}
 			}
 		}

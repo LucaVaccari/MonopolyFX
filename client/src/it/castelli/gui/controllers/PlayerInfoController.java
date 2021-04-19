@@ -13,6 +13,7 @@ import it.castelli.serialization.Serializer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
@@ -46,6 +47,7 @@ public class PlayerInfoController
 			exchangeButton.setVisible(false);
 		}
 
+		exchangeButton.setTooltip(new Tooltip("Effettuate uno scambio con questo giocatore"));
 		exchangeButton.setOnAction(event -> {
 			ClientMain.getConnection()
 					.send(ClientMessages.CREATE_EXCHANGE_MESSAGE_NAME, Serializer
