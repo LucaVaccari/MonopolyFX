@@ -35,19 +35,19 @@ public class PlayerKickedClientMessage implements Message
 		if (Game.getPlayer().betterEquals(this.player))
 		{
 			connection.send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-			                Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+					Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 			Platform.runLater(() -> {
 				AlertUtil.showInformationAlert("Espulso", "Siete stato espulso dalla partita",
-				                               "Tutti gli altri componenti hanno votato per cacciarVi");
+						"Tutti gli altri componenti hanno votato per cacciarVi");
 				SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 			});
 		}
 		else
 		{
 			Platform.runLater(() -> AlertUtil.showInformationAlert("Giocatore espulso", "Avete votato per " +
-			                                                                            "l'espulsione",
-			                                                       "Il giocatore " + this.player.getName() +
-			                                                       " e' stato espulso"));
+							"l'espulsione",
+					"Il giocatore " + this.player.getName() +
+							" e' stato espulso"));
 		}
 	}
 }

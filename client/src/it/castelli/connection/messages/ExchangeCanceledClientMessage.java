@@ -35,11 +35,11 @@ public class ExchangeCanceledClientMessage implements Message
 		if (exchange.getPlayer1().equals(Game.getPlayer()) || exchange.getPlayer2().equals(Game.getPlayer()))
 		{
 			Game.getGameManager().removeExchange(exchange);
-            Platform.runLater(() -> {
-                SceneManager.getInstance().getStageByType(SceneType.EXCHANGE).close();
-                AlertUtil.showInformationAlert("Fallimento", "Scambio rifiutato",
-                                               "Lo scambio e' stato rifiutato.");
-            });
+			Platform.runLater(() -> {
+				SceneManager.getInstance().getStageByType(SceneType.EXCHANGE).close();
+				AlertUtil.showInformationAlert("Fallimento", "Scambio rifiutato",
+						"Lo scambio e' stato rifiutato.");
+			});
 		}
 	}
 }

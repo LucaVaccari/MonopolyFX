@@ -59,83 +59,83 @@ public class GameManager
 		PropertyContract vicoloCortoContract =
 				new PropertyContract(0, "Vicolo Corto", 60, 2, 10, 30, 90, 160, 250, 50, PropertyColor.BROWN, 2);
 		PropertyContract vicoloStrettoContract = new PropertyContract(1, "Vicolo Stretto", 60, 4, 20, 60,
-		                                                              180, 320, 450, 50,
-		                                                              PropertyColor.BROWN, 2);
+				180, 320, 450, 50,
+				PropertyColor.BROWN, 2);
 		StationContract stazioneSudContract = new StationContract(2, "Stazione Sud", 200, 25);
 		PropertyContract bastioniGransassoContract = new PropertyContract(3, "Bastioni Gransasso", 100, 6, 30,
-		                                                                  90, 270, 400, 550, 50,
-		                                                                  PropertyColor.LIGHT_BLUE, 3);
+				90, 270, 400, 550, 50,
+				PropertyColor.LIGHT_BLUE, 3);
 		PropertyContract vialeMonterosaContract = new PropertyContract(4, "Viale Monterosa", 100, 6, 30, 90,
-		                                                               270, 400, 550, 50,
-		                                                               PropertyColor.LIGHT_BLUE, 3);
+				270, 400, 550, 50,
+				PropertyColor.LIGHT_BLUE, 3);
 		PropertyContract vialeVesuvioContract = new PropertyContract(5, "Viale Vesuvio", 120, 8, 40, 100,
-		                                                             300, 450, 600, 50,
-		                                                             PropertyColor.LIGHT_BLUE, 3);
+				300, 450, 600, 50,
+				PropertyColor.LIGHT_BLUE, 3);
 		PropertyContract viaAccademia = new PropertyContract(6, "Via Accademia", 140, 10, 50, 150,
-		                                                     450, 620, 750, 100,
-		                                                     PropertyColor.MAGENTA, 3);
+				450, 620, 750, 100,
+				PropertyColor.MAGENTA, 3);
 		CompanyContract societaElettricaContract =
 				new CompanyContract(7, "Societa' Elettrica", CompanyContract.Company.ELECTRIC, 150);
 		PropertyContract corsoAteneoContract = new PropertyContract(8, "Corso Ateneo", 140, 10, 50, 150,
-		                                                            450, 620, 750, 100,
-		                                                            PropertyColor.MAGENTA, 3);
+				450, 620, 750, 100,
+				PropertyColor.MAGENTA, 3);
 		PropertyContract piazzaUniversitaContract = new PropertyContract(9, "Piazza Universita'", 160, 12, 60,
-		                                                                 180, 500, 700, 900, 100,
-		                                                                 PropertyColor.MAGENTA, 3);
+				180, 500, 700, 900, 100,
+				PropertyColor.MAGENTA, 3);
 		StationContract stazioneOvestContract = new StationContract(10, "Stazione Ovest", 200, 25);
 		PropertyContract viaVerdiContract = new PropertyContract(11, "Via Verdi", 180, 14, 70, 200,
-		                                                         550,
-		                                                         750, 950, 100,
-		                                                         PropertyColor.ORANGE, 3);
+				550,
+				750, 950, 100,
+				PropertyColor.ORANGE, 3);
 		PropertyContract corsoRaffaelloContract = new PropertyContract(12, "Corso Raffaello", 180, 14, 70,
-		                                                               200, 550, 750, 950, 100,
-		                                                               PropertyColor.ORANGE, 3);
+				200, 550, 750, 950, 100,
+				PropertyColor.ORANGE, 3);
 		PropertyContract piazzaDanteContract = new PropertyContract(13, "Piazza Dante", 200, 16, 80, 220,
-		                                                            600, 800, 1000, 100,
-		                                                            PropertyColor.ORANGE, 3);
+				600, 800, 1000, 100,
+				PropertyColor.ORANGE, 3);
 		PropertyContract viaMarcoPoloContract = new PropertyContract(14, "Via Marco Polo", 220, 18, 90,
-		                                                             250,
-		                                                             700, 880, 1050, 150,
-		                                                             PropertyColor.RED, 3);
+				250,
+				700, 880, 1050, 150,
+				PropertyColor.RED, 3);
 		PropertyContract corsoMagellanoContract = new PropertyContract(15, "Corso Magellano", 220, 18, 90,
-		                                                               250, 700, 880, 1050, 150,
-		                                                               PropertyColor.RED, 3);
+				250, 700, 880, 1050, 150,
+				PropertyColor.RED, 3);
 		PropertyContract largoColomboContract = new PropertyContract(16, "Largo Colombo", 240, 20, 100,
-		                                                             300,
-		                                                             750, 900, 1100, 150,
-		                                                             PropertyColor.RED, 3);
+				300,
+				750, 900, 1100, 150,
+				PropertyColor.RED, 3);
 		StationContract stazioneNordContract = new StationContract(17, "Stazione Nord", 200, 25);
 		PropertyContract vialeCostantinoContract = new PropertyContract(18, "Viale Costantino", 260, 22, 110,
-		                                                                330, 800, 1000, 1200, 150,
-		                                                                PropertyColor.YELLOW, 3);
+				330, 800, 1000, 1200, 150,
+				PropertyColor.YELLOW, 3);
 		PropertyContract vialeTraianoContract = new PropertyContract(19, "Viale Traiano", 260, 22, 110,
-		                                                             330,
-		                                                             800, 1000, 1200, 150,
-		                                                             PropertyColor.YELLOW, 3);
+				330,
+				800, 1000, 1200, 150,
+				PropertyColor.YELLOW, 3);
 		CompanyContract societaAcquaPotabileContract =
 				new CompanyContract(20, "Societa' Acqua Potabile", CompanyContract.Company.WATER, 150);
 		PropertyContract piazzaGiulioCesareContract = new PropertyContract(21, "Piazza Giulio Cesare", 280, 24,
-		                                                                   120, 360, 850, 1050, 1250,
-		                                                                   150, PropertyColor.YELLOW, 3);
+				120, 360, 850, 1050, 1250,
+				150, PropertyColor.YELLOW, 3);
 		PropertyContract viaRomaContract = new PropertyContract(22, "Via Roma", 300, 26, 130, 400,
-		                                                        900,
-		                                                        1100, 1300, 200,
-		                                                        PropertyColor.GREEN, 3);
+				900,
+				1100, 1300, 200,
+				PropertyColor.GREEN, 3);
 		PropertyContract corsoImperoContract = new PropertyContract(23, "Corso Impero", 300, 26, 130, 400,
-		                                                            900, 1100, 1300, 200,
-		                                                            PropertyColor.GREEN, 3);
+				900, 1100, 1300, 200,
+				PropertyColor.GREEN, 3);
 		PropertyContract largoAugustoContract = new PropertyContract(24, "Largo Augusto", 320, 28, 150,
-		                                                             450,
-		                                                             1000, 1200, 1400, 200,
-		                                                             PropertyColor.GREEN, 3);
+				450,
+				1000, 1200, 1400, 200,
+				PropertyColor.GREEN, 3);
 		StationContract stazioneEstContract = new StationContract(25, "Stazione Est", 200,
-		                                                          25);
+				25);
 		PropertyContract vialeDeiGiardiniContract = new PropertyContract(26, "Viale dei Giardini", 350, 35,
-		                                                                 200, 500, 1100, 1300, 1500, 200,
-		                                                                 PropertyColor.BLUE, 2);
+				200, 500, 1100, 1300, 1500, 200,
+				PropertyColor.BLUE, 2);
 		PropertyContract parcoDellaVittoriaContract = new PropertyContract(27, "Parco della Vittoria", 400, 50,
-		                                                                   200, 600, 1400, 1700, 2000, 200,
-		                                                                   PropertyColor.BLUE, 2);
+				200, 600, 1400, 1700, 2000, 200,
+				PropertyColor.BLUE, 2);
 		allContracts = new Contract[]{
 				vicoloCortoContract,
 				vicoloStrettoContract,
@@ -421,6 +421,9 @@ public class GameManager
 	 */
 	public Contract getContract(int id)
 	{
+		if (id == -1)
+			return null;
+
 		return allContracts[id];
 	}
 }

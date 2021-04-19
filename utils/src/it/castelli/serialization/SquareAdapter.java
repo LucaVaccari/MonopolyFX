@@ -335,8 +335,8 @@ public class SquareAdapter extends TypeAdapter<Square>
 									in.nextNull();
 
 								owner = new OwnerPlayer(ownerName, money, position, inPrison, pawn, randomEventType,
-								                        randomEventDescription,
-								                        previousPosition);
+										randomEventDescription,
+										previousPosition);
 							}
 						}
 						in.endObject();
@@ -459,8 +459,8 @@ public class SquareAdapter extends TypeAdapter<Square>
 									in.nextNull();
 
 								owner = new OwnerPlayer(ownerName, money, position, inPrison, pawn, randomEventType,
-								                        randomEventDescription,
-								                        previousPosition);
+										randomEventDescription,
+										previousPosition);
 							}
 						}
 						in.endObject();
@@ -469,8 +469,8 @@ public class SquareAdapter extends TypeAdapter<Square>
 						mortgaged = in.nextBoolean();
 
 						contract = new PropertyContract(id, name, value, revenues[0], revenues[1], revenues[2],
-						                                revenues[3], revenues[4], revenues[5], houseCost, color,
-						                                colorSetContractNumber);
+								revenues[3], revenues[4], revenues[5], houseCost, color,
+								colorSetContractNumber);
 
 						if (owner != null)
 							contract.setOwner(owner.toPlayer());
@@ -560,8 +560,8 @@ public class SquareAdapter extends TypeAdapter<Square>
 									in.nextNull();
 
 								owner = new OwnerPlayer(ownerName, money, position, inPrison, pawn, randomEventType,
-								                        randomEventDescription,
-								                        previousPosition);
+										randomEventDescription,
+										previousPosition);
 							}
 						}
 						in.endObject();

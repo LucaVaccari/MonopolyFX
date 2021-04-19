@@ -97,7 +97,7 @@ public class OwnerPlayer
 
 	public Player toPlayer()
 	{
-		Player player = new Player(this.money, this.name);
+		Player player = new Player(this.name);
 		player.setPreviousPosition(this.previousPosition);
 		player.setPosition(this.position, false);
 		player.setInPrison(this.inPrison);

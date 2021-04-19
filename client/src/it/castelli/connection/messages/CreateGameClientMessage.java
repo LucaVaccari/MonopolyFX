@@ -21,7 +21,7 @@ public class CreateGameClientMessage implements Message
 	 */
 	public CreateGameClientMessage(String playerName)
 	{
-		this.player = new Player(1500, playerName);
+		this.player = new Player(playerName);
 		Game.setPlayer(player);
 	}
 

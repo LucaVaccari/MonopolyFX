@@ -130,8 +130,8 @@ public class PropertyViewController
 			mortgageButton.setDisable(contract.getNumberOfHouses() > 0);
 
 			mortgageButton.setTooltip(new Tooltip(contract.isMortgaged() ?
-			                                      "Rimuovete l'ipoteca e riottenete il terreno (pagando il 10% in piu' del costo dell'ipoteca)" :
-			                                      "Ipotecate il terreno"));
+					"Rimuovete l'ipoteca e riottenete il terreno (pagando il 10% in piu' del costo dell'ipoteca)" :
+					"Ipotecate il terreno"));
 			mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 			mortgageButton.setOnAction(event -> {
 				if (contract.isMortgaged())

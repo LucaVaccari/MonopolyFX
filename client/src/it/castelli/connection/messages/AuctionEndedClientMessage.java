@@ -20,7 +20,7 @@ public class AuctionEndedClientMessage implements Message
 	{
 		Platform.runLater(() -> {
 			Stage auctionStage = SceneManager.getInstance().getStageByType(SceneType.AUCTION);
-			if(auctionStage != null)
+			if (auctionStage != null)
 				auctionStage.close();
 
 			Auction auction = Game.getGameManager().getAuction();

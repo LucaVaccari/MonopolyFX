@@ -17,7 +17,7 @@ public class SquareComponent extends ImageView
 	/**
 	 * The id of the contract bound to the square (if the square has non contract, this is null)
 	 */
-	private int contractId;
+	private int contractId = -1;
 
 	/**
 	 * Constructor of SquareComponent
@@ -60,6 +60,7 @@ public class SquareComponent extends ImageView
 
 	/**
 	 * Getter for the contract
+	 *
 	 * @return The contract bound to the square (if the square has non contract, this is null)
 	 */
 	public Contract getContract()

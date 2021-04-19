@@ -3,6 +3,9 @@ package it.castelli.connection.messages;
 import it.castelli.Game;
 import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
+import it.castelli.gui.controllers.AuctionController;
+import it.castelli.gui.controllers.BoardController;
+import it.castelli.gui.controllers.ExchangeController;
 import it.castelli.gui.controllers.LobbyController;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
@@ -35,6 +38,12 @@ public class GameCodeClientMessage implements Message
 		Platform.runLater(() -> {
 			SceneManager.getInstance().showScene(SceneType.PAWN_CHOICE);
 			LobbyController.getInstance().update();
+
+			// clear all chats
+			LobbyController.getInstance().getChat().clear();
+			BoardController.getInstance().getChat().clear();
+			AuctionController.getInstance().getChat().clear();
+			ExchangeController.getInstance().getChat().clear();
 		});
 	}
 }

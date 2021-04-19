@@ -4,7 +4,6 @@ import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.randomEvents.RandomEvent;
 import it.castelli.gameLogic.randomEvents.RandomEventType;
-import it.castelli.gameLogic.squares.Square;
 
 /**
  * Random event to make a player move to a specific square (checking if it passes through the go square)

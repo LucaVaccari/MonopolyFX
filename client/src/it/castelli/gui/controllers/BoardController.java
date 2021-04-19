@@ -213,7 +213,7 @@ public class BoardController
 					(PropertyContract) bastioniGranSassoSquareComponent.getContract()));
 			squares[6] = bastioniGranSassoSquare;
 			Tooltip.install(bastioniGranSassoSquare,
-			                new Tooltip(bastioniGranSassoSquareComponent.getContract().getName()));
+					new Tooltip(bastioniGranSassoSquareComponent.getContract().getName()));
 
 			SquareComponent vialeMonterosaSquareComponent =
 					(SquareComponent) vialeMonterosaSquare.getChildren().get(0);
@@ -251,7 +251,7 @@ public class BoardController
 					(PropertyContract) piazzaUniversitaSquareComponent.getContract()));
 			squares[14] = piazzaUniversitaSquare;
 			Tooltip.install(piazzaUniversitaSquare,
-			                new Tooltip(piazzaUniversitaSquareComponent.getContract().getName()));
+					new Tooltip(piazzaUniversitaSquareComponent.getContract().getName()));
 
 			SquareComponent viaVerdiSquareComponent = (SquareComponent) viaVerdiSquare.getChildren().get(0);
 			viaVerdiSquareComponent.setContractId(getGameManager().getSquare(16).getContract().getId());
@@ -304,7 +304,7 @@ public class BoardController
 					(PropertyContract) vialeCostantinoSquareComponent.getContract()));
 			squares[26] = vialeCostantinoSquare;
 			Tooltip.install(vialeCostantinoSquare,
-			                new Tooltip(vialeCostantinoSquareComponent.getContract().getName()));
+					new Tooltip(vialeCostantinoSquareComponent.getContract().getName()));
 
 			SquareComponent vialeTraianoSquareComponent = (SquareComponent) vialeTraianoSquare.getChildren().get(0);
 			vialeTraianoSquareComponent.setContractId(getGameManager().getSquare(27).getContract().getId());
@@ -320,7 +320,7 @@ public class BoardController
 					(PropertyContract) piazzaGiulioCesareSquareComponent.getContract()));
 			squares[29] = piazzaGiulioCesareSquare;
 			Tooltip.install(piazzaGiulioCesareSquare,
-			                new Tooltip(piazzaGiulioCesareSquareComponent.getContract().getName()));
+					new Tooltip(piazzaGiulioCesareSquareComponent.getContract().getName()));
 
 			SquareComponent viaRomaSquareComponent = (SquareComponent) viaRomaSquare.getChildren().get(0);
 			viaRomaSquareComponent.setContractId(getGameManager().getSquare(31).getContract().getId());
@@ -350,7 +350,7 @@ public class BoardController
 					(PropertyContract) vialeDeiGiardiniSquareComponent.getContract()));
 			squares[37] = vialeDeiGiardiniSquare;
 			Tooltip.install(vialeDeiGiardiniSquare,
-			                new Tooltip(vialeDeiGiardiniSquareComponent.getContract().getName()));
+					new Tooltip(vialeDeiGiardiniSquareComponent.getContract().getName()));
 
 			SquareComponent parcoDellaVittoriaSquareComponent =
 					(SquareComponent) parcoDellaVittoriaSquare.getChildren().get(0);
@@ -360,7 +360,7 @@ public class BoardController
 							.showTerrainView((PropertyContract) parcoDellaVittoriaSquareComponent.getContract()));
 			squares[39] = parcoDellaVittoriaSquare;
 			Tooltip.install(parcoDellaVittoriaSquare,
-			                new Tooltip(parcoDellaVittoriaSquareComponent.getContract().getName()));
+					new Tooltip(parcoDellaVittoriaSquareComponent.getContract().getName()));
 
 			// STATIONS
 			SquareComponent southStationSquareComponent = (SquareComponent) southStationSquare.getChildren().get(0);
@@ -403,12 +403,13 @@ public class BoardController
 					event -> SceneManager.getInstance()
 							.showTerrainView((CompanyContract) electricSocietySquareComponent.getContract()));
 			squares[12] = electricSocietySquare;
-			Tooltip.install(electricSocietySquare, new Tooltip(electricSocietySquareComponent.getContract().getName()));
+			Tooltip.install(electricSocietySquare,
+					new Tooltip(electricSocietySquareComponent.getContract().getName()));
 
 			SquareComponent waterWorksSquareComponent = (SquareComponent) waterWorksSquare.getChildren().get(0);
 			waterWorksSquareComponent.setContractId(getGameManager().getSquare(28).getContract().getId());
 			waterWorksSquare.setOnMouseClicked(event -> SceneManager.getInstance()
-							.showTerrainView((CompanyContract) waterWorksSquareComponent.getContract()));
+					.showTerrainView((CompanyContract) waterWorksSquareComponent.getContract()));
 			squares[28] = waterWorksSquare;
 			Tooltip.install(waterWorksSquare, new Tooltip(waterWorksSquareComponent.getContract().getName()));
 
@@ -447,33 +448,33 @@ public class BoardController
 
 		// button callback
 		throwDiceButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
-		                                                                     Serializer
-				                                                                     .toJson(new ThrowDiceClientMessage(
-						                                                                     Game.getGameCode()))));
+				Serializer
+						.toJson(new ThrowDiceClientMessage(
+								Game.getGameCode()))));
 		endRoundButton.setTooltip(new Tooltip("Lasciate il turno al giocatore successivo"));
 		endRoundButton.setOnAction(event -> {
 			if (Game.getGameManager().getCurrentRound().isDiceThrown())
 				if (Game.getPlayer().hasMoney(0))
 					ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME,
-					                                Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
+							Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
 				else
 					AlertUtil.showInformationAlert("Debito", "Siete in debito",
-					                               "Saldate il debito prima di finire il turno. Se finite le " +
-					                               "risorse perderete la partita.");
+							"Saldate il debito prima di finire il turno. Se finite le " +
+									"risorse perderete la partita.");
 			else if (!Game.getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer()))
 				AlertUtil.showInformationAlert("turno!", "Non e' il Vostro turno",
-				                               "Non potete finire il turno perche' non e' il Vostro turno.");
+						"Non potete finire il turno perche' non e' il Vostro turno.");
 			else
 				AlertUtil.showInformationAlert("Tirate!", "Dovete tirare i dadi",
-				                               "Non potete finire il turno senza tirare prima i dadi.");
+						"Non potete finire il turno senza tirare prima i dadi.");
 		});
 
 		leaveGameButton.setTooltip(new Tooltip("Abbandonate la partita corrente (non potrete piu' rientrare)"));
 		leaveGameButton.setOnAction(event -> {
 			Optional<ButtonType> confirm =
 					AlertUtil.showConfirmationAlert("Conferma", "Volete davvero uscire?",
-					                                "Non potrete piu' rientrare nella partita. Siete veramente " +
-					                                "sicuri?");
+							"Non potrete piu' rientrare nella partita. Siete veramente " +
+									"sicuri?");
 			if (confirm.isPresent())
 			{
 				if (confirm.get().equals(ButtonType.OK))
@@ -482,7 +483,7 @@ public class BoardController
 						ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME, Serializer
 								.toJson(new EndRoundClientMessage(Game.getGameCode())));
 					ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-					                                Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+							Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 
 					SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 				}
@@ -494,7 +495,7 @@ public class BoardController
 			Optional<ButtonType> confirm;
 			if (Game.getPlayer().hasMoney(0))
 				confirm = AlertUtil.showConfirmationAlert("Conferma", "Volete davvero arrendervi??",
-				                                          "Avete ancora soldi a disposizione per giocare...");
+						"Avete ancora soldi a disposizione per giocare...");
 			else
 				confirm = Optional.of(ButtonType.OK);
 
@@ -506,7 +507,7 @@ public class BoardController
 						ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME, Serializer
 								.toJson(new EndRoundClientMessage(Game.getGameCode())));
 					ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-					                                Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+							Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 
 					SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 				}
@@ -521,10 +522,8 @@ public class BoardController
 	 */
 	public void onSceneLoaded()
 	{
-		System.out.println(squares[1].getChildren());
 		// player pawns
 		playerPawns.clear();
-		chat.clear();
 		for (Player player : Game.getGameManager().getPlayers())
 		{
 			String imagePath = GUIUtils.getPawnPaths().get(player.getPawn());
@@ -589,7 +588,7 @@ public class BoardController
 				{
 					if (mostProductiveContract != null)
 						if (contract.getRevenue() > mostProductiveContract.getRevenue() &&
-						    !mostProductiveContracts.contains(contract))
+								!mostProductiveContracts.contains(contract))
 							mostProductiveContract = contract;
 				}
 
@@ -802,9 +801,9 @@ public class BoardController
 	 */
 	public void updateBoard()
 	{
-		System.out.println(squares[1].getChildren());
-		for (Group square : squares)
+		for (int i = 0, squaresLength = squares.length; i < squaresLength; i++)
 		{
+			Group square = squares[i];
 			SquareComponent squareComponent = (SquareComponent) square.getChildren().get(0);
 			Contract contract = squareComponent.getContract();
 			if (contract != null)
@@ -818,7 +817,7 @@ public class BoardController
 					square.getChildren().get(1)
 							.setStyle(
 									"-fx-border-color: " + GUIUtils.getPawnColor().get(contract.getOwner().getPawn())
-									+ ";-fx-border-width: 2");
+											+ ";-fx-border-width: 2");
 					if (contract instanceof PropertyContract)
 					{
 						int numberOfHouses = ((PropertyContract) contract).getNumberOfHouses();
@@ -855,7 +854,7 @@ public class BoardController
 	}
 
 	/**
-	 * Update everything (ownedTerrains, moneyLabel, playerListView, pawnsOnBoard)
+	 * Update everything (ownedTerrains, moneyLabel, playerListView, pawnsOnBoard, inPrison, board)
 	 */
 	public void update()
 	{

@@ -28,7 +28,7 @@ public class JoinGameClientMessage implements Message
 	public JoinGameClientMessage(int gameCode, String name)
 	{
 		this.gameCode = gameCode;
-		player = new Player(1500, name);
+		player = new Player(name);
 		Game.setPlayer(player);
 	}
 

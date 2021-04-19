@@ -11,26 +11,26 @@ import it.castelli.gui.controllers.ExchangeController;
  */
 public class UpdateExchangeClientMessage implements Message
 {
-    /**
-     * The updated exchange
-     */
-    private final Exchange exchange;
+	/**
+	 * The updated exchange
+	 */
+	private final Exchange exchange;
 
-    /**
-     * Constructor for UpdateExchangeClientMessage (do not use)
-     *
-     * @param exchange The updated exchange
-     */
-    public UpdateExchangeClientMessage(Exchange exchange)
-    {
-        this.exchange = exchange;
-    }
+	/**
+	 * Constructor for UpdateExchangeClientMessage (do not use)
+	 *
+	 * @param exchange The updated exchange
+	 */
+	public UpdateExchangeClientMessage(Exchange exchange)
+	{
+		this.exchange = exchange;
+	}
 
-    @Override
-    public void onReceive(Connection connection, Player player)
-    {
-        System.out.println("Updating exchange");
-        Game.getGameManager().updateExchange(exchange);
-        ExchangeController.getInstance().setExchange(exchange);
-    }
+	@Override
+	public void onReceive(Connection connection, Player player)
+	{
+		System.out.println("Updating exchange");
+		Game.getGameManager().updateExchange(exchange);
+		ExchangeController.getInstance().setExchange(exchange);
+	}
 }

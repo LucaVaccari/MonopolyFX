@@ -21,7 +21,7 @@ public class CreateGameServerMessage implements Message
 	 */
 	public CreateGameServerMessage(String playerName)
 	{
-		this.player = new Player(1500, playerName);
+		this.player = new Player(playerName);
 	}
 
 	@Override

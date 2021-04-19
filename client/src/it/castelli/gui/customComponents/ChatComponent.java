@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 
 import java.io.IOException;
 
@@ -67,6 +68,8 @@ public class ChatComponent extends AnchorPane
 		messageLabel.setWrapText(true);
 		messageLabel.setMaxWidth(messageListView.getWidth());
 		messageLabel.setMaxHeight(Double.MAX_VALUE);
+		messageLabel.setMinHeight(Region.USE_PREF_SIZE);
+		messageLabel.setMinWidth(Region.USE_PREF_SIZE);
 		messageListView.getItems().add(messageLabel);
 	}
 

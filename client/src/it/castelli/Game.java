@@ -20,11 +20,11 @@ public class Game
 	 * The GameManager, the main class handling every aspect of the game logic
 	 */
 	private static final GameManager gameManager = new GameManager();
+	private static final ArrayList<Player> voteKickedPlayers = new ArrayList<>();
 	/**
 	 * The Player instance of this client
 	 */
 	private static Player player;
-
 	/**
 	 * The code of the game
 	 */
@@ -41,18 +41,14 @@ public class Game
 	 * Is any auction active?
 	 */
 	private static boolean inAuction = false;
-
 	/**
 	 * The result from the last dice throw
 	 */
 	private static DiceResult lastDiceResult;
-
 	/**
 	 * is the player the host?
 	 */
 	private static boolean host;
-
-	private static final ArrayList<Player> voteKickedPlayers = new ArrayList<>();
 
 	/**
 	 * Private constructor, to prevent instantiating this class
@@ -76,8 +72,8 @@ public class Game
 						.toJson(new ExitFromJailClientMessage(player, Game.getGameCode(), true)));
 				Platform.runLater(() -> AlertUtil
 						.showInformationAlert("Usciti di prigione", "Siete usciti di prigione", "Siete usciti di " +
-						                                                                        "prigione pagando 50 " +
-						                                                                        "M"));
+								"prigione pagando 50 " +
+								"M"));
 				Game.getGameManager().getCurrentRound().setDiceThrown(false);
 				Platform.runLater(() -> BoardController.getInstance().update());
 				player.setInPrison(false);
@@ -90,9 +86,9 @@ public class Game
 
 				Platform.runLater(() -> AlertUtil
 						.showInformationAlert("Usciti di prigione", "Siete usciti di prigione", "Siete usciti di " +
-						                                                                        "prigione tirando i " +
-						                                                                        "dadi e facendo doppio" +
-						                                                                        ". Complimenti!"));
+								"prigione tirando i " +
+								"dadi e facendo doppio" +
+								". Complimenti!"));
 			}
 		}
 		else
@@ -107,10 +103,10 @@ public class Game
 						.toJson(new GoToJailClientMessage(Game.getGameCode(), player)));
 				Platform.runLater(() -> AlertUtil
 						.showInformationAlert("Finiti in prigione", "Siete finiti in prigione", "Siete finiti in " +
-						                                                                        "prigione dopo aver " +
-						                                                                        "fatto tre volte il " +
-						                                                                        "tiro dei dadi " +
-						                                                                        "doppio"));
+								"prigione dopo aver " +
+								"fatto tre volte il " +
+								"tiro dei dadi " +
+								"doppio"));
 
 			}
 			else
@@ -214,8 +210,7 @@ public class Game
 	}
 
 	/**
-	 * Getter for the list of voteKicked player.
-	 * DO NOT USE THE .contains() METHOD.
+	 * Getter for the list of voteKicked player. DO NOT USE THE .contains() METHOD.
 	 *
 	 * @return The list of voteKicked players
 	 * @see #getVoteKickedPlayers()

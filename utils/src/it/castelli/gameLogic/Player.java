@@ -12,6 +12,11 @@ import java.util.HashMap;
 public class Player
 {
 	/**
+	 * The money quantity each player has at the start of a game
+	 */
+	public static int START_MONEY = 15000;
+
+	/**
 	 * The list of his contracts
 	 */
 	private final ArrayList<Contract> contracts = new ArrayList<>();
@@ -72,12 +77,11 @@ public class Player
 	/**
 	 * Constructor for the Player
 	 *
-	 * @param money The amount of money the player has
-	 * @param name  The name of the player
+	 * @param name The name of the player
 	 */
-	public Player(int money, String name)
+	public Player(String name)
 	{
-		this.money = money;
+		this.money = START_MONEY;
 		this.name = name;
 	}
 

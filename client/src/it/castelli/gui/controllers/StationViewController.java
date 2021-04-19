@@ -21,13 +21,11 @@ import javafx.scene.layout.HBox;
  */
 public class StationViewController
 {
+	private static StationViewController instance;
 	/**
 	 * The id of the contract
 	 */
 	private int contractId;
-
-	private static StationViewController instance;
-
 	@FXML
 	private Label titleLabel;
 	@FXML
@@ -115,8 +113,8 @@ public class StationViewController
 			mortgageButton.setDisable(!Game.getPlayer().hasMoney(contract.getMortgageValue() * 11 / 10));
 
 		mortgageButton.setTooltip(new Tooltip(contract.isMortgaged() ?
-		                                      "Rimuovete l'ipoteca e riottenete il terreno (pagando il 10% in piu' del costo dell'ipoteca)" :
-		                                      "Ipotecate il terreno"));
+				"Rimuovete l'ipoteca e riottenete il terreno (pagando il 10% in piu' del costo dell'ipoteca)" :
+				"Ipotecate il terreno"));
 		mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 		mortgageButton.setOnAction(event -> {
 			if (contract.isMortgaged())

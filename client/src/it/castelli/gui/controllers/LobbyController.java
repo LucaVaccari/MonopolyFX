@@ -54,7 +54,7 @@ public class LobbyController
 			Game.setHost(false);
 			SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 			ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-			                                Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+					Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 		});
 
 		Tooltip.install(codeLabel, new Tooltip("Condividete questo codice con i Vostri amici!"));
@@ -77,12 +77,12 @@ public class LobbyController
 					}
 					if (canStart)
 						ClientMain.getConnection().send(ClientMessages.START_GAME_MESSAGE_NAME,
-						                                Serializer.toJson(new StartGameClientMessage(
-								                                Game.getGameCode())));
+								Serializer.toJson(new StartGameClientMessage(
+										Game.getGameCode())));
 					else
 						AlertUtil.showInformationAlert("Aspettate", "Non tutti i giocatori sono pronti",
-						                               "Alcuni giocatori stanno ancora scegliendo la pedina da " +
-						                               "utilizzare in gioco");
+								"Alcuni giocatori stanno ancora scegliendo la pedina da " +
+										"utilizzare in gioco");
 				});
 		update();
 	}
