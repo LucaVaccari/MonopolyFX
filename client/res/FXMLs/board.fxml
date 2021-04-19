@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import it.castelli.gui.customComponents.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="800.0" prefWidth="1250.0"
-			xmlns="http://javafx.com/javafx/15.0.1" fx:controller="it.castelli.gui.controllers.BoardController">
+<AnchorPane prefHeight="800.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/16"
+			xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.castelli.gui.controllers.BoardController">
 	<ImageView fitHeight="800.0" fitWidth="1250.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0"
 			   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 		<Image url="@../images/poker.jpg"/>
@@ -75,7 +68,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="communityChestSquare1" GridPane.columnIndex="8" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
@@ -99,7 +92,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="patrimonialTaxSquare" GridPane.columnIndex="6" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
@@ -136,7 +129,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="chanceSquare1" GridPane.columnIndex="3" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
@@ -159,7 +152,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="vialeVesuvioSquare" GridPane.columnIndex="1" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.rowIndex="10" GridPane.valignment="CENTER"
@@ -173,7 +166,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="justVisitingSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
 					   GridPane.rowIndex="10" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -199,7 +192,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="electricSocietySquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
 					   GridPane.rowIndex="8" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -224,7 +217,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="piazzaUniversitaSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
 					   GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -237,7 +230,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="westStationSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
 					   GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -262,7 +255,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="communityChestSquare2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
 					   GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -284,7 +277,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="piazzaDanteSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
 					   GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -297,7 +290,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="freeParkingSquare" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
 					   GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -316,7 +309,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="chanceSquare2" GridPane.columnIndex="2" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -336,7 +329,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="largoColomboSquare" GridPane.columnIndex="4" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -348,7 +341,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="northStationSquare" GridPane.columnIndex="5" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -371,7 +364,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="vialeTraianoSquare" GridPane.columnIndex="7" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -383,7 +376,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="waterWorksSquare" GridPane.columnIndex="8" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -406,7 +399,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="goToJailSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -427,7 +420,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="corsoImperoSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER"
@@ -441,7 +434,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="communityChestSquare3" GridPane.columnIndex="10" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER"
@@ -465,7 +458,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="eastStationSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER"
@@ -502,7 +495,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<Group fx:id="luxuryTaxSquare" GridPane.columnIndex="10" GridPane.halignment="CENTER"
 					   GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="CENTER"
@@ -526,7 +519,7 @@
 						</cursor>
 					</SquareComponent>
 					<FlowPane alignment="CENTER" prefHeight="50.0" prefWidth="50.0"/>
-					<HBox prefHeight="20.0" prefWidth="50.0"/>
+					<HBox alignment="CENTER" prefHeight="20.0" prefWidth="50.0"/>
 				</Group>
 				<ImageView disable="true" fitHeight="450.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true"
 						   GridPane.columnIndex="1" GridPane.rowIndex="5">
