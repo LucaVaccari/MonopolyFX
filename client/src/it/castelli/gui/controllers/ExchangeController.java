@@ -114,6 +114,7 @@ public class ExchangeController
 			}
 			catch (NumberFormatException ignored)
 			{
+				update();
 			}
 		});
 

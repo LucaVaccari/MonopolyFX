@@ -44,12 +44,13 @@ public class PropertyContract extends Contract implements Serializable
 	 * @param color                  The color of the property
 	 * @param colorSetContractNumber The number of Contract with this color in the game
 	 */
-	public PropertyContract(String name, int value, int revenueBase,
+	public PropertyContract(int id, String name, int value, int revenueBase,
 	                        int revenue1House, int revenue2Houses,
 	                        int revenue3Houses, int revenue4Houses,
 	                        int revenueHotel, int houseCost,
 	                        PropertyColor color, int colorSetContractNumber)
 	{
+		super(id);
 		this.colorSetContractNumber = colorSetContractNumber;
 		this.name = name;
 		this.value = value;

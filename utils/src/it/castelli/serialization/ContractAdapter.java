@@ -52,6 +52,9 @@ public class ContractAdapter extends TypeAdapter<Contract>
 			throw new IOException("ContractAdapter - " + contract.getName() +
 					": Cannot convert a pure Contract into JSON. Should be a subclass of it");
 
+		out.name("id");
+		out.value(contract.getId());
+
 		out.name("name");
 		out.value(contract.getName());
 
@@ -101,7 +104,7 @@ public class ContractAdapter extends TypeAdapter<Contract>
 		JsonToken token;
 
 		in.beginObject();
-		Contract contract = null;
+		Contract contract;
 
 		String contractType;
 
@@ -113,8 +116,9 @@ public class ContractAdapter extends TypeAdapter<Contract>
 		// COMPANY ONLY
 		CompanyContract.Company company = null;
 
+		int id;
 		String name;
-		int value, revenue, mortgageValue;
+		int value, revenue;
 		OwnerPlayer owner = null;
 		int money;
 		String ownerName;
@@ -156,6 +160,9 @@ public class ContractAdapter extends TypeAdapter<Contract>
 		}
 
 		in.nextName();
+		id = in.nextInt();
+
+		in.nextName();
 		name = in.nextString();
 
 		in.nextName();
@@ -165,7 +172,7 @@ public class ContractAdapter extends TypeAdapter<Contract>
 		revenue = in.nextInt();
 
 		in.nextName();
-		mortgageValue = in.nextInt();
+		in.nextInt(); // mortgage value
 
 		// OWNER
 		in.nextName();
@@ -221,19 +228,14 @@ public class ContractAdapter extends TypeAdapter<Contract>
 		switch (contractType)
 		{
 			case "Property" -> {
-				contract = new PropertyContract(name, value, revenues[0], revenues[1], revenues[2],
+				contract = new PropertyContract(id, name, value, revenues[0], revenues[1], revenues[2],
 						revenues[3], revenues[4], revenues[5], houseCost, color, colorSetContractNumber);
 				((PropertyContract) contract).addHouses(numberOfHouses);
 			}
-			case "Station" -> {
-				contract = new StationContract(name, value, revenue);
-			}
-			case "Company" -> {
-				contract = new CompanyContract(name, company, value);
-			}
+			case "Station" -> contract = new StationContract(id, name, value, revenue);
+			case "Company" -> contract = new CompanyContract(id, name, company, value);
 			default -> throw new IllegalStateException("Unexpected value: " + contractType);
 		}
-		;
 
 		if (owner != null)
 			contract.setOwner(owner.toPlayer());

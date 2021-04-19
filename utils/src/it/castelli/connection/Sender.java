@@ -7,8 +7,7 @@ import java.net.Socket;
 
 public class Sender
 {
-	BufferedWriter out;
-	String address;
+	private BufferedWriter out;
 
 	public Sender(Socket connectionSocket)
 	{
@@ -16,7 +15,6 @@ public class Sender
 		{
 			out = new BufferedWriter(
 					new OutputStreamWriter(connectionSocket.getOutputStream()));
-			address = connectionSocket.getInetAddress().getHostAddress();
 		}
 		catch (IOException e)
 		{

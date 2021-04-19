@@ -25,7 +25,6 @@ import it.castelli.gui.scene.SceneType;
 import it.castelli.serialization.Serializer;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -163,8 +162,6 @@ public class BoardController
 	private Group vialeDeiGiardiniSquare;
 	@FXML
 	private Group luxuryTaxSquare;
-
-	// player pawns
 	@FXML
 	private Group parcoDellaVittoriaSquare;
 	@FXML
@@ -214,7 +211,7 @@ public class BoardController
 					(PropertyContract) bastioniGranSassoSquareComponent.getContract()));
 			squares[6] = bastioniGranSassoSquare;
 			Tooltip.install(bastioniGranSassoSquare,
-					new Tooltip(bastioniGranSassoSquareComponent.getContract().getName()));
+			                new Tooltip(bastioniGranSassoSquareComponent.getContract().getName()));
 
 			SquareComponent vialeMonterosaSquareComponent =
 					(SquareComponent) vialeMonterosaSquare.getChildren().get(0);
@@ -252,7 +249,7 @@ public class BoardController
 					(PropertyContract) piazzaUniversitaSquareComponent.getContract()));
 			squares[14] = piazzaUniversitaSquare;
 			Tooltip.install(piazzaUniversitaSquare,
-					new Tooltip(piazzaUniversitaSquareComponent.getContract().getName()));
+			                new Tooltip(piazzaUniversitaSquareComponent.getContract().getName()));
 
 			SquareComponent viaVerdiSquareComponent = (SquareComponent) viaVerdiSquare.getChildren().get(0);
 			viaVerdiSquareComponent.setContract(getGameManager().getSquare(16).getContract());
@@ -305,7 +302,7 @@ public class BoardController
 					(PropertyContract) vialeCostantinoSquareComponent.getContract()));
 			squares[26] = vialeCostantinoSquare;
 			Tooltip.install(vialeCostantinoSquare,
-					new Tooltip(vialeCostantinoSquareComponent.getContract().getName()));
+			                new Tooltip(vialeCostantinoSquareComponent.getContract().getName()));
 
 			SquareComponent vialeTraianoSquareComponent = (SquareComponent) vialeTraianoSquare.getChildren().get(0);
 			vialeTraianoSquareComponent.setContract(getGameManager().getSquare(27).getContract());
@@ -321,7 +318,7 @@ public class BoardController
 					(PropertyContract) piazzaGiulioCesareSquareComponent.getContract()));
 			squares[29] = piazzaGiulioCesareSquare;
 			Tooltip.install(piazzaGiulioCesareSquare,
-					new Tooltip(piazzaGiulioCesareSquareComponent.getContract().getName()));
+			                new Tooltip(piazzaGiulioCesareSquareComponent.getContract().getName()));
 
 			SquareComponent viaRomaSquareComponent = (SquareComponent) viaRomaSquare.getChildren().get(0);
 			viaRomaSquareComponent.setContract(getGameManager().getSquare(31).getContract());
@@ -351,7 +348,7 @@ public class BoardController
 					(PropertyContract) vialeDeiGiardiniSquareComponent.getContract()));
 			squares[37] = vialeDeiGiardiniSquare;
 			Tooltip.install(vialeDeiGiardiniSquare,
-					new Tooltip(vialeDeiGiardiniSquareComponent.getContract().getName()));
+			                new Tooltip(vialeDeiGiardiniSquareComponent.getContract().getName()));
 
 			SquareComponent parcoDellaVittoriaSquareComponent =
 					(SquareComponent) parcoDellaVittoriaSquare.getChildren().get(0);
@@ -361,7 +358,7 @@ public class BoardController
 							.showTerrainView((PropertyContract) parcoDellaVittoriaSquareComponent.getContract()));
 			squares[39] = parcoDellaVittoriaSquare;
 			Tooltip.install(parcoDellaVittoriaSquare,
-					new Tooltip(parcoDellaVittoriaSquareComponent.getContract().getName()));
+			                new Tooltip(parcoDellaVittoriaSquareComponent.getContract().getName()));
 
 			// STATIONS
 			SquareComponent southStationSquareComponent = (SquareComponent) southStationSquare.getChildren().get(0);
@@ -405,7 +402,7 @@ public class BoardController
 							.showTerrainView((CompanyContract) electricSocietySquareComponent.getContract()));
 			squares[12] = electricSocietySquare;
 			Tooltip.install(electricSocietySquare,
-					new Tooltip(electricSocietySquareComponent.getContract().getName()));
+			                new Tooltip(electricSocietySquareComponent.getContract().getName()));
 
 			SquareComponent waterWorksSquareComponent = (SquareComponent) waterWorksSquare.getChildren().get(0);
 			waterWorksSquareComponent.setContract(getGameManager().getSquare(28).getContract());
@@ -450,32 +447,33 @@ public class BoardController
 
 		// button callback
 		throwDiceButton.setOnAction(event -> ClientMain.getConnection().send(ClientMessages.THROW_DICE_MESSAGE_NAME,
-				Serializer
-						.toJson(new ThrowDiceClientMessage(
-								Game.getGameCode()))));
+		                                                                     Serializer
+				                                                                     .toJson(new ThrowDiceClientMessage(
+						                                                                     Game.getGameCode()))));
 		endRoundButton.setTooltip(new Tooltip("Lasciate il turno al giocatore successivo"));
 		endRoundButton.setOnAction(event -> {
 			if (Game.getGameManager().getCurrentRound().isDiceThrown())
 				if (Game.getPlayer().hasMoney(0))
 					ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME,
-							Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
+					                                Serializer.toJson(new EndRoundClientMessage(Game.getGameCode())));
 				else
 					AlertUtil.showInformationAlert("Debito", "Siete in debito",
-							"Saldate il debito prima di finire il turno. Se finite le " +
-									"risorse perderete la partita.");
+					                               "Saldate il debito prima di finire il turno. Se finite le " +
+					                               "risorse perderete la partita.");
 			else if (!Game.getPlayer().betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer()))
 				AlertUtil.showInformationAlert("turno!", "Non e' il Vostro turno",
-						"Non potete finire il turno perche' non e' il Vostro turno.");
+				                               "Non potete finire il turno perche' non e' il Vostro turno.");
 			else
 				AlertUtil.showInformationAlert("Tirate!", "Dovete tirare i dadi",
-						"Non potete finire il turno senza tirare prima i dadi.");
+				                               "Non potete finire il turno senza tirare prima i dadi.");
 		});
 
 		leaveGameButton.setTooltip(new Tooltip("Abbandonate la partita corrente (non potrete piu' rientrare)"));
 		leaveGameButton.setOnAction(event -> {
 			Optional<ButtonType> confirm =
 					AlertUtil.showConfirmationAlert("Conferma", "Volete davvero uscire?",
-							"Non potrete piu' rientrare nella partita. Siete veramente sicuri?");
+					                                "Non potrete piu' rientrare nella partita. Siete veramente " +
+					                                "sicuri?");
 			if (confirm.isPresent())
 			{
 				if (confirm.get().equals(ButtonType.OK))
@@ -484,7 +482,7 @@ public class BoardController
 						ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME, Serializer
 								.toJson(new EndRoundClientMessage(Game.getGameCode())));
 					ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
-							Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
+					                                Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 
 					SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 				}
@@ -492,11 +490,6 @@ public class BoardController
 		});
 
 		Tooltip.install(moneyLabel, new Tooltip("I Vostri soldi"));
-		Tooltip.install(die1Image, new Tooltip("Dado 1"));
-		Tooltip.install(die2Image, new Tooltip("Dado 2"));
-		Tooltip.install(throwDiceButton, new Tooltip("Schiacciate per lanciare i dadi"));
-		Tooltip.install(ownedPropertiesPane, new Tooltip("Le Vostre proprieta'"));
-
 	}
 
 	/**
@@ -580,13 +573,15 @@ public class BoardController
 					ownedTerrains[i].setDisable(false);
 					ownedTerrains[i].setVisible(true);
 					ownedTerrains[i].setContract(mostProductiveContract);
-				} else
+				}
+				else
 				{
 					ownedTerrains[i].setVisible(false);
 					ownedTerrains[i].setDisable(true);
 				}
 				mostProductiveContracts.add(mostProductiveContract);
-			} else
+			}
+			else
 			{
 				ownedTerrains[i].setVisible(false);
 				ownedTerrains[i].setDisable(true);
@@ -654,7 +649,8 @@ public class BoardController
 				flowPane.setHgap(5);
 				if (pawnImageView != null)
 					children.add(pawnImageView);
-			} else
+			}
+			else
 			{
 				VBox vBox = (VBox) flowPane.getChildren().get(0);
 				FlowPane flowPane1 = (FlowPane) flowPane.getChildren().get(1);
@@ -664,13 +660,15 @@ public class BoardController
 				{
 					if (pawnImageView != null)
 						flowPane1.getChildren().add(pawnImageView);
-				} else
+				}
+				else
 				{
 					if (vBox.getChildren().size() < 3)
 					{
 						if (pawnImageView != null)
 							vBox.getChildren().add(pawnImageView);
-					} else
+					}
+					else
 					{
 						if (pawnImageView != null)
 							hBox.getChildren().add(pawnImageView);
@@ -695,12 +693,14 @@ public class BoardController
 								case 5, 6 -> 10;
 								default -> 5;
 							};
-				} else
+				}
+				else
 				{
 					if (player.getPosition() == 10)
 					{
 						size = 15;
-					} else
+					}
+					else
 					{
 						size = switch (children.size())
 								{
@@ -788,7 +788,8 @@ public class BoardController
 				if (contract.getOwner() == null)
 				{
 					square.getChildren().get(1).setStyle("-fx-border-width: 0");
-				} else
+				}
+				else
 				{
 					square.getChildren().get(1)
 							.setStyle(
@@ -799,28 +800,29 @@ public class BoardController
 						int numberOfHouses = ((PropertyContract) contract).getNumberOfHouses();
 						HBox houseHolder = (HBox) square.getChildren().get(2);
 						houseHolder.getChildren().clear();
-						if (numberOfHouses == 0) ;
-						else if (numberOfHouses != 5)
+						if (numberOfHouses > 0)
 						{
-							houseHolder.setPrefSize(50, 20);
-							houseHolder.setAlignment(Pos.CENTER);
-							for (int j = 0; j < numberOfHouses; j++)
+							if (numberOfHouses < 5)
 							{
-								String imagePath = "/images/houses/house.png";
+								for (int j = 0; j < numberOfHouses; j++)
+								{
+									String imagePath = "/images/houses/house.png";
+									Image houseImage = new Image(String.valueOf(getClass().getResource(imagePath)));
+									ImageView houseImageView = new ImageView(houseImage);
+									houseImageView.setFitWidth(12);
+									houseImageView.setFitHeight(20);
+									houseHolder.getChildren().add(houseImageView);
+								}
+							}
+							else
+							{
+								String imagePath = "/images/houses/hotel.png";
 								Image houseImage = new Image(String.valueOf(getClass().getResource(imagePath)));
 								ImageView houseImageView = new ImageView(houseImage);
-								houseImageView.setFitWidth(12);
+								houseImageView.setFitWidth(20);
 								houseImageView.setFitHeight(20);
 								houseHolder.getChildren().add(houseImageView);
 							}
-						} else
-						{
-							String imagePath = "/images/houses/hotel.png";
-							Image houseImage = new Image(String.valueOf(getClass().getResource(imagePath)));
-							ImageView houseImageView = new ImageView(houseImage);
-							houseImageView.setFitWidth(20);
-							houseImageView.setFitHeight(20);
-							houseHolder.getChildren().add(houseImageView);
 						}
 					}
 				}

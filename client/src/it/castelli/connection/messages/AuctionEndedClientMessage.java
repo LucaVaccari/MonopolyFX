@@ -21,9 +21,7 @@ public class AuctionEndedClientMessage implements Message
 		Platform.runLater(() -> {
 			Stage auctionStage = SceneManager.getInstance().getStageByType(SceneType.AUCTION);
 			if(auctionStage != null)
-			{
 				auctionStage.close();
-			}
 
 			Auction auction = Game.getGameManager().getAuction();
 			Player winningPlayer = auction.getPlayer();
@@ -33,6 +31,7 @@ public class AuctionEndedClientMessage implements Message
 			AlertUtil.showInformationAlert("Fine asta", "L'asta si e' conclusa", content);
 
 			Game.getGameManager().setAuction(null);
+			Game.setInAuction(false);
 		});
 	}
 }

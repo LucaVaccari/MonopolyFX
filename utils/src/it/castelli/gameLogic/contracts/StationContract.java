@@ -14,8 +14,9 @@ public class StationContract extends Contract implements Serializable
 	 * @param value       The cost of the property when buying it from the bank
 	 * @param revenueBase The revenue when a player lands on it
 	 */
-	public StationContract(String name, int value, int revenueBase)
+	public StationContract(int id, String name, int value, int revenueBase)
 	{
+		super(id);
 		this.name = name;
 		this.value = value;
 		this.revenue = revenueBase;

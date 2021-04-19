@@ -106,7 +106,12 @@ public final class AlertUtil
 		if (alertQueue.isEmpty())
 			return;
 
-		alertQueue.peek().showAndWait();
+
+		Alert lastAlert = alertQueue.peek();
+
+		if (!lastAlert.isShowing())
+			lastAlert.showAndWait();
+
 		alertQueue.poll();
 		pollAlerts();
 	}

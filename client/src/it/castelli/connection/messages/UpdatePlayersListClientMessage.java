@@ -5,6 +5,7 @@ import it.castelli.connection.Connection;
 import it.castelli.gameLogic.Player;
 import it.castelli.gui.controllers.BoardController;
 import it.castelli.gui.controllers.LobbyController;
+import it.castelli.gui.controllers.PropertyViewController;
 import javafx.application.Platform;
 
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -40,7 +41,12 @@ public class UpdatePlayersListClientMessage implements Message
 				Game.setPlayer(element);
 		}
 
-		Platform.runLater(() -> LobbyController.getInstance().updatePlayerListView());
-		Platform.runLater(() -> BoardController.getInstance().update());
+		Platform.runLater(() -> {
+			LobbyController.getInstance().updatePlayerListView();
+			BoardController.getInstance().update();
+
+			if (PropertyViewController.getInstance() != null)
+				PropertyViewController.getInstance().update();
+		});
 	}
 }

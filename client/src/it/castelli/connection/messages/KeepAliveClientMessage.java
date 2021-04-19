@@ -9,7 +9,6 @@ import it.castelli.serialization.Serializer;
  */
 public class KeepAliveClientMessage implements Message
 {
-
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{

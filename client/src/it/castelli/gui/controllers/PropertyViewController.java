@@ -20,6 +20,10 @@ import javafx.scene.layout.HBox;
  */
 public class PropertyViewController
 {
+	private static PropertyViewController instance;
+
+	private int contractID;
+
 	@FXML
 	private Label valueLabel;
 	@FXML
@@ -55,13 +59,32 @@ public class PropertyViewController
 	@FXML
 	private Button sellHouseButton;
 
+	public static PropertyViewController getInstance()
+	{
+		return instance;
+	}
+
+	@FXML
+	public void initialize()
+	{
+		instance = this;
+	}
+
 	/**
 	 * Update the visuals of the PropertyView.
 	 *
-	 * @param contract The contract of the property
+	 * @param id The id of the contract of the property
 	 */
-	public void setContract(PropertyContract contract)
+	public void setContract(int id)
 	{
+		contractID = id;
+		update();
+	}
+
+	public void update()
+	{
+		PropertyContract contract = (PropertyContract) Game.getGameManager().getContract(contractID);
+
 		titleLabel.setStyle("-fx-background-color: " + GUIUtils.getPropertyColorsCodes().get(contract.getColor()));
 
 		valueLabel.setText(String.valueOf(contract.getValue()));
@@ -104,8 +127,8 @@ public class PropertyViewController
 			mortgageButton.setDisable(contract.getNumberOfHouses() > 0);
 
 			mortgageButton.setTooltip(new Tooltip(contract.isMortgaged() ?
-					"Rimuovete l'ipoteca e riottenete il terreno (pagando il 10% in piu' del costo dell'ipoteca)" :
-					"Ipotecate il terreno"));
+			                                      "Rimuovete l'ipoteca e riottenete il terreno (pagando il 10% in piu' del costo dell'ipoteca)" :
+			                                      "Ipotecate il terreno"));
 			mortgageButton.setText(contract.isMortgaged() ? "Sciogli ipoteca" : "Ipoteca");
 			mortgageButton.setOnAction(event -> {
 				if (contract.isMortgaged())
@@ -130,7 +153,7 @@ public class PropertyViewController
 				}
 			});
 
-			sellHouseButton.setTooltip(new Tooltip("Vendete una casa (la rendita diminuira'"));
+			sellHouseButton.setTooltip(new Tooltip("Vendete una casa (la rendita diminuira')"));
 			sellHouseButton.setOnAction(event -> {
 				if (contract.getNumberOfHouses() > 0)
 				{

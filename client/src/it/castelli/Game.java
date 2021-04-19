@@ -31,12 +31,14 @@ public class Game
 	 * counter of dice results equals
 	 */
 	private static int doubleDiceResult;
-
 	/**
 	 * number of dice thrown where you are in prison
 	 */
 	private static int throwDiceInPrison = 0;
-
+	/**
+	 * Is any auction active?
+	 */
+	private static boolean inAuction = false;
 
 	/**
 	 * The result from the last dice throw
@@ -231,5 +233,23 @@ public class Game
 	public void setDoubleDiceResult(int doubleDiceResult)
 	{
 		Game.doubleDiceResult = doubleDiceResult;
+	}
+
+	/**
+	 * Getter for inAuction
+	 * @return Is any auction active?
+	 */
+	public static boolean isInAuction()
+	{
+		return inAuction;
+	}
+
+	/**
+	 * Setter for inAuction
+	 * @param inAuction The new auction state (active or inactive)
+	 */
+	public static void setInAuction(boolean inAuction)
+	{
+		Game.inAuction = inAuction;
 	}
 }
