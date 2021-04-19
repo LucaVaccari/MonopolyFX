@@ -71,7 +71,7 @@ public class PropertyViewController
 	}
 
 	/**
-	 * Update the visuals of the PropertyView.
+	 * Set the contract id and update the visuals of the PropertyView.
 	 *
 	 * @param id The id of the contract of the property
 	 */
@@ -81,6 +81,9 @@ public class PropertyViewController
 		update();
 	}
 
+	/**
+	 * Update the visual information
+	 */
 	public void update()
 	{
 		PropertyContract contract = (PropertyContract) Game.getGameManager().getContract(contractID);

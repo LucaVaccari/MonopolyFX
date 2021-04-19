@@ -177,7 +177,7 @@ public class SceneManager
 			FXMLLoader loader = FXMLFileLoader.getLoader(BoardController.COMPANY_VIEW_FXML_PATH);
 			Parent root = loader.load();
 			CompanyViewController controller = loader.getController();
-			controller.setContract(contract);
+			controller.setContract(contract.getId());
 			Stage companyViewStage = new Stage();
 			Scene scene = new Scene(root);
 			companyViewStage.setScene(scene);
@@ -209,7 +209,7 @@ public class SceneManager
 			FXMLLoader loader = FXMLFileLoader.getLoader(BoardController.STATION_VIEW_FXML_PATH);
 			Parent root = loader.load();
 			StationViewController controller = loader.getController();
-			controller.setContract(contract);
+			controller.setContract(contract.getId());
 			Stage stationViewStage = new Stage();
 			Scene scene = new Scene(root);
 			stationViewStage.setScene(scene);
