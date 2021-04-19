@@ -69,7 +69,7 @@ public class MainMenuController
 			String name = nameResult.get().strip();
 			if (name.length() == 0)
 			{
-				AlertUtil.showErrorAlert("Nome invalido", "Nome vuoto", "Il nome non può essere vuoto");
+				AlertUtil.showErrorAlert("Nome invalido", "Nome vuoto", "Il nome non puo' essere vuoto");
 				return askPlayerName();
 			}
 
