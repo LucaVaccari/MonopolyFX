@@ -18,6 +18,6 @@ sos
 - Vedere se si può sistemare la finestra che non cambia di dimensione quando trascinata (TO TEST)
 - mettere Thread.sleep() in giro
 - Sezione con guida
+- il tasto per il votekick non mantiene la scritta "annulla" se si chiude e riapre la finestra IMPORTANTE
 
-
-- sistemare il votekick con messaggio di callback
+-svuotare la chat
