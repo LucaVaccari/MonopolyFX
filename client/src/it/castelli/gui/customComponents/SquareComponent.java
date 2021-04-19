@@ -39,16 +39,6 @@ public class SquareComponent extends ImageView
 	}
 
 	/**
-	 * Getter for contract id
-	 *
-	 * @return The id of the contract bound to the square (if the square has non contract, this is null)
-	 */
-	public int getContractId()
-	{
-		return contractId;
-	}
-
-	/**
 	 * Setter for contract id
 	 *
 	 * @param contractId The id of the contract bound to the square (if the square has non contract, this is null)
