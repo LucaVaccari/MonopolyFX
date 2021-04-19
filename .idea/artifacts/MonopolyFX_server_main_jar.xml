@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MonopolyFX.server.main:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MonopolyFX_server_main_jar</output-path>
+    <root id="archive" name="MonopolyFX.server.main.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/server/build/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="MonopolyFX.server.main" />
+      <element id="module-output" name="MonopolyFX.utils.main" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.6/9180733b7df8542621dc12e21e87557e8c99b8cb/gson-2.8.6.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

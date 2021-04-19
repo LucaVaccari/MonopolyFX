@@ -135,4 +135,10 @@ public class PropertyContract extends Contract implements Serializable
 	{
 		return colorSetContractNumber;
 	}
+
+	public void resetHouses()
+	{
+		numberOfHouses = 0;
+	}
+
 }

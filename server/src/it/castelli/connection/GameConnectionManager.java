@@ -4,6 +4,7 @@ import it.castelli.connection.messages.*;
 import it.castelli.gameLogic.GameManager;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
+import it.castelli.gameLogic.contracts.PropertyContract;
 import it.castelli.gameLogic.squares.CompanySquare;
 import it.castelli.gameLogic.squares.PropertySquare;
 import it.castelli.gameLogic.squares.Square;
@@ -352,6 +353,9 @@ public class GameConnectionManager
 				{
 					Contract contract = gameManager.getSameContract(el);
 					contract.setOwner(null);
+					contract.setMortgaged(false);
+					if (contract instanceof PropertyContract)
+						((PropertyContract) contract).resetHouses();
 				}
 
 				updatePlayers();
