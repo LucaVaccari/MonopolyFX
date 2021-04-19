@@ -14,6 +14,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * GUI component containing chat
+ */
 public class ChatComponent extends AnchorPane
 {
 	private static final String CHAT_FXML_PATH = "/FXMLs/chat.fxml";
