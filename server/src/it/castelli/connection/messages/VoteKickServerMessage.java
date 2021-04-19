@@ -58,12 +58,7 @@ public class VoteKickServerMessage implements Message
 		if (playerToKick.getNumberOfKickVotes() >= gameManager.getPlayers().size() - 1 &&
 		    gameManager.getPlayers().size() > 2)
 		{
-			gameConnectionManager.sendAll(ServerMessages.GENERIC_MESSAGE_NAME, Serializer
-					.toJson(new GenericServerMessage("Espulsione",
-					                                 "Il giocatore " + playerToKick.getName() + " è stato espulso")));
-			// TODO: remove next line
-			gameConnectionManager.removePlayer(gameConnectionManager.getConnectionFromPlayer(playerToKick));
-			// TODO: send votekick callback
+			gameConnectionManager.sendAll(ServerMessages.PLAYER_KICKED_MESSAGE_NAME, Serializer.toJson(new PlayerKickedServerMessage(playerToKick)));
 		}
 
 		gameConnectionManager.updatePlayers();

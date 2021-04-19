@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MonopolyFX.client.main:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MonopolyFX_client_main_jar</output-path>
+    <root id="archive" name="MonopolyFX.client.main.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/utils/build/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="MonopolyFX.client.main" />
+      <element id="module-output" name="MonopolyFX.utils.main" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/16/e0564fea3f27dd3a10fa62e5005612333fc244bc/javafx-base-16-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/16/cd18f8477818b40cfdbcfec7e2fc15f632f0a2f/javafx-graphics-16-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/16/65cdeae29c67d25932dcc66ca4f7d269923631ba/javafx-controls-16-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/16/56c3d09fb6cb5136ce9abc1d0d6a6914e0eed944/javafx-base-16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.6/9180733b7df8542621dc12e21e87557e8c99b8cb/gson-2.8.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/16/d8334d505d5eb64400ae57f989c3db9dd47dcee3/javafx-controls-16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/16/ddd09436524cfea7995db18f93b6c9a2ec54bff3/javafx-graphics-16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/16/369f646fc29d2223cc98cfc3c059f2409b3e8fcb/javafx-fxml-16-win.jar" path-in-jar="/" />
+      <element id="dir-copy" path="$PROJECT_DIR$/client/res" />
+    </root>
+  </artifact>
+</component>
