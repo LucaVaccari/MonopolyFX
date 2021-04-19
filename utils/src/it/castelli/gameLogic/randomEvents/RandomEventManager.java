@@ -25,10 +25,10 @@ public class RandomEventManager
 		chances.addAll(Arrays.asList(
 				new BirthdayRandomEvent(
 						"E' il vostro compleanno, ogni giocatore vi regala 10M", RandomEventType.CHANCE),
-				new GoToRandomEvent(
+				new JailRandomEvent(
 						"Andate in prigione direttamente senza passare dal " +
 								"via", RandomEventType.CHANCE,
-						30, false),
+						10),
 				new PayHousesRandomEvent(
 						"Avete tutti i vostri stabili da riparare: " +
 								"pagare 25M per ogni casa e 100 M per ogni albergo", RandomEventType.CHANCE, 25, 100),
@@ -76,10 +76,10 @@ public class RandomEventManager
 
 		communityChests.addAll(Arrays.asList(
 				new GoToRandomEvent("Ritornate al Vicolo Corto", RandomEventType.COMMUNITY_CHEST, 1, false),
-				new GoToRandomEvent(
+				new JailRandomEvent(
 						"Andate in prigione direttamente senza passare dal " +
 								"via", RandomEventType.COMMUNITY_CHEST,
-						30, false),
+						10),
 				new YouWonRandomEvent(
 						"Avete venduto delle azioni: ricavate 50M", RandomEventType.COMMUNITY_CHEST, 50),
 				new YouWonRandomEvent(

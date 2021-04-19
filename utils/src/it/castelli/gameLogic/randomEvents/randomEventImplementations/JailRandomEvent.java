@@ -7,23 +7,21 @@ import it.castelli.gameLogic.randomEvents.RandomEventType;
 import it.castelli.gameLogic.squares.Square;
 
 /**
- * Random event to make a player move to a specific square (checking if it passes through the go square)
+ * Random event to make a player go to jail
  */
-public class GoToRandomEvent extends RandomEvent
+public class JailRandomEvent extends RandomEvent
 {
 	private final int square;
-	private final boolean passThroughGo;
 
 	/**
-	 * Constructor for the GoToRandomEvent
+	 * Constructor for the JailRandomEvent
 	 *
 	 * @param message The message shown to the player when drawing this card
 	 */
-	public GoToRandomEvent(String message, RandomEventType randomEventType, int square, boolean passThroughGo)
+	public JailRandomEvent(String message, RandomEventType randomEventType, int square)
 	{
 		super(message, randomEventType);
 		this.square = square;
-		this.passThroughGo = passThroughGo;
 	}
 
 	/**
@@ -34,7 +32,8 @@ public class GoToRandomEvent extends RandomEvent
 	@Override
 	public void applyEffect(Player player, GameManager gameManager)
 	{
-		player.setPosition(square, passThroughGo);
+		player.setInPrison(true);
+		player.setPosition(square, false);
 		gameManager.addRandomEvent(this, getType());
 	}
 }
