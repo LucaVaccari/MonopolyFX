@@ -44,6 +44,9 @@ public class PawnChoiceController
 
 	}
 
+	/**
+	 * check if a pawn is already used by another player
+	 */
 	private void checkPawn(Pawn pawn)
 	{
 		boolean pawnAlreadyUsed = false;

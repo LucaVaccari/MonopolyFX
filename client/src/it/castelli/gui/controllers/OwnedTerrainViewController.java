@@ -29,6 +29,9 @@ public class OwnedTerrainViewController
 		instance = this;
 	}
 
+	/**
+	 * update owned terrain view
+	 */
 	public void update()
 	{
 		ownedTerrainViewFlowPane.getChildren().clear();
