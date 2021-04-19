@@ -101,11 +101,12 @@ public class PropertyViewController
 		if (contract.getOwner() != null && !exchanging)
 		{
 			boolean isOwnedByMe = contract.getOwner().toPlayer().betterEquals(Game.getPlayer());
-			boolean isMyRound = contract.getOwner().toPlayer()
+			boolean isMyRound = Game.getGameManager().getSamePlayer(contract.getOwner().toPlayer())
 					.betterEquals(Game.getGameManager().getCurrentRound().getCurrentActivePlayer());
 			onlyIfOwnedPane.setVisible(isOwnedByMe);
-			onlyIfOwnedPane.setDisable(!isOwnedByMe && !isMyRound);
+			onlyIfOwnedPane.setDisable(!isOwnedByMe || !isMyRound);
 
+			sellButton.setDisable(!isMyRound);
 			sellButton.setTooltip(new Tooltip("Vendete questa proprieta'"));
 			sellButton.setOnAction(event -> {
 				ClientMain.getConnection().send(ClientMessages.SELL_CONTRACT_MESSAGE_NAME, Serializer
@@ -116,9 +117,9 @@ public class PropertyViewController
 			if (contract.isMortgaged())
 				mortgageButton.setDisable(!Game.getPlayer().hasMoney(contract.getMortgageValue() * 11 / 10));
 
-			buyHouseButton.setDisable(contract.isMortgaged());
-			sellHouseButton.setDisable(contract.isMortgaged());
-			mortgageButton.setDisable(contract.getNumberOfHouses() > 0);
+			buyHouseButton.setDisable(contract.isMortgaged() || !isMyRound);
+			sellHouseButton.setDisable(contract.isMortgaged() || !isMyRound);
+			mortgageButton.setDisable(contract.getNumberOfHouses() > 0 || !isMyRound);
 
 			mortgageButton.setTooltip(new Tooltip(contract.isMortgaged() ?
 					"Rimuovete l'ipoteca e riottenete il terreno (pagando il 10% in piu' del costo dell'ipoteca)" :

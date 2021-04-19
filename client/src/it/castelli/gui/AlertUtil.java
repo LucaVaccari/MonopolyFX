@@ -106,24 +106,14 @@ public final class AlertUtil
 		if (alertQueue.isEmpty())
 			return;
 
-
 		Alert lastAlert = alertQueue.peek();
 
 		if (!lastAlert.isShowing())
+		{
 			lastAlert.showAndWait();
-
-		alertQueue.poll();
-		pollAlerts();
-	}
-
-	/**
-	 * Know whether an alert window is open or not
-	 *
-	 * @return True if an alert window is opened, false otherwise
-	 */
-	public static boolean anyAlertWindowOpen()
-	{
-		return !alertQueue.isEmpty();
+			alertQueue.poll();
+			pollAlerts();
+		}
 	}
 
 	public static void showSuggestionOfBuy(String title, String headerText, String contentText, Contract contract)

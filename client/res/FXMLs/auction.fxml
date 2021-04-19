@@ -49,12 +49,6 @@
 					</font>
 				</Label>
 			</HBox>
-			<HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
-				<Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-					   text="La Vostra offerta: " HBox.hgrow="ALWAYS"/>
-				<Label fx:id="yourOfferLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-					   text="Offerta" HBox.hgrow="ALWAYS"/>
-			</HBox>
 			<HBox alignment="CENTER" layoutX="10.0" layoutY="294.0" spacing="10.0" VBox.vgrow="ALWAYS">
 				<Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
 					   text="Giocatore vincente: " HBox.hgrow="ALWAYS"/>

@@ -38,8 +38,6 @@ public class AuctionController
 	@FXML
 	private Label auctionBaseLabel;
 	@FXML
-	private Label yourOfferLabel;
-	@FXML
 	private Button offerButton;
 	@FXML
 	private TextField offerTextField;
@@ -72,9 +70,6 @@ public class AuctionController
 	{
 		auctionBaseLabel.setText(auction.getBestOfferProposed() + "M");
 		totalMoneyLabel.setText(Game.getPlayer().getMoney() + "M");
-		yourOfferLabel.setText(String.valueOf(auction.getBestOfferProposed()));
-		offerTextField.setText(String.valueOf(auction.getBestOfferProposed() + 1));
-		offerTextField.positionCaret(offerTextField.getText().length());
 		winningPlayerNameLabel.setText(auction.getPlayer() == null ? "Nessuno" : auction.getPlayer().getName());
 	}
 
@@ -111,7 +106,6 @@ public class AuctionController
 			{
 				ClientMain.getConnection().send(ClientMessages.AUCTION_OFFER_MESSAGE_NAME, Serializer
 						.toJson(new AuctionOfferClientMessage(offer, Game.getGameCode())));
-				yourOfferLabel.setText("la tua offerta: " + offerTextField.getText() + "M");
 			}
 			update();
 		}
