@@ -812,6 +812,7 @@ public class BoardController
 				if (contract.getOwner() == null)
 				{
 					squareNode.setStyle("-fx-border-width: 0");
+					square.getChildren().get(0).setEffect(null);
 				}
 				else
 				{

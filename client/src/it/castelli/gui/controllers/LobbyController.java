@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 /**
@@ -106,8 +107,8 @@ public class LobbyController
 		playerListView.getChildren().clear();
 		for (Player player : Game.getGameManager().getPlayers())
 		{
-			//player.setPawnPath(pawnPath);
 			PlayerInfoComponent playerInfoComponent = new PlayerInfoComponent(player);
+			VBox.setVgrow(playerInfoComponent, Priority.ALWAYS);
 			playerListView.getChildren().add(playerInfoComponent);
 		}
 	}
