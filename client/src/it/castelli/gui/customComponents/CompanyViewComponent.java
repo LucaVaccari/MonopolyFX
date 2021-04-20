@@ -11,6 +11,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * GUI component containing a company view
+ */
 public class CompanyViewComponent extends AnchorPane
 {
 	public static String COMPANY_VIEW_FXML_PATH = "/FXMLs/companyViewComponent.fxml";
