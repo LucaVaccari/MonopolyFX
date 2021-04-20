@@ -14,6 +14,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 
+/**
+ * Controller for the pawn choice FXML
+ */
 public class PawnChoiceController
 {
 

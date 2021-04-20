@@ -29,22 +29,27 @@ public class GameManager
 	 * The array of all the squares
 	 */
 	private final Square[] board;
+
 	/**
 	 * The list of active exchanges
 	 */
 	private final CopyOnWriteArrayList<Exchange> exchanges = new CopyOnWriteArrayList<>();
+
 	/**
 	 * The Manager of all Chances and CommunityChests
 	 */
 	private final RandomEventManager randomEventManager = new RandomEventManager();
+
 	/**
 	 * The current ongoing auction
 	 */
 	private Auction auction;
+
 	/**
 	 * The current round
 	 */
 	private Round currentRound;
+
 	/**
 	 * Is the game being played or are the players in the lobby?
 	 */

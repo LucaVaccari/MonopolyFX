@@ -14,6 +14,7 @@ import it.castelli.gameLogic.squares.*;
 
 import java.io.IOException;
 
+
 public class SquareAdapter extends TypeAdapter<Square>
 {
 	@Override
