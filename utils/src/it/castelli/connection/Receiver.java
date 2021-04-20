@@ -9,19 +9,45 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
+/**
+ * Receiver class
+ */
 public class Receiver implements Runnable
 {
+	/**
+	 * A socket of a connection which receives the message
+	 */
 	private final Socket connectionSocket;
+
+	/**
+	 * Connection which receive the message
+	 */
 	private final Connection connection;
+
+	/**
+	 * Tell if Receiver is working
+	 */
 	private boolean isRunning = true;
+
+	/**
+	 * The player who receive the message
+	 */
 	private Player player;
 
+	/**
+	 * Constructor for the receiver class
+	 *
+	 * @param connection Connection which receive the message
+	 */
 	public Receiver(Connection connection)
 	{
 		this.connection = connection;
 		this.connectionSocket = connection.getSocket();
 	}
 
+	/**
+	 * Interrupt the work of the receiver
+	 */
 	public void interrupt()
 	{
 		isRunning = false;
@@ -35,16 +61,29 @@ public class Receiver implements Runnable
 		}
 	}
 
+	/**
+	 * Get the player who receive the message
+	 *
+	 * @return The player who receive the message
+	 */
 	public Player getPlayer()
 	{
 		return player;
 	}
 
+	/**
+	 * Set a player who receive the message
+	 *
+	 * @param player The player who receive the message
+	 */
 	public void setPlayer(Player player)
 	{
 		this.player = player;
 	}
 
+	/**
+	 * Start the receiver
+	 */
 	@Override
 	public void run()
 	{
