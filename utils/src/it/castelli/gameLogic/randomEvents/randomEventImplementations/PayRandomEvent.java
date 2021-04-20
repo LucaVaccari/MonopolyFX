@@ -19,6 +19,8 @@ public class PayRandomEvent extends RandomEvent
 	 * Constructor for the PayRandomEvent
 	 *
 	 * @param message The message shown to the player when he draws the card
+	 * @param randomEventType The type of the random event
+	 * @param cost The amount of money that this event will remove from the player
 	 */
 	public PayRandomEvent(String message, RandomEventType randomEventType, int cost)
 	{
@@ -30,11 +32,12 @@ public class PayRandomEvent extends RandomEvent
 	 * Take money from the player
 	 *
 	 * @param player The player who drew the card
+	 * @param gameManager  The game manager of the game
 	 */
 	@Override
-	public void applyEffect(Player player, GameManager manager)
+	public void applyEffect(Player player, GameManager gameManager)
 	{
 		player.removeMoney(cost);
-		manager.addRandomEvent(this, getType());
+		gameManager.addRandomEvent(this, getType());
 	}
 }
