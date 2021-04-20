@@ -10,7 +10,14 @@ import it.castelli.gameLogic.randomEvents.RandomEventType;
  */
 public class GoToRandomEvent extends RandomEvent
 {
+	/**
+	 * The index of the square to move the player to
+	 */
 	private final int square;
+
+	/**
+	 * Does the player pass through go square in the journey?
+	 */
 	private final boolean passThroughGo;
 
 	/**
@@ -19,7 +26,7 @@ public class GoToRandomEvent extends RandomEvent
 	 * @param message The description of this random event
 	 * @param randomEventType The type of this randomEvent (chance / community chest)
 	 * @param square The index of the square to move the player to
-	 * @param passThroughGo does the player pass through go square in the journey?
+	 * @param passThroughGo Does the player pass through go square in the journey?
 	 */
 	public GoToRandomEvent(String message, RandomEventType randomEventType, int square, boolean passThroughGo)
 	{

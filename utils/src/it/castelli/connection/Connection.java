@@ -64,10 +64,19 @@ public class Connection
 	@Override
 	public boolean equals(Object obj)
 	{
-		//compares connections' remote IP addresses
 		if (obj instanceof Connection)
-			return connectionSocket.getInetAddress().getHostAddress().equals(((Connection) obj).connectionSocket.getInetAddress().getHostAddress()) &&
-					receiver.getPlayer().betterEquals(((Connection) obj).getReceiver().getPlayer());
+		{
+			Player player = receiver.getPlayer();
+			if (player != null)
+			{
+				return connectionSocket.getInetAddress().getHostAddress().equals(((Connection) obj).connectionSocket.getInetAddress().getHostAddress()) &&
+						receiver.getPlayer().betterEquals(((Connection) obj).getReceiver().getPlayer());
+			}
+			else
+			{
+				return connectionSocket.getInetAddress().getHostAddress().equals(((Connection) obj).connectionSocket.getInetAddress().getHostAddress());
+			}
+		}
 		return false;
 	}
 }
