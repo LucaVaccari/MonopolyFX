@@ -106,7 +106,6 @@ public class GameConnectionManager
 	 */
 	public void removePlayer(Connection connection)
 	{
-
 		if (gameManager.isInGame())
 		{
 			resetPlayerProperties(connection);
@@ -122,9 +121,7 @@ public class GameConnectionManager
 			}
 		}
 		else
-		{
 			gameManager.removePlayer(connection.getReceiver().getPlayer());
-		}
 
 		playerConnections.remove(connection);
 
