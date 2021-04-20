@@ -10,6 +10,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * GUI component containing a property
+ */
 public class PropertyViewComponent extends AnchorPane
 {
 	public static String PROPERTY_VIEW_FXML_PATH = "/FXMLs/propertyViewComponent.fxml";
@@ -33,6 +36,9 @@ public class PropertyViewComponent extends AnchorPane
 	@FXML
 	private Label houseCostLabel;
 
+	/**
+	 * Constructor of PropertyViewComponent
+	 */
 	public PropertyViewComponent(PropertyContract contract)
 	{
 		super();
