@@ -95,7 +95,7 @@ public class LobbyController
 	{
 		updatePlayerListView();
 		codeLabel.setText("Codice: " + Game.getGameCode());
-		playButton.setDisable(!Game.isHost());
+		playButton.setDisable(!Game.isHost() || Game.getGameManager().getPlayers().size() <= 1);
 		playButton.setVisible(Game.isHost());
 	}
 
