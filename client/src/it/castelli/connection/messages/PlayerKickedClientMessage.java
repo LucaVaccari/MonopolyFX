@@ -37,9 +37,9 @@ public class PlayerKickedClientMessage implements Message
 			connection.send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
 					Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 			Platform.runLater(() -> {
+				SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 				AlertUtil.showInformationAlert("Espulso", "Siete stato espulso dalla partita",
 						"Tutti gli altri componenti hanno votato per cacciarVi");
-				SceneManager.getInstance().showScene(SceneType.MAIN_MENU);
 			});
 		}
 		else

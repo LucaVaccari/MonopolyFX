@@ -7,7 +7,6 @@ import it.castelli.connection.messages.CreateExchangeClientMessage;
 import it.castelli.connection.messages.VoteKickClientMessage;
 import it.castelli.gameLogic.Player;
 import it.castelli.gameLogic.contracts.Contract;
-import it.castelli.gui.AlertUtil;
 import it.castelli.gui.customComponents.SmallTerrainViewComponent;
 import it.castelli.gui.scene.SceneManager;
 import it.castelli.gui.scene.SceneType;
@@ -69,8 +68,6 @@ public class PlayerInfoController
 			{
 				ClientMain.getConnection().send(ClientMessages.VOTE_KICK_MESSAGE_NAME, Serializer
 						.toJson(new VoteKickClientMessage(player, false, Game.getGameCode())));
-				AlertUtil.showInformationAlert("Espulsione", "Avete votato per non espellere " + player.getName(),
-						"Altri " + player.getNumberOfKickVotes() + " hanno votato per espellerlo");
 				Game.getVoteKickedPlayers().remove(player);
 				votekickButton.setText("Votate espulsione");
 			}
@@ -78,8 +75,6 @@ public class PlayerInfoController
 			{
 				ClientMain.getConnection().send(ClientMessages.VOTE_KICK_MESSAGE_NAME, Serializer
 						.toJson(new VoteKickClientMessage(player, true, Game.getGameCode())));
-				AlertUtil.showInformationAlert("Espulsione", "Avete votato per espellere " + player.getName(),
-						"Altri " + (player.getNumberOfKickVotes() - 1) + " hanno votato per farlo");
 				Game.getVoteKickedPlayers().add(player);
 				votekickButton.setText("Annullate espulsione");
 			}
