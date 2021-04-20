@@ -297,6 +297,7 @@ public class GameManager
 	 */
 	public void nextRound()
 	{
+		System.out.println("nextRound called");
 		if (players.size() > 0)
 		{
 			int newIndex = (currentRound.getPlayerIndex() + 1) % players.size();
