@@ -16,7 +16,10 @@ public class GoToRandomEvent extends RandomEvent
 	/**
 	 * Constructor for the GoToRandomEvent
 	 *
-	 * @param message The message shown to the player when drawing this card
+	 * @param message The description of this random event
+	 * @param randomEventType The type of this randomEvent (chance / community chest)
+	 * @param square The index of the square to move the player to
+	 * @param passThroughGo does the player pass through go square in the journey?
 	 */
 	public GoToRandomEvent(String message, RandomEventType randomEventType, int square, boolean passThroughGo)
 	{
@@ -29,6 +32,7 @@ public class GoToRandomEvent extends RandomEvent
 	 * Move the player to a specific cell, checking if it passes through the Go square
 	 *
 	 * @param player The player who drew the card and must be moved
+	 * @param gameManager The GameManager of the game
 	 */
 	@Override
 	public void applyEffect(Player player, GameManager gameManager)
