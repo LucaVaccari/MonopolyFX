@@ -20,12 +20,12 @@ public class GoBackRandomEvent extends RandomEvent
 	 * Constructor for the GoBackRandomEvent
 	 *
 	 * @param message The message shown to the player when drawing this card
-	 * @param type The type of the random event
+	 * @param randomEventType The type of the random event
 	 * @param numberOfSteps Number of steps that the player must go back
 	 */
-	public GoBackRandomEvent(String message, RandomEventType type, int numberOfSteps)
+	public GoBackRandomEvent(String message, RandomEventType randomEventType, int numberOfSteps)
 	{
-		super(message, type);
+		super(message, randomEventType);
 		this.numberOfSteps = -numberOfSteps;
 	}
 
@@ -33,12 +33,12 @@ public class GoBackRandomEvent extends RandomEvent
 	 * Move a player back by number of steps indicated on the card
 	 *
 	 * @param player The player who drew the card
-	 * @param manager The game manager of the game
+	 * @param gameManager The game manager of the game
 	 */
 	@Override
-	public void applyEffect(Player player, GameManager manager)
+	public void applyEffect(Player player, GameManager gameManager)
 	{
 		player.move(numberOfSteps);
-		manager.addRandomEvent(this, getType());
+		gameManager.addRandomEvent(this, getType());
 	}
 }
