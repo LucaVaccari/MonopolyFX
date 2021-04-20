@@ -9,6 +9,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * GUI component containing a station view
+ */
 public class StationViewComponent extends AnchorPane
 {
 	public static String STATION_VIEW_FXML_PATH = "/FXMLs/stationViewComponent.fxml";

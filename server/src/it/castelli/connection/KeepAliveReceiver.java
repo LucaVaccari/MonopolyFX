@@ -1,9 +1,23 @@
 package it.castelli.connection;
 
+/**
+ * Keep alive receiver class
+ */
 public class KeepAliveReceiver implements Runnable
 {
+	/**
+	 * The manager of all connection
+	 */
 	ConnectionManager connectionManager = ConnectionManager.getInstance();
+
+	/**
+	 * Tell if keep alive receiver is running
+	 */
 	private boolean isRunning;
+
+	/**
+	 * The time between two checks of activity of a connection
+	 */
 	private final int checkTime;
 
 	/**
@@ -93,6 +107,9 @@ public class KeepAliveReceiver implements Runnable
 		}
 	}
 
+	/**
+	 * Stop the keep alive receiver
+	 */
 	public void interrupt()
 	{
 		isRunning = false;
