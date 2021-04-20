@@ -1,6 +1,7 @@
 package it.castelli.gui.controllers;
 
 import it.castelli.ClientMain;
+import it.castelli.Game;
 import it.castelli.connection.messages.ClientMessages;
 import it.castelli.connection.messages.CreateGameClientMessage;
 import it.castelli.connection.messages.JoinGameClientMessage;
@@ -56,6 +57,7 @@ public class MainMenuController
 		if (matchCode == -1) return;
 		playerName = askPlayerName();
 		if (playerName == null) return;
+		Game.setHost(false);
 		ClientMain.getConnection().send(ClientMessages.JOIN_GAME_MESSAGE_NAME,
 				Serializer.toJson(new JoinGameClientMessage(matchCode, playerName)));
 	}

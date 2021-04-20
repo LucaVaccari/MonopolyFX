@@ -12,6 +12,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * GUI component containing the info of a player
+ */
 public class PlayerInfoComponent extends AnchorPane
 {
 	public static final String PLAYER_INFO_ELEMENT_FXML_PATH = "/FXMLs/playerInfoElement.fxml";

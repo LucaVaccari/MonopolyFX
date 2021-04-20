@@ -15,6 +15,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * GUI component containing a small terrain view
+ */
 public class SmallTerrainViewComponent extends AnchorPane
 {
 	public static String SMALL_TERRAIN_VIEW_FXML_PATH = "/FXMLs/smallTerrainView.fxml";
@@ -24,6 +27,9 @@ public class SmallTerrainViewComponent extends AnchorPane
 	@FXML
 	private Label terrainValueLabel;
 
+	/**
+	 * Constructor of SmallTerrainViewComponent
+	 */
 	public SmallTerrainViewComponent(Contract contract)
 	{
 		super();
@@ -41,6 +47,11 @@ public class SmallTerrainViewComponent extends AnchorPane
 		setContract(contract);
 	}
 
+	/**
+	 * Setter for contract of terrain
+	 *
+	 * @param contract the contract of the terrain
+	 */
 	public void setContract(Contract contract)
 	{
 		if (contract == null)
