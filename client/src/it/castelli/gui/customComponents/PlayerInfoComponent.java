@@ -69,7 +69,7 @@ public class PlayerInfoComponent extends AnchorPane
 	public void setRound()
 	{
 		playerNameLabel.setStyle("-fx-background-color: " + GUIUtils.getPawnColor().get(player.getPawn()));
-		playerNameLabel.setText(player.getName() + "   E' il tuo turno");
+		playerNameLabel.setText(player.getName() + "   E' il Vostro turno");
 	}
 
 	/**

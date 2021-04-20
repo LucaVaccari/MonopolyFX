@@ -27,7 +27,6 @@ public class LeaveGameServerMessage implements Message
 	@Override
 	public void onReceive(Connection connection, Player player)
 	{
-		ConnectionManager.getInstance().getGames().get(gameCode).resetPlayerProperties(connection);
 		ConnectionManager.getInstance().leaveGame(gameCode, connection);
 	}
 }
