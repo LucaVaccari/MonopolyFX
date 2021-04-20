@@ -15,9 +15,21 @@ import java.util.Scanner;
 
 public class ClientMain extends Application
 {
+	/**
+	 * Connection of a client
+	 */
 	private static Connection connection;
+
+	/**
+	 * A map of all config properties
+	 */
 	private final static HashMap<String, String> configs = new HashMap<>();
+
+	/**
+	 * The config path
+	 */
 	private final static String configPath = "data/config.cfg";
+
 
 	public static void main(String[] args)
 	{
@@ -40,6 +52,11 @@ public class ClientMain extends Application
 		launch(args);
 	}
 
+	/**
+	 * Get a connection of a client
+	 *
+	 * @return Connection of a client
+	 */
 	public static Connection getConnection()
 	{
 		return connection;
