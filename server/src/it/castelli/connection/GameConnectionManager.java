@@ -117,7 +117,7 @@ public class GameConnectionManager
 				gameManager.removePlayer(playerToRemove);
 				System.out.println("Current round player: " + currentRoundPlayer.getName());
 				if (currentRoundPlayer.betterEquals(playerToRemove))
-					gameManager.nextRound();
+					gameManager.nextRound(1);
 			}
 		}
 		else

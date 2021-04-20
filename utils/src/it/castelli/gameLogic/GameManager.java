@@ -294,13 +294,15 @@ public class GameManager
 
 	/**
 	 * Begin the next round
+	 *
+	 * @param offset 0 by default, 1 if called when a player leaves
 	 */
-	public void nextRound()
+	public void nextRound(int offset)
 	{
 		System.out.println("nextRound called");
 		if (players.size() > 0)
 		{
-			int newIndex = (currentRound.getPlayerIndex() + 1) % players.size();
+			int newIndex = (currentRound.getPlayerIndex() + 1) % players.size() - offset;
 			Player newPlayer = players.get(newIndex);
 			currentRound = new Round(newPlayer, newIndex);
 		}

@@ -31,7 +31,7 @@ public class EndRoundServerMessage implements Message
 	{
 		GameConnectionManager gameConnectionManager = ConnectionManager.getInstance().getGames().get(gameCode);
 		GameManager gameManager = gameConnectionManager.getGameManager();
-		gameManager.nextRound();
+		gameManager.nextRound(0);
 
 		System.out.println("EndRoundServerMessageCalled");
 		gameConnectionManager.updatePlayers();
