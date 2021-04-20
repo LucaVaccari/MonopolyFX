@@ -66,8 +66,8 @@ public class Connection
 	{
 		//compares connections' remote IP addresses
 		if (obj instanceof Connection)
-			return connectionSocket.getInetAddress().getHostAddress()
-					.equals(((Connection) obj).connectionSocket.getInetAddress().getHostAddress());
+			return connectionSocket.getInetAddress().getHostAddress().equals(((Connection) obj).connectionSocket.getInetAddress().getHostAddress()) &&
+					receiver.getPlayer().betterEquals(((Connection) obj).getReceiver().getPlayer());
 		return false;
 	}
 }
