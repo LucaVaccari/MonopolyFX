@@ -177,10 +177,10 @@ public class GameConnectionManager
 		gameManager.startAuction(contract, offer);
 
 		if (auctionTask != null)
-			auctionTask.interrupt();
+			auctionTask.interruptAuctionTimer();
 
 		auctionTask = new AuctionTimerTask(AUCTION_DURATION, gameCode);
-		auctionTask.init();
+		auctionTask.startAuction();
 
 		Auction auction = gameManager.getAuction();
 		sendAll(ServerMessages.NEW_AUCTION_MESSAGE_NAME,
