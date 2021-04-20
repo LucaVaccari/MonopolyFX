@@ -302,7 +302,7 @@ public class GameManager
 		System.out.println("nextRound called");
 		if (players.size() > 0)
 		{
-			int newIndex = (currentRound.getPlayerIndex() + 1) % players.size() - offset;
+			int newIndex = (currentRound.getPlayerIndex() + 1 - offset) % players.size();
 			Player newPlayer = players.get(newIndex);
 			currentRound = new Round(newPlayer, newIndex);
 		}
