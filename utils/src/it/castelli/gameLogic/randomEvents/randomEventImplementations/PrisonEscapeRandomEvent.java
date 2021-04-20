@@ -14,6 +14,7 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 	 * Constructor for the PrisonEscapeRandomEvent
 	 *
 	 * @param message The message shown from the player when drawing this card
+	 * @param randomEventType The type of the random event
 	 */
 	public PrisonEscapeRandomEvent(String message, RandomEventType randomEventType)
 	{
@@ -24,9 +25,10 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 	 * Give this card to the player
 	 *
 	 * @param player The player who drew the card
+	 * @param gameManager The game manager of the game
 	 */
 	@Override
-	public void applyEffect(Player player, GameManager manager)
+	public void applyEffect(Player player, GameManager gameManager)
 	{
 		if (!player.isInPrison())
 			player.getKeptRandomEventCards().add(this);
@@ -34,7 +36,7 @@ public class PrisonEscapeRandomEvent extends RandomEvent
 		{
 			player.setInPrison(false);
 			player.getKeptRandomEventCards().remove(this);
-			manager.addRandomEvent(this, getType());
+			gameManager.addRandomEvent(this, getType());
 		}
 
 	}

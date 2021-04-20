@@ -10,12 +10,17 @@ import it.castelli.gameLogic.randomEvents.RandomEventType;
  */
 public class YouWonRandomEvent extends RandomEvent
 {
+	/**
+	 * The amount of money that a player won
+	 */
 	private final int reward;
 
 	/**
 	 * Constructor for the YouWonRandomEvent
 	 *
 	 * @param message The message shown to the player when drawing this card
+	 * @param randomEventType The type of the random event
+	 * @param reward The amount of money that a player won
 	 */
 	public YouWonRandomEvent(String message, RandomEventType randomEventType, int reward)
 	{

@@ -33,6 +33,7 @@ public class JailRandomEvent extends RandomEvent
 	 *
 	 * @param player The player who drew the card and must be moved
 	 * @param gameManager The game manager of the game
+	 * @param gameManager The game manager of the game
 	 */
 	@Override
 	public void applyEffect(Player player, GameManager gameManager)
