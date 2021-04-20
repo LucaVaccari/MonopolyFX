@@ -480,9 +480,6 @@ public class BoardController
 			{
 				if (confirm.get().equals(ButtonType.OK))
 				{
-					if (Game.getGameManager().getCurrentRound().getCurrentActivePlayer().betterEquals(getPlayer()))
-						ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME, Serializer
-								.toJson(new EndRoundClientMessage(Game.getGameCode())));
 					ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
 							Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 
@@ -504,9 +501,6 @@ public class BoardController
 			{
 				if (confirm.get().equals(ButtonType.OK))
 				{
-					if (Game.getGameManager().getCurrentRound().getCurrentActivePlayer().betterEquals(getPlayer()))
-						ClientMain.getConnection().send(ClientMessages.END_ROUND_MESSAGE_NAME, Serializer
-								.toJson(new EndRoundClientMessage(Game.getGameCode())));
 					ClientMain.getConnection().send(ClientMessages.LEAVE_GAME_MESSAGE_NAME,
 							Serializer.toJson(new LeaveGameClientMessage(Game.getGameCode())));
 

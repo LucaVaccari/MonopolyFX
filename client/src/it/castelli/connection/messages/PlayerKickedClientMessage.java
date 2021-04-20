@@ -45,9 +45,7 @@ public class PlayerKickedClientMessage implements Message
 		else
 		{
 			Platform.runLater(() -> AlertUtil.showInformationAlert("Giocatore espulso", "Avete votato per " +
-							"l'espulsione",
-					"Il giocatore " + this.player.getName() +
-							" e' stato espulso"));
+					"l'espulsione", "Il giocatore " + this.player.getName() + " e' stato espulso"));
 		}
 	}
 }
