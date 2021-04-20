@@ -110,13 +110,11 @@ public class GameConnectionManager
 		{
 			resetPlayerProperties(connection);
 			Player playerToRemove = gameManager.getSamePlayer(connection.getReceiver().getPlayer());
-			Player currentRoundPlayer;
 			if (gameManager.getCurrentRound().getCurrentActivePlayer() != null)
 			{
-				currentRoundPlayer = gameManager.getSamePlayer(gameManager.getCurrentRound().getCurrentActivePlayer());
-				if (currentRoundPlayer != null)
-					if (currentRoundPlayer.betterEquals(playerToRemove))
-						gameManager.nextRound();
+				Player currentRoundPlayer = gameManager.getSamePlayer(gameManager.getCurrentRound().getCurrentActivePlayer());
+				if (currentRoundPlayer.betterEquals(playerToRemove))
+					gameManager.nextRound();
 			}
 		}
 
@@ -129,7 +127,7 @@ public class GameConnectionManager
 		}
 		else
 		{
-			if (connection == host)
+			if (connection.equals(host))
 			{
 				host = playerConnections.get(0);
 				host.send(ServerMessages.SET_HOST_MESSAGE_NAME, Serializer.toJson(new SetHostServerMessage()));
